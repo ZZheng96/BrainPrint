@@ -1,0 +1,10 @@
+# 数据集（体积过大，不纳入版本控制）
+Brainprint_Competition/Train/**/*.mat
+Brainprint_Competition/Test/*.mat
+
+# 系统与工具
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.venv/
