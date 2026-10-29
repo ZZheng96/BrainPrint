@@ -1,9 +1,14 @@
 import unittest
+from unittest import mock
 
 import numpy as np
 
 from src.balanced_sinkhorn import sinkhorn_labels
-from src.evaluate_task_specific_ensemble import build_task_scores, row_zscore
+from src.evaluate_task_specific_ensemble import (
+    build_task_scores,
+    predict_with_task_postprocessing,
+    row_zscore,
+)
 
 
 class SinkhornTest(unittest.TestCase):
@@ -39,6 +44,25 @@ class TaskSpecificScoreTest(unittest.TestCase):
         np.testing.assert_allclose(scores[2], window[2])
         np.testing.assert_allclose(scores[3], (base + 0.5 * low)[3])
         self.assertTrue(np.isfinite(scores).all())
+
+    @mock.patch("src.evaluate_task_specific_ensemble.sinkhorn_labels")
+    def test_ec_guard_only_accepts_low_confidence_changes(self, mocked_sinkhorn):
+        mocked_sinkhorn.side_effect = [np.array([2, 1]), np.array([1]), np.array([1])]
+        scores = np.zeros((4, 20))
+        scores[0, 0], scores[0, 1] = 5.0, 0.0
+        scores[1, 0], scores[1, 1] = 0.4, 0.5
+        scores[2, 0], scores[3, 0] = 1.0, 1.0
+        predictions = predict_with_task_postprocessing(
+            scores=scores,
+            subjects=np.array([1, 2, 1, 1]),
+            tasks=np.array(["EC", "EC", "Imagery", "SSVEP"]),
+            folds=np.zeros(4, dtype=int),
+            selected=np.ones(4, dtype=bool),
+            protocol="forward",
+            balanced_ec_imagery=True,
+            guarded_ec=True,
+        )
+        np.testing.assert_array_equal(predictions[:2], np.array([1, 1]))
 
 
 if __name__ == "__main__":

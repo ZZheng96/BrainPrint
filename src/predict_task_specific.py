@@ -1,4 +1,4 @@
-"""用固定任务特异融合生成第三个独立测试候选。"""
+"""用固定任务特异融合生成独立测试候选。"""
 from __future__ import annotations
 
 import argparse
@@ -25,8 +25,12 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--pair-fusion", action="store_true")
     parser.add_argument("--pair-similarity", type=float, default=0.99)
+    parser.add_argument("--balanced-ec-imagery", action="store_true")
+    parser.add_argument("--guarded-ec", action="store_true")
     parser.add_argument("--tag", default="")
     args = parser.parse_args()
+    if args.guarded_ec and not args.balanced_ec_imagery:
+        parser.error("--guarded-ec requires --balanced-ec-imagery")
     train_x = np.load(CACHE / "train_features.npy", mmap_mode="r")
     test_x = np.load(CACHE / "test_features.npy", mmap_mode="r")
     train_meta = pd.read_csv(CACHE / "train_metadata.csv")
@@ -87,16 +91,31 @@ def main() -> None:
             fused_rows += len(indices)
     direct = scores.argmax(axis=1) + 1
     predicted = direct.copy()
-    ssvep_indices = np.flatnonzero((test_tasks == "SSVEP") & (test_sessions == "session2"))
-    prior = train_meta.loc[train_meta["task"] == "SSVEP", "subject"].value_counts().reindex(
-        range(1, 21), fill_value=0
-    ).to_numpy()
-    predicted[ssvep_indices] = sinkhorn_labels(
-        scores[ssvep_indices], prior, temperature=1.0, iterations=100
+    sinkhorn_tasks = (
+        ("EC", "Imagery", "SSVEP") if args.balanced_ec_imagery else ("SSVEP",)
     )
+    sinkhorn_agreements = {}
+    ssvep_indices = np.flatnonzero(
+        (test_tasks == "SSVEP") & (test_sessions == "session2")
+    )
+    for task in sinkhorn_tasks:
+        indices = np.flatnonzero((test_tasks == task) & (test_sessions == "session2"))
+        prior = train_meta.loc[train_meta["task"] == task, "subject"].value_counts().reindex(
+            range(1, 21), fill_value=0
+        ).to_numpy()
+        balanced = sinkhorn_labels(scores[indices], prior, temperature=1.0, iterations=100)
+        if task == "EC" and args.guarded_ec:
+            top_two = np.partition(scores[indices], -2, axis=1)[:, -2:]
+            low_confidence = (top_two[:, 1] - top_two[:, 0]) < 1.0
+            balanced = np.where(low_confidence, balanced, direct[indices])
+        predicted[indices] = balanced
+        sinkhorn_agreements[task] = float(np.mean(balanced == direct[indices]))
     predicted[test_sessions == "session1"] = 0
 
-    tag = args.tag or f"task_specific_zscore{'_grouped' if args.pair_fusion else ''}"
+    tag = args.tag or (
+        f"task_specific_zscore{'_grouped' if args.pair_fusion else ''}"
+        f"{'_guarded' if args.guarded_ec else ('_balanced' if args.balanced_ec_imagery else '')}"
+    )
     np.save(CACHE / f"scores_{tag}.npy", scores)
     np.save(CACHE / "scores_task_low13_ridge_zscore.npy", low)
     np.save(CACHE / "scores_task_low13_neighbor_zscore.npy", low_neighbor)
@@ -113,9 +132,17 @@ def main() -> None:
     previous_labels = previous.set_index("Sample").loc[submission["Sample"], "Label"].to_numpy()
     diagnostics = {
         "config": {
-            "EC": "row-z base + 0.25 row-z 1-13Hz top3 + 0.5 row-z 1-8Hz top3, direct",
+            "EC": (
+                "row-z base + low-frequency neighbors; guarded Sinkhorn T=1 (margin<1)"
+                if args.guarded_ec
+                else "row-z base + low-frequency neighbors, direct"
+            ),
             "EO": "base + 0.25 1-13Hz Ridge, direct",
-            "Imagery": "two-window Ridge, direct",
+            "Imagery": (
+                "two-window Ridge, Sinkhorn T=1"
+                if args.balanced_ec_imagery
+                else "two-window Ridge, direct"
+            ),
             "SSVEP": "base + 0.5 1-13Hz Ridge, Sinkhorn T=1",
             "alignment": "session2 zscore",
             "pair_fusion": args.pair_fusion,
@@ -130,6 +157,7 @@ def main() -> None:
         "predicted_class_counts": {
             str(k): int(v) for k, v in zip(*np.unique(predicted, return_counts=True))
         },
+        "sinkhorn_agreement_by_task": sinkhorn_agreements,
         "ssvep_sinkhorn_agreement": float(
             np.mean(predicted[ssvep_indices] == direct[ssvep_indices])
         ),

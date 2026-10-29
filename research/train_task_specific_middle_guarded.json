@@ -1,0 +1,30 @@
+{
+  "protocol": "middle holdout: middle 40%-60% validation, remaining trials training",
+  "n": 2257,
+  "errors": 0,
+  "accuracy": 1.0,
+  "postprocessing": "EC guarded Sinkhorn (margin<1); Imagery/SSVEP Sinkhorn T=1; EO direct",
+  "confusion": [],
+  "per_task": {
+    "EC": {
+      "n": 216,
+      "errors": 0,
+      "accuracy": 1.0
+    },
+    "EO": {
+      "n": 220,
+      "errors": 0,
+      "accuracy": 1.0
+    },
+    "Imagery": {
+      "n": 1101,
+      "errors": 0,
+      "accuracy": 1.0
+    },
+    "SSVEP": {
+      "n": 720,
+      "errors": 0,
+      "accuracy": 1.0
+    }
+  }
+}

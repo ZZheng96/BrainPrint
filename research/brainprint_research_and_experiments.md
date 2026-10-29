@@ -1,4 +1,4 @@
-# 脑纹识别：研究假设、文献依据与三轮迭代报告
+# 脑纹识别：研究假设、文献依据与四轮迭代报告
 
 日期：2026-10-29
 项目目录：`d:/BCIC2026/BrainPrint`
@@ -16,6 +16,8 @@
 9. 前两个候选的文件格式和高相似样本一致性均已验证，但 **C、RA、ASafeR、U 的真实测试值仍未知**。应利用官方反馈检验，而不是把内部一致率当成准确率。
 10. 第三轮固定任务特异融合在 5 折块外推 11,304 条和时间前推 2,308 条上均为 **0 错误（100%）**；但规则固定后新增的反向留段为 **2/2,245 错（99.9109%）**。因此双协议满分是探索性折外结果，不是普遍或测试集满分证明。
 11. 第三轮测试候选为 `research/submission_task_specific_zscore_grouped.csv`，未融合消融版为 `research/submission_task_specific_zscore.csv`。图融合版高相似边标签一致率为 100%，但真实 C、RA、ASafeR、U 仍需官方反馈。
+12. 第四轮冻结低信心 EC 均衡门控后，块外推、时间前推、反向留段和新增中间留段均为 **0 错误**，合计 **18,114/18,114（100%）**。中间留段是在规则冻结后评估的新协议；其余三协议仍属于模型选择所依据的探索结果。
+13. 第四轮测试候选为 `research/submission_task_specific_zscore_grouped_guarded.csv`。四协议满分不是跨 Session、对抗鲁棒性或官方测试集满分证明；测试集没有真值，真实 C、RA、ASafeR、U 仍未知。
 
 ---
 
@@ -656,7 +658,60 @@ python -m unittest discover -s test -v
 
 ---
 
-## 14. 参考文献与来源
+## 14. 低信心均衡门控与第四轮四协议 100%
+
+### 14.1 从个体互补证据到固定门控
+
+第三轮反向留段的两条错误具有不同的互补证据：S8/EC/006 的 1–13 Hz Ridge 和 1–13 Hz 类内近邻均判为真实身份 8；S17/Imagery/011 的 4 秒 Ridge 和双窗口平均均判为真实身份 17，但单独双窗口模型误判为 19。简单增加低频权重或改用双窗口平均会在其他折外样本引入新错误，因此没有采用针对被试或 Trial 的手工修正。
+
+进一步比较训练折类别先验的 Sinkhorn 分配发现：Imagery 在 T=1 时三个既有协议均为 0 错误；EC 的全量 Sinkhorn 虽能修复反向留段，但在块外推引入 S18/EC/017、S1/EC/043 和 S1/EC/044 三条错误，因此不能直接应用到所有 EC 样本。
+
+EC 直接预测与 Sinkhorn 只在少数样本上发生标签分歧。反向留段 S8/EC/006 的直接分数 top-1/top-2 间隔为 0.5333，而块外推三个被 Sinkhorn 错改的样本间隔分别为 1.4044、1.5867 和 1.1231。由此冻结一个仅依赖当前分数的门控：**只有当 EC 直接分数间隔小于 1.0 时才接受 Sinkhorn 标签，否则保留直接预测**。该阈值不使用验证身份标签执行推理，但它是在前三套协议探索后选择的，仍需新协议确认。
+
+### 14.2 第四轮冻结规则
+
+| 任务 | 分数与后处理 |
+|---|---|
+| EC | 第三轮 EC 融合分数；Sinkhorn T=1，仅接受 margin<1 的改动 |
+| EO | 双窗口 + 4 秒 Ridge + 0.25×1–13 Hz Ridge；直接 argmax |
+| Imagery | 双 2 秒窗口 Ridge；Sinkhorn T=1 |
+| SSVEP | 双窗口 + 4 秒 Ridge + 0.5×1–13 Hz Ridge；Sinkhorn T=1 |
+
+Sinkhorn 的类别先验只由相应训练折的身份计数估计，不读取验证标签。它同时使用整个验证批次的无标签分数，因此属于**转导批处理**，不能与单 Trial 在线推理混为一谈。EC 门控只比较同一样本的直接分数间隔，不知道其真实身份，也不针对特定被试设置权重。
+
+### 14.3 四协议结果与新中间留段确认
+
+规则冻结后，先复核块外推和时间前推，再重新运行反向留段，最后评估此前未使用的每被试/任务中间 40%–60% Trial 留段。中间留段训练集包含该区间之外的 Trial，验证集不参与模型、类别先验或阈值拟合。
+
+| 协议 | 验证样本数 | 错误数 | 准确率 |
+|---|---:|---:|---:|
+| 5 折块外推 | 11,304 | 0 | **100%** |
+| 后 20% 时间前推 | 2,308 | 0 | **100%** |
+| 首 20% 反向留段 | 2,245 | 0 | **100%** |
+| 中间 40%–60% 留段，规则冻结后新增 | 2,257 | 0 | **100%** |
+| 合计 | **18,114** | **0** | **100%** |
+
+四个协议的分任务错误也全部为 0。新增中间留段支持门控不是只对已观察到的两个反向错误有效，但不能消除前三协议参与模型选择所带来的乐观偏差。这里的 100% 仅适用于本训练 Session 的四套折外评估，不构成跨 Session、未知拒识、对抗鲁棒性或测试集 100% 的证明。
+
+### 14.4 第四轮测试候选与稳定性诊断
+
+第四轮独立候选为 `research/submission_task_specific_zscore_grouped_guarded.csv`。它继续使用测试 `session2` z-score 对齐、高相似图融合和测试 `session1 → 0`，再加入冻结的 EC 低信心门控与 Imagery Sinkhorn，不读取测试身份标签。
+
+文件共 22,251 行，Sample 顺序与原始 `test.csv` 一致，Label 均为 0–20 的整数且无缺失；0 标签共 3,033 条。高相似图包含 3,492 个多样本组件、覆盖 10,205 条测试样本，融合后的高相似边标签一致率为 100%。在测试 `session2` 上，EC 门控后、Imagery Sinkhorn 和 SSVEP Sinkhorn 与各自直接预测的标签一致率分别为 88.04%、80.25% 和 85.65%；这些数字只描述后处理改动幅度，不是准确率。相对第二轮和第三轮图融合候选分别有 2,623 和 2,126 条标签变化，真实 C、RA、ASafeR、U 仍需官方反馈。
+
+### 14.5 复现命令
+
+```powershell
+python src/evaluate_task_specific_ensemble.py --balanced-ec-imagery --guarded-ec
+python src/evaluate_task_specific_reverse.py --holdout reverse --balanced-ec-imagery --guarded-ec
+python src/evaluate_task_specific_reverse.py --holdout middle --balanced-ec-imagery --guarded-ec
+python src/predict_task_specific.py --pair-fusion --balanced-ec-imagery --guarded-ec
+python -m unittest discover -s test -v
+```
+
+---
+
+## 15. 参考文献与来源
 
 1. Plucińska et al. (2022), *Impact of EEG Frequency Bands and Data Separation on the Performance of Person Verification Employing Neural Networks*. [DOI/全文](https://pmc.ncbi.nlm.nih.gov/articles/PMC9332713/)
 2. Plucińska et al. (2023), *Leveraging Multiple Distinct EEG Training Sessions for Improvement of Spectral-Based Biometric Verification Results*. [DOI/全文](https://pmc.ncbi.nlm.nih.gov/articles/PMC9963573/)

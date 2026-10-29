@@ -1,0 +1,60 @@
+{
+  "blocked_oof": {
+    "n": 11304,
+    "errors": 0,
+    "accuracy": 1.0,
+    "per_task": {
+      "EC": {
+        "n": 1072,
+        "errors": 0,
+        "accuracy": 1.0
+      },
+      "EO": {
+        "n": 1070,
+        "errors": 0,
+        "accuracy": 1.0
+      },
+      "Imagery": {
+        "n": 5504,
+        "errors": 0,
+        "accuracy": 1.0
+      },
+      "SSVEP": {
+        "n": 3658,
+        "errors": 0,
+        "accuracy": 1.0
+      }
+    },
+    "postprocessing": "EC guarded Sinkhorn (margin<1); Imagery/SSVEP Sinkhorn T=1; EO direct",
+    "model_selection_note": "Task rules and postprocessing were selected during exploratory analysis; 100% is not an untouched holdout or test-set claim."
+  },
+  "forward": {
+    "n": 2308,
+    "errors": 0,
+    "accuracy": 1.0,
+    "per_task": {
+      "EC": {
+        "n": 219,
+        "errors": 0,
+        "accuracy": 1.0
+      },
+      "EO": {
+        "n": 227,
+        "errors": 0,
+        "accuracy": 1.0
+      },
+      "Imagery": {
+        "n": 1101,
+        "errors": 0,
+        "accuracy": 1.0
+      },
+      "SSVEP": {
+        "n": 761,
+        "errors": 0,
+        "accuracy": 1.0
+      }
+    },
+    "postprocessing": "EC guarded Sinkhorn (margin<1); Imagery/SSVEP Sinkhorn T=1; EO direct",
+    "model_selection_note": "Task rules and postprocessing were selected during exploratory analysis; 100% is not an untouched holdout or test-set claim."
+  }
+}

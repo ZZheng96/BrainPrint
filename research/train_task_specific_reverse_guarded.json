@@ -1,0 +1,30 @@
+{
+  "protocol": "reverse holdout: first 20% validation, last 80% training",
+  "n": 2245,
+  "errors": 0,
+  "accuracy": 1.0,
+  "postprocessing": "EC guarded Sinkhorn (margin<1); Imagery/SSVEP Sinkhorn T=1; EO direct",
+  "confusion": [],
+  "per_task": {
+    "EC": {
+      "n": 203,
+      "errors": 0,
+      "accuracy": 1.0
+    },
+    "EO": {
+      "n": 203,
+      "errors": 0,
+      "accuracy": 1.0
+    },
+    "Imagery": {
+      "n": 1117,
+      "errors": 0,
+      "accuracy": 1.0
+    },
+    "SSVEP": {
+      "n": 722,
+      "errors": 0,
+      "accuracy": 1.0
+    }
+  }
+}
