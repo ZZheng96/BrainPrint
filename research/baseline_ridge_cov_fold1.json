@@ -1,0 +1,66 @@
+{
+  "protocol": {
+    "model": "ridge",
+    "features": "cov",
+    "validation": "within-session contiguous blocks of 10 trials, blocked modulo 5",
+    "validation_fold": 1,
+    "known_subjects": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "held_out_unknown_subjects": [
+      17,
+      18,
+      19,
+      20
+    ],
+    "cross_session_claim": false
+  },
+  "clean_accuracy": 1.0,
+  "per_task": {
+    "EC": {
+      "n": 137,
+      "clean_accuracy": 1.0
+    },
+    "EO": {
+      "n": 127,
+      "clean_accuracy": 1.0
+    },
+    "Imagery": {
+      "n": 881,
+      "clean_accuracy": 1.0
+    },
+    "SSVEP": {
+      "n": 580,
+      "clean_accuracy": 1.0
+    }
+  },
+  "open_set": {
+    "max_logit": {
+      "unknown_auroc": 0.9990771075729741,
+      "unknown_rejection_at_95pct_known_acceptance": 0.9986795774647887
+    },
+    "margin": {
+      "unknown_auroc": 0.9993110838946724,
+      "unknown_rejection_at_95pct_known_acceptance": 0.9995598591549296
+    },
+    "energy": {
+      "unknown_auroc": 0.9964957134109003,
+      "unknown_rejection_at_95pct_known_acceptance": 0.9881161971830986
+    }
+  }
+}

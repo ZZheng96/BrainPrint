@@ -1,0 +1,68 @@
+{
+  "protocol": {
+    "model": "ridge",
+    "features": "cov",
+    "alpha": 1000.0,
+    "validation": "within-subject/task forward holdout: last 20 percent of trial IDs",
+    "split_mode": "forward",
+    "validation_fold": 4,
+    "known_subjects": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "held_out_unknown_subjects": [
+      17,
+      18,
+      19,
+      20
+    ],
+    "cross_session_claim": false
+  },
+  "clean_accuracy": 0.9967550027041644,
+  "per_task": {
+    "EC": {
+      "n": 184,
+      "clean_accuracy": 0.9891304347826086
+    },
+    "EO": {
+      "n": 180,
+      "clean_accuracy": 0.9888888888888889
+    },
+    "Imagery": {
+      "n": 878,
+      "clean_accuracy": 1.0
+    },
+    "SSVEP": {
+      "n": 607,
+      "clean_accuracy": 0.9967051070840197
+    }
+  },
+  "open_set": {
+    "max_logit": {
+      "unknown_auroc": 0.9943250634145598,
+      "unknown_rejection_at_95pct_known_acceptance": 0.9727112676056338
+    },
+    "margin": {
+      "unknown_auroc": 0.9952548579742381,
+      "unknown_rejection_at_95pct_known_acceptance": 0.9973591549295775
+    },
+    "energy": {
+      "unknown_auroc": 0.9819522019896556,
+      "unknown_rejection_at_95pct_known_acceptance": 0.920774647887324
+    }
+  }
+}

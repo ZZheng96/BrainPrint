@@ -1,0 +1,66 @@
+{
+  "protocol": {
+    "model": "ridge",
+    "features": "psd",
+    "validation": "within-session contiguous blocks of 10 trials, blocked modulo 5",
+    "validation_fold": 4,
+    "known_subjects": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "held_out_unknown_subjects": [
+      17,
+      18,
+      19,
+      20
+    ],
+    "cross_session_claim": false
+  },
+  "clean_accuracy": 0.9863169897377423,
+  "per_task": {
+    "EC": {
+      "n": 153,
+      "clean_accuracy": 0.9607843137254902
+    },
+    "EO": {
+      "n": 157,
+      "clean_accuracy": 0.9745222929936306
+    },
+    "Imagery": {
+      "n": 874,
+      "clean_accuracy": 0.988558352402746
+    },
+    "SSVEP": {
+      "n": 570,
+      "clean_accuracy": 0.9929824561403509
+    }
+  },
+  "open_set": {
+    "max_logit": {
+      "unknown_auroc": 0.9767450555671544,
+      "unknown_rejection_at_95pct_known_acceptance": 0.9027288732394366
+    },
+    "margin": {
+      "unknown_auroc": 0.9727145297669713,
+      "unknown_rejection_at_95pct_known_acceptance": 0.8776408450704225
+    },
+    "energy": {
+      "unknown_auroc": 0.941662392398863,
+      "unknown_rejection_at_95pct_known_acceptance": 0.7029049295774648
+    }
+  }
+}

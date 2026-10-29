@@ -1,0 +1,43 @@
+{
+  "config": {
+    "EC": "row-z base + 0.25 row-z 1-13Hz top3 + 0.5 row-z 1-8Hz top3, direct",
+    "EO": "base + 0.25 1-13Hz Ridge, direct",
+    "Imagery": "two-window Ridge, direct",
+    "SSVEP": "base + 0.5 1-13Hz Ridge, Sinkhorn T=1",
+    "alignment": "session2 zscore",
+    "pair_fusion": false,
+    "metadata_rejection": "test session1 -> 0"
+  },
+  "submission_rows": 22251,
+  "sample_order_matches": true,
+  "labels_valid": true,
+  "predicted_class_counts": {
+    "0": 3033,
+    "1": 1191,
+    "2": 363,
+    "3": 1149,
+    "4": 696,
+    "5": 1379,
+    "6": 1220,
+    "7": 1157,
+    "8": 205,
+    "9": 694,
+    "10": 911,
+    "11": 998,
+    "12": 606,
+    "13": 1510,
+    "14": 820,
+    "15": 1754,
+    "16": 1559,
+    "17": 1200,
+    "18": 525,
+    "19": 537,
+    "20": 744
+  },
+  "ssvep_sinkhorn_agreement": 0.8472872248223262,
+  "high_similarity_pair_agreement_without_fusion": 0.813930737624731,
+  "previous_candidate_changed_rows": 4169,
+  "previous_candidate_agreement": 0.8126376342636286,
+  "submission_path": "D:\\BCIC2026\\BrainPrint\\research\\submission_task_specific_zscore.csv",
+  "test_accuracy_claim": "unknown; no test ground truth or official score"
+}

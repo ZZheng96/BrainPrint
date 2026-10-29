@@ -1,0 +1,39 @@
+{
+  "config": {
+    "features": "cov",
+    "alignment": "mean",
+    "pair_fusion": false,
+    "pair_similarity": 0.99,
+    "metadata_rejection": true,
+    "tag": ""
+  },
+  "pair": {},
+  "metadata_rejected_rows": 3033,
+  "predicted_class_counts": {
+    "0": 3033,
+    "1": 1329,
+    "2": 293,
+    "3": 1148,
+    "4": 462,
+    "5": 1473,
+    "6": 1216,
+    "7": 1188,
+    "8": 44,
+    "9": 614,
+    "10": 1017,
+    "11": 1088,
+    "12": 543,
+    "13": 1538,
+    "14": 845,
+    "15": 1960,
+    "16": 1614,
+    "17": 1355,
+    "18": 479,
+    "19": 400,
+    "20": 612
+  },
+  "mean_max_logit_session2": -0.11553390324115753,
+  "mean_max_logit_session1": 0.16731594502925873,
+  "submission_rows": 22251,
+  "submission_path": "D:\\BCIC2026\\BrainPrint\\research\\submission_ridge_cov_mean.csv"
+}

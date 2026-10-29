@@ -1,0 +1,308 @@
+{
+  "blocked_oof": {
+    "n": 11304,
+    "direct_errors": 9,
+    "direct_accuracy": 0.9992038216560509,
+    "T0.5": {
+      "errors": 32,
+      "accuracy": 0.997169143665959,
+      "error_subjects": {
+        "1": 6,
+        "2": 2,
+        "4": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 5,
+        "12": 2,
+        "15": 3,
+        "16": 1,
+        "17": 1,
+        "18": 5,
+        "19": 3
+      },
+      "confusion_pairs": [
+        {
+          "true": 1,
+          "predicted": 9
+        },
+        {
+          "true": 1,
+          "predicted": 18
+        },
+        {
+          "true": 1,
+          "predicted": 18
+        },
+        {
+          "true": 1,
+          "predicted": 16
+        },
+        {
+          "true": 1,
+          "predicted": 8
+        },
+        {
+          "true": 1,
+          "predicted": 10
+        },
+        {
+          "true": 2,
+          "predicted": 20
+        },
+        {
+          "true": 2,
+          "predicted": 15
+        },
+        {
+          "true": 4,
+          "predicted": 2
+        },
+        {
+          "true": 7,
+          "predicted": 18
+        },
+        {
+          "true": 8,
+          "predicted": 12
+        },
+        {
+          "true": 9,
+          "predicted": 18
+        },
+        {
+          "true": 10,
+          "predicted": 4
+        },
+        {
+          "true": 10,
+          "predicted": 1
+        },
+        {
+          "true": 10,
+          "predicted": 7
+        },
+        {
+          "true": 10,
+          "predicted": 2
+        },
+        {
+          "true": 10,
+          "predicted": 12
+        },
+        {
+          "true": 12,
+          "predicted": 8
+        },
+        {
+          "true": 12,
+          "predicted": 14
+        },
+        {
+          "true": 15,
+          "predicted": 8
+        },
+        {
+          "true": 15,
+          "predicted": 8
+        },
+        {
+          "true": 15,
+          "predicted": 19
+        },
+        {
+          "true": 16,
+          "predicted": 18
+        },
+        {
+          "true": 17,
+          "predicted": 10
+        },
+        {
+          "true": 18,
+          "predicted": 9
+        },
+        {
+          "true": 18,
+          "predicted": 19
+        },
+        {
+          "true": 18,
+          "predicted": 19
+        },
+        {
+          "true": 18,
+          "predicted": 4
+        },
+        {
+          "true": 18,
+          "predicted": 2
+        },
+        {
+          "true": 19,
+          "predicted": 13
+        },
+        {
+          "true": 19,
+          "predicted": 18
+        },
+        {
+          "true": 19,
+          "predicted": 11
+        }
+      ]
+    },
+    "T1": {
+      "errors": 6,
+      "accuracy": 0.9994692144373672,
+      "error_subjects": {
+        "1": 2,
+        "16": 2,
+        "19": 2
+      },
+      "confusion_pairs": [
+        {
+          "true": 1,
+          "predicted": 18
+        },
+        {
+          "true": 1,
+          "predicted": 18
+        },
+        {
+          "true": 16,
+          "predicted": 19
+        },
+        {
+          "true": 16,
+          "predicted": 19
+        },
+        {
+          "true": 19,
+          "predicted": 13
+        },
+        {
+          "true": 19,
+          "predicted": 11
+        }
+      ]
+    },
+    "T2": {
+      "errors": 7,
+      "accuracy": 0.9993807501769285,
+      "error_subjects": {
+        "1": 2,
+        "10": 1,
+        "16": 2,
+        "19": 2
+      },
+      "confusion_pairs": [
+        {
+          "true": 1,
+          "predicted": 18
+        },
+        {
+          "true": 1,
+          "predicted": 18
+        },
+        {
+          "true": 10,
+          "predicted": 1
+        },
+        {
+          "true": 16,
+          "predicted": 19
+        },
+        {
+          "true": 16,
+          "predicted": 19
+        },
+        {
+          "true": 19,
+          "predicted": 13
+        },
+        {
+          "true": 19,
+          "predicted": 11
+        }
+      ]
+    }
+  },
+  "forward": {
+    "n": 2308,
+    "direct_errors": 4,
+    "direct_accuracy": 0.9982668977469671,
+    "T0.5": {
+      "errors": 4,
+      "accuracy": 0.9982668977469671,
+      "error_subjects": {
+        "2": 1,
+        "4": 1,
+        "8": 1,
+        "18": 1
+      },
+      "confusion_pairs": [
+        {
+          "true": 2,
+          "predicted": 15
+        },
+        {
+          "true": 4,
+          "predicted": 18
+        },
+        {
+          "true": 8,
+          "predicted": 16
+        },
+        {
+          "true": 18,
+          "predicted": 20
+        }
+      ]
+    },
+    "T1": {
+      "errors": 2,
+      "accuracy": 0.9991334488734835,
+      "error_subjects": {
+        "16": 1,
+        "18": 1
+      },
+      "confusion_pairs": [
+        {
+          "true": 16,
+          "predicted": 11
+        },
+        {
+          "true": 18,
+          "predicted": 20
+        }
+      ]
+    },
+    "T2": {
+      "errors": 4,
+      "accuracy": 0.9982668977469671,
+      "error_subjects": {
+        "16": 1,
+        "18": 3
+      },
+      "confusion_pairs": [
+        {
+          "true": 16,
+          "predicted": 11
+        },
+        {
+          "true": 18,
+          "predicted": 2
+        },
+        {
+          "true": 18,
+          "predicted": 20
+        },
+        {
+          "true": 18,
+          "predicted": 20
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1662 @@
+{
+  "blocked_oof": {
+    "window_full": {
+      "errors": 8,
+      "accuracy": 0.9992922859164898,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          1,
+          18,
+          "EO",
+          15
+        ],
+        [
+          4,
+          7,
+          "EC",
+          36
+        ],
+        [
+          16,
+          19,
+          "EO",
+          52
+        ],
+        [
+          16,
+          19,
+          "EO",
+          53
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          13,
+          "EO",
+          24
+        ],
+        [
+          19,
+          11,
+          "Imagery",
+          227
+        ]
+      ]
+    },
+    "window_full_sinkhorn": {
+      "errors": 5,
+      "accuracy": 0.9995576786978061,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          43
+        ],
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          1,
+          10,
+          "EO",
+          15
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          11,
+          "Imagery",
+          227
+        ]
+      ]
+    },
+    "window_full_low0.25": {
+      "errors": 2,
+      "accuracy": 0.9998230714791224,
+      "confusion": [
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          11,
+          "Imagery",
+          227
+        ]
+      ]
+    },
+    "window_full_low0.25_sinkhorn": {
+      "errors": 4,
+      "accuracy": 0.9996461429582448,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          43
+        ],
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          11,
+          "Imagery",
+          227
+        ]
+      ]
+    },
+    "window_full_low0.5": {
+      "errors": 2,
+      "accuracy": 0.9998230714791224,
+      "confusion": [
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          11,
+          "Imagery",
+          227
+        ]
+      ]
+    },
+    "window_full_low0.5_sinkhorn": {
+      "errors": 5,
+      "accuracy": 0.9995576786978061,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          4,
+          8,
+          "EO",
+          13
+        ],
+        [
+          12,
+          8,
+          "EO",
+          14
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          11,
+          "Imagery",
+          227
+        ]
+      ]
+    },
+    "window_full_low1": {
+      "errors": 8,
+      "accuracy": 0.9992922859164898,
+      "confusion": [
+        [
+          1,
+          16,
+          "EO",
+          4
+        ],
+        [
+          3,
+          11,
+          "Imagery",
+          206
+        ],
+        [
+          10,
+          11,
+          "SSVEP",
+          99
+        ],
+        [
+          16,
+          12,
+          "EO",
+          31
+        ],
+        [
+          16,
+          10,
+          "Imagery",
+          251
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          10,
+          "EO",
+          24
+        ],
+        [
+          19,
+          11,
+          "Imagery",
+          227
+        ]
+      ]
+    },
+    "window_full_low1_sinkhorn": {
+      "errors": 8,
+      "accuracy": 0.9992922859164898,
+      "confusion": [
+        [
+          3,
+          11,
+          "Imagery",
+          206
+        ],
+        [
+          4,
+          8,
+          "EO",
+          13
+        ],
+        [
+          10,
+          11,
+          "SSVEP",
+          99
+        ],
+        [
+          12,
+          8,
+          "EO",
+          14
+        ],
+        [
+          14,
+          19,
+          "EC",
+          13
+        ],
+        [
+          16,
+          13,
+          "Imagery",
+          251
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          11,
+          "Imagery",
+          227
+        ]
+      ]
+    },
+    "window_full_neighbor0.25": {
+      "errors": 3,
+      "accuracy": 0.9997346072186837,
+      "confusion": [
+        [
+          4,
+          7,
+          "EC",
+          36
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ]
+      ]
+    },
+    "window_full_neighbor0.25_sinkhorn": {
+      "errors": 4,
+      "accuracy": 0.9996461429582448,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          43
+        ],
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ]
+      ]
+    },
+    "window_full_neighbor0.5": {
+      "errors": 2,
+      "accuracy": 0.9998230714791224,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ]
+      ]
+    },
+    "window_full_neighbor0.5_sinkhorn": {
+      "errors": 5,
+      "accuracy": 0.9995576786978061,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          12,
+          8,
+          "EO",
+          14
+        ],
+        [
+          15,
+          19,
+          "Imagery",
+          186
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ]
+      ]
+    },
+    "window_full_neighbor1": {
+      "errors": 10,
+      "accuracy": 0.9991153573956122,
+      "confusion": [
+        [
+          1,
+          16,
+          "EO",
+          4
+        ],
+        [
+          2,
+          14,
+          "Imagery",
+          105
+        ],
+        [
+          9,
+          10,
+          "EO",
+          28
+        ],
+        [
+          15,
+          19,
+          "Imagery",
+          186
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          1,
+          "EO",
+          51
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          18,
+          15,
+          "Imagery",
+          121
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          10,
+          "EO",
+          24
+        ]
+      ]
+    },
+    "window_full_neighbor1_sinkhorn": {
+      "errors": 12,
+      "accuracy": 0.9989384288747346,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          1,
+          16,
+          "EO",
+          4
+        ],
+        [
+          2,
+          20,
+          "EC",
+          31
+        ],
+        [
+          2,
+          8,
+          "EO",
+          16
+        ],
+        [
+          2,
+          14,
+          "Imagery",
+          105
+        ],
+        [
+          12,
+          8,
+          "EO",
+          14
+        ],
+        [
+          15,
+          19,
+          "Imagery",
+          186
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          1,
+          "EO",
+          51
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          18,
+          19,
+          "EC",
+          17
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ]
+      ]
+    },
+    "window_full_low0.5_neighbor0.5": {
+      "errors": 4,
+      "accuracy": 0.9996461429582448,
+      "confusion": [
+        [
+          1,
+          16,
+          "EO",
+          4
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          10,
+          "EO",
+          24
+        ]
+      ]
+    },
+    "window_full_low0.5_neighbor0.5_sinkhorn": {
+      "errors": 5,
+      "accuracy": 0.9995576786978061,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          1,
+          16,
+          "EO",
+          4
+        ],
+        [
+          12,
+          8,
+          "EO",
+          14
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ]
+      ]
+    },
+    "window_full_delta0.25": {
+      "errors": 4,
+      "accuracy": 0.9996461429582448,
+      "confusion": [
+        [
+          1,
+          18,
+          "EO",
+          15
+        ],
+        [
+          16,
+          19,
+          "EO",
+          53
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          11,
+          "Imagery",
+          227
+        ]
+      ]
+    },
+    "window_full_delta0.25_sinkhorn": {
+      "errors": 4,
+      "accuracy": 0.9996461429582448,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          43
+        ],
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          1,
+          10,
+          "EO",
+          15
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ]
+      ]
+    },
+    "window_full_delta0.5": {
+      "errors": 5,
+      "accuracy": 0.9995576786978061,
+      "confusion": [
+        [
+          1,
+          18,
+          "EO",
+          15
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          19,
+          "EO",
+          53
+        ],
+        [
+          19,
+          13,
+          "EC",
+          18
+        ],
+        [
+          19,
+          10,
+          "EO",
+          24
+        ]
+      ]
+    },
+    "window_full_delta0.5_sinkhorn": {
+      "errors": 4,
+      "accuracy": 0.9996461429582448,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          43
+        ],
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          1,
+          10,
+          "EO",
+          15
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ]
+      ]
+    },
+    "window_full_delta1": {
+      "errors": 10,
+      "accuracy": 0.9991153573956122,
+      "confusion": [
+        [
+          1,
+          6,
+          "EO",
+          1
+        ],
+        [
+          1,
+          18,
+          "EO",
+          15
+        ],
+        [
+          1,
+          11,
+          "SSVEP",
+          1
+        ],
+        [
+          1,
+          19,
+          "SSVEP",
+          59
+        ],
+        [
+          2,
+          14,
+          "Imagery",
+          105
+        ],
+        [
+          4,
+          19,
+          "EC",
+          31
+        ],
+        [
+          9,
+          10,
+          "EO",
+          28
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          19,
+          10,
+          "EO",
+          24
+        ]
+      ]
+    },
+    "window_full_delta1_sinkhorn": {
+      "errors": 9,
+      "accuracy": 0.9992038216560509,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          43
+        ],
+        [
+          2,
+          14,
+          "Imagery",
+          105
+        ],
+        [
+          4,
+          18,
+          "EC",
+          31
+        ],
+        [
+          9,
+          2,
+          "Imagery",
+          23
+        ],
+        [
+          15,
+          19,
+          "Imagery",
+          186
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          18,
+          "SSVEP",
+          109
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          18,
+          19,
+          "EC",
+          17
+        ]
+      ]
+    },
+    "window_full_lowfreq_neighbors": {
+      "errors": 7,
+      "accuracy": 0.9993807501769285,
+      "confusion": [
+        [
+          1,
+          6,
+          "EO",
+          1
+        ],
+        [
+          2,
+          14,
+          "Imagery",
+          105
+        ],
+        [
+          9,
+          10,
+          "EO",
+          28
+        ],
+        [
+          15,
+          19,
+          "Imagery",
+          186
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          19,
+          10,
+          "EO",
+          24
+        ]
+      ]
+    },
+    "window_full_lowfreq_neighbors_sinkhorn": {
+      "errors": 7,
+      "accuracy": 0.9993807501769285,
+      "confusion": [
+        [
+          1,
+          18,
+          "EC",
+          44
+        ],
+        [
+          2,
+          14,
+          "Imagery",
+          105
+        ],
+        [
+          15,
+          19,
+          "Imagery",
+          186
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          1,
+          "EO",
+          51
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          18,
+          19,
+          "EC",
+          17
+        ]
+      ]
+    }
+  },
+  "forward": {
+    "window_full": {
+      "errors": 3,
+      "accuracy": 0.9987001733102253,
+      "confusion": [
+        [
+          16,
+          19,
+          "EO",
+          53
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          177
+        ]
+      ]
+    },
+    "window_full_sinkhorn": {
+      "errors": 1,
+      "accuracy": 0.9995667244367418,
+      "confusion": [
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ]
+      ]
+    },
+    "window_full_low0.25": {
+      "errors": 2,
+      "accuracy": 0.9991334488734835,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ]
+      ]
+    },
+    "window_full_low0.25_sinkhorn": {
+      "errors": 1,
+      "accuracy": 0.9995667244367418,
+      "confusion": [
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ]
+      ]
+    },
+    "window_full_low0.5": {
+      "errors": 7,
+      "accuracy": 0.9969670710571924,
+      "confusion": [
+        [
+          11,
+          4,
+          "EO",
+          51
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          13,
+          "Imagery",
+          251
+        ],
+        [
+          16,
+          20,
+          "SSVEP",
+          177
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          289
+        ],
+        [
+          19,
+          13,
+          "SSVEP",
+          180
+        ]
+      ]
+    },
+    "window_full_low0.5_sinkhorn": {
+      "errors": 1,
+      "accuracy": 0.9995667244367418,
+      "confusion": [
+        [
+          16,
+          15,
+          "Imagery",
+          251
+        ]
+      ]
+    },
+    "window_full_low1": {
+      "errors": 7,
+      "accuracy": 0.9969670710571924,
+      "confusion": [
+        [
+          11,
+          4,
+          "EO",
+          51
+        ],
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          10,
+          "Imagery",
+          251
+        ],
+        [
+          16,
+          20,
+          "SSVEP",
+          177
+        ],
+        [
+          19,
+          6,
+          "EO",
+          56
+        ],
+        [
+          19,
+          6,
+          "Imagery",
+          289
+        ],
+        [
+          19,
+          13,
+          "SSVEP",
+          180
+        ]
+      ]
+    },
+    "window_full_low1_sinkhorn": {
+      "errors": 3,
+      "accuracy": 0.9987001733102253,
+      "confusion": [
+        [
+          11,
+          4,
+          "EO",
+          51
+        ],
+        [
+          16,
+          15,
+          "Imagery",
+          251
+        ],
+        [
+          16,
+          20,
+          "SSVEP",
+          177
+        ]
+      ]
+    },
+    "window_full_neighbor0.25": {
+      "errors": 3,
+      "accuracy": 0.9987001733102253,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          177
+        ]
+      ]
+    },
+    "window_full_neighbor0.25_sinkhorn": {
+      "errors": 2,
+      "accuracy": 0.9991334488734835,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ]
+      ]
+    },
+    "window_full_neighbor0.5": {
+      "errors": 4,
+      "accuracy": 0.9982668977469671,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ],
+        [
+          19,
+          18,
+          "Imagery",
+          289
+        ]
+      ]
+    },
+    "window_full_neighbor0.5_sinkhorn": {
+      "errors": 2,
+      "accuracy": 0.9991334488734835,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ]
+      ]
+    },
+    "window_full_neighbor1": {
+      "errors": 5,
+      "accuracy": 0.9978336221837089,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          15,
+          "Imagery",
+          251
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          274
+        ],
+        [
+          19,
+          18,
+          "Imagery",
+          289
+        ]
+      ]
+    },
+    "window_full_neighbor1_sinkhorn": {
+      "errors": 3,
+      "accuracy": 0.9987001733102253,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          15,
+          "Imagery",
+          251
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ]
+      ]
+    },
+    "window_full_low0.5_neighbor0.5": {
+      "errors": 5,
+      "accuracy": 0.9978336221837089,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          10,
+          "Imagery",
+          251
+        ],
+        [
+          16,
+          11,
+          "SSVEP",
+          177
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          289
+        ],
+        [
+          19,
+          13,
+          "SSVEP",
+          180
+        ]
+      ]
+    },
+    "window_full_low0.5_neighbor0.5_sinkhorn": {
+      "errors": 2,
+      "accuracy": 0.9991334488734835,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          15,
+          "Imagery",
+          251
+        ]
+      ]
+    },
+    "window_full_delta0.25": {
+      "errors": 5,
+      "accuracy": 0.9978336221837089,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          19,
+          "EO",
+          53
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          177
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          289
+        ]
+      ]
+    },
+    "window_full_delta0.25_sinkhorn": {
+      "errors": 2,
+      "accuracy": 0.9991334488734835,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ]
+      ]
+    },
+    "window_full_delta0.5": {
+      "errors": 5,
+      "accuracy": 0.9978336221837089,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          19,
+          "EO",
+          53
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          289
+        ]
+      ]
+    },
+    "window_full_delta0.5_sinkhorn": {
+      "errors": 3,
+      "accuracy": 0.9987001733102253,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          18,
+          20,
+          "SSVEP",
+          175
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          289
+        ]
+      ]
+    },
+    "window_full_delta1": {
+      "errors": 12,
+      "accuracy": 0.9948006932409013,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          19,
+          "EO",
+          53
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          16,
+          15,
+          "SSVEP",
+          184
+        ],
+        [
+          18,
+          15,
+          "SSVEP",
+          178
+        ],
+        [
+          19,
+          10,
+          "Imagery",
+          269
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          274
+        ],
+        [
+          19,
+          18,
+          "Imagery",
+          276
+        ],
+        [
+          19,
+          11,
+          "Imagery",
+          284
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          289
+        ],
+        [
+          19,
+          18,
+          "Imagery",
+          290
+        ],
+        [
+          19,
+          15,
+          "Imagery",
+          293
+        ]
+      ]
+    },
+    "window_full_delta1_sinkhorn": {
+      "errors": 4,
+      "accuracy": 0.9982668977469671,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          18,
+          15,
+          "SSVEP",
+          178
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          289
+        ]
+      ]
+    },
+    "window_full_lowfreq_neighbors": {
+      "errors": 6,
+      "accuracy": 0.9974003466204506,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          274
+        ],
+        [
+          19,
+          18,
+          "Imagery",
+          276
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          284
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          289
+        ]
+      ]
+    },
+    "window_full_lowfreq_neighbors_sinkhorn": {
+      "errors": 3,
+      "accuracy": 0.9987001733102253,
+      "confusion": [
+        [
+          15,
+          10,
+          "SSVEP",
+          182
+        ],
+        [
+          16,
+          12,
+          "SSVEP",
+          177
+        ],
+        [
+          19,
+          13,
+          "Imagery",
+          289
+        ]
+      ]
+    }
+  }
+}
