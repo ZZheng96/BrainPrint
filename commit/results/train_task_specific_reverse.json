@@ -1,0 +1,42 @@
+{
+  "protocol": "reverse holdout: first 20% validation, last 80% training; rule fixed before evaluation",
+  "n": 2245,
+  "errors": 2,
+  "accuracy": 0.9991091314031181,
+  "confusion": [
+    [
+      8,
+      14,
+      "EC",
+      6
+    ],
+    [
+      17,
+      19,
+      "Imagery",
+      11
+    ]
+  ],
+  "per_task": {
+    "EC": {
+      "n": 203,
+      "errors": 1,
+      "accuracy": 0.9950738916256158
+    },
+    "EO": {
+      "n": 203,
+      "errors": 0,
+      "accuracy": 1.0
+    },
+    "Imagery": {
+      "n": 1117,
+      "errors": 1,
+      "accuracy": 0.999104744852283
+    },
+    "SSVEP": {
+      "n": 722,
+      "errors": 0,
+      "accuracy": 1.0
+    }
+  }
+}

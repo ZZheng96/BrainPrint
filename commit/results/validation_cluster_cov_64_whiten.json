@@ -1,0 +1,107 @@
+{
+  "config": {
+    "features": "cov",
+    "components": 64,
+    "whiten": true,
+    "n_init": 10,
+    "unknown_start": 17,
+    "output": null
+  },
+  "protocol": "subjects 1-16; fit first 80%, transductive cluster last 20% per subject/task",
+  "direct_accuracy": 0.9972958355868037,
+  "cluster_accuracy": 0.7409410492157923,
+  "tasks": {
+    "EC": {
+      "n": 184,
+      "direct_accuracy": 0.9945652173913043,
+      "cluster_accuracy": 0.40217391304347827,
+      "cluster_sizes": [
+        7,
+        5,
+        26,
+        24,
+        5,
+        6,
+        2,
+        16,
+        43,
+        7,
+        2,
+        5,
+        23,
+        10,
+        2,
+        1
+      ]
+    },
+    "EO": {
+      "n": 180,
+      "direct_accuracy": 0.9888888888888889,
+      "cluster_accuracy": 0.4222222222222222,
+      "cluster_sizes": [
+        2,
+        7,
+        45,
+        19,
+        1,
+        1,
+        9,
+        46,
+        1,
+        20,
+        14,
+        6,
+        1,
+        2,
+        1,
+        5
+      ]
+    },
+    "Imagery": {
+      "n": 878,
+      "direct_accuracy": 0.9988610478359908,
+      "cluster_accuracy": 0.8154897494305239,
+      "cluster_sizes": [
+        42,
+        61,
+        60,
+        60,
+        30,
+        59,
+        91,
+        42,
+        118,
+        45,
+        30,
+        34,
+        78,
+        57,
+        55,
+        16
+      ]
+    },
+    "SSVEP": {
+      "n": 607,
+      "direct_accuracy": 0.9983525535420099,
+      "cluster_accuracy": 0.8303130148270181,
+      "cluster_sizes": [
+        37,
+        126,
+        39,
+        11,
+        8,
+        40,
+        30,
+        40,
+        39,
+        4,
+        40,
+        41,
+        36,
+        40,
+        39,
+        37
+      ]
+    }
+  }
+}
