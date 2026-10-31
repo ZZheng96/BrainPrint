@@ -22,21 +22,32 @@ def numeric_key(path: Path) -> int:
     return int(re.search(r"(\d+)", path.stem).group(1))
 
 
-def process_file(path_string: str) -> tuple[np.ndarray, dict]:
+def process_file(args: tuple[str, bool]) -> tuple[np.ndarray, dict]:
+    path_string, official_preprocessed = args
     path = Path(path_string)
     data, metadata = load_eeg(path)
-    features, quality = extract_features(data)
+    features, quality = extract_features(data, official_preprocessed=official_preprocessed)
     record = {**metadata, **quality, "path": path.relative_to(DATA).as_posix()}
     return features, record
 
 
-def build_split(split: str, files: list[Path], output_dir: Path, n_jobs: int) -> None:
+def build_split(
+    split: str,
+    files: list[Path],
+    output_dir: Path,
+    n_jobs: int,
+    official_preprocessed: bool = False,
+) -> None:
     started = time.time()
     features = np.empty((len(files), N_FEATURES), dtype=np.float32)
     records: list[dict] = []
     with ProcessPoolExecutor(max_workers=n_jobs) as pool:
         for index, (feature, record) in enumerate(
-            pool.map(process_file, map(str, files), chunksize=16), 1
+            pool.map(
+                process_file,
+                ((str(path), official_preprocessed) for path in files),
+                chunksize=16,
+            ), 1
         ):
             features[index - 1] = feature
             records.append(record)
@@ -65,6 +76,11 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, default=CACHE)
     parser.add_argument("--n-jobs", type=int, default=max(1, min(4, os.cpu_count() or 1)))
     parser.add_argument("--limit", type=int, default=0, help="仅用于小样本冒烟检查")
+    parser.add_argument(
+        "--official-preprocessed",
+        action="store_true",
+        help="信任官方已完成的滤波/陷波，生成对照缓存",
+    )
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -82,7 +98,13 @@ def main() -> None:
             files = sorted((DATA / "Test").glob("test_*.mat"), key=numeric_key)
         if args.limit:
             files = files[: args.limit]
-        build_split(split, files, args.output_dir, args.n_jobs)
+        build_split(
+            split,
+            files,
+            args.output_dir,
+            args.n_jobs,
+            official_preprocessed=args.official_preprocessed,
+        )
 
 
 if __name__ == "__main__":

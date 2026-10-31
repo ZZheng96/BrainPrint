@@ -28,7 +28,21 @@ def score_predictions(
     u = float(np.mean(unknown_pred == 0)) if len(unknown_pred) else float("nan")
     components = np.asarray([c, a, u])
     proxy = 100.0 * float(np.prod(components) ** (1 / 3)) if np.all(components > 0) else 0.0
-    return {"C": c, "RA": ra, "ASafeR": asafer, "A": a, "U": u, "internal_equal_weight_proxy": proxy}
+    official_score = (
+        100.0 * c**0.40 * a**0.35 * u**0.25
+        if np.all(np.isfinite(components)) and np.all(components > 0)
+        else 0.0
+    )
+    return {
+        "C": c,
+        "RA": ra,
+        "ASafeR": asafer,
+        "A": a,
+        "U": u,
+        "official_score": official_score,
+        "official_score_rounded": round(official_score, 2),
+        "internal_equal_weight_proxy": proxy,
+    }
 
 
 def decision_scores(decision: np.ndarray) -> dict[str, np.ndarray]:

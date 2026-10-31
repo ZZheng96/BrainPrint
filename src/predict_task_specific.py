@@ -28,6 +28,14 @@ def main() -> None:
     parser.add_argument("--balanced-ec-imagery", action="store_true")
     parser.add_argument("--guarded-ec", action="store_true")
     parser.add_argument("--tag", default="")
+    parser.add_argument("--team-name", default="", help="正式提交文件使用的队名")
+    parser.add_argument("--attempt", type=int, choices=(1, 2, 3), help="正式提交次数")
+    parser.add_argument(
+        "--reject-session1",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="将测试集 session1 标记为未注册人员",
+    )
     args = parser.parse_args()
     if args.guarded_ec and not args.balanced_ec_imagery:
         parser.error("--guarded-ec requires --balanced-ec-imagery")
@@ -110,7 +118,8 @@ def main() -> None:
             balanced = np.where(low_confidence, balanced, direct[indices])
         predicted[indices] = balanced
         sinkhorn_agreements[task] = float(np.mean(balanced == direct[indices]))
-    predicted[test_sessions == "session1"] = 0
+    if args.reject_session1:
+        predicted[test_sessions == "session1"] = 0
 
     tag = args.tag or (
         f"task_specific_zscore{'_grouped' if args.pair_fusion else ''}"
@@ -122,7 +131,14 @@ def main() -> None:
     np.save(CACHE / "scores_task_delta_neighbor_zscore.npy", delta_neighbor)
     submission = pd.read_csv(DATA / "test.csv")
     submission["Label"] = predicted[submission["Sample"].map(sample_to_row).to_numpy()]
-    submission_path = ROOT / "research" / f"submission_{tag}.csv"
+    if bool(args.team_name) != (args.attempt is not None):
+        parser.error("--team-name 与 --attempt 必须同时提供")
+    submission_filename = (
+        f"{args.team_name}_{args.attempt}.csv"
+        if args.team_name
+        else f"submission_{tag}.csv"
+    )
+    submission_path = ROOT / "research" / submission_filename
     submission.to_csv(submission_path, index=False)
 
     pairs = pd.read_csv(CACHE / "waveform_pairs.csv")
@@ -147,7 +163,7 @@ def main() -> None:
             "alignment": "session2 zscore",
             "pair_fusion": args.pair_fusion,
             "pair_similarity": args.pair_similarity if args.pair_fusion else None,
-            "metadata_rejection": "test session1 -> 0",
+            "metadata_rejection": "test session1 -> 0" if args.reject_session1 else "disabled",
         },
         "fused_groups": fused_groups,
         "fused_rows": fused_rows,

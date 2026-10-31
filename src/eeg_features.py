@@ -84,10 +84,15 @@ def log_covariance(data: np.ndarray, shrinkage: float = 0.05) -> np.ndarray:
     return vector
 
 
-def extract_features(data: np.ndarray) -> tuple[np.ndarray, dict]:
+def extract_features(
+    data: np.ndarray, *, official_preprocessed: bool = False
+) -> tuple[np.ndarray, dict]:
     clipped, clip_fraction = robust_clip(data)
-    filtered = sosfiltfilt(_FULL_BAND_SOS, clipped, axis=0)
-    filtered = filtfilt(_NOTCH_B, _NOTCH_A, filtered, axis=0)
+    if official_preprocessed:
+        filtered = clipped
+    else:
+        filtered = sosfiltfilt(_FULL_BAND_SOS, clipped, axis=0)
+        filtered = filtfilt(_NOTCH_B, _NOTCH_A, filtered, axis=0)
 
     frequencies, psd = welch(
         filtered,

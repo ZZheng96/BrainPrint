@@ -16,6 +16,7 @@ class MetricsTest(unittest.TestCase):
         self.assertEqual(report["RA"], 1.0)
         self.assertEqual(report["ASafeR"], 1.0)
         self.assertEqual(report["U"], 1.0)
+        self.assertAlmostEqual(report["official_score"], 100.0)
         self.assertAlmostEqual(report["internal_equal_weight_proxy"], 100.0)
 
     def test_rejecting_everything_is_not_robust_recognition(self):
@@ -27,6 +28,7 @@ class MetricsTest(unittest.TestCase):
         self.assertEqual(report["RA"], 0.0)
         self.assertEqual(report["ASafeR"], 1.0)
         self.assertAlmostEqual(report["A"], 0.3)
+        self.assertEqual(report["official_score"], 0.0)
         self.assertEqual(report["internal_equal_weight_proxy"], 0.0)
 
     def test_open_set_direction(self):
