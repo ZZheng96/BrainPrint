@@ -1,0 +1,11 @@
+{
+  "scope": "训练集内部验证；不代表测试集准确率或官方评分",
+  "protocols": {
+    "blocked_oof": {"n": 11304, "correct": 11304, "errors": 0, "accuracy": 1.0},
+    "forward": {"n": 2308, "correct": 2308, "errors": 0, "accuracy": 1.0},
+    "reverse_holdout": {"n": 2245, "correct": 2245, "errors": 0, "accuracy": 1.0},
+    "middle_holdout": {"n": 2257, "correct": 2257, "errors": 0, "accuracy": 1.0}
+  },
+  "postprocessing": "EC guarded Sinkhorn (margin<1); Imagery/SSVEP Sinkhorn T=1; EO direct",
+  "warning": "规则和后处理在探索过程中选择；这些结果不是完全未触碰的独立测试集结果。"
+}
