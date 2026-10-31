@@ -2,6 +2,10 @@
 Brainprint_Competition/Train/**/*.mat
 Brainprint_Competition/Test/*.mat
 
+# 本地缓存与生成产物（体积大或可重建，不纳入版本控制）
+BrainPrint_cache/
+.trae-html-share-packages/
+
 # 系统与工具
 .DS_Store
 Thumbs.db
