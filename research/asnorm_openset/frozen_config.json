@@ -1,0 +1,8 @@
+{
+  "align": "target_zscore",
+  "norm": "raw",
+  "smooth": 10,
+  "conf": "margin",
+  "thr": "fixed",
+  "t": 0.35
+}

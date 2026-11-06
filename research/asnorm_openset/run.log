@@ -1,0 +1,8 @@
+﻿fold 0 done
+fold 1 done
+fold 2 done
+fold 3 done
+fold 4 done
+frozen: {'align': 'target_zscore', 'norm': 'raw', 'smooth': 10, 'conf': 'margin', 'thr': 'fixed', 't': 0.35}
+frozen {"config": {"align": "target_zscore", "norm": "raw", "smooth": 10, "conf": "margin", "thr": "fixed", "t": 0.35}, "proxy_known_accept_session2": 0.32667291081277966, "proxy_reject_session1": 0.5862182657434883, "proxy_auroc_conf_s2_vs_s1": 0.4642763592915574, "proxy_geo": 0.43760898898679507, "session2_accepted_label_counts": {"1": 137, "2": 4, "3": 573, "4": 1, "5": 946, "6": 768, "7": 546, "9": 158, "10": 246, "11": 157, "12": 18, "13": 1071, "14": 291, "15": 653, "16": 133, "17": 501, "18": 3, "19": 12, "20": 60}, "n_session1": 3033, "n_session2": 19218, "rejected_fraction_all": 0.6614534178
+best_raw_no_smooth {"config": {"align": "target_zscore", "norm": "raw", "smooth": 0, "conf": "max", "thr": "fixed", "t": -0.15}, "proxy_known_accept_session2": 0.28915599958372357, "proxy_reject_session1": 0.5522584899439499, "proxy_auroc_conf_s2_vs_s1": 0.4292239865932371, "proxy_geo": 0.3996108803427912, "session2_accepted_label_counts": {"1": 105, "2": 15, "3": 525, "4": 16, "5": 900, "6": 529, "7": 493, "9": 116, "10": 234, "11": 152, "12": 26, "13": 971, "14": 223, "15": 471, "16": 108, "17": 555, "18": 16, "19": 30, "20": 72}, "n_session1": 3033, "n_session2": 19218, "rejected_fraction_all": 0.689227450451
