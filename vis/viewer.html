@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>BrainPrint 脑电波 / 脑纹查看器</title>
+<style>
+:root{--bg:#fff;--panel:#f6f8fa;--line:#d0d7de;--fg:#1f2328;--dim:#656d76;--acc:#1a7f37;--bad:#cf222e;--blue:#0969da;--warn:#9a6700}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:12px/1.4 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+#app{display:grid;grid-template-columns:200px 1fr 340px;grid-template-rows:40px 1fr;height:100vh}
+header{grid-column:1/4;display:flex;align-items:center;gap:10px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--panel)}
+header h1{font-size:14px;margin:0 8px 0 0}
+.badge{border:1px solid var(--line);border-radius:10px;padding:1px 8px;background:#fff;color:var(--dim)}
+.badge b{color:var(--fg)}
+#left{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+#left .sec{padding:6px 8px;border-bottom:1px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:3px}
+.chip{border:1px solid var(--line);border-radius:10px;padding:1px 7px;cursor:pointer;background:#fff;user-select:none}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+#subjects{overflow:auto;max-height:38vh}
+.subj{display:flex;justify-content:space-between;padding:2px 8px;cursor:pointer;border-left:3px solid transparent}
+.subj:hover{background:var(--panel)}
+.subj.sel{background:#ddf4ff;border-left-color:var(--blue)}
+.subj .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+#trials{flex:1;overflow:auto;min-height:0}
+.tr{display:grid;grid-template-columns:70px 52px 1fr 40px;gap:4px;padding:1px 8px;cursor:pointer;font-family:Consolas,monospace;font-size:11px}
+.tr:hover{background:var(--panel)}
+.tr.sel{background:#ddf4ff}
+.ok{color:var(--acc)}.ng{color:var(--bad)}.dim{color:var(--dim)}
+#main{display:flex;flex-direction:column;min-width:0;min-height:0}
+.toolbar{display:flex;align-items:center;gap:6px;padding:4px 8px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
+button,select{font:inherit;border:1px solid var(--line);background:#fff;border-radius:5px;padding:1px 7px;cursor:pointer}
+button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+#waveWrap{position:relative;flex:0 0 46%;min-height:200px;border-bottom:1px solid var(--line)}
+#tabsWrap{flex:1;display:flex;flex-direction:column;min-height:0}
+.tabs{display:flex;gap:2px;padding:4px 8px 0;border-bottom:1px solid var(--line)}
+.tab{padding:3px 10px;border:1px solid var(--line);border-bottom:none;border-radius:5px 5px 0 0;cursor:pointer;background:var(--panel)}
+.tab.on{background:#fff;font-weight:600;margin-bottom:-1px}
+.pane{display:none;flex:1;min-height:0;position:relative}
+.pane.on{display:flex;flex-direction:column}
+.pane .toolbar{background:#fff}
+.cv{position:relative;flex:1;min-height:0}
+canvas{display:block;width:100%;height:100%}
+#side{border-left:1px solid var(--line);overflow:auto;padding:6px}
+.card{border:1px solid var(--line);border-radius:6px;margin-bottom:6px;background:#fff}
+.card h3{margin:0;padding:4px 8px;font-size:12px;background:var(--panel);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.card .body{padding:6px 8px}
+.kv{display:grid;grid-template-columns:70px 1fr;gap:1px 6px}
+.kv span:nth-child(odd){color:var(--dim)}
+.cbox{position:relative;height:170px}
+#fpGrid{display:grid;grid-template-columns:1fr;grid-template-rows:1fr 1fr;flex:1;min-height:0}
+#tip{position:fixed;pointer-events:none;background:rgba(31,35,40,.92);color:#fff;padding:3px 6px;border-radius:4px;font-size:11px;display:none;z-index:9;white-space:pre}
+#loading{position:fixed;top:8px;right:12px;color:var(--warn);display:none;z-index:10}
+.legend{font-size:11px;color:var(--dim)}
+a{color:var(--blue);cursor:pointer}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+  <h1>BrainPrint 脑电波 / 脑纹查看器</h1>
+  <span class="badge">训练 OOF acc <b id="hAcc">-</b></span>
+  <span class="badge">OOF macro-F1 <b id="hF1">-</b></span>
+  <span class="badge">训练 <b id="hNtr">-</b> / 测试 <b id="hNte">-</b></span>
+  <span class="badge">测试预测 0 (未注册) <b id="hRej">-</b></span>
+  <span class="badge" style="margin-left:auto" title="测试集无真值">测试标签为提交预测</span>
+</header>
+
+<div id="left">
+  <div class="sec"><div class="chips" id="setChips"></div></div>
+  <div class="sec"><div class="chips" id="taskChips"></div></div>
+  <div class="sec" id="sessSec" style="display:none"><div class="chips" id="sessChips"></div></div>
+  <div class="sec dim" id="subjHead">被试（训练=真值 · OOF acc）</div>
+  <div id="subjects"></div>
+  <div class="sec dim" id="trialHead">trial</div>
+  <div id="trials"></div>
+</div>
+
+<div id="main">
+  <div class="toolbar">
+    <button id="bPrev" title="←">◀</button><button id="bNext" title="→">▶</button>
+    <span id="tTitle" style="font-weight:600"></span>
+    <span style="margin-left:12px">信号</span>
+    <button id="bFilt" class="on">滤波 0.5–90 Hz + 50 Hz 陷波</button><button id="bRaw">原始(去均值)</button>
+    <span style="margin-left:12px">增益</span><button id="gDn">−</button><button id="gUp">+</button>
+    <button id="gAuto" class="on" title="各通道按自身标准差归一">逐道自适应</button>
+    <span class="dim" id="waveInfo"></span>
+  </div>
+  <div id="waveWrap"><canvas id="wave"></canvas></div>
+  <div id="tabsWrap">
+    <div class="tabs" id="tabs">
+      <div class="tab on" data-p="pEmb">脑纹嵌入 (LDA)</div>
+      <div class="tab" data-p="pFp">被试脑纹</div>
+      <div class="tab" data-p="pSim">相似度矩阵</div>
+    </div>
+    <div class="pane on" id="pEmb">
+      <div class="toolbar">
+        <span>任务</span><select id="embTask"></select>
+        <label><input type="checkbox" id="embTrain" checked>训练</label>
+        <label><input type="checkbox" id="embTest" checked>测试 session2</label>
+        <label><input type="checkbox" id="embS1">测试 session1(灰)</label>
+        <span class="legend" id="embInfo"></span>
+        <span class="legend" style="margin-left:auto">滚轮缩放 · 拖拽平移 · 双击复位 · 点击选点</span>
+      </div>
+      <div class="cv"><canvas id="emb"></canvas></div>
+    </div>
+    <div class="pane" id="pFp">
+      <div class="toolbar">
+        <span>被试</span><select id="fpSubj"></select>
+        <span>任务</span><select id="fpTask"></select>
+        <span>显示</span>
+        <select id="fpMode">
+          <option value="tmpl">被试模板 z（偏离总体）</option>
+          <option value="trial">当前 trial z</option>
+          <option value="fisher">Fisher 辨识度（全体被试）</option>
+        </select>
+        <span class="legend" id="fpInfo"></span>
+      </div>
+      <div id="fpGrid">
+        <div class="cv"><canvas id="fpPsd"></canvas></div>
+        <div class="cv"><canvas id="fpCov"></canvas></div>
+      </div>
+    </div>
+    <div class="pane" id="pSim">
+      <div class="toolbar">
+        <span>任务</span><select id="simTask"></select>
+        <span>特征</span><select id="simDom"><option value="all">全部</option><option value="psd">PSD</option><option value="cov">协方差</option></select>
+        <span>方式</span><select id="simMode">
+          <option value="split">训练前半 vs 后半（稳定性）</option>
+          <option value="cross">训练模板 vs 测试 session2 预测分组</option>
+        </select>
+        <span class="legend" id="simInfo"></span>
+      </div>
+      <div class="cv"><canvas id="sim"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div id="side">
+  <div class="card"><h3>Trial 信息</h3><div class="body kv" id="info"></div></div>
+  <div class="card"><h3><span>被试分数</span><span class="legend">条=方案分数 · 点=LDA 余弦</span></h3><div class="body"><div class="cbox" style="height:300px"><canvas id="scores"></canvas></div></div></div>
+  <div class="card"><h3><span>log10 PSD</span><select id="psdCh"></select></h3><div class="body"><div class="cbox"><canvas id="psd"></canvas></div><div class="legend">黑=当前 trial · 蓝=预测被试模板 · 灰=总体均值</div></div></div>
+  <div class="card"><h3><span>log 协方差</span><select id="covBand"></select></h3><div class="body"><div class="cbox" style="height:300px"><canvas id="cov"></canvas></div>
+    <label class="legend"><input type="checkbox" id="covZ" checked>显示 z（相对本组均值）</label></div></div>
+</div>
+</div>
+<div id="tip"></div><div id="loading">加载中…</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const TASKS=["EC","EO","Imagery","SSVEP"];
+const S={set:"train",task:"",session:"",subject:null,rows:null,pos:-1,trial:null,filt:true,gain:1,auto:true,
+  emb:null,embView:null,fp:null,simData:null,sum:null,hover:null};
+const PAL=["#e6194b","#3cb44b","#4363d8","#f58231","#911eb4","#42d4f4","#f032e6","#9a9a00","#469990","#9A6324",
+  "#800000","#2f9e44","#000075","#e8a33d","#a9a9a9","#dcbeff","#ff6f91","#7c5cff","#0b7285","#5f3dc4"];
+const col=s=>s>=1&&s<=20?PAL[s-1]:"#8c959f";
+let loadN=0;
+async function api(p){loadN++;$("#loading").style.display="block";
+  try{const r=await fetch("/api/"+p);const j=await r.json();if(j.error)throw new Error(j.error);return j}
+  finally{if(--loadN===0)$("#loading").style.display="none"}}
+const pct=v=>v==null?"-":(v*100).toFixed(2)+"%";
+function cvs(id){const c=typeof id==="string"?$("#"+id):id,r=c.getBoundingClientRect(),d=devicePixelRatio||1;
+  c.width=Math.max(1,r.width*d);c.height=Math.max(1,r.height*d);const g=c.getContext("2d");g.setTransform(d,0,0,d,0,0);
+  g.clearRect(0,0,r.width,r.height);g.font="11px Consolas,monospace";return [g,r.width,r.height]}
+function div(v,m){// 蓝-白-红
+  const t=Math.max(-1,Math.min(1,v/m));if(v==null||isNaN(t))return"#eee";
+  const a=Math.abs(t);return t>=0?`rgb(${255},${Math.round(255-a*200)},${Math.round(255-a*210)})`:`rgb(${Math.round(255-a*215)},${Math.round(255-a*150)},255)`}
+function seq(v,m){const t=Math.max(0,Math.min(1,v/m));if(v==null||isNaN(t))return"#eee";
+  return `rgb(${Math.round(255-t*230)},${Math.round(255-t*150)},${Math.round(255-t*60)})`}
+function tip(e,txt){const t=$("#tip");if(!txt){t.style.display="none";return}t.textContent=txt;t.style.display="block";
+  t.style.left=(e.clientX+12)+"px";t.style.top=(e.clientY+12)+"px"}
+function chips(el,items,cur,on){el.innerHTML="";items.forEach(([v,l])=>{const d=document.createElement("span");
+  d.className="chip"+(v===cur?" on":"");d.textContent=l;d.onclick=()=>on(v);el.appendChild(d)})}
+function opts(sel,items,cur){sel.innerHTML=items.map(([v,l])=>`<option value="${v}"${v==cur?" selected":""}>${l}</option>`).join("")}
+
+// ---------- 左栏 ----------
+function renderFilters(){
+  chips($("#setChips"),[["train","训练集"],["test","测试集"]],S.set,v=>{S.set=v;S.session=v==="test"?"session2":"";S.subject=null;renderFilters();renderSubjects();loadRows()});
+  chips($("#taskChips"),[["","ALL"],...TASKS.map(t=>[t,t])],S.task,v=>{S.task=v;renderFilters();loadRows()});
+  $("#sessSec").style.display=S.set==="test"?"":"none";
+  chips($("#sessChips"),[["","全部"],["session1","session1"],["session2","session2"]],S.session,v=>{S.session=v;renderFilters();loadRows()});
+}
+function renderSubjects(){
+  const el=$("#subjects");el.innerHTML="";const sum=S.sum;
+  $("#subjHead").textContent=S.set==="train"?"被试（真值 · OOF acc）":"预测标签（数量）";
+  const list=S.set==="train"?sum.subjects.map(s=>[s.subject,`${s.n} · ${pct(s.acc)}`]):
+    [[0,`${sum.test_pred_counts["0"]}`],...sum.subjects.map(s=>[s.subject,`${s.test_pred}`])];
+  [[null,"全部"],...list].forEach(([s,t])=>{const d=document.createElement("div");
+    d.className="subj"+(s===S.subject?" sel":"");
+    d.innerHTML=s===null?`<span>全部</span>`:`<span><i class="sw" style="background:${col(s)}"></i>${s===0?"0 未注册":"S"+String(s).padStart(2,"0")}</span><span class="dim">${t}</span>`;
+    d.onclick=()=>{S.subject=s;renderSubjects();loadRows();if(s)setFpSubject(s)};el.appendChild(d)});
+}
+async function loadRows(keep){
+  const q=`set=${S.set}&task=${S.task}&session=${S.session}`+(S.subject!=null?`&subject=${S.subject}`:"");
+  S.rows=await api("rows?"+q);
+  const R=S.rows,el=$("#trials"),n=R.idx.length;
+  let err=0;if(R.set==="train")for(let i=0;i<n;i++)if(R.pred[i]!==R.label[i])err++;
+  $("#trialHead").textContent=`trial ${n} 条`+(R.set==="train"?` · 错 ${err}`:"");
+  const h=[];for(let i=0;i<n;i++){const ok=R.set==="train"?(R.pred[i]===R.label[i]?'<span class="ok">✓</span>':'<span class="ng">✗</span>'):'';
+    const nm=R.set==="train"?`S${String(R.label[i]).padStart(2,"0")}#${R.name[i]}`:R.name[i];
+    h.push(`<div class="tr" data-i="${i}"><span>${nm}</span><span class="dim">${R.task[i]}${R.set==="test"?(R.session[i]==="session1"?"·s1":"·s2"):""}</span><span style="color:${col(R.pred[i])}">→${R.pred[i]} ${ok}</span><span class="dim">${R.margin[i]??""}</span></div>`)}
+  el.innerHTML=h.join("");
+  el.onclick=e=>{const d=e.target.closest(".tr");if(d)selectPos(+d.dataset.i)};
+  if(keep&&S.trial){const p=R.idx.indexOf(S.trial.idx);if(p>=0&&R.set===S.trial.set){markSel(p);return}}
+  if(n)selectPos(0);
+}
+function markSel(p){S.pos=p;const el=$("#trials");el.querySelectorAll(".tr.sel").forEach(d=>d.classList.remove("sel"));
+  const d=el.querySelector(`.tr[data-i="${p}"]`);if(d){d.classList.add("sel");d.scrollIntoView({block:"nearest"})}}
+function selectPos(p){if(!S.rows||p<0||p>=S.rows.idx.length)return;markSel(p);loadTrial(S.rows.set,S.rows.idx[p])}
+async function loadTrial(set,idx){
+  const t=await api(`trial/${set}/${idx}`);S.trial=t;
+  const p=S.rows?S.rows.idx.indexOf(idx):-1;if(p>=0&&S.rows.set===set)markSel(p);else markSel(-1);
+  $("#tTitle").textContent=`${set==="train"?"训练":"测试"} · ${t.set==="train"?"S"+String(t.label).padStart(2,"0")+" trial "+t.name:t.name} · ${t.task} · ${t.session}`;
+  drawWave();drawInfo();drawScores();drawPsd();drawCov();
+  if($("#embTask").value!==t.task){$("#embTask").value=t.task;await loadEmb()}else drawEmb();
+  if($("#fpMode").value==="trial")drawFp();
+}
+
+// ---------- 波形 ----------
+function drawWave(){
+  const [g,W,H]=cvs("wave"),t=S.trial;if(!t)return;
+  const X=t.filt?null:null,sig=S.filt?t.filt:t.raw,ch=S.sum.channels,n=sig[0].length;
+  const L=46,R=8,T=6,B=18,rowH=(H-T-B)/ch.length;
+  g.strokeStyle="#eaeef2";g.fillStyle="#656d76";
+  for(let s=0;s<=4;s++){const x=L+(W-L-R)*s/4;g.beginPath();g.moveTo(x,T);g.lineTo(x,H-B);g.stroke();g.fillText(s+"s",x-6,H-5)}
+  const glob=Math.max(...t.std.map(v=>v||0))||1;
+  ch.forEach((c,k)=>{const y0=T+rowH*(k+.5),d=sig[k];
+    const sc=(S.auto?(t.std[k]||1)*3:glob*3)/S.gain;
+    g.fillStyle=t.clip[k]>0.01?"#cf222e":"#1f2328";g.fillText(c,4,y0+4);
+    g.strokeStyle=k%2?"#0969da":"#1f2328";g.lineWidth=.8;g.beginPath();
+    for(let i=0;i<n;i++){const x=L+(W-L-R)*i/(n-1),v=d[i]??0,y=y0-Math.max(-1.5,Math.min(1.5,v/sc))*rowH*.5;i?g.lineTo(x,y):g.moveTo(x,y)}g.stroke()});
+  if(S.hover!=null){const x=L+(W-L-R)*S.hover/(n-1);g.strokeStyle="#cf222e";g.beginPath();g.moveTo(x,T);g.lineTo(x,H-B);g.stroke()}
+  $("#waveInfo").textContent=`18 通道 · 300 Hz · 4 s · 增益 ×${S.gain.toFixed(2)}`;
+  const c=$("#wave");c.onmousemove=e=>{const r=c.getBoundingClientRect(),i=Math.round((e.clientX-r.left-L)/(W-L-R)*(n-1));
+    if(i<0||i>=n){S.hover=null;tip(e);drawWave();return}S.hover=i;drawWave();
+    const k=Math.floor((e.clientY-r.top-T)/rowH);
+    tip(e,`t=${(i/300).toFixed(3)} s`+(k>=0&&k<18?`\n${ch[k]}: ${sig[k][i]}  (std ${t.std[k]}, clip ${(t.clip[k]*100).toFixed(2)}%)`:""))};
+  c.onmouseleave=e=>{S.hover=null;tip(e);drawWave()};
+}
+
+// ---------- 右栏 ----------
+function drawInfo(){const t=S.trial;const ok=t.set==="train"?(t.pred===t.label?'<span class="ok">正确</span>':'<span class="ng">错误</span>'):'<span class="dim">无真值</span>';
+  let h=`<span>文件</span><span>${t.path}</span><span>任务</span><span>${t.task} · ${t.session}</span>
+  <span>真值</span><span>${t.label<0?"-":"S"+t.label}</span><span>预测</span><span style="color:${col(t.pred)};font-weight:600">${t.pred===0?"0 未注册":"S"+t.pred} ${ok}</span>
+  <span>margin</span><span>${t.margin.toFixed(3)}（top1−top2 分数）</span><span>LDA 坐标</span><span>${t.emb.join(", ")}</span>`;
+  if(t.pair)h+=`<span>近邻样本</span><span><a id="pairLink">${t.pair.name}</a> · r=${t.pair.similarity} · 预测 ${t.pair.pred}</span>`;
+  if(t.set==="test"&&t.session==="session1")h+=`<span>规则</span><span class="dim">session1 不在训练注册范围，直接判 0</span>`;
+  $("#info").innerHTML=h;const a=$("#pairLink");if(a)a.onclick=()=>loadTrial("test",t.pair.idx)}
+function drawScores(){
+  const [g,W,H]=cvs("scores"),t=S.trial,s=t.scores,ts=t.tsim;
+  const lo=Math.min(0,...s.filter(v=>v!=null)),hi=Math.max(...s.filter(v=>v!=null),1e-6);
+  const L=34,R=8,rh=(H-14)/20,xx=v=>L+(W-L-R)*(v-lo)/(hi-lo||1),best=s.indexOf(Math.max(...s));
+  g.strokeStyle="#d0d7de";g.beginPath();g.moveTo(xx(0),0);g.lineTo(xx(0),H-14);g.stroke();
+  for(let k=0;k<20;k++){const y=k*rh,v=s[k]??0;g.fillStyle=col(k+1);g.globalAlpha=k===best?1:.55;
+    g.fillRect(Math.min(xx(0),xx(v)),y+2,Math.abs(xx(v)-xx(0)),rh-4);g.globalAlpha=1;
+    g.fillStyle=k+1===t.label?"#1a7f37":"#1f2328";g.fillText((k+1===t.label?"★":" ")+"S"+String(k+1).padStart(2,"0"),0,y+rh-3);
+    const cx=L+(W-L-R)*(ts[k]+1)/2;g.fillStyle="#1f2328";g.beginPath();g.arc(cx,y+rh/2,2.2,0,7);g.fill()}
+  g.fillStyle="#656d76";g.fillText(`分数 [${lo.toFixed(2)}, ${hi.toFixed(2)}] · 余弦 [-1,1]`,L,H-2)}
+function drawPsd(){
+  const [g,W,H]=cvs("psd"),t=S.trial,k=+$("#psdCh").value,fp=S.fpPred;
+  const lines=[[t.logpsd[k],"#1f2328",1.4]];
+  if(fp&&fp.subject===t.pred){lines.push([fp.mean_psd[k],"#0969da",1.2]);lines.push([fp.pop_psd[k],"#8c959f",1])}
+  const all=lines.flatMap(l=>l[0]),lo=Math.min(...all),hi=Math.max(...all),L=30,B=14;
+  const X=f=>L+(W-L-4)*(f/89),Y=v=>4+(H-B-4)*(1-(v-lo)/(hi-lo||1));
+  g.strokeStyle="#eaeef2";g.fillStyle="#656d76";[1,8,13,30,45,50,70,90].forEach(f=>{const x=X(f-1);g.beginPath();g.moveTo(x,4);g.lineTo(x,H-B);g.stroke();g.fillText(f,x-5,H-2)});
+  g.fillText(hi.toFixed(1),0,12);g.fillText(lo.toFixed(1),0,H-B);
+  lines.forEach(([d,c,w])=>{g.strokeStyle=c;g.lineWidth=w;g.beginPath();d.forEach((v,i)=>i?g.lineTo(X(i),Y(v)):g.moveTo(X(i),Y(v)));g.stroke()});
+  if(!(fp&&fp.subject===t.pred)&&t.pred>0)loadPredFp();
+}
+async function loadPredFp(){const t=S.trial;if(S._fpLoading===t.pred+t.task)return;S._fpLoading=t.pred+t.task;
+  S.fpPred=await api(`fingerprint?subject=${t.pred}&task=${t.task}`);S._fpLoading=null;drawPsd()}
+function heat(g,x0,y0,w,h,M,cf,labels,hov){const n=M.length,m=M[0].length,cw=w/m,ch=h/n;
+  for(let i=0;i<n;i++)for(let j=0;j<m;j++){g.fillStyle=cf(M[i][j]);g.fillRect(x0+j*cw,y0+i*ch,Math.ceil(cw),Math.ceil(ch))}
+  if(labels){g.fillStyle="#656d76";g.font="9px Consolas";labels.forEach((l,i)=>{g.fillText(l,x0-24,y0+i*ch+ch*.75)});g.font="11px Consolas,monospace"}}
+function drawCov(){
+  const [g,W,H]=cvs("cov"),t=S.trial,b=+$("#covBand").value,z=$("#covZ").checked,M=(z?t.cov_z:t.cov)[b];
+  const fl=M.flat(),m=z?3:Math.max(...fl.map(Math.abs)),sz=Math.min(W-30,H-20),ch=S.sum.channels;
+  const cf=z?v=>div(v,m):v=>div(v-(fl.reduce((a,c)=>a+c,0)/fl.length),m);
+  heat(g,28,0,sz,sz,M,cf,ch);
+  g.fillStyle="#656d76";g.fillText(z?"z ∈ [−3, 3]":"log 协方差（去均值着色）",28,sz+14);
+  const c=$("#cov");c.onmousemove=e=>{const r=c.getBoundingClientRect(),j=Math.floor((e.clientX-r.left-28)/sz*18),i=Math.floor((e.clientY-r.top)/sz*18);
+    tip(e,i>=0&&i<18&&j>=0&&j<18?`${ch[i]}×${ch[j]}: ${M[i][j]}`:"")};c.onmouseleave=e=>tip(e)}
+
+// ---------- 嵌入 ----------
+async function loadEmb(){S.emb=await api("embed?task="+$("#embTask").value);S.embView=null;drawEmb()}
+function embView(){if(S.embView)return S.embView;const e=S.emb,xs=[...e.train.x,...e.test.x],ys=[...e.train.y,...e.test.y];
+  const q=(a,p)=>{const s=[...a].sort((u,v)=>u-v);return s[Math.floor(p*(s.length-1))]};
+  const x0=q(xs,.005),x1=q(xs,.995),y0=q(ys,.005),y1=q(ys,.995),px=(x1-x0)*.06,py=(y1-y0)*.06;
+  return S.embView={x0:x0-px,x1:x1+px,y0:y0-py,y1:y1+py}}
+function drawEmb(){
+  const e=S.emb;if(!e)return;const [g,W,H]=cvs("emb"),v=embView();
+  const X=x=>(x-v.x0)/(v.x1-v.x0)*W,Y=y=>H-(y-v.y0)/(v.y1-v.y0)*H;S._embXY=[X,Y];
+  const pts=[];
+  if($("#embS1").checked){g.fillStyle="rgba(140,149,159,.35)";e.test.x.forEach((x,i)=>{if(!e.test.s1[i])return;const a=X(x),b=Y(e.test.y[i]);g.fillRect(a-1.5,b-1.5,3,3);pts.push(["test",e.test.idx[i],a,b])})}
+  if($("#embTest").checked){e.test.x.forEach((x,i)=>{if(e.test.s1[i])return;const a=X(x),b=Y(e.test.y[i]);g.fillStyle=col(e.test.p[i]);g.globalAlpha=.35;g.fillRect(a-1.5,b-1.5,3,3);pts.push(["test",e.test.idx[i],a,b])});g.globalAlpha=1}
+  if($("#embTrain").checked){e.train.x.forEach((x,i)=>{const a=X(x),b=Y(e.train.y[i]),s=e.train.s[i];g.fillStyle=col(s);g.globalAlpha=.8;
+    g.beginPath();g.arc(a,b,2.2,0,7);g.fill();if(e.train.p[i]!==s){g.globalAlpha=1;g.strokeStyle="#cf222e";g.lineWidth=1;g.stroke()}pts.push(["train",e.train.idx[i],a,b])});g.globalAlpha=1}
+  e.centers.forEach(([x,y],k)=>{const a=X(x),b=Y(y);g.fillStyle="#fff";g.strokeStyle=col(k+1);g.lineWidth=2;g.beginPath();g.arc(a,b,9,0,7);g.fill();g.stroke();
+    g.fillStyle="#1f2328";g.fillText(String(k+1),a-(k+1>9?7:3.5),b+4)});
+  const t=S.trial;if(t&&t.task===e.task){const a=X(t.emb[0]),b=Y(t.emb[1]);g.strokeStyle="#000";g.lineWidth=2;g.beginPath();g.arc(a,b,7,0,7);g.stroke();
+    g.beginPath();g.moveTo(a-12,b);g.lineTo(a+12,b);g.moveTo(a,b-12);g.lineTo(a,b+12);g.lineWidth=1;g.stroke()}
+  S._embPts=pts;
+  $("#embInfo").textContent=`LD1 ${(e.ratio[0]*100).toFixed(1)}% · LD2 ${(e.ratio[1]*100).toFixed(1)}% 判别方差 · 圆=被试中心 · 红圈=OOF 错分`;
+}
+(function embEvents(){const c=$("#emb");let drag=null;
+  c.onwheel=e=>{e.preventDefault();const v=embView(),r=c.getBoundingClientRect(),fx=(e.clientX-r.left)/r.width,fy=1-(e.clientY-r.top)/r.height;
+    const k=e.deltaY>0?1.2:1/1.2,cx=v.x0+fx*(v.x1-v.x0),cy=v.y0+fy*(v.y1-v.y0);
+    Object.assign(v,{x0:cx-(cx-v.x0)*k,x1:cx+(v.x1-cx)*k,y0:cy-(cy-v.y0)*k,y1:cy+(v.y1-cy)*k});drawEmb()};
+  c.onmousedown=e=>{drag={x:e.clientX,y:e.clientY,m:false}};
+  window.addEventListener("mouseup",e=>{if(drag&&!drag.m&&e.target===c)pick(e);drag=null});
+  c.onmousemove=e=>{if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>2)drag.m=true;
+      if(drag.m){const v=embView(),r=c.getBoundingClientRect(),sx=(v.x1-v.x0)/r.width,sy=(v.y1-v.y0)/r.height;
+        v.x0-=dx*sx;v.x1-=dx*sx;v.y0+=dy*sy;v.y1+=dy*sy;drag.x=e.clientX;drag.y=e.clientY;drawEmb()}return}
+    const p=near(e);tip(e,p?`${p[0]} #${p[1]}`:"")};
+  c.onmouseleave=e=>tip(e);
+  c.ondblclick=()=>{S.embView=null;drawEmb()};
+  function near(e){const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;let b=null,bd=64;
+    (S._embPts||[]).forEach(p=>{const d=(p[2]-x)**2+(p[3]-y)**2;if(d<bd){bd=d;b=p}});return b}
+  function pick(e){const p=near(e);if(p)loadTrial(p[0],p[1])}
+})();
+
+// ---------- 被试脑纹 ----------
+function setFpSubject(s){$("#fpSubj").value=s;if($("#pFp").classList.contains("on"))loadFp()}
+async function loadFp(){S.fp=await api(`fingerprint?subject=${$("#fpSubj").value}&task=${$("#fpTask").value}`);drawFp()}
+function drawFp(){
+  const mode=$("#fpMode").value,fp=S.fp,t=S.trial;if(!fp)return;
+  let P,C,cf,lab,m;
+  if(mode==="fisher"){P=fp.fisher_psd;C=fp.fisher_cov;m=Math.max(...P.flat(),...C.flat().filter(v=>v!=null));m=Math.min(m,2);cf=v=>seq(v,m);lab=`被试间/被试内方差比（0–${m.toFixed(2)}）`}
+  else if(mode==="trial"&&t){P=t.psd_z;C=t.cov_z;m=3;cf=v=>div(v,m);lab=`当前 trial z（本组均值方差，±${m}）`}
+  else{P=fp.psd_z;C=fp.cov_z;m=1.5;cf=v=>div(v,m);lab=`S${fp.subject} 模板 z（${fp.task}，±${m}）`}
+  const ch=S.sum.channels;
+  {const [g,W,H]=cvs("fpPsd"),L=30,B=14;heat(g,L,4,W-L-6,H-B-6,P,cf,ch);g.fillStyle="#656d76";
+    [1,8,13,30,45,50,70,90].forEach(f=>g.fillText(f,L+(W-L-6)*(f-1)/90,H-2));
+    g.fillText("Hz",W-18,H-2);
+    const c=$("#fpPsd");c.onmousemove=e=>{const r=c.getBoundingClientRect(),j=Math.floor((e.clientX-r.left-L)/(W-L-6)*90),i=Math.floor((e.clientY-r.top-4)/(H-B-6)*18);
+      tip(e,i>=0&&i<18&&j>=0&&j<90?`${ch[i]} ${j+1} Hz: ${P[i][j]}`:"")};c.onmouseleave=e=>tip(e)}
+  {const [g,W,H]=cvs("fpCov"),sz=Math.min((W-20)/6-28,H-18),bands=S.sum.bands;
+    C.forEach((M,b)=>{const x0=28+b*(sz+30);heat(g,x0,2,sz,sz,M,cf,b===0?ch:null);g.fillStyle="#656d76";g.fillText(bands[b]+" Hz",x0,sz+14)});
+    const c=$("#fpCov");c.onmousemove=e=>{const r=c.getBoundingClientRect(),x=e.clientX-r.left-28,b=Math.floor(x/(sz+30)),xx=x-b*(sz+30);
+      const j=Math.floor(xx/sz*18),i=Math.floor((e.clientY-r.top-2)/sz*18);
+      tip(e,b>=0&&b<6&&i>=0&&i<18&&j>=0&&j<18?`${bands[b]} Hz ${ch[i]}×${ch[j]}: ${C[b][i][j]}`:"")};c.onmouseleave=e=>tip(e)}
+  const d=fp.dist.map((v,k)=>[v,k+1]).filter(a=>a[1]!==fp.subject).sort((a,b)=>a[0]-b[0]);
+  $("#fpInfo").textContent=lab+(mode==="tmpl"?` · 最近被试 S${d[0][1]} (${d[0][0]})  最远 S${d.at(-1)[1]} (${d.at(-1)[0]})`:"");
+}
+
+// ---------- 相似度矩阵 ----------
+async function loadSim(){S.simData=await api(`similarity?task=${$("#simTask").value}&domain=${$("#simDom").value}&mode=${$("#simMode").value}`);drawSim()}
+function drawSim(){
+  const d=S.simData;if(!d)return;const [g,W,H]=cvs("sim"),M=d.matrix,sz=Math.min(W-200,H-30),x0=40,y0=4,c=sz/20;
+  const fl=M.flat().filter(v=>v!=null),m=Math.max(...fl.map(Math.abs));
+  heat(g,x0,y0,sz,sz,M,v=>div(v,m),null);
+  g.fillStyle="#656d76";g.font="9px Consolas";
+  for(let i=0;i<20;i++){g.fillText("S"+(i+1),x0-22,y0+i*c+c*.7);g.fillText(i+1,x0+i*c+c*.25,y0+sz+12)}
+  g.font="11px Consolas,monospace";
+  for(let i=0;i<20;i++){const r=M[i];if(r.some(v=>v==null))continue;const j=r.indexOf(Math.max(...r));
+    g.strokeStyle=j===i?"#1a7f37":"#cf222e";g.lineWidth=1.5;g.strokeRect(x0+j*c+1,y0+i*c+1,c-2,c-2)}
+  const lx=x0+sz+20;g.fillStyle="#1f2328";
+  const lines=[d.mode==="split"?"行：训练前半 trial 模板":"行：训练模板","列："+(d.mode==="split"?"训练后半 trial 模板":"测试 s2 预测分组模板"),
+    `Pearson r，色标 ±${m.toFixed(2)}`,`行最大在对角线：${d.top1}/${d.valid}`,"绿框=自匹配 · 红框=混淆","点击格子查看被试脑纹"];
+  lines.forEach((l,i)=>g.fillText(l,lx,y0+16+i*18));
+  for(let i=0;i<=40;i++){g.fillStyle=div(m*(1-i/20),m);g.fillRect(lx,y0+130+i*3,14,3)}
+  g.fillStyle="#656d76";g.fillText("+"+m.toFixed(2),lx+18,y0+138);g.fillText("−"+m.toFixed(2),lx+18,y0+252);
+  $("#simInfo").textContent=`自匹配 ${d.top1}/${d.valid}`;
+  const cv=$("#sim");
+  const cell=e=>{const r=cv.getBoundingClientRect(),j=Math.floor((e.clientX-r.left-x0)/c),i=Math.floor((e.clientY-r.top-y0)/c);return i>=0&&i<20&&j>=0&&j<20?[i,j]:null};
+  cv.onmousemove=e=>{const p=cell(e);tip(e,p?`S${p[0]+1} × S${p[1]+1}: r=${M[p[0]][p[1]]}`:"")};cv.onmouseleave=e=>tip(e);
+  cv.onclick=e=>{const p=cell(e);if(!p)return;$("#fpSubj").value=p[0]+1;$("#fpTask").value=$("#simTask").value;showTab("pFp")};
+}
+
+// ---------- tabs / 控件 ----------
+function showTab(id){document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on",t.dataset.p===id));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id===id));
+  if(id==="pEmb")drawEmb();if(id==="pFp")loadFp();if(id==="pSim")(S.simData?drawSim():loadSim())}
+$("#tabs").onclick=e=>{const t=e.target.closest(".tab");if(t)showTab(t.dataset.p)};
+$("#bPrev").onclick=()=>selectPos(S.pos-1);$("#bNext").onclick=()=>selectPos(S.pos+1);
+$("#bFilt").onclick=()=>{S.filt=true;$("#bFilt").classList.add("on");$("#bRaw").classList.remove("on");drawWave()};
+$("#bRaw").onclick=()=>{S.filt=false;$("#bRaw").classList.add("on");$("#bFilt").classList.remove("on");drawWave()};
+$("#gUp").onclick=()=>{S.gain*=1.4;drawWave()};$("#gDn").onclick=()=>{S.gain/=1.4;drawWave()};
+$("#gAuto").onclick=()=>{S.auto=!S.auto;$("#gAuto").classList.toggle("on",S.auto);drawWave()};
+document.addEventListener("keydown",e=>{if(e.target.tagName==="SELECT"||e.target.tagName==="INPUT")return;
+  if(e.key==="ArrowLeft"||e.key==="ArrowUp"){e.preventDefault();selectPos(S.pos-1)}
+  if(e.key==="ArrowRight"||e.key==="ArrowDown"){e.preventDefault();selectPos(S.pos+1)}});
+["embTrain","embTest","embS1"].forEach(id=>$("#"+id).onchange=drawEmb);
+$("#embTask").onchange=loadEmb;$("#fpSubj").onchange=loadFp;$("#fpTask").onchange=loadFp;$("#fpMode").onchange=drawFp;
+["simTask","simDom","simMode"].forEach(id=>$("#"+id).onchange=loadSim);
+$("#psdCh").onchange=drawPsd;$("#covBand").onchange=drawCov;$("#covZ").onchange=drawCov;
+let rz;window.addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>{if(S.trial){drawWave();drawScores();drawPsd();drawCov()}
+  drawEmb();if(S.fp)drawFp();if(S.simData)drawSim()},120)});
+
+(async function init(){
+  const sum=S.sum=await api("summary");
+  $("#hAcc").textContent=pct(sum.oof_acc);$("#hF1").textContent=sum.oof_macro_f1.toFixed(4);
+  $("#hNtr").textContent=sum.n_train;$("#hNte").textContent=sum.n_test;$("#hRej").textContent=sum.test_pred_counts["0"];
+  opts($("#embTask"),TASKS.map(t=>[t,t]),"EC");
+  opts($("#fpSubj"),sum.subjects.map(s=>[s.subject,"S"+String(s.subject).padStart(2,"0")]),1);
+  opts($("#fpTask"),[["ALL","四任务平均"],...TASKS.map(t=>[t,t])],"ALL");
+  opts($("#simTask"),[["ALL","四任务平均"],...TASKS.map(t=>[t,t])],"ALL");
+  opts($("#psdCh"),sum.channels.map((c,i)=>[i,c]),12);
+  opts($("#covBand"),sum.bands.map((b,i)=>[i,b+" Hz"]),1);
+  renderFilters();renderSubjects();await loadEmb();await loadRows();
+})().catch(e=>alert("初始化失败："+e.message));
+</script>
+</body>
+</html>
