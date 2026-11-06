@@ -7,6 +7,8 @@
 - **E0 合规检查通过。** 修改全部测试 Session 字段后，冻结 AS-norm 模型的预测与置信度逐值不变；现有及新增回归测试全部通过。正式提交未修改。
 - **E1 没有发现稳定优于 target-zscore 的新对齐方法。** Riemannian recentering 在正向、反向时间协议中均优于无对齐，并改善最差折，但两种协议的总体指标与 target-zscore 互有胜负、差异很小。
 - **EA 不保留。** 它在两个时间协议的 Fold 4 均明显退化，未知拒识和检测 F1 不稳定。
+- **E2 没有发现优于 Ridge 的轻量分类器。** 收缩 LDA 提高了部分注册准确率 C，但 U、AUROC、F1 和最差折均下降；余弦类原型的 U 和 F1 严重退化。本轮停止该路线，不进入深度嵌入或继续堆叠校准。
+- 最终完整回归为 **35 项通过**；E2 Ridge 与 E1 Riemannian 的逐折及汇总核心指标完全一致。
 - 所有 AUROC、F1、C/U 均来自 **Train Session1 内部伪未知验证**，不是真实跨 Session 或测试成绩。本实验未读取 Test，未生成 candidate，不能据此声称已经解决测试阈值迁移或真实未知拒识。
 
 ## 1. 实验计划与约束
@@ -67,22 +69,50 @@ Riemannian 在反向协议仍优于无对齐，并显著提高最差折；但 ta
 
 拒识前 C 在各方法间仍接近饱和：正向为 0.9927–0.9982，反向为 0.9902–0.9991。主要差异来自接受/拒识决策，而不是闭集身份分类大幅提升。
 
-## 7. 当前判断
+## 7. E2：轻量分类器单因素消融
 
-1. Riemannian 可进入固定表征的轻量分类器消融，理由是跨两种时间方向稳定优于无对齐且最差折较稳，而不是因为已经击败最强基线。
-2. EA 在两个协议的 Fold 4 均出现明显开集退化，停止该路线。
-3. 现有内层校准已经包含“时间错位已知样本 + 留出伪未知”，并非单纯随机 Trial 阈值；下一阶段的单因素应是分类器，而不是继续手工调整分位数。
-4. 即使内部指标提高，也不能外推为真实跨 Session 改进；测试无标签时不使用拒识率或身份均衡反向调参。
+固定 Riemannian recentering、时间切分和阈值选择，只替换分类器。每个 split 的源/目标 SPD 参考和变换只计算一次，由 Ridge、收缩 LDA、余弦原型共享。LDA 使用 CUDA float64，并通过与 sklearn `lsqr + shrinkage="auto"` 的严格数值对照；原型为源训练折标准化后的类均值余弦相似度。
 
-## 8. 复现与产物
+### 正向时间协议
+
+| 分类器 | C | U | AUROC | macro-F1 | unknown-F1 | detection-macro-F1 |
+|---|---:|---:|---:|---:|---:|---:|
+| Ridge | 0.9497 | **0.9907** | **0.9945** | **0.9671** | **0.9752** | **0.9719** |
+| Shrinkage LDA | **0.9645** | 0.9711 | 0.9921 | 0.9632 | 0.9713 | 0.9681 |
+| Cosine prototype | 0.9169 | 0.4807 | 0.9271 | 0.7132 | 0.6385 | 0.6913 |
+
+### 反向时间协议
+
+| 分类器 | C | U | AUROC | macro-F1 | unknown-F1 | detection-macro-F1 |
+|---|---:|---:|---:|---:|---:|---:|
+| Ridge | 0.9449 | **0.9949** | **0.9958** | **0.9680** | **0.9760** | **0.9722** |
+| Shrinkage LDA | **0.9532** | 0.9748 | 0.9946 | 0.9609 | 0.9691 | 0.9648 |
+| Cosine prototype | 0.9467 | 0.4373 | 0.9450 | 0.7150 | 0.6036 | 0.6676 |
+
+LDA 的 C 在正向、反向分别提高 0.0147、0.0084，但 U 分别下降 0.0196、0.0201，macro-F1 也分别下降 0.0038、0.0071；其最差折 detection-F1 降至 0.9372 和 0.9305。说明较高闭集接受率是以未知误接受为代价，不满足开集准入条件。
+
+余弦原型在两个协议的 U 均低于 0.49，macro-F1 仅约 0.71，表明在当前高维 log-cov 空间中，简单类均值余弦不能提供可靠的未知间隔。Ridge 的正反协议和最差折均最稳定，因此保留现有轻量基线，不进入深度模型。
+
+## 8. 当前判断与停止条件
+
+1. Riemannian 相对无对齐的稳定收益不足以证明优于 target-zscore；可留作后续单因素研究基线，但不替换现有配置。
+2. EA、余弦原型均已否决；LDA 因 U/F1 和最差折损失而否决。
+3. 现有内层校准已经包含“时间错位已知样本 + 留出伪未知”，并非单纯随机 Trial 阈值。本轮没有证据支持继续手工调整分位数或叠加 GMM/AS-norm。
+4. 按预设停止条件，本轮在轻量模型阶段停止，不把复杂度升级到深度嵌入。后续若重启，应先解决内部验证与真实跨 Session 偏移不匹配的问题。
+5. 即使内部指标提高，也不能外推为真实跨 Session 改进；测试无标签时不使用拒识率、身份均衡或配对一致率反向调参。
+
+## 9. 复现与产物
 
 ```powershell
 py -m src.ea_riemannian_openset.run --time-protocol forward
 py -m src.ea_riemannian_openset.run --time-protocol reverse
+py -m src.ea_riemannian_openset.run_e2 --time-protocol forward
+py -m src.ea_riemannian_openset.run_e2 --time-protocol reverse
 py -m pytest -q
 ```
 
-- 完整结果：`e1_results.json`、`e1_reverse_results.json`
-- 日志：`e1_run.log`、`e1_reverse_run.log`
+- E1 完整结果：`e1_results.json`、`e1_reverse_results.json`
+- E2 完整结果：`e2_forward_results.json`、`e2_reverse_results.json`
+- 日志：`e1_run.log`、`e1_reverse_run.log`、`e2_forward_run.log`、`e2_reverse_run.log`
 - 实现：`src/ea_riemannian_openset/`
-- 回归：`test/test_ea_riemannian_openset.py`、`test/test_session_invariance.py`
+- 回归：`test/test_ea_riemannian_openset.py`、`test/test_ea_riemannian_e2.py`、`test/test_session_invariance.py`

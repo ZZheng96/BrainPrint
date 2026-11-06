@@ -1,0 +1,240 @@
+﻿protocol=forward outer=1 inner=1 known=917 unknown=3714
+protocol=forward outer=1 inner=2 known=944 unknown=3594
+protocol=forward outer=1 ridge: AUROC=0.995862 macro-F1=0.958177
+protocol=forward outer=1 shrinkage_lda: AUROC=0.992740 macro-F1=0.965727
+protocol=forward outer=1 cosine_prototype: AUROC=0.922725 macro-F1=0.723274
+protocol=forward outer=2 inner=1 known=887 unknown=3615
+protocol=forward outer=2 inner=2 known=922 unknown=3450
+protocol=forward outer=2 ridge: AUROC=0.994681 macro-F1=0.972482
+protocol=forward outer=2 shrinkage_lda: AUROC=0.996509 macro-F1=0.975293
+protocol=forward outer=2 cosine_prototype: AUROC=0.947477 macro-F1=0.721267
+protocol=forward outer=3 inner=1 known=927 unknown=3519
+protocol=forward outer=3 inner=2 known=901 unknown=3609
+protocol=forward outer=3 ridge: AUROC=0.995323 macro-F1=0.966374
+protocol=forward outer=3 shrinkage_lda: AUROC=0.995523 macro-F1=0.970108
+protocol=forward outer=3 cosine_prototype: AUROC=0.921329 macro-F1=0.740696
+protocol=forward outer=4 inner=1 known=900 unknown=3712
+protocol=forward outer=4 inner=2 known=942 unknown=3523
+protocol=forward outer=4 ridge: AUROC=0.992165 macro-F1=0.967147
+protocol=forward outer=4 shrinkage_lda: AUROC=0.981039 macro-F1=0.940739
+protocol=forward outer=4 cosine_prototype: AUROC=0.906491 macro-F1=0.738435
+protocol=forward outer=5 inner=1 known=936 unknown=3602
+protocol=forward outer=5 inner=2 known=928 unknown=3646
+protocol=forward outer=5 ridge: AUROC=0.994700 macro-F1=0.970328
+protocol=forward outer=5 shrinkage_lda: AUROC=0.994708 macro-F1=0.971178
+protocol=forward outer=5 cosine_prototype: AUROC=0.937594 macro-F1=0.733522
+{
+  "output": "research\\ea_riemannian_openset\\e2_forward_results.json",
+  "configs": {
+    "ridge": {
+      "aggregate": {
+        "n_known": 9232,
+        "n_unknown": 11304,
+        "C": 0.949740034662045,
+        "direct_C_without_rejection": 0.9972920277296361,
+        "U": 0.9907112526539278,
+        "known_acceptance": 0.949740034662045,
+        "unknown_auroc": 0.9945464658542742,
+        "known_aupr": 0.9949985099327432,
+        "unknown_aupr": 0.9937245363365671,
+        "eer": 0.02649466574592365,
+        "unknown_auroc_fold_min": 0.9921651464093968,
+        "unknown_auroc_fold_max": 0.9958620817959756,
+        "pooled_unknown_auroc_diagnostic": 0.9846801787008723,
+        "pooled_known_aupr_diagnostic": 0.9865858899642365,
+        "pooled_eer_diagnostic": 0.04994873059152388,
+        "macro_f1": 0.967058877880252,
+        "unknown_f1": 0.9752253232899377,
+        "detection_macro_f1": 0.97189877045469,
+        "score_selection": [
+          "max_logit",
+          "margin",
+          "margin",
+          "margin",
+          "margin"
+        ],
+        "thresholds": [
+          0.17339998483657837,
+          0.6045234620571137,
+          0.6608211994171143,
+          0.6595313102006912,
+          0.6539009019732476
+        ]
+      },
+      "macro_mean": {
+        "C": 0.9497944491765177,
+        "direct_C_without_rejection": 0.997293235887821,
+        "U": 0.9906494032454255,
+        "known_acceptance": 0.9497944491765177,
+        "unknown_auroc": 0.9945464658542742,
+        "known_aupr": 0.9949985099327432,
+        "unknown_aupr": 0.9937245363365671,
+        "eer": 0.02649466574592365,
+        "macro_f1": 0.9669016017342418,
+        "unknown_f1": 0.9750788329224134,
+        "detection_macro_f1": 0.9718380222411274
+      },
+      "worst_fold": {
+        "selection_metric": "minimum detection_macro_f1",
+        "outer_fold": 1,
+        "metrics": {
+          "n_known": 1878,
+          "n_unknown": 2118,
+          "C": 0.9419595314164004,
+          "direct_C_without_rejection": 0.9978700745473909,
+          "U": 0.9867799811142587,
+          "known_acceptance": 0.9419595314164004,
+          "unknown_auroc": 0.9958620817959756,
+          "known_aupr": 0.9955145517056345,
+          "unknown_aupr": 0.9963748957778735,
+          "eer": 0.03028431186211599,
+          "macro_f1": 0.9581770430997013,
+          "unknown_f1": 0.9682649988417883,
+          "detection_macro_f1": 0.9654930436385812,
+          "score_name": "max_logit",
+          "threshold": 0.17339998483657837
+        }
+      }
+    },
+    "shrinkage_lda": {
+      "aggregate": {
+        "n_known": 9232,
+        "n_unknown": 11304,
+        "C": 0.9644714038128249,
+        "direct_C_without_rejection": 0.9964254766031195,
+        "U": 0.9710721868365181,
+        "known_acceptance": 0.9652296360485269,
+        "unknown_auroc": 0.9921035758624159,
+        "known_aupr": 0.9912787320632879,
+        "unknown_aupr": 0.9925345961956973,
+        "eer": 0.03373413922599926,
+        "unknown_auroc_fold_min": 0.9810386752280387,
+        "unknown_auroc_fold_max": 0.9965091359508977,
+        "pooled_unknown_auroc_diagnostic": 0.9916023920920002,
+        "pooled_known_aupr_diagnostic": 0.9904403575035651,
+        "pooled_eer_diagnostic": 0.03403543599235129,
+        "macro_f1": 0.9632185298422163,
+        "unknown_f1": 0.9713299707990444,
+        "detection_macro_f1": 0.9681230254644924,
+        "score_selection": [
+          "energy",
+          "max_logit",
+          "max_logit",
+          "max_logit",
+          "max_logit"
+        ],
+        "thresholds": [
+          5.977822126085769,
+          2.7194381854030114,
+          1.4884046530613924,
+          9.477284580087812,
+          2.8376321291140716
+        ]
+      },
+      "macro_mean": {
+        "C": 0.9644519554964862,
+        "direct_C_without_rejection": 0.996439615192009,
+        "U": 0.9704975918251627,
+        "known_acceptance": 0.9652119215338173,
+        "unknown_auroc": 0.9921035758624159,
+        "known_aupr": 0.9912787320632879,
+        "unknown_aupr": 0.9925345961956973,
+        "eer": 0.03373413922599926,
+        "macro_f1": 0.9646090171880856,
+        "unknown_f1": 0.9707580636371578,
+        "detection_macro_f1": 0.9680323564799205
+      },
+      "worst_fold": {
+        "selection_metric": "minimum detection_macro_f1",
+        "outer_fold": 4,
+        "metrics": {
+          "n_known": 1852,
+          "n_unknown": 2217,
+          "C": 0.9708423326133909,
+          "direct_C_without_rejection": 0.9978401727861771,
+          "U": 0.9079837618403248,
+          "known_acceptance": 0.9724622030237581,
+          "unknown_auroc": 0.9810386752280387,
+          "known_aupr": 0.9757595918981302,
+          "unknown_aupr": 0.9848344749819692,
+          "eer": 0.062440633977969194,
+          "macro_f1": 0.9407388713662913,
+          "unknown_f1": 0.9404344779257183,
+          "detection_macro_f1": 0.9371604590821229,
+          "score_name": "max_logit",
+          "threshold": 9.477284580087812
+        }
+      }
+    },
+    "cosine_prototype": {
+      "aggregate": {
+        "n_known": 9232,
+        "n_unknown": 11304,
+        "C": 0.916919410745234,
+        "direct_C_without_rejection": 0.9292677642980935,
+        "U": 0.48071479122434535,
+        "known_acceptance": 0.9693457538994801,
+        "unknown_auroc": 0.9271231936646529,
+        "known_aupr": 0.9217709724145049,
+        "unknown_aupr": 0.9283707453864027,
+        "eer": 0.14020303695297548,
+        "unknown_auroc_fold_min": 0.9064910260494452,
+        "unknown_auroc_fold_max": 0.9474774335214801,
+        "pooled_unknown_auroc_diagnostic": 0.9276079670269017,
+        "pooled_known_aupr_diagnostic": 0.9215804711915131,
+        "pooled_eer_diagnostic": 0.14213822563691203,
+        "macro_f1": 0.7132217204185091,
+        "unknown_f1": 0.6385053757123553,
+        "detection_macro_f1": 0.6913370086744388,
+        "score_selection": [
+          "max_logit",
+          "max_logit",
+          "max_logit",
+          "max_logit",
+          "max_logit"
+        ],
+        "thresholds": [
+          0.20107877254486084,
+          0.18935638070106506,
+          0.21697140708565713,
+          0.20229925513267516,
+          0.19378297477960588
+        ]
+      },
+      "macro_mean": {
+        "C": 0.9168290732804187,
+        "direct_C_without_rejection": 0.9291689030539475,
+        "U": 0.4793733456567334,
+        "known_acceptance": 0.9693354631187947,
+        "unknown_auroc": 0.9271231936646529,
+        "known_aupr": 0.9217709724145049,
+        "unknown_aupr": 0.9283707453864027,
+        "eer": 0.14020303695297548,
+        "macro_f1": 0.7314387636451135,
+        "unknown_f1": 0.6359211206351805,
+        "detection_macro_f1": 0.6901326276437754
+      },
+      "worst_fold": {
+        "selection_metric": "minimum detection_macro_f1",
+        "outer_fold": 1,
+        "metrics": {
+          "n_known": 1878,
+          "n_unknown": 2118,
+          "C": 0.9259850905218318,
+          "direct_C_without_rejection": 0.9366347177848775,
+          "U": 0.4131255901794145,
+          "known_acceptance": 0.9749733759318424,
+          "unknown_auroc": 0.9227245849511414,
+          "known_aupr": 0.9227952109894444,
+          "unknown_aupr": 0.9197086153002894,
+          "eer": 0.15410885548184283,
+          "macro_f1": 0.7232736876734424,
+          "unknown_f1": 0.5756578947368421,
+          "detection_macro_f1": 0.6575785434911998,
+          "score_name": "max_logit",
+          "threshold": 0.20107877254486084
+        }
+      }
+    }
+  }
+}
