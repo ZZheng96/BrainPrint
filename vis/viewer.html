@@ -139,6 +139,10 @@ a{color:var(--blue);cursor:pointer}
 <div id="side">
   <div class="card"><h3>Trial 信息</h3><div class="body kv" id="info"></div></div>
   <div class="card"><h3><span>被试分数</span><span class="legend">条=方案分数 · 点=LDA 余弦</span></h3><div class="body"><div class="cbox" style="height:300px"><canvas id="scores"></canvas></div></div></div>
+  <div class="card"><h3><span>电极位置 (10-20)</span><span><select id="topoMode">
+      <option value="trial">当前 trial z</option><option value="tmpl">被试模板 z</option><option value="fisher">Fisher 辨识度</option><option value="none">仅位置</option>
+    </select><select id="topoBand"></select></span></h3>
+    <div class="body"><div class="cbox" style="height:260px"><canvas id="topo"></canvas></div><div class="legend" id="topoInfo">点击电极选通道（联动 PSD / 波形）</div></div></div>
   <div class="card"><h3><span>log10 PSD</span><select id="psdCh"></select></h3><div class="body"><div class="cbox"><canvas id="psd"></canvas></div><div class="legend">黑=当前 trial · 蓝=预测被试模板 · 灰=总体均值</div></div></div>
   <div class="card"><h3><span>log 协方差</span><select id="covBand"></select></h3><div class="body"><div class="cbox" style="height:300px"><canvas id="cov"></canvas></div>
     <label class="legend"><input type="checkbox" id="covZ" checked>显示 z（相对本组均值）</label></div></div>
@@ -188,7 +192,7 @@ function renderSubjects(){
   [[null,"全部"],...list].forEach(([s,t])=>{const d=document.createElement("div");
     d.className="subj"+(s===S.subject?" sel":"");
     d.innerHTML=s===null?`<span>全部</span>`:`<span><i class="sw" style="background:${col(s)}"></i>${s===0?"0 未注册":"S"+String(s).padStart(2,"0")}</span><span class="dim">${t}</span>`;
-    d.onclick=()=>{S.subject=s;renderSubjects();loadRows();if(s)setFpSubject(s)};el.appendChild(d)});
+    d.onclick=()=>{S.subject=s;renderSubjects();loadRows();setFpSubject(s)};el.appendChild(d)});
 }
 async function loadRows(keep){
   const q=`set=${S.set}&task=${S.task}&session=${S.session}`+(S.subject!=null?`&subject=${S.subject}`:"");
@@ -211,7 +215,7 @@ async function loadTrial(set,idx){
   const t=await api(`trial/${set}/${idx}`);S.trial=t;
   const p=S.rows?S.rows.idx.indexOf(idx):-1;if(p>=0&&S.rows.set===set)markSel(p);else markSel(-1);
   $("#tTitle").textContent=`${set==="train"?"训练":"测试"} · ${t.set==="train"?"S"+String(t.label).padStart(2,"0")+" trial "+t.name:t.name} · ${t.task} · ${t.session}`;
-  drawWave();drawInfo();drawScores();drawPsd();drawCov();
+  drawWave();drawInfo();drawScores();drawPsd();drawCov();drawTopo();
   if($("#embTask").value!==t.task){$("#embTask").value=t.task;await loadEmb()}else drawEmb();
   if($("#fpMode").value==="trial")drawFp();
 }
@@ -226,6 +230,7 @@ function drawWave(){
   const glob=Math.max(...t.std.map(v=>v||0))||1;
   ch.forEach((c,k)=>{const y0=T+rowH*(k+.5),d=sig[k];
     const sc=(S.auto?(t.std[k]||1)*3:glob*3)/S.gain;
+    if(k===+$("#psdCh").value){g.fillStyle="#ddf4ff";g.fillRect(0,y0-rowH/2,W,rowH)}
     g.fillStyle=t.clip[k]>0.01?"#cf222e":"#1f2328";g.fillText(c,4,y0+4);
     g.strokeStyle=k%2?"#0969da":"#1f2328";g.lineWidth=.8;g.beginPath();
     for(let i=0;i<n;i++){const x=L+(W-L-R)*i/(n-1),v=d[i]??0,y=y0-Math.max(-1.5,Math.min(1.5,v/sc))*rowH*.5;i?g.lineTo(x,y):g.moveTo(x,y)}g.stroke()});
@@ -236,6 +241,43 @@ function drawWave(){
     const k=Math.floor((e.clientY-r.top-T)/rowH);
     tip(e,`t=${(i/300).toFixed(3)} s`+(k>=0&&k<18?`\n${ch[k]}: ${sig[k][i]}  (std ${t.std[k]}, clip ${(t.clip[k]*100).toFixed(2)}%)`:""))};
   c.onmouseleave=e=>{S.hover=null;tip(e);drawWave()};
+  c.onclick=e=>{const k=Math.floor((e.clientY-c.getBoundingClientRect().top-T)/rowH);if(k>=0&&k<18)setCh(k)};
+}
+function setCh(k){$("#psdCh").value=k;drawPsd();drawWave();drawTopo()}
+
+// ---------- 电极位置（10-20，上=鼻，左=左半球） ----------
+const POS={Fp1:[-.31,.95],Fpz:[0,1],Fp2:[.31,.95],F7:[-.81,.59],F3:[-.4,.52],Fz:[0,.5],F4:[.4,.52],F8:[.81,.59],
+  T3:[-1,0],T7:[-1,0],C3:[-.5,0],Cz:[0,0],C4:[.5,0],T4:[1,0],T8:[1,0],A1:[-1.18,0],A2:[1.18,0],
+  T5:[-.81,-.59],P7:[-.81,-.59],P3:[-.4,-.52],Pz:[0,-.5],P4:[.4,-.52],T6:[.81,-.59],P8:[.81,-.59],O1:[-.31,-.95],Oz:[0,-1],O2:[.31,-.95]};
+function bandRange(b){const m=String(b).match(/[\d.]+/g).map(Number);return [Math.max(1,m[0]),Math.min(90,m[1]??m[0])]}
+function topoVals(){const mode=$("#topoMode").value,[f0,f1]=bandRange(S.sum.bands[+$("#topoBand").value]);
+  let P=null,lab="";
+  if(mode==="trial"&&S.trial){P=S.trial.psd_z;lab="当前 trial z"}
+  else if(mode==="tmpl"&&S.fp){P=S.fp.psd_z;lab=`S${S.fp.subject} 模板 z（${S.fp.task}）`}
+  else if(mode==="fisher"&&S.fp){P=S.fp.fisher_psd;lab=`Fisher（${S.fp.task}）`}
+  if(!P)return null;
+  const v=P.map(r=>{const s=r.slice(f0-1,f1).filter(x=>x!=null);return s.length?s.reduce((a,b)=>a+b,0)/s.length:0});
+  return {v,lab:`${lab} · ${f0}–${f1} Hz 均值`,seq:mode==="fisher"}}
+function drawTopo(){
+  if(!S.sum)return;const [g,W,H]=cvs("topo"),ch=S.sum.channels,sel=+$("#psdCh").value;
+  const R=Math.min(W,H)/2-22,cx=W/2,cy=H/2+6,P=ch.map((c,i)=>POS[c]||[-1.1+i*.13,-1.15]),XY=P.map(([x,y])=>[cx+x*R*.9,cy-y*R*.9]);
+  const tv=$("#topoMode").value==="none"?null:topoVals();let m=1;
+  if(tv){m=tv.seq?Math.max(...tv.v,1e-6):Math.max(...tv.v.map(Math.abs),.3);const cf=x=>tv.seq?seq(x,m):div(x,m),st=3;
+    for(let py=cy-R;py<cy+R;py+=st)for(let px=cx-R;px<cx+R;px+=st){if((px-cx)**2+(py-cy)**2>R*R)continue;
+      let sw=0,sv=0;for(let i=0;i<XY.length;i++){const d=(px-XY[i][0])**2+(py-XY[i][1])**2+1,w=1/(d*d);sw+=w;sv+=w*tv.v[i]}
+      g.fillStyle=cf(sv/sw);g.fillRect(px,py,st,st)}}
+  g.strokeStyle="#1f2328";g.lineWidth=1.5;g.beginPath();g.arc(cx,cy,R,0,7);g.stroke();
+  g.beginPath();g.moveTo(cx-10,cy-R+1);g.lineTo(cx,cy-R-12);g.lineTo(cx+10,cy-R+1);g.stroke();
+  [-1,1].forEach(s=>{g.beginPath();g.ellipse(cx+s*(R+5),cy,5,16,0,0,7);g.stroke()});
+  g.fillStyle="#656d76";g.fillText("L",cx-R-18,cy-20);g.fillText("R",cx+R+12,cy-20);
+  XY.forEach(([x,y],i)=>{const on=i===sel;g.beginPath();g.arc(x,y,on?13:11,0,7);g.fillStyle=on?"#0969da":"rgba(255,255,255,.9)";g.fill();
+    g.strokeStyle=on?"#000":"#57606a";g.lineWidth=on?2:1;g.stroke();g.fillStyle=on?"#fff":"#1f2328";g.font="10px Consolas";
+    g.fillText(ch[i],x-g.measureText(ch[i]).width/2,y+3.5)});g.font="11px Consolas,monospace";
+  $("#topoInfo").textContent=(tv?`${tv.lab} · 色标 ${tv.seq?"0–":"±"}${m.toFixed(2)} · `:"")+"点击电极选通道（联动 PSD / 波形）";
+  const c=$("#topo"),hit=e=>{const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+    let b=-1,bd=196;XY.forEach(([a,q],i)=>{const d=(a-x)**2+(q-y)**2;if(d<bd){bd=d;b=i}});return b};
+  c.onmousemove=e=>{const i=hit(e);c.style.cursor=i>=0?"pointer":"";tip(e,i>=0?ch[i]+(tv?`: ${tv.v[i].toFixed(3)}`:""):"")};
+  c.onmouseleave=e=>tip(e);c.onclick=e=>{const i=hit(e);if(i>=0)setCh(i)};
 }
 
 // ---------- 右栏 ----------
@@ -290,17 +332,17 @@ function embView(){if(S.embView)return S.embView;const e=S.emb,xs=[...e.train.x,
 function drawEmb(){
   const e=S.emb;if(!e)return;const [g,W,H]=cvs("emb"),v=embView();
   const X=x=>(x-v.x0)/(v.x1-v.x0)*W,Y=y=>H-(y-v.y0)/(v.y1-v.y0)*H;S._embXY=[X,Y];
-  const pts=[];
+  const pts=[],sel=S.subject>0?S.subject:null,dim=s=>sel&&s!==sel;
   if($("#embS1").checked){g.fillStyle="rgba(140,149,159,.35)";e.test.x.forEach((x,i)=>{if(!e.test.s1[i])return;const a=X(x),b=Y(e.test.y[i]);g.fillRect(a-1.5,b-1.5,3,3);pts.push(["test",e.test.idx[i],a,b])})}
-  if($("#embTest").checked){e.test.x.forEach((x,i)=>{if(e.test.s1[i])return;const a=X(x),b=Y(e.test.y[i]);g.fillStyle=col(e.test.p[i]);g.globalAlpha=.35;g.fillRect(a-1.5,b-1.5,3,3);pts.push(["test",e.test.idx[i],a,b])});g.globalAlpha=1}
-  if($("#embTrain").checked){e.train.x.forEach((x,i)=>{const a=X(x),b=Y(e.train.y[i]),s=e.train.s[i];g.fillStyle=col(s);g.globalAlpha=.8;
-    g.beginPath();g.arc(a,b,2.2,0,7);g.fill();if(e.train.p[i]!==s){g.globalAlpha=1;g.strokeStyle="#cf222e";g.lineWidth=1;g.stroke()}pts.push(["train",e.train.idx[i],a,b])});g.globalAlpha=1}
-  e.centers.forEach(([x,y],k)=>{const a=X(x),b=Y(y);g.fillStyle="#fff";g.strokeStyle=col(k+1);g.lineWidth=2;g.beginPath();g.arc(a,b,9,0,7);g.fill();g.stroke();
+  if($("#embTest").checked){e.test.x.forEach((x,i)=>{if(e.test.s1[i])return;const a=X(x),b=Y(e.test.y[i]);const p=e.test.p[i],r=sel===p?2.5:1.5;g.fillStyle=dim(p)?"#c8ccd1":col(p);g.globalAlpha=dim(p)?.2:sel?.9:.35;g.fillRect(a-r,b-r,2*r,2*r);pts.push(["test",e.test.idx[i],a,b])});g.globalAlpha=1}
+  if($("#embTrain").checked){e.train.x.forEach((x,i)=>{const a=X(x),b=Y(e.train.y[i]),s=e.train.s[i];g.fillStyle=dim(s)?"#c8ccd1":col(s);g.globalAlpha=dim(s)?.25:.8;
+    g.beginPath();g.arc(a,b,sel===s?3:2.2,0,7);g.fill();if(e.train.p[i]!==s){g.globalAlpha=1;g.strokeStyle="#cf222e";g.lineWidth=1;g.stroke()}pts.push(["train",e.train.idx[i],a,b])});g.globalAlpha=1}
+  e.centers.forEach(([x,y],k)=>{const a=X(x),b=Y(y),on=sel===k+1;g.globalAlpha=dim(k+1)?.35:1;g.fillStyle=on?col(k+1):"#fff";g.strokeStyle=on?"#000":col(k+1);g.lineWidth=on?3:2;g.beginPath();g.arc(a,b,on?12:9,0,7);g.fill();g.stroke();g.globalAlpha=1;
     g.fillStyle="#1f2328";g.fillText(String(k+1),a-(k+1>9?7:3.5),b+4)});
   const t=S.trial;if(t&&t.task===e.task){const a=X(t.emb[0]),b=Y(t.emb[1]);g.strokeStyle="#000";g.lineWidth=2;g.beginPath();g.arc(a,b,7,0,7);g.stroke();
     g.beginPath();g.moveTo(a-12,b);g.lineTo(a+12,b);g.moveTo(a,b-12);g.lineTo(a,b+12);g.lineWidth=1;g.stroke()}
   S._embPts=pts;
-  $("#embInfo").textContent=`LD1 ${(e.ratio[0]*100).toFixed(1)}% · LD2 ${(e.ratio[1]*100).toFixed(1)}% 判别方差 · 圆=被试中心 · 红圈=OOF 错分`;
+  $("#embInfo").textContent=(sel?`高亮 S${String(sel).padStart(2,"0")} · `:"")+`LD1 ${(e.ratio[0]*100).toFixed(1)}% · LD2 ${(e.ratio[1]*100).toFixed(1)}% 判别方差 · 圆=被试中心 · 红圈=OOF 错分`;
 }
 (function embEvents(){const c=$("#emb");let drag=null;
   c.onwheel=e=>{e.preventDefault();const v=embView(),r=c.getBoundingClientRect(),fx=(e.clientX-r.left)/r.width,fy=1-(e.clientY-r.top)/r.height;
@@ -320,8 +362,8 @@ function drawEmb(){
 })();
 
 // ---------- 被试脑纹 ----------
-function setFpSubject(s){$("#fpSubj").value=s;if($("#pFp").classList.contains("on"))loadFp()}
-async function loadFp(){S.fp=await api(`fingerprint?subject=${$("#fpSubj").value}&task=${$("#fpTask").value}`);drawFp()}
+function setFpSubject(s){if(s>0){$("#fpSubj").value=s;loadFp()}drawEmb();if(S.simData)drawSim()}
+async function loadFp(){S.fp=await api(`fingerprint?subject=${$("#fpSubj").value}&task=${$("#fpTask").value}`);drawFp();drawTopo()}
 function drawFp(){
   const mode=$("#fpMode").value,fp=S.fp,t=S.trial;if(!fp)return;
   let P,C,cf,lab,m;
@@ -354,6 +396,7 @@ function drawSim(){
   g.font="11px Consolas,monospace";
   for(let i=0;i<20;i++){const r=M[i];if(r.some(v=>v==null))continue;const j=r.indexOf(Math.max(...r));
     g.strokeStyle=j===i?"#1a7f37":"#cf222e";g.lineWidth=1.5;g.strokeRect(x0+j*c+1,y0+i*c+1,c-2,c-2)}
+  if(S.subject>0){const k=S.subject-1;g.strokeStyle="#000";g.lineWidth=2;g.strokeRect(x0,y0+k*c,sz,c);g.strokeRect(x0+k*c,y0,c,sz)}
   const lx=x0+sz+20;g.fillStyle="#1f2328";
   const lines=[d.mode==="split"?"行：训练前半 trial 模板":"行：训练模板","列："+(d.mode==="split"?"训练后半 trial 模板":"测试 s2 预测分组模板"),
     `Pearson r，色标 ±${m.toFixed(2)}`,`行最大在对角线：${d.top1}/${d.valid}`,"绿框=自匹配 · 红框=混淆","点击格子查看被试脑纹"];
@@ -383,9 +426,9 @@ document.addEventListener("keydown",e=>{if(e.target.tagName==="SELECT"||e.target
 ["embTrain","embTest","embS1"].forEach(id=>$("#"+id).onchange=drawEmb);
 $("#embTask").onchange=loadEmb;$("#fpSubj").onchange=loadFp;$("#fpTask").onchange=loadFp;$("#fpMode").onchange=drawFp;
 ["simTask","simDom","simMode"].forEach(id=>$("#"+id).onchange=loadSim);
-$("#psdCh").onchange=drawPsd;$("#covBand").onchange=drawCov;$("#covZ").onchange=drawCov;
+$("#psdCh").onchange=()=>setCh(+$("#psdCh").value);$("#topoMode").onchange=drawTopo;$("#topoBand").onchange=drawTopo;$("#covBand").onchange=drawCov;$("#covZ").onchange=drawCov;
 let rz;window.addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>{if(S.trial){drawWave();drawScores();drawPsd();drawCov()}
-  drawEmb();if(S.fp)drawFp();if(S.simData)drawSim()},120)});
+  drawTopo();drawEmb();if(S.fp)drawFp();if(S.simData)drawSim()},120)});
 
 (async function init(){
   const sum=S.sum=await api("summary");
@@ -397,7 +440,8 @@ let rz;window.addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>
   opts($("#simTask"),[["ALL","四任务平均"],...TASKS.map(t=>[t,t])],"ALL");
   opts($("#psdCh"),sum.channels.map((c,i)=>[i,c]),12);
   opts($("#covBand"),sum.bands.map((b,i)=>[i,b+" Hz"]),1);
-  renderFilters();renderSubjects();await loadEmb();await loadRows();
+  opts($("#topoBand"),sum.bands.map((b,i)=>[i,b+" Hz"]),2);
+  renderFilters();renderSubjects();loadFp();await loadEmb();await loadRows();
 })().catch(e=>alert("初始化失败："+e.message));
 </script>
 </body>
