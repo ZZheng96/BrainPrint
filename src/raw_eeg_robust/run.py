@@ -36,8 +36,53 @@ from src.raw_eeg_robust.adversarial import (
 )
 
 OUTPUT_DIR = ROOT / "research" / "raw_eeg_robust"
-CACHE_VERSION = "adversarial-ridge-v2"
+CACHE_VERSION = "adversarial-ridge-mixed-v1"
 METHODS = ("direct", "adversarial_ridge")
+TARGETED_PER_GROUP = 2
+
+
+def mixed_training_features(
+    cache_dir: Path,
+    cache_name: str,
+    model: TaskSpecificModel,
+    extractor: GPUCovExtractor,
+    metadata: pd.DataFrame,
+    selected: np.ndarray,
+    raw: np.ndarray,
+    tasks: np.ndarray,
+    targets: np.ndarray,
+    pool: ProcessPoolExecutor,
+    steps: int,
+    seed: int,
+    batch_size: int,
+    targeted_per_group: int,
+) -> tuple[np.ndarray, np.ndarray, dict]:
+    targeted_positions = []
+    for _, group in metadata.iloc[selected].groupby(["subject", "task"], sort=False):
+        group_indices = group.index.to_numpy()
+        positions = np.flatnonzero(np.isin(selected, group_indices))
+        targeted_positions.extend(positions[-targeted_per_group:])
+    targeted_positions = np.asarray(sorted(targeted_positions), dtype=int)
+    untargeted_positions = np.setdiff1d(np.arange(len(selected)), targeted_positions)
+    outputs = []
+    for label, positions, targeted in (
+        ("untargeted", untargeted_positions, False),
+        ("targeted", targeted_positions, True),
+    ):
+        full, window, diagnostics = cached_adversarial_features(
+            cache_dir, f"{cache_name}_{label}", model, extractor,
+            raw[positions], tasks[positions], targets[positions], selected[positions],
+            20.0, targeted, steps, seed + int(targeted), pool, batch_size,
+        )
+        outputs.append((label, positions, full, window, diagnostics))
+    full = np.empty((len(selected), outputs[0][2].shape[1]), dtype=np.float32)
+    window = np.empty((len(selected), 2, outputs[0][3].shape[2]), dtype=np.float32)
+    diagnostics = {"targeted_per_group": targeted_per_group, "parts": {}}
+    for label, positions, adv_full, adv_window, part_diagnostics in outputs:
+        full[positions] = adv_full
+        window[positions] = adv_window
+        diagnostics["parts"][label] = part_diagnostics
+    return full, window, diagnostics
 
 
 def cached_adversarial_features(
@@ -185,6 +230,7 @@ def main() -> None:
     partial_output = output.with_name(f"{output.stem}.partial.json")
     steps = 2 if args.smoke else 10
     per_group = 2 if args.smoke else 8
+    targeted_per_group = min(TARGETED_PER_GROUP, per_group - 1)
 
     with ProcessPoolExecutor(max_workers=args.workers) as pool:
         extractor = GPUCovExtractor(device)
@@ -241,12 +287,12 @@ def main() -> None:
                 fit_indices = np.flatnonzero(inner_fit)
                 selected = grouped_sample(metadata, fit_indices, per_group)
                 raw, _ = load_raw_and_fingerprints(metadata, selected, keep_raw=True)
-                adv_full, adv_window, attack_diagnostics = cached_adversarial_features(
+                adv_full, adv_window, attack_diagnostics = mixed_training_features(
                     cache_dir, f"outer{outer_index + 1}_inner{inner_index + 1}_train",
-                    baseline, extractor, raw, tasks[selected], subjects[selected], selected,
-                    20.0, False, steps,
+                    baseline, extractor, metadata, selected, raw, tasks[selected],
+                    subjects[selected], pool, steps,
                     20291107 + outer_index * 1000000 + inner_index * 300000,
-                    pool, args.batch_size,
+                    args.batch_size, targeted_per_group,
                 )
                 robust, fit_diagnostics = fit_adversarial_ridge(
                     baseline, x, window, subjects, tasks, inner_fit,
@@ -284,12 +330,12 @@ def main() -> None:
             fit_indices = np.flatnonzero(outer_fit)
             selected = grouped_sample(metadata, fit_indices, per_group)
             train_raw, _ = load_raw_and_fingerprints(metadata, selected, keep_raw=True)
-            train_full, train_window, train_attack = cached_adversarial_features(
+            train_full, train_window, train_attack = mixed_training_features(
                 cache_dir, f"outer{outer_index + 1}_train",
-                baseline, extractor, train_raw, tasks[selected], subjects[selected], selected,
-                20.0, False, steps,
+                baseline, extractor, metadata, selected, train_raw, tasks[selected],
+                subjects[selected], pool, steps,
                 20291107 + outer_index * 1000000 + 900000,
-                pool, args.batch_size,
+                args.batch_size, targeted_per_group,
             )
             robust, outer_fit_diagnostics = fit_adversarial_ridge(
                 baseline, x, window, subjects, tasks, outer_fit,
@@ -374,9 +420,11 @@ def main() -> None:
             "data": "Train Session1 only; 5-fold subject holdout; nested threshold selection",
             "candidate": "one frozen candidate: clean all + within-fit raw-PGD augmentation; refit Ridge components only",
             "training_attack": {
-                "snr_db": 20.0, "targeted": False, "steps": steps,
+                "snr_db": 20.0, "targeted": "mixed",
+                "steps": steps,
                 "per_subject_task": per_group,
-                "selection": "first trials in each subject/task within current fit mask",
+                "targeted_per_subject_task": targeted_per_group,
+                "selection": "last targeted trials and remaining first trials in each subject/task within current fit mask",
             },
             "evaluation_attacks": [
                 {"name": name, "snr_db": snr, "targeted": targeted, "steps": steps}
