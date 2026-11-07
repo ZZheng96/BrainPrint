@@ -1,0 +1,23 @@
+{
+  "protocol": "SNR20 inner-only feasibility gate for one pairing candidate",
+  "thresholds": {
+    "adv_coverage": 0.65,
+    "same_identity_purity": 0.99,
+    "anchor_identity_accuracy": 0.95
+  },
+  "audit_basis": {
+    "known_adversarial": 9232,
+    "high_similarity_pairs": 3963,
+    "pair_type": "all observed pairs are clean-adversarial and same identity",
+    "max_recoverable_adversarial_per_pair": 1,
+    "structural_coverage_upper_bound": 0.4292
+  },
+  "result": {
+    "adv_coverage": 0.4292,
+    "same_identity_purity": 1.0,
+    "anchor_identity_accuracy": "not estimated because structural upper bound already fails",
+    "passed": false,
+    "decision": "stop pairing candidate before outer evaluation"
+  },
+  "label_policy": "upper-bound audit only; no test labels, clean/adv oracle, or outer labels used"
+}

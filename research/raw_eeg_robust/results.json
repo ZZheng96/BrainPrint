@@ -1,0 +1,1665 @@
+{
+  "protocol": {
+    "data": "Train Session1 only; 5-fold subject holdout; nested threshold selection",
+    "candidate": "one frozen candidate: clean all + within-fit raw-PGD augmentation; refit Ridge components only",
+    "training_attack": {
+      "snr_db": 20.0,
+      "targeted": false,
+      "steps": 10,
+      "per_subject_task": 8,
+      "selection": "first trials in each subject/task within current fit mask"
+    },
+    "evaluation_attacks": [
+      {
+        "name": "untargeted_snr20",
+        "snr_db": 20.0,
+        "targeted": false,
+        "steps": 10
+      },
+      {
+        "name": "untargeted_snr30",
+        "snr_db": 30.0,
+        "targeted": false,
+        "steps": 10
+      },
+      {
+        "name": "targeted_snr20",
+        "snr_db": 20.0,
+        "targeted": true,
+        "steps": 10
+      }
+    ],
+    "evaluation_surrogate": "clean direct model; candidate receives identical exact SciPy features",
+    "neighbor_components": "retain clean fit; only full/window/low Ridge are refit",
+    "model_selection": "no outer-fold retuning; no test labels or clean/adv oracle",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "torch": "2.7.1+cu118",
+    "smoke": false
+  },
+  "folds": [
+    {
+      "outer_fold": 1,
+      "unknown_subjects": [
+        16,
+        10,
+        15,
+        8
+      ],
+      "registered_subjects": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        17,
+        18,
+        19,
+        20
+      ],
+      "operating_points": {
+        "direct": {
+          "score_name": "margin",
+          "threshold": 0.7867605984210968,
+          "inner_detection_macro_f1": 0.8887708523241264,
+          "inner_unknown_f1": 0.9482734119653261,
+          "inner_known_acceptance": 0.9500268672756582,
+          "inner_U": 0.9131089217296113,
+          "inner_auroc": 0.9690777068669932
+        },
+        "adversarial_ridge": {
+          "score_name": "margin",
+          "threshold": 0.6872206777334213,
+          "inner_detection_macro_f1": 0.8487019565009377,
+          "inner_unknown_f1": 0.9245077381384873,
+          "inner_known_acceptance": 0.9500268672756582,
+          "inner_U": 0.8705528188286809,
+          "inner_auroc": 0.9593785027089332
+        }
+      },
+      "inner_training": [
+        {
+          "inner_fold": 1,
+          "n_adversarial": 256,
+          "fit": {
+            "clean": {
+              "EC": 240,
+              "EO": 231,
+              "Imagery": 1355,
+              "SSVEP": 851
+            },
+            "adversarial": {
+              "EC": 64,
+              "EO": 64,
+              "Imagery": 64,
+              "SSVEP": 64
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.00390625,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          }
+        },
+        {
+          "inner_fold": 2,
+          "n_adversarial": 256,
+          "fit": {
+            "clean": {
+              "EC": 275,
+              "EO": 270,
+              "Imagery": 1341,
+              "SSVEP": 884
+            },
+            "adversarial": {
+              "EC": 64,
+              "EO": 64,
+              "Imagery": 64,
+              "SSVEP": 64
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          }
+        }
+      ],
+      "outer_training": {
+        "n_adversarial": 512,
+        "fit": {
+          "clean": {
+            "EC": 690,
+            "EO": 684,
+            "Imagery": 3594,
+            "SSVEP": 2340
+          },
+          "adversarial": {
+            "EC": 128,
+            "EO": 128,
+            "Imagery": 128,
+            "SSVEP": 128
+          }
+        },
+        "attack": {
+          "actual_snr_min": 19.999998092651367,
+          "actual_snr_median": 20.0,
+          "actual_snr_max": 20.000001907348633,
+          "surrogate_identity_retention": 0.0,
+          "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+          "snr_db": 20.0,
+          "targeted": false,
+          "steps": 10
+        }
+      },
+      "attacks": {
+        "untargeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.935569755058573,
+              "RA": 0.0,
+              "ASafeR": 0.47177848775292863,
+              "A": 0.14153354632587858,
+              "U": 0.9452313503305004,
+              "official_score": 48.43014672606476,
+              "official_score_rounded": 48.43,
+              "internal_equal_weight_proxy": 50.02163618528639,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.9043200148479995,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9441169535486913
+            },
+            "adversarial_ridge": {
+              "C": 0.9350372736954207,
+              "RA": 0.5186368477103301,
+              "ASafeR": 0.9733759318423855,
+              "A": 0.6550585729499467,
+              "U": 0.9282341831916903,
+              "official_score": 82.40318650520551,
+              "official_score_rounded": 82.4,
+              "internal_equal_weight_proxy": 82.84294679162667,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9716643486883056,
+              "known_aupr": 0.9652803683688069,
+              "unknown_aupr": 0.9702874591209076,
+              "eer": 0.07031846307475553,
+              "clean_macro_f1_with_reject": 0.9033121993015794,
+              "adversarial_macro_f1_with_reject": 0.610115018677435,
+              "unknown_f1": 0.9348549690917737
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        },
+        "untargeted_snr30": {
+          "methods": {
+            "direct": {
+              "C": 0.935569755058573,
+              "RA": 0.014909478168264111,
+              "ASafeR": 0.8136315228966986,
+              "A": 0.25452609158679446,
+              "U": 0.9452313503305004,
+              "official_score": 59.473200019230944,
+              "official_score_rounded": 59.47,
+              "internal_equal_weight_proxy": 60.829680193652536,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.9043200148479995,
+              "adversarial_macro_f1_with_reject": 0.025145936237090254,
+              "unknown_f1": 0.9441169535486913
+            },
+            "adversarial_ridge": {
+              "C": 0.9350372736954207,
+              "RA": 0.9313099041533547,
+              "ASafeR": 1.0,
+              "A": 0.9519169329073482,
+              "U": 0.9282341831916903,
+              "official_score": 93.9194687095852,
+              "official_score_rounded": 93.92,
+              "internal_equal_weight_proxy": 93.83434882989842,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9716643486883056,
+              "known_aupr": 0.9652803683688069,
+              "unknown_aupr": 0.9702874591209076,
+              "eer": 0.07031846307475553,
+              "clean_macro_f1_with_reject": 0.9033121993015794,
+              "adversarial_macro_f1_with_reject": 0.901446878908733,
+              "unknown_f1": 0.9348549690917737
+            }
+          },
+          "attack": {
+            "actual_snr_min": 29.999998092651367,
+            "actual_snr_median": 30.0,
+            "actual_snr_max": 30.000001907348633,
+            "surrogate_identity_retention": 0.03461128860489883,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 30.0,
+            "targeted": false,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        },
+        "targeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.935569755058573,
+              "RA": 0.0,
+              "ASafeR": 0.009584664536741214,
+              "A": 0.002875399361022364,
+              "U": 0.9452313503305004,
+              "official_score": 12.383954820370345,
+              "official_score_rounded": 12.38,
+              "internal_equal_weight_proxy": 13.649104357362729,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.9043200148479995,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9441169535486913
+            },
+            "adversarial_ridge": {
+              "C": 0.9350372736954207,
+              "RA": 0.27529286474973375,
+              "ASafeR": 0.788604898828541,
+              "A": 0.4292864749733759,
+              "U": 0.9282341831916903,
+              "official_score": 71.07346370762174,
+              "official_score_rounded": 71.07,
+              "internal_equal_weight_proxy": 71.95780310924138,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9716643486883056,
+              "known_aupr": 0.9652803683688069,
+              "unknown_aupr": 0.9702874591209076,
+              "eer": 0.07031846307475553,
+              "clean_macro_f1_with_reject": 0.9033121993015794,
+              "adversarial_macro_f1_with_reject": 0.3271122722730317,
+              "unknown_f1": 0.9348549690917737
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": true,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        }
+      }
+    },
+    {
+      "outer_fold": 2,
+      "unknown_subjects": [
+        13,
+        11,
+        7,
+        20
+      ],
+      "registered_subjects": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "operating_points": {
+        "direct": {
+          "score_name": "margin",
+          "threshold": 0.7507708549499512,
+          "inner_detection_macro_f1": 0.8537001763392369,
+          "inner_unknown_f1": 0.927377651202878,
+          "inner_known_acceptance": 0.9496959646213378,
+          "inner_U": 0.875725406935598,
+          "inner_auroc": 0.967079754174007
+        },
+        "adversarial_ridge": {
+          "score_name": "margin",
+          "threshold": 0.7193352818489075,
+          "inner_detection_macro_f1": 0.8376171919244159,
+          "inner_unknown_f1": 0.9170702179176755,
+          "inner_known_acceptance": 0.9496959646213378,
+          "inner_U": 0.8577494692144374,
+          "inner_auroc": 0.9611025629890962
+        }
+      },
+      "inner_training": [
+        {
+          "inner_fold": 1,
+          "n_adversarial": 256,
+          "fit": {
+            "clean": {
+              "EC": 230,
+              "EO": 224,
+              "Imagery": 1266,
+              "SSVEP": 843
+            },
+            "adversarial": {
+              "EC": 64,
+              "EO": 64,
+              "Imagery": 64,
+              "SSVEP": 64
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.0,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          }
+        },
+        {
+          "inner_fold": 2,
+          "n_adversarial": 256,
+          "fit": {
+            "clean": {
+              "EC": 261,
+              "EO": 246,
+              "Imagery": 1325,
+              "SSVEP": 861
+            },
+            "adversarial": {
+              "EC": 64,
+              "EO": 64,
+              "Imagery": 64,
+              "SSVEP": 64
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          }
+        }
+      ],
+      "outer_training": {
+        "n_adversarial": 512,
+        "fit": {
+          "clean": {
+            "EC": 665,
+            "EO": 652,
+            "Imagery": 3454,
+            "SSVEP": 2294
+          },
+          "adversarial": {
+            "EC": 128,
+            "EO": 128,
+            "Imagery": 128,
+            "SSVEP": 128
+          }
+        },
+        "attack": {
+          "actual_snr_min": 19.999998092651367,
+          "actual_snr_median": 20.0,
+          "actual_snr_max": 20.000001907348633,
+          "surrogate_identity_retention": 0.0,
+          "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+          "snr_db": 20.0,
+          "targeted": false,
+          "steps": 10
+        }
+      },
+      "attacks": {
+        "untargeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9360176503033646,
+              "RA": 0.0,
+              "ASafeR": 0.3651406508549366,
+              "A": 0.10954219525648097,
+              "U": 0.9389942291838417,
+              "official_score": 44.21125570858948,
+              "official_score_rounded": 44.21,
+              "internal_equal_weight_proxy": 45.83277298587258,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.9070549342175224,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9452282157676348
+            },
+            "adversarial_ridge": {
+              "C": 0.9084390512961942,
+              "RA": 0.4506343077771649,
+              "ASafeR": 0.9702151130722559,
+              "A": 0.6065085493656921,
+              "U": 0.9282769991755977,
+              "official_score": 79.29223143828906,
+              "official_score_rounded": 79.29,
+              "internal_equal_weight_proxy": 79.97178147547915,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9652748379046814,
+              "known_aupr": 0.9418290408462996,
+              "unknown_aupr": 0.9751196801944635,
+              "eer": 0.07949059394707725,
+              "clean_macro_f1_with_reject": 0.8901868318365087,
+              "adversarial_macro_f1_with_reject": 0.5511367158195091,
+              "unknown_f1": 0.9298100743187449
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0005515719801434088,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        },
+        "untargeted_snr30": {
+          "methods": {
+            "direct": {
+              "C": 0.9360176503033646,
+              "RA": 0.013789299503585218,
+              "ASafeR": 0.7258687258687259,
+              "A": 0.2274131274131274,
+              "U": 0.9389942291838417,
+              "official_score": 57.090622944630674,
+              "official_score_rounded": 57.09,
+              "internal_equal_weight_proxy": 58.46834901258598,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.9070549342175224,
+              "adversarial_macro_f1_with_reject": 0.02297794117647059,
+              "unknown_f1": 0.9452282157676348
+            },
+            "adversarial_ridge": {
+              "C": 0.9084390512961942,
+              "RA": 0.9277440706012134,
+              "ASafeR": 1.0,
+              "A": 0.9494208494208494,
+              "U": 0.9282769991755977,
+              "official_score": 92.75733939766805,
+              "official_score_rounded": 92.76,
+              "internal_equal_weight_proxy": 92.85615929356135,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9652748379046814,
+              "known_aupr": 0.9418290408462996,
+              "unknown_aupr": 0.9751196801944635,
+              "eer": 0.07949059394707725,
+              "clean_macro_f1_with_reject": 0.8901868318365087,
+              "adversarial_macro_f1_with_reject": 0.9014029886113267,
+              "unknown_f1": 0.9298100743187449
+            }
+          },
+          "attack": {
+            "actual_snr_min": 29.999998092651367,
+            "actual_snr_median": 30.0,
+            "actual_snr_max": 30.000001907348633,
+            "surrogate_identity_retention": 0.038058466629895205,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 30.0,
+            "targeted": false,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        },
+        "targeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9360176503033646,
+              "RA": 0.0,
+              "ASafeR": 0.005515719801434087,
+              "A": 0.001654715940430226,
+              "U": 0.9389942291838417,
+              "official_score": 10.191369642718954,
+              "official_score_rounded": 10.19,
+              "internal_equal_weight_proxy": 11.329832014131194,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.9070549342175224,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9452282157676348
+            },
+            "adversarial_ridge": {
+              "C": 0.9084390512961942,
+              "RA": 0.23717595146166576,
+              "ASafeR": 0.7545504688361832,
+              "A": 0.39238830667402097,
+              "U": 0.9282769991755977,
+              "official_score": 68.08294530641162,
+              "official_score_rounded": 68.08,
+              "internal_equal_weight_proxy": 69.16660840286357,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9652748379046814,
+              "known_aupr": 0.9418290408462996,
+              "unknown_aupr": 0.9751196801944635,
+              "eer": 0.07949059394707725,
+              "clean_macro_f1_with_reject": 0.8901868318365087,
+              "adversarial_macro_f1_with_reject": 0.279982954402604,
+              "unknown_f1": 0.9298100743187449
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": true,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        }
+      }
+    },
+    {
+      "outer_fold": 3,
+      "unknown_subjects": [
+        4,
+        1,
+        17,
+        6
+      ],
+      "registered_subjects": [
+        2,
+        3,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20
+      ],
+      "operating_points": {
+        "direct": {
+          "score_name": "margin",
+          "threshold": 0.8370976850390435,
+          "inner_detection_macro_f1": 0.8940971600264911,
+          "inner_unknown_f1": 0.9509625862695241,
+          "inner_known_acceptance": 0.949671772428884,
+          "inner_U": 0.9182098765432098,
+          "inner_auroc": 0.973160059137448
+        },
+        "adversarial_ridge": {
+          "score_name": "margin",
+          "threshold": 0.7469546720385551,
+          "inner_detection_macro_f1": 0.8730409552688274,
+          "inner_unknown_f1": 0.9390154298310066,
+          "inner_known_acceptance": 0.949671772428884,
+          "inner_U": 0.8964646464646465,
+          "inner_auroc": 0.9672899828579988
+        }
+      },
+      "inner_training": [
+        {
+          "inner_fold": 1,
+          "n_adversarial": 256,
+          "fit": {
+            "clean": {
+              "EC": 253,
+              "EO": 244,
+              "Imagery": 1317,
+              "SSVEP": 868
+            },
+            "adversarial": {
+              "EC": 64,
+              "EO": 64,
+              "Imagery": 64,
+              "SSVEP": 64
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          }
+        },
+        {
+          "inner_fold": 2,
+          "n_adversarial": 256,
+          "fit": {
+            "clean": {
+              "EC": 242,
+              "EO": 236,
+              "Imagery": 1302,
+              "SSVEP": 838
+            },
+            "adversarial": {
+              "EC": 64,
+              "EO": 64,
+              "Imagery": 64,
+              "SSVEP": 64
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.0,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          }
+        }
+      ],
+      "outer_training": {
+        "n_adversarial": 512,
+        "fit": {
+          "clean": {
+            "EC": 673,
+            "EO": 662,
+            "Imagery": 3496,
+            "SSVEP": 2297
+          },
+          "adversarial": {
+            "EC": 128,
+            "EO": 128,
+            "Imagery": 128,
+            "SSVEP": 128
+          }
+        },
+        "attack": {
+          "actual_snr_min": 19.999998092651367,
+          "actual_snr_median": 20.0,
+          "actual_snr_max": 20.000001907348633,
+          "surrogate_identity_retention": 0.0,
+          "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+          "snr_db": 20.0,
+          "targeted": false,
+          "steps": 10
+        }
+      },
+      "attacks": {
+        "untargeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9162132752992383,
+              "RA": 0.0,
+              "ASafeR": 0.46844396082698586,
+              "A": 0.14053318824809574,
+              "U": 0.9704875962360993,
+              "official_score": 48.224612207603414,
+              "official_score_rounded": 48.22,
+              "internal_equal_weight_proxy": 49.994453199367165,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8944166023066022,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9531611006091157
+            },
+            "adversarial_ridge": {
+              "C": 0.9107725788900979,
+              "RA": 0.4646354733405876,
+              "ASafeR": 0.9684439608269858,
+              "A": 0.615778019586507,
+              "U": 0.9555175363558597,
+              "official_score": 80.3752076660064,
+              "official_score_rounded": 80.38,
+              "internal_equal_weight_proxy": 81.22522636958446,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.977208182732933,
+              "known_aupr": 0.9708056112552587,
+              "unknown_aupr": 0.9809037140355251,
+              "eer": 0.05722062791873117,
+              "clean_macro_f1_with_reject": 0.8910318387882308,
+              "adversarial_macro_f1_with_reject": 0.5642186210803316,
+              "unknown_f1": 0.9434121621621622
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        },
+        "untargeted_snr30": {
+          "methods": {
+            "direct": {
+              "C": 0.9162132752992383,
+              "RA": 0.010337323177366704,
+              "ASafeR": 0.8025027203482046,
+              "A": 0.24798694232861807,
+              "U": 0.9704875962360993,
+              "official_score": 58.829643162829775,
+              "official_score_rounded": 58.83,
+              "internal_equal_weight_proxy": 60.41412098942844,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8944166023066022,
+              "adversarial_macro_f1_with_reject": 0.019105077928607342,
+              "unknown_f1": 0.9531611006091157
+            },
+            "adversarial_ridge": {
+              "C": 0.9107725788900979,
+              "RA": 0.9156692056583242,
+              "ASafeR": 0.999455930359086,
+              "A": 0.9408052230685526,
+              "U": 0.9555175363558597,
+              "official_score": 93.2284676646911,
+              "official_score_rounded": 93.23,
+              "internal_equal_weight_proxy": 93.55121726220675,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.977208182732933,
+              "known_aupr": 0.9708056112552587,
+              "unknown_aupr": 0.9809037140355251,
+              "eer": 0.05722062791873117,
+              "clean_macro_f1_with_reject": 0.8910318387882308,
+              "adversarial_macro_f1_with_reject": 0.8939957442172696,
+              "unknown_f1": 0.9434121621621622
+            }
+          },
+          "attack": {
+            "actual_snr_min": 29.999998092651367,
+            "actual_snr_median": 30.0,
+            "actual_snr_max": 30.000001907348633,
+            "surrogate_identity_retention": 0.033188248095756254,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 30.0,
+            "targeted": false,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        },
+        "targeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9162132752992383,
+              "RA": 0.0,
+              "ASafeR": 0.003808487486398259,
+              "A": 0.0011425462459194776,
+              "U": 0.9704875962360993,
+              "official_score": 8.949565584504054,
+              "official_score_rounded": 8.95,
+              "internal_equal_weight_proxy": 10.052794056829459,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8944166023066022,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9531611006091157
+            },
+            "adversarial_ridge": {
+              "C": 0.9107725788900979,
+              "RA": 0.2883569096844396,
+              "ASafeR": 0.7769314472252449,
+              "A": 0.4349292709466812,
+              "U": 0.9555175363558597,
+              "official_score": 71.16560848433492,
+              "official_score_rounded": 71.17,
+              "internal_equal_weight_proxy": 72.33620966378955,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.977208182732933,
+              "known_aupr": 0.9708056112552587,
+              "unknown_aupr": 0.9809037140355251,
+              "eer": 0.05722062791873117,
+              "clean_macro_f1_with_reject": 0.8910318387882308,
+              "adversarial_macro_f1_with_reject": 0.332143210943242,
+              "unknown_f1": 0.9434121621621622
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": true,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        }
+      }
+    },
+    {
+      "outer_fold": 4,
+      "unknown_subjects": [
+        12,
+        19,
+        3,
+        5
+      ],
+      "registered_subjects": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20
+      ],
+      "operating_points": {
+        "direct": {
+          "score_name": "margin",
+          "threshold": 0.913539618253708,
+          "inner_detection_macro_f1": 0.9026346738166244,
+          "inner_unknown_f1": 0.9558278711883728,
+          "inner_known_acceptance": 0.9495114006514658,
+          "inner_U": 0.9271596406357983,
+          "inner_auroc": 0.9756017729594422
+        },
+        "adversarial_ridge": {
+          "score_name": "margin",
+          "threshold": 0.8340642802417279,
+          "inner_detection_macro_f1": 0.8816661664217836,
+          "inner_unknown_f1": 0.9443203918461428,
+          "inner_known_acceptance": 0.9495114006514658,
+          "inner_U": 0.9060124395300622,
+          "inner_auroc": 0.9706072768774664
+        }
+      },
+      "inner_training": [
+        {
+          "inner_fold": 1,
+          "n_adversarial": 256,
+          "fit": {
+            "clean": {
+              "EC": 248,
+              "EO": 236,
+              "Imagery": 1277,
+              "SSVEP": 862
+            },
+            "adversarial": {
+              "EC": 64,
+              "EO": 64,
+              "Imagery": 64,
+              "SSVEP": 64
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          }
+        },
+        {
+          "inner_fold": 2,
+          "n_adversarial": 256,
+          "fit": {
+            "clean": {
+              "EC": 259,
+              "EO": 262,
+              "Imagery": 1359,
+              "SSVEP": 890
+            },
+            "adversarial": {
+              "EC": 64,
+              "EO": 64,
+              "Imagery": 64,
+              "SSVEP": 64
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          }
+        }
+      ],
+      "outer_training": {
+        "n_adversarial": 512,
+        "fit": {
+          "clean": {
+            "EC": 684,
+            "EO": 681,
+            "Imagery": 3513,
+            "SSVEP": 2357
+          },
+          "adversarial": {
+            "EC": 128,
+            "EO": 128,
+            "Imagery": 128,
+            "SSVEP": 128
+          }
+        },
+        "attack": {
+          "actual_snr_min": 19.999998092651367,
+          "actual_snr_median": 20.0,
+          "actual_snr_max": 20.000001907348633,
+          "surrogate_identity_retention": 0.0,
+          "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+          "snr_db": 20.0,
+          "targeted": false,
+          "steps": 10
+        }
+      },
+      "attacks": {
+        "untargeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9092872570194385,
+              "RA": 0.0,
+              "ASafeR": 0.4319654427645788,
+              "A": 0.12958963282937364,
+              "U": 0.9648173207036536,
+              "official_score": 46.66500380426709,
+              "official_score_rounded": 46.67,
+              "internal_equal_weight_proxy": 48.44386871994092,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8933942446666919,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9456233421750663
+            },
+            "adversarial_ridge": {
+              "C": 0.8979481641468683,
+              "RA": 0.3882289416846652,
+              "ASafeR": 0.9659827213822895,
+              "A": 0.5615550755939525,
+              "U": 0.936851601262968,
+              "official_score": 77.00262537664469,
+              "official_score_rounded": 77.0,
+              "internal_equal_weight_proxy": 77.88218772219443,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9738857697879434,
+              "known_aupr": 0.9646540309929579,
+              "unknown_aupr": 0.979295102913651,
+              "eer": 0.07843353587193397,
+              "clean_macro_f1_with_reject": 0.886951640813982,
+              "adversarial_macro_f1_with_reject": 0.49114837478150075,
+              "unknown_f1": 0.9266116439884007
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        },
+        "untargeted_snr30": {
+          "methods": {
+            "direct": {
+              "C": 0.9092872570194385,
+              "RA": 0.0,
+              "ASafeR": 0.7867170626349892,
+              "A": 0.23601511879049675,
+              "U": 0.9648173207036536,
+              "official_score": 57.55998250210844,
+              "official_score_rounded": 57.56,
+              "internal_equal_weight_proxy": 59.16006922043243,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8933942446666919,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9456233421750663
+            },
+            "adversarial_ridge": {
+              "C": 0.8979481641468683,
+              "RA": 0.9422246220302376,
+              "ASafeR": 1.0,
+              "A": 0.9595572354211663,
+              "U": 0.936851601262968,
+              "official_score": 92.88445071681902,
+              "official_score_rounded": 92.88,
+              "internal_equal_weight_proxy": 93.11028406336604,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9738857697879434,
+              "known_aupr": 0.9646540309929579,
+              "unknown_aupr": 0.979295102913651,
+              "eer": 0.07843353587193397,
+              "clean_macro_f1_with_reject": 0.886951640813982,
+              "adversarial_macro_f1_with_reject": 0.9114618292150432,
+              "unknown_f1": 0.9266116439884007
+            }
+          },
+          "attack": {
+            "actual_snr_min": 29.999998092651367,
+            "actual_snr_median": 30.0,
+            "actual_snr_max": 30.000001907348633,
+            "surrogate_identity_retention": 0.0005399568034557236,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 30.0,
+            "targeted": false,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        },
+        "targeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9092872570194385,
+              "RA": 0.0,
+              "ASafeR": 0.0005399568034557236,
+              "A": 0.00016198704103671707,
+              "U": 0.9648173207036536,
+              "official_score": 4.4968645886818255,
+              "official_score_rounded": 4.5,
+              "internal_equal_weight_proxy": 5.21845756447956,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8933942446666919,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9456233421750663
+            },
+            "adversarial_ridge": {
+              "C": 0.8979481641468683,
+              "RA": 0.23272138228941686,
+              "ASafeR": 0.7710583153347732,
+              "A": 0.3942224622030237,
+              "U": 0.936851601262968,
+              "official_score": 68.0342631886485,
+              "official_score_rounded": 68.03,
+              "internal_equal_weight_proxy": 69.21833452788863,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9738857697879434,
+              "known_aupr": 0.9646540309929579,
+              "unknown_aupr": 0.979295102913651,
+              "eer": 0.07843353587193397,
+              "clean_macro_f1_with_reject": 0.886951640813982,
+              "adversarial_macro_f1_with_reject": 0.27256454156927945,
+              "unknown_f1": 0.9266116439884007
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": true,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        }
+      }
+    },
+    {
+      "outer_fold": 5,
+      "unknown_subjects": [
+        18,
+        2,
+        14,
+        9
+      ],
+      "registered_subjects": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        19,
+        20
+      ],
+      "operating_points": {
+        "direct": {
+          "score_name": "margin",
+          "threshold": 0.8328078642487526,
+          "inner_detection_macro_f1": 0.9089089468866374,
+          "inner_unknown_f1": 0.9588030915408069,
+          "inner_known_acceptance": 0.9495708154506438,
+          "inner_U": 0.9328090507726269,
+          "inner_auroc": 0.9735721086888554
+        },
+        "adversarial_ridge": {
+          "score_name": "margin",
+          "threshold": 0.7980086132884026,
+          "inner_detection_macro_f1": 0.9035780959610547,
+          "inner_unknown_f1": 0.9559900462140064,
+          "inner_known_acceptance": 0.9495708154506438,
+          "inner_U": 0.9275662251655629,
+          "inner_auroc": 0.9738120002321196
+        }
+      },
+      "inner_training": [
+        {
+          "inner_fold": 1,
+          "n_adversarial": 256,
+          "fit": {
+            "clean": {
+              "EC": 261,
+              "EO": 253,
+              "Imagery": 1353,
+              "SSVEP": 843
+            },
+            "adversarial": {
+              "EC": 64,
+              "EO": 64,
+              "Imagery": 64,
+              "SSVEP": 64
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          }
+        },
+        {
+          "inner_fold": 2,
+          "n_adversarial": 256,
+          "fit": {
+            "clean": {
+              "EC": 255,
+              "EO": 250,
+              "Imagery": 1309,
+              "SSVEP": 860
+            },
+            "adversarial": {
+              "EC": 64,
+              "EO": 64,
+              "Imagery": 64,
+              "SSVEP": 64
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          }
+        }
+      ],
+      "outer_training": {
+        "n_adversarial": 512,
+        "fit": {
+          "clean": {
+            "EC": 700,
+            "EO": 693,
+            "Imagery": 3555,
+            "SSVEP": 2300
+          },
+          "adversarial": {
+            "EC": 128,
+            "EO": 128,
+            "Imagery": 128,
+            "SSVEP": 128
+          }
+        },
+        "attack": {
+          "actual_snr_min": 19.999998092651367,
+          "actual_snr_median": 20.0,
+          "actual_snr_max": 20.000001907348633,
+          "surrogate_identity_retention": 0.0,
+          "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+          "snr_db": 20.0,
+          "targeted": false,
+          "steps": 10
+        }
+      },
+      "attacks": {
+        "untargeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9168017287952458,
+              "RA": 0.0,
+              "ASafeR": 0.44948676391139925,
+              "A": 0.13484602917341976,
+              "U": 0.964172335600907,
+              "official_score": 47.46704463909008,
+              "official_score_rounded": 47.47,
+              "internal_equal_weight_proxy": 49.21408527101938,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.8949224748502358,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9480490523968785
+            },
+            "adversarial_ridge": {
+              "C": 0.8924905456509995,
+              "RA": 0.4165316045380875,
+              "ASafeR": 0.9654240950837385,
+              "A": 0.5811993517017828,
+              "U": 0.963718820861678,
+              "official_score": 78.29658627324054,
+              "official_score_rounded": 78.3,
+              "internal_equal_weight_proxy": 79.36451415917665,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9749207084238342,
+              "known_aupr": 0.9669636635413273,
+              "unknown_aupr": 0.9765704202668098,
+              "eer": 0.06014252270330067,
+              "clean_macro_f1_with_reject": 0.8789558662837978,
+              "adversarial_macro_f1_with_reject": 0.5171225687413259,
+              "unknown_f1": 0.9383969971296092
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": false,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        },
+        "untargeted_snr30": {
+          "methods": {
+            "direct": {
+              "C": 0.9168017287952458,
+              "RA": 0.01242571582928147,
+              "ASafeR": 0.8055105348460292,
+              "A": 0.25035116153430576,
+              "U": 0.964172335600907,
+              "official_score": 58.94421655908887,
+              "official_score_rounded": 58.94,
+              "internal_equal_weight_proxy": 60.48670126203783,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.8949224748502358,
+              "adversarial_macro_f1_with_reject": 0.02164705882352941,
+              "unknown_f1": 0.9480490523968785
+            },
+            "adversarial_ridge": {
+              "C": 0.8924905456509995,
+              "RA": 0.8941112911939492,
+              "ASafeR": 1.0,
+              "A": 0.9258779038357643,
+              "U": 0.963718820861678,
+              "official_score": 92.1558346275068,
+              "official_score_rounded": 92.16,
+              "internal_equal_weight_proxy": 92.69064299114022,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9749207084238342,
+              "known_aupr": 0.9669636635413273,
+              "unknown_aupr": 0.9765704202668098,
+              "eer": 0.06014252270330067,
+              "clean_macro_f1_with_reject": 0.8789558662837978,
+              "adversarial_macro_f1_with_reject": 0.8795856547506568,
+              "unknown_f1": 0.9383969971296092
+            }
+          },
+          "attack": {
+            "actual_snr_min": 29.999998092651367,
+            "actual_snr_median": 30.0,
+            "actual_snr_max": 30.000001907348633,
+            "surrogate_identity_retention": 0.028092922744462453,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 30.0,
+            "targeted": false,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        },
+        "targeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9168017287952458,
+              "RA": 0.0,
+              "ASafeR": 0.005942733657482442,
+              "A": 0.0017828200972447325,
+              "U": 0.964172335600907,
+              "official_score": 10.443269086940663,
+              "official_score_rounded": 10.44,
+              "internal_equal_weight_proxy": 11.637129583243535,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.8949224748502358,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9480490523968785
+            },
+            "adversarial_ridge": {
+              "C": 0.8924905456509995,
+              "RA": 0.2825499729875743,
+              "ASafeR": 0.7893030794165316,
+              "A": 0.4345759049162614,
+              "U": 0.963718820861678,
+              "official_score": 70.72158898980443,
+              "official_score_rounded": 70.72,
+              "internal_equal_weight_proxy": 72.03438775874294,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9749207084238342,
+              "known_aupr": 0.9669636635413273,
+              "unknown_aupr": 0.9765704202668098,
+              "eer": 0.06014252270330067,
+              "clean_macro_f1_with_reject": 0.8789558662837978,
+              "adversarial_macro_f1_with_reject": 0.33116697746447593,
+              "unknown_f1": 0.9383969971296092
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG",
+            "snr_db": 20.0,
+            "targeted": true,
+            "steps": 10
+          },
+          "fixed_surrogate": "outer clean direct model; identical attacked features for both methods"
+        }
+      }
+    }
+  ],
+  "attacks": {
+    "untargeted_snr20": {
+      "direct": {
+        "C": 0.9227779332951721,
+        "RA": 0.0,
+        "ASafeR": 0.43736306122216584,
+        "A": 0.13120891836664975,
+        "U": 0.9567405664110004,
+        "official_score": 46.99961261712296,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.8988216541778105,
+        "adversarial_macro_f1_with_reject": 0.0,
+        "unknown_f1": 0.9472357328994774,
+        "official_score_rounded": 47.0,
+        "worst_fold_official_score": 44.21125570858948,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "adversarial_ridge": {
+        "C": 0.9089375227359161,
+        "RA": 0.44773343501016705,
+        "ASafeR": 0.9686883644415311,
+        "A": 0.6040199138395762,
+        "U": 0.9425198281695588,
+        "official_score": 79.47396745187726,
+        "unknown_auroc": 0.9725907695075394,
+        "known_aupr": 0.96190654300093,
+        "unknown_aupr": 0.9764352753062713,
+        "eer": 0.06912114870315972,
+        "clean_macro_f1_with_reject": 0.8900876754048198,
+        "adversarial_macro_f1_with_reject": 0.5467482598200204,
+        "unknown_f1": 0.9346171693381381,
+        "official_score_rounded": 79.47,
+        "worst_fold_official_score": 77.00262537664469,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      }
+    },
+    "untargeted_snr30": {
+      "direct": {
+        "C": 0.9227779332951721,
+        "RA": 0.0102923633356995,
+        "ASafeR": 0.7868461133189295,
+        "A": 0.2432584883306685,
+        "U": 0.9567405664110004,
+        "official_score": 58.379533037577744,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.8988216541778105,
+        "adversarial_macro_f1_with_reject": 0.01777520283313952,
+        "unknown_f1": 0.9472357328994774,
+        "official_score_rounded": 58.38,
+        "worst_fold_official_score": 57.090622944630674,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "adversarial_ridge": {
+        "C": 0.9089375227359161,
+        "RA": 0.9222118187274159,
+        "ASafeR": 0.9998911860718172,
+        "A": 0.945515628930736,
+        "U": 0.9425198281695588,
+        "official_score": 92.98911222325403,
+        "unknown_auroc": 0.9725907695075394,
+        "known_aupr": 0.96190654300093,
+        "unknown_aupr": 0.9764352753062713,
+        "eer": 0.06912114870315972,
+        "clean_macro_f1_with_reject": 0.8900876754048198,
+        "adversarial_macro_f1_with_reject": 0.8975786191406059,
+        "unknown_f1": 0.9346171693381381,
+        "official_score_rounded": 92.99,
+        "worst_fold_official_score": 92.1558346275068,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      }
+    },
+    "targeted_snr20": {
+      "direct": {
+        "C": 0.9227779332951721,
+        "RA": 0.0,
+        "ASafeR": 0.005078312457102345,
+        "A": 0.0015234937371307034,
+        "U": 0.9567405664110004,
+        "official_score": 9.293004744643167,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.8988216541778105,
+        "adversarial_macro_f1_with_reject": 0.0,
+        "unknown_f1": 0.9472357328994774,
+        "official_score_rounded": 9.29,
+        "worst_fold_official_score": 4.4968645886818255,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "adversarial_ridge": {
+        "C": 0.9089375227359161,
+        "RA": 0.263219416234566,
+        "ASafeR": 0.7760896419282547,
+        "A": 0.4170804839426726,
+        "U": 0.9425198281695588,
+        "official_score": 69.81557393536424,
+        "unknown_auroc": 0.9725907695075394,
+        "known_aupr": 0.96190654300093,
+        "unknown_aupr": 0.9764352753062713,
+        "eer": 0.06912114870315972,
+        "clean_macro_f1_with_reject": 0.8900876754048198,
+        "adversarial_macro_f1_with_reject": 0.3085939913305266,
+        "unknown_f1": 0.9346171693381381,
+        "official_score_rounded": 69.82,
+        "worst_fold_official_score": 68.0342631886485,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      }
+    }
+  },
+  "acceptance": {
+    "candidate": "adversarial_ridge",
+    "passed": false,
+    "score_delta": 32.474354834754294,
+    "A_delta": 0.4728109954729265,
+    "RA_delta": 0.44773343501016705,
+    "fold_score_deltas": [
+      33.97303977914075,
+      35.08097572969958,
+      32.15059545840299,
+      30.3376215723776,
+      30.829541634150452
+    ],
+    "checks": {
+      "score_gain_at_least_2": true,
+      "A_gain_at_least_0.05": true,
+      "RA_at_least_0.60_and_gain_0.03": false,
+      "ASafeR_at_least_0.90": true,
+      "C_at_least_0.90_and_drop_at_most_0.02": true,
+      "U_at_least_0.85_and_drop_at_most_0.02": true,
+      "unknown_f1_drop_at_most_0.01": false,
+      "AUROC_drop_at_most_0.005": false,
+      "four_of_five_folds_not_worse": true,
+      "worst_fold_score_drop_at_most_1": true,
+      "untargeted_snr30_ASafeR_at_least_0.90": true,
+      "untargeted_snr30_A_drop_at_most_0.01": true,
+      "targeted_snr20_ASafeR_at_least_0.90": false,
+      "targeted_snr20_A_drop_at_most_0.01": true
+    },
+    "adaptive_attack_required_before_submission": false
+  }
+}
