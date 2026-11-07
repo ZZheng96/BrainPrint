@@ -22,7 +22,7 @@ def refit_ridge_components(
     adversarial_full: np.ndarray,
     adversarial_window: np.ndarray,
 ) -> dict:
-    """clean 全量加训练折内 adv；近邻组件与攻击尺度保持 clean 拟合结果。"""
+    """clean 全量加训练折内 adv；clean:adv 有效权重为 2:1。"""
     adversarial_indices = np.asarray(adversarial_indices, dtype=int)
     if adversarial_indices.ndim != 1 or not len(adversarial_indices):
         raise ValueError("adversarial_indices 必须是一维非空数组")
@@ -48,10 +48,14 @@ def refit_ridge_components(
         adv_window = np.asarray(adversarial_window[adversarial_positions]).reshape(-1, x.shape[1])
         adv_targets = subjects[adversarial_indices[adversarial_positions]]
 
-        full = np.concatenate([clean_full, adv_full])
-        full_targets = np.concatenate([clean_targets, adv_targets])
-        windows = np.concatenate([clean_window, adv_window])
-        window_targets = np.concatenate([np.repeat(clean_targets, 2), np.repeat(adv_targets, 2)])
+        full = np.concatenate([clean_full, clean_full, adv_full])
+        full_targets = np.concatenate([clean_targets, clean_targets, adv_targets])
+        windows = np.concatenate([clean_window, clean_window, adv_window])
+        window_targets = np.concatenate([
+            np.repeat(clean_targets, 2),
+            np.repeat(clean_targets, 2),
+            np.repeat(adv_targets, 2),
+        ])
         models.full = TorchRidge(model.device, model.alpha).fit(
             full, full_targets, model.classes
         )
