@@ -2,12 +2,18 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "commit" / "code"))
 
 import numpy as np
 import pandas as pd
 from sklearn.metrics import f1_score
 from sklearn.neighbors import NearestNeighbors
+
+from evaluate_task_specific_ensemble import build_task_scores
 
 ROOT = Path(__file__).resolve().parents[2]
 CACHE = ROOT / "BrainPrint_cache"
@@ -103,8 +109,16 @@ def metrics(pred: np.ndarray, true: np.ndarray) -> dict:
     }
 
 
-def evaluate(name: str, selected: np.ndarray, score_path: str, meta: pd.DataFrame, features: np.ndarray, foldwise: bool) -> dict:
-    scores = np.asarray(np.load(CACHE / score_path, mmap_mode="r"))
+def evaluate(name: str, selected: np.ndarray, score_path: str | dict[str, str], meta: pd.DataFrame, features: np.ndarray, foldwise: bool) -> dict:
+    if isinstance(score_path, dict):
+        scores = build_task_scores(
+            meta["task"].to_numpy(),
+            **{key: np.asarray(np.load(CACHE / value, mmap_mode="r")) for key, value in score_path.items()},
+        )
+        score_label = ",".join(score_path.values())
+    else:
+        scores = np.asarray(np.load(CACHE / score_path, mmap_mode="r"))
+        score_label = score_path
     truth = meta["subject"].to_numpy()
     folds = folds_for(meta)
     blocks = range(5) if foldwise else [None]
@@ -128,7 +142,7 @@ def evaluate(name: str, selected: np.ndarray, score_path: str, meta: pd.DataFram
     gated, gate_diag = pair_gate(all_idx, scores, meta, features)
     return {
         "protocol": name,
-        "score_file": score_path,
+        "score_file": score_label,
         "pair_gate_training_protocol": "仅使用 BrainPrint_cache/train_features.npy 与 train_metadata.csv；同 task、当前评估子集内 cosine similarity>0.99 的近邻图；blocked OOF 每个 pair 只在同一验证 fold 内构造；不读取 Test 或标签来决定门控，组件 purity 仅由 direct prediction 计算。",
         "overall": {
             "first_submission_equivalent": metrics(direct, truth[all_idx]),
@@ -151,12 +165,12 @@ def main() -> None:
         "dataset": "BrainPrint train only; Test 标签未使用；正式 CSV 未修改",
         "definitions": "C=identity accuracy；F1=registered identities 1..20 macro-F1。U/unknown AUC/F1 仅在有未知标签时计算；RA/ASafeR 仅在 raw EEG attack 数据可复用时计算。",
         "blocked_oof": evaluate("blocked_oof (5 trial-block folds)", all_selected, "train_blocked_oof_scores_task_specific_guarded.npy", meta, features, True),
-        "reverse_holdout": evaluate("reverse (first 20% holdout)", reverse, "train_forward_scores_task_specific_guarded.npy", meta, features, False),
-        "middle_holdout": evaluate("middle (40%-60% holdout)", middle, "train_forward_scores_task_specific_guarded.npy", meta, features, False),
+        "reverse_holdout": evaluate("reverse (first 20% holdout)", reverse, {"full": "train_reverse_scores_task_full.npy", "window": "train_reverse_scores_task_window.npy", "low": "train_reverse_scores_task_low.npy", "low_neighbor": "train_reverse_scores_task_low_neighbor.npy", "delta_neighbor": "train_reverse_scores_task_delta_neighbor.npy"}, meta, features, False),
+        "middle_holdout": evaluate("middle (40%-60% holdout)", middle, {"full": "train_middle_scores_task_full.npy", "window": "train_middle_scores_task_window.npy", "low": "train_middle_scores_task_low.npy", "low_neighbor": "train_middle_scores_task_low_neighbor.npy", "delta_neighbor": "train_middle_scores_task_delta_neighbor.npy"}, meta, features, False),
     }
     out_json = ROOT / "research" / "second_submission" / "freeze_evaluation.json"
     out_json.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    lines = ["# 冻结验收实验报告", "", "- 仅使用训练 features/metadata 与已有任务特异分数；未使用 Test 标签，未修改正式 CSV。", "- pair gate 协议：同 task、session2、相似度 > 0.99；blocked OOF 在同 fold 内构图；组件 purity 与 margin 只来自 direct prediction。", "", "| 协议 | 方案 | C/accuracy | F1 macro | unknown AUC | unknown F1 |", "|---|---|---:|---:|---:|---:|"]
+    lines = ["# 冻结验收实验报告", "", "- 仅使用训练 features/metadata 与已有任务特异分数；未使用 Test 标签，未修改正式 CSV。", "- pair gate 协议：训练数据内同 task、相似度 > 0.99；blocked OOF 在同 fold 内构图；组件 purity 与 margin 只来自 direct prediction。", "", "| 协议 | 方案 | C/accuracy | F1 macro | unknown AUC | unknown F1 |", "|---|---|---:|---:|---:|---:|"]
     for key in ("blocked_oof", "reverse_holdout", "middle_holdout"):
         for method in ("first_submission_equivalent", "second_pair_gate"):
             x = report[key]["overall"][method]

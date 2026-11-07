@@ -207,13 +207,13 @@
   },
   "reverse_holdout": {
     "protocol": "reverse (first 20% holdout)",
-    "score_file": "train_forward_scores_task_specific_guarded.npy",
+    "score_file": "train_reverse_scores_task_full.npy,train_reverse_scores_task_window.npy,train_reverse_scores_task_low.npy,train_reverse_scores_task_low_neighbor.npy,train_reverse_scores_task_delta_neighbor.npy",
     "pair_gate_training_protocol": "仅使用 BrainPrint_cache/train_features.npy 与 train_metadata.csv；同 task、当前评估子集内 cosine similarity>0.99 的近邻图；blocked OOF 每个 pair 只在同一验证 fold 内构造；不读取 Test 或标签来决定门控，组件 purity 仅由 direct prediction 计算。",
     "overall": {
       "first_submission_equivalent": {
         "n": 2245,
-        "C_accuracy": 0.05434298440979955,
-        "F1_macro_known": 0.005154203633291086,
+        "C_accuracy": 0.9986636971046771,
+        "F1_macro_known": 0.9986415747425086,
         "U": "N/A（未构造未知样本/拒识阈值）",
         "unknown_auc": "N/A（无内部未知标签）",
         "unknown_f1": "N/A（无内部未知标签）",
@@ -222,8 +222,8 @@
       },
       "second_pair_gate": {
         "n": 2245,
-        "C_accuracy": 0.05434298440979955,
-        "F1_macro_known": 0.005154203633291086,
+        "C_accuracy": 0.9991091314031181,
+        "F1_macro_known": 0.9990727927019037,
         "U": "N/A（未构造未知样本/拒识阈值）",
         "unknown_auc": "N/A（无内部未知标签）",
         "unknown_f1": "N/A（无内部未知标签）",
@@ -233,8 +233,8 @@
       "gate_diagnostics": {
         "components": 407,
         "component_rows": 2206,
-        "allowed_pair_rows": 0,
-        "changed_rows": 0,
+        "allowed_pair_rows": 1,
+        "changed_rows": 1,
         "similarity_threshold": 0.99,
         "min_component_size": 2,
         "min_direct_purity": 0.75,
@@ -246,8 +246,8 @@
         "block": "all",
         "first_submission_equivalent": {
           "n": 2245,
-          "C_accuracy": 0.05434298440979955,
-          "F1_macro_known": 0.005154203633291086,
+          "C_accuracy": 0.9986636971046771,
+          "F1_macro_known": 0.9986415747425086,
           "U": "N/A（未构造未知样本/拒识阈值）",
           "unknown_auc": "N/A（无内部未知标签）",
           "unknown_f1": "N/A（无内部未知标签）",
@@ -256,8 +256,8 @@
         },
         "second_pair_gate": {
           "n": 2245,
-          "C_accuracy": 0.05434298440979955,
-          "F1_macro_known": 0.005154203633291086,
+          "C_accuracy": 0.9991091314031181,
+          "F1_macro_known": 0.9990727927019037,
           "U": "N/A（未构造未知样本/拒识阈值）",
           "unknown_auc": "N/A（无内部未知标签）",
           "unknown_f1": "N/A（无内部未知标签）",
@@ -267,8 +267,8 @@
         "gate_diagnostics": {
           "components": 407,
           "component_rows": 2206,
-          "allowed_pair_rows": 0,
-          "changed_rows": 0,
+          "allowed_pair_rows": 1,
+          "changed_rows": 1,
           "similarity_threshold": 0.99,
           "min_component_size": 2,
           "min_direct_purity": 0.75,
@@ -279,13 +279,13 @@
   },
   "middle_holdout": {
     "protocol": "middle (40%-60% holdout)",
-    "score_file": "train_forward_scores_task_specific_guarded.npy",
+    "score_file": "train_middle_scores_task_full.npy,train_middle_scores_task_window.npy,train_middle_scores_task_low.npy,train_middle_scores_task_low_neighbor.npy,train_middle_scores_task_delta_neighbor.npy",
     "pair_gate_training_protocol": "仅使用 BrainPrint_cache/train_features.npy 与 train_metadata.csv；同 task、当前评估子集内 cosine similarity>0.99 的近邻图；blocked OOF 每个 pair 只在同一验证 fold 内构造；不读取 Test 或标签来决定门控，组件 purity 仅由 direct prediction 计算。",
     "overall": {
       "first_submission_equivalent": {
         "n": 2257,
-        "C_accuracy": 0.05494018608772707,
-        "F1_macro_known": 0.005207895842083159,
+        "C_accuracy": 0.9995569339831635,
+        "F1_macro_known": 0.9995351713256145,
         "U": "N/A（未构造未知样本/拒识阈值）",
         "unknown_auc": "N/A（无内部未知标签）",
         "unknown_f1": "N/A（无内部未知标签）",
@@ -294,8 +294,8 @@
       },
       "second_pair_gate": {
         "n": 2257,
-        "C_accuracy": 0.05494018608772707,
-        "F1_macro_known": 0.005207895842083159,
+        "C_accuracy": 0.9995569339831635,
+        "F1_macro_known": 0.9995351713256145,
         "U": "N/A（未构造未知样本/拒识阈值）",
         "unknown_auc": "N/A（无内部未知标签）",
         "unknown_f1": "N/A（无内部未知标签）",
@@ -318,8 +318,8 @@
         "block": "all",
         "first_submission_equivalent": {
           "n": 2257,
-          "C_accuracy": 0.05494018608772707,
-          "F1_macro_known": 0.005207895842083159,
+          "C_accuracy": 0.9995569339831635,
+          "F1_macro_known": 0.9995351713256145,
           "U": "N/A（未构造未知样本/拒识阈值）",
           "unknown_auc": "N/A（无内部未知标签）",
           "unknown_f1": "N/A（无内部未知标签）",
@@ -328,8 +328,8 @@
         },
         "second_pair_gate": {
           "n": 2257,
-          "C_accuracy": 0.05494018608772707,
-          "F1_macro_known": 0.005207895842083159,
+          "C_accuracy": 0.9995569339831635,
+          "F1_macro_known": 0.9995351713256145,
           "U": "N/A（未构造未知样本/拒识阈值）",
           "unknown_auc": "N/A（无内部未知标签）",
           "unknown_f1": "N/A（无内部未知标签）",

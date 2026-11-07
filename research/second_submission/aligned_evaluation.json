@@ -1,0 +1,1154 @@
+{
+  "protocol": {
+    "outer_folds": "same five subject holdout as raw_eeg_robust/run.py",
+    "model": "TaskSpecificModel; clean first_submission_equivalent scores are refit per fold",
+    "attacks": [
+      {
+        "name": "untargeted_snr20",
+        "snr_db": 20.0,
+        "targeted": false,
+        "steps": 10
+      },
+      {
+        "name": "untargeted_snr30",
+        "snr_db": 30.0,
+        "targeted": false,
+        "steps": 10
+      },
+      {
+        "name": "targeted_snr20",
+        "snr_db": 20.0,
+        "targeted": true,
+        "steps": 10
+      }
+    ],
+    "pair_gate": "same-task cosine NN graph rebuilt per fold/evaluation subset; no test labels, attack labels, or Test waveform_pairs",
+    "attack_cache": {
+      "directory": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full",
+      "cache_version": "adversarial-ridge-stratified-random-target-v2",
+      "same_attack_samples": true
+    }
+  },
+  "folds": [
+    {
+      "outer_fold": 1,
+      "unknown_subjects": [
+        16,
+        10,
+        15,
+        8
+      ],
+      "attacks": {
+        "untargeted_snr20": {
+          "first_submission_equivalent": {
+            "C": 0.935569755058573,
+            "RA": 0.0,
+            "ASafeR": 0.48083067092651754,
+            "A": 0.14424920127795526,
+            "U": 0.9452313503305004,
+            "official_score": 48.753376035051076,
+            "official_score_rounded": 48.75,
+            "internal_equal_weight_proxy": 50.3395392283144,
+            "n_known": 1878,
+            "n_unknown": 2118,
+            "unknown_auroc": 0.9773391217426369,
+            "known_aupr": 0.9683549413077198,
+            "unknown_aupr": 0.9817285437536654,
+            "eer": 0.05755474903987429,
+            "clean_macro_f1_with_reject": 0.9043200148479995,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9441169535486913
+          },
+          "second_pair_gate": {
+            "C": 0.935569755058573,
+            "RA": 0.0,
+            "ASafeR": 0.4802981895633653,
+            "A": 0.1440894568690096,
+            "U": 0.9452313503305004,
+            "official_score": 48.73447257240515,
+            "official_score_rounded": 48.73,
+            "internal_equal_weight_proxy": 50.32095003193127,
+            "n_known": 1878,
+            "n_unknown": 2118,
+            "unknown_auroc": 0.9773391217426369,
+            "known_aupr": 0.9683549413077198,
+            "unknown_aupr": 0.9817285437536654,
+            "eer": 0.05755474903987429,
+            "clean_macro_f1_with_reject": 0.9043200148479995,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9441169535486913
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 277,
+              "component_rows": 1076,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 277,
+              "component_rows": 1076,
+              "allowed_pair_rows": 8,
+              "changed_rows": 8,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer1_eval_untargeted_snr20.npz"
+        },
+        "untargeted_snr30": {
+          "first_submission_equivalent": {
+            "C": 0.935569755058573,
+            "RA": 0.013312034078807242,
+            "ASafeR": 0.8115015974440895,
+            "A": 0.2527689030883919,
+            "U": 0.9452313503305004,
+            "official_score": 59.32917018911473,
+            "official_score_rounded": 59.33,
+            "internal_equal_weight_proxy": 60.689372192361034,
+            "n_known": 1878,
+            "n_unknown": 2118,
+            "unknown_auroc": 0.9773391217426369,
+            "known_aupr": 0.9683549413077198,
+            "unknown_aupr": 0.9817285437536654,
+            "eer": 0.05755474903987429,
+            "clean_macro_f1_with_reject": 0.9043200148479995,
+            "adversarial_macro_f1_with_reject": 0.02297794117647059,
+            "unknown_f1": 0.9441169535486913
+          },
+          "second_pair_gate": {
+            "C": 0.935569755058573,
+            "RA": 0.013312034078807242,
+            "ASafeR": 0.8104366347177849,
+            "A": 0.25244941427050055,
+            "U": 0.9452313503305004,
+            "official_score": 59.30291308498147,
+            "official_score_rounded": 59.3,
+            "internal_equal_weight_proxy": 60.663791842779624,
+            "n_known": 1878,
+            "n_unknown": 2118,
+            "unknown_auroc": 0.9773391217426369,
+            "known_aupr": 0.9683549413077198,
+            "unknown_aupr": 0.9817285437536654,
+            "eer": 0.05755474903987429,
+            "clean_macro_f1_with_reject": 0.9043200148479995,
+            "adversarial_macro_f1_with_reject": 0.02297794117647059,
+            "unknown_f1": 0.9441169535486913
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 277,
+              "component_rows": 1076,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 277,
+              "component_rows": 1076,
+              "allowed_pair_rows": 11,
+              "changed_rows": 11,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer1_eval_untargeted_snr30.npz"
+        },
+        "targeted_snr20": {
+          "first_submission_equivalent": {
+            "C": 0.935569755058573,
+            "RA": 0.0,
+            "ASafeR": 0.009052183173588925,
+            "A": 0.002715654952076677,
+            "U": 0.9452313503305004,
+            "official_score": 12.138669991873622,
+            "official_score_rounded": 12.14,
+            "internal_equal_weight_proxy": 13.391512356240689,
+            "n_known": 1878,
+            "n_unknown": 2118,
+            "unknown_auroc": 0.9773391217426369,
+            "known_aupr": 0.9683549413077198,
+            "unknown_aupr": 0.9817285437536654,
+            "eer": 0.05755474903987429,
+            "clean_macro_f1_with_reject": 0.9043200148479995,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9441169535486913
+          },
+          "second_pair_gate": {
+            "C": 0.935569755058573,
+            "RA": 0.0,
+            "ASafeR": 0.009052183173588925,
+            "A": 0.002715654952076677,
+            "U": 0.9452313503305004,
+            "official_score": 12.138669991873622,
+            "official_score_rounded": 12.14,
+            "internal_equal_weight_proxy": 13.391512356240689,
+            "n_known": 1878,
+            "n_unknown": 2118,
+            "unknown_auroc": 0.9773391217426369,
+            "known_aupr": 0.9683549413077198,
+            "unknown_aupr": 0.9817285437536654,
+            "eer": 0.05755474903987429,
+            "clean_macro_f1_with_reject": 0.9043200148479995,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9441169535486913
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 277,
+              "component_rows": 1076,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 277,
+              "component_rows": 1076,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer1_eval_targeted_snr20.npz"
+        }
+      }
+    },
+    {
+      "outer_fold": 2,
+      "unknown_subjects": [
+        13,
+        11,
+        7,
+        20
+      ],
+      "attacks": {
+        "untargeted_snr20": {
+          "first_submission_equivalent": {
+            "C": 0.9360176503033646,
+            "RA": 0.0,
+            "ASafeR": 0.3651406508549366,
+            "A": 0.10954219525648097,
+            "U": 0.9389942291838417,
+            "official_score": 44.21125570858948,
+            "official_score_rounded": 44.21,
+            "internal_equal_weight_proxy": 45.83277298587258,
+            "n_known": 1813,
+            "n_unknown": 2426,
+            "unknown_auroc": 0.9758881650296087,
+            "known_aupr": 0.9594991324658921,
+            "unknown_aupr": 0.9840514889103479,
+            "eer": 0.06228500401742659,
+            "clean_macro_f1_with_reject": 0.9070549342175224,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9452282157676348
+          },
+          "second_pair_gate": {
+            "C": 0.9360176503033646,
+            "RA": 0.0,
+            "ASafeR": 0.36238279095421955,
+            "A": 0.10871483728626587,
+            "U": 0.9389942291838417,
+            "official_score": 44.0940949707372,
+            "official_score_rounded": 44.09,
+            "internal_equal_weight_proxy": 45.71709159292945,
+            "n_known": 1813,
+            "n_unknown": 2426,
+            "unknown_auroc": 0.9758881650296087,
+            "known_aupr": 0.9594991324658921,
+            "unknown_aupr": 0.9840514889103479,
+            "eer": 0.06228500401742659,
+            "clean_macro_f1_with_reject": 0.9070549342175224,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9452282157676348
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 242,
+              "component_rows": 924,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 242,
+              "component_rows": 924,
+              "allowed_pair_rows": 7,
+              "changed_rows": 7,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer2_eval_untargeted_snr20.npz"
+        },
+        "untargeted_snr30": {
+          "first_submission_equivalent": {
+            "C": 0.9360176503033646,
+            "RA": 0.014340871483728626,
+            "ASafeR": 0.7280750137892995,
+            "A": 0.22846111417539988,
+            "U": 0.9389942291838417,
+            "official_score": 57.18256703271487,
+            "official_score_rounded": 57.18,
+            "internal_equal_weight_proxy": 58.55802453503263,
+            "n_known": 1813,
+            "n_unknown": 2426,
+            "unknown_auroc": 0.9758881650296087,
+            "known_aupr": 0.9594991324658921,
+            "unknown_aupr": 0.9840514889103479,
+            "eer": 0.06228500401742659,
+            "clean_macro_f1_with_reject": 0.9070549342175224,
+            "adversarial_macro_f1_with_reject": 0.023711810305517556,
+            "unknown_f1": 0.9452282157676348
+          },
+          "second_pair_gate": {
+            "C": 0.9360176503033646,
+            "RA": 0.014340871483728626,
+            "ASafeR": 0.7269718698290127,
+            "A": 0.22813017098731386,
+            "U": 0.9389942291838417,
+            "official_score": 57.153561728620296,
+            "official_score_rounded": 57.15,
+            "internal_equal_weight_proxy": 58.52973562988867,
+            "n_known": 1813,
+            "n_unknown": 2426,
+            "unknown_auroc": 0.9758881650296087,
+            "known_aupr": 0.9594991324658921,
+            "unknown_aupr": 0.9840514889103479,
+            "eer": 0.06228500401742659,
+            "clean_macro_f1_with_reject": 0.9070549342175224,
+            "adversarial_macro_f1_with_reject": 0.023711810305517556,
+            "unknown_f1": 0.9452282157676348
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 242,
+              "component_rows": 924,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 242,
+              "component_rows": 924,
+              "allowed_pair_rows": 10,
+              "changed_rows": 10,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer2_eval_untargeted_snr30.npz"
+        },
+        "targeted_snr20": {
+          "first_submission_equivalent": {
+            "C": 0.9360176503033646,
+            "RA": 0.0,
+            "ASafeR": 0.004964147821290678,
+            "A": 0.0014892443463872035,
+            "U": 0.9389942291838417,
+            "official_score": 9.822395840253094,
+            "official_score_rounded": 9.82,
+            "internal_equal_weight_proxy": 10.938832539008688,
+            "n_known": 1813,
+            "n_unknown": 2426,
+            "unknown_auroc": 0.9758881650296087,
+            "known_aupr": 0.9594991324658921,
+            "unknown_aupr": 0.9840514889103479,
+            "eer": 0.06228500401742659,
+            "clean_macro_f1_with_reject": 0.9070549342175224,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9452282157676348
+          },
+          "second_pair_gate": {
+            "C": 0.9360176503033646,
+            "RA": 0.0,
+            "ASafeR": 0.004964147821290678,
+            "A": 0.0014892443463872035,
+            "U": 0.9389942291838417,
+            "official_score": 9.822395840253094,
+            "official_score_rounded": 9.82,
+            "internal_equal_weight_proxy": 10.938832539008688,
+            "n_known": 1813,
+            "n_unknown": 2426,
+            "unknown_auroc": 0.9758881650296087,
+            "known_aupr": 0.9594991324658921,
+            "unknown_aupr": 0.9840514889103479,
+            "eer": 0.06228500401742659,
+            "clean_macro_f1_with_reject": 0.9070549342175224,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9452282157676348
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 242,
+              "component_rows": 924,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 242,
+              "component_rows": 924,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer2_eval_targeted_snr20.npz"
+        }
+      }
+    },
+    {
+      "outer_fold": 3,
+      "unknown_subjects": [
+        4,
+        1,
+        17,
+        6
+      ],
+      "attacks": {
+        "untargeted_snr20": {
+          "first_submission_equivalent": {
+            "C": 0.9162132752992383,
+            "RA": 0.0,
+            "ASafeR": 0.4766050054406964,
+            "A": 0.1429815016322089,
+            "U": 0.9704875962360993,
+            "official_score": 48.51701556094391,
+            "official_score_rounded": 48.52,
+            "internal_equal_weight_proxy": 50.283111173386644,
+            "n_known": 1838,
+            "n_unknown": 2338,
+            "unknown_auroc": 0.9850322671926472,
+            "known_aupr": 0.9794076854289689,
+            "unknown_aupr": 0.9876507327056778,
+            "eer": 0.04309040864330721,
+            "clean_macro_f1_with_reject": 0.8944166023066022,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9531611006091157
+          },
+          "second_pair_gate": {
+            "C": 0.9162132752992383,
+            "RA": 0.0,
+            "ASafeR": 0.47606093579978237,
+            "A": 0.14281828073993472,
+            "U": 0.9704875962360993,
+            "official_score": 48.49762371229457,
+            "official_score_rounded": 48.5,
+            "internal_equal_weight_proxy": 50.263970284147284,
+            "n_known": 1838,
+            "n_unknown": 2338,
+            "unknown_auroc": 0.9850322671926472,
+            "known_aupr": 0.9794076854289689,
+            "unknown_aupr": 0.9876507327056778,
+            "eer": 0.04309040864330721,
+            "clean_macro_f1_with_reject": 0.8944166023066022,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9531611006091157
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 256,
+              "component_rows": 934,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 256,
+              "component_rows": 934,
+              "allowed_pair_rows": 1,
+              "changed_rows": 1,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer3_eval_untargeted_snr20.npz"
+        },
+        "untargeted_snr30": {
+          "first_submission_equivalent": {
+            "C": 0.9162132752992383,
+            "RA": 0.009793253536452665,
+            "ASafeR": 0.8057671381936888,
+            "A": 0.24858541893362351,
+            "U": 0.9704875962360993,
+            "official_score": 58.879295798695225,
+            "official_score_rounded": 58.88,
+            "internal_equal_weight_proxy": 60.46268186754408,
+            "n_known": 1838,
+            "n_unknown": 2338,
+            "unknown_auroc": 0.9850322671926472,
+            "known_aupr": 0.9794076854289689,
+            "unknown_aupr": 0.9876507327056778,
+            "eer": 0.04309040864330721,
+            "clean_macro_f1_with_reject": 0.8944166023066022,
+            "adversarial_macro_f1_with_reject": 0.018255578093306288,
+            "unknown_f1": 0.9531611006091157
+          },
+          "second_pair_gate": {
+            "C": 0.9162132752992383,
+            "RA": 0.010337323177366704,
+            "ASafeR": 0.8052230685527747,
+            "A": 0.2488030467899891,
+            "U": 0.9704875962360993,
+            "official_score": 58.897332036739726,
+            "official_score_rounded": 58.9,
+            "internal_equal_weight_proxy": 60.480321043475136,
+            "n_known": 1838,
+            "n_unknown": 2338,
+            "unknown_auroc": 0.9850322671926472,
+            "known_aupr": 0.9794076854289689,
+            "unknown_aupr": 0.9876507327056778,
+            "eer": 0.04309040864330721,
+            "clean_macro_f1_with_reject": 0.8944166023066022,
+            "adversarial_macro_f1_with_reject": 0.019105077928607342,
+            "unknown_f1": 0.9531611006091157
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 256,
+              "component_rows": 934,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 256,
+              "component_rows": 934,
+              "allowed_pair_rows": 9,
+              "changed_rows": 9,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer3_eval_untargeted_snr30.npz"
+        },
+        "targeted_snr20": {
+          "first_submission_equivalent": {
+            "C": 0.9162132752992383,
+            "RA": 0.0,
+            "ASafeR": 0.014145810663764961,
+            "A": 0.004243743199129488,
+            "U": 0.9704875962360993,
+            "official_score": 14.166361264114467,
+            "official_score_rounded": 14.17,
+            "internal_equal_weight_proxy": 15.568444457423954,
+            "n_known": 1838,
+            "n_unknown": 2338,
+            "unknown_auroc": 0.9850322671926472,
+            "known_aupr": 0.9794076854289689,
+            "unknown_aupr": 0.9876507327056778,
+            "eer": 0.04309040864330721,
+            "clean_macro_f1_with_reject": 0.8944166023066022,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9531611006091157
+          },
+          "second_pair_gate": {
+            "C": 0.9162132752992383,
+            "RA": 0.0,
+            "ASafeR": 0.014145810663764961,
+            "A": 0.004243743199129488,
+            "U": 0.9704875962360993,
+            "official_score": 14.166361264114467,
+            "official_score_rounded": 14.17,
+            "internal_equal_weight_proxy": 15.568444457423954,
+            "n_known": 1838,
+            "n_unknown": 2338,
+            "unknown_auroc": 0.9850322671926472,
+            "known_aupr": 0.9794076854289689,
+            "unknown_aupr": 0.9876507327056778,
+            "eer": 0.04309040864330721,
+            "clean_macro_f1_with_reject": 0.8944166023066022,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9531611006091157
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 256,
+              "component_rows": 934,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 256,
+              "component_rows": 934,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer3_eval_targeted_snr20.npz"
+        }
+      }
+    },
+    {
+      "outer_fold": 4,
+      "unknown_subjects": [
+        12,
+        19,
+        3,
+        5
+      ],
+      "attacks": {
+        "untargeted_snr20": {
+          "first_submission_equivalent": {
+            "C": 0.9092872570194385,
+            "RA": 0.0,
+            "ASafeR": 0.43034557235421167,
+            "A": 0.1291036717062635,
+            "U": 0.9648173207036536,
+            "official_score": 46.60368118665596,
+            "official_score_rounded": 46.6,
+            "internal_equal_weight_proxy": 48.38323803240592,
+            "n_known": 1852,
+            "n_unknown": 2217,
+            "unknown_auroc": 0.9838083589307443,
+            "known_aupr": 0.9790811854461076,
+            "unknown_aupr": 0.9864445873094974,
+            "eer": 0.05554796482316593,
+            "clean_macro_f1_with_reject": 0.8933942446666919,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9456233421750663
+          },
+          "second_pair_gate": {
+            "C": 0.9092872570194385,
+            "RA": 0.0,
+            "ASafeR": 0.4287257019438445,
+            "A": 0.12861771058315336,
+            "U": 0.9648173207036536,
+            "official_score": 46.54220834836179,
+            "official_score_rounded": 46.54,
+            "internal_equal_weight_proxy": 48.3224550060598,
+            "n_known": 1852,
+            "n_unknown": 2217,
+            "unknown_auroc": 0.9838083589307443,
+            "known_aupr": 0.9790811854461076,
+            "unknown_aupr": 0.9864445873094974,
+            "eer": 0.05554796482316593,
+            "clean_macro_f1_with_reject": 0.8933942446666919,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9456233421750663
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 270,
+              "component_rows": 1030,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 270,
+              "component_rows": 1030,
+              "allowed_pair_rows": 8,
+              "changed_rows": 8,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer4_eval_untargeted_snr20.npz"
+        },
+        "untargeted_snr30": {
+          "first_submission_equivalent": {
+            "C": 0.9092872570194385,
+            "RA": 0.0,
+            "ASafeR": 0.7899568034557235,
+            "A": 0.23698704103671703,
+            "U": 0.9648173207036536,
+            "official_score": 57.64283394502461,
+            "official_score_rounded": 57.64,
+            "internal_equal_weight_proxy": 59.24116605837835,
+            "n_known": 1852,
+            "n_unknown": 2217,
+            "unknown_auroc": 0.9838083589307443,
+            "known_aupr": 0.9790811854461076,
+            "unknown_aupr": 0.9864445873094974,
+            "eer": 0.05554796482316593,
+            "clean_macro_f1_with_reject": 0.8933942446666919,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9456233421750663
+          },
+          "second_pair_gate": {
+            "C": 0.9092872570194385,
+            "RA": 0.0,
+            "ASafeR": 0.7894168466522679,
+            "A": 0.23682505399568035,
+            "U": 0.9648173207036536,
+            "official_score": 57.62904072878012,
+            "official_score_rounded": 57.63,
+            "internal_equal_weight_proxy": 59.22766533638433,
+            "n_known": 1852,
+            "n_unknown": 2217,
+            "unknown_auroc": 0.9838083589307443,
+            "known_aupr": 0.9790811854461076,
+            "unknown_aupr": 0.9864445873094974,
+            "eer": 0.05554796482316593,
+            "clean_macro_f1_with_reject": 0.8933942446666919,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9456233421750663
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 270,
+              "component_rows": 1030,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 270,
+              "component_rows": 1030,
+              "allowed_pair_rows": 9,
+              "changed_rows": 9,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer4_eval_untargeted_snr30.npz"
+        },
+        "targeted_snr20": {
+          "first_submission_equivalent": {
+            "C": 0.9092872570194385,
+            "RA": 0.0,
+            "ASafeR": 0.0,
+            "A": 0.0,
+            "U": 0.9648173207036536,
+            "official_score": 0.0,
+            "official_score_rounded": 0.0,
+            "internal_equal_weight_proxy": 0.0,
+            "n_known": 1852,
+            "n_unknown": 2217,
+            "unknown_auroc": 0.9838083589307443,
+            "known_aupr": 0.9790811854461076,
+            "unknown_aupr": 0.9864445873094974,
+            "eer": 0.05554796482316593,
+            "clean_macro_f1_with_reject": 0.8933942446666919,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9456233421750663
+          },
+          "second_pair_gate": {
+            "C": 0.9092872570194385,
+            "RA": 0.0,
+            "ASafeR": 0.0,
+            "A": 0.0,
+            "U": 0.9648173207036536,
+            "official_score": 0.0,
+            "official_score_rounded": 0.0,
+            "internal_equal_weight_proxy": 0.0,
+            "n_known": 1852,
+            "n_unknown": 2217,
+            "unknown_auroc": 0.9838083589307443,
+            "known_aupr": 0.9790811854461076,
+            "unknown_aupr": 0.9864445873094974,
+            "eer": 0.05554796482316593,
+            "clean_macro_f1_with_reject": 0.8933942446666919,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9456233421750663
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 270,
+              "component_rows": 1030,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 270,
+              "component_rows": 1030,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer4_eval_targeted_snr20.npz"
+        }
+      }
+    },
+    {
+      "outer_fold": 5,
+      "unknown_subjects": [
+        18,
+        2,
+        14,
+        9
+      ],
+      "attacks": {
+        "untargeted_snr20": {
+          "first_submission_equivalent": {
+            "C": 0.9168017287952458,
+            "RA": 0.0,
+            "ASafeR": 0.44948676391139925,
+            "A": 0.13484602917341976,
+            "U": 0.964172335600907,
+            "official_score": 47.46704463909008,
+            "official_score_rounded": 47.47,
+            "internal_equal_weight_proxy": 49.21408527101938,
+            "n_known": 1851,
+            "n_unknown": 2205,
+            "unknown_auroc": 0.9792177054506297,
+            "known_aupr": 0.9700646900246225,
+            "unknown_aupr": 0.983185242963158,
+            "eer": 0.053499671073183486,
+            "clean_macro_f1_with_reject": 0.8949224748502358,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9480490523968785
+          },
+          "second_pair_gate": {
+            "C": 0.9168017287952458,
+            "RA": 0.0,
+            "ASafeR": 0.44786601836844947,
+            "A": 0.13435980551053484,
+            "U": 0.964172335600907,
+            "official_score": 47.407069975996116,
+            "official_score_rounded": 47.41,
+            "internal_equal_weight_proxy": 49.1548624878534,
+            "n_known": 1851,
+            "n_unknown": 2205,
+            "unknown_auroc": 0.9792177054506297,
+            "known_aupr": 0.9700646900246225,
+            "unknown_aupr": 0.983185242963158,
+            "eer": 0.053499671073183486,
+            "clean_macro_f1_with_reject": 0.8949224748502358,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9480490523968785
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 272,
+              "component_rows": 1119,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 272,
+              "component_rows": 1119,
+              "allowed_pair_rows": 10,
+              "changed_rows": 10,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer5_eval_untargeted_snr20.npz"
+        },
+        "untargeted_snr30": {
+          "first_submission_equivalent": {
+            "C": 0.9168017287952458,
+            "RA": 0.01242571582928147,
+            "ASafeR": 0.804430037817396,
+            "A": 0.2500270124257158,
+            "U": 0.964172335600907,
+            "official_score": 58.91749343002833,
+            "official_score_rounded": 58.92,
+            "internal_equal_weight_proxy": 60.46058437569004,
+            "n_known": 1851,
+            "n_unknown": 2205,
+            "unknown_auroc": 0.9792177054506297,
+            "known_aupr": 0.9700646900246225,
+            "unknown_aupr": 0.983185242963158,
+            "eer": 0.053499671073183486,
+            "clean_macro_f1_with_reject": 0.8949224748502358,
+            "adversarial_macro_f1_with_reject": 0.02164705882352941,
+            "unknown_f1": 0.9480490523968785
+          },
+          "second_pair_gate": {
+            "C": 0.9168017287952458,
+            "RA": 0.01242571582928147,
+            "ASafeR": 0.804430037817396,
+            "A": 0.2500270124257158,
+            "U": 0.964172335600907,
+            "official_score": 58.91749343002833,
+            "official_score_rounded": 58.92,
+            "internal_equal_weight_proxy": 60.46058437569004,
+            "n_known": 1851,
+            "n_unknown": 2205,
+            "unknown_auroc": 0.9792177054506297,
+            "known_aupr": 0.9700646900246225,
+            "unknown_aupr": 0.983185242963158,
+            "eer": 0.053499671073183486,
+            "clean_macro_f1_with_reject": 0.8949224748502358,
+            "adversarial_macro_f1_with_reject": 0.02164705882352941,
+            "unknown_f1": 0.9480490523968785
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 272,
+              "component_rows": 1119,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 272,
+              "component_rows": 1119,
+              "allowed_pair_rows": 15,
+              "changed_rows": 15,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer5_eval_untargeted_snr30.npz"
+        },
+        "targeted_snr20": {
+          "first_submission_equivalent": {
+            "C": 0.9168017287952458,
+            "RA": 0.0,
+            "ASafeR": 0.007563479200432199,
+            "A": 0.00226904376012966,
+            "U": 0.964172335600907,
+            "official_score": 11.363021832006114,
+            "official_score_rounded": 11.36,
+            "internal_equal_weight_proxy": 12.611236027333028,
+            "n_known": 1851,
+            "n_unknown": 2205,
+            "unknown_auroc": 0.9792177054506297,
+            "known_aupr": 0.9700646900246225,
+            "unknown_aupr": 0.983185242963158,
+            "eer": 0.053499671073183486,
+            "clean_macro_f1_with_reject": 0.8949224748502358,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9480490523968785
+          },
+          "second_pair_gate": {
+            "C": 0.9168017287952458,
+            "RA": 0.0,
+            "ASafeR": 0.007563479200432199,
+            "A": 0.00226904376012966,
+            "U": 0.964172335600907,
+            "official_score": 11.363021832006114,
+            "official_score_rounded": 11.36,
+            "internal_equal_weight_proxy": 12.611236027333028,
+            "n_known": 1851,
+            "n_unknown": 2205,
+            "unknown_auroc": 0.9792177054506297,
+            "known_aupr": 0.9700646900246225,
+            "unknown_aupr": 0.983185242963158,
+            "eer": 0.053499671073183486,
+            "clean_macro_f1_with_reject": 0.8949224748502358,
+            "adversarial_macro_f1_with_reject": 0.0,
+            "unknown_f1": 0.9480490523968785
+          },
+          "pair_gate": {
+            "clean": {
+              "components": 272,
+              "component_rows": 1119,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            },
+            "adversarial": {
+              "components": 272,
+              "component_rows": 1119,
+              "allowed_pair_rows": 0,
+              "changed_rows": 0,
+              "similarity_threshold": 0.99,
+              "min_component_size": 2,
+              "min_direct_purity": 0.75,
+              "margin_threshold": 0.1
+            }
+          },
+          "attack_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\raw_eeg_robust\\full\\outer5_eval_targeted_snr20.npz"
+        }
+      }
+    }
+  ],
+  "attacks": {
+    "untargeted_snr20": {
+      "first_submission_equivalent": {
+        "C": 0.9227686308492201,
+        "RA": 0.0,
+        "ASafeR": 0.4408578856152513,
+        "clean_macro_f1_with_reject": 0.8988094606510989,
+        "adversarial_macro_f1_with_reject": 0.0,
+        "U": 0.9566525123849965,
+        "unknown_f1": 0.9472884927839491,
+        "A": 0.13225736568457538,
+        "official_score": 47.1761653464736,
+        "unknown_auroc": 0.9802568677267988,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "second_pair_gate": {
+        "C": 0.9227686308492201,
+        "RA": 0.0,
+        "ASafeR": 0.43944974003466203,
+        "clean_macro_f1_with_reject": 0.8988094606510989,
+        "adversarial_macro_f1_with_reject": 0.0,
+        "U": 0.9566525123849965,
+        "unknown_f1": 0.9472884927839491,
+        "A": 0.1318349220103986,
+        "official_score": 47.12337056248069,
+        "unknown_auroc": 0.9802568677267988,
+        "n_known": 9232,
+        "n_unknown": 11304
+      }
+    },
+    "untargeted_snr30": {
+      "first_submission_equivalent": {
+        "C": 0.9227686308492201,
+        "RA": 0.00996533795493934,
+        "ASafeR": 0.788236568457539,
+        "clean_macro_f1_with_reject": 0.8988094606510989,
+        "adversarial_macro_f1_with_reject": 0.017305518200949412,
+        "U": 0.9566525123849965,
+        "unknown_f1": 0.9472884927839491,
+        "A": 0.24344670710571922,
+        "official_score": 58.40728912674635,
+        "unknown_auroc": 0.9802568677267988,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "second_pair_gate": {
+        "C": 0.9227686308492201,
+        "RA": 0.0100736568457539,
+        "ASafeR": 0.7875866551126517,
+        "clean_macro_f1_with_reject": 0.8988094606510989,
+        "adversarial_macro_f1_with_reject": 0.01747464522621841,
+        "U": 0.9566525123849965,
+        "unknown_f1": 0.9472884927839491,
+        "A": 0.24332755632582323,
+        "official_score": 58.39728228173859,
+        "unknown_auroc": 0.9802568677267988,
+        "n_known": 9232,
+        "n_unknown": 11304
+      }
+    },
+    "targeted_snr20": {
+      "first_submission_equivalent": {
+        "C": 0.9227686308492201,
+        "RA": 0.0,
+        "ASafeR": 0.007149046793760832,
+        "clean_macro_f1_with_reject": 0.8988094606510989,
+        "adversarial_macro_f1_with_reject": 0.0,
+        "U": 0.9566525123849965,
+        "unknown_f1": 0.9472884927839491,
+        "A": 0.0021447140381282495,
+        "official_score": 11.148205640292353,
+        "unknown_auroc": 0.9802568677267988,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "second_pair_gate": {
+        "C": 0.9227686308492201,
+        "RA": 0.0,
+        "ASafeR": 0.007149046793760832,
+        "clean_macro_f1_with_reject": 0.8988094606510989,
+        "adversarial_macro_f1_with_reject": 0.0,
+        "U": 0.9566525123849965,
+        "unknown_f1": 0.9472884927839491,
+        "A": 0.0021447140381282495,
+        "official_score": 11.148205640292353,
+        "unknown_auroc": 0.9802568677267988,
+        "n_known": 9232,
+        "n_unknown": 11304
+      }
+    }
+  },
+  "acceptance": {
+    "candidate": "second_pair_gate",
+    "passed": false,
+    "checks": {
+      "score_gain_at_least_2": false,
+      "A_gain_at_least_0.05": false,
+      "RA_at_least_0.60_and_gain_0.03": false,
+      "ASafeR_at_least_0.90": false,
+      "C_at_least_0.90_and_drop_at_most_0.02": true,
+      "U_at_least_0.85_and_drop_at_most_0.02": true,
+      "unknown_f1_drop_at_most_0.01": true,
+      "AUROC_drop_at_most_0.005": true,
+      "four_of_five_folds_not_worse": false,
+      "worst_fold_score_drop_at_most_1": true,
+      "untargeted_snr30_ASafeR_at_least_0.90": false,
+      "untargeted_snr30_A_drop_at_most_0.01": true,
+      "targeted_snr20_ASafeR_at_least_0.90": false,
+      "targeted_snr20_A_drop_at_most_0.01": true
+    },
+    "score_delta": -0.052794783992915484,
+    "fold_score_deltas": [
+      -0.01890346264592324,
+      -0.11716073785228076,
+      -0.019391848649341625,
+      -0.06147283829417205,
+      -0.059974663093967706
+    ]
+  }
+}
