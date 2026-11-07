@@ -1,0 +1,35 @@
+{
+  "purpose": "可审计校准伪答案/伪分项，不是恢复真实标签",
+  "official_formula": "Score=100*C^0.40*A^0.35*U^0.25; A=0.7*RA+0.3*ASafeR",
+  "non_identifiability": [
+    "仅凭提交CSV和总分无法唯一识别真实RA、ASafeR、U",
+    "测试集未提供Clean/Adversarial/Unknown分组"
+  ],
+  "pseudo_answer": {
+    "source": "v1 pseudo_answer.csv",
+    "common_official_labels": "两次正式标签相同则观测保留；冲突行沿用v1候选支持裁决",
+    "status": "代理标签"
+  },
+  "C_assumption": "C_pseudo_nonzero_agreement=候选/正式预测与伪答案在伪答案非零行上的一致率；不是官方Clean Accuracy",
+  "U_assumption": {
+    "value": 1.0,
+    "reason": "固定为1.0的单独校准假设；共同0比例3033/22251=0.1363084805仅作为可观测组成记录，未冒充官方U"
+  },
+  "ASafeR_assumption": {
+    "value": 0.95,
+    "reason": "固定基准代理，不来自攻击样本；不能解释为真实ASafeR"
+  },
+  "RA_assumption": "正式提交按官方总分锚定反解的隐含代理；logcov/corrSPD缺少攻击版本，RA不编造，报告RA∈[0,1]条件范围",
+  "candidate_range": "对候选使用同一C/U/ASafeR假设，RA未知范围[0,1]；因此仅为条件范围",
+  "auc_f1": "AUC因只有硬标签且无概率分数设为null；macro-F1为相对伪答案的审计指标",
+  "input_sha256": {
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第1次.csv": "aa8aca733ef026558c7af5fcaff3b431036f85b424106a33699157d63d1846aa",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第2次.csv": "c788df77888810597f97756696da6a1383a71147d380c929a24ebe0c8996df9a",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\pseudo_ground_truth_v1\\pseudo_answer.csv": "87b38381916bec071210092cb28dd69fc260b8a0687cae0d44128e926c44bbdb",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\nested_pseudounknown_corrspd_v1\\candidate_logcov.csv": "4b3c348f32c8e7cccd051f379e5979287dd7b69c1d93f6f6b9c06f890717a9e4",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\nested_pseudounknown_corrspd_v1\\candidate_corrspd.csv": "cf6deaf31e9d39fe72a28df99eeae0ae0026fdd80189b531d7dc50b3e0d21333"
+  },
+  "common_zero_count": 3033,
+  "common_zero_fraction": 0.13630848051772954,
+  "sample_count": 22251
+}

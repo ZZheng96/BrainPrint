@@ -1,0 +1,118 @@
+{
+  "purpose": "five session-blind candidates evaluated on the exact v3 synthetic scenarios; not real official scores",
+  "formula": "Score=100*C^0.40*(0.7*RA+0.3*ASafeR)^0.35*U^0.25",
+  "scenario_count": 16,
+  "fixed_proxies": {
+    "ASafeR": 0.95,
+    "U": 1.0
+  },
+  "candidate_rule": "Reuse v3: C is agreement with pseudo labels on nonzero pseudo rows; candidate files have no attack-version labels, so RA is not imputed and Score is reported conditionally for RA in [0,1].",
+  "candidate_sha256": {
+    "full_none": "e340b9e9f82965dac0019449bce90a6d670dcc7038ffbaf7c6582e4bd79596a8",
+    "base_none": "7ce283985a68e19b3e9a06001ccd7bcda4b344f07e1c4734285edc16ba168c8c",
+    "full_target_zscore": "69bdaf9820432602306055ecaab01eeab99c17d7367abd54d9eeb1665b7a17d6",
+    "base_target_zscore": "847ab5198808e03039654d6babe89a92ab61855133d8465dfa026ad01b8d0780",
+    "full_riemannian_recenter": "40ccdf29afbda8b637402b38740166702b9a9a186f73c3d062bcaa3209fc28eb"
+  },
+  "formal_submission_sha256_before": {
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第1次.csv": "aa8aca733ef026558c7af5fcaff3b431036f85b424106a33699157d63d1846aa",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第2次.csv": "c788df77888810597f97756696da6a1383a71147d380c929a24ebe0c8996df9a"
+  },
+  "formal_submission_sha256_after": {
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第1次.csv": "aa8aca733ef026558c7af5fcaff3b431036f85b424106a33699157d63d1846aa",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第2次.csv": "c788df77888810597f97756696da6a1383a71147d380c929a24ebe0c8996df9a"
+  },
+  "formal_submissions_unchanged": true,
+  "anchor_targets": {
+    "official_submission_1": 69.17,
+    "official_submission_2": 67.94
+  },
+  "anchor_max_abs_error": {
+    "official_submission_1": 1.4210854715202004e-14,
+    "official_submission_2": 1.4210854715202004e-14
+  },
+  "candidate_count": 5,
+  "rows": 80,
+  "scenario_meta": [
+    {
+      "scenario": "scenario_01",
+      "seed": 354243398,
+      "category_counts": "{\"clean\": 21498, \"adversarial\": 444, \"unknown\": 309}"
+    },
+    {
+      "scenario": "scenario_02",
+      "seed": 1686936813,
+      "category_counts": "{\"clean\": 21527, \"adversarial\": 422, \"unknown\": 302}"
+    },
+    {
+      "scenario": "scenario_03",
+      "seed": 436831464,
+      "category_counts": "{\"clean\": 21531, \"adversarial\": 427, \"unknown\": 293}"
+    },
+    {
+      "scenario": "scenario_04",
+      "seed": 1477148239,
+      "category_counts": "{\"clean\": 21525, \"adversarial\": 442, \"unknown\": 284}"
+    },
+    {
+      "scenario": "scenario_05",
+      "seed": 884548927,
+      "category_counts": "{\"clean\": 21528, \"adversarial\": 425, \"unknown\": 298}"
+    },
+    {
+      "scenario": "scenario_06",
+      "seed": 314974816,
+      "category_counts": "{\"clean\": 21539, \"adversarial\": 460, \"unknown\": 252}"
+    },
+    {
+      "scenario": "scenario_07",
+      "seed": 444138409,
+      "category_counts": "{\"clean\": 21512, \"adversarial\": 458, \"unknown\": 281}"
+    },
+    {
+      "scenario": "scenario_08",
+      "seed": 1948214504,
+      "category_counts": "{\"clean\": 21522, \"adversarial\": 447, \"unknown\": 282}"
+    },
+    {
+      "scenario": "scenario_09",
+      "seed": 1100863390,
+      "category_counts": "{\"clean\": 21497, \"adversarial\": 462, \"unknown\": 292}"
+    },
+    {
+      "scenario": "scenario_10",
+      "seed": 314661698,
+      "category_counts": "{\"clean\": 21527, \"adversarial\": 417, \"unknown\": 307}"
+    },
+    {
+      "scenario": "scenario_11",
+      "seed": 1761162926,
+      "category_counts": "{\"clean\": 21518, \"adversarial\": 418, \"unknown\": 315}"
+    },
+    {
+      "scenario": "scenario_12",
+      "seed": 38218009,
+      "category_counts": "{\"clean\": 21515, \"adversarial\": 439, \"unknown\": 297}"
+    },
+    {
+      "scenario": "scenario_13",
+      "seed": 1700472432,
+      "category_counts": "{\"clean\": 21538, \"adversarial\": 423, \"unknown\": 290}"
+    },
+    {
+      "scenario": "scenario_14",
+      "seed": 1977984471,
+      "category_counts": "{\"clean\": 21527, \"adversarial\": 424, \"unknown\": 300}"
+    },
+    {
+      "scenario": "scenario_15",
+      "seed": 604560683,
+      "category_counts": "{\"clean\": 21561, \"adversarial\": 404, \"unknown\": 286}"
+    },
+    {
+      "scenario": "scenario_16",
+      "seed": 2025986124,
+      "category_counts": "{\"clean\": 21527, \"adversarial\": 454, \"unknown\": 270}"
+    }
+  ]
+}

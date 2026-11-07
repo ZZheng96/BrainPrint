@@ -1,0 +1,33 @@
+{
+  "purpose": "synthetic calibration scenarios；不是真实Test标签或官方预测",
+  "formula": "Score=100*C^0.40*(0.7*RA+0.3*ASafeR)^0.35*U^0.25",
+  "scenario_count": 16,
+  "master_seed": 20261107,
+  "fixed_proxies": {
+    "ASafeR": 0.95,
+    "U": 1.0
+  },
+  "hard_constraints": [
+    "common official labels are retained exactly",
+    "category randomization only on official-discordant/unobservable rows"
+  ],
+  "candidate_rule": "logcov/corrspd have no attack-version labels; do not impute hidden labels; calculate C against each scenario pseudo labels and expose score range for RA in [0,1]",
+  "non_identifiability": "scenario averages are model averages over assumptions, not resolution of non-identifiability",
+  "input_sha256": {
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第1次.csv": "aa8aca733ef026558c7af5fcaff3b431036f85b424106a33699157d63d1846aa",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第2次.csv": "c788df77888810597f97756696da6a1383a71147d380c929a24ebe0c8996df9a",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\pseudo_ground_truth_v1\\pseudo_answer.csv": "87b38381916bec071210092cb28dd69fc260b8a0687cae0d44128e926c44bbdb",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\nested_pseudounknown_corrspd_v1\\candidate_logcov.csv": "4b3c348f32c8e7cccd051f379e5979287dd7b69c1d93f6f6b9c06f890717a9e4",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\nested_pseudounknown_corrspd_v1\\candidate_corrspd.csv": "cf6deaf31e9d39fe72a28df99eeae0ae0026fdd80189b531d7dc50b3e0d21333"
+  },
+  "formal_sha256_after_run": {
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第1次.csv": "aa8aca733ef026558c7af5fcaff3b431036f85b424106a33699157d63d1846aa",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第2次.csv": "c788df77888810597f97756696da6a1383a71147d380c929a24ebe0c8996df9a"
+  },
+  "common_zero_count": 3033,
+  "sample_count": 22251,
+  "anchor_targets": {
+    "official_submission_1": 69.17,
+    "official_submission_2": 67.94
+  }
+}

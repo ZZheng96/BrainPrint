@@ -1,0 +1,77 @@
+{
+  "formula": "Score=100*C^0.40*A^0.35*U^0.25; A=0.7*RA+0.3*ASafeR",
+  "official_targets": {
+    "official_submission_1": 69.17,
+    "official_submission_2": 67.94
+  },
+  "fixed": {
+    "U": 1.0,
+    "ASafeR_proxy": 0.95
+  },
+  "rows": [
+    {
+      "method": "official_submission_1",
+      "n": 22251,
+      "C_pseudo_nonzero_agreement": 0.981527734415652,
+      "RA": 0.10192816385594931,
+      "ASafeR": 0.95,
+      "U": 1.0,
+      "A": 0.3563497146991645,
+      "score": 69.17,
+      "score_range_low": 69.17,
+      "score_range_high": 69.17,
+      "macro_F1_against_pseudo": 0.9826062534124445,
+      "AUC": null,
+      "RA_status": "calibrated_implied_proxy"
+    },
+    {
+      "method": "official_submission_2",
+      "n": 22251,
+      "C_pseudo_nonzero_agreement": 0.9684670621292538,
+      "RA": 0.08395006622714751,
+      "ASafeR": 0.95,
+      "U": 1.0,
+      "A": 0.34376504635900323,
+      "score": 67.94,
+      "score_range_low": 67.94,
+      "score_range_high": 67.94,
+      "macro_F1_against_pseudo": 0.9680514383656273,
+      "AUC": null,
+      "RA_status": "calibrated_implied_proxy"
+    },
+    {
+      "method": "logcov",
+      "n": 22251,
+      "C_pseudo_nonzero_agreement": 0.51311270683734,
+      "RA": null,
+      "ASafeR": 0.95,
+      "U": 1.0,
+      "A": null,
+      "score": null,
+      "score_range_low": 49.349278654196326,
+      "score_range_high": 76.17067226170938,
+      "macro_F1_against_pseudo": 0.48177217886231444,
+      "AUC": null,
+      "RA_status": "not_observed; range uses RA in [0,1]"
+    },
+    {
+      "method": "corrspd",
+      "n": 22251,
+      "C_pseudo_nonzero_agreement": 0.472889998959309,
+      "RA": null,
+      "ASafeR": 0.95,
+      "U": 1.0,
+      "A": null,
+      "score": null,
+      "score_range_low": 47.76389695485621,
+      "score_range_high": 73.7236336600645,
+      "macro_F1_against_pseudo": 0.44645810799099006,
+      "AUC": null,
+      "RA_status": "not_observed; range uses RA in [0,1]"
+    }
+  ],
+  "official_errors": {
+    "official_submission_1": 0.0,
+    "official_submission_2": 0.0
+  }
+}
