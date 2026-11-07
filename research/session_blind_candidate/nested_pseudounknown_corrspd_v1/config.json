@@ -1,0 +1,18 @@
+﻿{
+    "device":  "cuda",
+    "forbidden_columns":  [
+                              "session",
+                              "trial",
+                              "path",
+                              "fs"
+                          ],
+    "lambda":  0.001,
+    "test_labels_used":  false,
+    "threshold":  "95th percentile of leave-identity pseudo-unknown confidence",
+    "methods":  [
+                    "logcov",
+                    "corrspd"
+                ],
+    "seed":  42,
+    "outer_folds":  5
+}

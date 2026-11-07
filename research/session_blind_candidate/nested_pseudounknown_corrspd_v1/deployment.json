@@ -1,0 +1,14 @@
+﻿{
+    "logcov":  {
+                   "file":  "candidate_logcov.csv",
+                   "threshold":  -0.24186581969261176,
+                   "n_reject":  8339,
+                   "reject_rate":  0.37476967327311134
+               },
+    "corrspd":  {
+                    "file":  "candidate_corrspd.csv",
+                    "threshold":  -0.24403770864009866,
+                    "n_reject":  9552,
+                    "reject_rate":  0.42928407712012945
+                }
+}

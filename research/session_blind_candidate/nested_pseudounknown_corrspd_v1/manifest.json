@@ -1,0 +1,73 @@
+{
+  "seed": 42,
+  "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+  "torch": "2.7.1+cu118",
+  "cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache",
+  "n_train": 11304,
+  "n_test": 22251,
+  "metadata_columns_read": {
+    "train": [
+      "subject",
+      "task"
+    ],
+    "test": [
+      "sample",
+      "task"
+    ],
+    "split": [
+      "subject",
+      "task",
+      "fold"
+    ]
+  },
+  "forbidden_columns_read": [
+    "session",
+    "trial",
+    "path",
+    "fs"
+  ],
+  "test_labels_used": false,
+  "lambda": 0.001,
+  "methods": [
+    "logcov",
+    "corrspd"
+  ],
+  "split_sha256": "5ba706ae8ed4944a90ccada9dd1ed8bfda0bde92428b52aa45c70df99c9a844d",
+  "outer_folds": {
+    "0": {
+      "pseudo_unknown_subject": 1,
+      "n_pseudo": 120
+    },
+    "1": {
+      "pseudo_unknown_subject": 1,
+      "n_pseudo": 118
+    },
+    "2": {
+      "pseudo_unknown_subject": 1,
+      "n_pseudo": 120
+    },
+    "3": {
+      "pseudo_unknown_subject": 1,
+      "n_pseudo": 120
+    },
+    "4": {
+      "pseudo_unknown_subject": 1,
+      "n_pseudo": 139
+    }
+  },
+  "deployment": {
+    "logcov": {
+      "file": "candidate_logcov.csv",
+      "threshold": -0.24186581969261176,
+      "n_reject": 8339,
+      "reject_rate": 0.37476967327311134
+    },
+    "corrspd": {
+      "file": "candidate_corrspd.csv",
+      "threshold": -0.24403770864009866,
+      "n_reject": 9552,
+      "reject_rate": 0.42928407712012945
+    }
+  },
+  "elapsed_seconds": 79.58723139762878
+}
