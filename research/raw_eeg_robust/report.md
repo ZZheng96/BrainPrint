@@ -45,6 +45,32 @@
 - 五折不差于 direct：`5/5`，达标；最差折提升 `+23.4982`，达标。
 - 未通过：untargeted SNR20 RA=`0.2743`；targeted SNR20 ASafeR=`0.8195`；unknown F1 下降约 `0.0110`；unknown AUC 下降约 `0.0064`。
 
+## 官方分数情景换算（修订版：不作为官方预测）
+
+第一次提交提供了唯一真实锚点：官方 `69.17`。本地 direct 在 untargeted SNR20 协议下的公式分为 `46.9996`，但它不是第一次正式提交在官方 Test 上的完整复算，因此不能直接拟合一个“官方校准系数”。
+
+上一版把 `A=0.7*RA+0.3*ASafeR` 乘以 `3.00792`，会让 robust 候选的 A 截断到 1，所有候选被推到约 94–95 分，已经失去排序意义。本版改为只迁移本地相对增益的一部分：
+
+```text
+S_base = 69.17
+R_i = S_local_i / S_local_direct
+S_scenario(i, lambda) = S_base * R_i^lambda
+lambda ∈ {0.15, 0.25, 0.35}
+```
+
+其中 `lambda=0.25` 是中性情景，表示本地人工攻击分数相对提升只有约四分之一能够迁移到官方 Test；`0.15–0.35` 仅用于敏感性范围。这个方法不修改官方公式，也不声称识别了真实的 C、A、U；它只是把不同候选的本地相对排序压缩到更合理的区间，并避免饱和。
+
+| 实验版本 | 攻击 | 本地公式分 | λ=0.15 | λ=0.25（中性） | λ=0.35 |
+|---|---|---:|---:|---:|---:|
+| direct | untargeted SNR20 | 47.00 | 69.17 | 69.17 | 69.17 |
+| raw robust 首轮 1:1 | untargeted SNR20 | 79.47 | 74.84 | 78.88 | 83.13 |
+| raw robust 混合 targeted 1:1 | untargeted SNR20 | 79.64 | 74.86 | 78.97 | 83.24 |
+| raw robust 混合 targeted 1:1 | targeted SNR20 | 80.82 | 75.03 | 79.21 | 83.62 |
+| raw robust 2:1 | untargeted SNR20 | 73.06 | 73.90 | 77.24 | 80.72 |
+| raw robust 2:1 | targeted SNR20 | 73.61 | 73.98 | 77.38 | 80.93 |
+
+更合理的结论是：在该情景模型下，当前 raw robust 1:1 候选的中性估计约 `79` 分，敏感性范围约 `75–83`；2:1 候选约 `77` 分，范围约 `74–81`。这不是官方成绩置信区间，也不能证明第二次 Test 候选一定高于 `69.17`。候选筛选仍必须同时约束 `C`、`U`、RA、ASafeR、unknown AUC/F1 和五折稳定性。
+
 ## 产物与后续
 
 - 完整结果：[results.json](file:///d:/WORK/BCIC2026/BrainPrint/research/raw_eeg_robust/results.json)

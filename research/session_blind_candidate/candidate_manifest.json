@@ -1,0 +1,42 @@
+{
+  "session_used": false,
+  "session_columns_read": false,
+  "candidates": {
+    "full_none": {
+      "path": "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\candidates\\candidate_full_none.csv",
+      "threshold": 0.22708355486392975,
+      "n_rows": 22251,
+      "n_reject": 17629,
+      "reject_rate": 0.7922789986966878,
+      "test_auc": null,
+      "test_f1": null
+    },
+    "base_none": {
+      "path": "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\candidates\\candidate_base_none.csv",
+      "threshold": 0.22708355486392975,
+      "n_rows": 22251,
+      "n_reject": 17870,
+      "reject_rate": 0.8031099725855018,
+      "test_auc": null,
+      "test_f1": null
+    },
+    "full_target_zscore": {
+      "path": "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\candidates\\candidate_full_target_zscore.csv",
+      "threshold": 0.22708355486392975,
+      "n_rows": 22251,
+      "n_reject": 21138,
+      "reject_rate": 0.9499797761898342,
+      "test_auc": null,
+      "test_f1": null
+    },
+    "base_target_zscore": {
+      "path": "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\candidates\\candidate_base_target_zscore.csv",
+      "threshold": 0.22708355486392975,
+      "n_rows": 22251,
+      "n_reject": 21343,
+      "reject_rate": 0.9591928452653813,
+      "test_auc": null,
+      "test_f1": null
+    }
+  }
+}

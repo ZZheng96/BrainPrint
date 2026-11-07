@@ -1,0 +1,581 @@
+{
+  "methods": [
+    "full_none",
+    "base_none",
+    "full_target_zscore",
+    "base_target_zscore",
+    "full_riemannian_recenter"
+  ],
+  "seed": 42,
+  "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+  "versions": {
+    "python": "3.11.9",
+    "torch": "2.7.1+cu118",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  },
+  "cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache",
+  "n_train": 11304,
+  "metadata_columns_read": {
+    "train": [
+      "subject",
+      "task"
+    ],
+    "test": [
+      "sample",
+      "task"
+    ],
+    "split_table": [
+      "subject",
+      "task",
+      "fold"
+    ]
+  },
+  "forbidden_columns_read": [],
+  "session_used": false,
+  "fold_source": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\train_blocked_oof_predictions_cov_alpha100.csv",
+  "fold_source_sha256": "5ba706ae8ed4944a90ccada9dd1ed8bfda0bde92428b52aa45c70df99c9a844d",
+  "fold_definition": "Existing contiguous blocks of 10 trials modulo 5; read precomputed fold only",
+  "threshold_source": "Each method's freshly recomputed all-subject blocked-OOF max_logit, quantile=0.05 (linear)",
+  "target_reference": "Unlabeled held-out fold or full Test batch, grouped only by task",
+  "oof_diagnostics": {
+    "0": {
+      "none": {},
+      "target_zscore": {
+        "EC": {
+          "n_target_trials": 353,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "EO": {
+          "n_target_trials": 357,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "Imagery": {
+          "n_target_trials": 1098,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "SSVEP": {
+          "n_target_trials": 726,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        }
+      },
+      "riemannian_recenter": {
+        "source": {
+          "EC": {
+            "n_reference_trials": 719,
+            "reference_iterations": 17
+          },
+          "EO": {
+            "n_reference_trials": 713,
+            "reference_iterations": 20
+          },
+          "Imagery": {
+            "n_reference_trials": 4406,
+            "reference_iterations": 18
+          },
+          "SSVEP": {
+            "n_reference_trials": 2932,
+            "reference_iterations": 16
+          }
+        },
+        "target": {
+          "EC": {
+            "n_reference_trials": 353,
+            "reference_iterations": 17
+          },
+          "EO": {
+            "n_reference_trials": 357,
+            "reference_iterations": 17
+          },
+          "Imagery": {
+            "n_reference_trials": 1098,
+            "reference_iterations": 17
+          },
+          "SSVEP": {
+            "n_reference_trials": 726,
+            "reference_iterations": 17
+          }
+        }
+      }
+    },
+    "1": {
+      "none": {},
+      "target_zscore": {
+        "EC": {
+          "n_target_trials": 173,
+          "full_scale_ratio_clip_fraction": 0.001949317753314972,
+          "window_scale_ratio_clip_fraction": 0.001949317753314972
+        },
+        "EO": {
+          "n_target_trials": 161,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "Imagery": {
+          "n_target_trials": 1098,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "SSVEP": {
+          "n_target_trials": 733,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        }
+      },
+      "riemannian_recenter": {
+        "source": {
+          "EC": {
+            "n_reference_trials": 899,
+            "reference_iterations": 17
+          },
+          "EO": {
+            "n_reference_trials": 909,
+            "reference_iterations": 20
+          },
+          "Imagery": {
+            "n_reference_trials": 4406,
+            "reference_iterations": 18
+          },
+          "SSVEP": {
+            "n_reference_trials": 2925,
+            "reference_iterations": 17
+          }
+        },
+        "target": {
+          "EC": {
+            "n_reference_trials": 173,
+            "reference_iterations": 17
+          },
+          "EO": {
+            "n_reference_trials": 161,
+            "reference_iterations": 21
+          },
+          "Imagery": {
+            "n_reference_trials": 1098,
+            "reference_iterations": 17
+          },
+          "SSVEP": {
+            "n_reference_trials": 733,
+            "reference_iterations": 16
+          }
+        }
+      }
+    },
+    "2": {
+      "none": {},
+      "target_zscore": {
+        "EC": {
+          "n_target_trials": 178,
+          "full_scale_ratio_clip_fraction": 0.001949317753314972,
+          "window_scale_ratio_clip_fraction": 0.001949317753314972
+        },
+        "EO": {
+          "n_target_trials": 167,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "Imagery": {
+          "n_target_trials": 1090,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "SSVEP": {
+          "n_target_trials": 741,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        }
+      },
+      "riemannian_recenter": {
+        "source": {
+          "EC": {
+            "n_reference_trials": 894,
+            "reference_iterations": 17
+          },
+          "EO": {
+            "n_reference_trials": 903,
+            "reference_iterations": 18
+          },
+          "Imagery": {
+            "n_reference_trials": 4414,
+            "reference_iterations": 18
+          },
+          "SSVEP": {
+            "n_reference_trials": 2917,
+            "reference_iterations": 17
+          }
+        },
+        "target": {
+          "EC": {
+            "n_reference_trials": 178,
+            "reference_iterations": 17
+          },
+          "EO": {
+            "n_reference_trials": 167,
+            "reference_iterations": 23
+          },
+          "Imagery": {
+            "n_reference_trials": 1090,
+            "reference_iterations": 19
+          },
+          "SSVEP": {
+            "n_reference_trials": 741,
+            "reference_iterations": 16
+          }
+        }
+      }
+    },
+    "3": {
+      "none": {},
+      "target_zscore": {
+        "EC": {
+          "n_target_trials": 187,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "EO": {
+          "n_target_trials": 192,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "Imagery": {
+          "n_target_trials": 1112,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "SSVEP": {
+          "n_target_trials": 736,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        }
+      },
+      "riemannian_recenter": {
+        "source": {
+          "EC": {
+            "n_reference_trials": 885,
+            "reference_iterations": 17
+          },
+          "EO": {
+            "n_reference_trials": 878,
+            "reference_iterations": 21
+          },
+          "Imagery": {
+            "n_reference_trials": 4392,
+            "reference_iterations": 18
+          },
+          "SSVEP": {
+            "n_reference_trials": 2922,
+            "reference_iterations": 16
+          }
+        },
+        "target": {
+          "EC": {
+            "n_reference_trials": 187,
+            "reference_iterations": 19
+          },
+          "EO": {
+            "n_reference_trials": 192,
+            "reference_iterations": 19
+          },
+          "Imagery": {
+            "n_reference_trials": 1112,
+            "reference_iterations": 18
+          },
+          "SSVEP": {
+            "n_reference_trials": 736,
+            "reference_iterations": 18
+          }
+        }
+      }
+    },
+    "4": {
+      "none": {},
+      "target_zscore": {
+        "EC": {
+          "n_target_trials": 181,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "EO": {
+          "n_target_trials": 193,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "Imagery": {
+          "n_target_trials": 1106,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        },
+        "SSVEP": {
+          "n_target_trials": 722,
+          "full_scale_ratio_clip_fraction": 0.0,
+          "window_scale_ratio_clip_fraction": 0.0
+        }
+      },
+      "riemannian_recenter": {
+        "source": {
+          "EC": {
+            "n_reference_trials": 891,
+            "reference_iterations": 17
+          },
+          "EO": {
+            "n_reference_trials": 877,
+            "reference_iterations": 20
+          },
+          "Imagery": {
+            "n_reference_trials": 4398,
+            "reference_iterations": 18
+          },
+          "SSVEP": {
+            "n_reference_trials": 2936,
+            "reference_iterations": 17
+          }
+        },
+        "target": {
+          "EC": {
+            "n_reference_trials": 181,
+            "reference_iterations": 17
+          },
+          "EO": {
+            "n_reference_trials": 193,
+            "reference_iterations": 17
+          },
+          "Imagery": {
+            "n_reference_trials": 1106,
+            "reference_iterations": 18
+          },
+          "SSVEP": {
+            "n_reference_trials": 722,
+            "reference_iterations": 16
+          }
+        }
+      }
+    }
+  },
+  "test_diagnostics": {
+    "none": {},
+    "target_zscore": {
+      "EC": {
+        "n_target_trials": 1972,
+        "full_scale_ratio_clip_fraction": 0.03118908405303955,
+        "window_scale_ratio_clip_fraction": 0.028265107423067093
+      },
+      "EO": {
+        "n_target_trials": 2312,
+        "full_scale_ratio_clip_fraction": 0.022417154163122177,
+        "window_scale_ratio_clip_fraction": 0.022417154163122177
+      },
+      "Imagery": {
+        "n_target_trials": 11207,
+        "full_scale_ratio_clip_fraction": 0.028265107423067093,
+        "window_scale_ratio_clip_fraction": 0.030214425176382065
+      },
+      "SSVEP": {
+        "n_target_trials": 6760,
+        "full_scale_ratio_clip_fraction": 0.03118908405303955,
+        "window_scale_ratio_clip_fraction": 0.03118908405303955
+      }
+    },
+    "riemannian_recenter": {
+      "source": {
+        "EC": {
+          "n_reference_trials": 1072,
+          "reference_iterations": 17
+        },
+        "EO": {
+          "n_reference_trials": 1070,
+          "reference_iterations": 20
+        },
+        "Imagery": {
+          "n_reference_trials": 5504,
+          "reference_iterations": 18
+        },
+        "SSVEP": {
+          "n_reference_trials": 3658,
+          "reference_iterations": 17
+        }
+      },
+      "target": {
+        "EC": {
+          "n_reference_trials": 1972,
+          "reference_iterations": 25
+        },
+        "EO": {
+          "n_reference_trials": 2312,
+          "reference_iterations": 22
+        },
+        "Imagery": {
+          "n_reference_trials": 11207,
+          "reference_iterations": 21
+        },
+        "SSVEP": {
+          "n_reference_trials": 6760,
+          "reference_iterations": 20
+        }
+      }
+    }
+  },
+  "candidates": {
+    "full_none": {
+      "file": "candidate_full_none.csv",
+      "sha256": "e340b9e9f82965dac0019449bce90a6d670dcc7038ffbaf7c6582e4bd79596a8",
+      "threshold": 0.227169731259346,
+      "n_rows": 22251,
+      "sample_unique": true,
+      "official_sample_order_matches": true,
+      "labels_valid": true,
+      "n_reject": 17629,
+      "reject_rate": 0.7922789986966878,
+      "label_counts": {
+        "0": 17629,
+        "1": 16,
+        "3": 288,
+        "5": 2621,
+        "6": 74,
+        "7": 201,
+        "10": 35,
+        "11": 81,
+        "12": 11,
+        "13": 622,
+        "14": 32,
+        "15": 225,
+        "16": 120,
+        "17": 274,
+        "19": 1,
+        "20": 21
+      },
+      "test_auc": null,
+      "test_f1": null
+    },
+    "base_none": {
+      "file": "candidate_base_none.csv",
+      "sha256": "7ce283985a68e19b3e9a06001ccd7bcda4b344f07e1c4734285edc16ba168c8c",
+      "threshold": 0.20391871184110638,
+      "n_rows": 22251,
+      "sample_unique": true,
+      "official_sample_order_matches": true,
+      "labels_valid": true,
+      "n_reject": 17645,
+      "reject_rate": 0.7929980675025842,
+      "label_counts": {
+        "0": 17645,
+        "1": 3,
+        "3": 268,
+        "4": 1,
+        "5": 2686,
+        "6": 84,
+        "7": 171,
+        "10": 26,
+        "11": 89,
+        "12": 11,
+        "13": 630,
+        "14": 24,
+        "15": 222,
+        "16": 133,
+        "17": 236,
+        "20": 22
+      },
+      "test_auc": null,
+      "test_f1": null
+    },
+    "full_target_zscore": {
+      "file": "candidate_full_target_zscore.csv",
+      "sha256": "69bdaf9820432602306055ecaab01eeab99c17d7367abd54d9eeb1665b7a17d6",
+      "threshold": 0.22285137176513672,
+      "n_rows": 22251,
+      "sample_unique": true,
+      "official_sample_order_matches": true,
+      "labels_valid": true,
+      "n_reject": 21111,
+      "reject_rate": 0.9487663475798841,
+      "label_counts": {
+        "0": 21111,
+        "1": 4,
+        "3": 135,
+        "5": 69,
+        "6": 53,
+        "7": 128,
+        "10": 16,
+        "11": 10,
+        "13": 505,
+        "14": 6,
+        "15": 48,
+        "16": 3,
+        "17": 141,
+        "19": 6,
+        "20": 16
+      },
+      "test_auc": null,
+      "test_f1": null
+    },
+    "base_target_zscore": {
+      "file": "candidate_base_target_zscore.csv",
+      "sha256": "847ab5198808e03039654d6babe89a92ab61855133d8465dfa026ad01b8d0780",
+      "threshold": 0.20291634649038315,
+      "n_rows": 22251,
+      "sample_unique": true,
+      "official_sample_order_matches": true,
+      "labels_valid": true,
+      "n_reject": 21218,
+      "reject_rate": 0.953575120219316,
+      "label_counts": {
+        "0": 21218,
+        "1": 1,
+        "3": 120,
+        "5": 87,
+        "6": 37,
+        "7": 116,
+        "10": 9,
+        "11": 7,
+        "13": 481,
+        "14": 6,
+        "15": 42,
+        "17": 111,
+        "19": 2,
+        "20": 14
+      },
+      "test_auc": null,
+      "test_f1": null
+    },
+    "full_riemannian_recenter": {
+      "file": "candidate_full_riemannian_recenter.csv",
+      "sha256": "40ccdf29afbda8b637402b38740166702b9a9a186f73c3d062bcaa3209fc28eb",
+      "threshold": 0.24328839480876924,
+      "n_rows": 22251,
+      "sample_unique": true,
+      "official_sample_order_matches": true,
+      "labels_valid": true,
+      "n_reject": 18300,
+      "reject_rate": 0.8224349467439666,
+      "label_counts": {
+        "0": 18300,
+        "1": 11,
+        "3": 336,
+        "5": 2320,
+        "6": 57,
+        "7": 113,
+        "10": 33,
+        "11": 91,
+        "12": 22,
+        "13": 624,
+        "14": 47,
+        "15": 51,
+        "16": 59,
+        "17": 170,
+        "18": 4,
+        "19": 1,
+        "20": 12
+      },
+      "test_auc": null,
+      "test_f1": null
+    }
+  },
+  "formal_submissions_sha256": {
+    "commit\\answer\\赞美诗_第1次.csv": "aa8aca733ef026558c7af5fcaff3b431036f85b424106a33699157d63d1846aa",
+    "commit\\answer\\赞美诗_第2次.csv": "c788df77888810597f97756696da6a1383a71147d380c929a24ebe0c8996df9a"
+  },
+  "formal_submissions_unchanged": true
+}
