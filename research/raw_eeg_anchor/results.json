@@ -1,0 +1,2606 @@
+{
+  "protocol": {
+    "data": "Train Session1 only; 5-fold subject holdout; nested threshold selection",
+    "candidate": "one frozen candidate: learned clean-anchor propagation",
+    "anchor_training": "inner held-out known trials; clean plus all three generated attacks; no outer data",
+    "propagation": "higher clean probability anchor >=0.5; receiver <0.5; existing reciprocal pairs",
+    "attacks": [
+      {
+        "name": "untargeted_snr20",
+        "snr_db": 20.0,
+        "targeted": false,
+        "steps": 10
+      },
+      {
+        "name": "untargeted_snr30",
+        "snr_db": 30.0,
+        "targeted": false,
+        "steps": 10
+      },
+      {
+        "name": "targeted_snr20",
+        "snr_db": 20.0,
+        "targeted": true,
+        "steps": 10
+      }
+    ],
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "smoke": false
+  },
+  "folds": [
+    {
+      "outer_fold": 1,
+      "unknown_subjects": [
+        16,
+        10,
+        15,
+        8
+      ],
+      "operating_points": [
+        {
+          "score_name": "margin",
+          "threshold": 0.7867605984210968,
+          "inner_detection_macro_f1": 0.8887708523241264,
+          "inner_unknown_f1": 0.9482734119653261,
+          "inner_known_acceptance": 0.9500268672756582,
+          "inner_U": 0.9131089217296113,
+          "inner_auroc": 0.9690777068669932
+        },
+        {
+          "score_name": "max_logit",
+          "threshold": 0.025972634553909302,
+          "inner_detection_macro_f1": 0.7258714309130581,
+          "inner_unknown_f1": 0.8299739151055252,
+          "inner_known_acceptance": 0.9500268672756582,
+          "inner_U": 0.7183908045977011,
+          "inner_auroc": 0.8836923430764339
+        },
+        {
+          "score_name": "margin",
+          "threshold": 0.7572962641716003,
+          "inner_detection_macro_f1": 0.8776030059583892,
+          "inner_unknown_f1": 0.9419585418155826,
+          "inner_known_acceptance": 0.9500268672756582,
+          "inner_U": 0.9016146688560481,
+          "inner_auroc": 0.9651084970295999
+        }
+      ],
+      "anchor_minimum": 1.7042707800865173,
+      "anchor_training": {
+        "n_clean": 502,
+        "n_adversarial": 1506,
+        "fit_auroc_not_validation": 0.9095741866531218,
+        "clean_probability_mean": 0.7536891102790833,
+        "adversarial_probability_mean": 0.24630793929100037
+      },
+      "attacks": {
+        "untargeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.935569755058573,
+              "RA": 0.0,
+              "ASafeR": 0.47177848775292863,
+              "A": 0.14153354632587858,
+              "U": 0.9452313503305004,
+              "official_score": 48.43014672606476,
+              "official_score_rounded": 48.43,
+              "internal_equal_weight_proxy": 50.02163618528639,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.9043200148479995,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9441169535486913
+            },
+            "asymmetric_pair": {
+              "C": 0.873269435569755,
+              "RA": 0.1906283280085197,
+              "ASafeR": 0.5580404685835996,
+              "A": 0.30085197018104365,
+              "U": 0.9452313503305004,
+              "official_score": 61.343328100130556,
+              "official_score_rounded": 61.34,
+              "internal_equal_weight_proxy": 62.855952574868276,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.8443548664452238,
+              "adversarial_macro_f1_with_reject": 0.22860897058388283,
+              "unknown_f1": 0.9454545454545454
+            },
+            "combined": {
+              "C": 0.8764643237486688,
+              "RA": 0.1906283280085197,
+              "ASafeR": 0.5559105431309904,
+              "A": 0.3002129925452609,
+              "U": 0.9428706326723324,
+              "official_score": 61.34893723404115,
+              "official_score_rounded": 61.35,
+              "internal_equal_weight_proxy": 62.83552941638691,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9417440750763526,
+              "known_aupr": 0.9046346333108929,
+              "unknown_aupr": 0.9608531981767384,
+              "eer": 0.10234578404486716,
+              "clean_macro_f1_with_reject": 0.8451111288116306,
+              "adversarial_macro_f1_with_reject": 0.22828365200380793,
+              "unknown_f1": 0.9455492424242424
+            },
+            "learned_anchor": {
+              "C": 0.9222577209797657,
+              "RA": 0.28115015974440893,
+              "ASafeR": 0.5399361022364217,
+              "A": 0.3587859424920128,
+              "U": 0.9452313503305004,
+              "official_score": 66.68341698393088,
+              "official_score_rounded": 66.68,
+              "internal_equal_weight_proxy": 67.88001744829441,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.8919816072230561,
+              "adversarial_macro_f1_with_reject": 0.30285963266631477,
+              "unknown_f1": 0.9441169535486913
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2097,
+            "pairs_similarity_0.99": 807,
+            "pairs_with_gap_0.005": 807,
+            "direct_pair_agreement": 0.01734820322180917,
+            "asymmetric_changed": 481,
+            "multiview_changed": 62,
+            "combined_changed": 534,
+            "learned_anchor": {
+              "changed": 553,
+              "clean_probability_mean": 0.7883443832397461,
+              "adversarial_probability_mean": 0.23355033993721008,
+              "unknown_probability_mean": 0.30937665700912476,
+              "clean_vs_adversarial_auroc": 0.9255359688608983,
+              "audit": {
+                "clean": {
+                  "changed": 25,
+                  "correct_before": 1757,
+                  "correct_after": 1732
+                },
+                "adv": {
+                  "changed": 528,
+                  "correct_before": 0,
+                  "correct_after": 528
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2002,
+                  "correct_after": 2002
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 123,
+                "correct_before": 1757,
+                "correct_after": 1640
+              },
+              "adv": {
+                "changed": 358,
+                "correct_before": 0,
+                "correct_after": 358
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2002,
+                "correct_after": 2002
+              }
+            }
+          }
+        },
+        "untargeted_snr30": {
+          "methods": {
+            "direct": {
+              "C": 0.935569755058573,
+              "RA": 0.014909478168264111,
+              "ASafeR": 0.8136315228966986,
+              "A": 0.25452609158679446,
+              "U": 0.9452313503305004,
+              "official_score": 59.473200019230944,
+              "official_score_rounded": 59.47,
+              "internal_equal_weight_proxy": 60.829680193652536,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.9043200148479995,
+              "adversarial_macro_f1_with_reject": 0.025145936237090254,
+              "unknown_f1": 0.9441169535486913
+            },
+            "asymmetric_pair": {
+              "C": 0.9046858359957402,
+              "RA": 0.402555910543131,
+              "ASafeR": 0.8966986155484558,
+              "A": 0.5507987220447284,
+              "U": 0.9452313503305004,
+              "official_score": 76.88315008471142,
+              "official_score_rounded": 76.88,
+              "internal_equal_weight_proxy": 77.80537688461973,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.8725340915135573,
+              "adversarial_macro_f1_with_reject": 0.5010009839770375,
+              "unknown_f1": 0.9463483809974002
+            },
+            "combined": {
+              "C": 0.9084132055378061,
+              "RA": 0.4036208732694356,
+              "ASafeR": 0.8961661341853036,
+              "A": 0.5513844515441959,
+              "U": 0.9428706326723324,
+              "official_score": 76.99020627178548,
+              "official_score_rounded": 76.99,
+              "internal_equal_weight_proxy": 77.87475399966833,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9417440750763526,
+              "known_aupr": 0.9046346333108929,
+              "unknown_aupr": 0.9608531981767384,
+              "eer": 0.10234578404486716,
+              "clean_macro_f1_with_reject": 0.8737264880638324,
+              "adversarial_macro_f1_with_reject": 0.5022911016175313,
+              "unknown_f1": 0.9466698269732164
+            },
+            "learned_anchor": {
+              "C": 0.9201277955271565,
+              "RA": 0.7401490947816827,
+              "ASafeR": 0.8753993610223643,
+              "A": 0.7807241746538871,
+              "U": 0.9452313503305004,
+              "official_score": 87.45768128487929,
+              "official_score_rounded": 87.46,
+              "internal_equal_weight_proxy": 87.89441870949977,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.8885257735378709,
+              "adversarial_macro_f1_with_reject": 0.743312477854398,
+              "unknown_f1": 0.9452313503305004
+            }
+          },
+          "attack": {
+            "actual_snr_min": 29.999998092651367,
+            "actual_snr_median": 30.0,
+            "actual_snr_max": 30.000001907348633,
+            "surrogate_identity_retention": 0.03461128860489883,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2097,
+            "pairs_similarity_0.99": 1867,
+            "pairs_with_gap_0.005": 1867,
+            "direct_pair_agreement": 0.06320299946438136,
+            "asymmetric_changed": 796,
+            "multiview_changed": 78,
+            "combined_changed": 853,
+            "learned_anchor": {
+              "changed": 1396,
+              "clean_probability_mean": 0.7883443832397461,
+              "adversarial_probability_mean": 0.24220992624759674,
+              "unknown_probability_mean": 0.30937665700912476,
+              "clean_vs_adversarial_auroc": 0.9192414607341778,
+              "audit": {
+                "clean": {
+                  "changed": 34,
+                  "correct_before": 1757,
+                  "correct_after": 1728
+                },
+                "adv": {
+                  "changed": 1362,
+                  "correct_before": 28,
+                  "correct_after": 1390
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2002,
+                  "correct_after": 2002
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 68,
+                "correct_before": 1757,
+                "correct_after": 1699
+              },
+              "adv": {
+                "changed": 728,
+                "correct_before": 28,
+                "correct_after": 756
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2002,
+                "correct_after": 2002
+              }
+            }
+          }
+        },
+        "targeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.935569755058573,
+              "RA": 0.0,
+              "ASafeR": 0.009584664536741214,
+              "A": 0.002875399361022364,
+              "U": 0.9452313503305004,
+              "official_score": 12.383954820370345,
+              "official_score_rounded": 12.38,
+              "internal_equal_weight_proxy": 13.649104357362729,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.9043200148479995,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9441169535486913
+            },
+            "asymmetric_pair": {
+              "C": 0.5942492012779552,
+              "RA": 0.06070287539936102,
+              "ASafeR": 0.06815761448349308,
+              "A": 0.06293929712460064,
+              "U": 0.9452313503305004,
+              "official_score": 30.41547708535415,
+              "official_score_rounded": 30.42,
+              "internal_equal_weight_proxy": 32.82032451558021,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.5641897160454687,
+              "adversarial_macro_f1_with_reject": 0.05607781460051327,
+              "unknown_f1": 0.9492650545282124
+            },
+            "combined": {
+              "C": 0.597444089456869,
+              "RA": 0.06070287539936102,
+              "ASafeR": 0.06815761448349308,
+              "A": 0.06293929712460064,
+              "U": 0.9428706326723324,
+              "official_score": 30.461732208379363,
+              "official_score_rounded": 30.46,
+              "internal_equal_weight_proxy": 32.85164256236312,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9417440750763526,
+              "known_aupr": 0.9046346333108929,
+              "unknown_aupr": 0.9608531981767384,
+              "eer": 0.10234578404486716,
+              "clean_macro_f1_with_reject": 0.565166164091686,
+              "adversarial_macro_f1_with_reject": 0.05607781460051327,
+              "unknown_f1": 0.9493700974566199
+            },
+            "learned_anchor": {
+              "C": 0.933972310969116,
+              "RA": 0.29020234291799785,
+              "ASafeR": 0.29605963791267303,
+              "A": 0.2919595314164004,
+              "U": 0.9452313503305004,
+              "official_score": 62.35640370379747,
+              "official_score_rounded": 62.36,
+              "internal_equal_weight_proxy": 63.640208253226014,
+              "n_known": 1878,
+              "n_unknown": 2118,
+              "unknown_auroc": 0.9773391217426369,
+              "known_aupr": 0.9683549413077198,
+              "unknown_aupr": 0.9817285437536654,
+              "eer": 0.05755474903987429,
+              "clean_macro_f1_with_reject": 0.9024817732934709,
+              "adversarial_macro_f1_with_reject": 0.2513232431536454,
+              "unknown_f1": 0.9443396226415094
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2094,
+            "pairs_similarity_0.99": 790,
+            "pairs_with_gap_0.005": 790,
+            "direct_pair_agreement": 0.0,
+            "asymmetric_changed": 778,
+            "multiview_changed": 42,
+            "combined_changed": 817,
+            "learned_anchor": {
+              "changed": 549,
+              "clean_probability_mean": 0.7883443832397461,
+              "adversarial_probability_mean": 0.26845651865005493,
+              "unknown_probability_mean": 0.30937665700912476,
+              "clean_vs_adversarial_auroc": 0.915788412661148,
+              "audit": {
+                "clean": {
+                  "changed": 4,
+                  "correct_before": 1757,
+                  "correct_after": 1754
+                },
+                "adv": {
+                  "changed": 545,
+                  "correct_before": 0,
+                  "correct_after": 545
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2002,
+                  "correct_after": 2002
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 664,
+                "correct_before": 1757,
+                "correct_after": 1116
+              },
+              "adv": {
+                "changed": 114,
+                "correct_before": 0,
+                "correct_after": 114
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2002,
+                "correct_after": 2002
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "outer_fold": 2,
+      "unknown_subjects": [
+        13,
+        11,
+        7,
+        20
+      ],
+      "operating_points": [
+        {
+          "score_name": "margin",
+          "threshold": 0.7507708549499512,
+          "inner_detection_macro_f1": 0.8537001763392369,
+          "inner_unknown_f1": 0.927377651202878,
+          "inner_known_acceptance": 0.9496959646213378,
+          "inner_U": 0.875725406935598,
+          "inner_auroc": 0.967079754174007
+        },
+        {
+          "score_name": "max_logit",
+          "threshold": -0.0005590498447418081,
+          "inner_detection_macro_f1": 0.6802985444890857,
+          "inner_unknown_f1": 0.7849562781220817,
+          "inner_known_acceptance": 0.9496959646213378,
+          "inner_U": 0.6543524416135881,
+          "inner_auroc": 0.8739245504020356
+        },
+        {
+          "score_name": "margin",
+          "threshold": 0.7234913527965546,
+          "inner_detection_macro_f1": 0.8440131306900569,
+          "inner_unknown_f1": 0.9212331348458581,
+          "inner_known_acceptance": 0.9496959646213378,
+          "inner_U": 0.8649681528662421,
+          "inner_auroc": 0.9608509313149594
+        }
+      ],
+      "anchor_minimum": 1.659395158290863,
+      "anchor_training": {
+        "n_clean": 502,
+        "n_adversarial": 1506,
+        "fit_auroc_not_validation": 0.9462958259921801,
+        "clean_probability_mean": 0.8095616698265076,
+        "adversarial_probability_mean": 0.19045743346214294
+      },
+      "attacks": {
+        "untargeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9360176503033646,
+              "RA": 0.0,
+              "ASafeR": 0.3651406508549366,
+              "A": 0.10954219525648097,
+              "U": 0.9389942291838417,
+              "official_score": 44.21125570858948,
+              "official_score_rounded": 44.21,
+              "internal_equal_weight_proxy": 45.83277298587258,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.9070549342175224,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9452282157676348
+            },
+            "asymmetric_pair": {
+              "C": 0.8416988416988417,
+              "RA": 0.16105901820187535,
+              "ASafeR": 0.441257584114727,
+              "A": 0.24511858797573083,
+              "U": 0.9389942291838417,
+              "official_score": 56.17073526781337,
+              "official_score_rounded": 56.17,
+              "internal_equal_weight_proxy": 57.862691746910514,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.816347880392018,
+              "adversarial_macro_f1_with_reject": 0.19811095324549177,
+              "unknown_f1": 0.9466029503428215
+            },
+            "combined": {
+              "C": 0.8428019856591286,
+              "RA": 0.16105901820187535,
+              "ASafeR": 0.4351902923331495,
+              "A": 0.24329840044125756,
+              "U": 0.9332234130255564,
+              "official_score": 55.967430076276464,
+              "official_score_rounded": 55.97,
+              "internal_equal_weight_proxy": 57.62577907914245,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9390135546654215,
+              "known_aupr": 0.884643853448977,
+              "unknown_aupr": 0.9642901928673929,
+              "eer": 0.11190749778666398,
+              "clean_macro_f1_with_reject": 0.8162927323645119,
+              "adversarial_macro_f1_with_reject": 0.19767974992953255,
+              "unknown_f1": 0.9439232853867
+            },
+            "learned_anchor": {
+              "C": 0.9260893546607832,
+              "RA": 0.2884721456150028,
+              "ASafeR": 0.49089906232763375,
+              "A": 0.3492002206287921,
+              "U": 0.9389942291838417,
+              "official_score": 66.05458462705258,
+              "official_score_rounded": 66.05,
+              "internal_equal_weight_proxy": 67.21457262299663,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.8977412682446212,
+              "adversarial_macro_f1_with_reject": 0.3148044195195029,
+              "unknown_f1": 0.9452282157676348
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0005515719801434088,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2020,
+            "pairs_similarity_0.99": 759,
+            "pairs_with_gap_0.005": 759,
+            "direct_pair_agreement": 0.011857707509881422,
+            "asymmetric_changed": 470,
+            "multiview_changed": 76,
+            "combined_changed": 541,
+            "learned_anchor": {
+              "changed": 541,
+              "clean_probability_mean": 0.8449059128761292,
+              "adversarial_probability_mean": 0.16925659775733948,
+              "unknown_probability_mean": 0.49675652384757996,
+              "clean_vs_adversarial_auroc": 0.9540515897776949,
+              "audit": {
+                "clean": {
+                  "changed": 18,
+                  "correct_before": 1697,
+                  "correct_after": 1679
+                },
+                "adv": {
+                  "changed": 523,
+                  "correct_before": 0,
+                  "correct_after": 523
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2278,
+                  "correct_after": 2278
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 178,
+                "correct_before": 1697,
+                "correct_after": 1526
+              },
+              "adv": {
+                "changed": 292,
+                "correct_before": 0,
+                "correct_after": 292
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2278,
+                "correct_after": 2278
+              }
+            }
+          }
+        },
+        "untargeted_snr30": {
+          "methods": {
+            "direct": {
+              "C": 0.9360176503033646,
+              "RA": 0.013789299503585218,
+              "ASafeR": 0.7258687258687259,
+              "A": 0.2274131274131274,
+              "U": 0.9389942291838417,
+              "official_score": 57.090622944630674,
+              "official_score_rounded": 57.09,
+              "internal_equal_weight_proxy": 58.46834901258598,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.9070549342175224,
+              "adversarial_macro_f1_with_reject": 0.02297794117647059,
+              "unknown_f1": 0.9452282157676348
+            },
+            "asymmetric_pair": {
+              "C": 0.8676227247655819,
+              "RA": 0.3745173745173745,
+              "ASafeR": 0.8179812465526751,
+              "A": 0.5075565361279647,
+              "U": 0.9389942291838417,
+              "official_score": 73.35296056730157,
+              "official_score_rounded": 73.35,
+              "internal_equal_weight_proxy": 74.50054026554905,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.8403008654457728,
+              "adversarial_macro_f1_with_reject": 0.46015181195285865,
+              "unknown_f1": 0.9469964664310954
+            },
+            "combined": {
+              "C": 0.8687258687258688,
+              "RA": 0.37617209045780475,
+              "ASafeR": 0.8201875344732488,
+              "A": 0.5093767236624379,
+              "U": 0.9332234130255564,
+              "official_score": 73.36909997781885,
+              "official_score_rounded": 73.37,
+              "internal_equal_weight_proxy": 74.46790886223825,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9390135546654215,
+              "known_aupr": 0.884643853448977,
+              "unknown_aupr": 0.9642901928673929,
+              "eer": 0.11190749778666398,
+              "clean_macro_f1_with_reject": 0.840306928066725,
+              "adversarial_macro_f1_with_reject": 0.46143724676885944,
+              "unknown_f1": 0.9443169968717414
+            },
+            "learned_anchor": {
+              "C": 0.9222283507997794,
+              "RA": 0.6017650303364589,
+              "ASafeR": 0.8383894098179813,
+              "A": 0.6727523441809156,
+              "U": 0.9389942291838417,
+              "official_score": 82.95650473086596,
+              "official_score_rounded": 82.96,
+              "internal_equal_weight_proxy": 83.51904837989323,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.8920077410874585,
+              "adversarial_macro_f1_with_reject": 0.6431879007140585,
+              "unknown_f1": 0.9464063149148317
+            }
+          },
+          "attack": {
+            "actual_snr_min": 29.999998092651367,
+            "actual_snr_median": 30.0,
+            "actual_snr_max": 30.000001907348633,
+            "surrogate_identity_retention": 0.038058466629895205,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2020,
+            "pairs_similarity_0.99": 1800,
+            "pairs_with_gap_0.005": 1800,
+            "direct_pair_agreement": 0.057777777777777775,
+            "asymmetric_changed": 787,
+            "multiview_changed": 108,
+            "combined_changed": 862,
+            "learned_anchor": {
+              "changed": 1097,
+              "clean_probability_mean": 0.8449059128761292,
+              "adversarial_probability_mean": 0.32362595200538635,
+              "unknown_probability_mean": 0.49675652384757996,
+              "clean_vs_adversarial_auroc": 0.915778944066707,
+              "audit": {
+                "clean": {
+                  "changed": 31,
+                  "correct_before": 1697,
+                  "correct_after": 1672
+                },
+                "adv": {
+                  "changed": 1066,
+                  "correct_before": 25,
+                  "correct_after": 1091
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2278,
+                  "correct_after": 2278
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 133,
+                "correct_before": 1697,
+                "correct_after": 1573
+              },
+              "adv": {
+                "changed": 654,
+                "correct_before": 25,
+                "correct_after": 679
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2278,
+                "correct_after": 2278
+              }
+            }
+          }
+        },
+        "targeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9360176503033646,
+              "RA": 0.0,
+              "ASafeR": 0.005515719801434087,
+              "A": 0.001654715940430226,
+              "U": 0.9389942291838417,
+              "official_score": 10.191369642718954,
+              "official_score_rounded": 10.19,
+              "internal_equal_weight_proxy": 11.329832014131194,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.9070549342175224,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9452282157676348
+            },
+            "asymmetric_pair": {
+              "C": 0.616657473800331,
+              "RA": 0.06674020959735245,
+              "ASafeR": 0.07004964147821291,
+              "A": 0.0677330391616106,
+              "U": 0.9389942291838417,
+              "official_score": 31.620121002129533,
+              "official_score_rounded": 31.62,
+              "internal_equal_weight_proxy": 33.97575856007302,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.5863014371553565,
+              "adversarial_macro_f1_with_reject": 0.06117955797799419,
+              "unknown_f1": 0.9495623176323468
+            },
+            "combined": {
+              "C": 0.6172090457804743,
+              "RA": 0.06674020959735245,
+              "ASafeR": 0.07004964147821291,
+              "A": 0.0677330391616106,
+              "U": 0.9332234130255564,
+              "official_score": 31.582719008942433,
+              "official_score_rounded": 31.58,
+              "internal_equal_weight_proxy": 33.916119519893286,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9390135546654215,
+              "known_aupr": 0.884643853448977,
+              "unknown_aupr": 0.9642901928673929,
+              "eer": 0.11190749778666398,
+              "clean_macro_f1_with_reject": 0.5854567033339785,
+              "adversarial_macro_f1_with_reject": 0.06117955797799419,
+              "unknown_f1": 0.9466861802216182
+            },
+            "learned_anchor": {
+              "C": 0.9282956425813569,
+              "RA": 0.2746828461114175,
+              "ASafeR": 0.277992277992278,
+              "A": 0.27567567567567564,
+              "U": 0.9389942291838417,
+              "official_score": 60.86669382365068,
+              "official_score_rounded": 60.87,
+              "internal_equal_weight_proxy": 62.170242436648905,
+              "n_known": 1813,
+              "n_unknown": 2426,
+              "unknown_auroc": 0.9758881650296087,
+              "known_aupr": 0.9594991324658921,
+              "unknown_aupr": 0.9840514889103479,
+              "eer": 0.06228500401742659,
+              "clean_macro_f1_with_reject": 0.899733541926167,
+              "adversarial_macro_f1_with_reject": 0.23673058429769894,
+              "unknown_f1": 0.9452282157676348
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2017,
+            "pairs_similarity_0.99": 728,
+            "pairs_with_gap_0.005": 728,
+            "direct_pair_agreement": 0.0,
+            "asymmetric_changed": 722,
+            "multiview_changed": 56,
+            "combined_changed": 775,
+            "learned_anchor": {
+              "changed": 512,
+              "clean_probability_mean": 0.8449059128761292,
+              "adversarial_probability_mean": 0.2179114818572998,
+              "unknown_probability_mean": 0.49675652384757996,
+              "clean_vs_adversarial_auroc": 0.9439194589300963,
+              "audit": {
+                "clean": {
+                  "changed": 14,
+                  "correct_before": 1697,
+                  "correct_after": 1683
+                },
+                "adv": {
+                  "changed": 498,
+                  "correct_before": 0,
+                  "correct_after": 498
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2278,
+                  "correct_after": 2278
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 601,
+                "correct_before": 1697,
+                "correct_after": 1118
+              },
+              "adv": {
+                "changed": 121,
+                "correct_before": 0,
+                "correct_after": 121
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2278,
+                "correct_after": 2278
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "outer_fold": 3,
+      "unknown_subjects": [
+        4,
+        1,
+        17,
+        6
+      ],
+      "operating_points": [
+        {
+          "score_name": "margin",
+          "threshold": 0.8370976850390435,
+          "inner_detection_macro_f1": 0.8940971600264911,
+          "inner_unknown_f1": 0.9509625862695241,
+          "inner_known_acceptance": 0.949671772428884,
+          "inner_U": 0.9182098765432098,
+          "inner_auroc": 0.973160059137448
+        },
+        {
+          "score_name": "margin",
+          "threshold": 0.4956039741635323,
+          "inner_detection_macro_f1": 0.7487797177548832,
+          "inner_unknown_f1": 0.8496773679598503,
+          "inner_known_acceptance": 0.949671772428884,
+          "inner_U": 0.7481762065095399,
+          "inner_auroc": 0.9458696188729011
+        },
+        {
+          "score_name": "margin",
+          "threshold": 0.7716013491153717,
+          "inner_detection_macro_f1": 0.8889815570025894,
+          "inner_unknown_f1": 0.9481351981351981,
+          "inner_known_acceptance": 0.949671772428884,
+          "inner_U": 0.9130190796857464,
+          "inner_auroc": 0.9714966649229961
+        }
+      ],
+      "anchor_minimum": 1.712770253419876,
+      "anchor_training": {
+        "n_clean": 502,
+        "n_adversarial": 1506,
+        "fit_auroc_not_validation": 0.9454267921673201,
+        "clean_probability_mean": 0.8098873496055603,
+        "adversarial_probability_mean": 0.19012491405010223
+      },
+      "attacks": {
+        "untargeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9162132752992383,
+              "RA": 0.0,
+              "ASafeR": 0.46844396082698586,
+              "A": 0.14053318824809574,
+              "U": 0.9704875962360993,
+              "official_score": 48.224612207603414,
+              "official_score_rounded": 48.22,
+              "internal_equal_weight_proxy": 49.994453199367165,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8944166023066022,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9531611006091157
+            },
+            "asymmetric_pair": {
+              "C": 0.8373231773667029,
+              "RA": 0.17573449401523394,
+              "ASafeR": 0.5500544069640914,
+              "A": 0.2880304678998912,
+              "U": 0.9704875962360993,
+              "official_score": 59.80096508977897,
+              "official_score_rounded": 59.8,
+              "internal_equal_weight_proxy": 61.62739975347799,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8157607224728172,
+              "adversarial_macro_f1_with_reject": 0.21912222823474325,
+              "unknown_f1": 0.955167333193012
+            },
+            "combined": {
+              "C": 0.8498367791077258,
+              "RA": 0.17573449401523394,
+              "ASafeR": 0.5462459194776932,
+              "A": 0.2868879216539717,
+              "U": 0.9692044482463644,
+              "official_score": 60.05336551320507,
+              "official_score_rounded": 60.05,
+              "internal_equal_weight_proxy": 61.82361489651205,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9844949460631047,
+              "known_aupr": 0.979580213721766,
+              "unknown_aupr": 0.9872214899306248,
+              "eer": 0.047405267189854716,
+              "clean_macro_f1_with_reject": 0.8220962997641197,
+              "adversarial_macro_f1_with_reject": 0.218345009264782,
+              "unknown_f1": 0.9591534391534392
+            },
+            "learned_anchor": {
+              "C": 0.8960826985854189,
+              "RA": 0.2840043525571273,
+              "ASafeR": 0.55930359085963,
+              "A": 0.3665941240478781,
+              "U": 0.9704875962360993,
+              "official_score": 66.85773491569374,
+              "official_score_rounded": 66.86,
+              "internal_equal_weight_proxy": 68.31370819058361,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8747098644871181,
+              "adversarial_macro_f1_with_reject": 0.3128353236549018,
+              "unknown_f1": 0.9535616726202983
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2078,
+            "pairs_similarity_0.99": 784,
+            "pairs_with_gap_0.005": 784,
+            "direct_pair_agreement": 0.021683673469387755,
+            "asymmetric_changed": 478,
+            "multiview_changed": 75,
+            "combined_changed": 545,
+            "learned_anchor": {
+              "changed": 561,
+              "clean_probability_mean": 0.8571717143058777,
+              "adversarial_probability_mean": 0.22373610734939575,
+              "unknown_probability_mean": 0.27224233746528625,
+              "clean_vs_adversarial_auroc": 0.9446372138898197,
+              "audit": {
+                "clean": {
+                  "changed": 39,
+                  "correct_before": 1684,
+                  "correct_after": 1647
+                },
+                "adv": {
+                  "changed": 522,
+                  "correct_before": 0,
+                  "correct_after": 522
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2269,
+                  "correct_after": 2269
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 155,
+                "correct_before": 1684,
+                "correct_after": 1539
+              },
+              "adv": {
+                "changed": 323,
+                "correct_before": 0,
+                "correct_after": 323
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2269,
+                "correct_after": 2269
+              }
+            }
+          }
+        },
+        "untargeted_snr30": {
+          "methods": {
+            "direct": {
+              "C": 0.9162132752992383,
+              "RA": 0.010337323177366704,
+              "ASafeR": 0.8025027203482046,
+              "A": 0.24798694232861807,
+              "U": 0.9704875962360993,
+              "official_score": 58.829643162829775,
+              "official_score_rounded": 58.83,
+              "internal_equal_weight_proxy": 60.41412098942844,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8944166023066022,
+              "adversarial_macro_f1_with_reject": 0.019105077928607342,
+              "unknown_f1": 0.9531611006091157
+            },
+            "asymmetric_pair": {
+              "C": 0.8759521218715995,
+              "RA": 0.3797606093579978,
+              "ASafeR": 0.8813928182807399,
+              "A": 0.5302502720348204,
+              "U": 0.9704875962360993,
+              "official_score": 75.38899604554926,
+              "official_score_rounded": 75.39,
+              "internal_equal_weight_proxy": 76.67440585457167,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8526727036394012,
+              "adversarial_macro_f1_with_reject": 0.4735904537660724,
+              "unknown_f1": 0.9555695935986523
+            },
+            "combined": {
+              "C": 0.8890097932535365,
+              "RA": 0.38139281828073995,
+              "ASafeR": 0.8792165397170838,
+              "A": 0.530739934711643,
+              "U": 0.9692044482463644,
+              "official_score": 75.83594205681705,
+              "official_score_rounded": 75.84,
+              "internal_equal_weight_proxy": 77.04324562752474,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9844949460631047,
+              "known_aupr": 0.979580213721766,
+              "unknown_aupr": 0.9872214899306248,
+              "eer": 0.047405267189854716,
+              "clean_macro_f1_with_reject": 0.8592912300329874,
+              "adversarial_macro_f1_with_reject": 0.47460826077924534,
+              "unknown_f1": 0.9597628123676408
+            },
+            "learned_anchor": {
+              "C": 0.9015233949945594,
+              "RA": 0.7154515778019587,
+              "ASafeR": 0.8650707290533188,
+              "A": 0.7603373231773667,
+              "U": 0.9704875962360993,
+              "official_score": 86.51481952216177,
+              "official_score_rounded": 86.51,
+              "internal_equal_weight_proxy": 87.29534787203754,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8776822171412185,
+              "adversarial_macro_f1_with_reject": 0.723813903914059,
+              "unknown_f1": 0.9555695935986523
+            }
+          },
+          "attack": {
+            "actual_snr_min": 29.999998092651367,
+            "actual_snr_median": 30.0,
+            "actual_snr_max": 30.000001907348633,
+            "surrogate_identity_retention": 0.033188248095756254,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2082,
+            "pairs_similarity_0.99": 1827,
+            "pairs_with_gap_0.005": 1827,
+            "direct_pair_agreement": 0.07443897099069513,
+            "asymmetric_changed": 765,
+            "multiview_changed": 74,
+            "combined_changed": 821,
+            "learned_anchor": {
+              "changed": 1335,
+              "clean_probability_mean": 0.8571717143058777,
+              "adversarial_probability_mean": 0.2187228798866272,
+              "unknown_probability_mean": 0.27224233746528625,
+              "clean_vs_adversarial_auroc": 0.9434309659101,
+              "audit": {
+                "clean": {
+                  "changed": 39,
+                  "correct_before": 1684,
+                  "correct_after": 1657
+                },
+                "adv": {
+                  "changed": 1296,
+                  "correct_before": 19,
+                  "correct_after": 1315
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2269,
+                  "correct_after": 2269
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 86,
+                "correct_before": 1684,
+                "correct_after": 1610
+              },
+              "adv": {
+                "changed": 679,
+                "correct_before": 19,
+                "correct_after": 698
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2269,
+                "correct_after": 2269
+              }
+            }
+          }
+        },
+        "targeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9162132752992383,
+              "RA": 0.0,
+              "ASafeR": 0.003808487486398259,
+              "A": 0.0011425462459194776,
+              "U": 0.9704875962360993,
+              "official_score": 8.949565584504054,
+              "official_score_rounded": 8.95,
+              "internal_equal_weight_proxy": 10.052794056829459,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8944166023066022,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9531611006091157
+            },
+            "asymmetric_pair": {
+              "C": 0.6403699673558215,
+              "RA": 0.0957562568008705,
+              "ASafeR": 0.09902067464635474,
+              "A": 0.09673558215451578,
+              "U": 0.9704875962360993,
+              "official_score": 36.66697369064093,
+              "official_score_rounded": 36.67,
+              "internal_equal_weight_proxy": 39.17440402865948,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.6105347682913806,
+              "adversarial_macro_f1_with_reject": 0.08471313515324973,
+              "unknown_f1": 0.9596109113977586
+            },
+            "combined": {
+              "C": 0.6501632208922742,
+              "RA": 0.0957562568008705,
+              "ASafeR": 0.09956474428726877,
+              "A": 0.09689880304678998,
+              "U": 0.9692044482463644,
+              "official_score": 36.89982048169978,
+              "official_score_rounded": 36.9,
+              "internal_equal_weight_proxy": 39.37785629932458,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9844949460631047,
+              "known_aupr": 0.979580213721766,
+              "unknown_aupr": 0.9872214899306248,
+              "eer": 0.047405267189854716,
+              "clean_macro_f1_with_reject": 0.6166084921224781,
+              "adversarial_macro_f1_with_reject": 0.0847648417822464,
+              "unknown_f1": 0.9626168224299065
+            },
+            "learned_anchor": {
+              "C": 0.9064200217627857,
+              "RA": 0.2807399347116431,
+              "ASafeR": 0.2840043525571273,
+              "A": 0.28171926006528836,
+              "U": 0.9704875962360993,
+              "official_score": 61.251267748182194,
+              "official_score_rounded": 61.25,
+              "internal_equal_weight_proxy": 62.81239301291824,
+              "n_known": 1838,
+              "n_unknown": 2338,
+              "unknown_auroc": 0.9850322671926472,
+              "known_aupr": 0.9794076854289689,
+              "unknown_aupr": 0.9876507327056778,
+              "eer": 0.04309040864330721,
+              "clean_macro_f1_with_reject": 0.8841617834438066,
+              "adversarial_macro_f1_with_reject": 0.2508869163352465,
+              "unknown_f1": 0.9537620849096259
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2077,
+            "pairs_similarity_0.99": 761,
+            "pairs_with_gap_0.005": 761,
+            "direct_pair_agreement": 0.0,
+            "asymmetric_changed": 715,
+            "multiview_changed": 46,
+            "combined_changed": 753,
+            "learned_anchor": {
+              "changed": 537,
+              "clean_probability_mean": 0.8571717143058777,
+              "adversarial_probability_mean": 0.2355465441942215,
+              "unknown_probability_mean": 0.27224233746528625,
+              "clean_vs_adversarial_auroc": 0.9420728638902341,
+              "audit": {
+                "clean": {
+                  "changed": 21,
+                  "correct_before": 1684,
+                  "correct_after": 1666
+                },
+                "adv": {
+                  "changed": 516,
+                  "correct_before": 0,
+                  "correct_after": 516
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2269,
+                  "correct_after": 2269
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 539,
+                "correct_before": 1684,
+                "correct_after": 1177
+              },
+              "adv": {
+                "changed": 176,
+                "correct_before": 0,
+                "correct_after": 176
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2269,
+                "correct_after": 2269
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "outer_fold": 4,
+      "unknown_subjects": [
+        12,
+        19,
+        3,
+        5
+      ],
+      "operating_points": [
+        {
+          "score_name": "margin",
+          "threshold": 0.913539618253708,
+          "inner_detection_macro_f1": 0.9026346738166244,
+          "inner_unknown_f1": 0.9558278711883728,
+          "inner_known_acceptance": 0.9495114006514658,
+          "inner_U": 0.9271596406357983,
+          "inner_auroc": 0.9756017729594422
+        },
+        {
+          "score_name": "margin",
+          "threshold": 0.6956656187772751,
+          "inner_detection_macro_f1": 0.8581719982437712,
+          "inner_unknown_f1": 0.9304531854338466,
+          "inner_known_acceptance": 0.9495114006514658,
+          "inner_U": 0.8811333794056669,
+          "inner_auroc": 0.9642996442525514
+        },
+        {
+          "score_name": "margin",
+          "threshold": 0.8359102815389634,
+          "inner_detection_macro_f1": 0.8862418075915833,
+          "inner_unknown_f1": 0.9468994754616656,
+          "inner_known_acceptance": 0.9495114006514658,
+          "inner_U": 0.9107118175535591,
+          "inner_auroc": 0.9723347642769832
+        }
+      ],
+      "anchor_minimum": 1.693284809589386,
+      "anchor_training": {
+        "n_clean": 502,
+        "n_adversarial": 1506,
+        "fit_auroc_not_validation": 0.929224668391507,
+        "clean_probability_mean": 0.787038266658783,
+        "adversarial_probability_mean": 0.21297164261341095
+      },
+      "attacks": {
+        "untargeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9092872570194385,
+              "RA": 0.0,
+              "ASafeR": 0.4319654427645788,
+              "A": 0.12958963282937364,
+              "U": 0.9648173207036536,
+              "official_score": 46.66500380426709,
+              "official_score_rounded": 46.67,
+              "internal_equal_weight_proxy": 48.44386871994092,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8933942446666919,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9456233421750663
+            },
+            "asymmetric_pair": {
+              "C": 0.8471922246220303,
+              "RA": 0.19330453563714903,
+              "ASafeR": 0.5210583153347732,
+              "A": 0.29163066954643624,
+              "U": 0.9648173207036536,
+              "official_score": 60.2553586221652,
+              "official_score_rounded": 60.26,
+              "internal_equal_weight_proxy": 62.004053531607504,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8289535700748492,
+              "adversarial_macro_f1_with_reject": 0.24418649987000124,
+              "unknown_f1": 0.9498223801065719
+            },
+            "combined": {
+              "C": 0.8466522678185745,
+              "RA": 0.19330453563714903,
+              "ASafeR": 0.5199784017278618,
+              "A": 0.29130669546436283,
+              "U": 0.9643662607126748,
+              "official_score": 60.20952425905627,
+              "official_score_rounded": 60.21,
+              "internal_equal_weight_proxy": 61.95825581922381,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9787487907597974,
+              "known_aupr": 0.9741122672408015,
+              "unknown_aupr": 0.9810196525888998,
+              "eer": 0.07154086671713078,
+              "clean_macro_f1_with_reject": 0.828398093551598,
+              "adversarial_macro_f1_with_reject": 0.24371693752784615,
+              "unknown_f1": 0.9493783303730018
+            },
+            "learned_anchor": {
+              "C": 0.8898488120950324,
+              "RA": 0.28995680345572356,
+              "ASafeR": 0.5129589632829373,
+              "A": 0.3568574514038877,
+              "U": 0.9648173207036536,
+              "official_score": 65.94941267441787,
+              "official_score_rounded": 65.95,
+              "internal_equal_weight_proxy": 67.41429989224986,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8741202000029761,
+              "adversarial_macro_f1_with_reject": 0.31973242200473034,
+              "unknown_f1": 0.9458324121158523
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2050,
+            "pairs_similarity_0.99": 821,
+            "pairs_with_gap_0.005": 821,
+            "direct_pair_agreement": 0.029232643118148598,
+            "asymmetric_changed": 493,
+            "multiview_changed": 59,
+            "combined_changed": 543,
+            "learned_anchor": {
+              "changed": 574,
+              "clean_probability_mean": 0.8258989453315735,
+              "adversarial_probability_mean": 0.17991667985916138,
+              "unknown_probability_mean": 0.3576866388320923,
+              "clean_vs_adversarial_auroc": 0.9492530986289995,
+              "audit": {
+                "clean": {
+                  "changed": 37,
+                  "correct_before": 1684,
+                  "correct_after": 1648
+                },
+                "adv": {
+                  "changed": 537,
+                  "correct_before": 0,
+                  "correct_after": 537
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2139,
+                  "correct_after": 2139
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 135,
+                "correct_before": 1684,
+                "correct_after": 1569
+              },
+              "adv": {
+                "changed": 358,
+                "correct_before": 0,
+                "correct_after": 358
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2139,
+                "correct_after": 2139
+              }
+            }
+          }
+        },
+        "untargeted_snr30": {
+          "methods": {
+            "direct": {
+              "C": 0.9092872570194385,
+              "RA": 0.0,
+              "ASafeR": 0.7867170626349892,
+              "A": 0.23601511879049675,
+              "U": 0.9648173207036536,
+              "official_score": 57.55998250210844,
+              "official_score_rounded": 57.56,
+              "internal_equal_weight_proxy": 59.16006922043243,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8933942446666919,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9456233421750663
+            },
+            "asymmetric_pair": {
+              "C": 0.8385529157667386,
+              "RA": 0.3714902807775378,
+              "ASafeR": 0.8515118790496761,
+              "A": 0.5154967602591792,
+              "U": 0.9648173207036536,
+              "official_score": 73.24914188594353,
+              "official_score_rounded": 73.25,
+              "internal_equal_weight_proxy": 74.71374429025924,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8209887662923988,
+              "adversarial_macro_f1_with_reject": 0.4683587846535224,
+              "unknown_f1": 0.9498223801065719
+            },
+            "combined": {
+              "C": 0.8401727861771058,
+              "RA": 0.3714902807775378,
+              "ASafeR": 0.8525917926565875,
+              "A": 0.5158207343412526,
+              "U": 0.9643662607126748,
+              "official_score": 73.31325879591861,
+              "official_score_rounded": 73.31,
+              "internal_equal_weight_proxy": 74.76582636784623,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9787487907597974,
+              "known_aupr": 0.9741122672408015,
+              "unknown_aupr": 0.9810196525888998,
+              "eer": 0.07154086671713078,
+              "clean_macro_f1_with_reject": 0.821952837580347,
+              "adversarial_macro_f1_with_reject": 0.4684510968433075,
+              "unknown_f1": 0.9502222222222222
+            },
+            "learned_anchor": {
+              "C": 0.9001079913606912,
+              "RA": 0.6960043196544277,
+              "ASafeR": 0.8623110151187905,
+              "A": 0.7458963282937365,
+              "U": 0.9648173207036536,
+              "official_score": 85.75640845130029,
+              "official_score_rounded": 85.76,
+              "internal_equal_weight_proxy": 86.52455866189176,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8823404757491433,
+              "adversarial_macro_f1_with_reject": 0.7170763014753138,
+              "unknown_f1": 0.9472984942426926
+            }
+          },
+          "attack": {
+            "actual_snr_min": 29.999998092651367,
+            "actual_snr_median": 30.0,
+            "actual_snr_max": 30.000001907348633,
+            "surrogate_identity_retention": 0.0005399568034557236,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2052,
+            "pairs_similarity_0.99": 1843,
+            "pairs_with_gap_0.005": 1843,
+            "direct_pair_agreement": 0.06511123168746609,
+            "asymmetric_changed": 839,
+            "multiview_changed": 66,
+            "combined_changed": 887,
+            "learned_anchor": {
+              "changed": 1314,
+              "clean_probability_mean": 0.8258989453315735,
+              "adversarial_probability_mean": 0.21937188506126404,
+              "unknown_probability_mean": 0.3576866388320923,
+              "clean_vs_adversarial_auroc": 0.9385927419542937,
+              "audit": {
+                "clean": {
+                  "changed": 25,
+                  "correct_before": 1684,
+                  "correct_after": 1667
+                },
+                "adv": {
+                  "changed": 1289,
+                  "correct_before": 0,
+                  "correct_after": 1289
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2139,
+                  "correct_after": 2139
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 151,
+                "correct_before": 1684,
+                "correct_after": 1553
+              },
+              "adv": {
+                "changed": 688,
+                "correct_before": 0,
+                "correct_after": 688
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2139,
+                "correct_after": 2139
+              }
+            }
+          }
+        },
+        "targeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9092872570194385,
+              "RA": 0.0,
+              "ASafeR": 0.0005399568034557236,
+              "A": 0.00016198704103671707,
+              "U": 0.9648173207036536,
+              "official_score": 4.4968645886818255,
+              "official_score_rounded": 4.5,
+              "internal_equal_weight_proxy": 5.21845756447956,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8933942446666919,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9456233421750663
+            },
+            "asymmetric_pair": {
+              "C": 0.5712742980561555,
+              "RA": 0.06479481641468683,
+              "ASafeR": 0.06479481641468683,
+              "A": 0.06479481641468683,
+              "U": 0.9648173207036536,
+              "official_score": 30.401025895067143,
+              "official_score_rounded": 30.4,
+              "internal_equal_weight_proxy": 32.93138630593152,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.5425329610100258,
+              "adversarial_macro_f1_with_reject": 0.06250610213064176,
+              "unknown_f1": 0.9568329232833818
+            },
+            "combined": {
+              "C": 0.5707343412526998,
+              "RA": 0.06479481641468683,
+              "ASafeR": 0.06533477321814254,
+              "A": 0.06495680345572355,
+              "U": 0.9643662607126748,
+              "official_score": 30.412542557984988,
+              "official_score_rounded": 30.41,
+              "internal_equal_weight_proxy": 32.94328366812911,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9787487907597974,
+              "known_aupr": 0.9741122672408015,
+              "unknown_aupr": 0.9810196525888998,
+              "eer": 0.07154086671713078,
+              "clean_macro_f1_with_reject": 0.5423175637443619,
+              "adversarial_macro_f1_with_reject": 0.05886089214707707,
+              "unknown_f1": 0.9563855960635205
+            },
+            "learned_anchor": {
+              "C": 0.908207343412527,
+              "RA": 0.2629589632829374,
+              "ASafeR": 0.2629589632829374,
+              "A": 0.2629589632829374,
+              "U": 0.9648173207036536,
+              "official_score": 59.751122589390825,
+              "official_score_rounded": 59.75,
+              "internal_equal_weight_proxy": 61.30642992679468,
+              "n_known": 1852,
+              "n_unknown": 2217,
+              "unknown_auroc": 0.9838083589307443,
+              "known_aupr": 0.9790811854461076,
+              "unknown_aupr": 0.9864445873094974,
+              "eer": 0.05554796482316593,
+              "clean_macro_f1_with_reject": 0.8921377109672892,
+              "adversarial_macro_f1_with_reject": 0.25591795971928594,
+              "unknown_f1": 0.9458324121158523
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2050,
+            "pairs_similarity_0.99": 828,
+            "pairs_with_gap_0.005": 828,
+            "direct_pair_agreement": 0.0,
+            "asymmetric_changed": 799,
+            "multiview_changed": 48,
+            "combined_changed": 838,
+            "learned_anchor": {
+              "changed": 490,
+              "clean_probability_mean": 0.8258989453315735,
+              "adversarial_probability_mean": 0.21630439162254333,
+              "unknown_probability_mean": 0.3576866388320923,
+              "clean_vs_adversarial_auroc": 0.9409942668949336,
+              "audit": {
+                "clean": {
+                  "changed": 3,
+                  "correct_before": 1684,
+                  "correct_after": 1682
+                },
+                "adv": {
+                  "changed": 487,
+                  "correct_before": 0,
+                  "correct_after": 487
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2139,
+                  "correct_after": 2139
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 679,
+                "correct_before": 1684,
+                "correct_after": 1058
+              },
+              "adv": {
+                "changed": 120,
+                "correct_before": 0,
+                "correct_after": 120
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2139,
+                "correct_after": 2139
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "outer_fold": 5,
+      "unknown_subjects": [
+        18,
+        2,
+        14,
+        9
+      ],
+      "operating_points": [
+        {
+          "score_name": "margin",
+          "threshold": 0.8328078642487526,
+          "inner_detection_macro_f1": 0.9089089468866374,
+          "inner_unknown_f1": 0.9588030915408069,
+          "inner_known_acceptance": 0.9495708154506438,
+          "inner_U": 0.9328090507726269,
+          "inner_auroc": 0.9735721086888554
+        },
+        {
+          "score_name": "max_logit",
+          "threshold": -0.028945175930857624,
+          "inner_detection_macro_f1": 0.7393132716986993,
+          "inner_unknown_f1": 0.8411332965038276,
+          "inner_known_acceptance": 0.9495708154506438,
+          "inner_U": 0.7352373068432672,
+          "inner_auroc": 0.8827105775516585
+        },
+        {
+          "score_name": "margin",
+          "threshold": 0.7438028186559678,
+          "inner_detection_macro_f1": 0.8907951637719734,
+          "inner_unknown_f1": 0.9490409390208989,
+          "inner_known_acceptance": 0.9495708154506438,
+          "inner_U": 0.9147350993377483,
+          "inner_auroc": 0.9678954650209856
+        }
+      ],
+      "anchor_minimum": 1.6847003698349,
+      "anchor_training": {
+        "n_clean": 512,
+        "n_adversarial": 1536,
+        "fit_auroc_not_validation": 0.9127845764160155,
+        "clean_probability_mean": 0.7612864375114441,
+        "adversarial_probability_mean": 0.23871617019176483
+      },
+      "attacks": {
+        "untargeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9168017287952458,
+              "RA": 0.0,
+              "ASafeR": 0.44948676391139925,
+              "A": 0.13484602917341976,
+              "U": 0.964172335600907,
+              "official_score": 47.46704463909008,
+              "official_score_rounded": 47.47,
+              "internal_equal_weight_proxy": 49.21408527101938,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.8949224748502358,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9480490523968785
+            },
+            "asymmetric_pair": {
+              "C": 0.8190167477039438,
+              "RA": 0.17341977309562398,
+              "ASafeR": 0.5370070232306862,
+              "A": 0.28249594813614265,
+              "U": 0.964172335600907,
+              "official_score": 58.7773575587244,
+              "official_score_rounded": 58.78,
+              "internal_equal_weight_proxy": 60.64847578487274,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.7993206408179647,
+              "adversarial_macro_f1_with_reject": 0.2035262786460017,
+              "unknown_f1": 0.9497431315613134
+            },
+            "combined": {
+              "C": 0.8390059427336575,
+              "RA": 0.17341977309562398,
+              "ASafeR": 0.520259319286872,
+              "A": 0.27747163695299837,
+              "U": 0.9605442176870749,
+              "official_score": 58.919881401502444,
+              "official_score_rounded": 58.92,
+              "internal_equal_weight_proxy": 60.69696815980093,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9455159985838384,
+              "known_aupr": 0.9070790569177694,
+              "unknown_aupr": 0.9634409979302766,
+              "eer": 0.08752430199524436,
+              "clean_macro_f1_with_reject": 0.8097676487236205,
+              "adversarial_macro_f1_with_reject": 0.20168817285737084,
+              "unknown_f1": 0.9557761732851986
+            },
+            "learned_anchor": {
+              "C": 0.9032955159373312,
+              "RA": 0.2636412749864938,
+              "ASafeR": 0.546191247974068,
+              "A": 0.34840626688276605,
+              "U": 0.964172335600907,
+              "official_score": 65.78103368266355,
+              "official_score_rounded": 65.78,
+              "internal_equal_weight_proxy": 67.19807409602444,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.8822142850719041,
+              "adversarial_macro_f1_with_reject": 0.27880132653007433,
+              "unknown_f1": 0.9480490523968785
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2007,
+            "pairs_similarity_0.99": 792,
+            "pairs_with_gap_0.005": 792,
+            "direct_pair_agreement": 0.020202020202020204,
+            "asymmetric_changed": 510,
+            "multiview_changed": 101,
+            "combined_changed": 592,
+            "learned_anchor": {
+              "changed": 513,
+              "clean_probability_mean": 0.8153550624847412,
+              "adversarial_probability_mean": 0.24433661997318268,
+              "unknown_probability_mean": 0.504336416721344,
+              "clean_vs_adversarial_auroc": 0.9284443615538026,
+              "audit": {
+                "clean": {
+                  "changed": 25,
+                  "correct_before": 1697,
+                  "correct_after": 1672
+                },
+                "adv": {
+                  "changed": 488,
+                  "correct_before": 0,
+                  "correct_after": 488
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2126,
+                  "correct_after": 2126
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 189,
+                "correct_before": 1697,
+                "correct_after": 1516
+              },
+              "adv": {
+                "changed": 321,
+                "correct_before": 0,
+                "correct_after": 321
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2126,
+                "correct_after": 2126
+              }
+            }
+          }
+        },
+        "untargeted_snr30": {
+          "methods": {
+            "direct": {
+              "C": 0.9168017287952458,
+              "RA": 0.01242571582928147,
+              "ASafeR": 0.8055105348460292,
+              "A": 0.25035116153430576,
+              "U": 0.964172335600907,
+              "official_score": 58.94421655908887,
+              "official_score_rounded": 58.94,
+              "internal_equal_weight_proxy": 60.48670126203783,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.8949224748502358,
+              "adversarial_macro_f1_with_reject": 0.02164705882352941,
+              "unknown_f1": 0.9480490523968785
+            },
+            "asymmetric_pair": {
+              "C": 0.873581847649919,
+              "RA": 0.3905996758508914,
+              "ASafeR": 0.8762830902215019,
+              "A": 0.5363047001620744,
+              "U": 0.964172335600907,
+              "official_score": 75.48387176303498,
+              "official_score_rounded": 75.48,
+              "internal_equal_weight_proxy": 76.72848506914757,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.8495529215933554,
+              "adversarial_macro_f1_with_reject": 0.48085313966668686,
+              "unknown_f1": 0.9510176694251845
+            },
+            "combined": {
+              "C": 0.8924905456509995,
+              "RA": 0.3905996758508914,
+              "ASafeR": 0.8714208535926526,
+              "A": 0.5348460291734197,
+              "U": 0.9605442176870749,
+              "official_score": 75.98902316803314,
+              "official_score_rounded": 75.99,
+              "internal_equal_weight_proxy": 77.11104476462368,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9455159985838384,
+              "known_aupr": 0.9070790569177694,
+              "unknown_aupr": 0.9634409979302766,
+              "eer": 0.08752430199524436,
+              "clean_macro_f1_with_reject": 0.8594113658625241,
+              "adversarial_macro_f1_with_reject": 0.4795328941501969,
+              "unknown_f1": 0.9566395663956639
+            },
+            "learned_anchor": {
+              "C": 0.902215018908698,
+              "RA": 0.6164235548352242,
+              "ASafeR": 0.8600756347920043,
+              "A": 0.6895191788222581,
+              "U": 0.964172335600907,
+              "official_score": 83.49373904708735,
+              "official_score_rounded": 83.49,
+              "internal_equal_weight_proxy": 84.33419227437841,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.8789227428519162,
+              "adversarial_macro_f1_with_reject": 0.6574486204352796,
+              "unknown_f1": 0.9497431315613134
+            }
+          },
+          "attack": {
+            "actual_snr_min": 29.999998092651367,
+            "actual_snr_median": 30.0,
+            "actual_snr_max": 30.000001907348633,
+            "surrogate_identity_retention": 0.028092922744462453,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2011,
+            "pairs_similarity_0.99": 1841,
+            "pairs_with_gap_0.005": 1841,
+            "direct_pair_agreement": 0.07713199348180337,
+            "asymmetric_changed": 794,
+            "multiview_changed": 109,
+            "combined_changed": 868,
+            "learned_anchor": {
+              "changed": 1153,
+              "clean_probability_mean": 0.8153550624847412,
+              "adversarial_probability_mean": 0.3324144184589386,
+              "unknown_probability_mean": 0.504336416721344,
+              "clean_vs_adversarial_auroc": 0.8998832818039573,
+              "audit": {
+                "clean": {
+                  "changed": 35,
+                  "correct_before": 1697,
+                  "correct_after": 1670
+                },
+                "adv": {
+                  "changed": 1118,
+                  "correct_before": 23,
+                  "correct_after": 1141
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2126,
+                  "correct_after": 2126
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 94,
+                "correct_before": 1697,
+                "correct_after": 1617
+              },
+              "adv": {
+                "changed": 700,
+                "correct_before": 23,
+                "correct_after": 723
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2126,
+                "correct_after": 2126
+              }
+            }
+          }
+        },
+        "targeted_snr20": {
+          "methods": {
+            "direct": {
+              "C": 0.9168017287952458,
+              "RA": 0.0,
+              "ASafeR": 0.005942733657482442,
+              "A": 0.0017828200972447325,
+              "U": 0.964172335600907,
+              "official_score": 10.443269086940663,
+              "official_score_rounded": 10.44,
+              "internal_equal_weight_proxy": 11.637129583243535,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.8949224748502358,
+              "adversarial_macro_f1_with_reject": 0.0,
+              "unknown_f1": 0.9480490523968785
+            },
+            "asymmetric_pair": {
+              "C": 0.5888708806050783,
+              "RA": 0.055105348460291734,
+              "ASafeR": 0.05942733657482442,
+              "A": 0.056401944894651536,
+              "U": 0.964172335600907,
+              "official_score": 29.30890722887176,
+              "official_score_rounded": 29.31,
+              "internal_equal_weight_proxy": 31.755791500541296,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.5681063811108995,
+              "adversarial_macro_f1_with_reject": 0.050091246661995145,
+              "unknown_f1": 0.9555056179775281
+            },
+            "combined": {
+              "C": 0.602377093462993,
+              "RA": 0.055105348460291734,
+              "ASafeR": 0.05942733657482442,
+              "A": 0.056401944894651536,
+              "U": 0.9605442176870749,
+              "official_score": 29.548105971912992,
+              "official_score_rounded": 29.55,
+              "internal_equal_weight_proxy": 31.95655561933963,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9455159985838384,
+              "known_aupr": 0.9070790569177694,
+              "unknown_aupr": 0.9634409979302766,
+              "eer": 0.08752430199524436,
+              "clean_macro_f1_with_reject": 0.5758598833919628,
+              "adversarial_macro_f1_with_reject": 0.050091246661995145,
+              "unknown_f1": 0.9590219606067467
+            },
+            "learned_anchor": {
+              "C": 0.915180983252296,
+              "RA": 0.25391680172879527,
+              "ASafeR": 0.2576985413290113,
+              "A": 0.25505132360886007,
+              "U": 0.964172335600907,
+              "official_score": 59.28722388912651,
+              "official_score_rounded": 59.29,
+              "internal_equal_weight_proxy": 60.82700199848367,
+              "n_known": 1851,
+              "n_unknown": 2205,
+              "unknown_auroc": 0.9792177054506297,
+              "known_aupr": 0.9700646900246225,
+              "unknown_aupr": 0.983185242963158,
+              "eer": 0.053499671073183486,
+              "clean_macro_f1_with_reject": 0.8933851833876979,
+              "adversarial_macro_f1_with_reject": 0.22046049067350865,
+              "unknown_f1": 0.9480490523968785
+            }
+          },
+          "attack": {
+            "actual_snr_min": 19.999998092651367,
+            "actual_snr_median": 20.0,
+            "actual_snr_max": 20.000001907348633,
+            "surrogate_identity_retention": 0.0,
+            "evaluation_features": "existing SciPy extractor re-applied to attacked raw EEG"
+          },
+          "pairs": {
+            "reciprocal_pairs": 2011,
+            "pairs_similarity_0.99": 774,
+            "pairs_with_gap_0.005": 774,
+            "direct_pair_agreement": 0.0,
+            "asymmetric_changed": 744,
+            "multiview_changed": 54,
+            "combined_changed": 785,
+            "learned_anchor": {
+              "changed": 473,
+              "clean_probability_mean": 0.8153550624847412,
+              "adversarial_probability_mean": 0.267647385597229,
+              "unknown_probability_mean": 0.504336416721344,
+              "clean_vs_adversarial_auroc": 0.9240917272512617,
+              "audit": {
+                "clean": {
+                  "changed": 3,
+                  "correct_before": 1697,
+                  "correct_after": 1694
+                },
+                "adv": {
+                  "changed": 470,
+                  "correct_before": 0,
+                  "correct_after": 470
+                },
+                "unknown": {
+                  "changed": 0,
+                  "correct_before": 2126,
+                  "correct_after": 2126
+                }
+              }
+            },
+            "original_asymmetric_audit": {
+              "clean": {
+                "changed": 642,
+                "correct_before": 1697,
+                "correct_after": 1090
+              },
+              "adv": {
+                "changed": 102,
+                "correct_before": 0,
+                "correct_after": 102
+              },
+              "unknown": {
+                "changed": 0,
+                "correct_before": 2126,
+                "correct_after": 2126
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "attacks": {
+    "untargeted_snr20": {
+      "direct": {
+        "C": 0.9227779332951721,
+        "RA": 0.0,
+        "ASafeR": 0.43736306122216584,
+        "A": 0.13120891836664975,
+        "U": 0.9567405664110004,
+        "official_score": 46.99961261712296,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.8988216541778105,
+        "adversarial_macro_f1_with_reject": 0.0,
+        "unknown_f1": 0.9472357328994774,
+        "official_score_rounded": 47.0,
+        "worst_fold_official_score": 44.21125570858948,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "asymmetric_pair": {
+        "C": 0.8437000853922546,
+        "RA": 0.1788292297916804,
+        "ASafeR": 0.5214835596455755,
+        "A": 0.2816255287478489,
+        "U": 0.9567405664110004,
+        "official_score": 59.2695489277225,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.8209475360405746,
+        "adversarial_macro_f1_with_reject": 0.2187109861160242,
+        "unknown_f1": 0.949358068131653,
+        "official_score_rounded": 59.27,
+        "worst_fold_official_score": 56.17073526781337,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "combined": {
+        "C": 0.8509522598135509,
+        "RA": 0.1788292297916804,
+        "ASafeR": 0.5155168951913134,
+        "A": 0.2798355294115703,
+        "U": 0.9540417944688006,
+        "official_score": 59.29982769681628,
+        "unknown_auroc": 0.9579034730297028,
+        "known_aupr": 0.9300100049280413,
+        "unknown_aupr": 0.9713651062987865,
+        "eer": 0.0841447435467522,
+        "clean_macro_f1_with_reject": 0.8243331806430962,
+        "adversarial_macro_f1_with_reject": 0.2179427043166679,
+        "unknown_f1": 0.9507560941245163,
+        "official_score_rounded": 59.3,
+        "worst_fold_official_score": 55.967430076276464,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "learned_anchor": {
+        "C": 0.9075148204516663,
+        "RA": 0.2814449472717513,
+        "ASafeR": 0.5298577933361381,
+        "A": 0.3559688010910673,
+        "U": 0.9567405664110004,
+        "official_score": 66.26523657675173,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.8841534450059351,
+        "adversarial_macro_f1_with_reject": 0.30580662487510485,
+        "unknown_f1": 0.9473576612898711,
+        "official_score_rounded": 66.27,
+        "worst_fold_official_score": 65.78103368266355,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      }
+    },
+    "untargeted_snr30": {
+      "direct": {
+        "C": 0.9227779332951721,
+        "RA": 0.0102923633356995,
+        "ASafeR": 0.7868461133189295,
+        "A": 0.2432584883306685,
+        "U": 0.9567405664110004,
+        "official_score": 58.379533037577744,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.8988216541778105,
+        "adversarial_macro_f1_with_reject": 0.01777520283313952,
+        "unknown_f1": 0.9472357328994774,
+        "official_score_rounded": 58.38,
+        "worst_fold_official_score": 57.090622944630674,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "asymmetric_pair": {
+        "C": 0.8720790892099158,
+        "RA": 0.3837847702093865,
+        "ASafeR": 0.8647735299306097,
+        "A": 0.5280813981257535,
+        "U": 0.9567405664110004,
+        "official_score": 74.87162406930815,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.847209869696897,
+        "adversarial_macro_f1_with_reject": 0.47679103480323554,
+        "unknown_f1": 0.949950898111781,
+        "official_score_rounded": 74.87,
+        "worst_fold_official_score": 73.24914188594353,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "combined": {
+        "C": 0.8797624398690633,
+        "RA": 0.3846551477272819,
+        "ASafeR": 0.8639165709249752,
+        "A": 0.5284335746865898,
+        "U": 0.9540417944688006,
+        "official_score": 75.09950605407462,
+        "unknown_auroc": 0.9579034730297028,
+        "known_aupr": 0.9300100049280413,
+        "unknown_aupr": 0.9713651062987865,
+        "eer": 0.0841447435467522,
+        "clean_macro_f1_with_reject": 0.850937769921283,
+        "adversarial_macro_f1_with_reject": 0.4772641200318281,
+        "unknown_f1": 0.9515222849660969,
+        "official_score_rounded": 75.1,
+        "worst_fold_official_score": 73.31325879591861,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "learned_anchor": {
+        "C": 0.9092405103181769,
+        "RA": 0.6739587154819504,
+        "ASafeR": 0.8602492299608917,
+        "A": 0.7298458698256327,
+        "U": 0.9567405664110004,
+        "official_score": 85.23583060725892,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.8838957900735215,
+        "adversarial_macro_f1_with_reject": 0.6969678408786217,
+        "unknown_f1": 0.948849776929598,
+        "official_score_rounded": 85.24,
+        "worst_fold_official_score": 82.95650473086596,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      }
+    },
+    "targeted_snr20": {
+      "direct": {
+        "C": 0.9227779332951721,
+        "RA": 0.0,
+        "ASafeR": 0.005078312457102345,
+        "A": 0.0015234937371307034,
+        "U": 0.9567405664110004,
+        "official_score": 9.293004744643167,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.8988216541778105,
+        "adversarial_macro_f1_with_reject": 0.0,
+        "unknown_f1": 0.9472357328994774,
+        "official_score_rounded": 9.29,
+        "worst_fold_official_score": 4.4968645886818255,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "asymmetric_pair": {
+        "C": 0.6022843642190683,
+        "RA": 0.06861990133451251,
+        "ASafeR": 0.07229001671951439,
+        "A": 0.06972093595001308,
+        "U": 0.9567405664110004,
+        "official_score": 31.682500980412705,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.5743330527226262,
+        "adversarial_macro_f1_with_reject": 0.06291357130487882,
+        "unknown_f1": 0.9541553649638456,
+        "official_score_rounded": 31.68,
+        "worst_fold_official_score": 29.30890722887176,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "combined": {
+        "C": 0.6075855581690621,
+        "RA": 0.06861990133451251,
+        "ASafeR": 0.07250682200838834,
+        "A": 0.06978597753667526,
+        "U": 0.9540417944688006,
+        "official_score": 31.780984045783914,
+        "unknown_auroc": 0.9579034730297028,
+        "known_aupr": 0.9300100049280413,
+        "unknown_aupr": 0.9713651062987865,
+        "eer": 0.0841447435467522,
+        "clean_macro_f1_with_reject": 0.5770817613368935,
+        "adversarial_macro_f1_with_reject": 0.06219487063396521,
+        "unknown_f1": 0.9548161313556823,
+        "official_score_rounded": 31.78,
+        "worst_fold_official_score": 29.548105971912992,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      },
+      "learned_anchor": {
+        "C": 0.9184152603956163,
+        "RA": 0.27250017775055824,
+        "ASafeR": 0.2757427546148054,
+        "A": 0.27347295080983236,
+        "U": 0.9567405664110004,
+        "official_score": 60.70254235082954,
+        "unknown_auroc": 0.9802571236692534,
+        "known_aupr": 0.9712815269346622,
+        "unknown_aupr": 0.9846121191284694,
+        "eer": 0.0543955595193915,
+        "clean_macro_f1_with_reject": 0.8943799986036863,
+        "adversarial_macro_f1_with_reject": 0.2430638388358771,
+        "unknown_f1": 0.9474422775663001,
+        "official_score_rounded": 60.7,
+        "worst_fold_official_score": 59.28722388912651,
+        "n_folds": 5,
+        "n_known": 9232,
+        "n_unknown": 11304
+      }
+    }
+  },
+  "acceptance": {
+    "candidate": "learned_anchor",
+    "passed": false,
+    "score_delta": 19.26562395962877,
+    "A_delta": 0.22475988272441758,
+    "RA_delta": 0.2814449472717513,
+    "fold_score_deltas": [
+      18.25327025786612,
+      21.843328918463094,
+      18.633122708090326,
+      19.284408870150784,
+      18.313989043573464
+    ],
+    "checks": {
+      "score_gain_at_least_2": true,
+      "A_gain_at_least_0.05": true,
+      "RA_at_least_0.60_and_gain_0.03": false,
+      "ASafeR_at_least_0.90": false,
+      "C_at_least_0.90_and_drop_at_most_0.02": true,
+      "U_at_least_0.85_and_drop_at_most_0.02": true,
+      "unknown_f1_drop_at_most_0.01": true,
+      "AUROC_drop_at_most_0.005": true,
+      "four_of_five_folds_not_worse": true,
+      "worst_fold_score_drop_at_most_1": true,
+      "untargeted_snr30_ASafeR_at_least_0.90": false,
+      "untargeted_snr30_A_drop_at_most_0.01": true,
+      "targeted_snr20_ASafeR_at_least_0.90": false,
+      "targeted_snr20_A_drop_at_most_0.01": true
+    },
+    "adaptive_attack_required_before_submission": false
+  }
+}
