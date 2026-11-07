@@ -22,7 +22,7 @@ def refit_ridge_components(
     adversarial_full: np.ndarray,
     adversarial_window: np.ndarray,
 ) -> dict:
-    """clean 全量加训练折内 adv；clean:adv 有效权重为 2:1。"""
+    """用 clean 全量与折内 adversarial 样本按 1:1 重拟合 Ridge 组件。"""
     adversarial_indices = np.asarray(adversarial_indices, dtype=int)
     if adversarial_indices.ndim != 1 or not len(adversarial_indices):
         raise ValueError("adversarial_indices 必须是一维非空数组")
@@ -48,11 +48,10 @@ def refit_ridge_components(
         adv_window = np.asarray(adversarial_window[adversarial_positions]).reshape(-1, x.shape[1])
         adv_targets = subjects[adversarial_indices[adversarial_positions]]
 
-        full = np.concatenate([clean_full, clean_full, adv_full])
-        full_targets = np.concatenate([clean_targets, clean_targets, adv_targets])
-        windows = np.concatenate([clean_window, clean_window, adv_window])
+        full = np.concatenate([clean_full, adv_full])
+        full_targets = np.concatenate([clean_targets, adv_targets])
+        windows = np.concatenate([clean_window, adv_window])
         window_targets = np.concatenate([
-            np.repeat(clean_targets, 2),
             np.repeat(clean_targets, 2),
             np.repeat(adv_targets, 2),
         ])
@@ -120,13 +119,15 @@ def adversarial_original_features(
             data = torch.as_tensor(raw[selected], device=model.device)
             attack_targets = targets[selected]
             if targeted:
+                rng = np.random.default_rng(seed + start)
+                target_indices = np.empty(len(attack_targets), dtype=int)
                 class_to_index = {
                     int(label): index for index, label in enumerate(model.classes)
                 }
-                target_indices = np.asarray([
-                    (class_to_index[int(label)] + 1) % len(model.classes)
-                    for label in attack_targets
-                ])
+                for index, label in enumerate(attack_targets):
+                    true_index = class_to_index[int(label)]
+                    choices = np.delete(np.arange(len(model.classes)), true_index)
+                    target_indices[index] = rng.choice(choices)
                 attack_targets = model.classes[target_indices]
             adv, diagnostics = raw_pgd(
                 model, extractor, data, task, attack_targets, snr_db,

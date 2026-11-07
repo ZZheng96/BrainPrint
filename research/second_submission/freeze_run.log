@@ -1,0 +1,352 @@
+﻿{
+  "dataset": "BrainPrint train only; Test 标签未使用；正式 CSV 未修改",
+  "definitions": "C=identity accuracy；F1=registered identities 1..20 macro-F1。U/unknown AUC/F1 仅在有未知标签时计算；RA/ASafeR 仅在 raw EEG attack 数据可复用时计算。",
+  "blocked_oof": {
+    "protocol": "blocked_oof (5 trial-block folds)",
+    "score_file": "train_blocked_oof_scores_task_specific_guarded.npy",
+    "pair_gate_training_protocol": "仅使用 BrainPrint_cache/train_features.npy 与 train_metadata.csv；同 task、当前评估子集内 cosine similarity>0.99 的近邻图；blocked OOF 每个 pair 只在同一验证 fold 内构造；不读取 Test 或标签来决定门控，组件 purity 仅由 direct prediction 计算。",
+    "overall": {
+      "first_submission_equivalent": {
+        "n": 11304,
+        "C_accuracy": 1.0,
+        "F1_macro_known": 1.0,
+        "U": "N/A（未构造未知样本/拒识阈值）",
+        "unknown_auc": "N/A（无内部未知标签）",
+        "unknown_f1": "N/A（无内部未知标签）",
+        "RA": "N/A（无 raw EEG attack 数据）",
+        "ASafeR": "N/A（无 raw EEG attack 数据）"
+      },
+      "second_pair_gate": {
+        "n": 11304,
+        "C_accuracy": 1.0,
+        "F1_macro_known": 1.0,
+        "U": "N/A（未构造未知样本/拒识阈值）",
+        "unknown_auc": "N/A（无内部未知标签）",
+        "unknown_f1": "N/A（无内部未知标签）",
+        "RA": "N/A（无 raw EEG attack 数据）",
+        "ASafeR": "N/A（无 raw EEG attack 数据）"
+      },
+      "gate_diagnostics": {
+        "components": 2009,
+        "component_rows": 11175,
+        "allowed_pair_rows": 0,
+        "changed_rows": 0,
+        "similarity_threshold": 0.99,
+        "min_component_size": 2,
+        "min_direct_purity": 0.75,
+        "margin_threshold": 0.1
+      }
+    },
+    "blocks": [
+      {
+        "block": 0,
+        "first_submission_equivalent": {
+          "n": 2534,
+          "C_accuracy": 1.0,
+          "F1_macro_known": 1.0,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "second_pair_gate": {
+          "n": 2534,
+          "C_accuracy": 1.0,
+          "F1_macro_known": 1.0,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "gate_diagnostics": {
+          "components": 538,
+          "component_rows": 2491,
+          "allowed_pair_rows": 0,
+          "changed_rows": 0,
+          "similarity_threshold": 0.99,
+          "min_component_size": 2,
+          "min_direct_purity": 0.75,
+          "margin_threshold": 0.1
+        }
+      },
+      {
+        "block": 1,
+        "first_submission_equivalent": {
+          "n": 2165,
+          "C_accuracy": 1.0,
+          "F1_macro_known": 1.0,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "second_pair_gate": {
+          "n": 2165,
+          "C_accuracy": 1.0,
+          "F1_macro_known": 1.0,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "gate_diagnostics": {
+          "components": 466,
+          "component_rows": 2121,
+          "allowed_pair_rows": 0,
+          "changed_rows": 0,
+          "similarity_threshold": 0.99,
+          "min_component_size": 2,
+          "min_direct_purity": 0.75,
+          "margin_threshold": 0.1
+        }
+      },
+      {
+        "block": 2,
+        "first_submission_equivalent": {
+          "n": 2176,
+          "C_accuracy": 1.0,
+          "F1_macro_known": 1.0,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "second_pair_gate": {
+          "n": 2176,
+          "C_accuracy": 1.0,
+          "F1_macro_known": 1.0,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "gate_diagnostics": {
+          "components": 445,
+          "component_rows": 2131,
+          "allowed_pair_rows": 0,
+          "changed_rows": 0,
+          "similarity_threshold": 0.99,
+          "min_component_size": 2,
+          "min_direct_purity": 0.75,
+          "margin_threshold": 0.1
+        }
+      },
+      {
+        "block": 3,
+        "first_submission_equivalent": {
+          "n": 2227,
+          "C_accuracy": 1.0,
+          "F1_macro_known": 1.0,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "second_pair_gate": {
+          "n": 2227,
+          "C_accuracy": 1.0,
+          "F1_macro_known": 1.0,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "gate_diagnostics": {
+          "components": 472,
+          "component_rows": 2187,
+          "allowed_pair_rows": 0,
+          "changed_rows": 0,
+          "similarity_threshold": 0.99,
+          "min_component_size": 2,
+          "min_direct_purity": 0.75,
+          "margin_threshold": 0.1
+        }
+      },
+      {
+        "block": 4,
+        "first_submission_equivalent": {
+          "n": 2202,
+          "C_accuracy": 1.0,
+          "F1_macro_known": 1.0,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "second_pair_gate": {
+          "n": 2202,
+          "C_accuracy": 1.0,
+          "F1_macro_known": 1.0,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "gate_diagnostics": {
+          "components": 467,
+          "component_rows": 2173,
+          "allowed_pair_rows": 0,
+          "changed_rows": 0,
+          "similarity_threshold": 0.99,
+          "min_component_size": 2,
+          "min_direct_purity": 0.75,
+          "margin_threshold": 0.1
+        }
+      }
+    ]
+  },
+  "reverse_holdout": {
+    "protocol": "reverse (first 20% holdout)",
+    "score_file": "train_forward_scores_task_specific_guarded.npy",
+    "pair_gate_training_protocol": "仅使用 BrainPrint_cache/train_features.npy 与 train_metadata.csv；同 task、当前评估子集内 cosine similarity>0.99 的近邻图；blocked OOF 每个 pair 只在同一验证 fold 内构造；不读取 Test 或标签来决定门控，组件 purity 仅由 direct prediction 计算。",
+    "overall": {
+      "first_submission_equivalent": {
+        "n": 2245,
+        "C_accuracy": 0.05434298440979955,
+        "F1_macro_known": 0.005154203633291086,
+        "U": "N/A（未构造未知样本/拒识阈值）",
+        "unknown_auc": "N/A（无内部未知标签）",
+        "unknown_f1": "N/A（无内部未知标签）",
+        "RA": "N/A（无 raw EEG attack 数据）",
+        "ASafeR": "N/A（无 raw EEG attack 数据）"
+      },
+      "second_pair_gate": {
+        "n": 2245,
+        "C_accuracy": 0.05434298440979955,
+        "F1_macro_known": 0.005154203633291086,
+        "U": "N/A（未构造未知样本/拒识阈值）",
+        "unknown_auc": "N/A（无内部未知标签）",
+        "unknown_f1": "N/A（无内部未知标签）",
+        "RA": "N/A（无 raw EEG attack 数据）",
+        "ASafeR": "N/A（无 raw EEG attack 数据）"
+      },
+      "gate_diagnostics": {
+        "components": 407,
+        "component_rows": 2206,
+        "allowed_pair_rows": 0,
+        "changed_rows": 0,
+        "similarity_threshold": 0.99,
+        "min_component_size": 2,
+        "min_direct_purity": 0.75,
+        "margin_threshold": 0.1
+      }
+    },
+    "blocks": [
+      {
+        "block": "all",
+        "first_submission_equivalent": {
+          "n": 2245,
+          "C_accuracy": 0.05434298440979955,
+          "F1_macro_known": 0.005154203633291086,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "second_pair_gate": {
+          "n": 2245,
+          "C_accuracy": 0.05434298440979955,
+          "F1_macro_known": 0.005154203633291086,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "gate_diagnostics": {
+          "components": 407,
+          "component_rows": 2206,
+          "allowed_pair_rows": 0,
+          "changed_rows": 0,
+          "similarity_threshold": 0.99,
+          "min_component_size": 2,
+          "min_direct_purity": 0.75,
+          "margin_threshold": 0.1
+        }
+      }
+    ]
+  },
+  "middle_holdout": {
+    "protocol": "middle (40%-60% holdout)",
+    "score_file": "train_forward_scores_task_specific_guarded.npy",
+    "pair_gate_training_protocol": "仅使用 BrainPrint_cache/train_features.npy 与 train_metadata.csv；同 task、当前评估子集内 cosine similarity>0.99 的近邻图；blocked OOF 每个 pair 只在同一验证 fold 内构造；不读取 Test 或标签来决定门控，组件 purity 仅由 direct prediction 计算。",
+    "overall": {
+      "first_submission_equivalent": {
+        "n": 2257,
+        "C_accuracy": 0.05494018608772707,
+        "F1_macro_known": 0.005207895842083159,
+        "U": "N/A（未构造未知样本/拒识阈值）",
+        "unknown_auc": "N/A（无内部未知标签）",
+        "unknown_f1": "N/A（无内部未知标签）",
+        "RA": "N/A（无 raw EEG attack 数据）",
+        "ASafeR": "N/A（无 raw EEG attack 数据）"
+      },
+      "second_pair_gate": {
+        "n": 2257,
+        "C_accuracy": 0.05494018608772707,
+        "F1_macro_known": 0.005207895842083159,
+        "U": "N/A（未构造未知样本/拒识阈值）",
+        "unknown_auc": "N/A（无内部未知标签）",
+        "unknown_f1": "N/A（无内部未知标签）",
+        "RA": "N/A（无 raw EEG attack 数据）",
+        "ASafeR": "N/A（无 raw EEG attack 数据）"
+      },
+      "gate_diagnostics": {
+        "components": 469,
+        "component_rows": 2218,
+        "allowed_pair_rows": 0,
+        "changed_rows": 0,
+        "similarity_threshold": 0.99,
+        "min_component_size": 2,
+        "min_direct_purity": 0.75,
+        "margin_threshold": 0.1
+      }
+    },
+    "blocks": [
+      {
+        "block": "all",
+        "first_submission_equivalent": {
+          "n": 2257,
+          "C_accuracy": 0.05494018608772707,
+          "F1_macro_known": 0.005207895842083159,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "second_pair_gate": {
+          "n": 2257,
+          "C_accuracy": 0.05494018608772707,
+          "F1_macro_known": 0.005207895842083159,
+          "U": "N/A（未构造未知样本/拒识阈值）",
+          "unknown_auc": "N/A（无内部未知标签）",
+          "unknown_f1": "N/A（无内部未知标签）",
+          "RA": "N/A（无 raw EEG attack 数据）",
+          "ASafeR": "N/A（无 raw EEG attack 数据）"
+        },
+        "gate_diagnostics": {
+          "components": 469,
+          "component_rows": 2218,
+          "allowed_pair_rows": 0,
+          "changed_rows": 0,
+          "similarity_threshold": 0.99,
+          "min_component_size": 2,
+          "min_direct_purity": 0.75,
+          "margin_threshold": 0.1
+        }
+      }
+    ]
+  }
+}

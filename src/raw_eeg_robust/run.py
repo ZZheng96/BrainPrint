@@ -36,7 +36,7 @@ from src.raw_eeg_robust.adversarial import (
 )
 
 OUTPUT_DIR = ROOT / "research" / "raw_eeg_robust"
-CACHE_VERSION = "adversarial-ridge-mixed-v1"
+CACHE_VERSION = "adversarial-ridge-stratified-random-target-v2"
 METHODS = ("direct", "adversarial_ridge")
 TARGETED_PER_GROUP = 2
 
@@ -61,7 +61,8 @@ def mixed_training_features(
     for _, group in metadata.iloc[selected].groupby(["subject", "task"], sort=False):
         group_indices = group.index.to_numpy()
         positions = np.flatnonzero(np.isin(selected, group_indices))
-        targeted_positions.extend(positions[-targeted_per_group:])
+        rng = np.random.default_rng(seed + int(group_indices.sum()))
+        targeted_positions.extend(rng.choice(positions, size=targeted_per_group, replace=False))
     targeted_positions = np.asarray(sorted(targeted_positions), dtype=int)
     untargeted_positions = np.setdiff1d(np.arange(len(selected)), targeted_positions)
     outputs = []

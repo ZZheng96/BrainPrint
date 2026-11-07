@@ -71,6 +71,40 @@ lambda ∈ {0.15, 0.25, 0.35}
 
 更合理的结论是：在该情景模型下，当前 raw robust 1:1 候选的中性估计约 `79` 分，敏感性范围约 `75–83`；2:1 候选约 `77` 分，范围约 `74–81`。这不是官方成绩置信区间，也不能证明第二次 Test 候选一定高于 `69.17`。候选筛选仍必须同时约束 `C`、`U`、RA、ASafeR、unknown AUC/F1 和五折稳定性。
 
+## 本轮冻结验收结论
+
+完整五折结果已落盘。候选 `adversarial_ridge` 未通过冻结门禁，因此不生成新的 Test CSV，也不修改正式提交文件。
+
+- untargeted SNR20：官方分 `73.06`，RA `0.2743`，ASafeR `0.9391`，unknown AUC `0.9738`，unknown F1 `0.9362`。
+- untargeted SNR30：官方分 `90.65`，RA `0.8237`，ASafeR `0.9997`。
+- targeted SNR20：官方分 `73.61`，RA `0.3395`，ASafeR `0.8195`。
+- 未通过门禁：SNR20 RA 未达到 `0.60`、targeted ASafeR 未达到 `0.90`、unknown F1 相比 direct 下降约 `0.0110`、unknown AUC 下降约 `0.0064`。
+- 五折分数差均为正，说明增强确实改善攻击下分数，但增强分布仍不能同时满足拒识安全性和开放集稳定性。
+
+下一轮只改研究目录内的增强策略：取消 clean 行复制，改为随机分层选择 targeted 样本，并让 targeted 攻击随机选择非真实身份作为目标。重新通过冻结验收后，才考虑生成 Test 候选。
+
+## 第二轮改进：随机 targeted + 1:1 五折结果
+
+本轮取消 clean 行复制，恢复 clean:adversarial `1:1`；每个 subject/task 组内随机抽取 targeted 样本；targeted PGD 的攻击目标随机选择一个非真实身份。缓存版本为 `adversarial-ridge-stratified-random-target-v2`。
+
+| 攻击 | 方法 | C | RA | ASafeR | A | U | 官方分 | unknown AUC（AUC） | unknown F1 |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| untargeted SNR20 | direct | 0.9228 | 0.0000 | 0.4405 | 0.1321 | 0.9567 | 47.11 | 0.9803 | 0.9472 |
+| untargeted SNR20 | adversarial_ridge | 0.9072 | 0.4541 | 0.9694 | 0.6087 | 0.9421 | 79.61 | 0.9718 | 0.9337 |
+| untargeted SNR30 | adversarial_ridge | 0.9072 | 0.9266 | 0.9999 | 0.9486 | 0.9421 | 93.01 | 0.9718 | 0.9337 |
+| targeted SNR20 | adversarial_ridge | 0.9072 | 0.3882 | 0.8576 | 0.5290 | 0.9421 | 75.81 | 0.9718 | 0.9337 |
+
+相对于上一轮 2:1，untargeted SNR20 官方分从 `73.06` 提升到 `79.61`，RA 从 `0.2743` 提升到 `0.4541`，ASafeR 从 `0.9391` 提升到 `0.9694`；但 unknown AUC/F1 分别下降到 `0.9718/0.9337`，仍需解决开放集代价。
+
+### 冻结验收
+
+- 总体验收：**未通过**。
+- 已通过：分数增益 `+32.50`、A 增益 `+0.4765`、C/U 门禁、五折稳定性、SNR30 ASafeR、targeted A 的下降限制。
+- 未通过：SNR20 RA `0.4541 < 0.60`；targeted SNR20 ASafeR `0.8576 < 0.90`；unknown F1 下降约 `0.0135`；unknown AUC 下降约 `0.0085`。
+- 五折官方分增益为 `[+33.80, +35.17, +32.49, +30.06, +31.00]`，5/5 折优于 direct。
+
+本轮结果说明随机 targeted 与 1:1 权重有效改善了攻击恢复，但当前增强仍把一部分开放集判别能力转移到已知类恢复上。未通过门禁前，不生成 Test CSV，不替换正式提交；下一步优先把拒识质量分、margin 与窗口一致性接入攻击后的决策，而不是继续盲目增加增强样本量。
+
 ## 产物与后续
 
 - 完整结果：[results.json](file:///d:/WORK/BCIC2026/BrainPrint/research/raw_eeg_robust/results.json)

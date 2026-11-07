@@ -16,7 +16,7 @@ from evaluate_subject_neighbors import neighbor_scores
 from run_baseline import FEATURE_SETS
 
 ROOT = Path(__file__).resolve().parents[1]
-CACHE = ROOT.parent / "BrainPrint_cache"
+CACHE = ROOT / "BrainPrint_cache"
 
 
 def row_zscore(scores: np.ndarray) -> np.ndarray:
