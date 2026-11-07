@@ -1,0 +1,31 @@
+{
+  "purpose": "five session-blind candidates evaluated against v4 main evidence-consensus pseudo answer",
+  "pseudo_answer": "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\calibrated_pseudo_ground_truth_v4\\pseudo_answer.csv",
+  "formula": "Score=100*C^0.40*(0.7*RA+0.3*ASafeR)^0.35*U^0.25",
+  "ASafeR_assumptions": [
+    0.8,
+    0.95,
+    1.0
+  ],
+  "U_assumptions": [
+    0.8,
+    1.0
+  ],
+  "RA_assumption": "unknown; report explicit RA=0 and RA=1 conditional bounds",
+  "AUC": "not computable: no Test truth and candidate CSV contains hard labels only",
+  "F1": "macro-F1 against v4 pseudo answer, audit metric only",
+  "input_sha256": {
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第1次.csv": "aa8aca733ef026558c7af5fcaff3b431036f85b424106a33699157d63d1846aa",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第2次.csv": "c788df77888810597f97756696da6a1383a71147d380c929a24ebe0c8996df9a",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\calibrated_pseudo_ground_truth_v4\\pseudo_answer.csv": "281d31a26d7103b02b788acd6e7a98ef38a8ac1fb5de5a98a86df35b46bda706",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\five_candidates\\candidate_full_none.csv": "e340b9e9f82965dac0019449bce90a6d670dcc7038ffbaf7c6582e4bd79596a8",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\five_candidates\\candidate_base_none.csv": "7ce283985a68e19b3e9a06001ccd7bcda4b344f07e1c4734285edc16ba168c8c",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\five_candidates\\candidate_full_target_zscore.csv": "69bdaf9820432602306055ecaab01eeab99c17d7367abd54d9eeb1665b7a17d6",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\five_candidates\\candidate_base_target_zscore.csv": "847ab5198808e03039654d6babe89a92ab61855133d8465dfa026ad01b8d0780",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\five_candidates\\candidate_full_riemannian_recenter.csv": "40ccdf29afbda8b637402b38740166702b9a9a186f73c3d062bcaa3209fc28eb"
+  },
+  "formal_submission_sha256_after": {
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第1次.csv": "aa8aca733ef026558c7af5fcaff3b431036f85b424106a33699157d63d1846aa",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第2次.csv": "c788df77888810597f97756696da6a1383a71147d380c929a24ebe0c8996df9a"
+  }
+}

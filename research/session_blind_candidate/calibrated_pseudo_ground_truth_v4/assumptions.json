@@ -1,0 +1,53 @@
+{
+  "purpose": "evidence-first synthetic calibration; not real Test labels or official score prediction",
+  "official_formula": "Score=100*C^0.40*(0.7*RA+0.3*ASafeR)^0.35*U^0.25",
+  "scenario_count": 3,
+  "scenario_rules": {
+    "main_evidence_consensus": "minimal_extra_assumption",
+    "conservative_reject_ambiguous": "ambiguous_rows_to_unknown_0",
+    "liberal_known_consensus": "nonzero_candidate_consensus"
+  },
+  "hard_constraints": [
+    "common official labels retained",
+    "no random label flips",
+    "adversarial samples retain identity labels 1-20",
+    "session metadata not used for label construction"
+  ],
+  "unobserved": [
+    "clean/adversarial/unknown category",
+    "candidate RA",
+    "candidate ASafeR",
+    "candidate U"
+  ],
+  "sensitivity": {
+    "ASafeR": [
+      0.8,
+      0.95,
+      1.0
+    ],
+    "U": [
+      0.8,
+      1.0
+    ],
+    "RA": "[0,1]"
+  },
+  "input_sha256": {
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第1次.csv": "aa8aca733ef026558c7af5fcaff3b431036f85b424106a33699157d63d1846aa",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第2次.csv": "c788df77888810597f97756696da6a1383a71147d380c929a24ebe0c8996df9a",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\test_metadata.csv": "6af2d22abbfdf32b274f641b57b30b1ea6c4e4477d4eae78f85e3e186ed0310e",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\five_candidates\\candidate_full_none.csv": "e340b9e9f82965dac0019449bce90a6d670dcc7038ffbaf7c6582e4bd79596a8",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\five_candidates\\candidate_base_none.csv": "7ce283985a68e19b3e9a06001ccd7bcda4b344f07e1c4734285edc16ba168c8c",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\five_candidates\\candidate_full_target_zscore.csv": "69bdaf9820432602306055ecaab01eeab99c17d7367abd54d9eeb1665b7a17d6",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\five_candidates\\candidate_base_target_zscore.csv": "847ab5198808e03039654d6babe89a92ab61855133d8465dfa026ad01b8d0780",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\research\\session_blind_candidate\\five_candidates\\candidate_full_riemannian_recenter.csv": "40ccdf29afbda8b637402b38740166702b9a9a186f73c3d062bcaa3209fc28eb"
+  },
+  "formal_sha256_after": {
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第1次.csv": "aa8aca733ef026558c7af5fcaff3b431036f85b424106a33699157d63d1846aa",
+    "d:\\WORK\\BCIC2026\\BrainPrint\\commit\\answer\\赞美诗_第2次.csv": "c788df77888810597f97756696da6a1383a71147d380c929a24ebe0c8996df9a"
+  },
+  "sample_count": 22251,
+  "official_targets": {
+    "official_submission_1": 69.17,
+    "official_submission_2": 67.94
+  }
+}
