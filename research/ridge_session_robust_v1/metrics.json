@@ -1,0 +1,291 @@
+{
+  "protocol": {
+    "outer": "strict 5-fold subject holdout; enrolled final 20% trials known, held subjects unknown",
+    "inner": "pseudo-unknown only for threshold selection",
+    "features": "full/base Ridge and six-block robust median/MAD covariance normalization; fit samples only",
+    "rejection": "top1 margin",
+    "window": "full+window score average for base and robust",
+    "session_used_for_inference_or_threshold": false,
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "ridge_baseline": {
+      "AUC": 0.965632,
+      "identity_macro_F1": 0.936207
+    }
+  },
+  "folds": [
+    {
+      "outer_fold": 1,
+      "held_subjects": [
+        16,
+        10,
+        15,
+        8
+      ],
+      "methods": {
+        "full": {
+          "AUC": 0.9938538376369291,
+          "identity_macro_F1": 0.9237337316279868,
+          "detection_macro_F1": 0.9388179031563636,
+          "unknown_F1": 0.9461211714732841,
+          "U": 0.9990557129367328,
+          "known_acceptance": 0.8727369542066028,
+          "C": 0.8727369542066028,
+          "threshold": 0.8811008930206299,
+          "n_known": 1878,
+          "n_unknown": 2118
+        },
+        "base": {
+          "AUC": 0.9947631790394418,
+          "identity_macro_F1": 0.9321149696481554,
+          "detection_macro_F1": 0.9472972972972973,
+          "unknown_F1": 0.9531531531531532,
+          "U": 0.9990557129367328,
+          "known_acceptance": 0.8903088391906283,
+          "C": 0.8903088391906283,
+          "threshold": 0.8552454710006714,
+          "n_known": 1878,
+          "n_unknown": 2118
+        },
+        "robust": {
+          "AUC": 0.9947631790394418,
+          "identity_macro_F1": 0.9321149696481554,
+          "detection_macro_F1": 0.9472972972972973,
+          "unknown_F1": 0.9531531531531532,
+          "U": 0.9990557129367328,
+          "known_acceptance": 0.8903088391906283,
+          "C": 0.8903088391906283,
+          "threshold": 0.8552452921867371,
+          "n_known": 1878,
+          "n_unknown": 2118
+        }
+      }
+    },
+    {
+      "outer_fold": 2,
+      "held_subjects": [
+        13,
+        11,
+        7,
+        20
+      ],
+      "methods": {
+        "full": {
+          "AUC": 0.9919567345665568,
+          "identity_macro_F1": 0.9252818193776652,
+          "detection_macro_F1": 0.9408804436008081,
+          "unknown_F1": 0.9524561057407773,
+          "U": 0.9950535861500412,
+          "known_acceptance": 0.8736900165471594,
+          "C": 0.8736900165471594,
+          "threshold": 0.817803680896759,
+          "n_known": 1813,
+          "n_unknown": 2426
+        },
+        "base": {
+          "AUC": 0.993259272025024,
+          "identity_macro_F1": 0.9136063286205754,
+          "detection_macro_F1": 0.9337376705797757,
+          "unknown_F1": 0.9473684210526315,
+          "U": 0.9979389942291839,
+          "known_acceptance": 0.8543849972421401,
+          "C": 0.8543849972421401,
+          "threshold": 0.8582292795181274,
+          "n_known": 1813,
+          "n_unknown": 2426
+        },
+        "robust": {
+          "AUC": 0.993259272025024,
+          "identity_macro_F1": 0.9136063286205754,
+          "detection_macro_F1": 0.9337376705797757,
+          "unknown_F1": 0.9473684210526315,
+          "U": 0.9979389942291839,
+          "known_acceptance": 0.8543849972421401,
+          "C": 0.8543849972421401,
+          "threshold": 0.8582308888435364,
+          "n_known": 1813,
+          "n_unknown": 2426
+        }
+      }
+    },
+    {
+      "outer_fold": 3,
+      "held_subjects": [
+        4,
+        1,
+        17,
+        6
+      ],
+      "methods": {
+        "full": {
+          "AUC": 0.994305419938919,
+          "identity_macro_F1": 0.9240987474947212,
+          "detection_macro_F1": 0.9411805923793652,
+          "unknown_F1": 0.9515472312703583,
+          "U": 0.9995722840034217,
+          "known_acceptance": 0.8710554951033732,
+          "C": 0.8710554951033732,
+          "threshold": 0.8361066579818726,
+          "n_known": 1838,
+          "n_unknown": 2338
+        },
+        "base": {
+          "AUC": 0.9953677287117045,
+          "identity_macro_F1": 0.8940971531607802,
+          "detection_macro_F1": 0.9215973625472917,
+          "unknown_F1": 0.9368610944076969,
+          "U": 0.9995722840034217,
+          "known_acceptance": 0.8291621327529923,
+          "C": 0.8291621327529923,
+          "threshold": 0.9348245859146118,
+          "n_known": 1838,
+          "n_unknown": 2338
+        },
+        "robust": {
+          "AUC": 0.9953677287117045,
+          "identity_macro_F1": 0.8940971531607802,
+          "detection_macro_F1": 0.9215973625472917,
+          "unknown_F1": 0.9368610944076969,
+          "U": 0.9995722840034217,
+          "known_acceptance": 0.8291621327529923,
+          "C": 0.8291621327529923,
+          "threshold": 0.9348227977752686,
+          "n_known": 1838,
+          "n_unknown": 2338
+        }
+      }
+    },
+    {
+      "outer_fold": 4,
+      "held_subjects": [
+        12,
+        19,
+        3,
+        5
+      ],
+      "methods": {
+        "full": {
+          "AUC": 0.9900669380820308,
+          "identity_macro_F1": 0.9432542161516762,
+          "detection_macro_F1": 0.9505964031847415,
+          "unknown_F1": 0.9566549912434326,
+          "U": 0.9855660802886784,
+          "known_acceptance": 0.9103671706263499,
+          "C": 0.9103671706263499,
+          "threshold": 0.8104897141456604,
+          "n_known": 1852,
+          "n_unknown": 2217
+        },
+        "base": {
+          "AUC": 0.9918913929375501,
+          "identity_macro_F1": 0.9399747017229481,
+          "detection_macro_F1": 0.9480495884488731,
+          "unknown_F1": 0.9546247818499127,
+          "U": 0.9869192602616148,
+          "known_acceptance": 0.9033477321814255,
+          "C": 0.9033477321814255,
+          "threshold": 0.8293598294258118,
+          "n_known": 1852,
+          "n_unknown": 2217
+        },
+        "robust": {
+          "AUC": 0.9918913929375501,
+          "identity_macro_F1": 0.9399747017229481,
+          "detection_macro_F1": 0.9480495884488731,
+          "unknown_F1": 0.9546247818499127,
+          "U": 0.9869192602616148,
+          "known_acceptance": 0.9033477321814255,
+          "C": 0.9033477321814255,
+          "threshold": 0.8293607831001282,
+          "n_known": 1852,
+          "n_unknown": 2217
+        }
+      }
+    },
+    {
+      "outer_fold": 5,
+      "held_subjects": [
+        18,
+        2,
+        14,
+        9
+      ],
+      "methods": {
+        "full": {
+          "AUC": 0.993310963859702,
+          "identity_macro_F1": 0.9354902174213328,
+          "detection_macro_F1": 0.9490096785670383,
+          "unknown_F1": 0.9559366181897113,
+          "U": 0.998639455782313,
+          "known_acceptance": 0.8919502971366828,
+          "C": 0.8919502971366828,
+          "threshold": 0.8253986239433289,
+          "n_known": 1851,
+          "n_unknown": 2205
+        },
+        "base": {
+          "AUC": 0.9947040944957127,
+          "identity_macro_F1": 0.9488917285681947,
+          "detection_macro_F1": 0.9601715779745066,
+          "unknown_F1": 0.9651697699890471,
+          "U": 0.999092970521542,
+          "known_acceptance": 0.915180983252296,
+          "C": 0.915180983252296,
+          "threshold": 0.7775258421897888,
+          "n_known": 1851,
+          "n_unknown": 2205
+        },
+        "robust": {
+          "AUC": 0.9947040944957131,
+          "identity_macro_F1": 0.9488917285681947,
+          "detection_macro_F1": 0.9601715779745066,
+          "unknown_F1": 0.9651697699890471,
+          "U": 0.999092970521542,
+          "known_acceptance": 0.915180983252296,
+          "C": 0.915180983252296,
+          "threshold": 0.7775260210037231,
+          "n_known": 1851,
+          "n_unknown": 2205
+        }
+      }
+    }
+  ],
+  "summary": {
+    "full": {
+      "AUC": 0.9926987788168276,
+      "identity_macro_F1": 0.9303717464146765,
+      "detection_macro_F1": 0.9440970041776634,
+      "unknown_F1": 0.9525432235835127,
+      "U": 0.9955774238322374,
+      "known_acceptance": 0.8839599867240336,
+      "C": 0.8839599867240336
+    },
+    "base": {
+      "AUC": 0.9939971334418868,
+      "identity_macro_F1": 0.9257369763441308,
+      "detection_macro_F1": 0.9421706993695489,
+      "unknown_F1": 0.9514354440904883,
+      "U": 0.996515844390499,
+      "known_acceptance": 0.8784769369238965,
+      "C": 0.8784769369238965
+    },
+    "robust": {
+      "AUC": 0.9939971334418868,
+      "identity_macro_F1": 0.9257369763441308,
+      "detection_macro_F1": 0.9421706993695489,
+      "unknown_F1": 0.9514354440904883,
+      "U": 0.996515844390499,
+      "known_acceptance": 0.8784769369238965,
+      "C": 0.8784769369238965
+    }
+  },
+  "selected": "base",
+  "candidate": {
+    "threshold": 0.7073330879211426,
+    "rows": 22251,
+    "rejected": 17619,
+    "session_post_output_audit": {
+      "session1": 1792,
+      "session2": 15827
+    }
+  }
+}
