@@ -15,9 +15,11 @@ from src.open_set_improvement.core import (
     COV_COLUMNS,
     ROOT,
     TaskSpecificModel,
+    confidence_values,
     resolve_cache,
     select_operating_point,
 )
+from src.open_set_calibration.core import build_submission
 from src.open_set_improvement.run_nested import forward_holdout, inner_holdout
 from src.raw_eeg_anchor.run import grouped_sample
 from src.raw_eeg_defense.gpu_attack import GPUCovExtractor
@@ -203,13 +205,95 @@ def acceptance(results: dict) -> dict:
     }
 
 
+def predict_test(
+    cache: Path,
+    cache_dir: Path,
+    output: Path,
+    workers: int,
+    batch_size: int,
+) -> None:
+    device = torch.device("cuda")
+    train_metadata = pd.read_csv(cache / "train_metadata.csv")
+    train_x = np.load(cache / "train_features.npy", mmap_mode="r")[:, COV_COLUMNS]
+    train_window = np.load(cache / "train_window2_features.npy", mmap_mode="r").reshape(
+        len(train_metadata), 2, -1
+    )[:, :, COV_COLUMNS]
+    subjects = train_metadata["subject"].to_numpy()
+    tasks = train_metadata["task"].to_numpy()
+    fit_mask = np.ones(len(train_metadata), dtype=bool)
+    test_metadata = pd.read_csv(
+        cache / "test_metadata.csv", usecols=["sample", "task", "path"]
+    )
+    test_x = np.load(cache / "test_features.npy", mmap_mode="r")[:, COV_COLUMNS]
+    test_window = np.load(cache / "test_window2_features.npy", mmap_mode="r").reshape(
+        len(test_metadata), 2, -1
+    )[:, :, COV_COLUMNS]
+    output.parent.mkdir(parents=True, exist_ok=True)
+    cache_dir.mkdir(parents=True, exist_ok=True)
+
+    with ProcessPoolExecutor(max_workers=workers) as pool:
+        extractor = GPUCovExtractor(device)
+        baseline = TaskSpecificModel(device).fit(
+            train_x, train_window, subjects, tasks, fit_mask
+        )
+        selected = grouped_sample(train_metadata, np.flatnonzero(fit_mask), 8)
+        raw, _ = load_raw_and_fingerprints(train_metadata, selected, keep_raw=True)
+        adv_full, adv_window, attack_diagnostics = mixed_training_features(
+            cache_dir, "final_train", baseline, extractor, train_metadata, selected,
+            raw, tasks[selected], subjects[selected], pool, 10,
+            20291107 + 9000000, batch_size, 2,
+        )
+        robust, fit_diagnostics = fit_adversarial_ridge(
+            baseline, train_x, train_window, subjects, tasks, fit_mask,
+            selected, adv_full, adv_window,
+        )
+        scores = robust.predict_scores(
+            test_x, test_window, test_metadata["task"].to_numpy()
+        )["fused"]
+
+    results_path = OUTPUT_DIR / "results.json"
+    results = json.loads(results_path.read_text(encoding="utf-8"))
+    points = [fold["operating_points"]["adversarial_ridge"] for fold in results["folds"]]
+    score_name = max(set(point["score_name"] for point in points), key=lambda name: sum(
+        point["score_name"] == name for point in points
+    ))
+    thresholds = [point["threshold"] for point in points if point["score_name"] == score_name]
+    threshold = float(np.median(thresholds))
+    predicted, _ = open_set_predictions(
+        scores, robust.classes, {"score_name": score_name, "threshold": threshold}
+    )
+    template = pd.read_csv(ROOT / "Brainprint_Competition" / "test.csv")
+    submission = build_submission(template, test_metadata, predicted)
+    submission.to_csv(output, index=False)
+    print(json.dumps({
+        "output": str(output),
+        "rows": len(submission),
+        "score_name": score_name,
+        "threshold": threshold,
+        "label_counts": pd.Series(predicted).value_counts().sort_index().to_dict(),
+        "attack": attack_diagnostics,
+        "fit": fit_diagnostics,
+    }, ensure_ascii=False, indent=2), flush=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--smoke", action="store_true")
+    parser.add_argument("--predict-test", action="store_true")
     parser.add_argument("--workers", type=int, default=min(4, os.cpu_count() or 1))
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
+    if args.predict_test:
+        if not torch.cuda.is_available():
+            parser.error("raw-PGD Test 推理要求 CUDA GPU")
+        cache = resolve_cache()
+        output = args.output or ROOT / "research" / "submission_raw_pgd_adversarial_ridge.csv"
+        predict_test(
+            cache, cache / "raw_eeg_robust" / "test_final",
+            output, args.workers, args.batch_size,
+        )
+        return
     if not torch.cuda.is_available():
         parser.error("本实验要求 CUDA GPU")
     device = torch.device("cuda")

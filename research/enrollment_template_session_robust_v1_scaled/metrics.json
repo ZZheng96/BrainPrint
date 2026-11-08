@@ -1,0 +1,315 @@
+{
+  "protocol": {
+    "outer": "strict 5-fold subject holdout; enrolled last 20% trial; held subjects entirely unknown",
+    "inner": "2 pseudo-unknown subject groups; fit enrolled non-forward trials",
+    "features": "COV_COLUMNS full and window2",
+    "template": "per(subject,task) robust trimmed medoid on GPU; window template uses per-trial mean of two windows",
+    "scaler": "fit-mask-only GPU equivalent of StandardScaler over full and window observations; shared by full/window template and query transform",
+    "threshold_selection": "inner pseudo-unknown known/unknown forward labels only; outer known/unknown labels excluded",
+    "session_used_for_inference": false,
+    "ridge_baseline": {"AUC": 0.965632, "F1": 0.936207},
+    "report_metrics": "AUC and identity macro-F1 are outer-fold means; Test AUC/F1 unavailable without labels",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU"
+  },
+  "folds": [
+    {
+      "outer_fold": 1,
+      "held_subjects": [
+        16,
+        10,
+        15,
+        8
+      ],
+      "thresholds": {
+        "prototype_only": 0.29613661766052246,
+        "prototype_margin": 0.18291747570037842,
+        "prototype_window": 4.924513816833496
+      },
+      "methods": {
+        "prototype_only": {
+          "AUC": 0.7183154733352038,
+          "identity_macro_F1": 0.509159330604592,
+          "detection_macro_F1": 0.6600802804161012,
+          "unknown_F1": 0.7305140961857379,
+          "U": 0.8319169027384324,
+          "known_acceptance": 0.49733759318423854,
+          "C": 0.4584664536741214,
+          "threshold": 0.29613661766052246,
+          "n_known": 1878,
+          "n_unknown": 2118
+        },
+        "prototype_margin": {
+          "AUC": 0.7582517012754413,
+          "identity_macro_F1": 0.41070205721639913,
+          "detection_macro_F1": 0.6062330018000026,
+          "unknown_F1": 0.7546346782988005,
+          "U": 0.9801699716713881,
+          "known_acceptance": 0.3035143769968051,
+          "C": 0.2992545260915868,
+          "threshold": 0.18291747570037842,
+          "n_known": 1878,
+          "n_unknown": 2118
+        },
+        "prototype_window": {
+          "AUC": 0.6960185076241878,
+          "identity_macro_F1": 0.5156379922395575,
+          "detection_macro_F1": 0.6445437774939691,
+          "unknown_F1": 0.7213991769547325,
+          "U": 0.82766761095373,
+          "known_acceptance": 0.4733759318423855,
+          "C": 0.45154419595314166,
+          "threshold": 4.924513816833496,
+          "n_known": 1878,
+          "n_unknown": 2118
+        }
+      }
+    },
+    {
+      "outer_fold": 2,
+      "held_subjects": [
+        13,
+        11,
+        7,
+        20
+      ],
+      "thresholds": {
+        "prototype_only": 0.30346015095710754,
+        "prototype_margin": 0.15976625680923462,
+        "prototype_window": 4.5590410232543945
+      },
+      "methods": {
+        "prototype_only": {
+          "AUC": 0.7402043681044976,
+          "identity_macro_F1": 0.5122233741067214,
+          "detection_macro_F1": 0.6814498616861133,
+          "unknown_F1": 0.7807948210753461,
+          "U": 0.894888705688376,
+          "known_acceptance": 0.468284611141754,
+          "C": 0.4307777164920022,
+          "threshold": 0.30346015095710754,
+          "n_known": 1813,
+          "n_unknown": 2426
+        },
+        "prototype_margin": {
+          "AUC": 0.7289285179992988,
+          "identity_macro_F1": 0.47925853760575476,
+          "detection_macro_F1": 0.6605282609224745,
+          "unknown_F1": 0.7985913130974341,
+          "U": 0.9814509480626545,
+          "known_acceptance": 0.36238279095421955,
+          "C": 0.3552123552123552,
+          "threshold": 0.15976625680923462,
+          "n_known": 1813,
+          "n_unknown": 2426
+        },
+        "prototype_window": {
+          "AUC": 0.7410471864599765,
+          "identity_macro_F1": 0.5496327061975981,
+          "detection_macro_F1": 0.6895412290695337,
+          "unknown_F1": 0.7716417910447761,
+          "U": 0.8524319868095631,
+          "known_acceptance": 0.5223386651958081,
+          "C": 0.480419194704909,
+          "threshold": 4.5590410232543945,
+          "n_known": 1813,
+          "n_unknown": 2426
+        }
+      }
+    },
+    {
+      "outer_fold": 3,
+      "held_subjects": [
+        4,
+        1,
+        17,
+        6
+      ],
+      "thresholds": {
+        "prototype_only": 0.25986242294311523,
+        "prototype_margin": 0.13445569574832916,
+        "prototype_window": 4.591501712799072
+      },
+      "methods": {
+        "prototype_only": {
+          "AUC": 0.7435984551959349,
+          "identity_macro_F1": 0.5522166391440242,
+          "detection_macro_F1": 0.6678362892998727,
+          "unknown_F1": 0.713413350178985,
+          "U": 0.7245508982035929,
+          "known_acceptance": 0.6099020674646355,
+          "C": 0.5402611534276387,
+          "threshold": 0.25986242294311523,
+          "n_known": 1838,
+          "n_unknown": 2338
+        },
+        "prototype_margin": {
+          "AUC": 0.7679566252230499,
+          "identity_macro_F1": 0.533263603606873,
+          "detection_macro_F1": 0.6899090678276897,
+          "unknown_F1": 0.795426121136323,
+          "U": 0.9520958083832335,
+          "known_acceptance": 0.43797606093579977,
+          "C": 0.4249183895538629,
+          "threshold": 0.13445569574832916,
+          "n_known": 1838,
+          "n_unknown": 2338
+        },
+        "prototype_window": {
+          "AUC": 0.7343648626887374,
+          "identity_macro_F1": 0.5659618432799519,
+          "detection_macro_F1": 0.6685741890729355,
+          "unknown_F1": 0.7315895372233401,
+          "U": 0.7775876817792986,
+          "known_acceptance": 0.5571273122959739,
+          "C": 0.515778019586507,
+          "threshold": 4.591501712799072,
+          "n_known": 1838,
+          "n_unknown": 2338
+        }
+      }
+    },
+    {
+      "outer_fold": 4,
+      "held_subjects": [
+        12,
+        19,
+        3,
+        5
+      ],
+      "thresholds": {
+        "prototype_only": 0.28563520312309265,
+        "prototype_margin": 0.15045350790023804,
+        "prototype_window": 4.427927017211914
+      },
+      "methods": {
+        "prototype_only": {
+          "AUC": 0.7021445320910187,
+          "identity_macro_F1": 0.5303587490177117,
+          "detection_macro_F1": 0.6510570675121932,
+          "unknown_F1": 0.7202625102543068,
+          "U": 0.7920613441587732,
+          "known_acceptance": 0.5124190064794817,
+          "C": 0.46922246220302377,
+          "threshold": 0.28563520312309265,
+          "n_known": 1852,
+          "n_unknown": 2217
+        },
+        "prototype_margin": {
+          "AUC": 0.7194018389218984,
+          "identity_macro_F1": 0.4617800951491498,
+          "detection_macro_F1": 0.6231190366423403,
+          "unknown_F1": 0.7607560756075608,
+          "U": 0.9530897609382047,
+          "known_acceptance": 0.3385529157667387,
+          "C": 0.3331533477321814,
+          "threshold": 0.15045350790023804,
+          "n_known": 1852,
+          "n_unknown": 2217
+        },
+        "prototype_window": {
+          "AUC": 0.6757536257721846,
+          "identity_macro_F1": 0.551470120343783,
+          "detection_macro_F1": 0.6267377474462109,
+          "unknown_F1": 0.6790256520801897,
+          "U": 0.7104194857916103,
+          "known_acceptance": 0.5426565874730022,
+          "C": 0.5043196544276458,
+          "threshold": 4.427927017211914,
+          "n_known": 1852,
+          "n_unknown": 2217
+        }
+      }
+    },
+    {
+      "outer_fold": 5,
+      "held_subjects": [
+        18,
+        2,
+        14,
+        9
+      ],
+      "thresholds": {
+        "prototype_only": 0.3047770857810974,
+        "prototype_margin": 0.1528332680463791,
+        "prototype_window": 4.402554035186768
+      },
+      "methods": {
+        "prototype_only": {
+          "AUC": 0.7677110246223466,
+          "identity_macro_F1": 0.5099502256132178,
+          "detection_macro_F1": 0.6732005554138448,
+          "unknown_F1": 0.75522270398108,
+          "U": 0.8689342403628117,
+          "known_acceptance": 0.4851431658562939,
+          "C": 0.4435440302539168,
+          "threshold": 0.3047770857810974,
+          "n_known": 1851,
+          "n_unknown": 2205
+        },
+        "prototype_margin": {
+          "AUC": 0.7816456386264213,
+          "identity_macro_F1": 0.47101631443315123,
+          "detection_macro_F1": 0.6523098084026941,
+          "unknown_F1": 0.7766073374500545,
+          "U": 0.9696145124716553,
+          "known_acceptance": 0.3716909778498109,
+          "C": 0.36304700162074555,
+          "threshold": 0.1528332680463791,
+          "n_known": 1851,
+          "n_unknown": 2205
+        },
+        "prototype_window": {
+          "AUC": 0.7591420216564926,
+          "identity_macro_F1": 0.5720630206405021,
+          "detection_macro_F1": 0.6868720016959113,
+          "unknown_F1": 0.7438464747601168,
+          "U": 0.8086167800453514,
+          "known_acceptance": 0.564559697460832,
+          "C": 0.5170178282009724,
+          "threshold": 4.402554035186768,
+          "n_known": 1851,
+          "n_unknown": 2205
+        }
+      }
+    }
+  ],
+  "summary": {
+    "prototype_only": {
+      "AUC": 0.7343947706698004,
+      "identity_macro_F1": 0.5227816636972534,
+      "detection_macro_F1": 0.666724810865625,
+      "unknown_F1": 0.7400414963350912,
+      "U": 0.8224704182303972,
+      "known_acceptance": 0.5146172888252807,
+      "C": 0.46845436321014056
+    },
+    "prototype_margin": {
+      "AUC": 0.751236864409222,
+      "identity_macro_F1": 0.4712041216022656,
+      "detection_macro_F1": 0.6464198351190402,
+      "unknown_F1": 0.7772031051180346,
+      "U": 0.9672842003054273,
+      "known_acceptance": 0.3628234245006748,
+      "C": 0.3551171240421464
+    },
+    "prototype_window": {
+      "AUC": 0.7212652408403157,
+      "identity_macro_F1": 0.5509531365402786,
+      "detection_macro_F1": 0.6632537889557121,
+      "unknown_F1": 0.729500526412631,
+      "U": 0.7953447090759107,
+      "known_acceptance": 0.5320116388536004,
+      "C": 0.4938157785746352
+    }
+  },
+  "selected_method": "prototype_only",
+  "candidate": {
+    "threshold": 0.13664990663528442,
+    "test_rows": 22251,
+    "rejected": 1136,
+    "session_post_output_audit": {
+      "session1": 182,
+      "session2": 954
+    }
+  }
+}

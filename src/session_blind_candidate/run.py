@@ -13,6 +13,13 @@ from src.open_set_calibration.core import (
     build_submission,
     predict_calibration_scores,
 )
+from src.session_blind_candidate.shift_calibration import (
+    apply_conditional_rejection,
+    apply_robust_normalization,
+    fit_conditional_thresholds,
+    fit_training_statistics,
+    score_diagnostics,
+)
 from src.open_set_improvement.core import (
     COV_COLUMNS,
     TaskSpecificModel,
@@ -77,6 +84,26 @@ def fit_and_score(cache: Path, device: torch.device) -> tuple[dict[str, np.ndarr
     }
 
 
+def fit_internal_calibration(cache: Path, device: torch.device) -> dict:
+    """Fit frozen conditional rejection thresholds from training predictions only."""
+    train_meta = read_metadata(cache / "train_metadata.csv", TRAIN_COLUMNS)
+    train_x = np.load(cache / "train_features.npy", mmap_mode="r")[:, COV_COLUMNS]
+    train_windows_raw = np.load(cache / "train_window2_features.npy", mmap_mode="r")[:, COV_COLUMNS]
+    if train_windows_raw.shape[0] != 2 * len(train_meta):
+        raise ValueError("窗口缓存应包含每条 Trial 的两个窗口")
+    train_window = np.asarray(train_windows_raw).reshape(len(train_meta), 2, -1)
+    if len(train_meta) != len(train_x):
+        raise ValueError("元数据和特征数量不一致")
+    model = TaskSpecificModel(device=device, alpha=100.0).fit(
+        train_x, train_window, train_meta["subject"].to_numpy(),
+        train_meta["task"].to_numpy(), np.ones(len(train_meta), dtype=bool),
+    )
+    scores = model.predict_scores(train_x, train_window, train_meta["task"].to_numpy())
+    diagnostics = score_diagnostics(scores["full"], scores["base"])
+    calibration = fit_conditional_thresholds(scores["base"], diagnostics, "max_logit")
+    return {"calibration": calibration, "diagnostics": diagnostics, "classes": model.classes}
+
+
 def threshold_from_oof(cache: Path, variant: str, score_name: str) -> float:
     path = cache / "train_blocked_oof_scores_cov_alpha100.npy"
     scores = np.load(path, mmap_mode="r")
@@ -85,9 +112,10 @@ def threshold_from_oof(cache: Path, variant: str, score_name: str) -> float:
     return float(np.quantile(confidence_values(scores)[score_name], 0.05))
 
 
-def make_candidates(output_dir: Path, cache: Path, device: torch.device) -> dict:
+def make_candidates(output_dir: Path, cache: Path, device: torch.device, use_internal_calibration: bool = False) -> dict:
     output_dir.mkdir(parents=True, exist_ok=True)
     scores, info = fit_and_score(cache, device)
+    internal = fit_internal_calibration(cache, device) if use_internal_calibration else None
     template = pd.read_csv(ROOT / "Brainprint_Competition" / "test.csv", usecols=["Sample"])
     result = {"session_used": False, "session_columns_read": False, "candidates": {}}
     for alignment in ALIGNMENTS:
@@ -97,10 +125,18 @@ def make_candidates(output_dir: Path, cache: Path, device: torch.device) -> dict
             if score_key not in scores:
                 raise KeyError(score_key)
             values = scores[score_key]
-            threshold = threshold_from_oof(cache, variant, "max_logit")
-            confidence = confidence_values(values)["max_logit"]
-            predicted = info["classes"][values.argmax(axis=1)].astype(int)
-            predicted[confidence < threshold] = 0
+            if internal is not None and variant == "base" and alignment == "none":
+                predicted = apply_conditional_rejection(
+                    values, info["classes"],
+                    score_diagnostics(scores["full_none"], scores["base_none"]),
+                    internal["calibration"],
+                )
+                threshold = internal["calibration"].default
+            else:
+                threshold = threshold_from_oof(cache, variant, "max_logit")
+                confidence = confidence_values(values)["max_logit"]
+                predicted = info["classes"][values.argmax(axis=1)].astype(int)
+                predicted[confidence < threshold] = 0
             metadata = info["test_meta"].rename(columns={"sample": "sample"})
             submission = build_submission(template, metadata, predicted)
             path = output_dir / f"candidate_{key}.csv"
@@ -122,11 +158,14 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-dir", type=Path, default=ROOT / "research/session_blind_candidate/candidates")
     parser.add_argument("--device", choices=("cuda", "cpu"), default="cuda")
+    parser.add_argument("--internal-calibration", action="store_true")
     args = parser.parse_args()
     if args.device == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA 不可用；按实验要求不静默退回 CPU")
     cache = resolve_cache()
-    result = make_candidates(args.output_dir, cache, torch.device(args.device))
+    result = make_candidates(
+        args.output_dir, cache, torch.device(args.device), args.internal_calibration
+    )
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

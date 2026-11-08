@@ -1,0 +1,311 @@
+{
+  "protocol": {
+    "outer": "strict 5-fold subject holdout; enrolled last 20% trial; held subjects entirely unknown",
+    "inner": "2 pseudo-unknown subject groups; fit enrolled non-forward trials",
+    "features": "COV_COLUMNS full and window2",
+    "template": "per(subject,task) robust trimmed medoid on GPU",
+    "session_used_for_inference": false,
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU"
+  },
+  "folds": [
+    {
+      "outer_fold": 1,
+      "held_subjects": [
+        16,
+        10,
+        15,
+        8
+      ],
+      "thresholds": {
+        "prototype_only": 0.9849100708961487,
+        "prototype_margin": 0.0062811970710754395,
+        "prototype_window": 0.980627179145813
+      },
+      "methods": {
+        "prototype_only": {
+          "AUC": 0.6350725210453328,
+          "identity_macro_F1": 0.4603539362264537,
+          "detection_macro_F1": 0.5900685088035591,
+          "unknown_F1": 0.6376681614349776,
+          "U": 0.6713881019830028,
+          "known_acceptance": 0.5101171458998935,
+          "C": 0.4339723109691161,
+          "threshold": 0.9849100708961487,
+          "n_known": 1878,
+          "n_unknown": 2118
+        },
+        "prototype_margin": {
+          "AUC": 0.708224976644231,
+          "identity_macro_F1": 0.3574635199563088,
+          "detection_macro_F1": 0.5917303746312517,
+          "unknown_F1": 0.7323157110945644,
+          "U": 0.9287063267233239,
+          "known_acceptance": 0.3146964856230032,
+          "C": 0.284877529286475,
+          "threshold": 0.0062811970710754395,
+          "n_known": 1878,
+          "n_unknown": 2118
+        },
+        "prototype_window": {
+          "AUC": 0.6220659472385889,
+          "identity_macro_F1": 0.40019800581220855,
+          "detection_macro_F1": 0.5730646481724501,
+          "unknown_F1": 0.6748838149121035,
+          "U": 0.7884796978281398,
+          "known_acceptance": 0.3817891373801917,
+          "C": 0.34132055378061765,
+          "threshold": 0.980627179145813,
+          "n_known": 1878,
+          "n_unknown": 2118
+        }
+      }
+    },
+    {
+      "outer_fold": 2,
+      "held_subjects": [
+        13,
+        11,
+        7,
+        20
+      ],
+      "thresholds": {
+        "prototype_only": 0.9851500391960144,
+        "prototype_margin": 0.006391346454620361,
+        "prototype_window": 0.9805632829666138
+      },
+      "methods": {
+        "prototype_only": {
+          "AUC": 0.6282840245565484,
+          "identity_macro_F1": 0.40101026870492623,
+          "detection_macro_F1": 0.618477422752714,
+          "unknown_F1": 0.7225208526413346,
+          "U": 0.8033800494641385,
+          "known_acceptance": 0.43739658025372313,
+          "C": 0.3436293436293436,
+          "threshold": 0.9851500391960144,
+          "n_known": 1813,
+          "n_unknown": 2426
+        },
+        "prototype_margin": {
+          "AUC": 0.6748621865804765,
+          "identity_macro_F1": 0.34395413130120744,
+          "detection_macro_F1": 0.5786496391148847,
+          "unknown_F1": 0.7527958604573527,
+          "U": 0.9295136026380874,
+          "known_acceptance": 0.2774407060121346,
+          "C": 0.2608935466078323,
+          "threshold": 0.006391346454620361,
+          "n_known": 1813,
+          "n_unknown": 2426
+        },
+        "prototype_window": {
+          "AUC": 0.6356382797320259,
+          "identity_macro_F1": 0.38268895440880624,
+          "detection_macro_F1": 0.6201703454835266,
+          "unknown_F1": 0.7517084282460137,
+          "U": 0.8841714756801319,
+          "known_acceptance": 0.3734142305570877,
+          "C": 0.30777716492002205,
+          "threshold": 0.9805632829666138,
+          "n_known": 1813,
+          "n_unknown": 2426
+        }
+      }
+    },
+    {
+      "outer_fold": 3,
+      "held_subjects": [
+        4,
+        1,
+        17,
+        6
+      ],
+      "thresholds": {
+        "prototype_only": 0.9846494197845459,
+        "prototype_margin": 0.0055182576179504395,
+        "prototype_window": 0.9797984957695007
+      },
+      "methods": {
+        "prototype_only": {
+          "AUC": 0.5273284458597185,
+          "identity_macro_F1": 0.40407269682366787,
+          "detection_macro_F1": 0.5169351261281075,
+          "unknown_F1": 0.5770868824531517,
+          "U": 0.5795551753635586,
+          "known_acceptance": 0.4542981501632209,
+          "C": 0.3797606093579978,
+          "threshold": 0.9846494197845459,
+          "n_known": 1838,
+          "n_unknown": 2338
+        },
+        "prototype_margin": {
+          "AUC": 0.7410990625619582,
+          "identity_macro_F1": 0.4072414505137686,
+          "detection_macro_F1": 0.6366176314953963,
+          "unknown_F1": 0.7757575757575758,
+          "U": 0.9580838323353293,
+          "known_acceptance": 0.3487486398258977,
+          "C": 0.32100108813928185,
+          "threshold": 0.0055182576179504395,
+          "n_known": 1838,
+          "n_unknown": 2338
+        },
+        "prototype_window": {
+          "AUC": 0.5122206232645854,
+          "identity_macro_F1": 0.373960534889619,
+          "detection_macro_F1": 0.5100878531213944,
+          "unknown_F1": 0.5986615291016021,
+          "U": 0.6313088109495295,
+          "known_acceptance": 0.39227421109902066,
+          "C": 0.3373231773667029,
+          "threshold": 0.9797984957695007,
+          "n_known": 1838,
+          "n_unknown": 2338
+        }
+      }
+    },
+    {
+      "outer_fold": 4,
+      "held_subjects": [
+        12,
+        19,
+        3,
+        5
+      ],
+      "thresholds": {
+        "prototype_only": 0.9860894083976746,
+        "prototype_margin": 0.006121456623077393,
+        "prototype_window": 0.9816603660583496
+      },
+      "methods": {
+        "prototype_only": {
+          "AUC": 0.826043064051493,
+          "identity_macro_F1": 0.42820146257384367,
+          "detection_macro_F1": 0.6758778143244396,
+          "unknown_F1": 0.7847682119205298,
+          "U": 0.9621109607577808,
+          "known_acceptance": 0.4136069114470842,
+          "C": 0.3234341252699784,
+          "threshold": 0.9860894083976746,
+          "n_known": 1852,
+          "n_unknown": 2217
+        },
+        "prototype_margin": {
+          "AUC": 0.6293492461063196,
+          "identity_macro_F1": 0.27961974092980724,
+          "detection_macro_F1": 0.5234888836730697,
+          "unknown_F1": 0.7071137129678907,
+          "U": 0.8989625620207488,
+          "known_acceptance": 0.2294816414686825,
+          "C": 0.2019438444924406,
+          "threshold": 0.006121456623077393,
+          "n_known": 1852,
+          "n_unknown": 2217
+        },
+        "prototype_window": {
+          "AUC": 0.8036238968270901,
+          "identity_macro_F1": 0.36925824331130874,
+          "detection_macro_F1": 0.6172170723116178,
+          "unknown_F1": 0.7685804860866502,
+          "U": 0.984212900315742,
+          "known_acceptance": 0.3093952483801296,
+          "C": 0.25593952483801297,
+          "threshold": 0.9816603660583496,
+          "n_known": 1852,
+          "n_unknown": 2217
+        }
+      }
+    },
+    {
+      "outer_fold": 5,
+      "held_subjects": [
+        18,
+        2,
+        14,
+        9
+      ],
+      "thresholds": {
+        "prototype_only": 0.9851550459861755,
+        "prototype_margin": 0.006793320178985596,
+        "prototype_window": 0.9811481833457947
+      },
+      "methods": {
+        "prototype_only": {
+          "AUC": 0.7647253246697563,
+          "identity_macro_F1": 0.5031111537430476,
+          "detection_macro_F1": 0.7143899675443145,
+          "unknown_F1": 0.7843137254901961,
+          "U": 0.8979591836734694,
+          "known_acceptance": 0.5332252836304701,
+          "C": 0.4246353322528363,
+          "threshold": 0.9851550459861755,
+          "n_known": 1851,
+          "n_unknown": 2205
+        },
+        "prototype_margin": {
+          "AUC": 0.6936951405809938,
+          "identity_macro_F1": 0.33682246538736843,
+          "detection_macro_F1": 0.599690078010155,
+          "unknown_F1": 0.7597745685100388,
+          "U": 0.9782312925170068,
+          "known_acceptance": 0.28903295515937333,
+          "C": 0.26094003241491087,
+          "threshold": 0.006793320178985596,
+          "n_known": 1851,
+          "n_unknown": 2205
+        },
+        "prototype_window": {
+          "AUC": 0.7780095578660061,
+          "identity_macro_F1": 0.45490511625862784,
+          "detection_macro_F1": 0.6585729688648981,
+          "unknown_F1": 0.7716243748842379,
+          "U": 0.944671201814059,
+          "known_acceptance": 0.3997839005942734,
+          "C": 0.33981631550513236,
+          "threshold": 0.9811481833457947,
+          "n_known": 1851,
+          "n_unknown": 2205
+        }
+      }
+    }
+  ],
+  "summary": {
+    "prototype_only": {
+      "AUC": 0.6762906760365699,
+      "identity_macro_F1": 0.43934990361438786,
+      "detection_macro_F1": 0.623149767910627,
+      "unknown_F1": 0.7012715667880379,
+      "U": 0.7828786942483901,
+      "known_acceptance": 0.46972881427887836,
+      "C": 0.3810863442958544
+    },
+    "prototype_margin": {
+      "AUC": 0.6894461224947959,
+      "identity_macro_F1": 0.3450202616176921,
+      "detection_macro_F1": 0.5860353213849515,
+      "unknown_F1": 0.7455514857574845,
+      "U": 0.9386995232468992,
+      "known_acceptance": 0.29188008561781825,
+      "C": 0.2659312081881881
+    },
+    "prototype_window": {
+      "AUC": 0.6703116609856592,
+      "identity_macro_F1": 0.39620217093611404,
+      "detection_macro_F1": 0.5958225775907773,
+      "unknown_F1": 0.7130917266461214,
+      "U": 0.8465688173175205,
+      "known_acceptance": 0.37133134560214065,
+      "C": 0.3164353472820976
+    }
+  },
+  "selected_method": "prototype_only",
+  "candidate": {
+    "threshold": 0.9680132269859314,
+    "test_rows": 22251,
+    "rejected": 11273,
+    "session_post_output_audit": {
+      "session1": 1525,
+      "session2": 9748
+    }
+  }
+}

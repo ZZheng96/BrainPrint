@@ -1,0 +1,331 @@
+{
+  "protocol": {
+    "outer": "5-fold subject holdout; registered outer evaluation last 20% trials; held-out subjects unknown",
+    "inner": "2-fold pseudo-unknown calibration; model fit only on inner training trials",
+    "direct": "full covariance Ridge, max_logit 5% threshold from inner known predictions",
+    "base": "equal full + two-window Ridge, max_logit 5% threshold from inner known predictions",
+    "conditional": "base max_logit threshold stratified by score-consistency quality into 3 bins; thresholds from inner known OOF only",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "no_test_labels": true,
+    "official_formula_proxy": "100*C^0.40*U^0.25; RA/ASafeR unavailable in this clean/unknown experiment"
+  },
+  "summary": {
+    "direct": {
+      "C": 0.9980471244883737,
+      "U": 0.2031870556510808,
+      "unknown_auc": 0.9890434365431304,
+      "unknown_f1": 0.31931861524468375,
+      "macro_f1": 0.7114657609222631,
+      "known_acceptance": 0.9998911860718172,
+      "official_score_proxy": 64.09361478075415
+    },
+    "base": {
+      "C": 0.9988094135610425,
+      "U": 0.22156089077844587,
+      "unknown_auc": 0.9891974374309902,
+      "unknown_f1": 0.3354266567053529,
+      "macro_f1": 0.722291325906763,
+      "known_acceptance": 1.0,
+      "official_score_proxy": 64.82309318611449
+    },
+    "conditional": {
+      "C": 0.9986990991650139,
+      "U": 0.22199327513934822,
+      "unknown_auc": 0.9891974374309902,
+      "unknown_f1": 0.33591349590661707,
+      "macro_f1": 0.7227321473369983,
+      "known_acceptance": 0.9998896856039714,
+      "official_score_proxy": 64.80344215722769
+    }
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "unknown_subjects": [
+        16,
+        10,
+        15,
+        8
+      ],
+      "methods": {
+        "direct": {
+          "threshold": -0.4977550208568573,
+          "n_known": 1878,
+          "n_unknown": 2118,
+          "C": 0.9989350372736954,
+          "U": 0.182247403210576,
+          "unknown_auc": 0.9921352150691723,
+          "unknown_f1": 0.3083067092651757,
+          "macro_f1": 0.6982528543193766,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 65.3100829972142
+        },
+        "base": {
+          "threshold": -0.5231274366378784,
+          "n_known": 1878,
+          "n_unknown": 2118,
+          "C": 0.9989350372736954,
+          "U": 0.16619452313503305,
+          "unknown_auc": 0.9933211048661456,
+          "unknown_f1": 0.28502024291497974,
+          "macro_f1": 0.6990295343729738,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 63.82180392436663
+        },
+        "conditional": {
+          "thresholds": [
+            -0.5669119358062744,
+            -0.5231274366378784,
+            -0.5061120986938477
+          ],
+          "edges": [
+            0.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_known": 1878,
+          "n_unknown": 2118,
+          "C": 0.9989350372736954,
+          "U": 0.16336166194523136,
+          "unknown_auc": 0.9933211048661456,
+          "unknown_f1": 0.28084415584415584,
+          "macro_f1": 0.6989336553603822,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 63.548080087916695
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "unknown_subjects": [
+        13,
+        11,
+        7,
+        20
+      ],
+      "methods": {
+        "direct": {
+          "threshold": -0.45382156372070315,
+          "n_known": 1813,
+          "n_unknown": 2426,
+          "C": 0.9983452840595698,
+          "U": 0.38746908491343773,
+          "unknown_auc": 0.9939099723577406,
+          "unknown_f1": 0.5585264408793821,
+          "macro_f1": 0.7706647849728915,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 78.84453071379332
+        },
+        "base": {
+          "threshold": -0.4389940619468689,
+          "n_known": 1813,
+          "n_unknown": 2426,
+          "C": 0.9994484280198566,
+          "U": 0.4868095630667766,
+          "unknown_auc": 0.9943653716471995,
+          "unknown_f1": 0.6548378153590241,
+          "macro_f1": 0.8135569218644934,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 83.51104745876367
+        },
+        "conditional": {
+          "thresholds": [
+            -0.5185292363166809,
+            -0.43899405002593994,
+            -0.414321631193161
+          ],
+          "edges": [
+            0.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_known": 1813,
+          "n_unknown": 2426,
+          "C": 0.9988968560397132,
+          "U": 0.4756801319043693,
+          "unknown_auc": 0.9943653716471995,
+          "unknown_f1": 0.6445127059480592,
+          "macro_f1": 0.8080273165500612,
+          "known_acceptance": 0.9994484280198566,
+          "official_score_proxy": 83.01126107787411
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "unknown_subjects": [
+        4,
+        1,
+        17,
+        6
+      ],
+      "methods": {
+        "direct": {
+          "threshold": -0.48903207778930663,
+          "n_known": 1838,
+          "n_unknown": 2338,
+          "C": 0.9967355821545157,
+          "U": 0.3045337895637297,
+          "unknown_auc": 0.9965422023976297,
+          "unknown_f1": 0.4667322189446083,
+          "macro_f1": 0.7149156853644376,
+          "known_acceptance": 0.999455930359086,
+          "official_score_proxy": 74.18922880333731
+        },
+        "base": {
+          "threshold": -0.5066778153181076,
+          "n_known": 1838,
+          "n_unknown": 2338,
+          "C": 0.9978237214363439,
+          "U": 0.3195038494439692,
+          "unknown_auc": 0.9974597672368615,
+          "unknown_f1": 0.48427876823338734,
+          "macro_f1": 0.7248908072904328,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 75.1174010299486
+        },
+        "conditional": {
+          "thresholds": [
+            -0.5673477649688721,
+            -0.5066778063774109,
+            -0.4760381877422333
+          ],
+          "edges": [
+            0.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_known": 1838,
+          "n_unknown": 2338,
+          "C": 0.9978237214363439,
+          "U": 0.3378956372968349,
+          "unknown_auc": 0.9974597672368615,
+          "unknown_f1": 0.5051150895140665,
+          "macro_f1": 0.7324810334023897,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 76.17582665054968
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "unknown_subjects": [
+        12,
+        19,
+        3,
+        5
+      ],
+      "methods": {
+        "direct": {
+          "threshold": -0.5069245874881745,
+          "n_known": 1852,
+          "n_unknown": 2217,
+          "C": 0.9973002159827213,
+          "U": 0.04871447902571042,
+          "unknown_auc": 0.9688001414555306,
+          "unknown_f1": 0.09290322580645162,
+          "macro_f1": 0.6955773085242135,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 46.9293869365769
+        },
+        "base": {
+          "threshold": -0.5085822731256484,
+          "n_known": 1852,
+          "n_unknown": 2217,
+          "C": 0.9983801295896328,
+          "U": 0.05593143888137122,
+          "unknown_auc": 0.9658982085222085,
+          "unknown_f1": 0.10593763348996156,
+          "macro_f1": 0.7054818445148447,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 48.59956360074884
+        },
+        "conditional": {
+          "thresholds": [
+            -0.5777542591094971,
+            -0.5085822939872742,
+            -0.4758613407611847
+          ],
+          "edges": [
+            0.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_known": 1852,
+          "n_unknown": 2217,
+          "C": 0.9983801295896328,
+          "U": 0.05593143888137122,
+          "unknown_auc": 0.9658982085222085,
+          "unknown_f1": 0.10593763348996156,
+          "macro_f1": 0.7056670512189819,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 48.59956360074884
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "unknown_subjects": [
+        18,
+        2,
+        14,
+        9
+      ],
+      "methods": {
+        "direct": {
+          "threshold": -0.5220325589179993,
+          "n_known": 1851,
+          "n_unknown": 2205,
+          "C": 0.9989195029713668,
+          "U": 0.09297052154195011,
+          "unknown_auc": 0.9938296514355788,
+          "unknown_f1": 0.17012448132780084,
+          "macro_f1": 0.6779181714303961,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 55.194844452849004
+        },
+        "base": {
+          "threshold": -0.5460785448551178,
+          "n_known": 1851,
+          "n_unknown": 2205,
+          "C": 0.9994597514856834,
+          "U": 0.07936507936507936,
+          "unknown_auc": 0.9949427348825358,
+          "unknown_f1": 0.14705882352941177,
+          "macro_f1": 0.6684975214910706,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 53.06564991674474
+        },
+        "conditional": {
+          "thresholds": [
+            -0.6050162315368652,
+            -0.5460785627365112,
+            -0.522905707359314
+          ],
+          "edges": [
+            0.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_known": 1851,
+          "n_unknown": 2205,
+          "C": 0.9994597514856834,
+          "U": 0.07709750566893424,
+          "unknown_auc": 0.9949427348825358,
+          "unknown_f1": 0.1431578947368421,
+          "macro_f1": 0.6685516801531763,
+          "known_acceptance": 1.0,
+          "official_score_proxy": 52.682479369049126
+        }
+      }
+    }
+  ],
+  "test_auc": null,
+  "test_f1": null,
+  "test_metrics_status": "不可计算：Test 无标签；本实验不生成 Test CSV"
+}
