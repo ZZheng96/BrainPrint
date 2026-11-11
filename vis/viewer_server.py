@@ -14,10 +14,14 @@
 
 接口：
   GET /                                   -> viewer.html
-  GET /api/summary                        -> 被试 / 任务统计、OOF 指标、测试预测分布、通道名
-  GET /api/rows?set=&task=&subject=&session=
-                                          -> trial 列表（训练集按真实标签筛选，测试集按预测标签）
-  GET /api/trial/<set>/<idx>              -> 波形（原始 + 0.5–90 Hz/50 Hz 陷波滤波）、PSD、协方差、分数
+  GET /api/schemes                        -> 方案注册表（vis/schemes.py；s1 默认）
+  GET /api/summary?scheme=                -> 被试 / 任务统计、OOF 指标、测试预测分布、通道名
+  GET /api/metrics?scheme=&ref=           -> OOF 指标 / 测试分布 / 代理分（ref 为伪真值方案）
+  GET /api/compare?a=&b=                  -> 两方案一致率、转移矩阵、分歧样本、逐被试 Δ
+  GET /api/rows?set=&task=&subject=&session=&scheme=&b=
+                                          -> trial 列表（训练集按真实标签筛选，测试集按方案 A 预测标签）
+  GET /api/trial/<set>/<idx>?scheme=&b=   -> 波形（原始 + 0.5–90 Hz/50 Hz 陷波滤波）、PSD、协方差、A/B 分数
+  （嵌入 / 脑纹 / 相似度与方案无关；cross 相似度与配对按 s1 预测分组）
   GET /api/embed?task=                    -> LDA 二维嵌入点
   GET /api/fingerprint?subject=&task=     -> 被试脑纹（PSD / 协方差 z 偏差、Fisher 辨识度）
   GET /api/similarity?task=&domain=&mode= -> 20×20 模板相似度矩阵
@@ -59,6 +63,9 @@ from eeg_features import (  # noqa: E402
     load_eeg,
     robust_clip,
 )
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from schemes import DEFAULT, Registry  # noqa: E402
 
 DATA = ROOT / "Brainprint_Competition"
 CACHE = next(
@@ -113,24 +120,18 @@ def zstats(x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
 
 
 class Store:
-    def __init__(self, test_scores: str, test_labels: Path, train_scores: str, train_preds: str):
+    def __init__(self):
         t0 = time.time()
         self.meta = {s: pd.read_csv(CACHE / f"{s}_metadata.csv") for s in SETS}
         self.x = {s: np.load(CACHE / f"{s}_features.npy", mmap_mode="r") for s in SETS}
         tr, te = self.meta["train"], self.meta["test"]
-        self.scheme = {"test_scores": test_scores, "test_labels": test_labels.name,
-                       "train_scores": train_scores, "train_preds": train_preds}
-        self.scores = {"train": np.load(CACHE / train_scores), "test": np.load(CACHE / test_scores)}
-        oof = pd.read_csv(CACHE / train_preds).set_index("path")["predicted_label"]
-        sub = pd.read_csv(test_labels).set_index("Sample")["Label"]
-        self.pred = {"train": oof.loc[tr["path"]].to_numpy(int), "test": sub.loc[te["sample"]].to_numpy(int)}
+        self.reg = Registry(CACHE, self.meta)
+        base = self.reg.get(DEFAULT)  # 嵌入 / cross 相似度 / 配对等与方案无关的部分固定用 s1
+        self.scheme = base.info
+        self.scores, self.pred, self.margin = base.scores, base.pred, base.margin
         self.label = {"train": tr["subject"].to_numpy(int), "test": np.full(len(te), -1)}
         self.task = {s: self.meta[s]["task"].to_numpy() for s in SETS}
         self.session = {s: self.meta[s]["session"].to_numpy() for s in SETS}
-        self.margin = {}
-        for s in SETS:
-            top = np.sort(self.scores[s], axis=1)[:, -2:]
-            self.margin[s] = top[:, 1] - top[:, 0]
         pairs = pd.read_csv(CACHE / "waveform_pairs.csv")
         row = dict(zip(te["sample"], range(len(te))))
         self.pair = {row[a]: (row[b], float(c)) for a, b, c in
@@ -138,7 +139,7 @@ class Store:
         first = loadmat(DATA / te["path"].iloc[0])
         self.channels = [str(c.reshape(-1)[0]) for c in first["channel_names"].reshape(-1)]
         self._fit()
-        self.summary_cache = self._summary()
+        self.summary_cache = {}
         print(f"[store] 就绪 {time.time() - t0:.1f}s（设备 {DEVICE}，缓存 {CACHE}）", flush=True)
 
     # ---------- GPU 脑纹拟合 ----------
@@ -242,35 +243,44 @@ class Store:
             torch.cuda.empty_cache()
 
     # ---------- 汇总 ----------
-    def _summary(self) -> dict:
+    def summary(self, scheme: str | None) -> dict:
+        k = self.reg.key(scheme)
+        if k not in self.summary_cache:
+            self.summary_cache[k] = self._summary(self.reg.get(k))
+        return self.summary_cache[k]
+
+    def _summary(self, sch) -> dict:
         tr = self.meta["train"]
-        y, p = self.label["train"], self.pred["train"]
+        y, p = self.label["train"], sch.pred["train"]
+        has = p is not None
+        p = p if has else np.full(len(y), -1)
         f1s = []
         for c in range(1, N_SUBJ + 1):
             tp = np.sum((p == c) & (y == c))
             f1s.append(2 * tp / max(1, 2 * tp + np.sum((p == c) & (y != c)) + np.sum((p != c) & (y == c))))
+        acc = lambda m: float(np.mean(p[m] == y[m])) if has and m.any() else None  # noqa: E731
+        te_pred = sch.pred["test"]
         subjects = []
         for s in range(1, N_SUBJ + 1):
             m = y == s
-            row = {"subject": s, "n": int(m.sum()), "acc": float(np.mean(p[m] == s)), "tasks": {}}
+            row = {"subject": s, "n": int(m.sum()), "acc": acc(m), "tasks": {}}
             for t in TASKS:
                 mt = m & (self.task["train"] == t)
-                row["tasks"][t] = {"n": int(mt.sum()), "acc": float(np.mean(p[mt] == s)) if mt.any() else None}
-            row["test_pred"] = int(np.sum(self.pred["test"] == s))
+                row["tasks"][t] = {"n": int(mt.sum()), "acc": acc(mt)}
+            row["test_pred"] = int(np.sum(te_pred == s))
             subjects.append(row)
-        te_pred = self.pred["test"]
         return {
             "channels": self.channels,
             "tasks": list(TASKS),
             "bands": [f"{a}-{b}" for a, b in COV_BANDS],
             "freqs": [FREQ_MIN, FREQ_MAX],
             "fs": 300,
-            "scheme": self.scheme,
+            "scheme": sch.info,
             "n_train": int(len(tr)),
             "n_test": int(len(self.meta["test"])),
-            "oof_acc": float(np.mean(p == y)),
-            "oof_macro_f1": float(np.mean(f1s)),
-            "oof_task_acc": {t: float(np.mean(p[self.task["train"] == t] == y[self.task["train"] == t])) for t in TASKS},
+            "oof_acc": acc(np.ones(len(y), bool)),
+            "oof_macro_f1": float(np.mean(f1s)) if has else None,
+            "oof_task_acc": {t: acc(self.task["train"] == t) for t in TASKS},
             "subjects": subjects,
             "test_pred_counts": {str(c): int(np.sum(te_pred == c)) for c in range(N_SUBJ + 1)},
             "test_sessions": {str(s): int(np.sum(self.session["test"] == s)) for s in np.unique(self.session["test"])},
@@ -278,25 +288,39 @@ class Store:
         }
 
     # ---------- 查询 ----------
-    def rows(self, s: str, task: str, subject: int | None, session: str) -> dict:
+    def _sp(self, sch, s: str, idx) -> tuple:
+        """方案在 set s 上的 (预测, margin, 分数)；无 OOF / 无分数时预测为 -1、其余为 None。"""
+        p = sch.pred[s]
+        p = p[idx] if p is not None else np.full(np.shape(idx), -1)
+        m, sc = sch.margin[s], sch.scores[s]
+        return p, None if m is None else m[idx], None if sc is None else sc[idx]
+
+    def rows(self, s: str, task: str, subject: int | None, session: str, a: str | None = None,
+             b: str | None = None) -> dict:
+        sa = self.reg.get(a)
         m = np.ones(len(self.meta[s]), bool)
         if task:
             m &= self.task[s] == task
         if subject is not None:
-            m &= (self.label[s] if s == "train" else self.pred[s]) == subject
+            m &= (self.label[s] if s == "train" else sa.pred[s]) == subject
         if session:
             m &= self.session[s] == session
         idx = np.flatnonzero(m)
         meta = self.meta[s]
         name = (meta["trial"].to_numpy()[idx].tolist() if s == "train" else meta["sample"].to_numpy()[idx].tolist())
-        return {
-            "set": s, "idx": idx.tolist(), "name": name,
+        pa, ma, _ = self._sp(sa, s, idx)
+        out = {
+            "set": s, "scheme": sa.key, "idx": idx.tolist(), "name": name,
             "task": self.task[s][idx].tolist(), "session": self.session[s][idx].tolist(),
-            "label": self.label[s][idx].tolist(), "pred": self.pred[s][idx].tolist(),
-            "margin": jl(self.margin[s][idx], 2),
+            "label": self.label[s][idx].tolist(), "pred": pa.tolist(),
+            "margin": None if ma is None else jl(ma, 2),
         }
+        if b:
+            pb, mb, _ = self._sp(self.reg.get(b), s, idx)
+            out.update(scheme_b=b, pred_b=pb.tolist(), margin_b=None if mb is None else jl(mb, 2))
+        return out
 
-    def trial(self, s: str, idx: int) -> dict:
+    def trial(self, s: str, idx: int, a: str | None = None, b: str | None = None) -> dict:
         if not 0 <= idx < len(self.meta[s]):
             raise ValueError("idx 越界")
         m = self.meta[s].iloc[idx]
@@ -310,24 +334,30 @@ class Store:
         z = (feat - mu) / sd
         logpsd, cov = split_feat(feat)
         psd_z, cov_z = split_feat(z)
+        sa = self.reg.get(a)
+        pa, ma, sca = self._sp(sa, s, idx)
         out = {
             "set": s, "idx": idx, "path": str(m["path"]), "task": str(self.task[s][idx]),
             "session": str(self.session[s][idx]),
             "name": int(m["trial"]) if s == "train" else str(m["sample"]),
-            "label": int(self.label[s][idx]), "pred": int(self.pred[s][idx]),
-            "margin": float(self.margin[s][idx]),
+            "label": int(self.label[s][idx]), "scheme": sa.key, "pred": int(pa),
+            "margin": None if ma is None else float(ma),
             "unit": "device_native",
             "raw": jl(raw.T, 2), "filt": jl(filt.T, 2),
             "std": jl(filt.std(0), 3), "clip": jl(clip, 4),
             "logpsd": jl(logpsd, 3), "psd_z": jl(psd_z, 2),
             "cov": jl(cov, 3), "cov_z": jl(cov_z, 2),
-            "scores": jl(self.scores[s][idx], 3), "tsim": jl(self.tsim[s][idx], 3),
+            "scores": None if sca is None else jl(sca, 3), "tsim": jl(self.tsim[s][idx], 3),
             "emb": jl(self.proj[s][idx][:2], 3),
         }
         if s == "test" and idx in self.pair:
             j, sim = self.pair[idx]
             out["pair"] = {"idx": int(j), "name": str(self.meta["test"]["sample"].iloc[j]), "similarity": round(sim, 5),
-                           "pred": int(self.pred["test"][j])}
+                           "pred": int(sa.pred["test"][j])}
+        if b:
+            pb, mb, scb = self._sp(self.reg.get(b), s, idx)
+            out.update(scheme_b=b, pred_b=int(pb), margin_b=None if mb is None else float(mb),
+                       scores_b=None if scb is None else jl(scb, 3))
         return out
 
     def embed(self, task: str) -> dict:
@@ -377,6 +407,13 @@ def _task(q, allow_all=True) -> str:
     return t
 
 
+def _q(q, k: str) -> str | None:
+    v = q.get(k, [""])[0]
+    if v and STORE is not None:
+        STORE.reg.key(v)  # 非法方案立即报错
+    return v or None
+
+
 class Handler(BaseHTTPRequestHandler):
     server_version = "BrainPrintViewer/1.0"
 
@@ -402,7 +439,13 @@ class Handler(BaseHTTPRequestHandler):
             if path in ("/", "/index.html", "/viewer.html"):
                 self._send(200, VIEWER.read_bytes(), "text/html; charset=utf-8")
             elif path == "/api/summary":
-                self._json(STORE.summary_cache)
+                self._json(STORE.summary(_q(q, "scheme")))
+            elif path == "/api/schemes":
+                self._json({"default": DEFAULT, "schemes": STORE.reg.list()})
+            elif path == "/api/metrics":
+                self._json(STORE.reg.metrics(_q(q, "scheme"), _q(q, "ref")))
+            elif path == "/api/compare":
+                self._json(STORE.reg.compare(_q(q, "a"), _q(q, "b")))
             elif path == "/api/rows":
                 s = q.get("set", ["train"])[0]
                 if s not in SETS:
@@ -411,12 +454,13 @@ class Handler(BaseHTTPRequestHandler):
                 if task and task not in TASKS:
                     raise ValueError("非法任务")
                 sub = q.get("subject", [""])[0]
-                self._json(STORE.rows(s, task, int(sub) if sub != "" else None, q.get("session", [""])[0]))
+                self._json(STORE.rows(s, task, int(sub) if sub != "" else None, q.get("session", [""])[0],
+                                      _q(q, "scheme"), _q(q, "b")))
             elif path.startswith("/api/trial/"):
                 parts = path.split("/")
                 if len(parts) != 5 or parts[3] not in SETS:
                     raise ValueError("用法 /api/trial/<train|test>/<idx>")
-                self._json(STORE.trial(parts[3], int(parts[4])))
+                self._json(STORE.trial(parts[3], int(parts[4]), _q(q, "scheme"), _q(q, "b")))
             elif path == "/api/embed":
                 self._json(STORE.embed(_task(q, allow_all=False)))
             elif path == "/api/fingerprint":
@@ -443,15 +487,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=8766)
-    ap.add_argument("--test-scores", default="scores_task_specific_zscore_grouped_guarded.npy")
-    ap.add_argument("--test-labels", type=Path,
-                    default=ROOT / "commit" / "answer" / "submission_task_specific_zscore_grouped_guarded.csv")
-    ap.add_argument("--train-scores", default="train_blocked_oof_scores_task_specific_guarded.npy")
-    ap.add_argument("--train-preds", default="train_blocked_oof_task_specific_guarded_predictions.csv")
     ap.add_argument("--no-browser", action="store_true")
     args = ap.parse_args()
 
-    STORE = Store(args.test_scores, args.test_labels, args.train_scores, args.train_preds)
+    STORE = Store()
     url = f"http://{args.host}:{args.port}/"
     print(f"BrainPrint 查看器：{url}  （Ctrl+C 退出）", flush=True)
     if not args.no_browser:

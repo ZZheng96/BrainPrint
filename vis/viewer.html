@@ -7,8 +7,9 @@
 :root{--bg:#fff;--panel:#f6f8fa;--line:#d0d7de;--fg:#1f2328;--dim:#656d76;--acc:#1a7f37;--bad:#cf222e;--blue:#0969da;--warn:#9a6700}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:12px/1.4 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
-#app{display:grid;grid-template-columns:200px 1fr 340px;grid-template-rows:40px 1fr;height:100vh}
-header{grid-column:1/4;display:flex;align-items:center;gap:10px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--panel)}
+#app{display:grid;grid-template-columns:240px 1fr 340px;grid-template-rows:40px 1fr;height:100vh}
+header{grid-column:1/4;display:flex;align-items:center;gap:8px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--panel);overflow-x:auto;white-space:nowrap}
+.badge.d b{color:var(--blue)}
 header h1{font-size:14px;margin:0 8px 0 0}
 .badge{border:1px solid var(--line);border-radius:10px;padding:1px 8px;background:#fff;color:var(--dim)}
 .badge b{color:var(--fg)}
@@ -23,9 +24,16 @@ header h1{font-size:14px;margin:0 8px 0 0}
 .subj.sel{background:#ddf4ff;border-left-color:var(--blue)}
 .subj .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
 #trials{flex:1;overflow:auto;min-height:0}
-.tr{display:grid;grid-template-columns:70px 52px 1fr 40px;gap:4px;padding:1px 8px;cursor:pointer;font-family:Consolas,monospace;font-size:11px}
+.tr{display:grid;grid-template-columns:66px 44px 1fr 38px 34px;gap:4px;padding:1px 8px;cursor:pointer;font-family:Consolas,monospace;font-size:11px}
 .tr:hover{background:var(--panel)}
 .tr.sel{background:#ddf4ff}
+.tr.mul{box-shadow:inset 3px 0 #8250df}
+#metGrid{display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:1fr 1fr;flex:1;min-height:0}
+#cmpGrid{display:grid;grid-template-columns:1fr 380px;flex:1;min-height:0}
+.tbl{overflow:auto;padding:6px 8px;font-size:11px}
+.tbl table{border-collapse:collapse;width:100%;margin-bottom:6px}
+.tbl td,.tbl th{border:1px solid var(--line);padding:1px 5px;text-align:right}
+.tbl th{background:var(--panel)}
 .ok{color:var(--acc)}.ng{color:var(--bad)}.dim{color:var(--dim)}
 #main{display:flex;flex-direction:column;min-width:0;min-height:0}
 .toolbar{display:flex;align-items:center;gap:6px;padding:4px 8px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
@@ -59,11 +67,15 @@ a{color:var(--blue);cursor:pointer}
 <div id="app">
 <header>
   <h1>BrainPrint 脑电波 / 脑纹查看器</h1>
-  <span class="badge">训练 OOF acc <b id="hAcc">-</b></span>
-  <span class="badge">OOF macro-F1 <b id="hF1">-</b></span>
-  <span class="badge">训练 <b id="hNtr">-</b> / 测试 <b id="hNte">-</b></span>
-  <span class="badge">测试预测 0 (未注册) <b id="hRej">-</b></span>
-  <span class="badge" style="margin-left:auto" title="测试集无真值">测试标签为提交预测</span>
+  <span>方案 A</span><select id="schA"></select><span>B</span><select id="schB"></select>
+  <span class="badge">官方 <b id="hOff">-</b></span>
+  <span class="badge">OOF acc <b id="hAcc">-</b></span>
+  <span class="badge">macro-F1 <b id="hF1">-</b></span>
+  <span class="badge" title="margin(top1−top2) 区分 OOF 正确/错分的 ROC AUC；全对时无定义">margin AUC <b id="hAuc">-</b></span>
+  <span class="badge" title="测试预测为 0（未注册）">测试拒识 <b id="hRej">-</b></span>
+  <span class="badge" title="代理估计（基于 session 假设与参考方案伪真值）">Score_proxy <b id="hPx">-</b></span>
+  <span class="badge d" id="hDelta" style="display:none"></span>
+  <span class="badge" title="测试集无真值，测试标签为提交预测">训练 <b id="hNtr">-</b> / 测试 <b id="hNte">-</b></span>
 </header>
 
 <div id="left">
@@ -73,6 +85,7 @@ a{color:var(--blue);cursor:pointer}
   <div class="sec dim" id="subjHead">被试（训练=真值 · OOF acc）</div>
   <div id="subjects"></div>
   <div class="sec dim" id="trialHead">trial</div>
+  <div class="sec"><div class="chips" id="fltChips"></div><div class="legend">↑/↓ 过滤列表内 · ←/→ 原顺序 · Ctrl/Shift 多选≤6</div></div>
   <div id="trials"></div>
 </div>
 
@@ -92,6 +105,26 @@ a{color:var(--blue);cursor:pointer}
       <div class="tab on" data-p="pEmb">脑纹嵌入 (LDA)</div>
       <div class="tab" data-p="pFp">被试脑纹</div>
       <div class="tab" data-p="pSim">相似度矩阵</div>
+      <div class="tab" data-p="pMet">指标</div>
+      <div class="tab" data-p="pCmp">方案对比</div>
+    </div>
+    <div class="pane" id="pMet">
+      <div class="toolbar">
+        <span>代理参考</span><select id="metRef"></select>
+        <span>拒识阈值</span><input type="range" id="thr" min="0" max="45" value="0" style="width:160px">
+        <span class="legend" id="metInfo"></span>
+      </div>
+      <div id="metGrid">
+        <div class="cv"><canvas id="mConf"></canvas></div>
+        <div class="cv"><canvas id="mF1"></canvas></div>
+        <div class="cv"><canvas id="mSweep"></canvas></div>
+        <div class="cv"><canvas id="mSess"></canvas></div>
+        <div class="tbl" id="mProxy" style="grid-column:2/4"></div>
+      </div>
+    </div>
+    <div class="pane" id="pCmp">
+      <div class="toolbar"><span class="legend" id="cmpInfo"></span><span class="legend" style="margin-left:auto">点击格子 → 左侧列出该转移的测试 trial</span></div>
+      <div id="cmpGrid"><div class="cv"><canvas id="cTrans"></canvas></div><div class="tbl" id="cStats"></div></div>
     </div>
     <div class="pane on" id="pEmb">
       <div class="toolbar">
@@ -138,12 +171,12 @@ a{color:var(--blue);cursor:pointer}
 
 <div id="side">
   <div class="card"><h3>Trial 信息</h3><div class="body kv" id="info"></div></div>
-  <div class="card"><h3><span>被试分数</span><span class="legend">条=方案分数 · 点=LDA 余弦</span></h3><div class="body"><div class="cbox" style="height:300px"><canvas id="scores"></canvas></div></div></div>
+  <div class="card"><h3><span>被试分数</span><span class="legend">条=A 分数 · 橙框=B · 点=LDA 余弦</span></h3><div class="body"><div class="cbox" style="height:300px"><canvas id="scores"></canvas></div></div></div>
   <div class="card"><h3><span>电极位置 (10-20)</span><span><select id="topoMode">
       <option value="trial">当前 trial z</option><option value="tmpl">被试模板 z</option><option value="fisher">Fisher 辨识度</option><option value="none">仅位置</option>
     </select><select id="topoBand"></select></span></h3>
     <div class="body"><div class="cbox" style="height:260px"><canvas id="topo"></canvas></div><div class="legend" id="topoInfo">点击电极选通道（联动 PSD / 波形）</div></div></div>
-  <div class="card"><h3><span>log10 PSD</span><select id="psdCh"></select></h3><div class="body"><div class="cbox"><canvas id="psd"></canvas></div><div class="legend">黑=当前 trial · 蓝=预测被试模板 · 灰=总体均值</div></div></div>
+  <div class="card"><h3><span>log10 PSD</span><select id="psdCh"></select></h3><div class="body"><div class="cbox"><canvas id="psd"></canvas></div><div class="legend" id="psdLeg">黑=当前 trial · 蓝=预测被试模板 · 灰=总体均值</div></div></div>
   <div class="card"><h3><span>log 协方差</span><select id="covBand"></select></h3><div class="body"><div class="cbox" style="height:300px"><canvas id="cov"></canvas></div>
     <label class="legend"><input type="checkbox" id="covZ" checked>显示 z（相对本组均值）</label></div></div>
 </div>
@@ -154,7 +187,12 @@ a{color:var(--blue);cursor:pointer}
 const $=s=>document.querySelector(s);
 const TASKS=["EC","EO","Imagery","SSVEP"];
 const S={set:"train",task:"",session:"",subject:null,rows:null,pos:-1,trial:null,filt:true,gain:1,auto:true,
-  emb:null,embView:null,fp:null,simData:null,sum:null,hover:null};
+  emb:null,embView:null,fp:null,simData:null,sum:null,hover:null,
+  a:"s1",b:"",schemes:[],mA:null,mB:null,cmp:null,flt:"all",sortM:false,cell:null,multi:[],view:[]};
+const MC=["#1f2328","#cf222e","#0969da","#1a7f37","#bc4c00","#8250df"];
+const qs=()=>`scheme=${S.a}`+(S.b?`&b=${S.b}`:"");
+const f4=v=>v==null?"-":(+v).toFixed(4);
+const sgn=v=>v==null?"-":(v>=0?"+":"")+(+v).toFixed(4);
 const PAL=["#e6194b","#3cb44b","#4363d8","#f58231","#911eb4","#42d4f4","#f032e6","#9a9a00","#469990","#9A6324",
   "#800000","#2f9e44","#000075","#e8a33d","#a9a9a9","#dcbeff","#ff6f91","#7c5cff","#0b7285","#5f3dc4"];
 const col=s=>s>=1&&s<=20?PAL[s-1]:"#8c959f";
@@ -179,7 +217,7 @@ function opts(sel,items,cur){sel.innerHTML=items.map(([v,l])=>`<option value="${
 
 // ---------- 左栏 ----------
 function renderFilters(){
-  chips($("#setChips"),[["train","训练集"],["test","测试集"]],S.set,v=>{S.set=v;S.session=v==="test"?"session2":"";S.subject=null;renderFilters();renderSubjects();loadRows()});
+  chips($("#setChips"),[["train","训练集"],["test","测试集"]],S.set,v=>{S.set=v;S.session=v==="test"?"session2":"";S.subject=null;S.cell=null;renderFilters();renderSubjects();loadRows()});
   chips($("#taskChips"),[["","ALL"],...TASKS.map(t=>[t,t])],S.task,v=>{S.task=v;renderFilters();loadRows()});
   $("#sessSec").style.display=S.set==="test"?"":"none";
   chips($("#sessChips"),[["","全部"],["session1","session1"],["session2","session2"]],S.session,v=>{S.session=v;renderFilters();loadRows()});
@@ -195,25 +233,43 @@ function renderSubjects(){
     d.onclick=()=>{S.subject=s;renderSubjects();loadRows();setFpSubject(s)};el.appendChild(d)});
 }
 async function loadRows(keep){
-  const q=`set=${S.set}&task=${S.task}&session=${S.session}`+(S.subject!=null?`&subject=${S.subject}`:"");
-  S.rows=await api("rows?"+q);
-  const R=S.rows,el=$("#trials"),n=R.idx.length;
-  let err=0;if(R.set==="train")for(let i=0;i<n;i++)if(R.pred[i]!==R.label[i])err++;
-  $("#trialHead").textContent=`trial ${n} 条`+(R.set==="train"?` · 错 ${err}`:"");
-  const h=[];for(let i=0;i<n;i++){const ok=R.set==="train"?(R.pred[i]===R.label[i]?'<span class="ok">✓</span>':'<span class="ng">✗</span>'):'';
-    const nm=R.set==="train"?`S${String(R.label[i]).padStart(2,"0")}#${R.name[i]}`:R.name[i];
-    h.push(`<div class="tr" data-i="${i}"><span>${nm}</span><span class="dim">${R.task[i]}${R.set==="test"?(R.session[i]==="session1"?"·s1":"·s2"):""}</span><span style="color:${col(R.pred[i])}">→${R.pred[i]} ${ok}</span><span class="dim">${R.margin[i]??""}</span></div>`)}
-  el.innerHTML=h.join("");
-  el.onclick=e=>{const d=e.target.closest(".tr");if(d)selectPos(+d.dataset.i)};
-  if(keep&&S.trial){const p=R.idx.indexOf(S.trial.idx);if(p>=0&&R.set===S.trial.set){markSel(p);return}}
-  if(n)selectPos(0);
+  const q=`set=${S.set}&task=${S.task}&session=${S.session}`+(S.subject!=null?`&subject=${S.subject}`:"")+"&"+qs();
+  S.rows=await api("rows?"+q);renderRows(keep);
 }
-function markSel(p){S.pos=p;const el=$("#trials");el.querySelectorAll(".tr.sel").forEach(d=>d.classList.remove("sel"));
+function renderRows(keep){
+  const R=S.rows,el=$("#trials"),n=R.idx.length,tr=R.set==="train",hasB=!!R.pred_b;
+  const ms=(R.margin||[]).filter(v=>v!=null).sort((a,b)=>a-b),lowT=ms.length?ms[Math.floor(.1*(ms.length-1))]:null;
+  const fs=[["all","全部"]];if(tr&&R.pred[0]!==-1)fs.push(["err","错分(train)"]);if(lowT!=null)fs.push(["low","低 margin"]);
+  if(hasB)fs.push(["diff","A≠B 分歧"]);if(!tr)fs.push(["zero","预测为0"]);
+  if(!fs.some(f=>f[0]===S.flt))S.flt="all";
+  chips($("#fltChips"),[...fs,["sort",S.sortM?"按 margin ↑ ✓":"按 margin ↑"]],S.flt,v=>{if(v==="sort")S.sortM=!S.sortM;else S.flt=v;renderRows(true)});
+  const F={all:()=>true,err:i=>R.pred[i]!==R.label[i],low:i=>R.margin[i]!=null&&R.margin[i]<=lowT,diff:i=>R.pred[i]!==R.pred_b[i],zero:i=>R.pred[i]===0}[S.flt];
+  let v=[];for(let i=0;i<n;i++)if(F(i)&&(!S.cell||!hasB||(R.pred[i]===S.cell[0]&&R.pred_b[i]===S.cell[1])))v.push(i);
+  if(S.sortM&&R.margin)v.sort((a,b)=>(R.margin[a]??1e9)-(R.margin[b]??1e9));
+  S.view=v;
+  let err=0;if(tr&&R.pred[0]!==-1)for(let i=0;i<n;i++)if(R.pred[i]!==R.label[i])err++;
+  $("#trialHead").innerHTML=`trial ${v.length}/${n} 条`+(tr&&R.pred[0]!==-1?` · 错 ${err}`:"")+(S.cell&&hasB?` · 转移 ${S.cell[0]}→${S.cell[1]} <a id="cellX">清除</a>`:"");
+  const cx=$("#cellX");if(cx)cx.onclick=()=>{S.cell=null;renderRows(true)};
+  const h=v.map(i=>{const p=R.pred[i],ok=tr&&p!==-1?(p===R.label[i]?'<span class="ok">✓</span>':'<span class="ng">✗</span>'):'';
+    const nm=tr?`S${String(R.label[i]).padStart(2,"0")}#${R.name[i]}`:R.name[i];
+    return `<div class="tr" data-i="${i}"><span>${nm}</span><span class="dim">${R.task[i]}${tr?"":(R.session[i]==="session1"?"·s1":"·s2")}</span><span style="color:${col(p)}">→${p<0?"?":p} ${ok}</span>`+
+      `<span style="color:${hasB?col(R.pred_b[i]):""}">${hasB?(R.pred_b[i]<0?"B?":"B"+R.pred_b[i]):""}</span><span class="dim">${R.margin?R.margin[i]??"":""}</span></div>`});
+  el.innerHTML=h.join("");
+  el.onclick=e=>{const d=e.target.closest(".tr");if(d)selectPos(+d.dataset.i,e.ctrlKey||e.shiftKey||e.metaKey)};
+  if(keep&&S.trial&&R.set===S.trial.set){const p=R.idx.indexOf(S.trial.idx);if(p>=0){loadTrial(R.set,S.trial.idx,true);return}}
+  if(v.length)selectPos(v[0]);else markSel(-1);
+}
+function markSel(p){S.pos=p;const el=$("#trials");el.querySelectorAll(".tr.sel,.tr.mul").forEach(d=>d.classList.remove("sel","mul"));
+  if(S.rows&&S.multi.length>1)S.multi.forEach(t=>{const q=S.rows.set===t.set?S.rows.idx.indexOf(t.idx):-1,d=el.querySelector(`.tr[data-i="${q}"]`);if(d)d.classList.add("mul")});
   const d=el.querySelector(`.tr[data-i="${p}"]`);if(d){d.classList.add("sel");d.scrollIntoView({block:"nearest"})}}
-function selectPos(p){if(!S.rows||p<0||p>=S.rows.idx.length)return;markSel(p);loadTrial(S.rows.set,S.rows.idx[p])}
-async function loadTrial(set,idx){
-  const t=await api(`trial/${set}/${idx}`);S.trial=t;
-  const p=S.rows?S.rows.idx.indexOf(idx):-1;if(p>=0&&S.rows.set===set)markSel(p);else markSel(-1);
+function selectPos(p,add){if(!S.rows||p<0||p>=S.rows.idx.length)return;loadTrial(S.rows.set,S.rows.idx[p],false,add)}
+function stepView(d){const k=S.view.indexOf(S.pos);if(S.view.length)selectPos(S.view[Math.max(0,Math.min(S.view.length-1,k<0?0:k+d))])}
+async function loadTrial(set,idx,keepMulti,add){
+  const t=await api(`trial/${set}/${idx}?${qs()}`);S.trial=t;
+  if(add){S.multi=S.multi.filter(m=>!(m.set===set&&m.idx===idx));S.multi.push(t);if(S.multi.length>6)S.multi.shift()}
+  else if(keepMulti&&S.multi.length>1){const k=S.multi.findIndex(m=>m.set===set&&m.idx===idx);if(k>=0)S.multi[k]=t;else S.multi=[t]}
+  else S.multi=[t];
+  const p=S.rows&&S.rows.set===set?S.rows.idx.indexOf(idx):-1;markSel(p);
   $("#tTitle").textContent=`${set==="train"?"训练":"测试"} · ${t.set==="train"?"S"+String(t.label).padStart(2,"0")+" trial "+t.name:t.name} · ${t.task} · ${t.session}`;
   drawWave();drawInfo();drawScores();drawPsd();drawCov();drawTopo();
   if($("#embTask").value!==t.task){$("#embTask").value=t.task;await loadEmb()}else drawEmb();
@@ -223,23 +279,25 @@ async function loadTrial(set,idx){
 // ---------- 波形 ----------
 function drawWave(){
   const [g,W,H]=cvs("wave"),t=S.trial;if(!t)return;
-  const X=t.filt?null:null,sig=S.filt?t.filt:t.raw,ch=S.sum.channels,n=sig[0].length;
-  const L=46,R=8,T=6,B=18,rowH=(H-T-B)/ch.length;
+  const M=S.multi.length>1?S.multi:[t],np=M.length,ch=S.sum.channels,n=(S.filt?t.filt:t.raw)[0].length;
+  const L=46,R=8,T=M.length>1?16:6,B=18,rowH=(H-T-B)/ch.length,pw=(W-L-R)/np,gap=np>1?6:0;
+  const stdK=k=>Math.max(...M.map(m=>m.std[k]||0))||1,glob=Math.max(...M.flatMap(m=>m.std.map(v=>v||0)))||1;
   g.strokeStyle="#eaeef2";g.fillStyle="#656d76";
-  for(let s=0;s<=4;s++){const x=L+(W-L-R)*s/4;g.beginPath();g.moveTo(x,T);g.lineTo(x,H-B);g.stroke();g.fillText(s+"s",x-6,H-5)}
-  const glob=Math.max(...t.std.map(v=>v||0))||1;
-  ch.forEach((c,k)=>{const y0=T+rowH*(k+.5),d=sig[k];
-    const sc=(S.auto?(t.std[k]||1)*3:glob*3)/S.gain;
+  M.forEach((m,j)=>{const x0=L+pw*j;
+    for(let s=0;s<=4;s++){const x=x0+(pw-gap)*s/4;g.beginPath();g.moveTo(x,T);g.lineTo(x,H-B);g.stroke();if(np<4||s%2===0)g.fillText(s+"s",x-6,H-5)}
+    if(np>1){g.fillStyle=MC[j];g.fillText(`${m.set==="train"?"S"+m.label+"#"+m.name:m.name}→${m.pred}`,x0,11);g.fillStyle="#656d76"}});
+  ch.forEach((c,k)=>{const y0=T+rowH*(k+.5),sc=(S.auto?stdK(k)*3:glob*3)/S.gain;
     if(k===+$("#psdCh").value){g.fillStyle="#ddf4ff";g.fillRect(0,y0-rowH/2,W,rowH)}
     g.fillStyle=t.clip[k]>0.01?"#cf222e":"#1f2328";g.fillText(c,4,y0+4);
-    g.strokeStyle=k%2?"#0969da":"#1f2328";g.lineWidth=.8;g.beginPath();
-    for(let i=0;i<n;i++){const x=L+(W-L-R)*i/(n-1),v=d[i]??0,y=y0-Math.max(-1.5,Math.min(1.5,v/sc))*rowH*.5;i?g.lineTo(x,y):g.moveTo(x,y)}g.stroke()});
-  if(S.hover!=null){const x=L+(W-L-R)*S.hover/(n-1);g.strokeStyle="#cf222e";g.beginPath();g.moveTo(x,T);g.lineTo(x,H-B);g.stroke()}
-  $("#waveInfo").textContent=`18 通道 · 300 Hz · 4 s · 增益 ×${S.gain.toFixed(2)}`;
-  const c=$("#wave");c.onmousemove=e=>{const r=c.getBoundingClientRect(),i=Math.round((e.clientX-r.left-L)/(W-L-R)*(n-1));
-    if(i<0||i>=n){S.hover=null;tip(e);drawWave();return}S.hover=i;drawWave();
-    const k=Math.floor((e.clientY-r.top-T)/rowH);
-    tip(e,`t=${(i/300).toFixed(3)} s`+(k>=0&&k<18?`\n${ch[k]}: ${sig[k][i]}  (std ${t.std[k]}, clip ${(t.clip[k]*100).toFixed(2)}%)`:""))};
+    M.forEach((m,j)=>{const d=(S.filt?m.filt:m.raw)[k],x0=L+pw*j;
+      g.strokeStyle=np>1?MC[j]:k%2?"#0969da":"#1f2328";g.lineWidth=.8;g.beginPath();
+      for(let i=0;i<n;i++){const x=x0+(pw-gap)*i/(n-1),v=d[i]??0,y=y0-Math.max(-1.5,Math.min(1.5,v/sc))*rowH*.5;i?g.lineTo(x,y):g.moveTo(x,y)}g.stroke()})});
+  if(S.hover!=null){g.strokeStyle="#cf222e";M.forEach((m,j)=>{const x=L+pw*j+(pw-gap)*S.hover/(n-1);g.beginPath();g.moveTo(x,T);g.lineTo(x,H-B);g.stroke()})}
+  $("#waveInfo").textContent=`18 通道 · 300 Hz · 4 s · 增益 ×${S.gain.toFixed(2)}`+(np>1?` · ${np} 个 trial 并排（共享增益）`:"");
+  const c=$("#wave");c.onmousemove=e=>{const r=c.getBoundingClientRect(),xr=e.clientX-r.left-L,j=Math.floor(xr/pw),i=Math.round((xr-j*pw)/(pw-gap)*(n-1));
+    if(j<0||j>=np||i<0||i>=n){S.hover=null;tip(e);drawWave();return}S.hover=i;drawWave();
+    const k=Math.floor((e.clientY-r.top-T)/rowH),m=M[j],sig=S.filt?m.filt:m.raw;
+    tip(e,`t=${(i/300).toFixed(3)} s`+(k>=0&&k<18?`\n${ch[k]}: ${sig[k][i]}  (std ${m.std[k]}, clip ${(m.clip[k]*100).toFixed(2)}%)`:""))};
   c.onmouseleave=e=>{S.hover=null;tip(e);drawWave()};
   c.onclick=e=>{const k=Math.floor((e.clientY-c.getBoundingClientRect().top-T)/rowH);if(k>=0&&k<18)setCh(k)};
 }
@@ -281,27 +339,35 @@ function drawTopo(){
 }
 
 // ---------- 右栏 ----------
-function drawInfo(){const t=S.trial;const ok=t.set==="train"?(t.pred===t.label?'<span class="ok">正确</span>':'<span class="ng">错误</span>'):'<span class="dim">无真值</span>';
+const plab=(p,tr)=>p<0?'<span class="dim">无 OOF</span>':(p===0?"0 未注册":"S"+p);
+function drawInfo(){const t=S.trial;const ok=t.pred<0?"":t.set==="train"?(t.pred===t.label?'<span class="ok">正确</span>':'<span class="ng">错误</span>'):'<span class="dim">无真值</span>';
   let h=`<span>文件</span><span>${t.path}</span><span>任务</span><span>${t.task} · ${t.session}</span>
-  <span>真值</span><span>${t.label<0?"-":"S"+t.label}</span><span>预测</span><span style="color:${col(t.pred)};font-weight:600">${t.pred===0?"0 未注册":"S"+t.pred} ${ok}</span>
-  <span>margin</span><span>${t.margin.toFixed(3)}（top1−top2 分数）</span><span>LDA 坐标</span><span>${t.emb.join(", ")}</span>`;
+  <span>真值</span><span>${t.label<0?"-":"S"+t.label}</span><span>预测 A</span><span style="color:${col(t.pred)};font-weight:600">${plab(t.pred)} ${ok}</span>
+  <span>margin</span><span>${t.margin==null?"-（无分数）":t.margin.toFixed(3)+"（top1−top2 分数）"}</span>`;
+  if(t.scheme_b)h+=`<span>预测 B</span><span style="color:${col(t.pred_b)};font-weight:600">${plab(t.pred_b)}${t.pred_b>=0&&t.set==="train"?(t.pred_b===t.label?' <span class="ok">正确</span>':' <span class="ng">错误</span>'):""}${t.pred_b!==t.pred?' <span class="ng">≠A</span>':""}</span><span>margin B</span><span>${t.margin_b==null?"-":t.margin_b.toFixed(3)}</span>`;
+  h+=`<span>LDA 坐标</span><span>${t.emb.join(", ")}</span>`;
   if(t.pair)h+=`<span>近邻样本</span><span><a id="pairLink">${t.pair.name}</a> · r=${t.pair.similarity} · 预测 ${t.pair.pred}</span>`;
   if(t.set==="test"&&t.session==="session1")h+=`<span>规则</span><span class="dim">session1 不在训练注册范围，直接判 0</span>`;
   $("#info").innerHTML=h;const a=$("#pairLink");if(a)a.onclick=()=>loadTrial("test",t.pair.idx)}
 function drawScores(){
-  const [g,W,H]=cvs("scores"),t=S.trial,s=t.scores,ts=t.tsim;
-  const lo=Math.min(0,...s.filter(v=>v!=null)),hi=Math.max(...s.filter(v=>v!=null),1e-6);
-  const L=34,R=8,rh=(H-14)/20,xx=v=>L+(W-L-R)*(v-lo)/(hi-lo||1),best=s.indexOf(Math.max(...s));
+  const [g,W,H]=cvs("scores"),t=S.trial,ts=t.tsim,M=S.multi.length>1?S.multi:[t],np=M.length;
+  const fin=[...M.flatMap(m=>m.scores||[]),...(np===1&&t.scores_b?t.scores_b:[])].filter(v=>v!=null);
+  const lo=Math.min(0,...fin),hi=Math.max(...fin,1e-6);
+  const L=34,R=8,rh=(H-14)/20,xx=v=>L+(W-L-R)*(v-lo)/(hi-lo||1),bh=(rh-4)/np;
   g.strokeStyle="#d0d7de";g.beginPath();g.moveTo(xx(0),0);g.lineTo(xx(0),H-14);g.stroke();
-  for(let k=0;k<20;k++){const y=k*rh,v=s[k]??0;g.fillStyle=col(k+1);g.globalAlpha=k===best?1:.55;
-    g.fillRect(Math.min(xx(0),xx(v)),y+2,Math.abs(xx(v)-xx(0)),rh-4);g.globalAlpha=1;
-    g.fillStyle=k+1===t.label?"#1a7f37":"#1f2328";g.fillText((k+1===t.label?"★":" ")+"S"+String(k+1).padStart(2,"0"),0,y+rh-3);
+  M.forEach((m,j)=>{const s=m.scores;if(!s)return;const best=s.indexOf(Math.max(...s));
+    for(let k=0;k<20;k++){const y=k*rh+2+j*bh,v=s[k]??0;g.fillStyle=np>1?MC[j]:col(k+1);g.globalAlpha=k===best?1:.55;
+      g.fillRect(Math.min(xx(0),xx(v)),y,Math.abs(xx(v)-xx(0)),bh);g.globalAlpha=1}});
+  if(np===1&&t.scores_b){g.strokeStyle="#bc4c00";g.lineWidth=1.2;
+    for(let k=0;k<20;k++){const v=t.scores_b[k]??0;g.strokeRect(Math.min(xx(0),xx(v)),k*rh+1.5,Math.abs(xx(v)-xx(0)),rh-3)}g.lineWidth=1}
+  for(let k=0;k<20;k++){const y=k*rh;g.fillStyle=k+1===t.label?"#1a7f37":"#1f2328";g.fillText((k+1===t.label?"★":" ")+"S"+String(k+1).padStart(2,"0"),0,y+rh-3);
     const cx=L+(W-L-R)*(ts[k]+1)/2;g.fillStyle="#1f2328";g.beginPath();g.arc(cx,y+rh/2,2.2,0,7);g.fill()}
-  g.fillStyle="#656d76";g.fillText(`分数 [${lo.toFixed(2)}, ${hi.toFixed(2)}] · 余弦 [-1,1]`,L,H-2)}
+  g.fillStyle="#656d76";g.fillText(fin.length?`分数 [${lo.toFixed(2)}, ${hi.toFixed(2)}] · 余弦 [-1,1]`+(np>1?` · ${np} 个 trial`:""):"该方案无分数（仅标签）· 点=LDA 余弦",L,H-2)}
 function drawPsd(){
   const [g,W,H]=cvs("psd"),t=S.trial,k=+$("#psdCh").value,fp=S.fpPred;
-  const lines=[[t.logpsd[k],"#1f2328",1.4]];
-  if(fp&&fp.subject===t.pred){lines.push([fp.mean_psd[k],"#0969da",1.2]);lines.push([fp.pop_psd[k],"#8c959f",1])}
+  const multi=S.multi.length>1,lines=multi?S.multi.map((m,j)=>[m.logpsd[k],MC[j],1.2]):[[t.logpsd[k],"#1f2328",1.4]];
+  if(!multi&&fp&&fp.subject===t.pred){lines.push([fp.mean_psd[k],"#0969da",1.2]);lines.push([fp.pop_psd[k],"#8c959f",1])}
+  $("#psdLeg").innerHTML=multi?S.multi.map((m,j)=>`<span style="color:${MC[j]}">■ ${m.set==="train"?"S"+m.label+"#"+m.name:m.name}→${m.pred}</span>`).join(" "):"黑=当前 trial · 蓝=预测被试模板 · 灰=总体均值";
   const all=lines.flatMap(l=>l[0]),lo=Math.min(...all),hi=Math.max(...all),L=30,B=14;
   const X=f=>L+(W-L-4)*(f/89),Y=v=>4+(H-B-4)*(1-(v-lo)/(hi-lo||1));
   g.strokeStyle="#eaeef2";g.fillStyle="#656d76";[1,8,13,30,45,50,70,90].forEach(f=>{const x=X(f-1);g.beginPath();g.moveTo(x,4);g.lineTo(x,H-B);g.stroke();g.fillText(f,x-5,H-2)});
@@ -413,7 +479,91 @@ function drawSim(){
 // ---------- tabs / 控件 ----------
 function showTab(id){document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on",t.dataset.p===id));
   document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id===id));
-  if(id==="pEmb")drawEmb();if(id==="pFp")loadFp();if(id==="pSim")(S.simData?drawSim():loadSim())}
+  if(id==="pEmb")drawEmb();if(id==="pFp")loadFp();if(id==="pSim")(S.simData?drawSim():loadSim());
+  if(id==="pMet")drawMetrics();if(id==="pCmp")drawCompare()}
+const on=id=>$("#"+id).classList.contains("on");
+// ---------- 方案 / 指标 / 对比 ----------
+function renderBadges(){const m=S.mA,o=m.oof,te=m.test;
+  $("#hOff").textContent=m.proxy.official??"-";$("#hAcc").textContent=o?pct(o.acc):"无 OOF";$("#hF1").textContent=o?f4(o.macro_f1):"-";
+  $("#hAuc").textContent=!o?"-":o.margin_auc!=null?f4(o.margin_auc):(o.argmax_acc===1?"n/a（全对）":"-");
+  $("#hRej").textContent=`${te.reject} (${pct(te.reject_rate)})`;$("#hPx").textContent=m.proxy.score.toFixed(2);
+  $("#hNtr").textContent=S.sum.n_train;$("#hNte").textContent=S.sum.n_test;
+  const d=$("#hDelta");if(!S.b||!S.cmp){d.style.display="none";return}
+  const c=S.cmp,od=c.oof_delta;d.style.display="";
+  d.innerHTML=`B−A：一致 <b>${pct(c.agree)}</b> · 分歧 <b>${c.n_diff}</b> · Δ拒识 <b>${S.mB.test.reject-te.reject}</b> · ΔScore_proxy <b>${(S.mB.proxy.score-m.proxy.score).toFixed(2)}</b>`+
+    (od?` · ΔOOF acc <b>${sgn(od.acc)}</b> · ΔF1 <b>${sgn(od.macro_f1)}</b>`:"")}
+async function loadMetrics(){const r=$("#metRef").value||S.a;
+  [S.mA,S.mB]=await Promise.all([api(`metrics?scheme=${S.a}&ref=${r}`),S.b?api(`metrics?scheme=${S.b}&ref=${r}`):null])}
+async function setScheme(){S.a=$("#schA").value;S.b=$("#schB").value;S.cell=null;
+  [S.sum,S.cmp]=await Promise.all([api(`summary?scheme=${S.a}`),S.b?api(`compare?a=${S.a}&b=${S.b}`):null]);await loadMetrics();
+  renderBadges();renderSubjects();await loadRows(true);if(on("pMet"))drawMetrics();if(on("pCmp"))drawCompare()}
+function bars(g,x0,y0,w,h,series,lo,hi,labels){const n=series[0].v.length,bw=w/n,Y=v=>y0+h*(1-(Math.max(lo,v)-lo)/(hi-lo||1));
+  g.strokeStyle="#d0d7de";g.strokeRect(x0,y0,w,h);g.fillStyle="#656d76";g.fillText(hi.toFixed(3),0,y0+8);g.fillText(lo.toFixed(3),0,y0+h);
+  series.forEach((s,j)=>{const sw=bw*.8/series.length;s.v.forEach((v,i)=>{if(v==null)return;const x=x0+i*bw+bw*.1+j*sw,y=Y(v);
+    if(s.fill){g.fillStyle=s.c;g.fillRect(x,y,sw,y0+h-y)}else{g.strokeStyle=s.c;g.lineWidth=1.3;g.strokeRect(x,y,sw,y0+h-y);g.lineWidth=1}})});
+  g.fillStyle="#656d76";g.font="9px Consolas";labels.forEach((l,i)=>{if(n<=21||i%2===0)g.fillText(l,x0+i*bw+1,y0+h+10)});g.font="11px Consolas,monospace"}
+function drawMetrics(){if(!S.mA)return;const A=S.mA,B=S.mB,o=A.oof,sub=Array.from({length:20},(_,i)=>String(i+1));
+  // 混淆矩阵
+  let [g,W,H]=cvs("mConf");g.fillStyle="#1f2328";g.fillText(`混淆矩阵 OOF（${S.a}；行=真值 S1–20，列=预测 0–20）`,4,12);
+  if(o){const C=o.confusion,sz=Math.min(W-34,H-30),cw=sz/21,ch=sz/20,mx=Math.max(...C.flat());
+    C.forEach((r,i)=>r.forEach((v,j)=>{const d=j===i+1;g.fillStyle=!v?"#fff":d?`rgba(26,127,55,${.25+.75*v/mx})`:`rgba(207,34,46,${.3+.7*Math.log1p(v)/Math.log1p(mx)})`;g.fillRect(28+j*cw,18+i*ch,Math.ceil(cw),Math.ceil(ch))}));
+    g.strokeStyle="#d0d7de";g.strokeRect(28,18,sz,ch*20);g.fillStyle="#656d76";g.font="9px Consolas";
+    for(let i=0;i<20;i+=2)g.fillText("S"+(i+1),2,18+i*ch+ch*.8);for(let j=0;j<21;j+=4)g.fillText(j,28+j*cw,18+ch*20+10);g.font="11px Consolas,monospace";
+    const c=$("#mConf");c.onmousemove=e=>{const r=c.getBoundingClientRect(),j=Math.floor((e.clientX-r.left-28)/cw),i=Math.floor((e.clientY-r.top-18)/ch);
+      tip(e,i>=0&&i<20&&j>=0&&j<21?`真值 S${i+1} → 预测 ${j}: ${C[i][j]}`:"")};c.onmouseleave=e=>tip(e)}
+  else g.fillText("该方案无 OOF",4,30);
+  // 逐被试 F1
+  [g,W,H]=cvs("mF1");const fa=o?o.per_subject.f1:null,fb=B&&B.oof?B.oof.per_subject.f1:null;
+  g.fillStyle="#1f2328";g.fillText("逐被试 OOF F1"+(fb?"（实心=A，描边=B）":""),4,12);
+  if(fa||fb){const all=[...(fa||[]),...(fb||[])].filter(v=>v!=null),lo=Math.min(.9,Math.floor(Math.min(...all)*50)/50);
+    bars(g,34,20,W-40,H-36,[fa&&{v:fa,c:"#0969da",fill:1},fb&&{v:fb,c:"#bc4c00"}].filter(Boolean),lo,1,sub)}
+  else g.fillText("无 OOF",4,30);
+  // 阈值扫描
+  [g,W,H]=cvs("mSweep");g.fillStyle="#1f2328";g.fillText("margin 阈值扫描（OOF；灰=拒识 绿=接受acc 蓝=F1 红=C）",4,12);
+  if(o&&o.sweep.length){const sw=o.sweep,hm=o.margin_hist,L=30,T=20,w=W-L-8,h=H-T-18,tmax=hm.edges[hm.edges.length-1]||1,X=t=>L+w*Math.min(1,t/tmax),Y=v=>T+h*(1-v);
+    const hmax=Math.max(...hm.correct,...hm.wrong,1),bw=w/hm.correct.length;
+    hm.correct.forEach((v,i)=>{g.fillStyle="rgba(26,127,55,.12)";g.fillRect(L+i*bw,T+h*(1-v/hmax),bw,h*v/hmax);
+      const u=hm.wrong[i];if(u){g.fillStyle="rgba(207,34,46,.4)";g.fillRect(L+i*bw,T+h*(1-Math.max(.02,u/hmax)),bw,h*Math.max(.02,u/hmax))}});
+    g.strokeStyle="#d0d7de";g.strokeRect(L,T,w,h);g.fillStyle="#656d76";g.fillText("1",L-10,T+8);g.fillText("0",L-10,T+h);g.fillText(tmax.toFixed(2),L+w-24,T+h+12);
+    [["reject","#8c959f"],["acc_accepted","#1a7f37"],["f1","#0969da"],["C","#cf222e"]].forEach(([k,c])=>{g.strokeStyle=c;g.lineWidth=1.4;g.beginPath();
+      sw.forEach((s,i)=>{const x=X(s.t),y=Y(s[k]??0);i?g.lineTo(x,y):g.moveTo(x,y)});g.stroke();g.lineWidth=1});
+    const th=$("#thr");th.max=sw.length-1;const s=sw[Math.min(+th.value,sw.length-1)];const x=X(s.t);
+    g.strokeStyle="#1f2328";g.setLineDash([3,3]);g.beginPath();g.moveTo(x,T);g.lineTo(x,T+h);g.stroke();g.setLineDash([]);
+    $("#metInfo").textContent=`阈值 t=${f4(s.t)} · 拒识 ${pct(s.reject)} · 接受 acc ${pct(s.acc_accepted)} · F1 ${f4(s.f1)} · C ${f4(s.C)}`}
+  else{g.fillText(o?"无分数":"无 OOF",4,30);$("#metInfo").textContent=""}
+  // session 分布
+  [g,W,H]=cvs("mSess");g.fillStyle="#1f2328";g.fillText("测试预测分布（按 session；实心=A，描边=B）",4,12);
+  const ss=Object.keys(A.test.counts_by_session),hh=(H-20)/ss.length;
+  ss.forEach((s,k)=>{const ca=A.test.counts_by_session[s],cb=B?B.test.counts_by_session[s]:null,mx=Math.max(...ca,...(cb||[]),1);
+    g.fillStyle="#656d76";g.fillText(`${s}（拒识 A ${pct(A.test.by_session[s])}${B?" / B "+pct(B.test.by_session[s]):""}）`,34,20+k*hh+10);
+    bars(g,34,20+k*hh+14,W-40,hh-30,[{v:ca,c:"#0969da",fill:1},cb&&{v:cb,c:"#bc4c00"}].filter(Boolean),0,mx,["0",...sub])});
+  // 代理分表
+  const P=[A,B].filter(Boolean),row=(n,f)=>`<tr><th style="text-align:left">${n}</th>${P.map(m=>`<td>${f(m)}</td>`).join("")}</tr>`;
+  let h=`<div class="dim">${A.proxy.note}；参考=${A.proxy.ref}（U=session1 拒识率，C=RA=session2 与参考非0一致率）</div><table><tr><th></th>${P.map(m=>`<th>${m.scheme.key} ${m.scheme.label}</th>`).join("")}</tr>`+
+    row("官方分",m=>m.proxy.official??"-")+row("Score_proxy",m=>m.proxy.score.toFixed(3))+row("U",m=>f4(m.proxy.U))+row("C / RA",m=>f4(m.proxy.C))+row("ASafeR",m=>f4(m.proxy.ASafeR))+
+    row("OOF acc",m=>m.oof?pct(m.oof.acc):"-")+row("OOF macro-F1",m=>m.oof?f4(m.oof.macro_f1):"-")+row("margin AUC",m=>!m.oof?"-":m.oof.margin_auc!=null?f4(m.oof.margin_auc):"n/a")+
+    row("测试拒识",m=>`${m.test.reject} (${pct(m.test.reject_rate)})`);
+  TASKS.forEach(t=>{h+=row(`${t} OOF acc/F1`,m=>m.oof&&m.oof.by_task[t]?`${pct(m.oof.by_task[t].acc)} / ${f4(m.oof.by_task[t].f1)}`:"-")+row(`${t} 测试拒识`,m=>pct(m.test.by_task[t]))});
+  $("#mProxy").innerHTML=h+"</table>"}
+function drawCompare(){const [g,W,H]=cvs("cTrans"),c=S.cmp;
+  if(!c){g.fillStyle="#656d76";g.fillText("请在表头选择方案 B",10,20);$("#cStats").innerHTML="";$("#cmpInfo").textContent="";return}
+  $("#cmpInfo").textContent=`A=${c.a.key} ${c.a.label} · B=${c.b.key} ${c.b.label} · 测试一致率 ${pct(c.agree)} · 分歧 ${c.n_diff}/${c.n}`;
+  const T=c.transition,sz=Math.min(W-40,H-34),cw=sz/21,mx=Math.log1p(Math.max(...T.flat())),x0=32,y0=16;
+  T.forEach((r,i)=>r.forEach((v,j)=>{g.fillStyle=!v?"#fff":i===j?`rgba(9,105,218,${.15+.85*Math.log1p(v)/mx})`:`rgba(207,34,46,${.2+.8*Math.log1p(v)/mx})`;g.fillRect(x0+j*cw,y0+i*cw,Math.ceil(cw),Math.ceil(cw))}));
+  if(S.cell){g.strokeStyle="#000";g.lineWidth=2;g.strokeRect(x0+S.cell[1]*cw,y0+S.cell[0]*cw,cw,cw);g.lineWidth=1}
+  g.strokeStyle="#d0d7de";g.strokeRect(x0,y0,sz,sz);g.fillStyle="#656d76";g.font="9px Consolas";
+  for(let i=0;i<21;i+=2){g.fillText(i,x0-14,y0+i*cw+cw*.8);g.fillText(i,x0+i*cw+1,y0+sz+10)}g.font="11px Consolas,monospace";
+  g.fillText("行=A 标签 · 列=B 标签（log 色标；蓝=一致，红=转移）",x0,10);
+  const cv=$("#cTrans"),hit=e=>{const r=cv.getBoundingClientRect();return [Math.floor((e.clientY-r.top-y0)/cw),Math.floor((e.clientX-r.left-x0)/cw)]};
+  cv.onmousemove=e=>{const [i,j]=hit(e);tip(e,i>=0&&i<21&&j>=0&&j<21?`A=${i} → B=${j}: ${T[i][j]}`:"")};cv.onmouseleave=e=>tip(e);
+  cv.onclick=async e=>{const [i,j]=hit(e);if(!(i>=0&&i<21&&j>=0&&j<21&&T[i][j]))return;S.cell=[i,j];S.flt="all";drawCompare();
+    if(S.set!=="test"||S.session||S.subject!=null||S.task){S.set="test";S.session="";S.subject=null;S.task="";renderFilters();renderSubjects();await loadRows()}else renderRows()};
+  const od=c.oof_delta,tb=(o,f)=>Object.entries(o).map(([k,v])=>`<tr><th style="text-align:left">${k}</th><td>${f(v)}</td></tr>`).join("");
+  let h=`<table><tr><th colspan="2">测试一致率</th></tr><tr><th style="text-align:left">总体</th><td>${pct(c.agree)}（分歧 ${c.n_diff}）</td></tr>${tb(c.by_task,pct)}${tb(c.by_session,pct)}</table>`;
+  h+=od?`<table><tr><th colspan="2">OOF（B−A）</th></tr><tr><th style="text-align:left">Δacc</th><td>${sgn(od.acc)}</td></tr><tr><th style="text-align:left">ΔF1</th><td>${sgn(od.macro_f1)}</td></tr><tr><th style="text-align:left">OOF 一致率</th><td>${pct(od.agree)}</td></tr></table>`+
+    `<table><tr><th>被试</th><th>Δrecall</th><th>ΔF1</th></tr>${od.subject_f1.map((v,i)=>`<tr><td>S${i+1}</td><td class="${od.subject_acc[i]<0?"ng":od.subject_acc[i]>0?"ok":""}">${sgn(od.subject_acc[i])}</td><td class="${v<0?"ng":v>0?"ok":""}">${sgn(v)}</td></tr>`).join("")}</table>`:'<div class="dim">OOF Δ：至少一方无 OOF</div>';
+  h+=`<table><tr><th>标签</th>${c.test_count_delta.map((_,i)=>`<th>${i}</th>`).join("")}</tr><tr><th>Δ测试数(B−A)</th>${c.test_count_delta.map(v=>`<td class="${v<0?"ng":v>0?"ok":""}">${v}</td>`).join("")}</tr></table>`;
+  $("#cStats").innerHTML=h}
 $("#tabs").onclick=e=>{const t=e.target.closest(".tab");if(t)showTab(t.dataset.p)};
 $("#bPrev").onclick=()=>selectPos(S.pos-1);$("#bNext").onclick=()=>selectPos(S.pos+1);
 $("#bFilt").onclick=()=>{S.filt=true;$("#bFilt").classList.add("on");$("#bRaw").classList.remove("on");drawWave()};
@@ -421,19 +571,25 @@ $("#bRaw").onclick=()=>{S.filt=false;$("#bRaw").classList.add("on");$("#bFilt").
 $("#gUp").onclick=()=>{S.gain*=1.4;drawWave()};$("#gDn").onclick=()=>{S.gain/=1.4;drawWave()};
 $("#gAuto").onclick=()=>{S.auto=!S.auto;$("#gAuto").classList.toggle("on",S.auto);drawWave()};
 document.addEventListener("keydown",e=>{if(e.target.tagName==="SELECT"||e.target.tagName==="INPUT")return;
-  if(e.key==="ArrowLeft"||e.key==="ArrowUp"){e.preventDefault();selectPos(S.pos-1)}
-  if(e.key==="ArrowRight"||e.key==="ArrowDown"){e.preventDefault();selectPos(S.pos+1)}});
+  if(e.key==="ArrowLeft"){e.preventDefault();selectPos(S.pos-1)}
+  if(e.key==="ArrowRight"){e.preventDefault();selectPos(S.pos+1)}
+  if(e.key==="ArrowUp"||e.key==="ArrowDown"){e.preventDefault();stepView(e.key==="ArrowUp"?-1:1)}});
+$("#schA").onchange=$("#schB").onchange=()=>setScheme().catch(e=>alert(e.message));
+$("#metRef").onchange=async()=>{await loadMetrics();renderBadges();drawMetrics()};$("#thr").oninput=drawMetrics;
 ["embTrain","embTest","embS1"].forEach(id=>$("#"+id).onchange=drawEmb);
 $("#embTask").onchange=loadEmb;$("#fpSubj").onchange=loadFp;$("#fpTask").onchange=loadFp;$("#fpMode").onchange=drawFp;
 ["simTask","simDom","simMode"].forEach(id=>$("#"+id).onchange=loadSim);
 $("#psdCh").onchange=()=>setCh(+$("#psdCh").value);$("#topoMode").onchange=drawTopo;$("#topoBand").onchange=drawTopo;$("#covBand").onchange=drawCov;$("#covZ").onchange=drawCov;
 let rz;window.addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>{if(S.trial){drawWave();drawScores();drawPsd();drawCov()}
-  drawTopo();drawEmb();if(S.fp)drawFp();if(S.simData)drawSim()},120)});
+  drawTopo();drawEmb();if(S.fp)drawFp();if(S.simData)drawSim();if(on("pMet"))drawMetrics();if(on("pCmp"))drawCompare()},120)});
 
 (async function init(){
-  const sum=S.sum=await api("summary");
-  $("#hAcc").textContent=pct(sum.oof_acc);$("#hF1").textContent=sum.oof_macro_f1.toFixed(4);
-  $("#hNtr").textContent=sum.n_train;$("#hNte").textContent=sum.n_test;$("#hRej").textContent=sum.test_pred_counts["0"];
+  const sc=await api("schemes");S.schemes=sc.schemes;S.a=sc.default;
+  const so=S.schemes.map(s=>[s.key,`${s.key} ${s.label}`]);
+  opts($("#schA"),so,S.a);opts($("#schB"),[["","（无对比）"],...so],"");opts($("#metRef"),so,S.a);
+  S.schemes.forEach(s=>{const t=`${s.desc}\n测试标签 ${s.test_labels}`+(s.has_test_scores?"":"\n测试分数未保存（仅标签）");
+    [...document.querySelectorAll(`option[value="${s.key}"]`)].forEach(o=>o.title=t)});
+  const sum=S.sum=await api("summary?scheme="+S.a);await loadMetrics();renderBadges();
   opts($("#embTask"),TASKS.map(t=>[t,t]),"EC");
   opts($("#fpSubj"),sum.subjects.map(s=>[s.subject,"S"+String(s.subject).padStart(2,"0")]),1);
   opts($("#fpTask"),[["ALL","四任务平均"],...TASKS.map(t=>[t,t])],"ALL");
