@@ -1,4 +1,4 @@
-"""训练折内学习干净锚点，并审计配对传播方向。"""
+﻿"""训练折内学习干净锚点，并审计配对传播方向。"""
 from __future__ import annotations
 
 import argparse
@@ -47,7 +47,7 @@ from src.raw_eeg_defense.run import (
     waveform_neighbors,
 )
 
-OUTPUT_DIR = ROOT / "research" / "raw_eeg_anchor"
+OUTPUT_DIR = ROOT / "research" / "E08_raw_eeg_anchor"
 CACHE_VERSION = "learned-anchor-v1"
 
 

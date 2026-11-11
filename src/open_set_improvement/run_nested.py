@@ -1,4 +1,4 @@
-"""嵌套留被试开集评估、对抗消融与可选纯 EEG 候选生成。"""
+﻿"""嵌套留被试开集评估、对抗消融与可选纯 EEG 候选生成。"""
 from __future__ import annotations
 
 import argparse
@@ -27,7 +27,7 @@ from src.open_set_improvement.core import (
     subject_bootstrap,
 )
 
-OUTPUT_DIR = ROOT / "research" / "open_set_improvement"
+OUTPUT_DIR = ROOT / "research" / "E02_open_set_improvement"
 
 
 def forward_holdout(metadata: pd.DataFrame) -> np.ndarray:

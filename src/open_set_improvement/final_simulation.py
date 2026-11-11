@@ -1,4 +1,4 @@
-"""三注册身份、其余身份未知的逐 Trial 决赛场景模拟。"""
+﻿"""三注册身份、其余身份未知的逐 Trial 决赛场景模拟。"""
 from __future__ import annotations
 
 import argparse
@@ -21,7 +21,7 @@ from src.open_set_improvement.core import (
 )
 from src.open_set_improvement.run_nested import pooled_report
 
-OUTPUT_DIR = ROOT / "research" / "open_set_improvement"
+OUTPUT_DIR = ROOT / "research" / "E02_open_set_improvement"
 
 
 class TorchPrototype:

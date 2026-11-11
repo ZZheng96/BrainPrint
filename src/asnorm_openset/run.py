@@ -18,7 +18,7 @@ from sklearn.mixture import GaussianMixture
 from src.open_set_calibration.core import build_submission, predict_calibration_scores
 from src.open_set_improvement.core import COV_COLUMNS, ROOT, TaskSpecificModel, resolve_cache
 
-OUT = ROOT / "research" / "asnorm_openset"
+OUT = ROOT / "research" / "E05_asnorm_openset"
 ALIGNS = ("none", "target_zscore")
 NORMS = ("raw", "asnorm")
 SMOOTHS = (0, 10)

@@ -1,4 +1,4 @@
-"""仅基于无标签 Test 波形近重复对估计差分扰动强度和频谱分布。"""
+﻿"""仅基于无标签 Test 波形近重复对估计差分扰动强度和频谱分布。"""
 from __future__ import annotations
 
 import argparse
@@ -15,7 +15,7 @@ from src.eeg_features import COV_BANDS, FS, N_CHANNELS
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "Brainprint_Competition"
 CACHE = ROOT / "BrainPrint_cache"
-OUTPUT = ROOT / "research" / "raw_eeg_anchor" / "test_perturbation.json"
+OUTPUT = ROOT / "research" / "E08_raw_eeg_anchor" / "test_perturbation.json"
 QUANTILES = (0.0, 0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95, 0.99, 1.0)
 EPS = 1e-12
 

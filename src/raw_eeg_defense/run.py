@@ -1,4 +1,4 @@
-"""原始 EEG PGD 下的非对称配对与多视图防御评测。"""
+﻿"""原始 EEG PGD 下的非对称配对与多视图防御评测。"""
 from __future__ import annotations
 
 import argparse
@@ -27,7 +27,7 @@ from src.open_set_improvement.run_nested import forward_holdout, inner_holdout
 from src.raw_eeg_defense.gpu_attack import GPUCovExtractor, raw_pgd
 
 DATA = ROOT / "Brainprint_Competition"
-OUTPUT_DIR = ROOT / "research" / "raw_eeg_defense"
+OUTPUT_DIR = ROOT / "research" / "E07_raw_eeg_defense"
 VIEW_NAMES = ("original", "lowpass40", "resample150")
 ATTACKS = (
     ("untargeted_snr20", 20.0, False),

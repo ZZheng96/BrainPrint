@@ -1,4 +1,4 @@
-"""训练折内 raw-PGD 对抗 Ridge 的嵌套开集验收。"""
+﻿"""训练折内 raw-PGD 对抗 Ridge 的嵌套开集验收。"""
 from __future__ import annotations
 
 import argparse
@@ -37,7 +37,7 @@ from src.raw_eeg_robust.adversarial import (
     fit_adversarial_ridge,
 )
 
-OUTPUT_DIR = ROOT / "research" / "raw_eeg_robust"
+OUTPUT_DIR = ROOT / "research" / "E09_raw_eeg_robust"
 CACHE_VERSION = "adversarial-ridge-stratified-random-target-v2"
 METHODS = ("direct", "adversarial_ridge")
 TARGETED_PER_GROUP = 2
@@ -288,7 +288,7 @@ def main() -> None:
         if not torch.cuda.is_available():
             parser.error("raw-PGD Test 推理要求 CUDA GPU")
         cache = resolve_cache()
-        output = args.output or ROOT / "research" / "submission_raw_pgd_adversarial_ridge.csv"
+        output = args.output or ROOT / "research" / "E09_raw_eeg_robust" / "submission_raw_pgd_adversarial_ridge.csv"
         predict_test(
             cache, cache / "raw_eeg_robust" / "test_final",
             output, args.workers, args.batch_size,

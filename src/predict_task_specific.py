@@ -143,7 +143,7 @@ def main() -> None:
 
     pairs = pd.read_csv(CACHE / "waveform_pairs.csv")
     valid_pairs = pairs[pairs["similarity"] > args.pair_similarity]
-    previous_path = ROOT / "research" / "submission_sinkhorn_window_cov_zscore_grouped.csv"
+    previous_path = ROOT / "research" / "E00_cov_ridge_baseline" / "submission_sinkhorn_window_cov_zscore_grouped.csv"
     previous = pd.read_csv(previous_path)
     previous_labels = previous.set_index("Sample").loc[submission["Sample"], "Label"].to_numpy()
     diagnostics = {

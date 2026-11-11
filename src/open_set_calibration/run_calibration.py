@@ -1,4 +1,4 @@
-"""full/base × 无对齐/无监督目标域 z-score 的嵌套单因素实验。"""
+﻿"""full/base × 无对齐/无监督目标域 z-score 的嵌套单因素实验。"""
 from __future__ import annotations
 
 import argparse
@@ -34,7 +34,7 @@ from src.open_set_improvement.core import (
 )
 from src.open_set_improvement.run_nested import forward_holdout, inner_holdout
 
-OUTPUT_DIR = ROOT / "research" / "open_set_calibration"
+OUTPUT_DIR = ROOT / "research" / "E03_open_set_calibration"
 
 
 def choose_score_name(selections: list[dict]) -> str:

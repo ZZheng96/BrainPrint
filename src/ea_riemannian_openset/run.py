@@ -1,4 +1,4 @@
-"""E1：full Ridge 下的 EA / 仿射不变 Riemannian 重居中嵌套开集评估。"""
+﻿"""E1：full Ridge 下的 EA / 仿射不变 Riemannian 重居中嵌套开集评估。"""
 from __future__ import annotations
 
 import argparse
@@ -26,7 +26,7 @@ from src.open_set_improvement.core import (
 )
 from src.open_set_improvement.run_nested import forward_holdout, inner_holdout
 
-OUTPUT_DIR = ROOT / "research" / "ea_riemannian_openset"
+OUTPUT_DIR = ROOT / "research" / "E06_ea_riemannian_openset"
 BASELINE_ALIGNMENTS = ("none", "target_zscore")
 ALIGNMENTS = BASELINE_ALIGNMENTS + RECENTER_METHODS
 CONFIGS = tuple(f"full_{alignment}" for alignment in ALIGNMENTS)

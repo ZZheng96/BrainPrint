@@ -46,7 +46,7 @@ class SessionInvarianceTest(unittest.TestCase):
                 np.save(cache / f"{split}_window2_features.npy", window_features)
 
             config = json.loads(
-                (Path(__file__).parents[1] / "research" / "asnorm_openset" /
+                (Path(__file__).parents[1] / "research" / "E05_asnorm_openset" /
                  "frozen_config.json").read_text(encoding="utf-8")
             )
             original_config = config.copy()

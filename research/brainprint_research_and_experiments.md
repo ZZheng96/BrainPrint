@@ -1,4 +1,4 @@
-# 脑纹识别：研究假设、文献依据与四轮迭代报告
+﻿# 脑纹识别：研究假设、文献依据与四轮迭代报告
 
 日期：2026-10-29
 项目目录：`d:/BCIC2026/BrainPrint`
@@ -10,14 +10,14 @@
 3. 留 4 名被试作为伪未知身份时，前推实验的未知拒识 AUROC 为 **0.9975**。这支持开放集可行性，但不等同于真实跨 Session 未知拒识率。
 4. 真实测试 `session2` 存在明显分布偏移。直接分类出现严重的预测类别不均衡，因此不能把会话内高分直接外推到测试集。
 5. 前推实验否定了硬聚类路线；温和类别均衡 Sinkhorn 在温度 1.0 时把前推准确率从 **99.73%** 提升到 **99.95%**。
-6. 第一轮候选为：**4 秒对数协方差 Ridge → Session z-score 对齐 → 高相似图融合 → Sinkhorn → Session 元数据拒识**，文件为 `research/submission_sinkhorn_cov_zscore_grouped.csv`。
+6. 第一轮候选为：**4 秒对数协方差 Ridge → Session z-score 对齐 → 高相似图融合 → Sinkhorn → Session 元数据拒识**，文件为 `research/E00_cov_ridge_baseline/submission_sinkhorn_cov_zscore_grouped.csv`。
 7. 第二轮完成全 20 名训练被试的逐 Trial 误判分析。双 2 秒窗口把块外推错误从 9 降至 3；窗口/4 秒集成 + Sinkhorn 把时间前推错误降至 **1/2,308（99.9567%）**，但仍未实现有效折外 100%。
-8. 第二轮测试候选为 `research/submission_sinkhorn_window_cov_zscore_grouped.csv`，与第一轮候选保持独立。两者约 92.05% 标签一致，真实优劣仍需官方反馈。
+8. 第二轮测试候选为 `research/E00_cov_ridge_baseline/submission_sinkhorn_window_cov_zscore_grouped.csv`，与第一轮候选保持独立。两者约 92.05% 标签一致，真实优劣仍需官方反馈。
 9. 前两个候选的文件格式和高相似样本一致性均已验证，但 **C、RA、ASafeR、U 的真实测试值仍未知**。应利用官方反馈检验，而不是把内部一致率当成准确率。
 10. 第三轮固定任务特异融合在 5 折块外推 11,304 条和时间前推 2,308 条上均为 **0 错误（100%）**；但规则固定后新增的反向留段为 **2/2,245 错（99.9109%）**。因此双协议满分是探索性折外结果，不是普遍或测试集满分证明。
-11. 第三轮测试候选为 `research/submission_task_specific_zscore_grouped.csv`，未融合消融版为 `research/submission_task_specific_zscore.csv`。图融合版高相似边标签一致率为 100%，但真实 C、RA、ASafeR、U 仍需官方反馈。
+11. 第三轮测试候选为 `research/E00_cov_ridge_baseline/submission_task_specific_zscore_grouped.csv`，未融合消融版为 `research/E00_cov_ridge_baseline/submission_task_specific_zscore.csv`。图融合版高相似边标签一致率为 100%，但真实 C、RA、ASafeR、U 仍需官方反馈。
 12. 第四轮冻结低信心 EC 均衡门控后，块外推、时间前推、反向留段和新增中间留段均为 **0 错误**，合计 **18,114/18,114（100%）**。中间留段是在规则冻结后评估的新协议；其余三协议仍属于模型选择所依据的探索结果。
-13. 第四轮测试候选为 `research/submission_task_specific_zscore_grouped_guarded.csv`。四协议满分不是跨 Session、对抗鲁棒性或官方测试集满分证明；测试集没有真值，真实 C、RA、ASafeR、U 仍未知。
+13. 第四轮测试候选为 `research/E00_cov_ridge_baseline/submission_task_specific_zscore_grouped_guarded.csv`。四协议满分不是跨 Session、对抗鲁棒性或官方测试集满分证明；测试集没有真值，真实 C、RA、ASafeR、U 仍未知。
 
 ---
 
@@ -293,7 +293,7 @@ T=1.0 在四个任务上均未降低直接模型结果，因此选为当前参�
 4. 每任务 Sinkhorn，T=1.0、100 次迭代、训练任务类别先验；
 5. 测试 `session1` 全部输出 0。
 
-文件：`research/submission_sinkhorn_cov_zscore_grouped.csv`
+文件：`research/E00_cov_ridge_baseline/submission_sinkhorn_cov_zscore_grouped.csv`
 
 文件校验：
 
@@ -394,7 +394,7 @@ T=1.0 在四个任务上均未降低直接模型结果，因此选为当前参�
 python src/inspect_data.py
 python src/build_features.py --splits train,test --n-jobs 4
 python src/match_waveform_pairs.py
-python src/run_baseline.py --model ridge --features cov --split-mode forward --output research/baseline_ridge_cov_forward.json
+python src/run_baseline.py --model ridge --features cov --split-mode forward --output research/E00_cov_ridge_baseline/baseline_ridge_cov_forward.json
 python src/validate_sinkhorn.py
 python src/predict_ridge.py --features cov --alignment zscore --pair-fusion --metadata-rejection --tag ridge_cov_zscore_grouped
 python src/balanced_sinkhorn.py --scores scores_ridge_cov_zscore_grouped.npy --temperature 1.0 --tag sinkhorn_cov_zscore_grouped
@@ -506,7 +506,7 @@ python -m unittest discover -s test -v
 5. Sinkhorn 类别均衡；
 6. 测试 `session1` 输出 0。
 
-文件：`research/submission_sinkhorn_window_cov_zscore_grouped.csv`
+文件：`research/E00_cov_ridge_baseline/submission_sinkhorn_window_cov_zscore_grouped.csv`
 
 校验结果：22,251 行、Sample 顺序完全一致、标签为 0–20 整数、无缺失、高相似图边标签一致率 100%。与第一轮候选相比，1,770 条标签发生变化，整体一致率 92.05%；变化比例为 EC 10.70%、EO 15.05%、Imagery 7.29%、SSVEP 5.83%。变化不小，因此保留两个候选，通过官方反馈决定后续，而不是仅凭训练折外结果断言新候选必然更好。
 
@@ -695,7 +695,7 @@ Sinkhorn 的类别先验只由相应训练折的身份计数估计，不读取�
 
 ### 14.4 第四轮测试候选与稳定性诊断
 
-第四轮独立候选为 `research/submission_task_specific_zscore_grouped_guarded.csv`。它继续使用测试 `session2` z-score 对齐、高相似图融合和测试 `session1 → 0`，再加入冻结的 EC 低信心门控与 Imagery Sinkhorn，不读取测试身份标签。
+第四轮独立候选为 `research/E00_cov_ridge_baseline/submission_task_specific_zscore_grouped_guarded.csv`。它继续使用测试 `session2` z-score 对齐、高相似图融合和测试 `session1 → 0`，再加入冻结的 EC 低信心门控与 Imagery Sinkhorn，不读取测试身份标签。
 
 文件共 22,251 行，Sample 顺序与原始 `test.csv` 一致，Label 均为 0–20 的整数且无缺失；0 标签共 3,033 条。高相似图包含 3,492 个多样本组件、覆盖 10,205 条测试样本，融合后的高相似边标签一致率为 100%。在测试 `session2` 上，EC 门控后、Imagery Sinkhorn 和 SSVEP Sinkhorn 与各自直接预测的标签一致率分别为 88.04%、80.25% 和 85.65%；这些数字只描述后处理改动幅度，不是准确率。相对第二轮和第三轮图融合候选分别有 2,623 和 2,126 条标签变化，真实 C、RA、ASafeR、U 仍需官方反馈。
 

@@ -171,7 +171,7 @@ def main() -> None:
         report[protocol] = protocol_report
 
     suffix = "" if len(args.protocols) == 2 else f"_{args.protocols[0]}"
-    output = ROOT / "research" / f"train_calibrated_neighbor_comparison{suffix}.json"
+    output = ROOT / "research" / "E11_session_blind_candidate" / f"train_calibrated_neighbor_comparison{suffix}.json"
     output.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"saved {output}", flush=True)
 

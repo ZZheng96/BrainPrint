@@ -1,4 +1,4 @@
-"""Generate and validate a session-blind EEG-only submission candidate."""
+﻿"""Generate and validate a session-blind EEG-only submission candidate."""
 from __future__ import annotations
 
 import argparse
@@ -156,7 +156,7 @@ def make_candidates(output_dir: Path, cache: Path, device: torch.device, use_int
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output-dir", type=Path, default=ROOT / "research/session_blind_candidate/candidates")
+    parser.add_argument("--output-dir", type=Path, default=ROOT / "research/E11_session_blind_candidate/candidates")
     parser.add_argument("--device", choices=("cuda", "cpu"), default="cuda")
     parser.add_argument("--internal-calibration", action="store_true")
     args = parser.parse_args()
