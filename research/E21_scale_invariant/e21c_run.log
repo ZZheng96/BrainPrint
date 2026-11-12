@@ -3,5 +3,5 @@ cov_detrend          S2 accept(two_stage)=0.1313 S2 max_med=6.15 train max_med=1
 cov_offdiag          S2 accept(two_stage)=0.1500 S2 max_med=6.85 train max_med=13.76 S2 margin_med=2.25 train margin_med=10.01 r(margin,norm)=0.107
 cov_detrend_zband    S2 accept(two_stage)=0.1015 S2 max_med=5.79 train max_med=12.14 S2 margin_med=1.92 train margin_med=9.19 r(margin,norm)=0.006
 cov_detrend_unit     S2 accept(two_stage)=0.1494 S2 max_med=6.22 train max_med=12.09 S2 margin_med=2.03 train margin_med=9.00 r(margin,norm)=0.003
-corr_fisher          S2 accept(two_stage)=0.2362 S2 max_med=8.68 train max_med=17.83 S2 margin_med=2.30 train margin_med=11.93 r(margin,norm)=0.071
-corr_fisher_zband    S2 accept(two_stage)=0.2029 S2 max_med=8.52 train max_med=17.37 S2 margin_med=2.43 train margin_med=11.93 r(margin,norm)=-0.004
+corr_fisher          S2 accept(two_stage)=0.2824 S2 max_med=10.50 train max_med=19.53 S2 margin_med=2.96 train margin_med=12.40 r(margin,norm)=-0.097
+corr_fisher_zband    S2 accept(two_stage)=0.2222 S2 max_med=9.70 train max_med=18.39 S2 margin_med=2.69 train margin_med=11.83 r(margin,norm)=0.026

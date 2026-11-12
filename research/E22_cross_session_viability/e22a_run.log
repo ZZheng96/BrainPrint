@@ -1,0 +1,16 @@
+﻿cov_raw              clean=0.9971 | gain0.25:0.9960(ret 0.999) gain0.50:0.9885(ret 0.991) band0.20:0.9971(ret 1.000) combo:0.9946(ret 0.997) | aug clean:0.9972 gain0.25:0.9965 gain0.50:0.9942 band0.20:0.9972 combo:0.9960
+cov_detrend_zband    clean=0.9988 | gain0.25:0.9973(ret 0.998) gain0.50:0.8816(ret 0.883) band0.20:0.9988(ret 1.000) combo:0.9802(ret 0.981) | aug clean:0.9981 gain0.25:0.9985 gain0.50:0.9951 band0.20:0.9981 combo:0.9965
+corr_fisher          clean=0.9905 | gain0.25:0.9905(ret 1.000) gain0.50:0.9905(ret 1.000) band0.20:0.9905(ret 1.000) combo:0.9905(ret 1.000) | aug clean:0.9910 gain0.25:0.9910 gain0.50:0.9910 band0.20:0.9910 combo:0.9910
+corr_fisher_zband    clean=0.9894 | gain0.25:0.9894(ret 1.000) gain0.50:0.9894(ret 1.000) band0.20:0.9894(ret 1.000) combo:0.9894(ret 1.000) | aug clean:0.9889 gain0.25:0.9889 gain0.50:0.9889 band0.20:0.9889 combo:0.9889
+
+测试侧诊断（clean / augmented）
+cov_raw              clean_model      max_ratio=0.51 margin_ratio=0.21 S2accept=0.130 AUROC(S2vsS1)=0.317
+cov_raw              augmented_model  max_ratio=0.51 margin_ratio=0.22 S2accept=0.136 AUROC(S2vsS1)=0.307
+cov_detrend_zband    clean_model      max_ratio=0.48 margin_ratio=0.21 S2accept=0.098 AUROC(S2vsS1)=0.406
+cov_detrend_zband    augmented_model  max_ratio=0.47 margin_ratio=0.22 S2accept=0.109 AUROC(S2vsS1)=0.434
+corr_fisher          clean_model      max_ratio=0.54 margin_ratio=0.24 S2accept=0.283 AUROC(S2vsS1)=0.292
+corr_fisher          augmented_model  max_ratio=0.54 margin_ratio=0.24 S2accept=0.280 AUROC(S2vsS1)=0.295
+corr_fisher_zband    clean_model      max_ratio=0.53 margin_ratio=0.23 S2accept=0.214 AUROC(S2vsS1)=0.353
+corr_fisher_zband    augmented_model  max_ratio=0.53 margin_ratio=0.22 S2accept=0.209 AUROC(S2vsS1)=0.355
+
+99s

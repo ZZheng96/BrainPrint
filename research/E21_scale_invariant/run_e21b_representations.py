@@ -28,6 +28,12 @@ from sklearn.preprocessing import StandardScaler
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
+from src.cross_session.features import (
+    corr_fisher,
+    detrend,
+    unit_norm,
+    zscore_bands,
+)
 from src.eeg_features import N_CHANNELS
 from src.open_set_improvement.core import COV_COLUMNS
 from src.open_set_improvement.run_nested import forward_holdout, inner_holdout
@@ -37,61 +43,16 @@ FEATURE_CACHE = CACHE / "e21_scale_invariant"
 OUT = Path(__file__).resolve().parent
 N_BANDS = 6
 N_TRIU = N_CHANNELS * (N_CHANNELS + 1) // 2
-_TRIU = np.triu_indices(N_CHANNELS)
-_DIAGONAL = _TRIU[0] == _TRIU[1]
-_OFF_DIAGONAL = ~_DIAGONAL
-_OFF_MASK = _OFF_DIAGONAL.astype(np.float32)
-
-
-def to_matrices(vectors: np.ndarray) -> np.ndarray:
-    """(N, 6*171) log-cov 向量还原为 (N, 6, 18, 18) 对称矩阵。"""
-    values = vectors.reshape(len(vectors), N_BANDS, N_TRIU).astype(np.float32).copy()
-    values[..., _OFF_DIAGONAL] /= np.sqrt(2.0)
-    matrices = np.zeros((len(vectors), N_BANDS, N_CHANNELS, N_CHANNELS), dtype=np.float32)
-    matrices[..., _TRIU[1], _TRIU[0]] = values * _OFF_MASK
-    matrices[..., _TRIU[0], _TRIU[1]] = values
-    return matrices
-
-
-def vectorize(matrices: np.ndarray) -> np.ndarray:
-    values = matrices[..., _TRIU[0], _TRIU[1]].copy()
-    values[..., _OFF_DIAGONAL] *= np.sqrt(2.0)
-    return values.reshape(len(matrices), -1)
-
-
-def detrend(vectors: np.ndarray) -> np.ndarray:
-    """与 eeg_features.normalize_log_cov_determinant 一致：只从对角线扣除逐频带平均对数方差。"""
-    blocks = vectors.reshape(len(vectors), N_BANDS, N_TRIU).copy()
-    mean = blocks[:, :, _DIAGONAL].mean(axis=-1, keepdims=True)
-    blocks -= mean * _DIAGONAL
-    return blocks.reshape(len(vectors), -1)
-
-
-def zscore_bands(vectors: np.ndarray) -> np.ndarray:
-    blocks = vectors.reshape(len(vectors), N_BANDS, N_TRIU).copy()
-    mean = blocks.mean(axis=-1, keepdims=True)
-    std = blocks.std(axis=-1, keepdims=True)
-    return ((blocks - mean) / np.maximum(std, 1e-6)).reshape(len(vectors), -1)
-
-
-def unit_norm(vectors: np.ndarray) -> np.ndarray:
-    norm = np.linalg.norm(vectors, axis=1, keepdims=True)
-    return vectors / np.maximum(norm, 1e-6)
 
 
 def build(vectors: np.ndarray) -> dict[str, np.ndarray]:
     detrended = detrend(vectors)
-    matrices = to_matrices(vectors)
-    diagonal = np.diagonal(matrices, axis1=-2, axis2=-1)
-    scale = np.sqrt(np.maximum(diagonal, 1e-12))
-    correlation = matrices / scale[..., :, None] / scale[..., None, :]
-    fisher = np.arctanh(np.clip(correlation, -0.999, 0.999))
-    fisher = np.nan_to_num(fisher, nan=0.0)
-    corr_vectors = vectorize(fisher)
+    corr_vectors = corr_fisher(vectors)
+    off_diagonal = np.triu_indices(N_CHANNELS)[0] != np.triu_indices(N_CHANNELS)[1]
     return {
         "cov_raw": vectors,
         "cov_detrend": detrended,
-        "cov_offdiag": detrended.reshape(len(vectors), N_BANDS, N_TRIU)[..., _OFF_DIAGONAL].reshape(len(vectors), -1),
+        "cov_offdiag": detrended.reshape(len(vectors), N_BANDS, N_TRIU)[..., off_diagonal].reshape(len(vectors), -1),
         "cov_detrend_zband": zscore_bands(detrended),
         "cov_detrend_unit": unit_norm(detrended),
         "corr_fisher": corr_vectors,
