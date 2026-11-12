@@ -1,0 +1,66 @@
+{
+  "experiment": "E38 DINO image branch + pure-EEG WCCN branch score-level fusion",
+  "date_preregistered": "2026-11-13",
+  "motivation": "E20-E35 DINO image route saturates at Test AUROC(S2 vs S1)=0.7327; E36 pure-EEG WCCN prototype reaches outer K16 AUROC 0.9981 with C 0.9998. Fuse the two branches at score level to keep the image route while meeting the open-set gates.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_access": "forbidden until a candidate is frozen and every Train gate passes",
+    "session": "session1"
+  },
+  "branches": {
+    "image": {
+      "feature": "BrainPrint_cache/eeg_image_dinov2/train_covariance5_dinov2.npy (frozen DINOv2 ViT-B/14 CLS, 768)",
+      "model": "per-task StandardScaler + LogisticRegression(C=1.0, max_iter=300)",
+      "score": "max_cosine and distance_ratio on task-specific WCCN-whitened class centroids",
+      "wccn_shrinkage": 0.2,
+      "reference": "research/E31_task_conditional/run_e31_task_conditional.py"
+    },
+    "pure_eeg": {
+      "feature": "BrainPrint_cache/e36_pure_eeg/train_detrend_zband_cov5.npy (5 bands x 171 logSPD, 855)",
+      "model": "WCCN-whitened nearest class prototype (cosine)",
+      "wccn_shrinkage": 0.05,
+      "wccn_eigenvalue_floor": 1e-6,
+      "score": "max_cosine and distance_ratio",
+      "reference": "research/E36_pure_eeg/run_e36.py"
+    }
+  },
+  "fusion": {
+    "level": "score",
+    "rule": "per-sample rank-normalized fusion: each branch confidence is mapped to its own fit-fold known ECDF, then combined as w*image + (1-w)*pure_eeg",
+    "weights": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5],
+    "threshold_quantiles": [0.01, 0.02, 0.05, 0.10, 0.20],
+    "identity_rule": "identity label from the branch with the larger fusion weight; ties resolved to pure_eeg",
+    "reason_for_ecdf": "the two branches have different score scales; ECDF mapping is per-sample and uses only fit-fold known scores, so no Test or batch statistics are involved"
+  },
+  "nested_protocol": {
+    "outer_seed": 42,
+    "outer_folds": 5,
+    "outer_unknown_subjects_per_fold": 4,
+    "outer_known_evaluation": "trial > 0.8 * within-subject/task maximum (continuous file-block proxy)",
+    "outer_fit": "enrolled subjects and not outer-known-evaluation",
+    "inner_seed": "100 + one-based outer fold",
+    "inner_folds": 2,
+    "inner_known_evaluation": "0.6 * max < trial <= 0.8 * max within subject/task",
+    "inner_fit": "inner-enrolled subjects, trial <= 0.6 * max",
+    "inner_unknown_evaluation": "inner pseudo-unknown subjects, trial <= 0.8 * max",
+    "threshold_grid_points": 101,
+    "threshold_known_acceptance_min": 0.95,
+    "threshold_objective": "maximize 100*C^0.40*U^0.25 subject to inner known acceptance >= 0.95; ties by C, U, AUROC, then configured order",
+    "proxy_warning": "C/U-only selection proxy; the adversarial A term is not part of this experiment"
+  },
+  "targets": {
+    "direct_C_min": 0.95,
+    "identity_macro_f1_direct_min": 0.92,
+    "continuous_block_accuracy_min": 0.90,
+    "unknown_auroc_min": 0.98,
+    "U_at_known95_min": 0.95,
+    "test_audit_S2_rejection_max": 0.02,
+    "test_audit_S1_rejection_min": 0.95
+  },
+  "reporting": {
+    "required": ["direct C", "identity macro-F1", "unknown AUROC", "unknown AUPR", "U@known95", "unknown F1", "joint macro-F1", "per-fold values"],
+    "test_metrics": "N/A: no public Test labels; only an unlabeled S1/S2 structural audit after freezing",
+    "evidence_boundary": "Train-only pseudo-unknown and continuous file-block proxy; not cross-session evidence"
+  }
+}

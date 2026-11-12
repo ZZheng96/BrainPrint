@@ -144,4 +144,5 @@ known N=9232、unknown N=11304（五折合计）。direct C=0.999781，direct �
 
 - 外层基线结果此前已经查看，因此本次外层属于冻结规则的确认性/限制性证据，不能称为 untouched validation；未据外层调整 shrinkage、攻击、增广或阈值。
 - unknown 仍为 Train 留被试 pseudo-unknown，文件后 20% 为连续块代理；不是跨 Session 或官方新被试证据。
+- 独立攻击审计未发现实现错误：非目标/目标损失方向、类别映射、折内模型、L2 投影和指标公式均一致；梯度有限差分相对误差为 2.51e-10，缓存/重算分数差不超过 1.61e-6，clean 攻击子集 direct C 五折均为 1.0。低 RA 因而不是已知的梯度断链或标签映射错误。
 - Test AUC、F1、C、RA、ASafeR、A、U、Score：N/A；Test 未读取、未推理、未用于调参。

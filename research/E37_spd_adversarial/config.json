@@ -1,0 +1,108 @@
+{
+  "experiment": "E37 robust SPD residual MLP with reciprocal-point open-space loss",
+  "date_preregistered": "2026-11-12",
+  "data": {
+    "source": "Train session1 only; read-only reuse of E36 feature cache and Train MAT files",
+    "test_access": "forbidden",
+    "outer_status": "run once only if every preregistered inner gate passes; otherwise N/A"
+  },
+  "seed_base": 20261112,
+  "smoke": {
+    "outer_fold": 1,
+    "inner_fold": 1,
+    "variant": "mixed_targeted_untargeted_at_arpl",
+    "batches": 1,
+    "purpose": "gradient, speed and CUDA memory only; never a metric conclusion or model-selection input"
+  },
+  "model": {
+    "feature": "frozen E36 five-band logSPD -> detrend-zband (855)",
+    "whitening": "fit-fold-only WCCN, shrinkage 0.05, eigenvalue floor 1e-6; frozen during MLP training",
+    "residual": "855 -> 256 -> 855, GELU, final linear zero-initialized",
+    "embedding": "L2-normalize(whitened + residual(whitened))",
+    "prototypes": "trainable normalized class prototypes initialized from the same fit-fold WCCN prototypes",
+    "initial_equivalence": "zero residual gives exactly the E36 WCCN cosine model before optimization",
+    "prediction_batch_size": 512
+  },
+  "arpl": {
+    "weight": 0.1,
+    "temperature": 0.05,
+    "classification_logits": "reference reciprocal-point form: mean_squared_l2_distance - dot_product",
+    "open_space_loss": "mean MarginRankingLoss(radius, true-class mean squared distance, target=1, margin=1), with trainable scalar radius initialized to 0",
+    "reference": "https://github.com/iCGY96/ARPL/blob/master/loss/ARPLoss.py",
+    "note": "reciprocal-point-style loss on normalized residual embeddings; no confusing-sample generator and no unknown training labels"
+  },
+  "training": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "max_epochs": 25,
+    "early_stopping_patience": 5,
+    "early_stopping_data": "only the corresponding inner clean known and pseudo-unknown validation split",
+    "early_stopping_metric": "100*C^0.40*U^0.25 at validation-known q05; ties by direct C, identity macro-F1, AUROC, U@95, then earlier epoch",
+    "variants": [
+      "clean_arpl",
+      "untargeted_at_arpl",
+      "mixed_targeted_untargeted_at_arpl"
+    ],
+    "clean_loss_weight_for_at": 0.5,
+    "adversarial_loss_weight_for_at": 0.5,
+    "training_labels": "always true identity, including after targeted attack generation",
+    "target_rule": "next registered identity in sorted enrolled-class cycle",
+    "snr_mix": "equal-probability SNR20/SNR30 per batch using fold/epoch/batch-seeded RNG",
+    "mixed_attack_mix": "equal-probability untargeted/targeted per batch; non-targeted AT is always untargeted",
+    "shared_seed_rule": "model initialization, shuffling and SNR choices do not depend on variant; only the preregistered attack factor changes",
+    "full_train_capacity": "after inner completion, fit each variant on all Train for the rounded median of its ten inner best epochs; no early stopping or model selection; accuracy is capacity only"
+  },
+  "feature_attack": {
+    "space": "frozen WCCN-whitened 855-dimensional features before residual MLP",
+    "pgd_steps": 7,
+    "step_size": "2*epsilon/7 with L2-normalized gradient and per-sample L2 projection",
+    "initialization": "seeded random direction with radius uniformly scaled in [0,1)",
+    "loss": "cross_entropy(current cosine scores / 0.05); maximize untargeted and minimize targeted",
+    "epsilon_calibration": {
+      "source": "the same fit fold's initial zero-residual full raw-waveform PGD20 model, before residual training",
+      "subset": "first 1 trial per fit subject/task after trial/path sort",
+      "raw_attacks": ["untargeted_pgd", "targeted_pgd"],
+      "snr_db": [20, 30],
+      "raw_pgd_steps": 20,
+      "displacement": "L2 norm of (attacked detrend-zband - clean detrend-zband) @ frozen whitening",
+      "selection": "separate pooled 95th percentile for SNR20 and SNR30 across untargeted and targeted calibration displacements",
+      "restriction": "fixed before training/evaluation; never adjusted from clean or adversarial evaluation results"
+    }
+  },
+  "evaluation": {
+    "inner_folds": "E36 five outer groups x two inner folds, identical seeds and continuous trial blocks",
+    "subset": "E36 stratified first 8 trials per identity/task by trial/path; no outcome-based sampling",
+    "attacks": ["untargeted_fgsm", "untargeted_pgd", "targeted_pgd"],
+    "snr_db": [30, 20],
+    "pgd_steps": 20,
+    "batch_size": 64,
+    "temperature": 0.05,
+    "differentiable_chain": "raw EEG -> gpu_logspd -> detrend-zband -> frozen WCCN whitening -> current residual MLP -> normalized prototypes; float64 attack features and model",
+    "threshold_scores": ["max_cosine", "margin", "distance_ratio"],
+    "threshold_grid": "101 evenly spaced quantiles from 0 to 0.05 of corresponding pooled inner clean-known confidence",
+    "threshold_constraint": "pooled corresponding inner clean-known acceptance >= 0.95",
+    "threshold_objective": "maximize macro 100*C^0.40*A^0.35*U^0.25 over all six attacks; E36 tie breaks and score order",
+    "unknown_definition": "clean Train pseudo-unknown subjects only",
+    "aupr": "unknown-class AUPR using -confidence",
+    "joint_f1": "macro-F1 over label 0 plus the union of enrolled identities in the two corresponding inner runs",
+    "direct_ra_rule": "direct RA below 0.95 can never be described as a passing thresholded defense"
+  },
+  "targets": {
+    "C_min": 0.95,
+    "clean_identity_macro_f1_direct_min": 0.92,
+    "clean_unknown_auroc_min": 0.98,
+    "clean_U_at_q05_min": 0.95,
+    "direct_RA_min": 0.95,
+    "threshold_RA_min": 0.95,
+    "ASafeR_min": 0.98,
+    "all_rejection_forbidden": true,
+    "aggregation": "mean of five outer-fold results, each pooling its two corresponding inner runs",
+    "outer_rule": "select only among variants passing every inner gate by macro Score, RA, ASafeR, C; if none passes, outer remains N/A and no further search is allowed"
+  },
+  "reporting": {
+    "required": ["direct RA", "threshold RA", "ASafeR", "C", "identity F1", "unknown AUROC/AUPR", "unknown F1", "U@95", "joint F1", "A", "Score", "N"],
+    "evidence_boundary": "Train-only pseudo-unknown and continuous file-block proxy; smoke is not evidence; full-Train fit is capacity only; no Test or cross-session claim"
+  }
+}
