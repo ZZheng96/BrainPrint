@@ -1,0 +1,59 @@
+{
+  "experiment": "E47 dual-model system: CNN identity + logSPD novelty rejection",
+  "date_preregistered": "2026-11-13",
+  "motivation": "E45 showed a raw-waveform CNN with PGD7 adversarial training lifts PGD20/SNR20 direct accuracy from 0.082 to 0.55 and macro RA to 0.748, but its softmax confidence cannot reject unknown subjects (U 0.016). E46 showed CNN embedding distances also fail (U<=0.30). E36 logSPD WCCN still has pseudo-unknown AUROC 0.998. Splitting the duties recovers both: CNN for identity, logSPD distance_ratio for novelty rejection.",
+  "data": {
+    "source": "Train session1 only; read-only reuse of E36 raw and zband caches",
+    "test_access": "forbidden"
+  },
+  "identity_model": {
+    "type": "raw-waveform CNN + adversarial training (E45)",
+    "width": 96,
+    "architecture": "Conv1d(18->96,k9,s2)-BN-ELU 递进到 384 通道, global average pool, linear K",
+    "epochs": 40,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "pgd_steps": 7,
+    "targeted_mix": 0.25,
+    "training": "40 epochs, AdamW lr 3e-3 cosine, 0.5*CE(clean)+0.5*CE(PGD7 adversarial), SNR20/30 各半, 25% 目标攻击",
+    "seed_base": 20261113,
+    "seed_rule": "seed_base + 1000*outer_fold + inner_fold"
+  },
+  "rejection_model": {
+    "type": "frozen E36 detrend_zband_cov5_wccn_prototype, same fit split",
+    "score": "distance_ratio",
+    "threshold_rule": "threshold = q05 of this run's clean-known distance_ratio",
+    "no_unknown_calibration": true,
+    "leakage_note": "阈值只来自 clean known，绝不使用 pseudo-unknown 或 Test 的分位数来定阈值；U 是测出来的结果，不是调出来的目标"
+  },
+  "decision": "logSPD distance_ratio < threshold -> 0, otherwise CNN argmax identity",
+  "evaluation": {
+    "inner_folds": "E36 five outer groups x two inner folds, identical subject splits and blocks",
+    "subset": "E36 stratified first 8 trials per identity/task for clean known and pseudo-unknown",
+    "attacks": ["untargeted_fgsm", "untargeted_pgd", "targeted_pgd"],
+    "snr_db": [30, 20],
+    "pgd_steps": 20,
+    "temperature": 1.0,
+    "attack_target_model": "the CNN identity model (white-box); E44 showed transfer is not weaker",
+    "aggregation": "per inner run in its own label space, average two inner runs, then average five outer folds",
+    "metrics": ["C", "RA", "ASafeR", "A", "U", "direct_RA", "Rej", "identity_macro_f1", "unknown_auroc", "Score"]
+  },
+  "sensitivity": {
+    "threshold_quantiles": [0.02, 0.05, 0.10],
+    "purpose": "只报告，不用于选择；主规则固定 q05 与 E36/E40 一致"
+  },
+  "targets": {
+    "C_min": 0.95,
+    "identity_macro_f1_direct_min": 0.92,
+    "clean_unknown_auroc_min": 0.98,
+    "clean_U_min": 0.95,
+    "RA_min": 0.95,
+    "ASafeR_min": 0.98,
+    "note": "E47 首次同时具备高 RA 与高 U 的机制；判断以官方 Score 与各门禁为准"
+  },
+  "reporting": {
+    "required": ["C", "RA", "ASafeR", "A", "U", "direct RA", "Rej", "identity F1", "unknown AUROC", "Score", "N"],
+    "evidence_boundary": "Train-only inner nesting, pseudo-unknown subjects, continuous file-block proxy, white-box attacks against the CNN. No outer selection, no Test, no cross-session claim."
+  }
+}

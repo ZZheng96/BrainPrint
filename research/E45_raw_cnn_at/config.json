@@ -1,0 +1,60 @@
+{
+  "experiment": "E45 raw-waveform CNN with adversarial training (RA-oriented)",
+  "date_preregistered": "2026-11-13",
+  "motivation": "All fixed-feature routes (logSPD WCCN, residual MLP+ARPL, band-correlation, supervised detectors) fail at SNR20: RA 0.02-0.09. A single-fold probe showed a raw-waveform CNN trained with PGD7 adversarial training reaches PGD20/SNR20 direct accuracy 0.551 and RA 0.473, a 6x improvement. E45 turns that probe into a full nested evaluation with rejection, unknown handling and the official score.",
+  "probe_reference": {
+    "logspd_wccn_pgd20_direct": 0.082,
+    "cnn_at_pgd20_direct": 0.551,
+    "criterion": "PGD20 direct >= 0.5 to continue",
+    "passed": true
+  },
+  "data": {
+    "source": "Train session1 only; read-only reuse of E36 raw cache",
+    "test_access": "forbidden"
+  },
+  "seed_base": 20261113,
+  "model": {
+    "input": "raw 18x1200, per-trial per-channel mean removal and global std normalization inside forward",
+    "width": 96,
+    "architecture": "Conv1d(18->96,k9,s2)-BN-ELU, Conv1d(96->192,k9,s2)-BN-ELU, Conv1d(192->384,k9,s2)-BN-ELU, Conv1d(384->384,k9,s2)-BN-ELU, global average pool, linear 384->K",
+    "output": "K logits; confidence uses softmax distance_ratio"
+  },
+  "training": {
+    "optimizer": "AdamW, cosine schedule to zero",
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "epochs": 40,
+    "batch_size": 64,
+    "pgd_steps": 7,
+    "targeted_mix": 0.25,
+    "loss": "0.5 * CE(clean) + 0.5 * CE(adversarial)",
+    "adversarial": "raw-waveform PGD 7 steps, radius = centered-signal L2 / 10^(SNR/20)",
+    "snr_mix": "equal probability SNR20 / SNR30 per batch",
+    "seed_rule": "seed_base + 1000*outer_fold + inner_fold; batch seeds from epoch/batch index"
+  },
+  "evaluation": {
+    "inner_folds": "E36 five outer groups x two inner folds, identical subject splits and continuous trial blocks",
+    "subset": "E36 stratified first 8 trials per identity/task for clean known and pseudo-unknown",
+    "attacks": ["untargeted_fgsm", "untargeted_pgd", "targeted_pgd"],
+    "snr_db": [30, 20],
+    "pgd_steps": 20,
+    "temperature": 1.0,
+    "aggregation": "per inner run in its own label space, average two inner runs, then average five outer folds",
+    "decision": "accept iff softmax distance_ratio >= threshold; threshold = q05 of that run's inner clean-known distance_ratio",
+    "metrics": ["C", "RA", "ASafeR", "A", "U", "direct_RA", "Rej", "identity_macro_f1", "unknown_auroc", "Score"]
+  },
+  "targets": {
+    "C_min": 0.95,
+    "identity_macro_f1_direct_min": 0.92,
+    "clean_unknown_auroc_min": 0.98,
+    "clean_U_min": 0.95,
+    "RA_min": 0.95,
+    "ASafeR_min": 0.98,
+    "note": "E45 is the first route where RA is not the binding constraint; judge against the same gates as E36C"
+  },
+  "stop_rule": "if the inner macro RA is below 0.5, record the negative result and stop; do not run outer or Test",
+  "reporting": {
+    "required": ["C", "RA", "ASafeR", "A", "U", "direct RA", "Rej", "identity F1", "unknown AUROC", "Score", "N"],
+    "evidence_boundary": "Train-only inner nesting, pseudo-unknown subjects, continuous file-block proxy; attacks are generated white-box against the evaluated model, which E44 showed is not weaker than transfer. No outer, no Test, no cross-session claim."
+  }
+}

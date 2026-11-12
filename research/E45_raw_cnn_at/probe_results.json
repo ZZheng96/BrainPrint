@@ -1,0 +1,35 @@
+{
+  "clean_acc": 0.9140625,
+  "attacks": {
+    "untargeted_fgsm_snr30": {
+      "direct_acc": 0.8515625,
+      "RA": 0.77734375,
+      "ASafeR": 0.86328125,
+      "target_rate": null,
+      "realized_snr": 30.0
+    },
+    "untargeted_pgd_snr30": {
+      "direct_acc": 0.8515625,
+      "RA": 0.7734375,
+      "ASafeR": 0.86328125,
+      "target_rate": null,
+      "realized_snr": 30.0
+    },
+    "untargeted_pgd_snr20": {
+      "direct_acc": 0.55078125,
+      "RA": 0.47265625,
+      "ASafeR": 0.60546875,
+      "target_rate": null,
+      "realized_snr": 20.0
+    },
+    "targeted_pgd_snr20": {
+      "direct_acc": 0.76953125,
+      "RA": 0.73828125,
+      "ASafeR": 0.76953125,
+      "target_rate": 0.20703125,
+      "realized_snr": 20.0
+    }
+  },
+  "criterion": "PGD20/SNR20 direct >= 0.5 才继续",
+  "passed": true
+}

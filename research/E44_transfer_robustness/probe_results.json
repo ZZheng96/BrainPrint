@@ -1,0 +1,141 @@
+{
+  "clean_acc": 1.0,
+  "threshold": 1.1351956640755942,
+  "rows": [
+    {
+      "attack": "untargeted_fgsm_snr30",
+      "mode": "white_box",
+      "direct_acc": 0.2265625,
+      "target_rate": null,
+      "RA": 0.10546875,
+      "ASafeR": 1.0,
+      "realized_snr": 30.0
+    },
+    {
+      "attack": "untargeted_fgsm_snr30",
+      "mode": "transfer_A_shrink",
+      "direct_acc": 0.1640625,
+      "target_rate": null,
+      "RA": 0.10546875,
+      "ASafeR": 0.99609375,
+      "realized_snr": 30.0
+    },
+    {
+      "attack": "untargeted_fgsm_snr30",
+      "mode": "transfer_B_ridge",
+      "direct_acc": 0.11328125,
+      "target_rate": null,
+      "RA": 0.10546875,
+      "ASafeR": 0.19921875,
+      "realized_snr": 30.0
+    },
+    {
+      "attack": "untargeted_pgd_snr30",
+      "mode": "white_box",
+      "direct_acc": 0.203125,
+      "target_rate": null,
+      "RA": 0.10546875,
+      "ASafeR": 0.91015625,
+      "realized_snr": 30.0
+    },
+    {
+      "attack": "untargeted_pgd_snr30",
+      "mode": "transfer_A_shrink",
+      "direct_acc": 0.14453125,
+      "target_rate": null,
+      "RA": 0.09375,
+      "ASafeR": 0.8984375,
+      "realized_snr": 30.0
+    },
+    {
+      "attack": "untargeted_pgd_snr30",
+      "mode": "transfer_B_ridge",
+      "direct_acc": 0.09765625,
+      "target_rate": null,
+      "RA": 0.09765625,
+      "ASafeR": 0.109375,
+      "realized_snr": 30.0
+    },
+    {
+      "attack": "untargeted_pgd_snr20",
+      "mode": "white_box",
+      "direct_acc": 0.08203125,
+      "target_rate": null,
+      "RA": 0.0390625,
+      "ASafeR": 0.53515625,
+      "realized_snr": 20.02404309364416
+    },
+    {
+      "attack": "untargeted_pgd_snr20",
+      "mode": "transfer_A_shrink",
+      "direct_acc": 0.03515625,
+      "target_rate": null,
+      "RA": 0.00390625,
+      "ASafeR": 0.5078125,
+      "realized_snr": 20.03053029735529
+    },
+    {
+      "attack": "untargeted_pgd_snr20",
+      "mode": "transfer_B_ridge",
+      "direct_acc": 0.0,
+      "target_rate": null,
+      "RA": 0.0,
+      "ASafeR": 0.0078125,
+      "realized_snr": 20.0
+    },
+    {
+      "attack": "targeted_pgd_snr30",
+      "mode": "white_box",
+      "direct_acc": 0.2421875,
+      "target_rate": 0.7578125,
+      "RA": 0.14453125,
+      "ASafeR": 0.453125,
+      "realized_snr": 30.0
+    },
+    {
+      "attack": "targeted_pgd_snr30",
+      "mode": "transfer_A_shrink",
+      "direct_acc": 0.18359375,
+      "target_rate": 0.81640625,
+      "RA": 0.125,
+      "ASafeR": 0.41015625,
+      "realized_snr": 30.0
+    },
+    {
+      "attack": "targeted_pgd_snr30",
+      "mode": "transfer_B_ridge",
+      "direct_acc": 0.14453125,
+      "target_rate": 0.85546875,
+      "RA": 0.1328125,
+      "ASafeR": 0.15625,
+      "realized_snr": 30.223447314363803
+    },
+    {
+      "attack": "targeted_pgd_snr20",
+      "mode": "white_box",
+      "direct_acc": 0.078125,
+      "target_rate": 0.921875,
+      "RA": 0.03125,
+      "ASafeR": 0.08984375,
+      "realized_snr": 20.027377258216106
+    },
+    {
+      "attack": "targeted_pgd_snr20",
+      "mode": "transfer_A_shrink",
+      "direct_acc": 0.03125,
+      "target_rate": 0.96875,
+      "RA": 0.00390625,
+      "ASafeR": 0.078125,
+      "realized_snr": 20.041030254389895
+    },
+    {
+      "attack": "targeted_pgd_snr20",
+      "mode": "transfer_B_ridge",
+      "direct_acc": 0.0,
+      "target_rate": 1.0,
+      "RA": 0.0,
+      "ASafeR": 0.0,
+      "realized_snr": 22.615623407452716
+    }
+  ]
+}

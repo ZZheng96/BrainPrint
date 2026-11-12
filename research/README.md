@@ -64,6 +64,10 @@
 | E41 | [E41_supervised_detector](E41_supervised_detector) | fit 折自训练（clean + 5 类对抗增广）监督攻击检测器 | **负结果**：单折 detAUROC 0.8976 vs E40 无监督 0.8926，ASafeR 0.7324 vs 0.7480；8 维逐 trial 统计量信息量不足，未扩展至完整内层 |
 | E42 | [E42_submission_candidates](E42_submission_candidates) | 一次 Test 推理产出两份冻结候选（E36C 单门控 / E40 双门控） | 校准块 N=2,301，q=0.0305、t_u=0.081456、t_mc=0.548043，联合接受率 0.9505；整体拒识 0.8093 / 0.8155（与 E19 的 79.2% 同量级，管线复现既有提交行为）；A/B 分歧 0.62%；Test 指标全部 N/A |
 | E43 | [E43_noise_robust_features](E43_noise_robust_features) | 每频带归一化空间相关特征（抗各向同性噪声假设） | **负结果**：攻击下准确率反低于 logSPD（FGSM30 0.148 vs 0.227，PGD20 0.000 vs 0.090，目标攻击 100% 命中）；相关结构比含特征值的 logSPD 更易被推动 |
+| E44 | [E44_transfer_robustness](E44_transfer_robustness) | 迁移攻击 vs 白盒攻击强度对比 | **迁移不比白盒弱**：从 shrinkage=0.001 替代模型迁移，PGD20 直接准确率 0.035（白盒 0.082），Ridge 迁移 0.000；「官方预生成攻击更弱」的捷径不存在，E36C 的 RA≈0.06 是合理估计 |
+| E45 | [E45_raw_cnn_at](E45_raw_cnn_at) | 原始波形 CNN + PGD7 对抗训练 | **突破 RA 边界**：单折 PGD20/SNR20 直接准确率 0.551（logSPD 0.082）、宏 RA 0.748、目标误认证 0.922→0.207；但 softmax 置信度的伪未知 U 仅 0.0156 |
+| E46 | [E46_embedding_rejection](E46_embedding_rejection) | CNN 嵌入空间原型/Mahalanobis 拒识 | **负结果**：嵌入 max_cosine U=0.301、Mahalanobis 0.129，均远低于 0.95；CNN 学到跨被试可迁移特征，未知被试落在原型附近，CNN 不适合承担拒识 |
+| E47 | [E47_dual_model_system](E47_dual_model_system) | **双模型分工：CNN 身份 + logSPD 拒识** | **当前最优**：C 0.9148、RA **0.5772**、ASafeR **0.9076**、A 0.6763、U 0.9965、F1 0.9358（direct 0.9522）、**Score 84.08**（E36C 59.78，+24.30）；RA/ASafeR 首次从不可达变为可优化 |
 
 ## 其他
 

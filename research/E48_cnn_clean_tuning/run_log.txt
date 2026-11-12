@@ -1,0 +1,2 @@
+﻿Train raw loaded: (11304, 18, 1200) in 4.3s
+{"config": "A_w128_e80_clean0.6", "clean_acc": 0.96484375, "C": 0.921875, "U": 1.0, "PGD20_direct": 0.59765625, "RA": 0.59765625, "ASafeR": 0.8828125}

@@ -1,0 +1,134 @@
+[
+  {
+    "target_U": 0.9,
+    "threshold": 1.0509203815290182,
+    "U": 0.8984375,
+    "C": 0.9609375,
+    "clean_acceptance": 0.99609375,
+    "RA": 0.78125,
+    "ASafeR": 0.857421875,
+    "Rej": 0.076171875,
+    "A": 0.8041015625,
+    "Score": 88.77871230710447,
+    "per_attack": {
+      "untargeted_fgsm_snr30": {
+        "RA": 0.87890625,
+        "ASafeR": 0.90625,
+        "Rej": 0.02734375
+      },
+      "untargeted_fgsm_snr20": {
+        "RA": 0.609375,
+        "ASafeR": 0.76953125,
+        "Rej": 0.16015625
+      },
+      "untargeted_pgd_snr30": {
+        "RA": 0.87890625,
+        "ASafeR": 0.90234375,
+        "Rej": 0.0234375
+      },
+      "untargeted_pgd_snr20": {
+        "RA": 0.59765625,
+        "ASafeR": 0.72265625,
+        "Rej": 0.125
+      },
+      "targeted_pgd_snr30": {
+        "RA": 0.93359375,
+        "ASafeR": 0.95703125,
+        "Rej": 0.0234375
+      },
+      "targeted_pgd_snr20": {
+        "RA": 0.7890625,
+        "ASafeR": 0.88671875,
+        "Rej": 0.09765625
+      }
+    }
+  },
+  {
+    "target_U": 0.95,
+    "threshold": 1.0617759511576355,
+    "U": 0.94921875,
+    "C": 0.953125,
+    "clean_acceptance": 0.984375,
+    "RA": 0.775390625,
+    "ASafeR": 0.8658854166666666,
+    "Rej": 0.09049479166666667,
+    "A": 0.8025390625,
+    "Score": 89.65297067145532,
+    "per_attack": {
+      "untargeted_fgsm_snr30": {
+        "RA": 0.875,
+        "ASafeR": 0.91015625,
+        "Rej": 0.03515625
+      },
+      "untargeted_fgsm_snr20": {
+        "RA": 0.60546875,
+        "ASafeR": 0.7734375,
+        "Rej": 0.16796875
+      },
+      "untargeted_pgd_snr30": {
+        "RA": 0.875,
+        "ASafeR": 0.91015625,
+        "Rej": 0.03515625
+      },
+      "untargeted_pgd_snr20": {
+        "RA": 0.5859375,
+        "ASafeR": 0.75,
+        "Rej": 0.1640625
+      },
+      "targeted_pgd_snr30": {
+        "RA": 0.93359375,
+        "ASafeR": 0.9609375,
+        "Rej": 0.02734375
+      },
+      "targeted_pgd_snr20": {
+        "RA": 0.77734375,
+        "ASafeR": 0.890625,
+        "Rej": 0.11328125
+      }
+    }
+  },
+  {
+    "target_U": 0.98,
+    "threshold": 1.0701895751895265,
+    "U": 0.9765625,
+    "C": 0.953125,
+    "clean_acceptance": 0.984375,
+    "RA": 0.7688802083333334,
+    "ASafeR": 0.8763020833333334,
+    "Rej": 0.107421875,
+    "A": 0.8011067708333333,
+    "Score": 90.23532691199728,
+    "per_attack": {
+      "untargeted_fgsm_snr30": {
+        "RA": 0.87109375,
+        "ASafeR": 0.9140625,
+        "Rej": 0.04296875
+      },
+      "untargeted_fgsm_snr20": {
+        "RA": 0.59375,
+        "ASafeR": 0.80859375,
+        "Rej": 0.21484375
+      },
+      "untargeted_pgd_snr30": {
+        "RA": 0.87109375,
+        "ASafeR": 0.9140625,
+        "Rej": 0.04296875
+      },
+      "untargeted_pgd_snr20": {
+        "RA": 0.58203125,
+        "ASafeR": 0.76953125,
+        "Rej": 0.1875
+      },
+      "targeted_pgd_snr30": {
+        "RA": 0.93359375,
+        "ASafeR": 0.9609375,
+        "Rej": 0.02734375
+      },
+      "targeted_pgd_snr20": {
+        "RA": 0.76171875,
+        "ASafeR": 0.890625,
+        "Rej": 0.12890625
+      }
+    }
+  }
+]
