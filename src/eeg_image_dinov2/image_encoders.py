@@ -276,12 +276,58 @@ def waveform_image(data: np.ndarray, method: str = "gaf") -> np.ndarray:
     return rgb.astype(np.float32)
 
 
+def _resize_bilinear(image: np.ndarray, size: int = IMG_SIZE) -> np.ndarray:
+    """双线性插值放大到 size×size（与 _resize_to 的最近邻不同，保留渐变）。"""
+    height, width = image.shape
+    if (height, width) == (size, size):
+        return image.astype(np.float32)
+    rows = np.linspace(0, height - 1, size).astype(np.float64)
+    cols = np.linspace(0, width - 1, size).astype(np.float64)
+    r0 = np.floor(rows).astype(int)
+    c0 = np.floor(cols).astype(int)
+    r1 = np.minimum(r0 + 1, height - 1)
+    c1 = np.minimum(c0 + 1, width - 1)
+    wr = (rows - r0)[:, None]
+    wc = (cols - c0)[None, :]
+    top = image[np.ix_(r0, c0)] * (1 - wc) + image[np.ix_(r0, c1)] * wc
+    bottom = image[np.ix_(r1, c0)] * (1 - wc) + image[np.ix_(r1, c1)] * wc
+    return (top * (1 - wr) + bottom * wr).astype(np.float32)
+
+
+def covariance_hr_image(data: np.ndarray) -> np.ndarray:
+    """V5b：高分辨率 log 协方差图。
+
+    每个频带的 18×18 对数协方差矩阵双线性放大到 224×224（而非 covariance5 的 74×74 平铺），
+    低频(δ+θ)/中频(α+β)/高频(γ) 三组分别作为 R/G/B。
+    """
+    data = np.asarray(data, dtype=np.float64)
+    data = data - data.mean(axis=0, keepdims=True)
+    matrices = []
+    for low, high in BANDS:
+        filtered = _bandpass_fft(data, low, high)
+        cov = np.cov(filtered, rowvar=False, ddof=1)
+        target = np.trace(cov) / N_CHANNELS * np.eye(N_CHANNELS)
+        cov = 0.95 * cov + 0.05 * target
+        eigenvalues, eigenvectors = np.linalg.eigh(cov)
+        eigenvalues = np.maximum(eigenvalues, 1e-12)
+        log_cov = (eigenvectors * np.log(eigenvalues)) @ eigenvectors.T
+        matrices.append(_normalize_image(log_cov))
+    matrices = np.stack(matrices)
+    rgb = np.stack([
+        _resize_bilinear(_normalize_image(matrices[0:2].mean(axis=0))),
+        _resize_bilinear(_normalize_image(matrices[2:4].mean(axis=0))),
+        _resize_bilinear(_normalize_image(matrices[4])),
+    ])
+    return rgb.astype(np.float32)
+
+
 ENCODERS = {
     "spectrogram": spectrogram_image,
     "correlation": correlation_image,
     "topomap": topomap_image,
     "topomap5": topomap5_image,
     "covariance5": covariance5_image,
+    "covariance_hr": covariance_hr_image,
     "gaf": lambda data: waveform_image(data, "gaf"),
     "mtf": lambda data: waveform_image(data, "mtf"),
 }

@@ -1,0 +1,23 @@
+﻿train image: 4000/11304 | 13s
+train image: 8000/11304 | 22s
+train image: 11304/11304 | 29s
+d:\WORK\BCIC2026\BrainPrint\.venv\Scripts\python.exe : D:\WORK\BCIC2026\BrainPrint\src\eeg_image_dinov2\backbone.py:58:
+ UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writ
+ing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it wri
+table before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggere
+d internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:209.)
+所在位置 行:15 字符: 3442
++ ... M = 'dumb'; d:\WORK\BCIC2026\BrainPrint\.venv\Scripts\python.exe rese ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (D:\WORK\BCIC202...numpy.cpp:209.):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  batch = torch.as_tensor(images[start : start + batch_size], device=device)
+train DINOv2 (11304, 768) in 111s
+test image: 4000/22251 | 13s
+test image: 8000/22251 | 22s
+test image: 12000/22251 | 32s
+test image: 16000/22251 | 41s
+test image: 20000/22251 | 50s
+test image: 22251/22251 | 55s
+test DINOv2 (22251, 768) in 203s
