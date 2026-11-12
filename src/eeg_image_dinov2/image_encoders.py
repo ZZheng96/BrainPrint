@@ -1,4 +1,4 @@
-"""四种 EEG 图像表示：时频图、通道相关矩阵、头皮拓扑图、波形 GAF/MTF。
+﻿"""四种 EEG 图像表示：时频图、通道相关矩阵、头皮拓扑图、波形 GAF/MTF。
 
 所有表示统一输出 (3, 224, 224) float32，值域 [0,1]，供 DINOv2 使用。
 """
@@ -125,6 +125,68 @@ def correlation_image(data: np.ndarray) -> np.ndarray:
     return rgb.astype(np.float32)
 
 
+def _tile_5_bands(maps: list[np.ndarray]) -> np.ndarray:
+    """把 5 张图按 2×3 网格平铺，第 6 格留空，输出 224×224 灰度三通道。"""
+    cell_h, cell_w = IMG_SIZE // 2, IMG_SIZE // 3
+    canvas = np.zeros((cell_h * 2, cell_w * 3), dtype=np.float32)
+    for index, image in enumerate(maps):
+        row, col = divmod(index, 3)
+        resized = _resize_to(image, cell_h)[:cell_h, :cell_w]
+        canvas[row * cell_h : (row + 1) * cell_h, col * cell_w : (col + 1) * cell_w] = resized
+    # 右侧补 2 列到 224
+    padded = np.zeros((cell_h * 2, IMG_SIZE), dtype=np.float32)
+    padded[:, : canvas.shape[1]] = canvas
+    return np.stack([padded, padded, padded]).astype(np.float32)
+
+
+def topomap5_image(data: np.ndarray, grid: int = 64) -> np.ndarray:
+    """V3b：五频带头皮拓扑图，5 张地形图按 2×3 网格平铺成 224×224。
+
+    相比 topomap_image 的 3 通道压缩，这里保留全部 5 个频带，用灰度平铺。
+    """
+    data = np.asarray(data, dtype=np.float64)
+    data = data - data.mean(axis=0, keepdims=True)
+    positions = np.array([CHANNEL_POSITIONS[name] for name in CHANNEL_ORDER])
+    band_power = []
+    for low, high in BANDS:
+        filtered = _bandpass_fft(data, low, high)
+        band_power.append(np.log1p(np.mean(filtered ** 2, axis=0)))
+    band_power = np.stack(band_power)
+
+    axis = np.linspace(-1, 1, grid)
+    grid_x, grid_y = np.meshgrid(axis, axis)
+    mask = grid_x ** 2 + grid_y ** 2 <= 1.0
+    maps = []
+    for power in band_power:
+        interpolated = griddata(
+            positions, power, (grid_x, grid_y), method="cubic", fill_value=float(power.mean())
+        )
+        interpolated = np.nan_to_num(interpolated, nan=float(power.mean()))
+        interpolated = np.where(mask, interpolated, float(power.mean()))
+        maps.append(_normalize_image(interpolated))
+    return _tile_5_bands(maps)
+
+
+def covariance5_image(data: np.ndarray) -> np.ndarray:
+    """V2b：五频带对数协方差矩阵，5 张 18×18 按 2×3 网格平铺成 224×224。
+
+    与既往协方差基线同源，但以图像形式输入视觉模型。
+    """
+    data = np.asarray(data, dtype=np.float64)
+    data = data - data.mean(axis=0, keepdims=True)
+    matrices = []
+    for low, high in BANDS:
+        filtered = _bandpass_fft(data, low, high)
+        cov = np.cov(filtered, rowvar=False, ddof=1)
+        target = np.trace(cov) / N_CHANNELS * np.eye(N_CHANNELS)
+        cov = 0.95 * cov + 0.05 * target
+        eigenvalues, eigenvectors = np.linalg.eigh(cov)
+        eigenvalues = np.maximum(eigenvalues, 1e-12)
+        log_cov = (eigenvectors * np.log(eigenvalues)) @ eigenvectors.T
+        matrices.append(_normalize_image(log_cov))
+    return _tile_5_bands(matrices)
+
+
 def topomap_image(data: np.ndarray, grid: int = 64) -> np.ndarray:
     """V3：头皮拓扑图序列。
 
@@ -218,6 +280,8 @@ ENCODERS = {
     "spectrogram": spectrogram_image,
     "correlation": correlation_image,
     "topomap": topomap_image,
+    "topomap5": topomap5_image,
+    "covariance5": covariance5_image,
     "gaf": lambda data: waveform_image(data, "gaf"),
     "mtf": lambda data: waveform_image(data, "mtf"),
 }

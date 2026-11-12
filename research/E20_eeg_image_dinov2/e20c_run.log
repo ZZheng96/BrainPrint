@@ -1,0 +1,40 @@
+﻿covariance features (11304, 1026)
+covariance_only: {'C': 0.9498480400307436, 'identity_macro_f1': 0.9157070897138346, 'U': 0.9776815503421112, 'unknown_auroc': 0.9929130358002451, 'unknown_f1': 0.9684071259638545}
+
+=== topomap5 ===
+topomap5: 2000/11304 | 12s
+topomap5: 4000/11304 | 20s
+topomap5: 6000/11304 | 28s
+topomap5: 8000/11304 | 36s
+topomap5: 10000/11304 | 44s
+topomap5: 11304/11304 | 49s
+python.exe : Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher ra
+te limits and faster downloads.
+所在位置 行:15 字符: 4086
++ ... irror.com"; & .venv\Scripts\python.exe research\E20_eeg_image_dinov2\ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: You ar...ster downloads.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+D:\WORK\BCIC2026\BrainPrint\src\eeg_image_dinov2\backbone.py:58: UserWarning: The given NumPy array is not writable, an
+d PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. Y
+ou may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of wa
+rning will be suppressed for the rest of this program. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch
+\pytorch\torch\csrc\utils\tensor_numpy.cpp:209.)
+  batch = torch.as_tensor(images[start : start + batch_size], device=device)
+DINOv2 features (11304, 768) in 102s
+  image_only: {'C': 0.8750530958887293, 'identity_macro_f1': 0.8431403172803267, 'U': 0.1907890900728168, 'unknown_auroc': 0.7968594748567813, 'unknown_f1': 0.30861023883588956}
+  fused: {'C': 0.9498480400307436, 'identity_macro_f1': 0.9162548006273379, 'U': 0.9757760061670269, 'unknown_auroc': 0.9892473352024794, 'unknown_f1': 0.96759989243335}
+
+=== covariance5 ===
+covariance5: 2000/11304 | 8s
+covariance5: 4000/11304 | 11s
+covariance5: 6000/11304 | 15s
+covariance5: 8000/11304 | 18s
+covariance5: 10000/11304 | 21s
+covariance5: 11304/11304 | 23s
+DINOv2 features (11304, 768) in 101s
+  image_only: {'C': 0.9299742724011513, 'identity_macro_f1': 0.896693234080441, 'U': 0.4352383604791531, 'unknown_auroc': 0.9095218986794784, 'unknown_f1': 0.5867442323942831}
+  fused: {'C': 0.9498480400307436, 'identity_macro_f1': 0.9159910132735056, 'U': 0.9795338455808537, 'unknown_auroc': 0.9900553803339751, 'unknown_f1': 0.9694562047074096}
+
+saved D:\WORK\BCIC2026\BrainPrint\research\E20_eeg_image_dinov2\e20c_five_band_fusion.json
