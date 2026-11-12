@@ -1,0 +1,12 @@
+﻿noisy features 2000/11304 | 9s
+noisy features 4000/11304 | 13s
+noisy features 6000/11304 | 18s
+noisy features 8000/11304 | 22s
+noisy features 10000/11304 | 27s
+noisy features 11304/11304 | 29s
+clean   clean_acc=0.9971 clean_accept=0.957 | noisy_acc(RA代理)=0.9896 ASafeR代理=1.0000 noisy_accept=0.798
+noisy1  clean_acc=0.9966 clean_accept=0.972 | noisy_acc(RA代理)=0.9972 ASafeR代理=1.0000 noisy_accept=0.954
+noisy2  clean_acc=0.9965 clean_accept=0.971 | noisy_acc(RA代理)=0.9972 ASafeR代理=1.0000 noisy_accept=0.956
+clean   test: low accept=0.041 high accept=0.196 S1 accept=0.405
+noisy1  test: low accept=0.055 high accept=0.201 S1 accept=0.399
+noisy2  test: low accept=0.052 high accept=0.190 S1 accept=0.395
