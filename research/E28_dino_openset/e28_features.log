@@ -1,0 +1,26 @@
+﻿topomap5: 4000/22251 | 20s
+topomap5: 8000/22251 | 36s
+topomap5: 12000/22251 | 52s
+topomap5: 16000/22251 | 68s
+topomap5: 20000/22251 | 84s
+topomap5: 22251/22251 | 93s
+d:\WORK\BCIC2026\BrainPrint\.venv\Scripts\python.exe : D:\WORK\BCIC2026\BrainPrint\src\eeg_image_dinov2\backbone.py:58:
+ UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writ
+ing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it wri
+table before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggere
+d internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:209.)
+所在位置 行:15 字符: 4040
++ ... M = 'dumb'; d:\WORK\BCIC2026\BrainPrint\.venv\Scripts\python.exe rese ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (D:\WORK\BCIC202...numpy.cpp:209.):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  batch = torch.as_tensor(images[start : start + batch_size], device=device)
+topomap5 DINOv2 (22251, 768) in 205s
+correlation: 4000/22251 | 10s
+correlation: 8000/22251 | 17s
+correlation: 12000/22251 | 23s
+correlation: 16000/22251 | 30s
+correlation: 20000/22251 | 36s
+correlation: 22251/22251 | 39s
+correlation DINOv2 (22251, 768) in 317s

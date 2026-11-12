@@ -1,0 +1,16 @@
+﻿cov5: 内层选择 AUROC {'dist': 0.509, 'dist_wccn': 0.462, 'knn': 0.449, 'pca': 0.456} -> best=dist
+cov5: Test AUROC=0.7065 | train 19.07 S2 20.94 S1 54.27
+   reject1    S2 accept=0.952 S1 reject=0.435 zeros=2242
+   reject2    S2 accept=0.929 S1 reject=0.478 zeros=2806
+   reject5    S2 accept=0.882 S1 reject=0.531 zeros=3877
+   reject10   S2 accept=0.798 S1 reject=0.574 zeros=5617
+   reject20   S2 accept=0.658 S1 reject=0.634 zeros=8498
+   reject30   S2 accept=0.542 S1 reject=0.682 zeros=10871
+cov5_topo5: 内层选择 AUROC {'dist': 0.469, 'dist_wccn': 0.442, 'knn': 0.416, 'pca': 0.444} -> best=dist
+cov5_topo5: Test AUROC=0.7042 | train 28.06 S2 30.83 S1 62.44
+   reject1    S2 accept=0.947 S1 reject=0.438 zeros=2353
+   reject2    S2 accept=0.924 S1 reject=0.478 zeros=2918
+   reject5    S2 accept=0.864 S1 reject=0.533 zeros=4234
+   reject10   S2 accept=0.796 S1 reject=0.563 zeros=5636
+   reject20   S2 accept=0.678 S1 reject=0.619 zeros=8072
+   reject30   S2 accept=0.538 S1 reject=0.687 zeros=10957

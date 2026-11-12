@@ -1,0 +1,35 @@
+﻿cov5             dist    AUROC=0.7065 | train 19.07 S2 20.94 S1 54.27
+cov5             knn     AUROC=0.7172 | train 16.44 S2 20.07 S1 45.38
+cov5             pca     AUROC=0.7276 | train 8.13 S2 8.78 S1 20.97
+cov5             energy  AUROC=0.3315 | train -16.69 S2 -9.95 S1 -15.99
+cov5             margin  AUROC=0.4396 | train -9.77 S2 -2.29 S1 -2.79
+cov5             dist_wccn AUROC=0.7248 | train 15.44 S2 17.13 S1 42.33
+cov5             best=pca reject1:S2=0.933/S1=0.493 reject5:S2=0.859/S1=0.551 reject10:S2=0.776/S1=0.594 reject20:S2=0.631/S1=0.661 reject30:S2=0.507/S1=0.723
+topo5            dist    AUROC=0.5892 | train 17.15 S2 18.24 S1 20.30
+topo5            knn     AUROC=0.4160 | train 11.24 S2 13.54 S1 12.83
+topo5            pca     AUROC=0.5464 | train 3.42 S2 3.69 S1 3.84
+topo5            energy  AUROC=0.3106 | train -13.62 S2 -9.87 S1 -14.98
+topo5            margin  AUROC=0.3596 | train -6.11 S2 -1.90 S1 -3.75
+topo5            dist_wccn AUROC=0.5980 | train 11.21 S2 12.21 S1 13.24
+topo5            best=dist_wccn reject1:S2=0.975/S1=0.027 reject5:S2=0.913/S1=0.088 reject10:S2=0.848/S1=0.165 reject20:S2=0.722/S1=0.367 reject30:S2=0.567/S1=0.589
+corr             dist    AUROC=0.5334 | train 21.84 S2 167.36 S1 167.51
+corr             knn     AUROC=0.5452 | train 18.64 S2 165.65 S1 165.87
+corr             pca     AUROC=0.5738 | train 7.88 S2 140.04 S1 140.39
+corr             energy  AUROC=0.5811 | train -13.99 S2 -78.15 S1 -75.89
+corr             margin  AUROC=0.5777 | train -6.03 S2 -8.20 S1 -5.99
+corr             dist_wccn AUROC=0.5862 | train 16.93 S2 364.03 S1 365.20
+corr             best=dist_wccn reject1:S2=0.000/S1=1.000 reject5:S2=0.000/S1=1.000 reject10:S2=0.000/S1=1.000 reject20:S2=0.000/S1=1.000 reject30:S2=0.000/S1=1.000
+cov5_topo5       dist    AUROC=0.7042 | train 28.06 S2 30.83 S1 62.44
+cov5_topo5       knn     AUROC=0.7187 | train 22.99 S2 28.86 S1 54.58
+cov5_topo5       pca     AUROC=0.7247 | train 11.59 S2 12.80 S1 27.32
+cov5_topo5       energy  AUROC=0.3395 | train -19.58 S2 -11.38 S1 -16.18
+cov5_topo5       margin  AUROC=0.4393 | train -11.59 S2 -2.64 S1 -3.14
+cov5_topo5       dist_wccn AUROC=0.7209 | train 19.38 S2 22.11 S1 49.11
+cov5_topo5       best=pca reject1:S2=0.936/S1=0.489 reject5:S2=0.850/S1=0.550 reject10:S2=0.776/S1=0.592 reject20:S2=0.624/S1=0.662 reject30:S2=0.481/S1=0.733
+cov5_topo5_corr  dist    AUROC=0.7123 | train 37.76 S2 171.41 S1 180.64
+cov5_topo5_corr  knn     AUROC=0.7257 | train 33.56 S2 171.36 S1 179.42
+cov5_topo5_corr  pca     AUROC=0.7685 | train 18.16 S2 155.95 S1 160.79
+cov5_topo5_corr  energy  AUROC=0.3536 | train -23.75 S2 -18.65 S1 -23.42
+cov5_topo5_corr  margin  AUROC=0.3771 | train -14.08 S2 -2.94 S1 -4.69
+cov5_topo5_corr  dist_wccn AUROC=0.7690 | train 25.95 S2 377.44 S1 385.71
+cov5_topo5_corr  best=dist_wccn reject1:S2=0.000/S1=1.000 reject5:S2=0.000/S1=1.000 reject10:S2=0.000/S1=1.000 reject20:S2=0.000/S1=1.000 reject30:S2=0.000/S1=1.000
