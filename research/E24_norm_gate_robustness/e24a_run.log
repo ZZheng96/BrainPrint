@@ -1,0 +1,9 @@
+﻿噪声 SNR   30 dB -> 范数 p25/p50/p75 = 29.7 / 31.7 / 33.2
+噪声 SNR   20 dB -> 范数 p25/p50/p75 = 22.0 / 23.2 / 23.7
+噪声 SNR   15 dB -> 范数 p25/p50/p75 = 18.8 / 19.4 / 20.4
+干净样本范数 p50 = 59.7
+
+门控阈值 [43.30, 66.61]；Train 触发率 0.0101
+gate_only        margin_thr=    -inf | nested C=0.9854 F1=0.9324 U=0.0102 AUROC=0.9929 | S2 accept=0.577 (high 0.995) S1 reject=0.071
+gate_margin0001  margin_thr=   3.926 | nested C=0.9847 F1=0.9324 U=0.4815 AUROC=0.9929 | S2 accept=0.210 (high 0.358) S1 reject=0.620
+gate_margin005   margin_thr=   5.732 | nested C=0.9471 F1=0.9141 U=0.9768 AUROC=0.9929 | S2 accept=0.117 (high 0.196) S1 reject=0.647

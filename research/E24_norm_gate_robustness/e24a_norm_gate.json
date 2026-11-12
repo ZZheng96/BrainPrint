@@ -1,0 +1,95 @@
+{
+  "noise_injection": {
+    "snr_30db": {
+      "p25": 29.747777938842773,
+      "p50": 31.71308708190918,
+      "p75": 33.206809997558594
+    },
+    "snr_20db": {
+      "p25": 21.96165657043457,
+      "p50": 23.230510711669922,
+      "p75": 23.656192779541016
+    },
+    "snr_15db": {
+      "p25": 18.817955017089844,
+      "p50": 19.350128173828125,
+      "p75": 20.449684143066406
+    },
+    "clean": {
+      "p50": 59.74536895751953
+    }
+  },
+  "gate": {
+    "low": 43.295074462890625,
+    "high": 66.61041259765625,
+    "train_trigger": 0.010084925690021231,
+    "test_trigger_session1": 0.0712166172106825,
+    "test_trigger_session2": 0.422832760953273
+  },
+  "variants": {
+    "gate_only": {
+      "margin_quantile": null,
+      "margin_threshold": -Infinity,
+      "nested": {
+        "C": 0.9853544337078739,
+        "identity_f1": 0.9323961880217112,
+        "U": 0.010177356477234212,
+        "auroc": 0.9929130358002451,
+        "acceptance": 0.9878573473692193,
+        "worst_fold_auroc": 0.9843518310805718
+      },
+      "audit": {
+        "s2_accept": 0.5771672390467271,
+        "s2_high_group_accept": 0.9953733103510841,
+        "s2_low_group_reject": 0.9853569249542404,
+        "s1_reject": 0.0712166172106825,
+        "zero_count": 8342,
+        "zero_session1": 216,
+        "zero_session2": 8126
+      }
+    },
+    "gate_margin0001": {
+      "margin_quantile": 0.001,
+      "margin_threshold": 3.9259140491485596,
+      "nested": {
+        "C": 0.9847000496709312,
+        "identity_f1": 0.9324300151854568,
+        "U": 0.48154651529959763,
+        "auroc": 0.9929130358002451,
+        "acceptance": 0.9864422276898409,
+        "worst_fold_auroc": 0.9843518310805718
+      },
+      "audit": {
+        "s2_accept": 0.2104277240087418,
+        "s2_high_group_accept": 0.3578880522543772,
+        "s2_low_group_reject": 0.9879194630872483,
+        "s1_reject": 0.6198483349818661,
+        "zero_count": 17054,
+        "zero_session1": 1880,
+        "zero_session2": 15174
+      }
+    },
+    "gate_margin005": {
+      "margin_quantile": 0.05,
+      "margin_threshold": 5.731603622436523,
+      "nested": {
+        "C": 0.9471213130627889,
+        "identity_f1": 0.914118920551811,
+        "U": 0.9768100922559823,
+        "auroc": 0.9929130358002451,
+        "acceptance": 0.9471213130627889,
+        "worst_fold_auroc": 0.9843518310805718
+      },
+      "audit": {
+        "s2_accept": 0.11723384327193256,
+        "s2_high_group_accept": 0.19631679216184342,
+        "s2_low_group_reject": 0.9891397193410616,
+        "s1_reject": 0.6472139795581932,
+        "zero_count": 18928,
+        "zero_session1": 1963,
+        "zero_session2": 16965
+      }
+    }
+  },
+  "candidate": "gate_only"
+}
