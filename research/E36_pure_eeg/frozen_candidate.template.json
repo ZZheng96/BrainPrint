@@ -1,0 +1,23 @@
+{
+  "frozen": false,
+  "train_gates_passed": false,
+  "feature_variant": "detrend_zband_cov5",
+  "wccn_shrinkage": 0.05,
+  "score": "distance_ratio",
+  "calibration": "known_oof_ecdf",
+  "threshold": 0.02310574883287667,
+  "threshold_source": "calibration_results.json:inner_threshold_selection.u.proxy_threshold",
+  "seed": 20261112,
+  "cache_directory": "BrainPrint_cache/e36_pure_eeg",
+  "cache_sha256": {
+    "train_metadata": "f3be516e93082b78a9f483f9edb92f6330b1be39d32dff999a0a60b9bb92b545",
+    "train_detrend_zband_cov5": "fdc68441c1099ce57128cb892211eb7bb3c9c5dbde9beeed2789b519e8564f27",
+    "f20_known_oof_distance_ratio": "5656e0e5c2ff5d3de3bc1b6416f7076fc8e5b7f806cc4eae930ebf9842faf174"
+  },
+  "code_sha256": {
+    "config.json": "b8e2d1ee6f0b2b16a2ccef145870a67a3421fe868f0f2c91d9f76beb88e42856",
+    "run_e36.py": "87e889ee83656751358f38575021c3b2301d24f34e94371a6552d0a88c73244f",
+    "run_e36e_calibration.py": "2342f52dcde6b2f49e4bceabcfb74ada3889c76c24f2cd200259664dac41879e",
+    "run_e36e_inference.py": "686d80e7fce320a7d36466f50678bac53a5d8e5e6f3f03a4f071b03af24b02f6"
+  }
+}

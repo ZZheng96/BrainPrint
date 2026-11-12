@@ -1,0 +1,51 @@
+{
+  "data": "Train session1 only; Test not accessed",
+  "n_trials": 11304,
+  "shape": [
+    11304,
+    855
+  ],
+  "dtype": "float32",
+  "bands_hz": [
+    [
+      1,
+      8
+    ],
+    [
+      8,
+      13
+    ],
+    [
+      13,
+      20
+    ],
+    [
+      20,
+      30
+    ],
+    [
+      30,
+      40
+    ]
+  ],
+  "raw_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\e36_pure_eeg\\train_raw_cov5.npy",
+  "zband_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\e36_pure_eeg\\train_detrend_zband_cov5.npy",
+  "raw_finite": true,
+  "zband_finite": true,
+  "zband_max_abs_mean": 2.091391024805489e-07,
+  "zband_max_abs_std_error": 1.7881393432617188e-07,
+  "invariance": {
+    "n_trials": 16,
+    "cache_vs_rebuilt_max_abs": 0.0,
+    "single_vs_batch_max_abs": 0.0,
+    "permutation_vs_batch_max_abs": 0.0,
+    "zband_vs_rebuilt_max_abs": 4.76837158203125e-07,
+    "cache_allclose_atol_1e-5": true
+  },
+  "elapsed_seconds": 5.777796030044556,
+  "raw_sha256": "71bbc9eecd4e493920c4b8a72edac773454b1e92174fe5989a1f2ea277ee4a8e",
+  "zband_sha256": "fdc68441c1099ce57128cb892211eb7bb3c9c5dbde9beeed2789b519e8564f27",
+  "metadata_sha256": "f3be516e93082b78a9f483f9edb92f6330b1be39d32dff999a0a60b9bb92b545",
+  "config_sha256": "b8e2d1ee6f0b2b16a2ccef145870a67a3421fe868f0f2c91d9f76beb88e42856",
+  "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU"
+}

@@ -1,0 +1,70 @@
+{
+  "experiment": "E36A/E36B pure-EEG reproducible baseline and nested open-set evaluation",
+  "date_frozen": "2026-11-12",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "expected_trials": 11304,
+    "expected_subjects": 20,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "session": "session1",
+    "test_access": "forbidden"
+  },
+  "features": {
+    "method": "single-trial FFT ideal band isolation -> GPU covariance -> fixed shrinkage -> logSPD -> upper triangle",
+    "bands_hz": [[1, 8], [8, 13], [13, 20], [20, 30], [30, 40]],
+    "upper_band_boundaries": "lower-inclusive and upper-exclusive, except 40 Hz inclusive in the last band",
+    "covariance_shrinkage": 0.05,
+    "eigenvalue_floor": 1e-12,
+    "off_diagonal_multiplier": 1.4142135623730951,
+    "raw": "logSPD without per-trial scale removal",
+    "detrend": "subtract each band's mean diagonal log-variance from diagonal entries only",
+    "zband": "within each trial and band, standardize all 171 detrended logSPD entries to zero mean and unit population standard deviation",
+    "zband_epsilon": 1e-6,
+    "io_batch_size": 64,
+    "io_workers": 4
+  },
+  "models": {
+    "ridge_alpha": 100.0,
+    "ridge_feature_scaling": "training-fold mean and population standard deviation only",
+    "wccn_shrinkage": 0.05,
+    "wccn_eigenvalue_floor": 1e-6,
+    "prediction_batch_size": 512,
+    "candidates": {
+      "raw_cov5_ridge": ["max", "margin", "energy"],
+      "detrend_zband_cov5_ridge": ["max", "margin", "energy"],
+      "detrend_zband_cov5_prototype": ["max_cosine", "margin", "distance_ratio"],
+      "detrend_zband_cov5_wccn_prototype": ["max_cosine", "margin", "distance_ratio"]
+    }
+  },
+  "nested_protocol": {
+    "outer_seed": 42,
+    "outer_folds": 5,
+    "outer_unknown_subjects_per_fold": 4,
+    "outer_known_evaluation": "trial > 0.8 * within-subject/task maximum; a continuous file-block proxy",
+    "outer_fit": "enrolled subjects and not outer-known-evaluation",
+    "inner_seed": "100 + one-based outer fold",
+    "inner_folds": 2,
+    "inner_known_evaluation": "0.6 * max < trial <= 0.8 * max within subject/task",
+    "inner_fit": "inner-enrolled subjects, trial <= 0.6 * max",
+    "inner_unknown_evaluation": "inner pseudo-unknown subjects, trial <= 0.8 * max",
+    "threshold_known_acceptance_grid": [0.95, 1.0],
+    "threshold_grid_points": 101,
+    "threshold_selection": "for each score, maximize 100*C^0.40*U^0.25 subject to inner known acceptance >= 0.95; ties by C, U, AUROC, then configured score order; then select score by the same rule",
+    "proxy_warning": "C/U-only inner selection proxy; A is unavailable, so this is not the official competition score",
+    "q05": "fifth percentile of pooled inner-known confidence for the selected score"
+  },
+  "invariance": {
+    "seed": 20261112,
+    "trials": 64,
+    "score_atol": 1e-5,
+    "score_rtol": 1e-5
+  },
+  "reporting": {
+    "auc": "unknown-detection AUROC with larger confidence indicating known; also unknown-class AUPR using negated confidence",
+    "f1": "registered identity macro-F1, unknown-class F1, and joint 0–20 macro-F1 are distinguished",
+    "attacks_and_test": "N/A: no attacks run and Test has no labels; Test was not read"
+  }
+}

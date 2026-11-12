@@ -1,0 +1,2390 @@
+{
+  "status": "complete",
+  "experiment": "E36E final-20-class Train-only ECDF calibration",
+  "date": "2026-11-12",
+  "data_evidence": "仅Train session1；pseudo-unknown与连续文件块均为代理，不是真实跨Session证据；Test未读取",
+  "score_reuse": "既有results.json无完整分数缓存，按冻结划分重算K8/K16",
+  "wccn_shrinkage": 0.05,
+  "shrinkage_selection": "命令行固定参数，默认0.05；未根据outer或Test选择",
+  "seed": 20261112,
+  "ecdf_definition": "每折F_K仅fit该折known OOF distance_ratio；u=right-continuous ECDF(r)=count(reference<=r)/n；known与unknown共用该折F_K",
+  "threshold_protocol": "只在inner K8 pooled OOF选择raw/u阈值；101个known quantile候选覆盖接受率[.95,1]；outer K16只迁移确认；q05使用lower order statistic保证已知接受率>=.95",
+  "proxy_warning": "C/U代理=100*C^0.40*U^0.25，仅用于阈值选择，不含攻击A项，不是完整官方Score；未运行或使用对抗指标",
+  "config_sha256": "b8e2d1ee6f0b2b16a2ccef145870a67a3421fe868f0f2c91d9f76beb88e42856",
+  "script_sha256": "2342f52dcde6b2f49e4bceabcfb74ada3889c76c24f2cd200259664dac41879e",
+  "zband_cache": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\e36_pure_eeg\\train_detrend_zband_cov5.npy",
+  "zband_cache_sha256": "fdc68441c1099ce57128cb892211eb7bb3c9c5dbde9beeed2789b519e8564f27",
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.7.1+cu118",
+    "numpy": "2.4.6",
+    "sklearn": "1.9.1",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "model_fit_and_inference": "CUDA GPU；仅指标/ECDF在CPU；无批次统计"
+  },
+  "inner_threshold_selection": {
+    "raw": {
+      "score": "raw",
+      "selection_pool": "inner_K8_pooled_only",
+      "known_acceptance_constraint": 0.95,
+      "proxy_threshold": 1.0930800043208966,
+      "q05_threshold": 1.1183662400761296,
+      "selection_detection": {
+        "AUROC": 0.9961693523453081,
+        "unknown_AUPR": 0.9987367685605284,
+        "known_AUPR": 0.9907495033233696,
+        "EER": 0.025178249341201213
+      },
+      "proxy_selection_preview": {
+        "threshold": 1.0930800043208966,
+        "C": 0.9744676227727075,
+        "U": 0.9754335260115607,
+        "known_acceptance": 0.9744676227727075,
+        "C_U_proxy_not_official": 98.35725170644749,
+        "AUROC": 0.9961693523453081
+      },
+      "warning": "仅C/U代理，无攻击A项，不是完整官方Score；未使用outer或Test选择"
+    },
+    "u": {
+      "score": "u",
+      "selection_pool": "inner_K8_pooled_only",
+      "known_acceptance_constraint": 0.95,
+      "proxy_threshold": 0.02310574883287667,
+      "q05_threshold": 0.05052631578947368,
+      "selection_detection": {
+        "AUROC": 0.9963686764714976,
+        "unknown_AUPR": 0.9989557215555342,
+        "known_AUPR": 0.9902166346946499,
+        "EER": 0.026799026183639683
+      },
+      "proxy_selection_preview": {
+        "threshold": 0.02310574883287667,
+        "C": 0.9774011299435028,
+        "U": 0.9687916851934193,
+        "known_acceptance": 0.9774011299435028,
+        "C_U_proxy_not_official": 98.30751888726729,
+        "AUROC": 0.9963686764714976
+      },
+      "warning": "仅C/U代理，无攻击A项，不是完整官方Score；未使用outer或Test选择"
+    }
+  },
+  "pooled": {
+    "inner_K8_calibration": {
+      "n_known": 9204,
+      "n_unknown": 35984,
+      "direct_C": 0.9992394611038679,
+      "identity_macro_F1_direct": 0.9992323470276319,
+      "raw": {
+        "AUROC": 0.9961693523453081,
+        "unknown_AUPR": 0.9987367685605284,
+        "known_AUPR": 0.9907495033233696,
+        "EER": 0.025178249341201213,
+        "proxy_work_inner_threshold": {
+          "threshold": 1.0930800043208966,
+          "C": 0.9744676227727075,
+          "U": 0.9754335260115607,
+          "known_acceptance": 0.9744676227727075,
+          "unknown_F1": 0.984309931434821,
+          "identity_macro_F1": 0.9867486049297771,
+          "joint_macro_F1": 0.9453036616758717,
+          "C_U_proxy_not_official": 98.35725170644749
+        },
+        "q05_work_inner_threshold": {
+          "threshold": 1.1183662400761296,
+          "C": 0.9500217296827467,
+          "U": 0.9929413072476656,
+          "known_acceptance": 0.9500217296827467,
+          "unknown_F1": 0.9901072408346496,
+          "identity_macro_F1": 0.9736025651677386,
+          "joint_macro_F1": 0.9615004618159937,
+          "C_U_proxy_not_official": 97.79672469689032
+        },
+        "local_q05_diagnostic_not_for_selection": {
+          "threshold": 1.1183662400761296,
+          "C": 0.9500217296827467,
+          "U": 0.9929413072476656,
+          "known_acceptance": 0.9500217296827467,
+          "unknown_F1": 0.9901072408346496,
+          "identity_macro_F1": 0.9736025651677386,
+          "joint_macro_F1": 0.9615004618159937,
+          "C_U_proxy_not_official": 97.79672469689032
+        },
+        "known_quantiles": {
+          "q00": 1.0015766515147873,
+          "q05": 1.118371099167586,
+          "q50": 1.2718132756421014,
+          "q95": 1.7031818626842756,
+          "q100": 6.777345566377868
+        },
+        "unknown_quantiles": {
+          "q00": 1.000000718213315,
+          "q05": 1.0017120729581148,
+          "q50": 1.0215498712959554,
+          "q95": 1.0782316378504628,
+          "q100": 1.2782888743765493
+        }
+      },
+      "u": {
+        "AUROC": 0.9963686764714976,
+        "unknown_AUPR": 0.9989557215555342,
+        "known_AUPR": 0.9902166346946499,
+        "EER": 0.026799026183639683,
+        "proxy_work_inner_threshold": {
+          "threshold": 0.02310574883287667,
+          "C": 0.9774011299435028,
+          "U": 0.9687916851934193,
+          "known_acceptance": 0.9774011299435028,
+          "unknown_F1": 0.9812675045388654,
+          "identity_macro_F1": 0.9884053380206383,
+          "joint_macro_F1": 0.9388373743303137,
+          "C_U_proxy_not_official": 98.30751888726729
+        },
+        "q05_work_inner_threshold": {
+          "threshold": 0.05052631578947368,
+          "C": 0.9500217296827467,
+          "U": 0.990884837705647,
+          "known_acceptance": 0.9500217296827467,
+          "unknown_F1": 0.9890707350901525,
+          "identity_macro_F1": 0.9737005126373706,
+          "joint_macro_F1": 0.9580330838754184,
+          "C_U_proxy_not_official": 97.74604889874631
+        },
+        "local_q05_diagnostic_not_for_selection": {
+          "threshold": 0.05052631578947368,
+          "C": 0.9500217296827467,
+          "U": 0.990884837705647,
+          "known_acceptance": 0.9500217296827467,
+          "unknown_F1": 0.9890707350901525,
+          "identity_macro_F1": 0.9737005126373706,
+          "joint_macro_F1": 0.9580330838754184,
+          "C_U_proxy_not_official": 97.74604889874631
+        },
+        "known_quantiles": {
+          "q00": 0.0010416666666666667,
+          "q05": 0.050538127496960225,
+          "q50": 0.5005494512129589,
+          "q95": 0.9505216258467952,
+          "q100": 1.0
+        },
+        "unknown_quantiles": {
+          "q00": 0.0,
+          "q05": 0.0,
+          "q50": 0.0010526315789473684,
+          "q95": 0.016538037486218304,
+          "q100": 0.4634146341463415
+        }
+      }
+    },
+    "outer_K16_transfer_confirmation": {
+      "n_known": 9232,
+      "n_unknown": 11304,
+      "direct_C": 0.9997833622183708,
+      "identity_macro_F1_direct": 0.9997816333633706,
+      "raw": {
+        "AUROC": 0.9978486760564502,
+        "unknown_AUPR": 0.9974888394255157,
+        "known_AUPR": 0.9980318300145444,
+        "EER": 0.014806609767435565,
+        "proxy_work_inner_threshold": {
+          "threshold": 1.0930800043208966,
+          "C": 0.9736785095320624,
+          "U": 0.9945152158527955,
+          "known_acceptance": 0.9736785095320624,
+          "unknown_F1": 0.9866163499934179,
+          "identity_macro_F1": 0.9861388536162133,
+          "joint_macro_F1": 0.9829478735476089,
+          "C_U_proxy_not_official": 98.80276349083988
+        },
+        "q05_work_inner_threshold": {
+          "threshold": 1.1183662400761296,
+          "C": 0.941182842287695,
+          "U": 0.9989384288747346,
+          "known_acceptance": 0.941182842287695,
+          "unknown_F1": 0.9760145209386749,
+          "identity_macro_F1": 0.9681499500795324,
+          "joint_macro_F1": 0.967890907736888,
+          "C_U_proxy_not_official": 97.5785321238032
+        },
+        "local_q05_diagnostic_not_for_selection": {
+          "threshold": 1.1133409724440482,
+          "C": 0.9500649913344887,
+          "U": 0.9984961075725407,
+          "known_acceptance": 0.9500649913344887,
+          "unknown_F1": 0.9792642720805136,
+          "identity_macro_F1": 0.973118398078688,
+          "joint_macro_F1": 0.9725171320035566,
+          "C_U_proxy_not_official": 97.93499830186597
+        },
+        "known_quantiles": {
+          "q00": 1.0010875251342255,
+          "q05": 1.1133674172669827,
+          "q50": 1.245974004942867,
+          "q95": 1.7607241038454027,
+          "q100": 7.576963665805637
+        },
+        "unknown_quantiles": {
+          "q00": 1.0000036228283107,
+          "q05": 1.0013001849169607,
+          "q50": 1.0165103620459313,
+          "q95": 1.059208949764693,
+          "q100": 1.1805834952169107
+        }
+      },
+      "u": {
+        "AUROC": 0.9980896625908713,
+        "unknown_AUPR": 0.9980515460656595,
+        "known_AUPR": 0.9981313723388168,
+        "EER": 0.014555667170774987,
+        "proxy_work_inner_threshold": {
+          "threshold": 0.02310574883287667,
+          "C": 0.9772530329289428,
+          "U": 0.9937190375088464,
+          "known_acceptance": 0.9772530329289428,
+          "unknown_F1": 0.9876467226447444,
+          "identity_macro_F1": 0.988118320698592,
+          "joint_macro_F1": 0.9844383589405992,
+          "C_U_proxy_not_official": 98.92788249134993
+        },
+        "q05_work_inner_threshold": {
+          "threshold": 0.05052631578947368,
+          "C": 0.9498483535528596,
+          "U": 0.9986730360934183,
+          "known_acceptance": 0.9498483535528596,
+          "unknown_F1": 0.9792678695350451,
+          "identity_macro_F1": 0.9730859803614917,
+          "joint_macro_F1": 0.9725866488923258,
+          "C_U_proxy_not_official": 97.93040278616172
+        },
+        "local_q05_diagnostic_not_for_selection": {
+          "threshold": 0.050215982721382287,
+          "C": 0.9500649913344887,
+          "U": 0.9986730360934183,
+          "known_acceptance": 0.9500649913344887,
+          "unknown_F1": 0.9793528238049796,
+          "identity_macro_F1": 0.9731992632562256,
+          "joint_macro_F1": 0.9726985828049264,
+          "C_U_proxy_not_official": 97.93933641169929
+        },
+        "known_quantiles": {
+          "q00": 0.0005324813631522897,
+          "q05": 0.05023090373191538,
+          "q50": 0.500272955123615,
+          "q95": 0.9503092135125137,
+          "q100": 1.0
+        },
+        "unknown_quantiles": {
+          "q00": 0.0,
+          "q05": 0.0,
+          "q50": 0.0005515719801434088,
+          "q95": 0.007072905331882481,
+          "q100": 0.22786177105831534
+        }
+      }
+    }
+  },
+  "K_drift": {
+    "comparison": "K8内层与K16外层；负/正差均为描述性迁移结果，不用于调参",
+    "raw_proxy_work_K16_minus_K8": {
+      "C": -0.0007891132406451229,
+      "U": 0.019081689841234706,
+      "known_acceptance": -0.0007891132406451229,
+      "unknown_F1": 0.0023064185585968122,
+      "identity_macro_F1": -0.0006097513135637778,
+      "joint_macro_F1": 0.037644211871737276,
+      "C_U_proxy_not_official": 0.44551178439239436
+    },
+    "ecdf_proxy_work_K16_minus_K8": {
+      "C": -0.00014809701455997804,
+      "U": 0.024927352315427087,
+      "known_acceptance": -0.00014809701455997804,
+      "unknown_F1": 0.006379218105879048,
+      "identity_macro_F1": -0.0002870173220463901,
+      "joint_macro_F1": 0.0456009846102855,
+      "C_U_proxy_not_official": 0.620363604082641
+    },
+    "raw_q05_work_K16_minus_K8": {
+      "C": -0.008838887395051676,
+      "U": 0.005997121627069002,
+      "known_acceptance": -0.008838887395051676,
+      "unknown_F1": -0.014092719895974715,
+      "identity_macro_F1": -0.005452615088206159,
+      "joint_macro_F1": 0.006390445920894328,
+      "C_U_proxy_not_official": -0.2181925730871228
+    },
+    "ecdf_q05_work_K16_minus_K8": {
+      "C": -0.00017337612988710394,
+      "U": 0.007788198387771339,
+      "known_acceptance": -0.00017337612988710394,
+      "unknown_F1": -0.009802865555107454,
+      "identity_macro_F1": -0.0006145322758788208,
+      "joint_macro_F1": 0.01455356501690741,
+      "C_U_proxy_not_official": 0.18435388741541203
+    },
+    "AUROC_K16_minus_K8": {
+      "raw": 0.0016793237111421,
+      "u": 0.0017209861193736575
+    },
+    "local_U_at_known95_K16_minus_K8": {
+      "raw": 0.005554800324875098,
+      "u": 0.007788198387771339
+    },
+    "raw_fold_q05_threshold_std": 0.015319322636935499,
+    "raw_fold_q05_threshold_cv": 0.013679646839558975,
+    "raw_fold_unknown_median_std": 0.003005569198469919,
+    "u_fold_q05_threshold_std": 0.00031522415801339714,
+    "u_fold_q05_threshold_cv": 0.006254180094306061,
+    "u_fold_unknown_median_std": 0.0008652422979028161,
+    "ecdf_reduces_fold_q05_threshold_cv_vs_raw": true
+  },
+  "folds": {
+    "inner_K8": [
+      {
+        "fold_name": "outer1_inner1",
+        "K": 8,
+        "unknown_subjects": [
+          4,
+          20,
+          1,
+          12,
+          2,
+          17,
+          18,
+          9
+        ],
+        "registered_subjects": [
+          3,
+          5,
+          6,
+          7,
+          11,
+          13,
+          14,
+          19
+        ],
+        "n_fit": 2735,
+        "metrics": {
+          "n_known": 950,
+          "n_unknown": 3623,
+          "direct_C": 1.0,
+          "identity_macro_F1_direct": 1.0,
+          "raw": {
+            "AUROC": 0.9977172160320757,
+            "unknown_AUPR": 0.9987888009312026,
+            "known_AUPR": 0.9960606704755284,
+            "EER": 0.01553655737466767,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9831578947368421,
+              "U": 0.9939276842395804,
+              "known_acceptance": 0.9831578947368421,
+              "unknown_F1": 0.9947513812154696,
+              "identity_macro_F1": 0.9914451725414841,
+              "joint_macro_F1": 0.9818454606270515,
+              "C_U_proxy_not_official": 99.17175645828688
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9736842105263158,
+              "U": 0.999171956941761,
+              "known_acceptance": 0.9736842105263158,
+              "unknown_F1": 0.996147495872317,
+              "identity_macro_F1": 0.986374166564225,
+              "joint_macro_F1": 0.9860792304034462,
+              "C_U_proxy_not_official": 98.9184517146147
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.1436993489958327,
+              "C": 0.9505263157894737,
+              "U": 1.0,
+              "known_acceptance": 0.9505263157894737,
+              "unknown_F1": 0.9935554641436994,
+              "identity_macro_F1": 0.9735314229591071,
+              "joint_macro_F1": 0.975756316424062,
+              "C_U_proxy_not_official": 97.99088003933679
+            },
+            "known_quantiles": {
+              "q00": 1.0015766515147873,
+              "q05": 1.144108816967124,
+              "q50": 1.3269158319220589,
+              "q95": 4.262773658057949,
+              "q100": 6.1037440164475445
+            },
+            "unknown_quantiles": {
+              "q00": 1.0000080588186309,
+              "q05": 1.0016616018134772,
+              "q50": 1.0184764787919116,
+              "q95": 1.064985109759173,
+              "q100": 1.1361441930615723
+            }
+          },
+          "u": {
+            "AUROC": 0.9982183999883784,
+            "unknown_AUPR": 0.9992678017041684,
+            "known_AUPR": 0.9960606704755284,
+            "EER": 0.011810363612592042,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9778947368421053,
+              "U": 0.9964118134142975,
+              "known_acceptance": 0.9778947368421053,
+              "unknown_F1": 0.9953129307968017,
+              "identity_macro_F1": 0.9886616741262335,
+              "joint_macro_F1": 0.9834857211500156,
+              "C_U_proxy_not_official": 99.02082957822932
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9505263157894737,
+              "U": 1.0,
+              "known_acceptance": 0.9505263157894737,
+              "unknown_F1": 0.9935554641436994,
+              "identity_macro_F1": 0.9735314229591071,
+              "joint_macro_F1": 0.975756316424062,
+              "C_U_proxy_not_official": 97.99088003933679
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9505263157894737,
+              "U": 1.0,
+              "known_acceptance": 0.9505263157894737,
+              "unknown_F1": 0.9935554641436994,
+              "identity_macro_F1": 0.9735314229591071,
+              "joint_macro_F1": 0.975756316424062,
+              "C_U_proxy_not_official": 97.99088003933679
+            },
+            "known_quantiles": {
+              "q00": 0.0010526315789473684,
+              "q05": 0.051000000000000004,
+              "q50": 0.5005263157894737,
+              "q95": 0.9500526315789474,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0010526315789473684,
+              "q50": 0.0010526315789473684,
+              "q95": 0.008421052631578947,
+              "q100": 0.037894736842105266
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer1_inner2",
+        "K": 8,
+        "unknown_subjects": [
+          11,
+          6,
+          5,
+          19,
+          13,
+          14,
+          7,
+          3
+        ],
+        "registered_subjects": [
+          1,
+          2,
+          4,
+          9,
+          12,
+          17,
+          18,
+          20
+        ],
+        "n_fit": 2712,
+        "metrics": {
+          "n_known": 911,
+          "n_unknown": 3685,
+          "direct_C": 1.0,
+          "identity_macro_F1_direct": 1.0,
+          "raw": {
+            "AUROC": 0.993192206813453,
+            "unknown_AUPR": 0.9981532439390954,
+            "known_AUPR": 0.9809807051963569,
+            "EER": 0.0394328626302675,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9615806805708014,
+              "U": 0.9606512890094979,
+              "known_acceptance": 0.9615806805708014,
+              "unknown_F1": 0.9752066115702479,
+              "identity_macro_F1": 0.9807157114789125,
+              "joint_macro_F1": 0.9209948090041296,
+              "C_U_proxy_not_official": 97.46209311431097
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9308452250274424,
+              "U": 0.983989145183175,
+              "known_acceptance": 0.9308452250274424,
+              "unknown_F1": 0.9834553837808516,
+              "identity_macro_F1": 0.9644641080571833,
+              "joint_macro_F1": 0.9408357225574443,
+              "C_U_proxy_not_official": 96.78288570407305
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.105285002902999,
+              "C": 0.9506037321624589,
+              "U": 0.9739484396200814,
+              "known_acceptance": 0.9506037321624589,
+              "unknown_F1": 0.9807350730974177,
+              "identity_macro_F1": 0.974699859091176,
+              "joint_macro_F1": 0.934437196664608,
+              "C_U_proxy_not_official": 97.3495162030407
+            },
+            "known_quantiles": {
+              "q00": 1.0263747467057798,
+              "q05": 1.105881597766262,
+              "q50": 1.216902539772839,
+              "q95": 1.3576548589914366,
+              "q100": 1.4667641299702914
+            },
+            "unknown_quantiles": {
+              "q00": 1.000004720427665,
+              "q05": 1.0020173810735058,
+              "q50": 1.0236854101512378,
+              "q95": 1.086005502692288,
+              "q100": 1.1989062849653145
+            }
+          },
+          "u": {
+            "AUROC": 0.9934433212641514,
+            "unknown_AUPR": 0.9981753064999482,
+            "known_AUPR": 0.9809807051963569,
+            "EER": 0.03888401520985033,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9769484083424808,
+              "U": 0.9280868385345997,
+              "known_acceptance": 0.9769484083424808,
+              "unknown_F1": 0.959865282065675,
+              "identity_macro_F1": 0.9885284008672977,
+              "joint_macro_F1": 0.890395907937125,
+              "C_U_proxy_not_official": 97.24019147401033
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9495060373216246,
+              "U": 0.9758480325644505,
+              "known_acceptance": 0.9495060373216246,
+              "unknown_F1": 0.9815749965879623,
+              "identity_macro_F1": 0.9741636613484805,
+              "joint_macro_F1": 0.9367390301037068,
+              "C_U_proxy_not_official": 97.3519466087101
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.050493962678375415,
+              "C": 0.9506037321624589,
+              "U": 0.9739484396200814,
+              "known_acceptance": 0.9506037321624589,
+              "unknown_F1": 0.9807350730974177,
+              "identity_macro_F1": 0.974699859091176,
+              "joint_macro_F1": 0.934437196664608,
+              "C_U_proxy_not_official": 97.3495162030407
+            },
+            "known_quantiles": {
+              "q00": 0.0010976948408342481,
+              "q05": 0.05104281009879254,
+              "q50": 0.5005488474204172,
+              "q95": 0.9500548847420418,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.0,
+              "q95": 0.036223929747530186,
+              "q100": 0.3951701427003293
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer2_inner1",
+        "K": 8,
+        "unknown_subjects": [
+          9,
+          18,
+          17,
+          10,
+          3,
+          14,
+          2,
+          1
+        ],
+        "registered_subjects": [
+          4,
+          5,
+          6,
+          8,
+          12,
+          15,
+          16,
+          19
+        ],
+        "n_fit": 2571,
+        "metrics": {
+          "n_known": 907,
+          "n_unknown": 3587,
+          "direct_C": 0.9988974641675854,
+          "identity_macro_F1_direct": 0.9989272157121637,
+          "raw": {
+            "AUROC": 0.9970495563269175,
+            "unknown_AUPR": 0.9990087537612297,
+            "known_AUPR": 0.9937257379048499,
+            "EER": 0.016353769230982022,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9823594266813671,
+              "U": 0.9838304990242542,
+              "known_acceptance": 0.9823594266813671,
+              "unknown_F1": 0.9896242288278183,
+              "identity_macro_F1": 0.9909642191207139,
+              "joint_macro_F1": 0.965521587572642,
+              "C_U_proxy_not_official": 98.88678041000801
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9702315325248071,
+              "U": 0.9944243100083635,
+              "known_acceptance": 0.9702315325248071,
+              "unknown_F1": 0.9934549505639882,
+              "identity_macro_F1": 0.9845269952753957,
+              "joint_macro_F1": 0.97653594196526,
+              "C_U_proxy_not_official": 98.66044891211118
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.141316477995872,
+              "C": 0.9503858875413451,
+              "U": 0.9980485085029273,
+              "known_acceptance": 0.9503858875413451,
+              "unknown_F1": 0.992789794786467,
+              "identity_macro_F1": 0.9736292505226218,
+              "joint_macro_F1": 0.972488472196939,
+              "C_U_proxy_not_official": 97.93724972661023
+            },
+            "known_quantiles": {
+              "q00": 1.0107858913295529,
+              "q05": 1.1413302828253826,
+              "q50": 1.3039825197491564,
+              "q95": 4.123742684899706,
+              "q100": 5.8259178478216285
+            },
+            "unknown_quantiles": {
+              "q00": 1.00001268906306,
+              "q05": 1.0014911959329325,
+              "q50": 1.019080901497255,
+              "q95": 1.0721694237814354,
+              "q100": 1.2764470455980703
+            }
+          },
+          "u": {
+            "AUROC": 0.9974293118387513,
+            "unknown_AUPR": 0.9991266691215843,
+            "known_AUPR": 0.9937257379048497,
+            "EER": 0.016353769230982022,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9779492833517089,
+              "U": 0.9891274045163089,
+              "known_acceptance": 0.9779492833517089,
+              "unknown_F1": 0.9917540181691125,
+              "identity_macro_F1": 0.9886512341756432,
+              "joint_macro_F1": 0.9715156001557579,
+              "C_U_proxy_not_official": 98.84156012459333
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9503858875413451,
+              "U": 0.9980485085029273,
+              "known_acceptance": 0.9503858875413451,
+              "unknown_F1": 0.992789794786467,
+              "identity_macro_F1": 0.9736292505226218,
+              "joint_macro_F1": 0.972488472196939,
+              "C_U_proxy_not_official": 97.93724972661023
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.050716648291069456,
+              "C": 0.9503858875413451,
+              "U": 0.9980485085029273,
+              "known_acceptance": 0.9503858875413451,
+              "unknown_F1": 0.992789794786467,
+              "identity_macro_F1": 0.9736292505226218,
+              "joint_macro_F1": 0.972488472196939,
+              "C_U_proxy_not_official": 97.93724972661023
+            },
+            "known_quantiles": {
+              "q00": 0.0011025358324145535,
+              "q05": 0.05104740904079383,
+              "q50": 0.5005512679162073,
+              "q95": 0.9500551267916206,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.002205071664829107,
+              "q95": 0.009922822491730982,
+              "q100": 0.40683572216097025
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer2_inner2",
+        "K": 8,
+        "unknown_subjects": [
+          8,
+          19,
+          4,
+          6,
+          16,
+          12,
+          15,
+          5
+        ],
+        "registered_subjects": [
+          1,
+          2,
+          3,
+          9,
+          10,
+          14,
+          17,
+          18
+        ],
+        "n_fit": 2685,
+        "metrics": {
+          "n_known": 902,
+          "n_unknown": 3478,
+          "direct_C": 1.0,
+          "identity_macro_F1_direct": 1.0,
+          "raw": {
+            "AUROC": 0.9948140927642745,
+            "unknown_AUPR": 0.9984654362346735,
+            "known_AUPR": 0.9860081682202926,
+            "EER": 0.03542093539498835,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9623059866962306,
+              "U": 0.9663599769982749,
+              "known_acceptance": 0.9623059866962306,
+              "unknown_F1": 0.9780299723555943,
+              "identity_macro_F1": 0.9793275876213583,
+              "joint_macro_F1": 0.927708343540905,
+              "C_U_proxy_not_official": 97.63600675262153
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9212860310421286,
+              "U": 0.9910868315123634,
+              "known_acceptance": 0.9212860310421286,
+              "unknown_F1": 0.9854202401372213,
+              "identity_macro_F1": 0.9566662897252798,
+              "joint_macro_F1": 0.944345648758153,
+              "C_U_proxy_not_official": 96.557435112389
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.1001005910000416,
+              "C": 0.950110864745011,
+              "U": 0.9761357101782634,
+              "known_acceptance": 0.950110864745011,
+              "unknown_F1": 0.9814975426423822,
+              "identity_macro_F1": 0.972826601565792,
+              "joint_macro_F1": 0.9353985219306965,
+              "C_U_proxy_not_official": 97.38392263472406
+            },
+            "known_quantiles": {
+              "q00": 1.0153254089141415,
+              "q05": 1.1001303849699429,
+              "q50": 1.2373533723850227,
+              "q95": 1.406479819043554,
+              "q100": 1.5391888013315174
+            },
+            "unknown_quantiles": {
+              "q00": 1.0000031450902305,
+              "q05": 1.0018657077531299,
+              "q50": 1.0233524310247293,
+              "q95": 1.0821997794642155,
+              "q100": 1.2278428799914824
+            }
+          },
+          "u": {
+            "AUROC": 0.9951687133186874,
+            "unknown_AUPR": 0.998514688697203,
+            "known_AUPR": 0.9860081682202925,
+            "EER": 0.035277174612929695,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9778270509977827,
+              "U": 0.9499712478435882,
+              "known_acceptance": 0.9778270509977827,
+              "unknown_F1": 0.9714789767715378,
+              "identity_macro_F1": 0.9881209146262004,
+              "joint_macro_F1": 0.9145845160663314,
+              "C_U_proxy_not_official": 97.84360242930457
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.950110864745011,
+              "U": 0.9761357101782634,
+              "known_acceptance": 0.950110864745011,
+              "unknown_F1": 0.9814975426423822,
+              "identity_macro_F1": 0.972826601565792,
+              "joint_macro_F1": 0.9353985219306965,
+              "C_U_proxy_not_official": 97.38392263472406
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.050997782705099776,
+              "C": 0.950110864745011,
+              "U": 0.9761357101782634,
+              "known_acceptance": 0.950110864745011,
+              "unknown_F1": 0.9814975426423822,
+              "identity_macro_F1": 0.972826601565792,
+              "joint_macro_F1": 0.9353985219306965,
+              "C_U_proxy_not_official": 97.38392263472406
+            },
+            "known_quantiles": {
+              "q00": 0.0011086474501108647,
+              "q05": 0.051053215077605324,
+              "q50": 0.5005543237250554,
+              "q95": 0.9500554323725054,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.0011086474501108647,
+              "q95": 0.02250554323724975,
+              "q100": 0.4634146341463415
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer3_inner1",
+        "K": 8,
+        "unknown_subjects": [
+          14,
+          7,
+          19,
+          2,
+          12,
+          13,
+          8,
+          11
+        ],
+        "registered_subjects": [
+          3,
+          5,
+          9,
+          10,
+          15,
+          16,
+          18,
+          20
+        ],
+        "n_fit": 2623,
+        "metrics": {
+          "n_known": 897,
+          "n_unknown": 3608,
+          "direct_C": 0.9988851727982163,
+          "identity_macro_F1_direct": 0.9987947059777947,
+          "raw": {
+            "AUROC": 0.9954566465701142,
+            "unknown_AUPR": 0.9987265674312,
+            "known_AUPR": 0.9886178389714952,
+            "EER": 0.03126722605778812,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9687848383500557,
+              "U": 0.9725609756097561,
+              "known_acceptance": 0.9687848383500557,
+              "unknown_F1": 0.9822253324002799,
+              "identity_macro_F1": 0.983998132794341,
+              "joint_macro_F1": 0.9400440472855282,
+              "C_U_proxy_not_official": 98.05509012612804
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.939799331103679,
+              "U": 0.9952882483370288,
+              "known_acceptance": 0.939799331103679,
+              "unknown_F1": 0.9902109471942644,
+              "identity_macro_F1": 0.9688307265457972,
+              "joint_macro_F1": 0.9624549385792355,
+              "C_U_proxy_not_official": 97.43192242870596
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.1090508301097033,
+              "C": 0.9509476031215162,
+              "U": 0.99029933481153,
+              "known_acceptance": 0.9509476031215162,
+              "unknown_F1": 0.9890657439446366,
+              "identity_macro_F1": 0.9748301572359708,
+              "joint_macro_F1": 0.9590106974785689,
+              "C_U_proxy_not_official": 97.76969425940274
+            },
+            "known_quantiles": {
+              "q00": 1.020568731354878,
+              "q05": 1.1096390832471603,
+              "q50": 1.2532027734830458,
+              "q95": 4.655348329986018,
+              "q100": 6.777345566377868
+            },
+            "unknown_quantiles": {
+              "q00": 1.0000033433127504,
+              "q05": 1.0020144696571864,
+              "q50": 1.0225884346729548,
+              "q95": 1.0809990111287942,
+              "q100": 1.1702346416347806
+            }
+          },
+          "u": {
+            "AUROC": 0.995749412305616,
+            "unknown_AUPR": 0.9987550573199738,
+            "known_AUPR": 0.9886178389714952,
+            "EER": 0.030709812456896222,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9777034559643255,
+              "U": 0.9559312638580931,
+              "known_acceptance": 0.9777034559643255,
+              "unknown_F1": 0.9747067966652536,
+              "identity_macro_F1": 0.9886549110537699,
+              "joint_macro_F1": 0.9222430348025369,
+              "C_U_proxy_not_official": 97.99175290041568
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9498327759197325,
+              "U": 0.9908536585365854,
+              "known_acceptance": 0.9498327759197325,
+              "unknown_F1": 0.9892086330935251,
+              "identity_macro_F1": 0.9741778136764916,
+              "joint_macro_F1": 0.9593739173818084,
+              "C_U_proxy_not_official": 97.73750312096028
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.05016722408026756,
+              "C": 0.9509476031215162,
+              "U": 0.99029933481153,
+              "known_acceptance": 0.9509476031215162,
+              "unknown_F1": 0.9890657439446366,
+              "identity_macro_F1": 0.9748301572359708,
+              "joint_macro_F1": 0.9590106974785689,
+              "C_U_proxy_not_official": 97.76969425940274
+            },
+            "known_quantiles": {
+              "q00": 0.0011148272017837235,
+              "q05": 0.05105908584169454,
+              "q50": 0.5005574136008919,
+              "q95": 0.9500557413600892,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.0011148272017837235,
+              "q95": 0.021181716833890748,
+              "q100": 0.1750278706800446
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer3_inner2",
+        "K": 8,
+        "unknown_subjects": [
+          20,
+          18,
+          16,
+          9,
+          10,
+          15,
+          5,
+          3
+        ],
+        "registered_subjects": [
+          2,
+          7,
+          8,
+          11,
+          12,
+          13,
+          14,
+          19
+        ],
+        "n_fit": 2677,
+        "metrics": {
+          "n_known": 931,
+          "n_unknown": 3520,
+          "direct_C": 0.9978517722878625,
+          "identity_macro_F1_direct": 0.9979102084813148,
+          "raw": {
+            "AUROC": 0.9952308734498584,
+            "unknown_AUPR": 0.9976980465436728,
+            "known_AUPR": 0.9918018922590605,
+            "EER": 0.019326115613709574,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9871106337271751,
+              "U": 0.96875,
+              "known_acceptance": 0.9871106337271751,
+              "unknown_F1": 0.9824258138864881,
+              "identity_macro_F1": 0.9934381026025944,
+              "joint_macro_F1": 0.9508677721329681,
+              "C_U_proxy_not_official": 98.69593393999925
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9677765843179377,
+              "U": 0.9900568181818182,
+              "known_acceptance": 0.9677765843179377,
+              "unknown_F1": 0.9907604832977968,
+              "identity_macro_F1": 0.983571313148642,
+              "joint_macro_F1": 0.9692457259746904,
+              "C_U_proxy_not_official": 98.45212030957727
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.140824952222017,
+              "C": 0.9505907626208379,
+              "U": 0.9965909090909091,
+              "known_acceptance": 0.9505907626208379,
+              "unknown_F1": 0.9918009612666101,
+              "identity_macro_F1": 0.9740086356015447,
+              "joint_macro_F1": 0.9704824160213528,
+              "C_U_proxy_not_official": 97.90991334375883
+            },
+            "known_quantiles": {
+              "q00": 1.0026331878064894,
+              "q05": 1.1409490687307153,
+              "q50": 1.295620016879079,
+              "q95": 1.6173444880081407,
+              "q100": 1.9496478480663246
+            },
+            "unknown_quantiles": {
+              "q00": 1.0000057506311972,
+              "q05": 1.001610476939182,
+              "q50": 1.024039997991499,
+              "q95": 1.0838985453092613,
+              "q100": 1.2782888743765493
+            }
+          },
+          "u": {
+            "AUROC": 0.9957267356703448,
+            "unknown_AUPR": 0.9982201618461464,
+            "known_AUPR": 0.9918018922590603,
+            "EER": 0.018789058685675222,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9774436090225563,
+              "U": 0.9849431818181819,
+              "known_acceptance": 0.9774436090225563,
+              "unknown_F1": 0.9894406392694064,
+              "identity_macro_F1": 0.9885868059022437,
+              "joint_macro_F1": 0.9670243735918483,
+              "C_U_proxy_not_official": 98.71643864129958
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.949516648764769,
+              "U": 0.9965909090909091,
+              "known_acceptance": 0.949516648764769,
+              "unknown_F1": 0.991660777385159,
+              "identity_macro_F1": 0.9734189899736939,
+              "joint_macro_F1": 0.9699427105875463,
+              "C_U_proxy_not_official": 97.86564526549398
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.050483351235230935,
+              "C": 0.9505907626208379,
+              "U": 0.9965909090909091,
+              "known_acceptance": 0.9505907626208379,
+              "unknown_F1": 0.9918009612666101,
+              "identity_macro_F1": 0.9740086356015447,
+              "joint_macro_F1": 0.9704824160213528,
+              "C_U_proxy_not_official": 97.90991334375883
+            },
+            "known_quantiles": {
+              "q00": 0.0010741138560687433,
+              "q05": 0.05102040816326531,
+              "q50": 0.5005370569280344,
+              "q95": 0.9500537056928035,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.00322234156820623,
+              "q95": 0.011815252416756176,
+              "q100": 0.43823845327604727
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer4_inner1",
+        "K": 8,
+        "unknown_subjects": [
+          8,
+          2,
+          7,
+          14,
+          9,
+          10,
+          18,
+          15
+        ],
+        "registered_subjects": [
+          1,
+          4,
+          6,
+          11,
+          13,
+          16,
+          17,
+          20
+        ],
+        "n_fit": 2837,
+        "metrics": {
+          "n_known": 960,
+          "n_unknown": 3438,
+          "direct_C": 1.0,
+          "identity_macro_F1_direct": 1.0,
+          "raw": {
+            "AUROC": 0.9964729372697305,
+            "unknown_AUPR": 0.9989050923521237,
+            "known_AUPR": 0.9911275220630228,
+            "EER": 0.02610983856893541,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9802083333333333,
+              "U": 0.9680046538685282,
+              "known_acceptance": 0.9802083333333333,
+              "unknown_F1": 0.9809874723655122,
+              "identity_macro_F1": 0.989942332905733,
+              "joint_macro_F1": 0.9440529588499569,
+              "C_U_proxy_not_official": 98.40036683380349
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9447916666666667,
+              "U": 0.9904013961605584,
+              "known_acceptance": 0.9447916666666667,
+              "unknown_F1": 0.9875290023201856,
+              "identity_macro_F1": 0.971103235273318,
+              "joint_macro_F1": 0.9580447223187798,
+              "C_U_proxy_not_official": 97.51854942385997
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.1162610725502247,
+              "C": 0.9510416666666667,
+              "U": 0.9892379290285049,
+              "known_acceptance": 0.9510416666666667,
+              "unknown_F1": 0.9878013360441475,
+              "identity_macro_F1": 0.9744555104124056,
+              "joint_macro_F1": 0.9593147047820959,
+              "C_U_proxy_not_official": 97.74735348800257
+            },
+            "known_quantiles": {
+              "q00": 1.0210371242527616,
+              "q05": 1.1168405203993244,
+              "q50": 1.246785383458222,
+              "q95": 1.4336361573620944,
+              "q100": 1.6595907911351648
+            },
+            "unknown_quantiles": {
+              "q00": 1.000000718213315,
+              "q05": 1.0013882448894205,
+              "q50": 1.0204823915397414,
+              "q95": 1.0811147911898713,
+              "q100": 1.1847786622584477
+            }
+          },
+          "u": {
+            "AUROC": 0.9967275971979833,
+            "unknown_AUPR": 0.9989306315957237,
+            "known_AUPR": 0.9911275220630229,
+            "EER": 0.02610983856893541,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9770833333333333,
+              "U": 0.9717859220477022,
+              "known_acceptance": 0.9770833333333333,
+              "unknown_F1": 0.9825025731510072,
+              "identity_macro_F1": 0.9881828021139442,
+              "joint_macro_F1": 0.947070783077025,
+              "C_U_proxy_not_official": 98.37059380095046
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.95,
+              "U": 0.9895287958115183,
+              "known_acceptance": 0.95,
+              "unknown_F1": 0.9878048780487805,
+              "identity_macro_F1": 0.9738770658684439,
+              "joint_macro_F1": 0.9592151091062373,
+              "C_U_proxy_not_official": 97.71169597012684
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.05,
+              "C": 0.9510416666666667,
+              "U": 0.9892379290285049,
+              "known_acceptance": 0.9510416666666667,
+              "unknown_F1": 0.9878013360441475,
+              "identity_macro_F1": 0.9744555104124056,
+              "joint_macro_F1": 0.9593147047820959,
+              "C_U_proxy_not_official": 97.74735348800257
+            },
+            "known_quantiles": {
+              "q00": 0.0010416666666666667,
+              "q05": 0.05098958333333334,
+              "q50": 0.5005208333333333,
+              "q95": 0.9500520833333332,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.0,
+              "q95": 0.0125,
+              "q100": 0.22604166666666667
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer4_inner2",
+        "K": 8,
+        "unknown_subjects": [
+          20,
+          1,
+          11,
+          4,
+          6,
+          13,
+          16,
+          17
+        ],
+        "registered_subjects": [
+          2,
+          7,
+          8,
+          9,
+          10,
+          14,
+          15,
+          18
+        ],
+        "n_fit": 2556,
+        "metrics": {
+          "n_known": 882,
+          "n_unknown": 3797,
+          "direct_C": 0.9988662131519275,
+          "identity_macro_F1_direct": 0.9987947059777947,
+          "raw": {
+            "AUROC": 0.9980250549873184,
+            "unknown_AUPR": 0.9995182185962175,
+            "known_AUPR": 0.9936199400054022,
+            "EER": 0.021740818177854913,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9761904761904762,
+              "U": 0.9805109296813274,
+              "known_acceptance": 0.9761904761904762,
+              "unknown_F1": 0.9874022012995624,
+              "identity_macro_F1": 0.9875150174146645,
+              "joint_macro_F1": 0.9538296271952807,
+              "C_U_proxy_not_official": 98.55460832229522
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9546485260770975,
+              "U": 0.994732683697656,
+              "known_acceptance": 0.9546485260770975,
+              "unknown_F1": 0.9921197793538219,
+              "identity_macro_F1": 0.9759463206043175,
+              "joint_macro_F1": 0.9673322159986159,
+              "C_U_proxy_not_official": 98.03112790328323
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.1256943225037852,
+              "C": 0.9501133786848073,
+              "U": 0.9965762444034765,
+              "known_acceptance": 0.9501133786848073,
+              "unknown_F1": 0.9925245901639345,
+              "identity_macro_F1": 0.9733132881123027,
+              "joint_macro_F1": 0.9685961040616782,
+              "C_U_proxy_not_official": 97.8898822374083
+            },
+            "known_quantiles": {
+              "q00": 1.0394650280405424,
+              "q05": 1.1258684077254593,
+              "q50": 1.2958406208074766,
+              "q95": 1.5677896256240027,
+              "q100": 1.925954148722841
+            },
+            "unknown_quantiles": {
+              "q00": 1.000002417794275,
+              "q05": 1.0016914439215885,
+              "q50": 1.0212574886338879,
+              "q95": 1.0748862123536267,
+              "q100": 1.163213344516375
+            }
+          },
+          "u": {
+            "AUROC": 0.9981734595339322,
+            "unknown_AUPR": 0.9995219319718911,
+            "known_AUPR": 0.9936199400054022,
+            "EER": 0.021740818177854913,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9773242630385488,
+              "U": 0.9791941006057414,
+              "known_acceptance": 0.9773242630385488,
+              "unknown_F1": 0.9868613138686131,
+              "identity_macro_F1": 0.9881303560234243,
+              "joint_macro_F1": 0.9521838450511321,
+              "C_U_proxy_not_official": 98.56725665626057
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9501133786848073,
+              "U": 0.9965762444034765,
+              "known_acceptance": 0.9501133786848073,
+              "unknown_F1": 0.9925245901639345,
+              "identity_macro_F1": 0.9733132881123027,
+              "joint_macro_F1": 0.9685961040616782,
+              "C_U_proxy_not_official": 97.8898822374083
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.05102040816326531,
+              "C": 0.9501133786848073,
+              "U": 0.9965762444034765,
+              "known_acceptance": 0.9501133786848073,
+              "unknown_F1": 0.9925245901639345,
+              "identity_macro_F1": 0.9733132881123027,
+              "joint_macro_F1": 0.9685961040616782,
+              "C_U_proxy_not_official": 97.8898822374083
+            },
+            "known_quantiles": {
+              "q00": 0.0011337868480725624,
+              "q05": 0.05107709750566894,
+              "q50": 0.5005668934240363,
+              "q95": 0.9500566893424036,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.0,
+              "q95": 0.009070294784580499,
+              "q100": 0.09183673469387756
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer5_inner1",
+        "K": 8,
+        "unknown_subjects": [
+          3,
+          11,
+          4,
+          12,
+          16,
+          15,
+          20,
+          7
+        ],
+        "registered_subjects": [
+          1,
+          5,
+          6,
+          8,
+          10,
+          13,
+          17,
+          19
+        ],
+        "n_fit": 2634,
+        "metrics": {
+          "n_known": 909,
+          "n_unknown": 3705,
+          "direct_C": 1.0,
+          "identity_macro_F1_direct": 1.0,
+          "raw": {
+            "AUROC": 0.994712642654279,
+            "unknown_AUPR": 0.9985906573979956,
+            "known_AUPR": 0.9856344793832283,
+            "EER": 0.03283093491535386,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9581958195819582,
+              "U": 0.9762483130904184,
+              "known_acceptance": 0.9581958195819582,
+              "unknown_F1": 0.9828804347826087,
+              "identity_macro_F1": 0.9779296762103202,
+              "joint_macro_F1": 0.9447036538525018,
+              "C_U_proxy_not_official": 97.71737295272571
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9196919691969196,
+              "U": 0.9940620782726046,
+              "known_acceptance": 0.9196919691969196,
+              "unknown_F1": 0.9872671223696555,
+              "identity_macro_F1": 0.9550449247958646,
+              "joint_macro_F1": 0.9490348235668254,
+              "C_U_proxy_not_official": 96.56290760446319
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.1012016180047524,
+              "C": 0.9504950495049505,
+              "U": 0.9859649122807017,
+              "known_acceptance": 0.9504950495049505,
+              "unknown_F1": 0.9868972038362825,
+              "identity_macro_F1": 0.9736864364158042,
+              "joint_macro_F1": 0.9541581124735841,
+              "C_U_proxy_not_official": 97.64394303474872
+            },
+            "known_quantiles": {
+              "q00": 1.0317456893900798,
+              "q05": 1.101300817291436,
+              "q50": 1.260074446708194,
+              "q95": 4.302055205426941,
+              "q100": 6.2030852943517045
+            },
+            "unknown_quantiles": {
+              "q00": 1.0000046366655782,
+              "q05": 1.0018900117305471,
+              "q50": 1.0223687021193277,
+              "q95": 1.0799534963182966,
+              "q100": 1.1638238552751523
+            }
+          },
+          "u": {
+            "AUROC": 0.994910098297279,
+            "unknown_AUPR": 0.998610111134129,
+            "known_AUPR": 0.9856344793832283,
+            "EER": 0.03283093491535386,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.976897689768977,
+              "U": 0.9406207827260459,
+              "known_acceptance": 0.976897689768977,
+              "unknown_F1": 0.9665788378865622,
+              "identity_macro_F1": 0.9880448731734774,
+              "joint_macro_F1": 0.9130756192767326,
+              "C_U_proxy_not_official": 97.56482626939007
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9504950495049505,
+              "U": 0.9859649122807017,
+              "known_acceptance": 0.9504950495049505,
+              "unknown_F1": 0.9868972038362825,
+              "identity_macro_F1": 0.9736864364158042,
+              "joint_macro_F1": 0.9541581124735841,
+              "C_U_proxy_not_official": 97.64394303474872
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.050605060506050605,
+              "C": 0.9504950495049505,
+              "U": 0.9859649122807017,
+              "known_acceptance": 0.9504950495049505,
+              "unknown_F1": 0.9868972038362825,
+              "identity_macro_F1": 0.9736864364158042,
+              "joint_macro_F1": 0.9541581124735841,
+              "C_U_proxy_not_official": 97.64394303474872
+            },
+            "known_quantiles": {
+              "q00": 0.0011001100110011,
+              "q05": 0.05104510451045105,
+              "q50": 0.5005500550055005,
+              "q95": 0.9500550055005499,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.0,
+              "q95": 0.026402640264026403,
+              "q100": 0.18371837183718373
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer5_inner2",
+        "K": 8,
+        "unknown_subjects": [
+          6,
+          1,
+          17,
+          10,
+          13,
+          5,
+          8,
+          19
+        ],
+        "registered_subjects": [
+          3,
+          4,
+          7,
+          11,
+          12,
+          15,
+          16,
+          20
+        ],
+        "n_fit": 2750,
+        "metrics": {
+          "n_known": 955,
+          "n_unknown": 3543,
+          "direct_C": 0.9979057591623036,
+          "identity_macro_F1_direct": 0.99790260833835,
+          "raw": {
+            "AUROC": 0.9974237232031895,
+            "unknown_AUPR": 0.999069580467634,
+            "known_AUPR": 0.9948772424481023,
+            "EER": 0.01642099383342719,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9832460732984293,
+              "U": 0.9827829523003104,
+              "known_acceptance": 0.9832460732984293,
+              "unknown_F1": 0.9890640534015055,
+              "identity_macro_F1": 0.9914029273839311,
+              "joint_macro_F1": 0.9642574524376928,
+              "C_U_proxy_not_official": 98.89612880498878
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.974869109947644,
+              "U": 0.9960485464295794,
+              "known_acceptance": 0.974869109947644,
+              "unknown_F1": 0.9946448703494927,
+              "identity_macro_F1": 0.987032210912272,
+              "joint_macro_F1": 0.9814541334130333,
+              "C_U_proxy_not_official": 98.88915144112715
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.1460009605205477,
+              "C": 0.9507853403141361,
+              "U": 0.9991532599491956,
+              "known_acceptance": 0.9507853403141361,
+              "unknown_F1": 0.9929873772791024,
+              "identity_macro_F1": 0.974104343489193,
+              "joint_macro_F1": 0.9748025564876858,
+              "C_U_proxy_not_official": 97.98080837179238
+            },
+            "known_quantiles": {
+              "q00": 1.0103589554281456,
+              "q05": 1.1464928415102311,
+              "q50": 1.298676275314406,
+              "q95": 1.4915123126087306,
+              "q100": 1.7319613894961052
+            },
+            "unknown_quantiles": {
+              "q00": 1.0000235254834107,
+              "q05": 1.0018108730031783,
+              "q50": 1.0218892379520659,
+              "q95": 1.0734957191152195,
+              "q100": 1.2476496761588696
+            }
+          },
+          "u": {
+            "AUROC": 0.9978154697781778,
+            "unknown_AUPR": 0.9991728563656408,
+            "known_AUPR": 0.9948772424481023,
+            "EER": 0.01642099383342719,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9769633507853404,
+              "U": 0.9932260795935648,
+              "known_acceptance": 0.9769633507853404,
+              "unknown_F1": 0.9935064935064936,
+              "identity_macro_F1": 0.9881583553687695,
+              "joint_macro_F1": 0.977906711034207,
+              "C_U_proxy_not_official": 98.9038818636081
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.949738219895288,
+              "U": 0.9991532599491956,
+              "known_acceptance": 0.949738219895288,
+              "unknown_F1": 0.9928481278923013,
+              "identity_macro_F1": 0.9734531476568463,
+              "joint_macro_F1": 0.9742082435937329,
+              "C_U_proxy_not_official": 97.93763075068493
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.050261780104712044,
+              "C": 0.9507853403141361,
+              "U": 0.9991532599491956,
+              "known_acceptance": 0.9507853403141361,
+              "unknown_F1": 0.9929873772791024,
+              "identity_macro_F1": 0.974104343489193,
+              "joint_macro_F1": 0.9748025564876858,
+              "C_U_proxy_not_official": 97.98080837179238
+            },
+            "known_quantiles": {
+              "q00": 0.0010471204188481676,
+              "q05": 0.05099476439790576,
+              "q50": 0.5005235602094241,
+              "q95": 0.9500523560209423,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.0010471204188481676,
+              "q95": 0.007329842931937173,
+              "q100": 0.31518324607329845
+            }
+          }
+        }
+      }
+    ],
+    "outer_K16": [
+      {
+        "fold_name": "outer1",
+        "K": 16,
+        "unknown_subjects": [
+          16,
+          10,
+          15,
+          8
+        ],
+        "registered_subjects": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          9,
+          11,
+          12,
+          13,
+          14,
+          17,
+          18,
+          19,
+          20
+        ],
+        "n_fit": 7308,
+        "metrics": {
+          "n_known": 1878,
+          "n_unknown": 2118,
+          "direct_C": 1.0,
+          "identity_macro_F1_direct": 1.0,
+          "raw": {
+            "AUROC": 0.9984812464991487,
+            "unknown_AUPR": 0.9984455620643433,
+            "known_AUPR": 0.9985261738867117,
+            "EER": 0.01725435714565856,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9760383386581469,
+              "U": 0.9915014164305949,
+              "known_acceptance": 0.9760383386581469,
+              "unknown_F1": 0.9852216748768473,
+              "identity_macro_F1": 0.9871936202815972,
+              "joint_macro_F1": 0.9824167723811689,
+              "C_U_proxy_not_official": 98.82346688249501
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9435569755058573,
+              "U": 0.9981114258734656,
+              "known_acceptance": 0.9435569755058573,
+              "unknown_F1": 0.9746426924850161,
+              "identity_macro_F1": 0.9690758581577874,
+              "joint_macro_F1": 0.9683667947585287,
+              "C_U_proxy_not_official": 97.65669191928615
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.1138163808938626,
+              "C": 0.950479233226837,
+              "U": 0.9971671388101983,
+              "known_acceptance": 0.950479233226837,
+              "unknown_F1": 0.9770992366412213,
+              "identity_macro_F1": 0.9731293910383588,
+              "joint_macro_F1": 0.9718002432792041,
+              "C_U_proxy_not_official": 97.91946738210689
+            },
+            "known_quantiles": {
+              "q00": 1.0119209313491973,
+              "q05": 1.114160071631426,
+              "q50": 1.2486468403170867,
+              "q95": 3.1124532331725083,
+              "q100": 7.089174223693227
+            },
+            "unknown_quantiles": {
+              "q00": 1.0000100051223408,
+              "q05": 1.0014568826725694,
+              "q50": 1.0190318719013902,
+              "q95": 1.0652994335005486,
+              "q100": 1.165161228719826
+            }
+          },
+          "u": {
+            "AUROC": 0.9986566033219999,
+            "unknown_AUPR": 0.9985769888496341,
+            "known_AUPR": 0.9985261738867117,
+            "EER": 0.016782213614024946,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9771033013844516,
+              "U": 0.9915014164305949,
+              "known_acceptance": 0.9771033013844516,
+              "unknown_F1": 0.985684111710866,
+              "identity_macro_F1": 0.9878230476490877,
+              "joint_macro_F1": 0.9830348430603645,
+              "C_U_proxy_not_official": 98.86658358193256
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9499467518636848,
+              "U": 0.9971671388101983,
+              "known_acceptance": 0.9499467518636848,
+              "unknown_F1": 0.9768732654949122,
+              "identity_macro_F1": 0.9728635715362841,
+              "joint_macro_F1": 0.9715367677980571,
+              "C_U_proxy_not_official": 97.89752095536082
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.05005324813631523,
+              "C": 0.950479233226837,
+              "U": 0.9971671388101983,
+              "known_acceptance": 0.950479233226837,
+              "unknown_F1": 0.9770992366412213,
+              "identity_macro_F1": 0.9731293910383588,
+              "joint_macro_F1": 0.9718002432792041,
+              "C_U_proxy_not_official": 97.91946738210689
+            },
+            "known_quantiles": {
+              "q00": 0.0005324813631522897,
+              "q05": 0.05050585729499468,
+              "q50": 0.5002662406815761,
+              "q95": 0.9500266240681576,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.0005324813631522897,
+              "q95": 0.005404685835995668,
+              "q100": 0.1703940362087327
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer2",
+        "K": 16,
+        "unknown_subjects": [
+          13,
+          11,
+          7,
+          20
+        ],
+        "registered_subjects": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "n_fit": 7065,
+        "metrics": {
+          "n_known": 1813,
+          "n_unknown": 2426,
+          "direct_C": 0.9994484280198566,
+          "identity_macro_F1_direct": 0.9994541068329614,
+          "raw": {
+            "AUROC": 0.9982873076148308,
+            "unknown_AUPR": 0.9977341530831548,
+            "known_AUPR": 0.9983452818730119,
+            "EER": 0.013902069372567542,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9674572531715389,
+              "U": 0.9958779884583677,
+              "known_acceptance": 0.9674572531715389,
+              "unknown_F1": 0.9859212405631503,
+              "identity_macro_F1": 0.9829370876577996,
+              "joint_macro_F1": 0.9806881063121475,
+              "C_U_proxy_not_official": 98.58350329669611
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9222283507997794,
+              "U": 1.0,
+              "known_acceptance": 0.9222283507997794,
+              "unknown_F1": 0.9717604646505107,
+              "identity_macro_F1": 0.9579184304317339,
+              "joint_macro_F1": 0.9587326677387208,
+              "C_U_proxy_not_official": 96.81338109136955
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.107161110419452,
+              "C": 0.9503585217870932,
+              "U": 1.0,
+              "known_acceptance": 0.9503585217870932,
+              "unknown_F1": 0.981788749494132,
+              "identity_macro_F1": 0.9737312001693712,
+              "joint_macro_F1": 0.974205173659063,
+              "C_U_proxy_not_official": 97.98396044015401
+            },
+            "known_quantiles": {
+              "q00": 1.0010875251342255,
+              "q05": 1.1077841825102959,
+              "q50": 1.237613483039801,
+              "q95": 3.2775598897346625,
+              "q100": 6.993016739708312
+            },
+            "unknown_quantiles": {
+              "q00": 1.0000071529716958,
+              "q05": 1.0012432955424135,
+              "q50": 1.0143101318352234,
+              "q95": 1.053574824219257,
+              "q100": 1.1063692194240493
+            }
+          },
+          "u": {
+            "AUROC": 0.9985516119952581,
+            "unknown_AUPR": 0.9984952361477305,
+            "known_AUPR": 0.9983452818730121,
+            "EER": 0.013626283382495823,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9773855488141202,
+              "U": 0.9938169826875515,
+              "known_acceptance": 0.9773855488141202,
+              "unknown_F1": 0.988519885198852,
+              "identity_macro_F1": 0.9882768332012342,
+              "joint_macro_F1": 0.9846582870030377,
+              "C_U_proxy_not_official": 98.93568586699452
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9498069498069498,
+              "U": 1.0,
+              "known_acceptance": 0.9498069498069498,
+              "unknown_F1": 0.9815901274529638,
+              "identity_macro_F1": 0.9734274843635817,
+              "joint_macro_F1": 0.9739076398394277,
+              "C_U_proxy_not_official": 97.96120918624987
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.05019305019305019,
+              "C": 0.9503585217870932,
+              "U": 1.0,
+              "known_acceptance": 0.9503585217870932,
+              "unknown_F1": 0.981788749494132,
+              "identity_macro_F1": 0.9737312001693712,
+              "joint_macro_F1": 0.974205173659063,
+              "C_U_proxy_not_official": 97.98396044015401
+            },
+            "known_quantiles": {
+              "q00": 0.0005515719801434088,
+              "q05": 0.050523993381136244,
+              "q50": 0.5002757859900717,
+              "q95": 0.9500275785990071,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0005515719801434088,
+              "q50": 0.0005515719801434088,
+              "q95": 0.006067291781577496,
+              "q100": 0.04688361831218974
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer3",
+        "K": 16,
+        "unknown_subjects": [
+          4,
+          1,
+          17,
+          6
+        ],
+        "registered_subjects": [
+          2,
+          3,
+          5,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          18,
+          19,
+          20
+        ],
+        "n_fit": 7128,
+        "metrics": {
+          "n_known": 1838,
+          "n_unknown": 2338,
+          "direct_C": 0.999455930359086,
+          "identity_macro_F1_direct": 0.9994541068329614,
+          "raw": {
+            "AUROC": 0.997672694405996,
+            "unknown_AUPR": 0.9975447412025754,
+            "known_AUPR": 0.9979196262950442,
+            "EER": 0.01133121600728278,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9760609357997824,
+              "U": 0.9978614200171086,
+              "known_acceptance": 0.9760609357997824,
+              "unknown_F1": 0.9896076352067869,
+              "identity_macro_F1": 0.9875357887821905,
+              "joint_macro_F1": 0.9863734571282876,
+              "C_U_proxy_not_official": 98.98247995942246
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9488574537540805,
+              "U": 1.0,
+              "known_acceptance": 0.9488574537540805,
+              "unknown_F1": 0.980293501048218,
+              "identity_macro_F1": 0.9724339291776052,
+              "joint_macro_F1": 0.9728962569347002,
+              "C_U_proxy_not_official": 97.92202577477521
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.1160619040408808,
+              "C": 0.9504896626768227,
+              "U": 1.0,
+              "known_acceptance": 0.9504896626768227,
+              "unknown_F1": 0.9809104258443465,
+              "identity_macro_F1": 0.9733681853901105,
+              "joint_macro_F1": 0.9738118465933009,
+              "C_U_proxy_not_official": 97.98936857679003
+            },
+            "known_quantiles": {
+              "q00": 1.0050405285514947,
+              "q05": 1.1168846625644875,
+              "q50": 1.2565176653439372,
+              "q95": 3.42447040674486,
+              "q100": 7.576963665805637
+            },
+            "unknown_quantiles": {
+              "q00": 1.0000328049081058,
+              "q05": 1.0010538852609587,
+              "q50": 1.0147906096543677,
+              "q95": 1.0553309240615814,
+              "q100": 1.108111523183215
+            }
+          },
+          "u": {
+            "AUROC": 0.9978867851115738,
+            "unknown_AUPR": 0.9976996174059769,
+            "known_AUPR": 0.9979196262950443,
+            "EER": 0.01133121600728278,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9771490750816104,
+              "U": 0.9978614200171086,
+              "known_acceptance": 0.9771490750816104,
+              "unknown_F1": 0.9900275832802886,
+              "identity_macro_F1": 0.9881422918235284,
+              "joint_macro_F1": 0.9869689863479881,
+              "C_U_proxy_not_official": 99.02660455033435
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9499455930359086,
+              "U": 1.0,
+              "known_acceptance": 0.9499455930359086,
+              "unknown_F1": 0.9807046979865772,
+              "identity_macro_F1": 0.9731045627434249,
+              "joint_macro_F1": 0.9735516295224338,
+              "C_U_proxy_not_official": 97.96692869110267
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.05005440696409141,
+              "C": 0.9504896626768227,
+              "U": 1.0,
+              "known_acceptance": 0.9504896626768227,
+              "unknown_F1": 0.9809104258443465,
+              "identity_macro_F1": 0.9733681853901105,
+              "joint_macro_F1": 0.9738118465933009,
+              "C_U_proxy_not_official": 97.98936857679003
+            },
+            "known_quantiles": {
+              "q00": 0.000544069640914037,
+              "q05": 0.050516866158868336,
+              "q50": 0.500272034820457,
+              "q95": 0.9500272034820457,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.001088139281828074,
+              "q95": 0.008161044613710556,
+              "q100": 0.03862894450489663
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer4",
+        "K": 16,
+        "unknown_subjects": [
+          12,
+          19,
+          3,
+          5
+        ],
+        "registered_subjects": [
+          1,
+          2,
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          20
+        ],
+        "n_fit": 7235,
+        "metrics": {
+          "n_known": 1852,
+          "n_unknown": 2217,
+          "direct_C": 1.0,
+          "identity_macro_F1_direct": 1.0,
+          "raw": {
+            "AUROC": 0.997077121516341,
+            "unknown_AUPR": 0.9967152859372612,
+            "known_AUPR": 0.9973704005612163,
+            "EER": 0.017704957081106053,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9724622030237581,
+              "U": 0.990978800180424,
+              "known_acceptance": 0.9724622030237581,
+              "unknown_F1": 0.9840985442329228,
+              "identity_macro_F1": 0.9854337212249995,
+              "joint_macro_F1": 0.9804405598837761,
+              "C_U_proxy_not_official": 98.66546866447167
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9422246220302376,
+              "U": 0.997744700045106,
+              "known_acceptance": 0.9422246220302376,
+              "unknown_F1": 0.9753086419753086,
+              "identity_macro_F1": 0.9686230306870662,
+              "joint_macro_F1": 0.9677274082572623,
+              "C_U_proxy_not_official": 97.59254350798082
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.113793100253745,
+              "C": 0.9503239740820735,
+              "U": 0.9972936400541272,
+              "known_acceptance": 0.9503239740820735,
+              "unknown_F1": 0.9783185840707964,
+              "identity_macro_F1": 0.9731722144641006,
+              "joint_macro_F1": 0.9719343258415253,
+              "C_U_proxy_not_official": 97.91617425855401
+            },
+            "known_quantiles": {
+              "q00": 1.0054697752392583,
+              "q05": 1.1139919027612857,
+              "q50": 1.2452577554786284,
+              "q95": 1.4975797284714216,
+              "q100": 1.9016986254018666
+            },
+            "unknown_quantiles": {
+              "q00": 1.000042425097895,
+              "q05": 1.001566003405443,
+              "q50": 1.0193662558528025,
+              "q95": 1.0624267440914756,
+              "q100": 1.1805834952169107
+            }
+          },
+          "u": {
+            "AUROC": 0.9973033821705629,
+            "unknown_AUPR": 0.996954350856659,
+            "known_AUPR": 0.9973704005612163,
+            "EER": 0.017434978679378176,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9773218142548596,
+              "U": 0.9900766801984664,
+              "known_acceptance": 0.9773218142548596,
+              "unknown_F1": 0.9856308935788056,
+              "identity_macro_F1": 0.9881839587263352,
+              "joint_macro_F1": 0.9826585441781378,
+              "C_U_proxy_not_official": 98.83988806004906
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9497840172786177,
+              "U": 0.9972936400541272,
+              "known_acceptance": 0.9497840172786177,
+              "unknown_F1": 0.9781021897810219,
+              "identity_macro_F1": 0.9729107963975825,
+              "joint_macro_F1": 0.9716755562324626,
+              "C_U_proxy_not_official": 97.89391678819605
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.050215982721382287,
+              "C": 0.9503239740820735,
+              "U": 0.9972936400541272,
+              "known_acceptance": 0.9503239740820735,
+              "unknown_F1": 0.9783185840707964,
+              "identity_macro_F1": 0.9731722144641006,
+              "joint_macro_F1": 0.9719343258415253,
+              "C_U_proxy_not_official": 97.91617425855401
+            },
+            "known_quantiles": {
+              "q00": 0.0005399568034557236,
+              "q05": 0.05051295896328294,
+              "q50": 0.5002699784017279,
+              "q95": 0.9500269978401727,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.0016198704103671706,
+              "q95": 0.0091792656587473,
+              "q100": 0.22786177105831534
+            }
+          }
+        }
+      },
+      {
+        "fold_name": "outer5",
+        "K": 16,
+        "unknown_subjects": [
+          18,
+          2,
+          14,
+          9
+        ],
+        "registered_subjects": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          12,
+          13,
+          15,
+          16,
+          17,
+          19,
+          20
+        ],
+        "n_fit": 7248,
+        "metrics": {
+          "n_known": 1851,
+          "n_unknown": 2205,
+          "direct_C": 1.0,
+          "identity_macro_F1_direct": 1.0,
+          "raw": {
+            "AUROC": 0.9978723273930497,
+            "unknown_AUPR": 0.9971450699217728,
+            "known_AUPR": 0.9981685549505658,
+            "EER": 0.014549590770938332,
+            "proxy_work_inner_threshold": {
+              "threshold": 1.0930800043208966,
+              "C": 0.9762290653700703,
+              "U": 0.9959183673469387,
+              "known_acceptance": 0.9762290653700703,
+              "unknown_F1": 0.9880764904386952,
+              "identity_macro_F1": 0.9875099278784036,
+              "joint_macro_F1": 0.9852839880160429,
+              "C_U_proxy_not_official": 98.94107598657656
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 1.1183662400761296,
+              "C": 0.9486763911399244,
+              "U": 0.998639455782313,
+              "known_acceptance": 0.9486763911399244,
+              "unknown_F1": 0.9782318969346957,
+              "identity_macro_F1": 0.9723620958350523,
+              "joint_macro_F1": 0.9719253014904247,
+              "C_U_proxy_not_official": 97.88122981243767
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 1.1176688714978809,
+              "C": 0.9502971366828741,
+              "U": 0.998639455782313,
+              "known_acceptance": 0.9502971366828741,
+              "unknown_F1": 0.9788841964881084,
+              "identity_macro_F1": 0.9732059120928496,
+              "joint_macro_F1": 0.9727578520597286,
+              "C_U_proxy_not_official": 97.94808478411505
+            },
+            "known_quantiles": {
+              "q00": 1.001680814262187,
+              "q05": 1.1178070845618353,
+              "q50": 1.241686981792645,
+              "q95": 3.127454069226478,
+              "q100": 6.946733427101143
+            },
+            "unknown_quantiles": {
+              "q00": 1.0000036228283107,
+              "q05": 1.0013679419073207,
+              "q50": 1.0164311884155892,
+              "q95": 1.0578445429074907,
+              "q100": 1.1362727747767076
+            }
+          },
+          "u": {
+            "AUROC": 0.9981244433663974,
+            "unknown_AUPR": 0.9977233063949622,
+            "known_AUPR": 0.9981685549505657,
+            "EER": 0.014549590770938332,
+            "proxy_work_inner_threshold": {
+              "threshold": 0.02310574883287667,
+              "C": 0.9773095623987034,
+              "U": 0.9950113378684807,
+              "known_acceptance": 0.9773095623987034,
+              "unknown_F1": 0.9880657509569917,
+              "identity_macro_F1": 0.988078862313923,
+              "joint_macro_F1": 0.9853340866249771,
+              "C_U_proxy_not_official": 98.96231967641836
+            },
+            "q05_work_inner_threshold": {
+              "threshold": 0.05052631578947368,
+              "C": 0.9497568881685575,
+              "U": 0.998639455782313,
+              "known_acceptance": 0.9497568881685575,
+              "unknown_F1": 0.9786666666666667,
+              "identity_macro_F1": 0.972893681257363,
+              "joint_macro_F1": 0.9724511918721269,
+              "C_U_proxy_not_official": 97.92580740036544
+            },
+            "local_q05_diagnostic_not_for_selection": {
+              "threshold": 0.050243111831442464,
+              "C": 0.9502971366828741,
+              "U": 0.998639455782313,
+              "known_acceptance": 0.9502971366828741,
+              "unknown_F1": 0.9788841964881084,
+              "identity_macro_F1": 0.9732059120928496,
+              "joint_macro_F1": 0.9727578520597286,
+              "C_U_proxy_not_official": 97.94808478411505
+            },
+            "known_quantiles": {
+              "q00": 0.0005402485143165856,
+              "q05": 0.050513236088600755,
+              "q50": 0.5002701242571583,
+              "q95": 0.9500270124257157,
+              "q100": 1.0
+            },
+            "unknown_quantiles": {
+              "q00": 0.0,
+              "q05": 0.0,
+              "q50": 0.0010804970286331713,
+              "q95": 0.007023230686115613,
+              "q100": 0.08589951377633712
+            }
+          }
+        }
+      }
+    ]
+  },
+  "final_20class_continuous_block_oof": {
+    "protocol": "全部20类均enrolled；各subject/task前80%连续块fit，后20%连续块OOF；F20仅用这些已知OOF distance_ratio",
+    "n_fit": 8996,
+    "n_known_oof": 2308,
+    "direct_C": 0.9995667244367418,
+    "identity_20class_macro_F1_direct": 0.9995613275613275,
+    "F20_reference_sha256": "5656e0e5c2ff5d3de3bc1b6416f7076fc8e5b7f806cc4eae930ebf9842faf174",
+    "raw_reference_quantiles": {
+      "q00": 1.0034458355410147,
+      "q05": 1.106603816855148,
+      "q50": 1.2396820003428104,
+      "q95": 1.769016611315583,
+      "q100": 6.991812794647279
+    },
+    "known_u_quantiles": {
+      "q00": 0.0004332755632582322,
+      "q05": 0.050411611785095324,
+      "q50": 0.5002166377816291,
+      "q95": 0.9500216637781629,
+      "q100": 1.0
+    },
+    "inner_u_proxy_threshold_transfer": {
+      "threshold": 0.02310574883287667,
+      "C": 0.9770363951473137,
+      "known_acceptance": 0.9770363951473137,
+      "identity_20class_macro_F1": 0.9879943732187195
+    },
+    "inner_u_q05_threshold_transfer": {
+      "threshold": 0.05052631578947368,
+      "C": 0.949740034662045,
+      "known_acceptance": 0.949740034662045,
+      "identity_20class_macro_F1": 0.9730735558327789
+    },
+    "unknown_metrics": "N/A：20类OOF没有held-out unknown；unknown评估仅见K8/K16 pseudo-unknown折",
+    "test_inference": "N/A：未读取或推理Test"
+  },
+  "full_train_20class_capacity_check": {
+    "purpose": "仅容量/训练流程检查，不作为泛化证据，不用于Test推理",
+    "accuracy": 0.9999115357395613,
+    "identity_20class_macro_F1": 0.9999176633467716
+  },
+  "single_sample_invariance": {
+    "n_trials": 64,
+    "single_vs_batch_max_abs_score": 2.980232238769531e-07,
+    "single_vs_batch_labels_equal": true,
+    "batch_statistics_used": false
+  },
+  "gates": {
+    "scope": "C/F1/AUROC/U使用outer K16 pooled独立确认；local U@95仅已知q05诊断；容量仅全Train拟合",
+    "C_direct_ge_0.95": true,
+    "identity_F1_direct_ge_0.92": true,
+    "continuous_block_C_ge_0.90": true,
+    "ECDF_AUROC_ge_0.98": true,
+    "ECDF_U_at_local_known95_ge_0.95": true,
+    "full_train_capacity_accuracy_eq_1": false,
+    "all_C_F1_AUROC_U": true
+  },
+  "adversarial_metrics": "N/A：攻击由独立实验负责，本实验不做对抗阈值选择",
+  "test_metrics": "N/A：Test无真实标签且未读取",
+  "elapsed_seconds": 1.6696932315826416
+}

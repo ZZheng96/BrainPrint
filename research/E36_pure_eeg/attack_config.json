@@ -1,0 +1,77 @@
+{
+  "experiment": "E36C pure-EEG raw-waveform adversarial nested evaluation",
+  "date_preregistered": "2026-11-12",
+  "data": {
+    "source": "Train session1 only",
+    "test_access": "forbidden",
+    "outer_results_status": "previously inspected development results; any new outer run is confirmation-limited, not untouched validation"
+  },
+  "regularization_ablation": {
+    "model": "detrend_zband_cov5_wccn_prototype",
+    "wccn_shrinkage_candidates": [0.0001, 0.001, 0.01, 0.05],
+    "selection_data": "all prescribed inner folds and full-Train fit only; never outer folds",
+    "full_train_requirement": "accuracy exactly 1.0",
+    "inner_gates": {
+      "direct_C_min": 0.95,
+      "identity_macro_f1_direct_min": 0.92,
+      "unknown_auroc_min": 0.98,
+      "unknown_rejection_at_inner_q05_min": 0.95
+    },
+    "selection_rule": "eligible exact-full-Train-fit candidates passing all inner gates are ranked by inner fold-mean 100*C^0.40*U^0.25 at the inner clean-selected work point, then direct C, identity F1, AUROC, U@95, then larger shrinkage; if gates conflict, retain exact-fit candidates and use the same ranking while recording failed gates",
+    "clean_score_selection": "for each shrinkage and outer-fold inner runs, jointly select max_cosine/margin/distance_ratio and threshold by 100*C^0.40*U^0.25 with clean known acceptance >=0.95; this is only regularization selection, not the final attack-aware threshold"
+  },
+  "subset": {
+    "rule": "for every fold, split, enrolled/unknown subject and task, sort by trial then path and take the first 8 eligible trials; no outcome-based sampling",
+    "trials_per_subject_task": 8,
+    "training_augmentation_trials_per_subject_task": 8,
+    "coverage": "every fold, identity and task represented; actual counts are reported"
+  },
+  "attacks": {
+    "candidate": "detrend_zband_cov5_wccn_prototype",
+    "waveform_shape": "18x1200",
+    "signal_norm": "L2 norm after subtracting each channel's temporal mean",
+    "radius": "signal_norm / 10^(SNR_dB/20)",
+    "snr_db": [30, 20],
+    "types": ["untargeted_fgsm", "untargeted_pgd", "targeted_pgd"],
+    "pgd_steps": 20,
+    "pgd_step_size": "2*radius/steps with L2-normalized gradient and per-trial L2 projection",
+    "pgd_initialization": "random direction with per-trial radius uniformly scaled in [0,1)",
+    "fgsm_step": "one L2-normalized gradient step to the radius boundary",
+    "loss": "cross_entropy(cosine_scores/0.05); maximize for untargeted and minimize for targeted",
+    "temperature": 0.05,
+    "target_rule": "next registered identity in the sorted enrolled-class cycle; never the true identity",
+    "differentiable_feature": "the frozen five-band 1-40 Hz gpu_logspd -> detrend_zband chain; attack autocast/eigh uses float64",
+    "batch_size": 64,
+    "seed_base": 20261112,
+    "seed_rule": "seed_base + 100000*stage_code + 10000*outer_fold + 1000*inner_fold + 100*attack_code + snr_db + batch_start; stage codes inner=1, outer=2, augmentation=3",
+    "isolation": "inner attacks only against inner-fit models; outer attacks only against outer-fit models; augmentation attacks only against the corresponding fit-split model",
+    "gradient_checks": "finite gradients/scores, per-trial radius relative error, realized SNR and N are recorded"
+  },
+  "threshold": {
+    "score_candidates": ["max_cosine", "margin", "distance_ratio"],
+    "grid": "101 evenly spaced quantiles from 0 to 0.05 of pooled inner clean-known confidence",
+    "constraint": "pooled inner clean-known acceptance >=0.95",
+    "objective": "maximize macro Score=100*C^0.40*A^0.35*U^0.25 over all six attacks; ties by mean per-attack Score, macro RA, ASafeR, C, U, then configured score order",
+    "score_definitions": "C from clean known; RA/ASafeR/A from each attacked known set; U from clean pseudo-unknown; AUROC/unknown F1 use attacked-known versus clean pseudo-unknown confidence; targeted attacks additionally report direct and accepted false-authentication rate",
+    "macro": "arithmetic mean of six per-attack components, followed by Score computed from macro C/A/U; mean per-attack Score is also retained",
+    "q05": "retain the pooled inner clean-known fifth-percentile threshold and report U@95",
+    "outer_rule": "only apply each outer fold's inner-frozen score and threshold; no outer selection"
+  },
+  "targets": {
+    "inner_clean_and_train": "strict full-Train fit=1.0 and all preregistered inner clean gates",
+    "robustness": "macro RA>=0.95 and macro ASafeR>=0.98 without all rejection",
+    "conflict_rule": "report unmet gates and conflicts; never weaken attacks, remove difficult attacks, or use outer/Test for tuning"
+  },
+  "single_inner_improvement": {
+    "trigger": "baseline inner macro RA<0.95 or ASafeR<0.98 or any inner clean gate/full-Train requirement fails",
+    "change": "one fixed raw-PGD20/SNR20 plus raw-FGSM/SNR30 untargeted adversarial augmentation of the fit split; no other hyperparameter changes",
+    "fit_rule": "augment every fit subject/task with 8 stratified clean trials attacked against the clean-fit model, append both attacked feature sets to all clean fit features, and refit WCCN at the selected shrinkage",
+    "selection_rule": "compare baseline and augmentation only on prescribed inner folds; prefer a method satisfying exact full-Train fit and all inner clean gates, then higher inner macro Score, macro RA, macro ASafeR; if neither satisfies gates, use the same metric ranking and record the conflict",
+    "limit": "at most one augmentation variant; outer results cannot change this choice"
+  },
+  "reporting": {
+    "per_attack_and_macro": ["C", "RA", "ASafeR", "A", "identity_macro_f1", "unknown_auroc", "unknown_f1", "U", "Score", "N"],
+    "test_metrics": "N/A: Test was not read and has no labels",
+    "validation_boundary": "nested pseudo-unknown, continuous file-block proxy and previously viewed outer development results; not untouched or cross-session confirmation"
+  }
+}
