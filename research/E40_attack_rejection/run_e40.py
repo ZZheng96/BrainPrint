@@ -71,6 +71,7 @@ class FrozenPrototype:
         self.classes = np.asarray(prototype.classes, dtype=int)
         self.whitening = prototype.whitening.detach().float()
         self.prototypes = prototype.prototypes.detach().float()
+        self.whitened_means = getattr(prototype, "whitened_means", None)
         self.config = config
 
     def scores(self, raw: torch.Tensor, batch: int = 512) -> np.ndarray:
@@ -113,6 +114,7 @@ def fit_prototype(zband: torch.Tensor, fit_np: np.ndarray, subjects: np.ndarray,
     proto.classes = np.asarray(classes, dtype=int)
     proto.whitening = whitening
     proto.prototypes = prototypes
+    proto.whitened_means = whitened_means
     return proto
 
 

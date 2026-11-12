@@ -1,0 +1,55 @@
+{
+  "experiment": "E41 supervised attack detector trained inside each fit fold",
+  "date_preregistered": "2026-11-13",
+  "motivation": "E40 showed that attack-aware rejection works but its unsupervised max_cosine detector saturates at AUROC 0.9008 (targeted PGD only 0.76-0.85), capping macro ASafeR at 0.7082. A detector trained on fit-fold clean plus fit-fold adversarial trials should separate the two distributions almost perfectly, because at training time the labels 'clean vs perturbed' are known by construction and are not identity labels.",
+  "legality": "the detector is trained only on the fit split of the same fold; attacks for detector training are generated against the same fold's frozen identity model. The inner validation known block, pseudo-unknown subjects, outer folds and Test are never used for detector training. Attack labels used for detector training are generated labels, not Test or outer labels.",
+  "data": {
+    "source": "Train session1 only; read-only reuse of the E36 feature cache and Train MAT files",
+    "test_access": "forbidden"
+  },
+  "seed_base": 20261112,
+  "identity_model": "frozen E36 detrend_zband_cov5_wccn_prototype, identical to E36C and E40",
+  "detector": {
+    "model": "standardize + logistic regression, class_weight=balanced, max_iter=2000",
+    "train_negatives": "clean fit-split trials, E36 stratified first 8 per identity/task",
+    "train_positives": "the same trials attacked with untargeted FGSM SNR30, untargeted PGD SNR30, untargeted PGD SNR20, targeted PGD SNR30, targeted PGD SNR20 (5 generators, PGD20 steps, target = next registered identity in sorted order)",
+    "features": ["max_cosine", "second_cosine", "margin", "distance_ratio", "whitened_energy", "min_whitened_distance", "spectral_flatness", "high_band_ratio"],
+    "feature_note": "all eight are label-free functions of one trial; the first four come from the frozen prototype scores, the next two from the frozen whitened feature, the last two from the raw spectrum",
+    "score": "logistic decision_function, higher means more attack-like",
+    "attack_seed_rule": "seed_base + 300000 + 10000*outer_fold + 1000*inner_fold + 100*attack_code + snr",
+    "no_outer_or_validation_data": true
+  },
+  "decision_rule": {
+    "accept": "distance_ratio >= t_dr AND detector <= t_det",
+    "threshold_solving": "shared lower quantile q over 200 evenly spaced values in [0.001, 0.05] on the inner clean-known validation block: t_dr = quantile(distance_ratio, q) and t_det = quantile(detector, 1-q); choose q whose joint clean-known acceptance is closest to 0.95",
+    "rationale": "keeps the 95% acceptance budget fixed so C and U stay comparable to E36C and E40; solving only on clean validation data means the attack detector never sees the evaluation attacks",
+    "ablations": {
+      "confidence_only": "accept iff distance_ratio >= its own inner clean-known q05",
+      "e40_two_gate": "accept iff distance_ratio >= t_dr and max_cosine >= t_mc with the E40 shared-quantile solve"
+    }
+  },
+  "evaluation": {
+    "inner_folds": "E36 five outer groups x two inner folds, identical seeds and continuous trial blocks",
+    "subset": "E36 stratified first 8 trials per identity/task for clean known and pseudo-unknown, identical to E36C and E40",
+    "attacks": ["untargeted_fgsm", "untargeted_pgd", "targeted_pgd"],
+    "snr_db": [30, 20],
+    "pgd_steps": 20,
+    "batch_size": 64,
+    "temperature": 0.05,
+    "aggregation": "per inner run in its own enrolled label space, averaged over the two inner runs, then averaged over five outer folds",
+    "metrics": ["C", "RA", "ASafeR", "A", "U", "direct_RA", "Rej", "identity_macro_f1", "detector_auroc", "detector_best_f1", "Score"],
+    "detector_audit": "AUROC and best F1 of the supervised detector on the evaluation attacks versus clean known; reported per attack and as macro, never used to tune thresholds"
+  },
+  "targets": {
+    "C_min": 0.95,
+    "clean_identity_macro_f1_direct_min": 0.92,
+    "clean_U_min": 0.95,
+    "detector_macro_auroc_min": 0.98,
+    "success": "macro ASafeR and macro Score both strictly above E40 two_gate (0.7082 / 59.14) and above the E36C outer reference (0.6818 / 59.78), with C>=0.95, U>=0.95",
+    "RA_note": "macro RA>=0.95 remains unreachable at SNR20 and is not claimed"
+  },
+  "reporting": {
+    "required": ["C", "RA", "ASafeR", "A", "U", "direct RA", "Rej", "identity F1", "detector AUROC", "detector F1", "Score", "N"],
+    "evidence_boundary": "Train-only inner nesting, pseudo-unknown subjects, E36 continuous file-block proxy, evaluation subset overlapping the fit split exactly as in E36C; detector training uses generated attack labels. No outer, no Test, no cross-session claim."
+  }
+}
