@@ -1,0 +1,7 @@
+﻿cov_raw              dim= 1026 closed=0.9971 err= 27 C=0.9573 F1id=0.9196 U=0.9752 AUROC=0.9929 acc=0.9573 (4s)
+cov_detrend          dim= 1026 closed=0.9968 err= 29 C=0.9620 F1id=0.9222 U=0.9725 AUROC=0.9924 acc=0.9620 (9s)
+cov_offdiag          dim=  918 closed=0.9962 err= 35 C=0.9673 F1id=0.9249 U=0.9586 AUROC=0.9914 acc=0.9673 (5s)
+cov_detrend_zband    dim= 1026 closed=0.9988 err= 11 C=0.9635 F1id=0.9231 U=0.9760 AUROC=0.9940 acc=0.9635 (2s)
+cov_detrend_unit     dim= 1026 closed=0.9974 err= 24 C=0.9592 F1id=0.9208 U=0.9782 AUROC=0.9928 acc=0.9592 (2s)
+corr_fisher          dim= 1026 closed=0.9864 err=125 C=0.9491 F1id=0.9150 U=0.7001 AUROC=0.9370 acc=0.9512 (4s)
+corr_fisher_zband    dim= 1026 closed=0.9907 err= 86 C=0.9579 F1id=0.9196 U=0.7825 AUROC=0.9646 acc=0.9599 (4s)

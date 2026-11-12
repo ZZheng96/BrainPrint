@@ -1,0 +1,187 @@
+{
+  "auroc_s2_vs_s1_margin": 0.40282995386681564,
+  "auroc_s2_vs_s1_distance": 0.42572881911558286,
+  "test_s2_margin_p50": 1.9953218698501587,
+  "test_s1_margin_p50": 2.6769986152648926,
+  "train_inner_margin_p50": 9.391162872314453,
+  "curves": {
+    "margin": [
+      {
+        "q": 0.6,
+        "train_inner_acceptance": 0.4002607561929596,
+        "train_outer_acceptance": 0.354419410745234,
+        "test_s2_accept": 0.016442918097616818,
+        "test_s1_reject": 0.886580942960765,
+        "proxy_C_c0_0.40": 0.006577167239046728,
+        "proxy_U": 0.886580942960765,
+        "proxy_score_c0_0.40": 8.559951378061093
+      },
+      {
+        "q": 0.5,
+        "train_inner_acceptance": 0.5002172968274663,
+        "train_outer_acceptance": 0.46880415944540726,
+        "test_s2_accept": 0.02227078780310126,
+        "test_s1_reject": 0.8031651829871415,
+        "proxy_C_c0_0.40": 0.008908315121240504,
+        "proxy_U": 0.8031651829871415,
+        "proxy_score_c0_0.40": 9.438839981038942
+      },
+      {
+        "q": 0.4,
+        "train_inner_acceptance": 0.6001738374619731,
+        "train_outer_acceptance": 0.5701906412478336,
+        "test_s2_accept": 0.029971901342491416,
+        "test_s1_reject": 0.742499175733597,
+        "proxy_C_c0_0.40": 0.011988760536996566,
+        "proxy_U": 0.742499175733597,
+        "proxy_score_c0_0.40": 10.437781597252618
+      },
+      {
+        "q": 0.3,
+        "train_inner_acceptance": 0.7001303780964798,
+        "train_outer_acceptance": 0.6798093587521664,
+        "test_s2_accept": 0.03965032781767093,
+        "test_s1_reject": 0.699967029343884,
+        "proxy_C_c0_0.40": 0.015860131127068373,
+        "proxy_U": 0.699967029343884,
+        "proxy_score_c0_0.40": 11.523989475813217
+      },
+      {
+        "q": 0.25,
+        "train_inner_acceptance": 0.7501086484137331,
+        "train_outer_acceptance": 0.7344020797227037,
+        "test_s2_accept": 0.04709126860235196,
+        "test_s1_reject": 0.6801846356742499,
+        "proxy_C_c0_0.40": 0.018836507440940786,
+        "proxy_U": 0.6801846356742499,
+        "proxy_score_c0_0.40": 12.273611020428184
+      },
+      {
+        "q": 0.2,
+        "train_inner_acceptance": 0.8000869187309865,
+        "train_outer_acceptance": 0.7829289428076257,
+        "test_s2_accept": 0.055937142262462276,
+        "test_s1_reject": 0.6597428288822947,
+        "proxy_C_c0_0.40": 0.022374856904984912,
+        "proxy_U": 0.6597428288822947,
+        "proxy_score_c0_0.40": 13.070207830351755
+      },
+      {
+        "q": 0.15,
+        "train_inner_acceptance": 0.8500651890482399,
+        "train_outer_acceptance": 0.8279896013864818,
+        "test_s2_accept": 0.06639608700176917,
+        "test_s1_reject": 0.6465545664358721,
+        "proxy_C_c0_0.40": 0.026558434800707673,
+        "proxy_U": 0.6465545664358721,
+        "proxy_score_c0_0.40": 13.954611377468387
+      },
+      {
+        "q": 0.1,
+        "train_inner_acceptance": 0.9000434593654932,
+        "train_outer_acceptance": 0.8895147313691508,
+        "test_s2_accept": 0.08257883234467686,
+        "test_s1_reject": 0.6323771843059677,
+        "proxy_C_c0_0.40": 0.03303153293787075,
+        "proxy_U": 0.6323771843059677,
+        "proxy_score_c0_0.40": 15.188610443948157
+      },
+      {
+        "q": 0.05,
+        "train_inner_acceptance": 0.9500217296827467,
+        "train_outer_acceptance": 0.9454072790294628,
+        "test_s2_accept": 0.10922052242689145,
+        "test_s1_reject": 0.6205077481041873,
+        "proxy_C_c0_0.40": 0.043688208970756585,
+        "proxy_U": 0.6205077481041873,
+        "proxy_score_c0_0.40": 16.990449784850522
+      },
+      {
+        "q": 0.02,
+        "train_inner_acceptance": 0.9800086918730987,
+        "train_outer_acceptance": 0.975736568457539,
+        "test_s2_accept": 0.1341450723280258,
+        "test_s1_reject": 0.6116056709528519,
+        "proxy_C_c0_0.40": 0.05365802893121033,
+        "proxy_U": 0.6116056709528519,
+        "proxy_score_c0_0.40": 18.46611715343428
+      },
+      {
+        "q": 0.01,
+        "train_inner_acceptance": 0.9900043459365493,
+        "train_outer_acceptance": 0.9878682842287695,
+        "test_s2_accept": 0.15147257779165366,
+        "test_s1_reject": 0.6076491922189251,
+        "proxy_C_c0_0.40": 0.06058903111666147,
+        "proxy_U": 0.6076491922189251,
+        "proxy_score_c0_0.40": 19.41724041533848
+      },
+      {
+        "q": 0.001,
+        "train_inner_acceptance": 0.9986962190352021,
+        "train_outer_acceptance": 0.9987001733102253,
+        "test_s2_accept": 0.2165678010198772,
+        "test_s1_reject": 0.5918232772832179,
+        "proxy_C_c0_0.40": 0.08662712040795088,
+        "proxy_U": 0.5918232772832179,
+        "proxy_score_c0_0.40": 22.52868666439696
+      }
+    ],
+    "distance": [
+      {
+        "reject_rate_on_train": 0.5,
+        "train_outer_acceptance": 0.4852686308492201,
+        "test_s2_accept": 0.2807264023311479,
+        "test_s1_reject": 0.623804813715793,
+        "proxy_C_c0_0.40": 0.11229056093245915,
+        "proxy_U": 0.623804813715793,
+        "proxy_score_c0_0.40": 25.630508109638345
+      },
+      {
+        "reject_rate_on_train": 0.6,
+        "train_outer_acceptance": 0.5992201039861352,
+        "test_s2_accept": 0.357581434072224,
+        "test_s1_reject": 0.5479723046488625,
+        "proxy_C_c0_0.40": 0.1430325736288896,
+        "proxy_U": 0.5479723046488625,
+        "proxy_score_c0_0.40": 27.73177453037186
+      },
+      {
+        "reject_rate_on_train": 0.7,
+        "train_outer_acceptance": 0.7101386481802426,
+        "test_s2_accept": 0.4530648350504735,
+        "test_s1_reject": 0.4629080118694362,
+        "proxy_C_c0_0.40": 0.1812259340201894,
+        "proxy_U": 0.4629080118694362,
+        "proxy_score_c0_0.40": 29.752297149800825
+      },
+      {
+        "reject_rate_on_train": 0.8,
+        "train_outer_acceptance": 0.8076256499133448,
+        "test_s2_accept": 0.5660318451451763,
+        "test_s1_reject": 0.34388394329047145,
+        "proxy_C_c0_0.40": 0.22641273805807055,
+        "proxy_U": 0.34388394329047145,
+        "proxy_score_c0_0.40": 30.833755852021987
+      },
+      {
+        "reject_rate_on_train": 0.9,
+        "train_outer_acceptance": 0.919844020797227,
+        "test_s2_accept": 0.7509626391924238,
+        "test_s1_reject": 0.1559512034289482,
+        "proxy_C_c0_0.40": 0.30038505567696955,
+        "proxy_U": 0.1559512034289482,
+        "proxy_score_c0_0.40": 29.309073185553828
+      },
+      {
+        "reject_rate_on_train": 0.95,
+        "train_outer_acceptance": 0.9653379549393414,
+        "test_s2_accept": 0.8546674992194817,
+        "test_s1_reject": 0.06791955159907681,
+        "proxy_C_c0_0.40": 0.3418669996877927,
+        "proxy_U": 0.06791955159907681,
+        "proxy_score_c0_0.40": 25.548161908199965
+      }
+    ]
+  }
+}

@@ -39,6 +39,7 @@
 | E18 | [E18_enrollment_template_session_robust_v1_scaled](E18_enrollment_template_session_robust_v1_scaled) | 注册模板 v1 缩放版 | prototype_only AUC 0.734395 / F1 0.522782；prototype_margin AUC 0.751237 / F1 0.4712 |
 | E19 | [E19_ridge_session_robust_v1](E19_ridge_session_robust_v1) | Ridge Session 鲁棒 v1 | AUC 0.993997，身份 macro-F1 0.925737，unknown-F1 0.951435；最终候选 base，Test 拒识 17,619/22,251 |
 | E20 | [E20_eeg_image_dinov2](E20_eeg_image_dinov2) | EEG 图像化 + 冻结 DINOv2（纯 EEG，无 Session） | E20D 严格嵌套：covariance_only C=0.957/U=0.975/AUROC=0.993；covariance5_image C=0.929/U=0.432/AUROC=0.910；covariance5_fused 与纯协方差持平，无互补增益 |
+| E21 | [E21_scale_invariant](E21_scale_invariant) | 跨会话尺度不变特征与拒识权衡 | cov_detrend_zband 闭集 10/9,232（0.9989）、C=0.9635/U=0.976/AUROC=0.994；Test S2 两阶段接受率仅 0.10–0.24，AUROC(S2 vs S1)=0.40 → 纯 EEG 下「S2 拒识≈0」与「U>0」互斥 |
 
 ## 其他
 
