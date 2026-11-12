@@ -34,7 +34,7 @@ from src.open_set_improvement.run_nested import forward_holdout, inner_holdout
 CACHE = ROOT / "BrainPrint_cache"
 FEATURE_CACHE = CACHE / "e25_robust"
 OUT = Path(__file__).resolve().parent
-REJECT_RATES = (0.01, 0.02, 0.05, 0.20, 0.50)
+REJECT_RATES = (0.01, 0.02, 0.05, 0.20, 0.50, 0.70, 0.85, 0.95)
 
 
 def margin(scores: np.ndarray) -> np.ndarray:

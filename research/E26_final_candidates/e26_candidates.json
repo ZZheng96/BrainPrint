@@ -55,6 +55,39 @@
       "zero_count": 16758,
       "zero_session1": 2908,
       "zero_session2": 13850
+    },
+    "reject70": {
+      "distance_threshold": 28.420454025268555,
+      "train_outer_accept": 0.2785961871750433,
+      "c_proxy_outer": 0.2785961871750433,
+      "ra_proxy_noisy": 1.0,
+      "s2_accept": 0.13258403579977104,
+      "s1_reject": 0.9897790966040224,
+      "zero_count": 19672,
+      "zero_session1": 3002,
+      "zero_session2": 16670
+    },
+    "reject85": {
+      "distance_threshold": 27.154287338256836,
+      "train_outer_accept": 0.1412478336221837,
+      "c_proxy_outer": 0.1412478336221837,
+      "ra_proxy_noisy": 1.0,
+      "s2_accept": 0.03886980955354355,
+      "s1_reject": 0.9986811737553577,
+      "zero_count": 21500,
+      "zero_session1": 3029,
+      "zero_session2": 18471
+    },
+    "reject95": {
+      "distance_threshold": 25.46051025390625,
+      "train_outer_accept": 0.045060658578856154,
+      "c_proxy_outer": 0.045060658578856154,
+      "ra_proxy_noisy": 1.0,
+      "s2_accept": 0.0036944531168696016,
+      "s1_reject": 1.0,
+      "zero_count": 22180,
+      "zero_session1": 3033,
+      "zero_session2": 19147
     }
   },
   "audit": {
