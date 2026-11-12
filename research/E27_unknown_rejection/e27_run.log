@@ -1,0 +1,14 @@
+﻿dist    AUROC(S2 vs S1)=0.7576 | train 29.68 S2 31.26 S1 34.33
+knn     AUROC(S2 vs S1)=0.5143 | train 32.27 S2 36.77 S1 37.64
+pca     AUROC(S2 vs S1)=0.4205 | train 24.16 S2 24.85 S1 24.09
+energy  AUROC(S2 vs S1)=0.3015 | train -14.06 S2 -7.39 S1 -9.61
+margin  AUROC(S2 vs S1)=0.3781 | train -10.38 S2 -2.32 S1 -3.52
+
+融合权重 {'dist': 0.2, 'knn': 0.193, 'pca': 0.189, 'energy': 0.196, 'margin': 0.222}
+融合 AUROC(S2 vs S1) = 0.4673
+reject 1% | S2 accept=0.989 S1 reject=0.009
+reject 2% | S2 accept=0.977 S1 reject=0.022
+reject 5% | S2 accept=0.949 S1 reject=0.062
+reject10% | S2 accept=0.890 S1 reject=0.145
+reject20% | S2 accept=0.791 S1 reject=0.251
+reject30% | S2 accept=0.677 S1 reject=0.345

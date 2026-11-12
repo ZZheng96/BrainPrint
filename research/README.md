@@ -45,6 +45,7 @@
 | E24 | [E24_norm_gate_robustness](E24_norm_gate_robustness) | 扰动检测（范数门控）与候选 | 噪声注入 SNR30 dB 使范数 59.7→31.7，与 Low 组 34.1 吻合；门控在 clean 子集拒识 0.5%、低范数组拒识 98.5%；嵌套 C=0.9854/F1=0.9324/U=0.0102/AUROC=0.9929；**结论已被 E25A 推翻，候选不建议提交** |
 | E25 | [E25_robust_recognition](E25_robust_recognition) | RA 导向的对抗增广识别 | 同会话 SNR30 扰动下 RA 0.9896→0.9972（ASafeR 1.0000），但对 Test 低范数组接受率只从 0.041 到 0.055 → 低范数组不是对抗样本，跨会话识别才是唯一瓶颈 |
 | E26 | [E26_final_candidates](E26_final_candidates) | 最终候选装配（距离拒识 + 对抗增广） | 距离型新颖度 AUROC(S2 vs S1)=0.758；reject5% 时 S2 接受 0.845 / S1 拒识 0.467，代理分约 34.6；五个候选已校验格式 |
+| E27 | [E27_unknown_rejection](E27_unknown_rejection) | 提升 S1 未注册拒识率 | 五信号秩融合反而把 AUROC 从 0.758 拉到 0.467（内层伪未知与真实 S1 分布不同）；只用 dist 时 S1 拒识 0.47–0.76 对应 S2 接受 0.85–0.60，八个工作点候选已生成 |
 
 ## 其他
 
