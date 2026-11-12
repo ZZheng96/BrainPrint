@@ -1,0 +1,15 @@
+{
+  "test_auroc": 0.7064782535550852,
+  "inner": {
+    "A_holdout_subject": {
+      "mean_inner_auroc": 0.6369301760174003,
+      "std": 0.06954755981111442,
+      "gap_to_test": 0.06954807753768488
+    },
+    "B_time_extrapolation": {
+      "mean_inner_auroc": 0.6239128291834399,
+      "std": 0.06689462179865142,
+      "gap_to_test": 0.08256542437164527
+    }
+  }
+}
