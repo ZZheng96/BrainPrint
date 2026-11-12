@@ -1,0 +1,141 @@
+{
+  "protocol": {
+    "note": "纯 EEG；推理只读 EEG 特征与 task；session 仅候选写出后审计",
+    "features": "covariance5 DINOv2 (768) + log-covariance (1026)",
+    "rejection": "two_stage: margin>=q0.001 AND max>=q0.05, 内层伪未知标定",
+    "session_used_for_inference": false
+  },
+  "thresholds": {
+    "margin_threshold": 0.29656240344047546,
+    "max_threshold": 6.072057723999023,
+    "n_inner_known": 9204
+  },
+  "candidate": {
+    "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E20_eeg_image_dinov2\\test_candidate_two_stage.csv",
+    "rows": 22251,
+    "rejected": 7411,
+    "reject_rate": 0.3330636825311222,
+    "label_counts": {
+      "0": 7411,
+      "1": 101,
+      "2": 111,
+      "3": 1160,
+      "4": 489,
+      "5": 2604,
+      "6": 1066,
+      "7": 1032,
+      "9": 313,
+      "10": 741,
+      "11": 182,
+      "12": 336,
+      "13": 1085,
+      "14": 427,
+      "15": 1252,
+      "16": 1036,
+      "17": 1654,
+      "18": 201,
+      "19": 442,
+      "20": 608
+    },
+    "sample_order_matches": true,
+    "labels_valid": true
+  },
+  "audit_by_session": [
+    {
+      "session": "session1",
+      "n": 3033,
+      "rejected": 729,
+      "reject_rate": 0.2403560830860534
+    },
+    {
+      "session": "session2",
+      "n": 19218,
+      "rejected": 6682,
+      "reject_rate": 0.34769486939327715
+    }
+  ],
+  "audit_by_task": [
+    {
+      "task": "EC",
+      "n": 1972,
+      "rejected": 703,
+      "reject_rate": 0.3564908722109533
+    },
+    {
+      "task": "EO",
+      "n": 2312,
+      "rejected": 784,
+      "reject_rate": 0.3391003460207612
+    },
+    {
+      "task": "Imagery",
+      "n": 11207,
+      "rejected": 3871,
+      "reject_rate": 0.3454091193004372
+    },
+    {
+      "task": "SSVEP",
+      "n": 6760,
+      "rejected": 2053,
+      "reject_rate": 0.303698224852071
+    }
+  ],
+  "audit_by_session_task": [
+    {
+      "session": "session1",
+      "task": "EC",
+      "n": 292,
+      "rejected": 79,
+      "reject_rate": 0.2705479452054795
+    },
+    {
+      "session": "session1",
+      "task": "EO",
+      "n": 291,
+      "rejected": 87,
+      "reject_rate": 0.29896907216494845
+    },
+    {
+      "session": "session1",
+      "task": "Imagery",
+      "n": 1459,
+      "rejected": 279,
+      "reject_rate": 0.1912268677176148
+    },
+    {
+      "session": "session1",
+      "task": "SSVEP",
+      "n": 991,
+      "rejected": 284,
+      "reject_rate": 0.2865792129162462
+    },
+    {
+      "session": "session2",
+      "task": "EC",
+      "n": 1680,
+      "rejected": 624,
+      "reject_rate": 0.37142857142857144
+    },
+    {
+      "session": "session2",
+      "task": "EO",
+      "n": 2021,
+      "rejected": 697,
+      "reject_rate": 0.3448787728847105
+    },
+    {
+      "session": "session2",
+      "task": "Imagery",
+      "n": 9748,
+      "rejected": 3592,
+      "reject_rate": 0.3684858432498974
+    },
+    {
+      "session": "session2",
+      "task": "SSVEP",
+      "n": 5769,
+      "rejected": 1769,
+      "reject_rate": 0.3066389322239556
+    }
+  ]
+}
