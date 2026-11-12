@@ -1,0 +1,96 @@
+{
+  "status": "complete",
+  "experiment": "E39",
+  "date": "2026-11-13",
+  "data_evidence": "Train session1 only; pseudo-unknown and continuous file-block proxy; Test not accessed",
+  "selected_threshold": {
+    "threshold": 0.02310574883287667,
+    "C": 0.9774011299435028,
+    "U": 0.9687916851934193,
+    "known_acceptance": 0.9774011299435028,
+    "C_U_proxy_not_official": 98.30751888726729
+  },
+  "inner_K8": {
+    "work": {
+      "threshold": 0.02310574883287667,
+      "C": 0.9774011299435028,
+      "known_acceptance": 0.9774011299435028,
+      "identity_macro_f1": 0.9884053380206383,
+      "n_known": 9204,
+      "U": 0.9687916851934193,
+      "unknown_f1": 0.9812675045388654,
+      "C_U_proxy_not_official": 98.30751888726729,
+      "n_unknown": 35984
+    },
+    "unknown_auroc": 0.9963686764714976,
+    "unknown_aupr": 0.9989557215555342,
+    "eer": 0.026799026183639683,
+    "local_q05_diagnostic": {
+      "threshold": 0.05052631578947368,
+      "C": 0.9500217296827467,
+      "known_acceptance": 0.9500217296827467,
+      "identity_macro_f1": 0.9737005126373706,
+      "n_known": 9204,
+      "U": 0.990884837705647,
+      "unknown_f1": 0.9890707350901525,
+      "C_U_proxy_not_official": 97.74604889874631,
+      "n_unknown": 35984
+    }
+  },
+  "outer_K16": {
+    "work": {
+      "threshold": 0.02310574883287667,
+      "C": 0.9772530329289428,
+      "known_acceptance": 0.9772530329289428,
+      "identity_macro_f1": 0.988118320698592,
+      "n_known": 9232,
+      "U": 0.9937190375088464,
+      "unknown_f1": 0.9876467226447444,
+      "C_U_proxy_not_official": 98.92788249134993,
+      "n_unknown": 11304
+    },
+    "unknown_auroc": 0.9980896625908713,
+    "unknown_aupr": 0.9980515460656595,
+    "eer": 0.014555667170774987,
+    "local_q05_diagnostic": {
+      "threshold": 0.050215982721382287,
+      "C": 0.9500649913344887,
+      "known_acceptance": 0.9500649913344887,
+      "identity_macro_f1": 0.9731992632562256,
+      "n_known": 9232,
+      "U": 0.9986730360934183,
+      "unknown_f1": 0.9793528238049796,
+      "C_U_proxy_not_official": 97.93933641169929,
+      "n_unknown": 11304
+    }
+  },
+  "k20_oof": {
+    "threshold": 0.02310574883287667,
+    "C": 0.9770363951473137,
+    "known_acceptance": 0.9770363951473137,
+    "identity_macro_f1": 0.9879943732187195,
+    "n_known": 2308,
+    "direct_C": 0.9995667244367418,
+    "identity_macro_f1_direct": 0.9995613275613275,
+    "unknown_metrics": "N/A: 20 类全注册 OOF 没有 held-out unknown"
+  },
+  "transfer_delta_K16_minus_K8": {
+    "C": -0.00014809701455997804,
+    "U": 0.024927352315427087,
+    "known_acceptance": -0.00014809701455997804,
+    "identity_macro_f1": -0.0002870173220463901
+  },
+  "gates": {
+    "inner_direct_C": true,
+    "inner_unknown_auroc": true,
+    "inner_U_at_known95": true,
+    "outer_direct_C": true,
+    "outer_unknown_auroc": true,
+    "outer_U_at_known95": true,
+    "k20_direct_C": true,
+    "k20_identity_macro_f1": true
+  },
+  "all_gates_passed": true,
+  "test_metrics": "N/A: Test not read",
+  "elapsed_seconds": 0.7649304866790771
+}

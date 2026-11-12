@@ -1,0 +1,55 @@
+{
+  "experiment": "E39 class-count-invariant ECDF calibration for the pure-EEG WCCN branch",
+  "date_preregistered": "2026-11-13",
+  "motivation": "E38 showed the DINO image branch adds nothing and the U gate fails at q=0.05. E36E showed the ECDF-mapped distance_ratio transfers from K=8 inner to K=16 outer with almost no loss. This experiment tests whether the same calibration transfers to the K=20 fully-enrolled regime that matches the official Test (20 registered identities), and whether a threshold chosen only on inner K=8 reaches U>=0.95 while keeping C>=0.99.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "session": "session1",
+    "test_access": "forbidden"
+  },
+  "feature": {
+    "path": "BrainPrint_cache/e36_pure_eeg/train_detrend_zband_cov5.npy",
+    "shape": [11304, 855],
+    "description": "five-band 1-40 Hz logSPD, detrend + zband, frozen from E36"
+  },
+  "model": {
+    "type": "WCCN-whitened nearest class prototype (cosine)",
+    "wccn_shrinkage": 0.05,
+    "wccn_eigenvalue_floor": 1e-6,
+    "score": "distance_ratio = (1 - second) / (1 - max)"
+  },
+  "calibration": {
+    "rule": "per-fold ECDF of the fit-fold known distance_ratio; u = count(reference <= r) / n",
+    "reason": "the raw distance_ratio scale depends on the number of enrolled classes; the ECDF makes the threshold class-count invariant",
+    "reference_source": "fit-fold known trials only; never evaluation or Test"
+  },
+  "protocol": {
+    "outer_seed": 42,
+    "outer_folds": 5,
+    "outer_unknown_subjects_per_fold": 4,
+    "outer_known_evaluation": "trial > 0.8 * within-subject/task maximum (continuous file-block proxy)",
+    "outer_fit": "enrolled subjects and not outer-known-evaluation",
+    "inner_seed": "100 + one-based outer fold",
+    "inner_folds": 2,
+    "inner_known_evaluation": "0.6 * max < trial <= 0.8 * max within subject/task",
+    "inner_fit": "inner-enrolled subjects, trial <= 0.6 * max",
+    "inner_unknown_evaluation": "inner pseudo-unknown subjects, trial <= 0.8 * max",
+    "k20_oof": "all 20 subjects enrolled; per subject/task first 80% continuous block fit, last 20% continuous block OOF; no held-out unknown, so K=20 is a C-only transfer check",
+    "threshold_selection": "inner K=8 pooled known-OOF ECDF only; 101 quantiles from 0 to 0.05; constraint inner known acceptance >= 0.95; maximize 100*C^0.40*U^0.25",
+    "proxy_warning": "C/U-only selection proxy; the adversarial A term is not part of this experiment"
+  },
+  "targets": {
+    "direct_C_min": 0.95,
+    "identity_macro_f1_direct_min": 0.92,
+    "unknown_auroc_min": 0.98,
+    "U_at_known95_min": 0.95,
+    "k20_direct_C_min": 0.99,
+    "k20_identity_macro_f1_min": 0.99
+  },
+  "reporting": {
+    "required": ["inner K8 C/U/AUROC", "outer K16 C/U/AUROC", "K20 OOF direct C and macro-F1", "threshold transfer deltas", "per-fold values"],
+    "test_metrics": "N/A: no public Test labels; Test not read",
+    "evidence_boundary": "Train-only pseudo-unknown and continuous file-block proxy; not cross-session evidence"
+  }
+}
