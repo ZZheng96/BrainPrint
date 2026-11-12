@@ -1,0 +1,22 @@
+﻿
+=== correlation ===
+python.exe : Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher ra
+te limits and faster downloads.
+所在位置 行:15 字符: 4086
++ ... irror.com"; & .venv\Scripts\python.exe research\E20_eeg_image_dinov2\ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: You ar...ster downloads.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+CLS (11304, 768) tokens (11304, 256, 768) in 115s
+  cls: {'C': 0.8247053851808046, 'identity_macro_f1': 0.7951755058778633, 'U': 0.1457455238552035, 'unknown_auroc': 0.7723562798256914, 'unknown_f1': 0.24523278493093614}
+  patch_mean: {'C': 0.813728155688384, 'identity_macro_f1': 0.7844497860631812, 'U': 0.13690181734746615, 'unknown_auroc': 0.760912249297841, 'unknown_f1': 0.23231725110450469}
+  cls_patch_mean: {'C': 0.8371563809640483, 'identity_macro_f1': 0.8069803391809854, 'U': 0.15603128592401183, 'unknown_auroc': 0.7844087250230387, 'unknown_f1': 0.2602486720420173}
+  attention_pool fold 1 done
+  attention_pool fold 2 done
+  attention_pool fold 3 done
+  attention_pool fold 4 done
+  attention_pool fold 5 done
+  attention_pool: {'C': 0.790125058808957, 'identity_macro_f1': 0.7619537289180826, 'U': 0.1530763974739568, 'unknown_auroc': 0.7592945627240526, 'unknown_f1': 0.25540646300889047}
+
+saved D:\WORK\BCIC2026\BrainPrint\research\E20_eeg_image_dinov2\e20b_pooling.json

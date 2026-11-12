@@ -1,0 +1,30 @@
+﻿
+=== topomap ===
+python.exe : Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher ra
+te limits and faster downloads.
+所在位置 行:15 字符: 4086
++ ... irror.com"; & .venv\Scripts\python.exe research\E20_eeg_image_dinov2\ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: You ar...ster downloads.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+CLS (11304, 768) tokens (11304, 256, 768) in 116s
+  cls: {'C': 0.8320629921017565, 'identity_macro_f1': 0.8013486421136466, 'U': 0.17192356668056927, 'unknown_auroc': 0.7735436845840354, 'unknown_f1': 0.28269507483185125}
+  patch_mean: {'C': 0.8350949123833848, 'identity_macro_f1': 0.8043255645214243, 'U': 0.1628119909463272, 'unknown_auroc': 0.7780595674326471, 'unknown_f1': 0.26982640951264203}
+  cls_patch_mean: {'C': 0.8408374643820586, 'identity_macro_f1': 0.8097836787968793, 'U': 0.18110370770501977, 'unknown_auroc': 0.7889657596591095, 'unknown_f1': 0.2956750190049954}
+  attention_pool fold 1 done
+  attention_pool fold 2 done
+  attention_pool fold 3 done
+  attention_pool fold 4 done
+  attention_pool fold 5 done
+  attention_pool: {'C': 0.8220581185091161, 'identity_macro_f1': 0.7898885275054167, 'U': 0.19138204141926007, 'unknown_auroc': 0.8094227765705186, 'unknown_f1': 0.30997395840999276}
+
+=== correlation ===
+Traceback (most recent call last):
+  File "D:\WORK\BCIC2026\BrainPrint\research\E20_eeg_image_dinov2\run_e20b.py", line 256, in <module>
+    main()
+  File "D:\WORK\BCIC2026\BrainPrint\research\E20_eeg_image_dinov2\run_e20b.py", line 205, in main
+    np.asarray(images, dtype=np.float32) / 255.0, device, args.batch_size
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 6.34 GiB for an array with shape (11304, 3, 224, 224) and
+ data type float32

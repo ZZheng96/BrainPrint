@@ -38,6 +38,7 @@
 | E17 | [E17_enrollment_template_session_robust_v1](E17_enrollment_template_session_robust_v1) | 注册模板 Session 鲁棒 v1 | 见 report.md 表格；Test AUC/F1 不可计算 |
 | E18 | [E18_enrollment_template_session_robust_v1_scaled](E18_enrollment_template_session_robust_v1_scaled) | 注册模板 v1 缩放版 | prototype_only AUC 0.734395 / F1 0.522782；prototype_margin AUC 0.751237 / F1 0.4712 |
 | E19 | [E19_ridge_session_robust_v1](E19_ridge_session_robust_v1) | Ridge Session 鲁棒 v1 | AUC 0.993997，身份 macro-F1 0.925737，unknown-F1 0.951435；最终候选 base，Test 拒识 17,619/22,251 |
+| E20 | [E20_eeg_image_dinov2](E20_eeg_image_dinov2) | EEG 图像化 + 冻结 DINOv2 特征 | 最佳 topomap+attention_pool：C=0.822，身份 F1=0.790，U=0.191，unknown AUROC=0.809，unknown F1=0.310；弱于协方差基线 |
 
 ## 其他
 

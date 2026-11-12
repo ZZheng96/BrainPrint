@@ -1,0 +1,191 @@
+﻿train=11304 subjects=20 known_eval=2308
+
+=== spectrogram ===
+spectrogram: 1000/11304 | 8s
+spectrogram: 2000/11304 | 12s
+spectrogram: 3000/11304 | 16s
+spectrogram: 4000/11304 | 20s
+spectrogram: 5000/11304 | 24s
+spectrogram: 6000/11304 | 28s
+spectrogram: 7000/11304 | 32s
+spectrogram: 8000/11304 | 36s
+spectrogram: 9000/11304 | 40s
+spectrogram: 10000/11304 | 43s
+spectrogram: 11000/11304 | 47s
+spectrogram: 11304/11304 | 49s
+python.exe : Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher ra
+te limits and faster downloads.
+所在位置 行:15 字符: 4086
++ ... irror.com"; & .venv\Scripts\python.exe research\E20_eeg_image_dinov2\ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: You ar...ster downloads.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+DINOv2 features (11304, 768) in 101s
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 1: C=0.8046 U=0.1572 AUROC=0.7698
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 2: C=0.7557 U=0.1014 AUROC=0.7328
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 3: C=0.7612 U=0.1292 AUROC=0.7403
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 4: C=0.7694 U=0.1173 AUROC=0.7144
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 5: C=0.7650 U=0.1143 AUROC=0.7409
+spectrogram summary: {'C': 0.7711633442710017, 'identity_macro_f1': 0.7391693303498529, 'U': 0.12387136457299797, 'unknown_auroc': 0.7396456220443677, 'unknown_f1': 0.212164410015317}
+
+=== correlation ===
+correlation: 1000/11304 | 6s
+correlation: 2000/11304 | 8s
+correlation: 3000/11304 | 9s
+correlation: 4000/11304 | 11s
+correlation: 5000/11304 | 12s
+correlation: 6000/11304 | 14s
+correlation: 7000/11304 | 16s
+correlation: 8000/11304 | 17s
+correlation: 9000/11304 | 19s
+correlation: 10000/11304 | 20s
+correlation: 11000/11304 | 22s
+correlation: 11304/11304 | 22s
+DINOv2 features (11304, 768) in 98s
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 1: C=0.8371 U=0.1516 AUROC=0.7864
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 2: C=0.8202 U=0.1538 AUROC=0.7635
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 3: C=0.8384 U=0.1719 AUROC=0.7942
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 4: C=0.8175 U=0.1245 AUROC=0.7467
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 5: C=0.8104 U=0.1270 AUROC=0.7711
+correlation summary: {'C': 0.8247053851808046, 'identity_macro_f1': 0.7951755058778633, 'U': 0.1457455238552035, 'unknown_auroc': 0.7723562798256914, 'unknown_f1': 0.24523278493093614}
+
+=== topomap ===
+topomap: 1000/11304 | 8s
+topomap: 2000/11304 | 12s
+topomap: 3000/11304 | 16s
+topomap: 4000/11304 | 21s
+topomap: 5000/11304 | 25s
+topomap: 6000/11304 | 29s
+topomap: 7000/11304 | 33s
+topomap: 8000/11304 | 37s
+topomap: 9000/11304 | 41s
+topomap: 10000/11304 | 45s
+topomap: 11000/11304 | 49s
+topomap: 11304/11304 | 50s
+DINOv2 features (11304, 768) in 98s
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 1: C=0.8472 U=0.1917 AUROC=0.7854
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 2: C=0.8296 U=0.1818 AUROC=0.7950
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 3: C=0.8400 U=0.1993 AUROC=0.7960
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 4: C=0.8272 U=0.1281 AUROC=0.7322
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 5: C=0.8163 U=0.1587 AUROC=0.7592
+topomap summary: {'C': 0.8320629921017565, 'identity_macro_f1': 0.8013486421136466, 'U': 0.17192356668056927, 'unknown_auroc': 0.7735436845840354, 'unknown_f1': 0.28269507483185125}
+
+=== gaf ===
+gaf: 1000/11304 | 8s
+gaf: 2000/11304 | 12s
+gaf: 3000/11304 | 15s
+gaf: 4000/11304 | 19s
+gaf: 5000/11304 | 22s
+gaf: 6000/11304 | 26s
+gaf: 7000/11304 | 30s
+gaf: 8000/11304 | 33s
+gaf: 9000/11304 | 37s
+gaf: 10000/11304 | 40s
+gaf: 11000/11304 | 44s
+gaf: 11304/11304 | 45s
+DINOv2 features (11304, 768) in 98s
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 1: C=0.4169 U=0.0708 AUROC=0.5502
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 2: C=0.4170 U=0.0655 AUROC=0.5672
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 3: C=0.3819 U=0.0719 AUROC=0.5600
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 4: C=0.3877 U=0.0474 AUROC=0.5028
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 5: C=0.4149 U=0.0467 AUROC=0.5402
+gaf summary: {'C': 0.40369161122693215, 'identity_macro_f1': 0.38694691032237155, 'U': 0.06045822357510192, 'unknown_auroc': 0.5440754051194825, 'unknown_f1': 0.1095858896917417}
+
+=== mtf ===
+mtf: 1000/11304 | 7s
+mtf: 2000/11304 | 10s
+mtf: 3000/11304 | 13s
+mtf: 4000/11304 | 16s
+mtf: 5000/11304 | 19s
+mtf: 6000/11304 | 22s
+mtf: 7000/11304 | 25s
+mtf: 8000/11304 | 28s
+mtf: 9000/11304 | 31s
+mtf: 10000/11304 | 33s
+mtf: 11000/11304 | 36s
+mtf: 11304/11304 | 37s
+DINOv2 features (11304, 768) in 98s
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 1: C=0.4633 U=0.0633 AUROC=0.5553
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 2: C=0.4528 U=0.0462 AUROC=0.5538
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 3: C=0.4287 U=0.0556 AUROC=0.5717
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 4: C=0.4266 U=0.0541 AUROC=0.5041
+D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1435: FutureWarning: 'n_jobs' has
+ no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+  fold 5: C=0.4673 U=0.0540 AUROC=0.5341
+mtf summary: {'C': 0.44774141965887193, 'identity_macro_f1': 0.42626142941039297, 'U': 0.05462645898921439, 'unknown_auroc': 0.543808016051479, 'unknown_f1': 0.09964752146819578}
+
+saved D:\WORK\BCIC2026\BrainPrint\research\E20_eeg_image_dinov2\e20a_linear_probe.json
