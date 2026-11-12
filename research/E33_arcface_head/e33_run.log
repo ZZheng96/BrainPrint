@@ -1,0 +1,13 @@
+﻿fold 1 closed=0.9105 C=0.8988 U=0.2304 AUROC=0.8652 | 8s
+fold 2 closed=0.8759 C=0.8610 U=0.1719 AUROC=0.8387 | 13s
+fold 3 closed=0.9021 C=0.8819 U=0.3618 AUROC=0.8578 | 19s
+fold 4 closed=0.9195 C=0.8947 U=0.2670 AUROC=0.8527 | 24s
+fold 5 closed=0.8703 C=0.8498 U=0.0921 AUROC=0.7875 | 29s
+
+嵌套平均：closed=0.8957 C=0.8773 identity_F1=0.8417 U=0.2246 AUROC=0.8404
+Test AUROC=0.6321 | train -0.931 S2 -0.850 S1 -0.817
+  q01: S2 accept=0.926 S1 reject=0.300
+  q02: S2 accept=0.847 S1 reject=0.374
+  q05: S2 accept=0.703 S1 reject=0.488
+  q10: S2 accept=0.520 S1 reject=0.622
+  q20: S2 accept=0.296 S1 reject=0.786

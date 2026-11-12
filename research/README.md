@@ -51,6 +51,7 @@
 | E30 | [E30_dino_multiview](E30_dino_multiview) | DINO 多视图距离融合 | cov5 类内白化（WCCN）距离最优：Test AUROC 0.7243，加 PCA 残差 0.7253；q01 时 S2 接受 0.938 / S1 拒识 0.486（E29 为 0.952/0.435）；topomap5 融合反而降到 0.66–0.68 |
 | E31 | [E31_task_conditional](E31_task_conditional) | DINO 任务条件化类中心 | 任务特异模型 + 任务内 WCCN：Test AUROC 0.7327（内层 0.7119），q01 时 S2 接受 0.917 / S1 拒识 0.509；工作点与 E30 持平 |
 | E32 | [E32_distance_ratio](E32_distance_ratio) | 距离比率类开集判据 | dist+ratio 的 Test AUROC 0.7403（最高），但 S2 接受 0.894 时 S1 拒识 0.506，工作点未改善；gap 方向相反（内层 AUROC 0.081） |
+| E33 | [E33_arcface_head](E33_arcface_head) | ArcFace 身份头微调 DINO 特征 | **负结果**：ArcFace 闭集 0.8957/C 0.8773/Test AUROC 0.6321，普通 CE 0.8410/0.8129/0.6522，均劣于线性探针（0.9294/0.7327）；20 类数据量不足以训练非线性投影头 |
 
 ## 其他
 
