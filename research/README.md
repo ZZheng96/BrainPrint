@@ -41,6 +41,7 @@
 | E20 | [E20_eeg_image_dinov2](E20_eeg_image_dinov2) | EEG 图像化 + 冻结 DINOv2（纯 EEG，无 Session） | E20D 严格嵌套：covariance_only C=0.957/U=0.975/AUROC=0.993；covariance5_image C=0.929/U=0.432/AUROC=0.910；covariance5_fused 与纯协方差持平，无互补增益 |
 | E21 | [E21_scale_invariant](E21_scale_invariant) | 跨会话尺度不变特征与拒识权衡 | cov_detrend_zband 闭集 10/9,232（0.9989）、C=0.9635/U=0.976/AUROC=0.994；Test S2 两阶段接受率仅 0.10–0.28，AUROC(S2 vs S1)=0.29–0.43 → 纯 EEG 下「S2 拒识≈0」与「U>0」互斥 |
 | E22 | [E22_cross_session_viability](E22_cross_session_viability) | 跨会话身份可恢复性验证 | 相关矩阵对通道增益/频带缩放严格不变（保持率 1.000），但 Test 分数比仍 0.54、AUROC 0.29；域随机化对 Test 零改善 → 偏移在相关结构本身，判定不可恢复 |
+| E23 | [E23_spatial_reference](E23_spatial_reference) | 空间参考/通道混合的跨会话对齐 | CAR/Cz/拉普拉斯只把闭集错误 27→18、AUROC(S2 vs S1) 0.317→0.43，分数比仍 0.50–0.55；另发现 Test S2 双峰（7,985 低范数 / 11,233 高范数），高范数组 AUROC 仍 0.358 |
 
 ## 其他
 

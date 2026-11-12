@@ -1,0 +1,12 @@
+﻿identity   closed=0.9971 err= 27 C=0.9573 U=0.9752 AUROC=0.9929 | max_ratio=0.51 S2accept=0.130 AUROC(S2vsS1)=0.317
+car        closed=0.9978 err= 20 C=0.9604 U=0.9794 AUROC=0.9932 | max_ratio=0.55 S2accept=0.155 AUROC(S2vsS1)=0.426
+cz         closed=0.9980 err= 18 C=0.9674 U=0.9729 AUROC=0.9935 | max_ratio=0.50 S2accept=0.104 AUROC(S2vsS1)=0.398
+laplacian  closed=0.9979 err= 19 C=0.9623 U=0.9722 AUROC=0.9923 | max_ratio=0.54 S2accept=0.150 AUROC(S2vsS1)=0.408
+
+均值协方差差值诊断
+band 0: trace_ratio=1.000 rel_delta=0.080 top_share=0.295 common_mode_cos=0.285
+band 1: trace_ratio=1.000 rel_delta=0.052 top_share=0.250 common_mode_cos=0.799
+band 2: trace_ratio=1.000 rel_delta=0.072 top_share=0.179 common_mode_cos=0.076
+band 3: trace_ratio=1.000 rel_delta=0.127 top_share=0.172 common_mode_cos=0.903
+band 4: trace_ratio=1.000 rel_delta=0.234 top_share=0.299 common_mode_cos=0.911
+band 5: trace_ratio=1.000 rel_delta=0.375 top_share=0.339 common_mode_cos=0.900

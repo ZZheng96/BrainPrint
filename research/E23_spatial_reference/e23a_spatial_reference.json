@@ -1,0 +1,100 @@
+{
+  "mean_covariance_diagnostics": [
+    {
+      "band": 0,
+      "trace_ratio_test_over_train": 0.9999999999999993,
+      "relative_delta_norm": 0.0795809349356014,
+      "top_eigenvalue_share": 0.29450020376859704,
+      "top_eigenvector_cosine_with_common_mode": 0.28492528544989015
+    },
+    {
+      "band": 1,
+      "trace_ratio_test_over_train": 1.0000000000000002,
+      "relative_delta_norm": 0.05247794927613861,
+      "top_eigenvalue_share": 0.250399430131178,
+      "top_eigenvector_cosine_with_common_mode": 0.7991552607117792
+    },
+    {
+      "band": 2,
+      "trace_ratio_test_over_train": 0.9999999999999999,
+      "relative_delta_norm": 0.0718828101375513,
+      "top_eigenvalue_share": 0.17908508506832393,
+      "top_eigenvector_cosine_with_common_mode": 0.07612153267328395
+    },
+    {
+      "band": 3,
+      "trace_ratio_test_over_train": 0.9999999999999996,
+      "relative_delta_norm": 0.12702531803648304,
+      "top_eigenvalue_share": 0.17198008378556598,
+      "top_eigenvector_cosine_with_common_mode": 0.902777754623161
+    },
+    {
+      "band": 4,
+      "trace_ratio_test_over_train": 0.9999999999999997,
+      "relative_delta_norm": 0.23367511478809616,
+      "top_eigenvalue_share": 0.29948196434338065,
+      "top_eigenvector_cosine_with_common_mode": 0.9113089981638015
+    },
+    {
+      "band": 5,
+      "trace_ratio_test_over_train": 0.9999999999999999,
+      "relative_delta_norm": 0.3752934818949144,
+      "top_eigenvalue_share": 0.33934978254694836,
+      "top_eigenvector_cosine_with_common_mode": 0.9001361860716545
+    }
+  ],
+  "references": {
+    "identity": {
+      "nested": {
+        "closed_acc": 0.9970618586087164,
+        "C": 0.9573049823857858,
+        "U": 0.9751847714689849,
+        "auroc": 0.9929130358002451,
+        "errors": 27
+      },
+      "max_ratio": 0.5120020508766174,
+      "margin_ratio": 0.21458981931209564,
+      "auroc_s2_vs_s1": 0.31658307169372923,
+      "s2_accept_q05": 0.1300343428036216
+    },
+    "car": {
+      "nested": {
+        "closed_acc": 0.9978195373498743,
+        "C": 0.9603609791961135,
+        "U": 0.9793786481245788,
+        "auroc": 0.9932318938785292,
+        "errors": 20
+      },
+      "max_ratio": 0.5460480451583862,
+      "margin_ratio": 0.22603033483028412,
+      "auroc_s2_vs_s1": 0.42619059358744243,
+      "s2_accept_q05": 0.1552190654594651
+    },
+    "cz": {
+      "nested": {
+        "closed_acc": 0.9980340196034106,
+        "C": 0.9673767986705807,
+        "U": 0.9728672559423186,
+        "auroc": 0.9934578709654518,
+        "errors": 18
+      },
+      "max_ratio": 0.5026875734329224,
+      "margin_ratio": 0.20254385471343994,
+      "auroc_s2_vs_s1": 0.398307459997817,
+      "s2_accept_q05": 0.10375689457799979
+    },
+    "laplacian": {
+      "nested": {
+        "closed_acc": 0.9979336061473438,
+        "C": 0.9622735336785615,
+        "U": 0.9722237840778405,
+        "auroc": 0.9923464494245711,
+        "errors": 19
+      },
+      "max_ratio": 0.5392548441886902,
+      "margin_ratio": 0.21707066893577576,
+      "auroc_s2_vs_s1": 0.4083148038520459,
+      "s2_accept_q05": 0.15027578311999168
+    }
+  }
+}
