@@ -38,7 +38,7 @@
 | E17 | [E17_enrollment_template_session_robust_v1](E17_enrollment_template_session_robust_v1) | 注册模板 Session 鲁棒 v1 | 见 report.md 表格；Test AUC/F1 不可计算 |
 | E18 | [E18_enrollment_template_session_robust_v1_scaled](E18_enrollment_template_session_robust_v1_scaled) | 注册模板 v1 缩放版 | prototype_only AUC 0.734395 / F1 0.522782；prototype_margin AUC 0.751237 / F1 0.4712 |
 | E19 | [E19_ridge_session_robust_v1](E19_ridge_session_robust_v1) | Ridge Session 鲁棒 v1 | AUC 0.993997，身份 macro-F1 0.925737，unknown-F1 0.951435；最终候选 base，Test 拒识 17,619/22,251 |
-| E20 | [E20_eeg_image_dinov2](E20_eeg_image_dinov2) | EEG 图像化 + 冻结 DINOv2 特征 | covariance5 图像单独 C=0.930、AUROC=0.910、U=0.435；与协方差融合无增益（C=0.950/0.990 vs 纯协方差 0.950/0.993） |
+| E20 | [E20_eeg_image_dinov2](E20_eeg_image_dinov2) | EEG 图像化 + 冻结 DINOv2（纯 EEG，无 Session） | E20D 严格嵌套：covariance_only C=0.957/U=0.975/AUROC=0.993；covariance5_image C=0.929/U=0.432/AUROC=0.910；covariance5_fused 与纯协方差持平，无互补增益 |
 
 ## 其他
 

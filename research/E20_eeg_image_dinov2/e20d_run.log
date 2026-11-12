@@ -1,0 +1,35 @@
+﻿train=11304 subjects=20 外层已知测试=2308
+
+=== covariance_only ===
+  fold 1: C=0.9558 U=0.9877 AUROC=0.9959 thr=4.7367
+  fold 2: C=0.9564 U=0.9955 AUROC=0.9954 thr=4.2527
+  fold 3: C=0.9445 U=0.9311 AUROC=0.9844 thr=4.4456
+  fold 4: C=0.9584 U=0.9734 AUROC=0.9926 thr=4.6051
+  fold 5: C=0.9714 U=0.9882 AUROC=0.9963 thr=4.0519
+covariance_only summary: {'C': 0.9573049823857858, 'identity_macro_f1': 0.9196325691939562, 'U': 0.9751847714689849, 'unknown_auroc': 0.9929130358002451, 'unknown_f1': 0.9702001719043313, 'macro_f1_21': 0.9649072063776423, 'worst_fold_unknown_auroc': 0.9843518310805718} (2s)
+
+=== covariance5_image ===
+  fold 1: C=0.9409 U=0.4504 AUROC=0.9254 thr=1.1997
+  fold 2: C=0.9151 U=0.4695 AUROC=0.9084 thr=1.4851
+  fold 3: C=0.9314 U=0.4059 AUROC=0.9042 thr=1.1614
+  fold 4: C=0.9222 U=0.4023 AUROC=0.8897 thr=1.4507
+  fold 5: C=0.9373 U=0.4336 AUROC=0.9198 thr=1.2862
+covariance5_image summary: {'C': 0.9293954203268988, 'identity_macro_f1': 0.896113858796215, 'U': 0.4323460254358418, 'unknown_auroc': 0.9095218986794784, 'unknown_f1': 0.5865902479769496, 'macro_f1_21': 0.7311789751596598, 'worst_fold_unknown_auroc': 0.8897379955205749} (3s)
+
+=== covariance5_fused ===
+  fold 1: C=0.9686 U=0.9797 AUROC=0.9941 thr=4.2093
+  fold 2: C=0.9680 U=0.9806 AUROC=0.9912 thr=4.0954
+  fold 3: C=0.9543 U=0.9350 AUROC=0.9836 thr=4.1651
+  fold 4: C=0.9546 U=0.9770 AUROC=0.9896 thr=4.5499
+  fold 5: C=0.9687 U=0.9701 AUROC=0.9917 thr=3.9005
+covariance5_fused summary: {'C': 0.9628399579136552, 'identity_macro_f1': 0.9224858179294604, 'U': 0.9684751020170301, 'unknown_auroc': 0.9900553803339751, 'unknown_f1': 0.9690471635703455, 'macro_f1_21': 0.9634582676418472, 'worst_fold_unknown_auroc': 0.9836369542897726} (3s)
+
+=== topomap5_image ===
+  fold 1: C=0.8850 U=0.2842 AUROC=0.8352 thr=0.7697
+  fold 2: C=0.8731 U=0.2234 AUROC=0.8114 thr=0.5873
+  fold 3: C=0.8689 U=0.2502 AUROC=0.8164 thr=0.6426
+  fold 4: C=0.8564 U=0.1894 AUROC=0.7585 thr=0.6686
+  fold 5: C=0.8617 U=0.2163 AUROC=0.7628 thr=0.6142
+topomap5_image summary: {'C': 0.869013911456314, 'identity_macro_f1': 0.8421905751286584, 'U': 0.23272580328430775, 'unknown_auroc': 0.7968594748567813, 'unknown_f1': 0.36152657986859743, 'macro_f1_21': 0.6379224041412079, 'worst_fold_unknown_auroc': 0.7584583490424961} (13s)
+
+saved D:\WORK\BCIC2026\BrainPrint\research\E20_eeg_image_dinov2\e20d_nested_pure_eeg.json

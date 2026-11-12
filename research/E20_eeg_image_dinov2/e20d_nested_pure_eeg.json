@@ -1,0 +1,327 @@
+{
+  "protocol": {
+    "data": "Train Session1 only; 纯 EEG，无 Session 参与",
+    "outer": "5-fold subject holdout; 4 unknown, 16 registered",
+    "outer_known_test": "last 20% trials per registered subject/task",
+    "inner": "2-fold pseudo-unknown within registered subjects; threshold only",
+    "threshold": "5th percentile of inner known margin; never outer data",
+    "classifier": "StandardScaler + LogisticRegression(C=1.0)",
+    "session_used": false,
+    "batch_statistics_used": false,
+    "pairing_used": false
+  },
+  "results": {
+    "covariance_only": {
+      "folds": [
+        {
+          "fold": 1,
+          "C": 0.95580404685836,
+          "identity_macro_f1": 0.918794498878383,
+          "U": 0.987724268177526,
+          "unknown_auroc": 0.9959108548764533,
+          "unknown_f1": 0.9746098299557419,
+          "macro_f1_21": 0.9696687197555521,
+          "known_acceptance": 0.95580404685836,
+          "threshold": 4.736745834350586,
+          "n_known": 1878,
+          "n_unknown": 2118
+        },
+        {
+          "fold": 2,
+          "C": 0.9564258135686707,
+          "identity_macro_f1": 0.9190467002481237,
+          "U": 0.9954657873042044,
+          "unknown_auroc": 0.995423725961943,
+          "unknown_f1": 0.9817073170731707,
+          "macro_f1_21": 0.9741226268183899,
+          "known_acceptance": 0.9564258135686707,
+          "threshold": 4.252702236175537,
+          "n_known": 1813,
+          "n_unknown": 2426
+        },
+        {
+          "fold": 3,
+          "C": 0.9445048966267682,
+          "identity_macro_f1": 0.9130201887393691,
+          "U": 0.9311377245508982,
+          "unknown_auroc": 0.9843518310805718,
+          "unknown_f1": 0.9430366038553173,
+          "macro_f1_21": 0.9387384692429285,
+          "known_acceptance": 0.9445048966267682,
+          "threshold": 4.445579528808594,
+          "n_known": 1838,
+          "n_unknown": 2338
+        },
+        {
+          "fold": 4,
+          "C": 0.9584233261339092,
+          "identity_macro_f1": 0.9204242887953168,
+          "U": 0.9733874605322508,
+          "unknown_auroc": 0.9926240000935243,
+          "unknown_f1": 0.9694519317160827,
+          "macro_f1_21": 0.9636159001756619,
+          "known_acceptance": 0.9584233261339092,
+          "threshold": 4.605106830596924,
+          "n_known": 1852,
+          "n_unknown": 2217
+        },
+        {
+          "fold": 5,
+          "C": 0.9713668287412209,
+          "identity_macro_f1": 0.9268771693085885,
+          "U": 0.9882086167800453,
+          "unknown_auroc": 0.9962547669887332,
+          "unknown_f1": 0.9821951769213433,
+          "macro_f1_21": 0.9783903158956792,
+          "known_acceptance": 0.9713668287412209,
+          "threshold": 4.0519118309021,
+          "n_known": 1851,
+          "n_unknown": 2205
+        }
+      ],
+      "summary": {
+        "C": 0.9573049823857858,
+        "identity_macro_f1": 0.9196325691939562,
+        "U": 0.9751847714689849,
+        "unknown_auroc": 0.9929130358002451,
+        "unknown_f1": 0.9702001719043313,
+        "macro_f1_21": 0.9649072063776423,
+        "worst_fold_unknown_auroc": 0.9843518310805718
+      }
+    },
+    "covariance5_image": {
+      "folds": [
+        {
+          "fold": 1,
+          "C": 0.9408945686900958,
+          "identity_macro_f1": 0.9037267278470712,
+          "U": 0.45042492917847027,
+          "unknown_auroc": 0.9254143951987177,
+          "unknown_f1": 0.6053299492385786,
+          "macro_f1_21": 0.739248044986304,
+          "known_acceptance": 0.9574014909478168,
+          "threshold": 1.1996655464172363,
+          "n_known": 1878,
+          "n_unknown": 2118
+        },
+        {
+          "fold": 2,
+          "C": 0.915057915057915,
+          "identity_macro_f1": 0.8873974902161107,
+          "U": 0.46949711459192084,
+          "unknown_auroc": 0.908438141861767,
+          "unknown_f1": 0.6198639455782313,
+          "macro_f1_21": 0.7284280026913494,
+          "known_acceptance": 0.939327082184225,
+          "threshold": 1.4850901365280151,
+          "n_known": 1813,
+          "n_unknown": 2426
+        },
+        {
+          "fold": 3,
+          "C": 0.9314472252448314,
+          "identity_macro_f1": 0.8955633153791397,
+          "U": 0.4059024807527802,
+          "unknown_auroc": 0.9041781197437241,
+          "unknown_f1": 0.5633719204511725,
+          "macro_f1_21": 0.7204976835326629,
+          "known_acceptance": 0.955386289445049,
+          "threshold": 1.1613832712173462,
+          "n_known": 1838,
+          "n_unknown": 2338
+        },
+        {
+          "fold": 4,
+          "C": 0.9222462203023758,
+          "identity_macro_f1": 0.895154143734489,
+          "U": 0.40234551195308976,
+          "unknown_auroc": 0.8897379955205749,
+          "unknown_f1": 0.5533498759305211,
+          "macro_f1_21": 0.7287048808348833,
+          "known_acceptance": 0.9379049676025918,
+          "threshold": 1.4507418870925903,
+          "n_known": 1852,
+          "n_unknown": 2217
+        },
+        {
+          "fold": 5,
+          "C": 0.9373311723392761,
+          "identity_macro_f1": 0.8987276168042649,
+          "U": 0.4335600907029478,
+          "unknown_auroc": 0.9198408410726077,
+          "unknown_f1": 0.5910355486862442,
+          "macro_f1_21": 0.7390162637530997,
+          "known_acceptance": 0.9600216099405726,
+          "threshold": 1.2861868143081665,
+          "n_known": 1851,
+          "n_unknown": 2205
+        }
+      ],
+      "summary": {
+        "C": 0.9293954203268988,
+        "identity_macro_f1": 0.896113858796215,
+        "U": 0.4323460254358418,
+        "unknown_auroc": 0.9095218986794784,
+        "unknown_f1": 0.5865902479769496,
+        "macro_f1_21": 0.7311789751596598,
+        "worst_fold_unknown_auroc": 0.8897379955205749
+      }
+    },
+    "covariance5_fused": {
+      "folds": [
+        {
+          "fold": 1,
+          "C": 0.968583599574015,
+          "identity_macro_f1": 0.9256768749494724,
+          "U": 0.9796978281397545,
+          "unknown_auroc": 0.9941107762361462,
+          "unknown_f1": 0.9760112888052681,
+          "macro_f1_21": 0.9725855136119401,
+          "known_acceptance": 0.968583599574015,
+          "threshold": 4.209279537200928,
+          "n_known": 1878,
+          "n_unknown": 2118
+        },
+        {
+          "fold": 2,
+          "C": 0.9680088251516823,
+          "identity_macro_f1": 0.9248989734950248,
+          "U": 0.9806265457543281,
+          "unknown_auroc": 0.9911768945451669,
+          "unknown_f1": 0.9786096256684492,
+          "macro_f1_21": 0.9711442629961478,
+          "known_acceptance": 0.9685603971318257,
+          "threshold": 4.095393180847168,
+          "n_known": 1813,
+          "n_unknown": 2426
+        },
+        {
+          "fold": 3,
+          "C": 0.9542981501632208,
+          "identity_macro_f1": 0.918244749764891,
+          "U": 0.9349871685201027,
+          "unknown_auroc": 0.9836369542897726,
+          "unknown_f1": 0.9487847222222222,
+          "macro_f1_21": 0.9435285432693111,
+          "known_acceptance": 0.9542981501632208,
+          "threshold": 4.165100574493408,
+          "n_known": 1838,
+          "n_unknown": 2338
+        },
+        {
+          "fold": 4,
+          "C": 0.9546436285097192,
+          "identity_macro_f1": 0.9185739964780686,
+          "U": 0.9769959404600812,
+          "unknown_auroc": 0.9896370671942998,
+          "unknown_f1": 0.9697783747481531,
+          "macro_f1_21": 0.9634161687790387,
+          "known_acceptance": 0.9546436285097192,
+          "threshold": 4.549885272979736,
+          "n_known": 1852,
+          "n_unknown": 2217
+        },
+        {
+          "fold": 5,
+          "C": 0.968665586169638,
+          "identity_macro_f1": 0.9250344949598447,
+          "U": 0.9700680272108844,
+          "unknown_auroc": 0.9917152094044893,
+          "unknown_f1": 0.9720518064076347,
+          "macro_f1_21": 0.9666168495527979,
+          "known_acceptance": 0.9692058346839546,
+          "threshold": 3.900470018386841,
+          "n_known": 1851,
+          "n_unknown": 2205
+        }
+      ],
+      "summary": {
+        "C": 0.9628399579136552,
+        "identity_macro_f1": 0.9224858179294604,
+        "U": 0.9684751020170301,
+        "unknown_auroc": 0.9900553803339751,
+        "unknown_f1": 0.9690471635703455,
+        "macro_f1_21": 0.9634582676418472,
+        "worst_fold_unknown_auroc": 0.9836369542897726
+      }
+    },
+    "topomap5_image": {
+      "folds": [
+        {
+          "fold": 1,
+          "C": 0.8849840255591054,
+          "identity_macro_f1": 0.8609110715795806,
+          "U": 0.2842304060434372,
+          "unknown_auroc": 0.8352211532369738,
+          "unknown_f1": 0.4230498945888967,
+          "macro_f1_21": 0.6673138520946353,
+          "known_acceptance": 0.9329073482428115,
+          "threshold": 0.7697029113769531,
+          "n_known": 1878,
+          "n_unknown": 2118
+        },
+        {
+          "fold": 2,
+          "C": 0.873138444567016,
+          "identity_macro_f1": 0.8418458931836776,
+          "U": 0.22341302555647155,
+          "unknown_auroc": 0.8113860280860634,
+          "unknown_f1": 0.3542483660130719,
+          "macro_f1_21": 0.6298430912913018,
+          "known_acceptance": 0.9492553778268064,
+          "threshold": 0.5873004198074341,
+          "n_known": 1813,
+          "n_unknown": 2426
+        },
+        {
+          "fold": 3,
+          "C": 0.8688792165397171,
+          "identity_macro_f1": 0.8426289086104496,
+          "U": 0.25021385799828916,
+          "unknown_auroc": 0.8164053518953077,
+          "unknown_f1": 0.3847418612298586,
+          "macro_f1_21": 0.622616472695603,
+          "known_acceptance": 0.9357997823721437,
+          "threshold": 0.6426345705986023,
+          "n_known": 1838,
+          "n_unknown": 2338
+        },
+        {
+          "fold": 4,
+          "C": 0.8563714902807775,
+          "identity_macro_f1": 0.8293511266799148,
+          "U": 0.18944519621109607,
+          "unknown_auroc": 0.7584583490424961,
+          "unknown_f1": 0.3051216854340719,
+          "macro_f1_21": 0.628894632388454,
+          "known_acceptance": 0.937365010799136,
+          "threshold": 0.6685669422149658,
+          "n_known": 1852,
+          "n_unknown": 2217
+        },
+        {
+          "fold": 5,
+          "C": 0.8616963803349541,
+          "identity_macro_f1": 0.836215875589669,
+          "U": 0.2163265306122449,
+          "unknown_auroc": 0.7628264920230653,
+          "unknown_f1": 0.3404710920770878,
+          "macro_f1_21": 0.6409439722360455,
+          "known_acceptance": 0.9351701782820098,
+          "threshold": 0.6142458915710449,
+          "n_known": 1851,
+          "n_unknown": 2205
+        }
+      ],
+      "summary": {
+        "C": 0.869013911456314,
+        "identity_macro_f1": 0.8421905751286584,
+        "U": 0.23272580328430775,
+        "unknown_auroc": 0.7968594748567813,
+        "unknown_f1": 0.36152657986859743,
+        "macro_f1_21": 0.6379224041412079,
+        "worst_fold_unknown_auroc": 0.7584583490424961
+      }
+    }
+  }
+}
