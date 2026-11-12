@@ -68,10 +68,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from schemes import DEFAULT, Registry  # noqa: E402
 
 DATA = ROOT / "Brainprint_Competition"
-CACHE = next(
-    (p for p in (ROOT / "BrainPrint_cache", ROOT.parent / "BrainPrint_cache") if p.exists()),
-    ROOT / "BrainPrint_cache",
-)
+CACHE = ROOT / "BrainPrint_cache"
 VIEWER = Path(__file__).resolve().parent / "viewer.html"
 SETS = ("train", "test")
 TASKS = ("EC", "EO", "Imagery", "SSVEP")
