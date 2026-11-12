@@ -61,6 +61,8 @@
 | E38 | [E38_image_pure_fusion](E38_image_pure_fusion) | DINO 图像分支与纯 EEG WCCN 的分数级 ECDF 融合 | **负结果**：内层选出图像权重 0.0；外层 direct C 0.9998、AUROC 0.9978，但 q05 工作点 U 仅 0.6774，U 门禁未过；图像分支无增益 |
 | E39 | [E39_ecdf_transfer](E39_ecdf_transfer) | 类数不变 ECDF 分数校准与阈值跨类数迁移 | **8/8 门禁通过**：阈值 0.023106；K8 内层 C 0.9774 / U 0.9688 / AUROC 0.9964；K16 外层 C 0.9773 / U 0.9937 / AUROC 0.9981；K20 全注册 direct C 0.9996 |
 | E40 | [E40_attack_rejection](E40_attack_rejection) | 双门控（distance_ratio + max_cosine）攻击感知拒识，冻结 E36 模型 | 机制成立：C 0.9500、身份 F1 0.9983（direct）、U 0.9902、检测器 AUROC 0.9008 / F1 0.8690；ASafeR 0.6062→**0.7082**、Score 56.39→**59.14**（同协议对照 +2.75）；但对照 E36C 外层（Score 59.78）差 −0.64，未达采纳判据；目标 PGD 检测 AUROC 仅 0.76–0.85 是短板 |
+| E41 | [E41_supervised_detector](E41_supervised_detector) | fit 折自训练（clean + 5 类对抗增广）监督攻击检测器 | **负结果**：单折 detAUROC 0.8976 vs E40 无监督 0.8926，ASafeR 0.7324 vs 0.7480；8 维逐 trial 统计量信息量不足，未扩展至完整内层 |
+| E43 | [E43_noise_robust_features](E43_noise_robust_features) | 每频带归一化空间相关特征（抗各向同性噪声假设） | **负结果**：攻击下准确率反低于 logSPD（FGSM30 0.148 vs 0.227，PGD20 0.000 vs 0.090，目标攻击 100% 命中）；相关结构比含特征值的 logSPD 更易被推动 |
 
 ## 其他
 
