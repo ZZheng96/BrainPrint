@@ -1,0 +1,8 @@
+﻿global_global            内层 AUROC = 0.6369
+global_taskcenter        内层 AUROC = 0.6537
+task_model_taskcenter    内层 AUROC = 0.6495
+task_model_wccn          内层 AUROC = 0.7119
+global_global            Test AUROC=0.7081 | train 18.66 S2 20.75 S1 53.40 | q01:0.953/0.434 q02:0.929/0.479 q05:0.876/0.534 q10:0.788/0.577 q20:0.648/0.641
+global_taskcenter        Test AUROC=0.7103 | train 17.99 S2 20.73 S1 53.56 | q01:0.950/0.438 q02:0.928/0.480 q05:0.876/0.535 q10:0.770/0.587 q20:0.606/0.659
+task_model_taskcenter    Test AUROC=0.7121 | train 18.17 S2 20.85 S1 52.76 | q01:0.947/0.446 q02:0.928/0.482 q05:0.872/0.538 q10:0.773/0.587 q20:0.603/0.658
+task_model_wccn          Test AUROC=0.7327 | train 13.97 S2 16.50 S1 41.79 | q01:0.917/0.509 q02:0.890/0.528 q05:0.840/0.558 q10:0.706/0.620 q20:0.471/0.754

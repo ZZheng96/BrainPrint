@@ -49,6 +49,8 @@
 | E28 | [E28_dino_openset](E28_dino_openset) | DINO 特征上的开集拒识改进 | cov5 上 S1 距离中位数 54.27 vs S2 20.94（差距 33.3，原始协方差仅 3.1）；reject1% 时 S2 接受 0.952 / S1 拒识 0.435，同时优于 E27 的 0.965/0.207 与 0.845/0.467 |
 | E29 | [E29_dino_calibration](E29_dino_calibration) | DINO 开集标定改进 | 修正 E28 的伪未知构造错误：正确留出被试下内层 AUROC 0.6369（非 0.45–0.51），与 Test 0.7065 仅差 0.07；q01 时 S2 接受 0.955 / S1 拒识 0.430 |
 | E30 | [E30_dino_multiview](E30_dino_multiview) | DINO 多视图距离融合 | cov5 类内白化（WCCN）距离最优：Test AUROC 0.7243，加 PCA 残差 0.7253；q01 时 S2 接受 0.938 / S1 拒识 0.486（E29 为 0.952/0.435）；topomap5 融合反而降到 0.66–0.68 |
+| E31 | [E31_task_conditional](E31_task_conditional) | DINO 任务条件化类中心 | 任务特异模型 + 任务内 WCCN：Test AUROC 0.7327（内层 0.7119），q01 时 S2 接受 0.917 / S1 拒识 0.509；工作点与 E30 持平 |
+| E32 | [E32_distance_ratio](E32_distance_ratio) | 距离比率类开集判据 | dist+ratio 的 Test AUROC 0.7403（最高），但 S2 接受 0.894 时 S1 拒识 0.506，工作点未改善；gap 方向相反（内层 AUROC 0.081） |
 
 ## 其他
 
