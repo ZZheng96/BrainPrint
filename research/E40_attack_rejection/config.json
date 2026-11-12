@@ -1,0 +1,51 @@
+{
+  "experiment": "E40 two-gate attack-aware rejection on the frozen E36 WCCN model",
+  "date_preregistered": "2026-11-13",
+  "motivation": "E36C outer macro ASafeR=0.6818 at RA=0.0609: attacked trials are neither identified correctly nor rejected, and rejection counts as safe. A second rejection gate based on the maximum cosine, which measures how far the winning prototype is from the sample, rejects attacked trials that the distance_ratio gate lets through. U is preserved because the distance_ratio gate is retained.",
+  "data": {
+    "source": "Train session1 only; read-only reuse of the E36 feature cache and Train MAT files",
+    "test_access": "forbidden"
+  },
+  "seed_base": 20261112,
+  "model": {
+    "identity_model": "frozen E36 detrend_zband_cov5_wccn_prototype at the E36 selected shrinkage and eigenvalue floor",
+    "training": "none; E40 changes only the inference-time rejection rule",
+    "prediction_batch_size": 512
+  },
+  "rule": {
+    "accept": "distance_ratio >= t_dr AND max_cosine >= t_mc",
+    "reject": "either gate fails",
+    "threshold_solving": "shared lower quantile q over 200 evenly spaced values in [0.001, 0.05] of the pooled inner clean-known arrays; t_dr = quantile(distance_ratio, q), t_mc = quantile(max_cosine, q); choose q whose joint clean-known acceptance is closest to 0.95",
+    "rationale": "the two statistics are positively correlated, so a shared lower quantile near 0.02 yields about 95% joint clean acceptance; solving on clean known only keeps the operating point fixed at the E36 95% acceptance budget for C/U comparability",
+    "no_attack_labels": true,
+    "development_note": "the two-gate form and the choice of max_cosine as the second statistic were developed on outer fold 1 inner fold 1 only, from a candidate list that also included whitened feature energy, whitened-prototype distance, spectral flatness, high-band power ratio, and random-smoothing flip rates at sigma 0.005/0.01/0.02/0.05/0.10/0.20. Random-smoothing flips, spectral flatness and high-band ratio were rejected as near-chance. No outer fold beyond fold 1 and no Test data were used for this choice."
+  },
+  "ablations": {
+    "confidence_only": "accept iff distance_ratio >= its own inner clean-known q05; this reproduces the E36C operating point on the same folds and separates the gain of the second gate from the gain of the fold protocol"
+  },
+  "evaluation": {
+    "inner_folds": "E36 five outer groups x two inner folds, identical seeds and continuous trial blocks",
+    "subset": "E36 stratified first 8 trials per identity/task by trial/path for clean known and pseudo-unknown, identical to E36C",
+    "attacks": ["untargeted_fgsm", "untargeted_pgd", "targeted_pgd"],
+    "snr_db": [30, 20],
+    "pgd_steps": 20,
+    "batch_size": 64,
+    "temperature": 0.05,
+    "aggregation": "each inner run is scored in its own enrolled label space (the two inner runs of an outer fold exclude different pseudo-unknown subjects, so their class axes differ and must not be concatenated); the two inner runs are averaged, then the five outer folds are averaged",
+    "metrics": ["C", "RA", "ASafeR", "A", "U", "direct_RA", "Rej", "detector_auroc", "detector_best_f1", "identity_macro_f1", "unknown_auroc", "Score"],
+    "detector_audit": "AUROC and best F1 of -max_cosine as an attacked-versus-clean-known classifier on the same pooled trials; reported as a detector audit, never used to choose thresholds",
+    "rej_definition": "mean adversarial rejection rate, i.e. 1 - accepted fraction of attacked known trials"
+  },
+  "targets": {
+    "C_min": 0.95,
+    "clean_identity_macro_f1_direct_min": 0.92,
+    "clean_unknown_auroc_min": 0.98,
+    "clean_U_min": 0.95,
+    "success": "strict improvement over both the internal confidence_only ablation and the E36C outer reference on macro ASafeR, macro A and macro Score, with C>=0.95, U>=0.95 and no loss of identity F1",
+    "RA_note": "macro RA>=0.95 remains the stated E36 gate but is not reachable at SNR20 with this frozen model; E40 does not claim it"
+  },
+  "reporting": {
+    "required": ["C", "RA", "ASafeR", "A", "U", "direct RA", "Rej", "identity F1", "unknown AUROC", "detector AUROC", "detector F1", "Score", "N"],
+    "evidence_boundary": "Train-only pseudo-unknown, E36 continuous file-block proxy, attack subsets that overlap the fit split exactly as in E36C, and a rule developed on one inner fold; this is a mechanism comparison, not untouched validation and not a Test or cross-session claim"
+  }
+}

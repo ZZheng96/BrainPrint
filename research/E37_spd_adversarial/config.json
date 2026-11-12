@@ -27,7 +27,7 @@
     "weight": 0.1,
     "temperature": 0.05,
     "classification_logits": "reference reciprocal-point form: mean_squared_l2_distance - dot_product",
-    "open_space_loss": "mean MarginRankingLoss(radius, true-class mean squared distance, target=1, margin=1), with trainable scalar radius initialized to 0",
+    "open_space_loss": "mean MarginRankingLoss(radius, true-class mean squared distance, target=1, margin=1) plus MarginRankingLoss(radius, nearest other-class mean squared distance, target=-1, margin=1); the second term was added 2026-11-13 because the one-sided form let the radius collapse and pushed every embedding away from all prototypes",
     "reference": "https://github.com/iCGY96/ARPL/blob/master/loss/ARPLoss.py",
     "note": "reciprocal-point-style loss on normalized residual embeddings; no confusing-sample generator and no unknown training labels"
   },
@@ -47,6 +47,8 @@
     ],
     "clean_loss_weight_for_at": 0.5,
     "adversarial_loss_weight_for_at": 0.5,
+    "prototype_anchor_weight": 1.0,
+    "prototype_anchor_note": "added 2026-11-13 after smoke showed trainable prototypes drifting and destroying identity accuracy; anchors normalized prototypes to their fit-fold WCCN initialization",
     "training_labels": "always true identity, including after targeted attack generation",
     "target_rule": "next registered identity in sorted enrolled-class cycle",
     "snr_mix": "equal-probability SNR20/SNR30 per batch using fold/epoch/batch-seeded RNG",

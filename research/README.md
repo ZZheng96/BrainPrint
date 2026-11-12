@@ -56,6 +56,11 @@
 | E33 | [E33_arcface_head](E33_arcface_head) | ArcFace 身份头微调 DINO 特征 | **负结果**：ArcFace 闭集 0.8957/C 0.8773/Test AUROC 0.6321，普通 CE 0.8410/0.8129/0.6522，均劣于线性探针（0.9294/0.7327）；20 类数据量不足以训练非线性投影头 |
 | E34 | [E34_covariance_hr](E34_covariance_hr) | 高分辨率协方差图（224×224） | **负结果**：Test AUROC 0.7223 < covariance5 的 0.7327，内层 0.6400 < 0.7119；分辨率不是瓶颈，DINO 特征对跨会话漂移敏感 |
 | E35 | [E35_per_task_analysis](E35_per_task_analysis) | 逐任务身份证据拆解 | SSVEP 最强（Test AUROC 0.7528）、EC 最弱（0.7022）；内层与 Test 逐任务吻合（差 0.006–0.020）；任务内阈值与全局阈值等价（同 S2 接受率下 S1 拒识差 ≤0.01） |
+| E36 | [E36_pure_eeg](E36_pure_eeg) | 纯 EEG 五频带 logSPD + WCCN 原型主线，含 E36C 六攻击嵌套评估 | 内层 clean：direct C 0.9992、身份 macro-F1 0.9992、unknown AUROC 0.9962、U@95 0.9927；E36C 外层六攻击宏 C 0.9395 / RA 0.0609 / ASafeR 0.6818 / A 0.2472 / U 1.0 / Score 59.78；RA 与 ASafeR 门禁未过 |
+| E37 | [E37_spd_adversarial](E37_spd_adversarial) | 残差 SPD + ARPL 开空间损失 + 原始波形对抗训练 | **负结果/未完成**：SMOKE 单折 clean 0.99–1.00，但 PGD20/SNR20 攻击后准确率 0.03（FGSM30 0.39）；并证伪「放大 logits 尺度可增强对抗训练」——L2 归一化 PGD 下尺度不变 |
+| E38 | [E38_image_pure_fusion](E38_image_pure_fusion) | DINO 图像分支与纯 EEG WCCN 的分数级 ECDF 融合 | **负结果**：内层选出图像权重 0.0；外层 direct C 0.9998、AUROC 0.9978，但 q05 工作点 U 仅 0.6774，U 门禁未过；图像分支无增益 |
+| E39 | [E39_ecdf_transfer](E39_ecdf_transfer) | 类数不变 ECDF 分数校准与阈值跨类数迁移 | **8/8 门禁通过**：阈值 0.023106；K8 内层 C 0.9774 / U 0.9688 / AUROC 0.9964；K16 外层 C 0.9773 / U 0.9937 / AUROC 0.9981；K20 全注册 direct C 0.9996 |
+| E40 | [E40_attack_rejection](E40_attack_rejection) | 双门控（distance_ratio + max_cosine）攻击感知拒识，冻结 E36 模型 | 机制成立：C 0.9500、身份 F1 0.9983（direct）、U 0.9902、检测器 AUROC 0.9008 / F1 0.8690；ASafeR 0.6062→**0.7082**、Score 56.39→**59.14**（同协议对照 +2.75）；但对照 E36C 外层（Score 59.78）差 −0.64，未达采纳判据；目标 PGD 检测 AUROC 仅 0.76–0.85 是短板 |
 
 ## 其他
 
