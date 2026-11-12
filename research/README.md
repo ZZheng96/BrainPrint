@@ -44,6 +44,7 @@
 | E23 | [E23_spatial_reference](E23_spatial_reference) | 空间参考/通道混合的跨会话对齐 | CAR/Cz/拉普拉斯只把闭集错误 27→18、AUROC(S2 vs S1) 0.317→0.43，分数比仍 0.50–0.55；另发现 Test S2 双峰（7,985 低范数 / 11,233 高范数），高范数组 AUROC 仍 0.358 |
 | E24 | [E24_norm_gate_robustness](E24_norm_gate_robustness) | 扰动检测（范数门控）与候选 | 噪声注入 SNR30 dB 使范数 59.7→31.7，与 Low 组 34.1 吻合；门控在 clean 子集拒识 0.5%、低范数组拒识 98.5%；嵌套 C=0.9854/F1=0.9324/U=0.0102/AUROC=0.9929；**结论已被 E25A 推翻，候选不建议提交** |
 | E25 | [E25_robust_recognition](E25_robust_recognition) | RA 导向的对抗增广识别 | 同会话 SNR30 扰动下 RA 0.9896→0.9972（ASafeR 1.0000），但对 Test 低范数组接受率只从 0.041 到 0.055 → 低范数组不是对抗样本，跨会话识别才是唯一瓶颈 |
+| E26 | [E26_final_candidates](E26_final_candidates) | 最终候选装配（距离拒识 + 对抗增广） | 距离型新颖度 AUROC(S2 vs S1)=0.758；reject5% 时 S2 接受 0.845 / S1 拒识 0.467，代理分约 34.6；五个候选已校验格式 |
 
 ## 其他
 
