@@ -1,0 +1,23 @@
+{
+  "experiment": "E42 two frozen submission candidates from one Test inference pass",
+  "date": "2026-11-13",
+  "purpose": "无需重新训练，把 E39 的 ECDF 校准与 E40 的双门控规则固化成两份可直接提交的 CSV，供一次性选择；Test 只做预测与无标签审计。",
+  "identity_model": "冻结 E36 detrend_zband_cov5_wccn_prototype，全 Train 20 类拟合；特征与 ECDF 参考复用 E36E 冻结实现",
+  "reference": "F20 = 20 类前 80% 连续块拟合、后 20% 已知 OOF 的 distance_ratio 排序数组（E36E 定义，哈希校验）",
+  "calibration": {
+    "block": "Train 20 类 trial ∈ (0.6, 0.8] 连续块，与 E36/E39 内层块一致",
+    "solve": "共享低分位 q（200 点，[0.001, 0.05]），t_u = quantile(u, q)，t_mc = quantile(max_cosine, q)，使 (u >= t_u) & (max_cosine >= t_mc) 的联合接受率最接近 0.95",
+    "no_test_or_session_input": true,
+    "no_attack_labels": true
+  },
+  "candidates": {
+    "A_e36c_single_gate": "u < t_u 输出 0，否则最高余弦身份；等价 E36C/E39 工作点",
+    "B_two_gate": "u < t_u 或 max_cosine < t_mc 输出 0；在 A 基础上多一道攻击感知拒识（E40 机制）"
+  },
+  "audit": {
+    "allowed": ["预测行数", "Sample 唯一性", "Test/ 路径前缀", "标签范围 0-20", "离线 Session 拒识率"],
+    "forbidden": ["用 Session 或文件顺序做决策", "用 Test 无标签统计调整阈值", "把 S1/S2 拒识率当作 C/RA/ASafeR/U"],
+    "test_metrics": "AUC/F1/C/RA/ASafeR/U 全部 N/A，因为 Test 无真实标签"
+  },
+  "evidence_boundary": "两份 CSV 的阈值只来自 Train 校准块；测试侧只有无标签审计。E40 已表明双门控在 Train 攻击下 ASafeR 更高但训练侧代理 Score 略低，因此提交选择不属于可由现有证据唯一确定的问题。"
+}

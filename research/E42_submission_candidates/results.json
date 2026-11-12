@@ -1,0 +1,51 @@
+{
+  "frozen": true,
+  "n_rows": 22251,
+  "reference": {
+    "definition": "20-class first-80% fit, last-20% known OOF distance_ratio, sorted",
+    "sha256": "5656e0e5c2ff5d3de3bc1b6416f7076fc8e5b7f806cc4eae930ebf9842faf174",
+    "n": 2308
+  },
+  "calibration_source": "Train 20-class continuous block trial in (0.6, 0.8]",
+  "calibration": {
+    "quantile": 0.030547738693467337,
+    "t_u": 0.08145580589254767,
+    "t_mc": 0.5480434894561768,
+    "acceptance": 0.9504563233376793,
+    "single_gate_acceptance": 0.9691438504997827
+  },
+  "test_metrics": {
+    "AUC": "N/A（无真实标签）",
+    "F1": "N/A（无真实标签）",
+    "C": "N/A（无真实标签）",
+    "RA": "N/A（无真实标签）",
+    "ASafeR": "N/A（无真实标签）",
+    "U": "N/A（无真实标签）"
+  },
+  "rule_a": {
+    "definition": "u < t_u -> 0",
+    "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E42_submission_candidates\\candidate_e36c_rule.csv",
+    "rejection_rate": 0.809311941036358,
+    "session_audit": {
+      "session_used_by_inference": false,
+      "S1_n": 3033,
+      "S1_rejection_rate": 0.5921529838443785,
+      "S2_n": 19218,
+      "S2_rejection_rate": 0.8435841398688729
+    }
+  },
+  "rule_b": {
+    "definition": "u < t_u 或 max_cosine < t_mc -> 0",
+    "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E42_submission_candidates\\candidate_two_gate_rule.csv",
+    "rejection_rate": 0.815513909487214,
+    "session_audit": {
+      "session_used_by_inference": false,
+      "S1_n": 3033,
+      "S1_rejection_rate": 0.5928123969666996,
+      "S2_n": 19218,
+      "S2_rejection_rate": 0.8506608387969612
+    }
+  },
+  "a_b_disagreement_rate": 0.006201968450856141,
+  "test_labels_used": false
+}
