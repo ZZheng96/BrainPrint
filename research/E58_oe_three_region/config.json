@@ -1,0 +1,40 @@
+{
+  "experiment": "E58 three-region decision with the OE-trained EEGNet as identity model",
+  "date": "2026-11-13",
+  "motivation": "E49 三段式（CNN+AT 身份 + logSPD 拒识）内层 Score 91.03、RA 0.7313；E54 的 OE 训练 EEGNet 单模型 RA 0.7824 更高但 U 仅 0.4180。本实验只把 E49 的身份模型换成 E54 的 oe 变体，其余（决策规则、阈值来源、评估协议）完全不变，用于判断 OE 的 RA 优势能否叠加到三段式上。",
+  "data": {"source": "Train session1 only", "test_access": "forbidden"},
+  "identity_model": {
+    "source": "E54 run_e54.py 的 EEGNetEmbedding + ARPL + 配对 OE（variant=oe）",
+    "config": "直接复用 research/E54_outlier_exposure/config.json",
+    "subject_roles": "E54 build_inner_roles：outer_unknown 4 / enrolled 8 / oe_only 4 / calibration 4，互斥且并集为全部 20 人"
+  },
+  "rejection_model": {
+    "type": "frozen E36 detrend_zband_cov5_wccn_prototype，同 fit 折",
+    "score": "distance_ratio"
+  },
+  "decision": {
+    "rule": "dr >= tau_high -> logSPD 身份；tau_low <= dr < tau_high -> OE-EEGNet 身份；dr < tau_low -> 0",
+    "tau_low_q": 0.02,
+    "tau_high_q": 0.05,
+    "threshold_source": "该 run clean known 的 distance_ratio 分位，不使用 pseudo-unknown 或 Test"
+  },
+  "evaluation": {
+    "inner_folds": "E36 五外层折 × 两 inner fold，同被试划分与连续块",
+    "subset": "E54 stratified_subset，每身份/任务前 8 条",
+    "attacks": ["untargeted_fgsm", "untargeted_pgd", "targeted_pgd"],
+    "snr_db": [30, 20],
+    "pgd_steps": 20,
+    "attack_target": "OE-EEGNet 本身（白盒）",
+    "aggregation": "每 run 独立标签空间 → 两 run 平均 → 五外层折平均",
+    "metrics": ["C", "RA", "ASafeR", "A", "U", "Rej", "identity_macro_f1", "Score"]
+  },
+  "reference": {
+    "E49": {"C": 0.9719, "RA": 0.7313, "ASafeR": 0.9607, "U": 0.9820, "Score": 91.03},
+    "E54_oe": {"C": 0.9618, "RA": 0.7824, "ASafeR": 0.8901, "U": 0.4180, "Score": 71.97}
+  },
+  "success": "宏 Score 严格高于 E49 的 91.03，且 C≥0.95、U≥0.95",
+  "reporting": {
+    "required": ["C", "RA", "ASafeR", "A", "U", "Rej", "identity F1", "Score", "N"],
+    "evidence_boundary": "Train-only 内层嵌套、伪未知被试、连续块代理；攻击为对 OE-EEGNet 的白盒 PGD20。无外层选择、未读取 Test、无跨会话结论。"
+  }
+}

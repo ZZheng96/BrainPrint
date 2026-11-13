@@ -73,6 +73,12 @@
 | E50 | [E50_ensemble_at](E50_ensemble_at) | 3 种子 CNN 集成 + SNR20 加重对抗训练 | **无增益**：同折上 3 集成/Single+0.65/Single+0.50 的宏 RA 0.8132/0.8086/0.8073、Score 93.40/93.28/93.19，差异小于折间波动；不采用 |
 | E51 | [E51_tta](E51_tta) | 测试时增强（5 个时间平移视图平均 logits） | **小幅有效**：C 0.9727→0.9766、RA 0.7773→0.7826、ASafeR 0.9323→0.9375、Score 92.23→**92.58**（+0.35，零训练成本）；增益集中在目标攻击 |
 | E52 | [E52_frozen_submission](E52_frozen_submission) | E49 系统的全 Train 固化与 Test 提交 | 校准块 logSPD direct 0.9996、CNN(TTA5) 0.9796，τ=1.0796/1.1071；**Test 72.5% 判为拒识**（Train 校准块仅 2%），跨会话域偏移严重，CNN 区只覆盖 5.9% 样本；E49 的 91.03 不能外推为 Test 预期 |
+| E53 | [E53_raw_eeg_open_robust](E53_raw_eeg_open_robust) | 原始 EEG 轻量 EEGNet + ARPL 开空间 + 对抗训练（单模型端到端） | main Score 67.52（C 0.9567 / RA 0.7696 / ASafeR 0.8780 / U 0.3316）；untargeted_at 70.52；内层门禁未过 |
+| E54 | [E54_outlier_exposure](E54_outlier_exposure) | 非类别化配对 Outlier Exposure（单模型端到端） | **oe 71.97**（C 0.9618 / RA 0.7824 / ASafeR 0.8901 / U 0.4180）；control 66.82；OE 显著优于 control，但 U 仍低 |
+| E55 | [E55_online_adversarial](E55_online_adversarial) | 每批次在线原始波形 PGD7（替代缓存 PGD3） | 仅 smoke 完成（覆盖/梯度/显存通过），inner 未跑 |
+| E56 | [E56_cross_session_calibration](E56_cross_session_calibration) | 跨会话分数偏移诊断 | **偏移不可用后处理修复**：Test dr 中位 1.033 vs Train 1.240，q95 3.65 vs 1.77；秩映射后拒识率仍 0.7231（非单调平移，分布形状不同） |
+| E57 | [E57_self_normalized_score](E57_self_normalized_score) | 逐样本自归一化分数（未执行） | 因 E56 已证明偏移非尺度问题而中止，未产生结果 |
+| E58 | [E58_oe_three_region](E58_oe_three_region) | **OE-EEGNet 身份 + logSPD 三段式** | **当前最优**：C **0.9714** ✅、F1 direct 0.9849 ✅、AUROC 0.9984 ✅、U **0.9875** ✅、RA **0.9371**、ASafeR **0.9758**、A 0.9487、**Score 96.74**（E49 91.03，+5.71；五折 96.55–96.83 极稳定）；SNR30 三档全部达标，仅 SNR20 差 0.02–0.04 |
 
 ## 其他
 
