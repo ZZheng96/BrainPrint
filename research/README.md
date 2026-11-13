@@ -79,6 +79,7 @@
 | E56 | [E56_cross_session_calibration](E56_cross_session_calibration) | 跨会话分数偏移诊断 | **偏移不可用后处理修复**：Test dr 中位 1.033 vs Train 1.240，q95 3.65 vs 1.77；秩映射后拒识率仍 0.7231（非单调平移，分布形状不同） |
 | E57 | [E57_self_normalized_score](E57_self_normalized_score) | 逐样本自归一化分数（未执行） | 因 E56 已证明偏移非尺度问题而中止，未产生结果 |
 | E58 | [E58_oe_three_region](E58_oe_three_region) | **OE-EEGNet 身份 + logSPD 三段式** | **当前最优**：C **0.9714** ✅、F1 direct 0.9849 ✅、AUROC 0.9984 ✅、U **0.9875** ✅、RA **0.9371**、ASafeR **0.9758**、A 0.9487、**Score 96.74**（E49 91.03，+5.71；五折 96.55–96.83 极稳定）；SNR30 三档全部达标，仅 SNR20 差 0.02–0.04 |
+| E59 | [E59_online_three_region](E59_online_three_region) | E58 + E55 每批次在线 PGD7 | **无增益**：Score 96.65（E58 96.74，−0.09）、RA 0.9362（−0.0009）、ASafeR 持平；未达 RA≥0.95/ASafeR≥0.98 判据，保留 E58 |
 
 ## 其他
 

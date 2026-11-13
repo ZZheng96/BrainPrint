@@ -1,0 +1,42 @@
+{
+  "experiment": "E59 three-region decision with online-PGD7 OE-EEGNet identity model",
+  "date": "2026-11-13",
+  "motivation": "E58（OE-EEGNet + logSPD 三段式）内层 Score 96.74，C/F1/AUROC/U 四项达标，仅 SNR20 的 RA 0.908-0.932 与 ASafeR 0.959-0.977 差 0.02-0.04。E55 已实现每批次在线原始波形 PGD7（替代缓存 PGD3），但 inner 未跑。本实验把 E55 的在线训练接入 E58，其余完全不变。",
+  "data": {"source": "Train session1 only", "test_access": "forbidden"},
+  "identity_model": {
+    "source": "E54 EEGNetEmbedding + ARPL + 配对 OE（variant=oe）",
+    "base_config": "research/E54_outlier_exposure/config.json，仅覆盖 training_override 中的三个字段",
+    "subject_roles": "E54 build_inner_roles：outer_unknown 4 / enrolled 8 / oe_only 4 / calibration 4"
+  },
+  "training_override": {
+    "attack_training_mode": "true_online_raw_waveform_pgd7_every_fit_and_oe_batch",
+    "online_pgd_steps": 7,
+    "main_targeted_fraction": 0.5
+  },
+  "rejection_model": {
+    "type": "frozen E36 detrend_zband_cov5_wccn_prototype，同 fit 折",
+    "score": "distance_ratio"
+  },
+  "decision": {
+    "rule": "dr >= tau_high -> logSPD 身份；tau_low <= dr < tau_high -> OE-EEGNet 身份；dr < tau_low -> 0",
+    "tau_low_q": 0.02,
+    "tau_high_q": 0.05,
+    "threshold_source": "该 run clean known 的 distance_ratio 分位"
+  },
+  "evaluation": {
+    "inner_folds": "E36 五外层折 × 两 inner fold，同被试划分与连续块",
+    "subset": "E54 stratified_subset，每身份/任务前 8 条",
+    "attacks": ["untargeted_fgsm", "untargeted_pgd", "targeted_pgd"],
+    "snr_db": [30, 20],
+    "pgd_steps": 20,
+    "attack_target": "在线训练的 OE-EEGNet 本身（白盒）",
+    "aggregation": "每 run 独立标签空间 → 两 run 平均 → 五外层折平均",
+    "metrics": ["C", "RA", "ASafeR", "A", "U", "Rej", "identity_macro_f1", "Score"]
+  },
+  "reference": {"E58": {"C": 0.9714, "RA": 0.9371, "ASafeR": 0.9758, "U": 0.9875, "Score": 96.74}},
+  "success": "宏 RA ≥0.95 且 ASafeR ≥0.98，同时 C≥0.95、U≥0.95；否则保留 E58",
+  "reporting": {
+    "required": ["C", "RA", "ASafeR", "A", "U", "Rej", "identity F1", "Score", "N"],
+    "evidence_boundary": "Train-only 内层嵌套、伪未知被试、连续块代理；攻击为对在线训练模型的白盒 PGD20。无外层选择、未读取 Test、无跨会话结论。"
+  }
+}
