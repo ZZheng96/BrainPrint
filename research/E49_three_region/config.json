@@ -1,0 +1,56 @@
+{
+  "experiment": "E49 three-region decision: logSPD identity on clean, CNN identity under perturbation, reject unknown",
+  "date_preregistered": "2026-11-13",
+  "motivation": "E47 双模型把 Score 提到 84.08，但 C 仅 0.9148，因为 CNN 的 clean 直接准确率上限约 0.965（E48 三组容量配置都未突破），而 logSPD 在 clean 上 direct=1.0。按 distance_ratio 把样本分成三段即可同时拿到「clean 用 logSPD」「受扰动用 CNN」「未知拒识」。",
+  "single_fold_probe": {
+    "best_with_U_ge_0.95": {"low_q": 0.02, "high_q": 0.05, "C": 0.9727, "RA": 0.8073,
+                            "ASafeR": 0.9453, "U": 0.9922, "Score": 93.20},
+    "note": "在同一折上比较了 5 组 (low_q, high_q)，存在 1-2 分选择乐观；完整内层固定使用 (0.02, 0.05)"
+  },
+  "data": {"source": "Train session1 only", "test_access": "forbidden"},
+  "identity_models": {
+    "logspd": "frozen E36 detrend_zband_cov5_wccn_prototype，同 fit 折",
+    "cnn": "原始波形 CNN + PGD7 对抗训练（E45 架构），40 epoch、width 96、lr 3e-3 cosine",
+    "seed_rule": "seed_base + 1000*outer_fold + inner_fold"
+  },
+  "identity_model": {
+    "type": "raw-waveform CNN + adversarial training (E45)",
+    "width": 96,
+    "epochs": 40,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "pgd_steps": 7,
+    "targeted_mix": 0.25,
+    "seed_base": 20261113
+  },
+  "decision": {
+    "rule": "dr >= tau_high -> logSPD 身份；tau_low <= dr < tau_high -> CNN 身份；dr < tau_low -> 0",
+    "tau_low": "该 run clean known dr 的 q0.02",
+    "tau_high": "该 run clean known dr 的 q0.05",
+    "no_unknown_calibration": true
+  },
+  "evaluation": {
+    "inner_folds": "E36 五外层折 × 两 inner fold，同被试划分与连续块",
+    "subset": "E36 分层前 8 条/身份/任务",
+    "attacks": ["untargeted_fgsm", "untargeted_pgd", "targeted_pgd"],
+    "snr_db": [30, 20],
+    "pgd_steps": 20,
+    "attack_target": "CNN 身份模型（白盒；E44 已证迁移不弱于白盒）",
+    "aggregation": "每 run 独立标签空间 → 两 run 平均 → 五外层折平均",
+    "metrics": ["C", "RA", "ASafeR", "A", "U", "Rej", "identity_macro_f1", "Score"],
+    "sensitivity": [[0.01, 0.05], [0.02, 0.05], [0.02, 0.20]]
+  },
+  "targets": {
+    "C_min": 0.95,
+    "identity_macro_f1_min": 0.92,
+    "U_min": 0.95,
+    "RA_min": 0.95,
+    "ASafeR_min": 0.98,
+    "note": "E49 目标是把 C 与 U 同时推过 0.95，并让 RA/ASafeR 继续上升"
+  },
+  "reporting": {
+    "required": ["C", "RA", "ASafeR", "A", "U", "Rej", "identity F1", "Score", "N"],
+    "evidence_boundary": "Train-only 内层嵌套、伪未知被试、连续块代理；攻击为对 CNN 的白盒 PGD20。无外层选择、未读取 Test、无跨会话结论。"
+  }
+}
