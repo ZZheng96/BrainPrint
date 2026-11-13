@@ -1,0 +1,88 @@
+{
+  "experiment": "E64 frozen 20-class migration of E58 and one-shot Test engineering audit",
+  "date": "2026-11-13",
+  "seed": 20261113,
+  "authorization": "User explicitly authorized one frozen Test engineering audit before all Train gates pass; this is not a Train-gate pass claim.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_csv": "Brainprint_Competition/test.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_train_trials": 11304,
+    "expected_test_rows": 22251,
+    "expected_subjects": 20,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "train_session": "session1"
+  },
+  "continuous_blocks": {
+    "groupby": ["subject", "task"],
+    "fit": "trial <= 0.60 * within-group maximum trial",
+    "calibration": "0.60 * maximum < trial <= 0.70 * maximum",
+    "final20_sanity": "0.70 * maximum < trial <= 0.80 * maximum",
+    "unused": "trial > 0.80 * maximum",
+    "adjustment_after_test": "forbidden"
+  },
+  "identity_migration": {
+    "source": "E54 ten inner OE-EEGNet models; E58 identity component",
+    "variant": "oe",
+    "backbones": [
+      "oe_outer1_inner1.pt", "oe_outer1_inner2.pt",
+      "oe_outer2_inner1.pt", "oe_outer2_inner2.pt",
+      "oe_outer3_inner1.pt", "oe_outer3_inner2.pt",
+      "oe_outer4_inner1.pt", "oe_outer4_inner2.pt",
+      "oe_outer5_inner1.pt", "oe_outer5_inner2.pt"
+    ],
+    "source_directory": "BrainPrint_cache/e54_outlier_exposure",
+    "source_classes_per_backbone": 8,
+    "target_classes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    "procedure": "Freeze each generic encoder, discard its eight-class prototypes/radii, build normalized class-mean embedding prototypes from all 20 subjects using fit blocks only, then equally average the ten 20-class cosine score vectors.",
+    "ensemble_weights": [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+    "further_training_or_oe_on_20_registered": false,
+    "inference_batch_size": 64,
+    "embedding_batch_size": 512,
+    "batch_rule": "MAT files are read one by one; GPU batching is only for acceleration and every preprocessing/feature/score operation is trial-local. No batch statistics are permitted."
+  },
+  "logspd_wccn": {
+    "source": "E36 detrend_zband_cov5 WCCN prototype",
+    "feature_cache": "BrainPrint_cache/e36_pure_eeg/train_detrend_zband_cov5.npy",
+    "fit": "all 20 subjects, fit blocks only",
+    "wccn_shrinkage": 0.05,
+    "wccn_eigenvalue_floor": 1e-6,
+    "confidence": "distance_ratio = (1-second_cosine)/max(1-max_cosine,1e-6)"
+  },
+  "decision": {
+    "rule": "dr >= tau_high -> logSPD identity; tau_low <= dr < tau_high -> averaged OE-EEGNet identity; dr < tau_low -> 0",
+    "tau_low_quantile": 0.02,
+    "tau_high_quantile": 0.05,
+    "quantile_method": "higher",
+    "threshold_source": "E64 final20 calibration clean-known logSPD distance_ratio only",
+    "test_ecdf_or_distribution_matching": false,
+    "test_threshold_adjustment": false,
+    "test_identity_quota": false,
+    "session_task_order_pairing_in_inference": false
+  },
+  "freeze": {
+    "model": "BrainPrint_cache/e64_e58_test_audit/frozen_model.pt",
+    "manifest": "BrainPrint_cache/e64_e58_test_audit/frozen_manifest.json",
+    "before_test": ["configuration", "tau_low", "tau_high", "E64 code", "E36/E54 dependency code and configs", "ten E54 artifact hashes", "E64 migrated model hash", "Train metadata and feature-cache hashes"]
+  },
+  "test_audit": {
+    "timing": "Only after every prediction and e64_predictions.csv have been written, read Test session for offline audit.",
+    "sample_order": "Brainprint_Competition/test.csv Sample order; test_metadata supplies sample-aligned MAT paths only.",
+    "targets": {"S1_rejection_min": 0.95, "S2_acceptance_min": 0.98},
+    "metrics_without_truth": ["AUC", "F1", "C", "RA", "ASafeR", "U", "Score"],
+    "post_audit_model_or_threshold_change": "forbidden"
+  },
+  "numerical_check": {
+    "n_train_trials": 8,
+    "score_atol": 1e-5,
+    "score_rtol": 1e-5
+  },
+  "reporting": {
+    "e58_inner_reference": "Read-only reference from E58 results/report; E64 does not rerun E58 inner evaluation.",
+    "train_auc": "N/A for final20 fit/calibration/sanity because all 20 Train subjects are registered and no pseudo-unknown set is used.",
+    "evidence_boundary": "Train Session1 continuous-block proxies only; final20 sanity is not cross-session evidence. Test session audit is descriptive, not ground-truth scoring. No claim that Train gates have passed."
+  }
+}

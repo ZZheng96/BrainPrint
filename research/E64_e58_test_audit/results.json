@@ -1,0 +1,395 @@
+{
+  "status": "complete",
+  "experiment": "E64",
+  "date": "2026-11-13",
+  "train_authorization_boundary": "User explicitly authorized one frozen Test engineering audit before all Train gates pass; this is not a Train-gate pass claim.",
+  "train_gates_passed": "not evaluated / not claimed; one-shot Test engineering audit explicitly authorized by user",
+  "data_split": {
+    "fit": {
+      "N": 6695,
+      "rule": "trial <= 0.60 * within-group maximum trial"
+    },
+    "calibration": {
+      "N": 1162,
+      "rule": "0.60 * maximum < trial <= 0.70 * maximum"
+    },
+    "sanity": {
+      "N": 1139,
+      "rule": "0.70 * maximum < trial <= 0.80 * maximum"
+    }
+  },
+  "twenty_class_migration": {
+    "backbones": [
+      {
+        "artifact": "oe_outer1_inner1.pt",
+        "artifact_sha256": "8c526d3f56df36d1e8ec546008f4edae7d282da2864cabe750d02b0fd21716aa",
+        "new_prototype_shape": [
+          20,
+          64
+        ],
+        "source_eight_class_prototypes_used": false,
+        "encoder_frozen": true,
+        "ensemble_weight": 0.1
+      },
+      {
+        "artifact": "oe_outer1_inner2.pt",
+        "artifact_sha256": "5dcf129c7bcbaba7933e4496c2deb8dc41dcc04f37773d0a87cf473e22f0f5a6",
+        "new_prototype_shape": [
+          20,
+          64
+        ],
+        "source_eight_class_prototypes_used": false,
+        "encoder_frozen": true,
+        "ensemble_weight": 0.1
+      },
+      {
+        "artifact": "oe_outer2_inner1.pt",
+        "artifact_sha256": "dc6201b577790d9fe30ecdc1f7d2f76a275d714894694d6509f68391d7e77fb7",
+        "new_prototype_shape": [
+          20,
+          64
+        ],
+        "source_eight_class_prototypes_used": false,
+        "encoder_frozen": true,
+        "ensemble_weight": 0.1
+      },
+      {
+        "artifact": "oe_outer2_inner2.pt",
+        "artifact_sha256": "ec918bdc59bb3c49d8c8d23b3f654b9065b33f4015b6e2fb5e4a3db77a8c1283",
+        "new_prototype_shape": [
+          20,
+          64
+        ],
+        "source_eight_class_prototypes_used": false,
+        "encoder_frozen": true,
+        "ensemble_weight": 0.1
+      },
+      {
+        "artifact": "oe_outer3_inner1.pt",
+        "artifact_sha256": "dfc64e9e9472f3edad1df46d997e9877d20efeae8e4844542a281014e7ab4c63",
+        "new_prototype_shape": [
+          20,
+          64
+        ],
+        "source_eight_class_prototypes_used": false,
+        "encoder_frozen": true,
+        "ensemble_weight": 0.1
+      },
+      {
+        "artifact": "oe_outer3_inner2.pt",
+        "artifact_sha256": "a38195585f013ebdde6bd02e5c3fcab2e906ef2d686574abdb450cc8dfdd4609",
+        "new_prototype_shape": [
+          20,
+          64
+        ],
+        "source_eight_class_prototypes_used": false,
+        "encoder_frozen": true,
+        "ensemble_weight": 0.1
+      },
+      {
+        "artifact": "oe_outer4_inner1.pt",
+        "artifact_sha256": "e9567b10cd00419976ee2ae14697c5902b2db7a93d904981c382e64fc0c82ab2",
+        "new_prototype_shape": [
+          20,
+          64
+        ],
+        "source_eight_class_prototypes_used": false,
+        "encoder_frozen": true,
+        "ensemble_weight": 0.1
+      },
+      {
+        "artifact": "oe_outer4_inner2.pt",
+        "artifact_sha256": "3629cf59f4fc257a649b04b8b3ffde2c6885b0ca392cf7d8ab85d5578e518b89",
+        "new_prototype_shape": [
+          20,
+          64
+        ],
+        "source_eight_class_prototypes_used": false,
+        "encoder_frozen": true,
+        "ensemble_weight": 0.1
+      },
+      {
+        "artifact": "oe_outer5_inner1.pt",
+        "artifact_sha256": "4ffb0909ad97782e738d33079adefacea601e90de7343d5242617ddc6a06e3a1",
+        "new_prototype_shape": [
+          20,
+          64
+        ],
+        "source_eight_class_prototypes_used": false,
+        "encoder_frozen": true,
+        "ensemble_weight": 0.1
+      },
+      {
+        "artifact": "oe_outer5_inner2.pt",
+        "artifact_sha256": "13357bfa3f50b6bb8d55fb59497d0e8a134b2c55732aacbdbad17f5605af15d1",
+        "new_prototype_shape": [
+          20,
+          64
+        ],
+        "source_eight_class_prototypes_used": false,
+        "encoder_frozen": true,
+        "ensemble_weight": 0.1
+      }
+    ],
+    "all_twenty_registered_OE_or_further_training": false,
+    "score_aggregation": "fixed arithmetic mean of ten 20-class cosine score vectors",
+    "logSPD_WCCN_fit": "all 20 subjects, <=60% only"
+  },
+  "calibration": {
+    "source": "60-70% clean known logSPD distance_ratio only",
+    "N": 1162,
+    "tau_low": 1.0692184093866888,
+    "tau_high": 1.0944698503018748,
+    "quantile_method": "higher",
+    "dr_quantiles": {
+      "q00": 1.0026832129471663,
+      "q02": 1.0692184093866888,
+      "q05": 1.0944698503018748,
+      "q50": 1.234724680178627,
+      "q95": 1.8216208451465281,
+      "q100": 5.09841456147228
+    }
+  },
+  "train_metrics": {
+    "fit": {
+      "N": 6695,
+      "direct_C": 0.9968633308439133,
+      "threshold_C": 0.9955190440627334,
+      "identity_20class_macro_F1_direct": 0.9967804796054731,
+      "identity_20class_macro_F1_threshold": 0.9966533616249487,
+      "EEGNet_ensemble_only_C": 0.9239731142643764,
+      "logSPD_only_C": 0.9998506348020911,
+      "known_acceptance": 0.9976101568334578,
+      "rejection_rate": 0.002389843166542196,
+      "logSPD_route_rate": 0.9929798356982823,
+      "EEGNet_route_rate": 0.004630321135175504,
+      "AUC": "N/A（final20全20名Train被试均为已注册者，无pseudo-unknown）"
+    },
+    "calibration": {
+      "N": 1162,
+      "direct_C": 0.9759036144578314,
+      "threshold_C": 0.9664371772805508,
+      "identity_20class_macro_F1_direct": 0.9750527544201264,
+      "identity_20class_macro_F1_threshold": 0.9756633951409132,
+      "EEGNet_ensemble_only_C": 0.8605851979345955,
+      "logSPD_only_C": 0.9982788296041308,
+      "known_acceptance": 0.9793459552495697,
+      "rejection_rate": 0.020654044750430294,
+      "logSPD_route_rate": 0.9492254733218589,
+      "EEGNet_route_rate": 0.030120481927710843,
+      "AUC": "N/A（final20全20名Train被试均为已注册者，无pseudo-unknown）"
+    },
+    "sanity": {
+      "N": 1139,
+      "direct_C": 0.9604916593503073,
+      "threshold_C": 0.9473222124670764,
+      "identity_20class_macro_F1_direct": 0.9593252984668229,
+      "identity_20class_macro_F1_threshold": 0.9622461589089294,
+      "EEGNet_ensemble_only_C": 0.8560140474100087,
+      "logSPD_only_C": 0.9991220368744512,
+      "known_acceptance": 0.9640035118525022,
+      "rejection_rate": 0.035996488147497806,
+      "logSPD_route_rate": 0.926251097453907,
+      "EEGNet_route_rate": 0.03775241439859526,
+      "AUC": "N/A（final20全20名Train被试均为已注册者，无pseudo-unknown）"
+    }
+  },
+  "train_AUC": "N/A：final20无pseudo-unknown；E58参考AUROC仅列于reference，不是E64新AUC",
+  "train_numerical_invariance": {
+    "scope": "Train final20 sanity trials only; Test not accessed",
+    "N": 8,
+    "single_vs_batch_EEGNet_max_abs": 4.768371580921027e-08,
+    "single_vs_batch_logSPD_max_abs": 1.1920928955078125e-07,
+    "permutation_EEGNet_max_abs": 0.0,
+    "permutation_logSPD_max_abs": 1.7881393432617188e-07,
+    "single_vs_batch_scores_allclose": true,
+    "permutation_scores_allclose": true,
+    "single_vs_batch_labels_equal": true,
+    "permutation_labels_equal": true,
+    "cross_sample_statistics_used": false,
+    "passed": true
+  },
+  "e58_inner_reference": {
+    "protocol": "E58 Train inner: 5 outer groups x 2 inner runs; 8-class enrolled identities; clean known 60-80% and pseudo-unknown subjects; six white-box attacks macro",
+    "source": "research/E58_oe_three_region/results.json and report.md; read-only reference, not rerun by E64",
+    "C": 0.9714303861788618,
+    "RA": 0.9370733824525745,
+    "ASafeR": 0.975827828590786,
+    "U": 0.9875,
+    "Score": 96.7363424924926,
+    "identity_macro_F1_direct": 0.9848762685722227,
+    "identity_macro_F1_threshold_clean": 0.9821224405130554,
+    "pseudo_unknown_AUROC_reported_in_E58_report": 0.9984
+  },
+  "freeze": {
+    "manifest": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\e64_e58_test_audit\\frozen_manifest.json",
+    "manifest_sha256": "4575be6d7b9a280d321a176fc6bb53c81749ba5585f054b281065e1c48f8e22c",
+    "model": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\e64_e58_test_audit\\frozen_model.pt",
+    "model_sha256": "791f42f8a84e60d5f6dba87e5bdd36d03a55e8ecbf208b8798b0bbac18895c5c",
+    "config_sha256": "2ae5c393e0547dca7d0472a53f15a18f8ca7971423332873362732100b33cf62",
+    "code_sha256": "b2cdfad7d907eae3ae58f07d1054fed6536997d476797ddb1d254c40ee75f847",
+    "completed_before_any_test_index_or_waveform_read": true
+  },
+  "test": {
+    "status": "complete_one_shot_frozen_engineering_audit",
+    "predictions_csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E64_e58_test_audit\\e64_predictions.csv",
+    "prediction_rows": 22251,
+    "csv_header": [
+      "Sample",
+      "Label"
+    ],
+    "sample_order_source": "Brainprint_Competition/test.csv",
+    "raw_input": "18x1200 MAT per trial",
+    "single_trial_independent_features_and_scores": true,
+    "gpu_batching_only_for_acceleration": true,
+    "batch_zscore_ECDF_distribution_matching_threshold_adjustment_identity_quota": false,
+    "session_file_order_task_count_pairing_used_for_decision": false,
+    "test_labels_read_or_used": false,
+    "metrics": {
+      "AUC": "N/A（无真实标签）",
+      "F1": "N/A（无真实标签）",
+      "C": "N/A（无真实标签）",
+      "RA": "N/A（无真实标签）",
+      "ASafeR": "N/A（无真实标签）",
+      "U": "N/A（无真实标签）",
+      "Score": "N/A（无真实标签）"
+    },
+    "metrics_unavailable_reason": "官方Test无真实标签；Session审计和预测分布均不能替代真值指标",
+    "offline_session_audit_after_prediction": {
+      "N": 22251,
+      "overall_rejection_rate": 0.6862612916273426,
+      "session_used_by_inference": false,
+      "audit_occurred_after_all_predictions_and_csv_write": true,
+      "S1_rejection_target": 0.95,
+      "S2_acceptance_target": 0.98,
+      "S1_N": 3033,
+      "S1_rejection_rate": 0.580283547642598,
+      "S1_acceptance_rate": 0.41971645235740196,
+      "S2_N": 19218,
+      "S2_rejection_rate": 0.7029867832240608,
+      "S2_acceptance_rate": 0.29701321677593917,
+      "S1_rejection_ge_0.95": false,
+      "S2_acceptance_ge_0.98": false,
+      "nonzero_N": 6981,
+      "nonzero_identity_distribution": {
+        "1": {
+          "N": 29,
+          "fraction_of_all_Test": 0.00130331221068716,
+          "fraction_of_nonzero": 0.004154132645752757
+        },
+        "2": {
+          "N": 4,
+          "fraction_of_all_Test": 0.00017976720147409105,
+          "fraction_of_nonzero": 0.0005729838132072769
+        },
+        "3": {
+          "N": 569,
+          "fraction_of_all_Test": 0.025571884409689452,
+          "fraction_of_nonzero": 0.08150694742873514
+        },
+        "4": {
+          "N": 12,
+          "fraction_of_all_Test": 0.0005393016044222731,
+          "fraction_of_nonzero": 0.0017189514396218307
+        },
+        "5": {
+          "N": 2722,
+          "fraction_of_all_Test": 0.12233158060311897,
+          "fraction_of_nonzero": 0.3899154848875519
+        },
+        "6": {
+          "N": 396,
+          "fraction_of_all_Test": 0.017796952945935016,
+          "fraction_of_nonzero": 0.05672539750752041
+        },
+        "7": {
+          "N": 404,
+          "fraction_of_all_Test": 0.018156487348883196,
+          "fraction_of_nonzero": 0.05787136513393497
+        },
+        "8": {
+          "N": 1,
+          "fraction_of_all_Test": 4.494180036852276e-05,
+          "fraction_of_nonzero": 0.00014324595330181923
+        },
+        "9": {
+          "N": 35,
+          "fraction_of_all_Test": 0.0015729630128982967,
+          "fraction_of_nonzero": 0.005013608365563673
+        },
+        "10": {
+          "N": 104,
+          "fraction_of_all_Test": 0.004673947238326368,
+          "fraction_of_nonzero": 0.0148975791433892
+        },
+        "11": {
+          "N": 67,
+          "fraction_of_all_Test": 0.003011100624691025,
+          "fraction_of_nonzero": 0.009597478871221888
+        },
+        "12": {
+          "N": 30,
+          "fraction_of_all_Test": 0.001348254011055683,
+          "fraction_of_nonzero": 0.004297378599054577
+        },
+        "13": {
+          "N": 813,
+          "fraction_of_all_Test": 0.036537683699609004,
+          "fraction_of_nonzero": 0.11645896003437903
+        },
+        "14": {
+          "N": 268,
+          "fraction_of_all_Test": 0.0120444024987641,
+          "fraction_of_nonzero": 0.03838991548488755
+        },
+        "15": {
+          "N": 587,
+          "fraction_of_all_Test": 0.02638083681632286,
+          "fraction_of_nonzero": 0.08408537458816788
+        },
+        "16": {
+          "N": 177,
+          "fraction_of_all_Test": 0.00795469866522853,
+          "fraction_of_nonzero": 0.025354533734422
+        },
+        "17": {
+          "N": 469,
+          "fraction_of_all_Test": 0.021077704372837177,
+          "fraction_of_nonzero": 0.06718235209855322
+        },
+        "18": {
+          "N": 105,
+          "fraction_of_all_Test": 0.00471888903869489,
+          "fraction_of_nonzero": 0.015040825096691019
+        },
+        "19": {
+          "N": 137,
+          "fraction_of_all_Test": 0.006157026650487618,
+          "fraction_of_nonzero": 0.019624695602349234
+        },
+        "20": {
+          "N": 52,
+          "fraction_of_all_Test": 0.002336973619163184,
+          "fraction_of_nonzero": 0.0074487895716946
+        }
+      },
+      "decision_route_counts": {
+        "reject_dr_lt_tau_low": 15270,
+        "EEGNet_dr_middle": 1411,
+        "logSPD_dr_ge_tau_high": 5570
+      },
+      "audit_boundary": "S1/S2只描述预测拒识/接受，不是真实unknown/clean标签；不能据此计算官方指标或回调阈值"
+    },
+    "post_audit_threshold_or_variant_change": false,
+    "inference_elapsed_seconds": 29.771923303604126
+  },
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.7.1+cu118",
+    "numpy": "2.4.6",
+    "sklearn": "1.9.1",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "compute": "Train raw/features/models and Test trial-local feature/score computation on CUDA; MAT I/O and metrics on CPU"
+  },
+  "train_elapsed_seconds": 9.708618879318237
+}
