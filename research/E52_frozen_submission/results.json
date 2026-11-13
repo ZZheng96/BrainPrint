@@ -1,0 +1,35 @@
+{
+  "frozen": true,
+  "n_rows": 22251,
+  "rule": "dr>=tau_high -> logSPD 身份；tau_low<=dr<tau_high -> CNN(TTA5) 身份；dr<tau_low -> 0",
+  "calibration": {
+    "block": "trial > 0.8*max（未参与训练）",
+    "logspd_direct": 0.9995667244367418,
+    "cnn_tta_direct": 0.979636048526863,
+    "tau_low": 1.0795742259061227,
+    "tau_high": 1.1070780073559017,
+    "tau_low_q": 0.02,
+    "tau_high_q": 0.05
+  },
+  "regime_counts": {
+    "logspd": 4797,
+    "cnn": 1321,
+    "reject": 16133
+  },
+  "test_metrics": {
+    "AUC": "N/A（无真实标签）",
+    "F1": "N/A（无真实标签）",
+    "C": "N/A（无真实标签）",
+    "RA": "N/A（无真实标签）",
+    "ASafeR": "N/A（无真实标签）",
+    "U": "N/A（无真实标签）"
+  },
+  "session_audit_after_predictions": {
+    "session_used_by_inference": false,
+    "S1_n": 3033,
+    "S1_rejection_rate": 0.5875370919881305,
+    "S2_n": 19218,
+    "S2_rejection_rate": 0.746747840566136
+  },
+  "test_labels_used": false
+}

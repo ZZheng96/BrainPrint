@@ -1,0 +1,40 @@
+{
+  "experiment": "E52 frozen Test submission of the E49 three-region system",
+  "date": "2026-11-13",
+  "purpose": "把 E49（内层 Score 91.03）固化成可提交系统，用一次 Test 推理产出 CSV 与无标签审计。",
+  "data": {
+    "train": "Train session1，全 20 类；fit 块 trial <= 0.8*max",
+    "calibration": "trial > 0.8*max（未参与训练）",
+    "test": "仅预测与无标签审计；Session 不参与决策"
+  },
+  "identity_model": {
+    "cnn": "原始波形 CNN + PGD7 对抗训练，width 96，40 epoch，lr 3e-3 cosine，SNR20/30 各半，25% 目标",
+    "width": 96,
+    "epochs": 40,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "pgd_steps": 7,
+    "targeted_mix": 0.25,
+    "seed_base": 20261113,
+    "tta": "5 个时间平移视图（-80/-40/0/+40/+80）平均 logits"
+  },
+  "rejection_model": {
+    "logspd": "全 Train fit 块 WCCN（shrinkage 来自 E36 选定值）",
+    "score": "distance_ratio"
+  },
+  "decision": {
+    "rule": "dr >= tau_high -> logSPD 身份；tau_low <= dr < tau_high -> CNN 身份；dr < tau_low -> 0",
+    "tau_low_q": 0.02,
+    "tau_high_q": 0.05,
+    "threshold_source": "校准块的 distance_ratio 分位，未使用 Test 或 pseudo-unknown"
+  },
+  "known_limit": {
+    "inner_score": 91.03,
+    "cross_session_note": "E21–E35 显示 Test 跨会话分布与 Train 同会话差异很大，历史官方得分 67–69；本 CSV 的 Test 指标无法验证，不能把 91 当作 Test 预期"
+  },
+  "audit": {
+    "allowed": ["行数", "Sample 唯一性", "Test/ 路径前缀", "标签范围", "三段区域计数", "离线 Session 拒识率"],
+    "forbidden": ["Session 或文件顺序参与决策", "用 Test 无标签统计调阈值", "把 S1/S2 拒识率当作 C/RA/ASafeR/U"]
+  }
+}
