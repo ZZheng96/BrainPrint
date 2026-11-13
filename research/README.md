@@ -12,6 +12,7 @@
 |---|---|
 | [brainprint_research_and_experiments.md](brainprint_research_and_experiments.md) | 研究假设、文献依据与四轮迭代主报告（历史数字主记录） |
 | [E20-E35_DINO路线总结.md](E20-E35_DINO路线总结.md) | **EEG 图像化 + DINO 路线总结**：目标、E20–E35 全部尝试、困难、当前最优配置与指标 |
+| [E36-E59_实验总结.md](E36-E59_实验总结.md) | **E36–E59 总结**：两条并行路线归属、10 项完整门禁、训练侧进展、已排除方向、跨会话瓶颈 |
 | [E00-E19既往实验经验总结.md](E00-E19既往实验经验总结.md) | E00–E19 的经验与负结果 |
 | [对话交接_实验历程与下一步.md](对话交接_实验历程与下一步.md) | 对话交接：实验历程、官方反馈与下一步方向 |
 | [问题梳理.md](问题梳理.md) | 赛题结构、Session 元数据捷径与开放集问题梳理 |
@@ -80,6 +81,7 @@
 | E57 | [E57_self_normalized_score](E57_self_normalized_score) | 逐样本自归一化分数（未执行） | 因 E56 已证明偏移非尺度问题而中止，未产生结果 |
 | E58 | [E58_oe_three_region](E58_oe_three_region) | **OE-EEGNet 身份 + logSPD 三段式** | **当前最优**：C **0.9714** ✅、F1 direct 0.9849 ✅、AUROC 0.9984 ✅、U **0.9875** ✅、RA **0.9371**、ASafeR **0.9758**、A 0.9487、**Score 96.74**（E49 91.03，+5.71；五折 96.55–96.83 极稳定）；SNR30 三档全部达标，仅 SNR20 差 0.02–0.04 |
 | E59 | [E59_online_three_region](E59_online_three_region) | E58 + E55 每批次在线 PGD7 | **无增益**：Score 96.65（E58 96.74，−0.09）、RA 0.9362（−0.0009）、ASafeR 持平；未达 RA≥0.95/ASafeR≥0.98 判据，保留 E58 |
+| E60 | [E60_test_audit_diagnosis](E60_test_audit_diagnosis) | Test S1/S2 拒识门禁可达性诊断 | **不可达**：S1/S2 的 dr 分布几乎重合（中位 1.0371 vs 1.0329），AUROC(S2 vs S1)=**0.4159**；S2 拒识=2% 时 S1 拒识仅 0.0201，S1 拒识=95% 时 S2 拒识 0.9978；两项门禁互斥，是特征问题而非阈值问题 |
 
 ## 其他
 
