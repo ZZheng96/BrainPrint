@@ -70,6 +70,8 @@
 | E47 | [E47_dual_model_system](E47_dual_model_system) | **双模型分工：CNN 身份 + logSPD 拒识** | **当前最优**：C 0.9148、RA **0.5772**、ASafeR **0.9076**、A 0.6763、U 0.9965、F1 0.9358（direct 0.9522）、**Score 84.08**（E36C 59.78，+24.30）；RA/ASafeR 首次从不可达变为可优化 |
 | E48 | [E48_cnn_clean_tuning](E48_cnn_clean_tuning) | CNN clean 准确率容量调参 | **负结果**：width 128/80 epoch、clean 权重 0.7 等配置均未把 clean 直接准确率推过 0.965（原 0.9537）；单靠 CNN 无法满足 C≥0.95，导向 E49 |
 | E49 | [E49_three_region](E49_three_region) | **三段式决策：clean 用 logSPD、受扰动用 CNN、未知拒识** | **当前最优**：C **0.9719** ✅、F1 direct 0.9871 ✅、U **0.9820** ✅、RA **0.7313**、ASafeR **0.9607**、A 0.8001、**Score 91.03**（E47 84.08、E36C 59.78）；SNR30 下 RA 0.905–0.941、ASafeR 0.977–0.992 已达目标量级，宏均值被 SNR20 拖低 |
+| E50 | [E50_ensemble_at](E50_ensemble_at) | 3 种子 CNN 集成 + SNR20 加重对抗训练 | **无增益**：同折上 3 集成/Single+0.65/Single+0.50 的宏 RA 0.8132/0.8086/0.8073、Score 93.40/93.28/93.19，差异小于折间波动；不采用 |
+| E51 | [E51_tta](E51_tta) | 测试时增强（5 个时间平移视图平均 logits） | **小幅有效**：C 0.9727→0.9766、RA 0.7773→0.7826、ASafeR 0.9323→0.9375、Score 92.23→**92.58**（+0.35，零训练成本）；增益集中在目标攻击 |
 
 ## 其他
 
