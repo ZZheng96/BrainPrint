@@ -1,0 +1,111 @@
+{
+  "experiment": "E65 per-trial per-band channel-standardized correlation logSPD",
+  "date_preregistered": "2026-11-13",
+  "seed": 20261113,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_csv": "Brainprint_Competition/test.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_train_trials": 11304,
+    "expected_test_rows": 22251,
+    "expected_subjects": 20,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "train_session": "session1",
+    "inner_test_access": "forbidden"
+  },
+  "features": {
+    "variants": ["e36_covariance", "e65_correlation"],
+    "main_variable": "Within every trial and FFT-isolated band, subtract each channel mean and divide by that channel's own sample standard deviation (ddof=1), then form the 18x18 correlation matrix. All later E36 shrinkage/logm/upper-triangle/detrend/zband operations are unchanged.",
+    "channel_std_ddof": 1,
+    "channel_std_epsilon": 1e-12,
+    "covariance_shrinkage": 0.05,
+    "eigenvalue_floor": 1e-12,
+    "off_diagonal_multiplier": 1.4142135623730951,
+    "wccn_shrinkage": 0.05,
+    "wccn_eigenvalue_floor": 1e-6,
+    "post_logspd": "E36 detrend_zband",
+    "cross_trial_or_batch_statistics": false,
+    "io_batch_size": 64,
+    "io_workers": 4,
+    "prediction_batch_size": 512
+  },
+  "protocol": {
+    "source": "E58 ten inner runs and E54 subject roles",
+    "outer_seed": 42,
+    "outer_groups": 5,
+    "inner_folds_per_group": 2,
+    "roles": "outer_unknown=4, enrolled=8, oe_only=4, calibration_eval_unknown=4; pairwise disjoint",
+    "fit": "trial <= 0.60 * within-subject/task maximum",
+    "calibration_block": "0.60 * maximum < trial <= 0.70 * maximum",
+    "sanity_block": "0.70 * maximum < trial <= 0.80 * maximum",
+    "known_evaluation": "0.60 * maximum < trial <= 0.80 * maximum",
+    "unknown_evaluation": "calibration subjects only, trial <= 0.80 * maximum",
+    "formal_trials_per_subject_task": 8,
+    "aggregation": "two inner runs averaged within each outer group, then five outer groups averaged",
+    "baseline": "E36 detrend_zband covariance logSPD/WCCN refit on exactly the same fit trials; identity scores and attack waveforms shared with correlation variant"
+  },
+  "identity": {
+    "inner_source": "E54 ten frozen oe_inner EEGNet artifacts; no E65 training or parameter changes",
+    "final20_source": "E64 frozen ten-backbone/20-class equal-weight CNN ensemble, including its 20-class prototypes; only logSPD/WCCN and dr are replaced",
+    "e54_artifacts": [
+      "oe_outer1_inner1.pt", "oe_outer1_inner2.pt",
+      "oe_outer2_inner1.pt", "oe_outer2_inner2.pt",
+      "oe_outer3_inner1.pt", "oe_outer3_inner2.pt",
+      "oe_outer4_inner1.pt", "oe_outer4_inner2.pt",
+      "oe_outer5_inner1.pt", "oe_outer5_inner2.pt"
+    ],
+    "e64_frozen_model": "BrainPrint_cache/e64_e58_test_audit/frozen_model.pt",
+    "e64_frozen_manifest": "BrainPrint_cache/e64_e58_test_audit/frozen_manifest.json",
+    "ensemble_weights": [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+    "inference_batch_size": 64
+  },
+  "decision": {
+    "confidence": "distance_ratio=(1-second_cosine)/max(1-max_cosine,1e-6)",
+    "rule": "dr>=tau_high -> logSPD identity; tau_low<=dr<tau_high -> OE-EEGNet identity; dr<tau_low -> 0",
+    "tau_low_quantile": 0.02,
+    "tau_high_quantile": 0.05,
+    "inner_quantile_method": "linear",
+    "final20_quantile_method": "higher",
+    "threshold_source": "clean known dr only; no pseudo-unknown or Test threshold tuning",
+    "U_at_95_definition": "unknown fraction with dr<tau_high, where tau_high is clean-known q05; diagnostic rejection threshold, not the three-region high-dr identity route",
+    "working_U_definition": "unknown fraction rejected by dr<tau_low in the actual three-region rule"
+  },
+  "attacks": {
+    "run_in_inner": true,
+    "order": ["untargeted_fgsm_snr30", "untargeted_fgsm_snr20", "untargeted_pgd_snr30", "untargeted_pgd_snr20", "targeted_pgd_snr30", "targeted_pgd_snr20"],
+    "steps_as_e58_raw_attack_calls": 20,
+    "attack_target": "CNN/OE-EEGNet only; frozen waveform is then scored by both logSPD variants",
+    "scope_warning": "CNN-only white-box PGD20-style transfer through the decision chain, not a full-chain adaptive attack; no E65 adversarial training",
+    "snr_db": [30, 20],
+    "batch_size": 64
+  },
+  "test_gate": {
+    "clean_direct_C_min": 0.95,
+    "clean_identity_macro_F1_direct_min": 0.92,
+    "clean_AUROC_min": 0.98,
+    "clean_U_at_95_min": 0.95,
+    "aggregation": "E65 correlation five-outer-fold clean means",
+    "single_frozen_test_audit_allowed_only_if_all_pass": true,
+    "RA_gate_required_for_test_engineering_audit": false,
+    "RA_gate_required_for_claiming_all_train_gates_pass": true,
+    "if_any_clean_gate_fails": "Test=N/A; do not read Test and do not create predictions"
+  },
+  "test_audit": {
+    "prediction_rows": 22251,
+    "prediction_file": "e65_predictions.csv",
+    "S1_rejection_min": 0.95,
+    "S2_acceptance_min": 0.98,
+    "session_read_timing": "only after all predictions and CSV are written",
+    "post_audit_threshold_or_variant_change": "forbidden",
+    "metrics_without_truth": ["AUC", "F1", "C", "RA", "ASafeR", "U", "Score"]
+  },
+  "reporting": {
+    "AUC": "clean pseudo-unknown detection AUROC; larger dr means known",
+    "AUPR": "unknown-class AUPR using -dr",
+    "F1": "registered identity macro-F1 direct and with rejection; unknown-class F1 and joint macro-F1 reported separately",
+    "evidence_boundary": "Train session1 pseudo-unknown subjects and continuous within-session blocks only; not cross-session or official Test truth evidence"
+  }
+}
