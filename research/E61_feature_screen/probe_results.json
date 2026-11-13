@@ -1,0 +1,72 @@
+{
+  "logspd_distance_ratio": {
+    "auroc": 0.41588610551220717,
+    "auroc_flipped": 0.5841138944877928,
+    "s1_median": 1.0370999973981943,
+    "s2_median": 1.032924754802926,
+    "effect_size": 0.0051865481478886415
+  },
+  "logspd_max_cosine": {
+    "auroc": 0.3695091067669724,
+    "auroc_flipped": 0.6304908932330275,
+    "s1_median": 0.5768965482711792,
+    "s2_median": 0.5459105968475342,
+    "effect_size": 0.29186054542716305
+  },
+  "logspd_margin": {
+    "auroc": 0.41209561236362885,
+    "auroc_flipped": 0.5879043876363712,
+    "s1_median": 0.01757863163948059,
+    "s2_median": 0.015514016151428223,
+    "effect_size": 0.014190331032654314
+  },
+  "raw_signal_norm": {
+    "auroc": 0.3298054319541964,
+    "auroc_flipped": 0.6701945680458036,
+    "s1_median": 3187.456298828125,
+    "s2_median": 2220.117431640625,
+    "effect_size": 0.26421809111046185
+  },
+  "raw_high_band_ratio": {
+    "auroc": 0.27669547455870735,
+    "auroc_flipped": 0.7233045254412926,
+    "s1_median": 0.13663622736930847,
+    "s2_median": 0.07610265538096428,
+    "effect_size": 1.0089961342421503
+  },
+  "raw_spectral_flatness": {
+    "auroc": 0.5087884006150543,
+    "auroc_flipped": 0.5087884006150543,
+    "s1_median": 0.004126271232962608,
+    "s2_median": 0.004233161685988307,
+    "effect_size": 0.03663453795664199
+  },
+  "raw_kurtosis": {
+    "auroc": 0.540247901659125,
+    "auroc_flipped": 0.540247901659125,
+    "s1_median": 3.663773536682129,
+    "s2_median": 3.906536102294922,
+    "effect_size": 0.13826068452128037
+  },
+  "raw_channel_corr": {
+    "auroc": 0.5969812514692083,
+    "auroc_flipped": 0.5969812514692083,
+    "s1_median": 0.3729349672794342,
+    "s2_median": 0.41012823581695557,
+    "effect_size": 0.30981235268783724
+  },
+  "logspd_feature_norm": {
+    "auroc": 0.49873089222836453,
+    "auroc_flipped": 0.5012691077716355,
+    "s1_median": 29.24038314819336,
+    "s2_median": 29.24038314819336,
+    "effect_size": 0.0
+  },
+  "logspd_feature_std": {
+    "auroc": 0.4981564448539957,
+    "auroc_flipped": 0.5018435551460043,
+    "s1_median": 1.0005853176116943,
+    "s2_median": 1.0005853176116943,
+    "effect_size": 0.0
+  }
+}

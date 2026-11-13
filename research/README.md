@@ -82,6 +82,7 @@
 | E58 | [E58_oe_three_region](E58_oe_three_region) | **OE-EEGNet 身份 + logSPD 三段式** | **当前最优**：C **0.9714** ✅、F1 direct 0.9849 ✅、AUROC 0.9984 ✅、U **0.9875** ✅、RA **0.9371**、ASafeR **0.9758**、A 0.9487、**Score 96.74**（E49 91.03，+5.71；五折 96.55–96.83 极稳定）；SNR30 三档全部达标，仅 SNR20 差 0.02–0.04 |
 | E59 | [E59_online_three_region](E59_online_three_region) | E58 + E55 每批次在线 PGD7 | **无增益**：Score 96.65（E58 96.74，−0.09）、RA 0.9362（−0.0009）、ASafeR 持平；未达 RA≥0.95/ASafeR≥0.98 判据，保留 E58 |
 | E60 | [E60_test_audit_diagnosis](E60_test_audit_diagnosis) | Test S1/S2 拒识门禁可达性诊断 | **不可达**：S1/S2 的 dr 分布几乎重合（中位 1.0371 vs 1.0329），AUROC(S2 vs S1)=**0.4159**；S2 拒识=2% 时 S1 拒识仅 0.0201，S1 拒识=95% 时 S2 拒识 0.9978；两项门禁互斥，是特征问题而非阈值问题 |
+| E61 | [E61_feature_screen](E61_feature_screen) | Test 上 10 个逐样本特征的 S1/S2 区分力筛查 | 仅 **raw_high_band_ratio（20–40Hz 能量占比）** 有实质区分力：AUROC **0.7233**、效应量 1.01（S1 0.137 vs S2 0.076）；其余 0.50–0.60，logSPD 系列反向 0.37–0.42；0.72 仍远不足以满足 S2≤2%/S1≥95%（需约 0.99） |
 
 ## 其他
 
