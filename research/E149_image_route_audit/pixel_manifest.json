@@ -1,0 +1,61 @@
+{
+  "grid": 32,
+  "types": {
+    "correlation": {
+      "train": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\train_px_correlation.npy",
+      "test": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\test_px_correlation.npy",
+      "dim": 3072,
+      "train_scale": 63.69028091430664,
+      "test_scale": 63.14153289794922,
+      "mean_shift_l2": 10.686361312866211
+    },
+    "covariance5": {
+      "train": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\train_px_covariance5.npy",
+      "test": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\test_px_covariance5.npy",
+      "dim": 3072,
+      "train_scale": 74.2450942993164,
+      "test_scale": 73.89270782470703,
+      "mean_shift_l2": 16.501659393310547
+    },
+    "covariance_hr": {
+      "train": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\train_px_covariance_hr.npy",
+      "test": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\test_px_covariance_hr.npy",
+      "dim": 3072,
+      "train_scale": 79.25242614746094,
+      "test_scale": 81.26990509033203,
+      "mean_shift_l2": 19.060195922851562
+    },
+    "topomap5": {
+      "train": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\train_px_topomap5.npy",
+      "test": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\test_px_topomap5.npy",
+      "dim": 3072,
+      "train_scale": 65.48439025878906,
+      "test_scale": 63.364288330078125,
+      "mean_shift_l2": 9.815302848815918
+    },
+    "mw_corr8": {
+      "train": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\train_px_mw_corr8.npy",
+      "test": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\test_px_mw_corr8.npy",
+      "dim": 3072,
+      "train_scale": 39.77311706542969,
+      "test_scale": 39.59415817260742,
+      "mean_shift_l2": 4.646214962005615
+    },
+    "mw_cov4": {
+      "train": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\train_px_mw_cov4.npy",
+      "test": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\test_px_mw_cov4.npy",
+      "dim": 3072,
+      "train_scale": 61.919219970703125,
+      "test_scale": 63.201927185058594,
+      "mean_shift_l2": 19.84276580810547
+    },
+    "mw_cov8": {
+      "train": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\train_px_mw_cov8.npy",
+      "test": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E149_image_route_audit\\test_px_mw_cov8.npy",
+      "dim": 3072,
+      "train_scale": 56.70602798461914,
+      "test_scale": 58.51508331298828,
+      "mean_shift_l2": 20.13389778137207
+    }
+  }
+}

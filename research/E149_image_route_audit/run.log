@@ -1,0 +1,60 @@
+﻿projected B_E65logspd
+projected D_correlation
+projected D_covariance5
+projected D_covariance_hr
+projected D_topomap5
+projected D_mw_corr8
+projected D_mw_cov4
+projected D_mw_cov8
+projected X_correlation
+projected X_covariance5
+projected X_covariance_hr
+projected X_topomap5
+projected X_mw_corr8
+projected X_mw_cov4
+projected X_mw_cov8
+  k=12 B_E65logspd    AUC 0.7578
+  k=12 D_correlation  AUC 0.4984
+  k=12 D_covariance5  AUC 0.7223
+  k=12 D_covariance_hr AUC 0.7399
+  k=12 D_topomap5     AUC 0.4635
+  k=12 D_mw_corr8     AUC 0.7206
+  k=12 D_mw_cov4      AUC 0.7206
+  k=12 D_mw_cov8      AUC 0.7482
+  k=12 X_correlation  AUC 0.6875
+  k=12 X_covariance5  AUC 0.7166
+  k=12 X_covariance_hr AUC 0.7051
+  k=12 X_topomap5     AUC 0.5413
+  k=12 X_mw_corr8     AUC 0.5733
+  k=12 X_mw_cov4      AUC 0.7347
+  k=12 X_mw_cov8      AUC 0.7249
+  k=12 B_only       AUC 0.7578 bestW 0.6958 @a=0.900
+  k=12 D_correlation AUC 0.4984 bestW 0.3052 @a=0.850
+  k=12 D_covariance5 AUC 0.7223 bestW 0.5894 @a=0.950
+  k=12 D_covariance_hr AUC 0.7399 bestW 0.6039 @a=0.950
+  k=12 D_topomap5   AUC 0.4635 bestW 0.5151 @a=0.950
+  k=12 D_mw_corr8   AUC 0.7206 bestW 0.6049 @a=0.850
+  k=12 D_mw_cov4    AUC 0.7206 bestW 0.5953 @a=0.950
+  k=12 D_mw_cov8    AUC 0.7482 bestW 0.5871 @a=0.940
+  k=12 X_correlation AUC 0.6875 bestW 0.5797 @a=0.850
+  k=12 X_covariance5 AUC 0.7166 bestW 0.5983 @a=0.940
+  k=12 X_covariance_hr AUC 0.7051 bestW 0.5817 @a=0.950
+  k=12 X_topomap5   AUC 0.5413 bestW 0.5433 @a=0.850
+  k=12 X_mw_corr8   AUC 0.5733 bestW 0.5383 @a=0.850
+  k=12 X_mw_cov4    AUC 0.7347 bestW 0.6080 @a=0.950
+  k=12 X_mw_cov8    AUC 0.7249 bestW 0.5995 @a=0.920
+  k=12 IMG_dino_all AUC 0.7625 bestW 0.3640 @a=0.850
+  k=12 IMG_px_all   AUC 0.7590 bestW 0.6169 @a=0.920
+  k=12 B_plus_IMG_dino AUC 0.7765 bestW 0.4014 @a=0.850
+  k=12 B_plus_IMG_px AUC 0.7741 bestW 0.6295 @a=0.900
+  k=12 IMG_all      AUC 0.7701 bestW 0.3578 @a=0.850
+{
+  "set": "B_only",
+  "k": 12,
+  "acceptance_rate": 0.9,
+  "test_auc": 0.7578208547686346,
+  "LOSO_rejection": 0.7935548348177022,
+  "Test_S1_rejection": 0.7978898780085724,
+  "Test_S2_acceptance": 0.595951711936726,
+  "W": 0.6958370341749316
+}
