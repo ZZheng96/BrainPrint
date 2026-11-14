@@ -1,0 +1,669 @@
+{
+  "experiment": "E113_loso_finetune",
+  "test_accessed": false,
+  "protocol": "LOSO; 19 enrolled, 1 held out; threshold fixed at known acceptance 0.85",
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.8
+  },
+  "summary": {
+    "B1_E95_raw_cosine": {
+      "AUC_mean": 0.5039310798995686,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.1573006272081678,
+      "unknown_rejection_median": 0.11930740037950664,
+      "folds_rejection_ge_0_80": 0,
+      "folds_rejection_ge_0_50": 1,
+      "n_folds": 20
+    },
+    "B4_E102_spd_ratio": {
+      "AUC_mean": 0.9143749272519688,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.8309507336125147,
+      "unknown_rejection_median": 0.8629976580796253,
+      "folds_rejection_ge_0_80": 16,
+      "folds_rejection_ge_0_50": 19,
+      "n_folds": 20
+    },
+    "E113_finetuned_ratio": {
+      "AUC_mean": 0.8655788338823751,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.6686889690440233,
+      "unknown_rejection_median": 0.6498464770523594,
+      "folds_rejection_ge_0_80": 2,
+      "folds_rejection_ge_0_50": 19,
+      "n_folds": 20
+    },
+    "E113b_finetuned_cosine": {
+      "AUC_mean": 0.9229417095517876,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.8428029892510358,
+      "unknown_rejection_median": 0.8971604770940634,
+      "folds_rejection_ge_0_80": 14,
+      "folds_rejection_ge_0_50": 20,
+      "n_folds": 20
+    }
+  },
+  "folds": [
+    {
+      "held_out": 1,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9284788181427535,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9112903225806451,
+          "threshold": 1.0547022819519043
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4289270526175411,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.08870967741935484,
+          "threshold": 0.46630221605300903
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.904559396624535,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.7903225806451613,
+          "threshold": 1.1451665163040161
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9552321187784314,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9354838709677419,
+          "threshold": -0.7105072736740112
+        }
+      }
+    },
+    {
+      "held_out": 2,
+      "N_known": 2199,
+      "N_unknown": 102,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9145823859329998,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.8431372549019608,
+          "threshold": 1.0454732179641724
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.36548698606318375,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.049019607843137254,
+          "threshold": 0.4653467535972595
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8765526219582875,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.7058823529411765,
+          "threshold": 1.1515880823135376
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.8827854015639907,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.7549019607843137,
+          "threshold": -0.7030631303787231
+        }
+      }
+    },
+    {
+      "held_out": 3,
+      "N_known": 2179,
+      "N_unknown": 122,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9298369683792386,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.8688524590163934,
+          "threshold": 1.0456008911132812
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.48438522709319215,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.12295081967213115,
+          "threshold": 0.4671388864517212
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8333345872298166,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.5163934426229508,
+          "threshold": 1.141998529434204
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9094335648026242,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.7622950819672131,
+          "threshold": -0.7150397300720215
+        }
+      }
+    },
+    {
+      "held_out": 4,
+      "N_known": 2188,
+      "N_unknown": 113,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9149665917069776,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.8407079646017699,
+          "threshold": 1.0461617708206177
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.7153540631926356,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.21238938053097345,
+          "threshold": 0.46997934579849243
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8782012910323407,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.672566371681416,
+          "threshold": 1.1449846029281616
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9166774522334212,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.8230088495575221,
+          "threshold": -0.7139630317687988
+        }
+      }
+    },
+    {
+      "held_out": 5,
+      "N_known": 2200,
+      "N_unknown": 101,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9589086408640863,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.9900990099009901,
+          "threshold": 1.0439256429672241
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.8604545454545456,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.5841584158415841,
+          "threshold": 0.47999995946884155
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.9475607560756075,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 1.0,
+          "threshold": 1.1389738321304321
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9997884788478848,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 1.0,
+          "threshold": -0.716695249080658
+        }
+      }
+    },
+    {
+      "held_out": 6,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9390549290974559,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9032258064516129,
+          "threshold": 1.0455689430236816
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4832263991583564,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.12096774193548387,
+          "threshold": 0.46709632873535156
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.9028516603197652,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.8145161290322581,
+          "threshold": 1.140051245689392
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9618889563916013,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9516129032258065,
+          "threshold": -0.7106932997703552
+        }
+      }
+    },
+    {
+      "held_out": 7,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.7987093810659831,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.45161290322580644,
+          "threshold": 1.0455689430236816
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.5926326551780343,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.12903225806451613,
+          "threshold": 0.4672890901565552
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8556870212040838,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.6048387096774194,
+          "threshold": 1.1398762464523315
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9400440084757063,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.8951612903225806,
+          "threshold": -0.7179288864135742
+        }
+      }
+    },
+    {
+      "held_out": 8,
+      "N_known": 2197,
+      "N_unknown": 104,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9309898112811177,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.9230769230769231,
+          "threshold": 1.0442521572113037
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4326791778999335,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.14423076923076922,
+          "threshold": 0.4678093492984772
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8635551976471412,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.6442307692307693,
+          "threshold": 1.1577744483947754
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.8452260074927349,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.625,
+          "threshold": -0.6972286701202393
+        }
+      }
+    },
+    {
+      "held_out": 9,
+      "N_known": 2185,
+      "N_unknown": 116,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9078986822378283,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.8448275862068966,
+          "threshold": 1.046847939491272
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.27444172650516846,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.0,
+          "threshold": 0.4632483720779419
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8707133275467529,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.6206896551724138,
+          "threshold": 1.136725664138794
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9667639864278388,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.9568965517241379,
+          "threshold": -0.7045823931694031
+        }
+      }
+    },
+    {
+      "held_out": 10,
+      "N_known": 2194,
+      "N_unknown": 107,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9345411019006806,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.8785046728971962,
+          "threshold": 1.0504335165023804
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4297702314724099,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.04672897196261682,
+          "threshold": 0.4653410315513611
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8075209364537098,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.5607476635514018,
+          "threshold": 1.1584066152572632
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.8213734995186531,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.5794392523364486,
+          "threshold": -0.7092950344085693
+        }
+      }
+    },
+    {
+      "held_out": 11,
+      "N_known": 2180,
+      "N_unknown": 121,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9101523997270453,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.8181818181818182,
+          "threshold": 1.0459307432174683
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4016680567139283,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.03305785123966942,
+          "threshold": 0.4643322825431824
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.830006065660778,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.6115702479338843,
+          "threshold": 1.1438003778457642
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9162408067328834,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.8512396694214877,
+          "threshold": -0.701637327671051
+        }
+      }
+    },
+    {
+      "held_out": 12,
+      "N_known": 2179,
+      "N_unknown": 122,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9213092183961662,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.8360655737704918,
+          "threshold": 1.0461997985839844
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.38470798004799917,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.08196721311475409,
+          "threshold": 0.4659365117549896
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8725953400191093,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.6311475409836066,
+          "threshold": 1.1406490802764893
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.950894905920147,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.9672131147540983,
+          "threshold": -0.7118933200836182
+        }
+      }
+    },
+    {
+      "held_out": 13,
+      "N_known": 2178,
+      "N_unknown": 123,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9175569441644829,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.8780487804878049,
+          "threshold": 1.047603964805603
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.30197391505595494,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.032520325203252036,
+          "threshold": 0.46433210372924805
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8952720105713454,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.7642276422764228,
+          "threshold": 1.140921711921692
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9706824340970682,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.959349593495935,
+          "threshold": -0.7033929228782654
+        }
+      }
+    },
+    {
+      "held_out": 14,
+      "N_known": 2180,
+      "N_unknown": 121,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.8779740693001743,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.6115702479338843,
+          "threshold": 1.0445939302444458
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4164189855182349,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.05785123966942149,
+          "threshold": 0.4653404951095581
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.7602661308666313,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.3884297520661157,
+          "threshold": 1.1524932384490967
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.8783266358328912,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.7272727272727273,
+          "threshold": -0.7030373811721802
+        }
+      }
+    },
+    {
+      "held_out": 15,
+      "N_known": 2191,
+      "N_unknown": 110,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.8942367536616739,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.7363636363636363,
+          "threshold": 1.045745611190796
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.6296585203933447,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.2909090909090909,
+          "threshold": 0.47226858139038086
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8564001493713954,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.6181818181818182,
+          "threshold": 1.1400680541992188
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9478112941371728,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.9090909090909091,
+          "threshold": -0.7077306509017944
+        }
+      }
+    },
+    {
+      "held_out": 16,
+      "N_known": 2182,
+      "N_unknown": 119,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9235725454251362,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.8739495798319328,
+          "threshold": 1.0511070489883423
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.42649947238290375,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.11764705882352941,
+          "threshold": 0.4670608639717102
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8776390482865924,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.6554621848739496,
+          "threshold": 1.1434580087661743
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9422779194170794,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.8991596638655462,
+          "threshold": -0.7048325538635254
+        }
+      }
+    },
+    {
+      "held_out": 17,
+      "N_known": 2189,
+      "N_unknown": 112,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9130351432487112,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.8571428571428571,
+          "threshold": 1.0501658916473389
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.39359949096130004,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.07142857142857142,
+          "threshold": 0.4657520651817322
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.895944821510148,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.7589285714285714,
+          "threshold": 1.1423038244247437
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9609533054884813,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.9375,
+          "threshold": -0.7077820897102356
+        }
+      }
+    },
+    {
+      "held_out": 18,
+      "N_known": 2203,
+      "N_unknown": 98,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.8955274347596506,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.7551020408163265,
+          "threshold": 1.0529192686080933
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.6976386560071146,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.29591836734693877,
+          "threshold": 0.4718725085258484
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8704039945528825,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.7142857142857143,
+          "threshold": 1.1637388467788696
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9475622296126802,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.9081632653061225,
+          "threshold": -0.7004342675209045
+        }
+      }
+    },
+    {
+      "held_out": 19,
+      "N_known": 2187,
+      "N_unknown": 114,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9377341387304566,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.8859649122807017,
+          "threshold": 1.0541951656341553
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.7554488645023625,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.4649122807017544,
+          "threshold": 0.4783291518688202
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.8798000946582276,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.7368421052631579,
+          "threshold": 1.1676652431488037
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.9107846204445731,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.8245614035087719,
+          "threshold": -0.6969494819641113
+        }
+      }
+    },
+    {
+      "held_out": 20,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9384325870167589,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9112903225806451,
+          "threshold": 1.0479991436004639
+        },
+        "B1_E95_raw_cosine": {
+          "AUC": 0.6036495917732304,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.20161290322580644,
+          "threshold": 0.469630628824234
+        },
+        "E113_finetuned_ratio": {
+          "AUC": 0.832712226058352,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.5645161290322581,
+          "threshold": 1.1616917848587036
+        },
+        "E113b_finetuned_cosine": {
+          "AUC": 0.8340865648198912,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.5887096774193549,
+          "threshold": -0.7043165564537048
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "experiment": "E114_finetune_ablation",
+  "purpose": "Ablate and strengthen the E113b LOSO fine-tuning recipe (epochs, learning rate, multi-prototype).",
+  "seed": 20261114,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "expected_trials": 11304
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "training": {
+    "batch_size": 64,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 5.0
+  },
+  "variants": {
+    "V0_E113b_ref": {"epochs": 8, "lr": 0.0002, "prototypes": 1},
+    "V1_longer": {"epochs": 16, "lr": 0.0002, "prototypes": 1},
+    "V2_higher_lr": {"epochs": 8, "lr": 0.0005, "prototypes": 1},
+    "V3_multi_proto": {"epochs": 8, "lr": 0.0002, "prototypes": 3},
+    "V4_multi_proto_longer": {"epochs": 16, "lr": 0.0002, "prototypes": 3},
+    "V5_multi_proto_higher_lr": {"epochs": 8, "lr": 0.0005, "prototypes": 3}
+  },
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  },
+  "protocol": {
+    "leave_one_identity_out": true,
+    "s2_operating_point_fixed": true,
+    "test_accessed": false
+  }
+}

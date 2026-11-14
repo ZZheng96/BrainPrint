@@ -1,0 +1,36 @@
+{
+  "experiment": "E112_open_set_classifier",
+  "purpose": "Train an explicit open-set classifier (identity head + known/unknown head) under the LOSO protocol and compare its held-out rejection with the E102 distance ratio.",
+  "seed": 20261114,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "expected_trials": 11304
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "model": {
+    "hidden": 256
+  },
+  "training": {
+    "epochs": 40,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "unknown_weight": 1.0,
+    "inner_unknown": 4
+  },
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  },
+  "protocol": {
+    "leave_one_identity_out": true,
+    "s2_operating_point_fixed": true,
+    "test_accessed": false
+  }
+}
