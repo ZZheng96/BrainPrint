@@ -1,0 +1,50 @@
+{
+  "experiment": "E100_relaxed_gate_feasibility",
+  "test_accessed": false,
+  "N_known": 1861,
+  "N_pseudo_unknown": 440,
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.8
+  },
+  "branches": {
+    "raw": {
+      "AUC": 0.6319891553905524,
+      "feasible_points": 0,
+      "best_joint": {
+        "threshold": 0.5797878503799438,
+        "known_acceptance": 0.5969908651262762,
+        "unknown_rejection": 0.6477272727272727
+      }
+    },
+    "spd": {
+      "AUC": 0.6405256216110595,
+      "feasible_points": 0,
+      "best_joint": {
+        "threshold": -14.84593665599823,
+        "known_acceptance": 0.38366469639978507,
+        "unknown_rejection": 0.8386363636363636
+      }
+    },
+    "min_fusion": {
+      "AUC": 0.6301035611352646,
+      "feasible_points": 0,
+      "best_joint": {
+        "threshold": 0.31782608695652176,
+        "known_acceptance": 0.5814078452444922,
+        "unknown_rejection": 0.6454545454545455
+      }
+    },
+    "mean_fusion": {
+      "AUC": 0.6690360754237703,
+      "feasible_points": 0,
+      "best_joint": {
+        "threshold": 0.49217391304347824,
+        "known_acceptance": 0.5980655561526061,
+        "unknown_rejection": 0.7045454545454546
+      }
+    }
+  },
+  "any_feasible": false,
+  "conclusion": "放宽目标下仍不存在可行工作点"
+}

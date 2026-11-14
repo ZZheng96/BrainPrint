@@ -1,0 +1,22 @@
+{
+  "experiment": "E100_relaxed_gate_feasibility",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "expected_trials": 11304
+  },
+  "source_checkpoint": "research/E95_e54_final20_candidate/model_checkpoint.pt",
+  "calibration": {
+    "pseudo_unknown_subjects": [4, 15, 16, 18],
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  },
+  "protocol": {
+    "train_session1_only": true,
+    "test_accessed": false
+  }
+}

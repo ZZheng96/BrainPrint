@@ -1,0 +1,80 @@
+{
+  "experiment": "E101_unknown_proxy_sensitivity",
+  "test_accessed": false,
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.8
+  },
+  "proxies": {
+    "held_identity": {
+      "N_unknown": 440,
+      "branches": {
+        "raw": {
+          "AUC": 0.6067500296313855,
+          "feasible_points": 0,
+          "best_known_acceptance": 0.5454150369404607,
+          "best_unknown_rejection": 0.6522727272727272
+        },
+        "spd": {
+          "AUC": 0.3940845877286555,
+          "feasible_points": 0,
+          "best_known_acceptance": 0.000434593654932638,
+          "best_unknown_rejection": 1.0
+        },
+        "mean_fusion": {
+          "AUC": 0.5072137608154557,
+          "feasible_points": 0,
+          "best_known_acceptance": 0.6223381138635375,
+          "best_unknown_rejection": 0.4318181818181818
+        }
+      }
+    },
+    "late_block": {
+      "N_unknown": 2308,
+      "branches": {
+        "raw": {
+          "AUC": 0.5248687180692291,
+          "feasible_points": 0,
+          "best_known_acceptance": 0.7348978704910908,
+          "best_unknown_rejection": 0.30979202772963604
+        },
+        "spd": {
+          "AUC": 0.5259818464882648,
+          "feasible_points": 0,
+          "best_known_acceptance": 0.549760973489787,
+          "best_unknown_rejection": 0.5047660311958405
+        },
+        "mean_fusion": {
+          "AUC": 0.5320496815113918,
+          "feasible_points": 0,
+          "best_known_acceptance": 0.596697088222512,
+          "best_unknown_rejection": 0.47400346620450606
+        }
+      }
+    },
+    "held_identity_late": {
+      "N_unknown": 440,
+      "branches": {
+        "raw": {
+          "AUC": 0.6462042195093043,
+          "feasible_points": 0,
+          "best_known_acceptance": 0.6079965232507606,
+          "best_unknown_rejection": 0.6295454545454545
+        },
+        "spd": {
+          "AUC": 0.45618900873138163,
+          "feasible_points": 0,
+          "best_known_acceptance": 0.9595827900912647,
+          "best_unknown_rejection": 0.04772727272727273
+        },
+        "mean_fusion": {
+          "AUC": 0.5663254118762594,
+          "feasible_points": 0,
+          "best_known_acceptance": 0.596697088222512,
+          "best_unknown_rejection": 0.5545454545454546
+        }
+      }
+    }
+  },
+  "any_feasible": false
+}
