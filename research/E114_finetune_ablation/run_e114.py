@@ -83,7 +83,7 @@ def build_task_prototypes(emb, subjects, tasks, fit_mask, classes, k=1):
                 protos.append(block.mean(0))
                 keys.append((task, int(c)))
             else:
-                for j, center in enumerate(kmeans(block, k, seed=int(c) * 17 + j)):
+                for j, center in enumerate(kmeans(block, k, seed=int(c) * 17)):
                     protos.append(center)
                     keys.append((task, int(c)))
     return np.stack(protos), keys
