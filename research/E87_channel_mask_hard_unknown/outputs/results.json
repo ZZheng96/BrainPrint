@@ -1,0 +1,774 @@
+{
+  "schema_version": 1,
+  "experiment": "E87 external 22-channel representation with simulated 18-channel mask/projection and stratified hard-unknown",
+  "completed_at": "2026-11-14T10:52:09.001162+00:00",
+  "smoke": false,
+  "channel_projection": {
+    "source_channels_22": [
+      "Fz",
+      "FC3",
+      "FC1",
+      "FCz",
+      "FC2",
+      "FC4",
+      "C5",
+      "C3",
+      "C1",
+      "Cz",
+      "C2",
+      "C4",
+      "C6",
+      "CP3",
+      "CP1",
+      "CPz",
+      "CP2",
+      "CP4",
+      "P1",
+      "Pz",
+      "P2",
+      "POz"
+    ],
+    "target_channels_18": [
+      "P3",
+      "C3",
+      "F3",
+      "Fz",
+      "F4",
+      "C4",
+      "P4",
+      "Cz",
+      "Fp1",
+      "Fp2",
+      "T3",
+      "T5",
+      "O1",
+      "O2",
+      "F7",
+      "F8",
+      "T6",
+      "T4"
+    ],
+    "target_to_source_index": [
+      -1,
+      7,
+      -1,
+      0,
+      -1,
+      11,
+      -1,
+      9,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "policy": "Exact-name projection from external native 22 channels; missing target channels are explicit zero-filled mask positions, never fabricated or learned from project Test.",
+    "observed_target_mask": [
+      false,
+      true,
+      false,
+      true,
+      false,
+      true,
+      false,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "data": {
+    "N": 5184,
+    "source_channels": 22,
+    "model_channels": 18,
+    "competition_test_accessed": false
+  },
+  "runs": [
+    {
+      "outer_fold": 1,
+      "roles": {
+        "enrolled": [
+          5,
+          6,
+          7,
+          9
+        ],
+        "calibration_unknown": [
+          2,
+          3
+        ],
+        "outer_unknown": [
+          4,
+          1,
+          8
+        ]
+      },
+      "training": {
+        "seed": 20262114,
+        "epochs": 40,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 4.784528467390272
+          },
+          {
+            "epoch": 2,
+            "loss": 4.610222551557753
+          },
+          {
+            "epoch": 3,
+            "loss": 4.4689094225565595
+          },
+          {
+            "epoch": 4,
+            "loss": 4.438119517432319
+          },
+          {
+            "epoch": 5,
+            "loss": 4.426031006707086
+          },
+          {
+            "epoch": 6,
+            "loss": 4.3968544536166725
+          },
+          {
+            "epoch": 7,
+            "loss": 4.390803072187635
+          },
+          {
+            "epoch": 8,
+            "loss": 4.379739867316352
+          },
+          {
+            "epoch": 9,
+            "loss": 4.372999827067058
+          },
+          {
+            "epoch": 10,
+            "loss": 4.363529152340359
+          },
+          {
+            "epoch": 11,
+            "loss": 4.355029741923015
+          },
+          {
+            "epoch": 12,
+            "loss": 4.361865997314453
+          },
+          {
+            "epoch": 13,
+            "loss": 4.353301154242621
+          },
+          {
+            "epoch": 14,
+            "loss": 4.327725516425239
+          },
+          {
+            "epoch": 15,
+            "loss": 4.318646642896864
+          },
+          {
+            "epoch": 16,
+            "loss": 4.302885638342963
+          },
+          {
+            "epoch": 17,
+            "loss": 4.298487027486165
+          },
+          {
+            "epoch": 18,
+            "loss": 4.290380954742432
+          },
+          {
+            "epoch": 19,
+            "loss": 4.246332751380073
+          },
+          {
+            "epoch": 20,
+            "loss": 4.243531650967068
+          },
+          {
+            "epoch": 21,
+            "loss": 4.232030126783583
+          },
+          {
+            "epoch": 22,
+            "loss": 4.236409293280707
+          },
+          {
+            "epoch": 23,
+            "loss": 4.231576760609944
+          },
+          {
+            "epoch": 24,
+            "loss": 4.217584662967258
+          },
+          {
+            "epoch": 25,
+            "loss": 4.207374837663439
+          },
+          {
+            "epoch": 26,
+            "loss": 4.184980127546522
+          },
+          {
+            "epoch": 27,
+            "loss": 4.185917165544298
+          },
+          {
+            "epoch": 28,
+            "loss": 4.195536825391981
+          },
+          {
+            "epoch": 29,
+            "loss": 4.166554556952582
+          },
+          {
+            "epoch": 30,
+            "loss": 4.145162211524116
+          },
+          {
+            "epoch": 31,
+            "loss": 4.157581488291423
+          },
+          {
+            "epoch": 32,
+            "loss": 4.158071623908149
+          },
+          {
+            "epoch": 33,
+            "loss": 4.139852364857991
+          },
+          {
+            "epoch": 34,
+            "loss": 4.169038189782037
+          },
+          {
+            "epoch": 35,
+            "loss": 4.136210812462701
+          },
+          {
+            "epoch": 36,
+            "loss": 4.144382741716173
+          },
+          {
+            "epoch": 37,
+            "loss": 4.14091682434082
+          },
+          {
+            "epoch": 38,
+            "loss": 4.128667990366618
+          },
+          {
+            "epoch": 39,
+            "loss": 4.1478531625535755
+          },
+          {
+            "epoch": 40,
+            "loss": 4.110074043273926
+          }
+        ],
+        "input_channels": 18,
+        "source_channels": 22
+      },
+      "directions": {
+        "T_to_E": {
+          "N_known": 192,
+          "N_unknown": 144,
+          "known_acceptance": 0.9270833333333334,
+          "unknown_FAR": 0.9930555555555556,
+          "unknown_rejection": 0.006944444444444444,
+          "AUROC": 0.3913122106481481,
+          "identity_macro_F1": 0.8336545749589228,
+          "unknown_F1": 0.012578616352201259,
+          "EER": 0.578125,
+          "C": 0.8125,
+          "threshold": 0.9168878793716431,
+          "hard_unknown_policy": "subject-held-out outer run-5"
+        },
+        "E_to_T": {
+          "N_known": 192,
+          "N_unknown": 144,
+          "known_acceptance": 1.0,
+          "unknown_FAR": 0.9652777777777778,
+          "unknown_rejection": 0.034722222222222224,
+          "AUROC": 0.6594328703703703,
+          "identity_macro_F1": 0.7870969686254339,
+          "unknown_F1": 0.06711409395973154,
+          "EER": 0.3819444444444444,
+          "C": 0.796875,
+          "threshold": 0.9064898490905762,
+          "hard_unknown_policy": "subject-held-out outer run-5"
+        }
+      }
+    },
+    {
+      "outer_fold": 2,
+      "roles": {
+        "enrolled": [
+          1,
+          2,
+          6,
+          8
+        ],
+        "calibration_unknown": [
+          4,
+          9
+        ],
+        "outer_unknown": [
+          3,
+          5,
+          7
+        ]
+      },
+      "training": {
+        "seed": 20263114,
+        "epochs": 40,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 4.736917124854194
+          },
+          {
+            "epoch": 2,
+            "loss": 4.537391768561469
+          },
+          {
+            "epoch": 3,
+            "loss": 4.474758466084798
+          },
+          {
+            "epoch": 4,
+            "loss": 4.45329925749037
+          },
+          {
+            "epoch": 5,
+            "loss": 4.42638619740804
+          },
+          {
+            "epoch": 6,
+            "loss": 4.403382778167725
+          },
+          {
+            "epoch": 7,
+            "loss": 4.396912892659505
+          },
+          {
+            "epoch": 8,
+            "loss": 4.376409742567274
+          },
+          {
+            "epoch": 9,
+            "loss": 4.382512516445583
+          },
+          {
+            "epoch": 10,
+            "loss": 4.369224018520779
+          },
+          {
+            "epoch": 11,
+            "loss": 4.372824509938558
+          },
+          {
+            "epoch": 12,
+            "loss": 4.3760983149210615
+          },
+          {
+            "epoch": 13,
+            "loss": 4.36537864473131
+          },
+          {
+            "epoch": 14,
+            "loss": 4.366492324405247
+          },
+          {
+            "epoch": 15,
+            "loss": 4.354441006978353
+          },
+          {
+            "epoch": 16,
+            "loss": 4.355242358313666
+          },
+          {
+            "epoch": 17,
+            "loss": 4.335878796047634
+          },
+          {
+            "epoch": 18,
+            "loss": 4.363029532962376
+          },
+          {
+            "epoch": 19,
+            "loss": 4.362927436828613
+          },
+          {
+            "epoch": 20,
+            "loss": 4.350953896840413
+          },
+          {
+            "epoch": 21,
+            "loss": 4.339686923556858
+          },
+          {
+            "epoch": 22,
+            "loss": 4.340953614976671
+          },
+          {
+            "epoch": 23,
+            "loss": 4.328050295511882
+          },
+          {
+            "epoch": 24,
+            "loss": 4.32123507393731
+          },
+          {
+            "epoch": 25,
+            "loss": 4.33833556705051
+          },
+          {
+            "epoch": 26,
+            "loss": 4.3309365378485785
+          },
+          {
+            "epoch": 27,
+            "loss": 4.3340803782145185
+          },
+          {
+            "epoch": 28,
+            "loss": 4.328470177120632
+          },
+          {
+            "epoch": 29,
+            "loss": 4.322972986433241
+          },
+          {
+            "epoch": 30,
+            "loss": 4.311471621195476
+          },
+          {
+            "epoch": 31,
+            "loss": 4.305317560831706
+          },
+          {
+            "epoch": 32,
+            "loss": 4.30455043580797
+          },
+          {
+            "epoch": 33,
+            "loss": 4.299665133158366
+          },
+          {
+            "epoch": 34,
+            "loss": 4.29226541519165
+          },
+          {
+            "epoch": 35,
+            "loss": 4.287525759802924
+          },
+          {
+            "epoch": 36,
+            "loss": 4.2974892192416725
+          },
+          {
+            "epoch": 37,
+            "loss": 4.2844128078884545
+          },
+          {
+            "epoch": 38,
+            "loss": 4.304156144460042
+          },
+          {
+            "epoch": 39,
+            "loss": 4.289042843712701
+          },
+          {
+            "epoch": 40,
+            "loss": 4.280883312225342
+          }
+        ],
+        "input_channels": 18,
+        "source_channels": 22
+      },
+      "directions": {
+        "T_to_E": {
+          "N_known": 192,
+          "N_unknown": 144,
+          "known_acceptance": 0.921875,
+          "unknown_FAR": 0.9375,
+          "unknown_rejection": 0.0625,
+          "AUROC": 0.5341435185185185,
+          "identity_macro_F1": 0.7124568048910155,
+          "unknown_F1": 0.10714285714285714,
+          "EER": 0.4513888888888889,
+          "C": 0.6822916666666666,
+          "threshold": 0.9405670762062073,
+          "hard_unknown_policy": "subject-held-out outer run-5"
+        },
+        "E_to_T": {
+          "N_known": 192,
+          "N_unknown": 144,
+          "known_acceptance": 0.9427083333333334,
+          "unknown_FAR": 0.9791666666666666,
+          "unknown_rejection": 0.020833333333333332,
+          "AUROC": 0.5453197337962963,
+          "identity_macro_F1": 0.8182593706355297,
+          "unknown_F1": 0.0379746835443038,
+          "EER": 0.45833333333333337,
+          "C": 0.796875,
+          "threshold": 0.9337926506996155,
+          "hard_unknown_policy": "subject-held-out outer run-5"
+        }
+      }
+    },
+    {
+      "outer_fold": 3,
+      "roles": {
+        "enrolled": [
+          3,
+          4,
+          5,
+          7
+        ],
+        "calibration_unknown": [
+          1,
+          8
+        ],
+        "outer_unknown": [
+          2,
+          6,
+          9
+        ]
+      },
+      "training": {
+        "seed": 20264114,
+        "epochs": 40,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 4.831010235680474
+          },
+          {
+            "epoch": 2,
+            "loss": 4.7639558050367565
+          },
+          {
+            "epoch": 3,
+            "loss": 4.709671709272596
+          },
+          {
+            "epoch": 4,
+            "loss": 4.669478946261936
+          },
+          {
+            "epoch": 5,
+            "loss": 4.6261377864413795
+          },
+          {
+            "epoch": 6,
+            "loss": 4.590447001987034
+          },
+          {
+            "epoch": 7,
+            "loss": 4.560205724504259
+          },
+          {
+            "epoch": 8,
+            "loss": 4.5509509510464135
+          },
+          {
+            "epoch": 9,
+            "loss": 4.51478460099962
+          },
+          {
+            "epoch": 10,
+            "loss": 4.513275782267253
+          },
+          {
+            "epoch": 11,
+            "loss": 4.498174243503147
+          },
+          {
+            "epoch": 12,
+            "loss": 4.493941995832655
+          },
+          {
+            "epoch": 13,
+            "loss": 4.475623607635498
+          },
+          {
+            "epoch": 14,
+            "loss": 4.472259627448188
+          },
+          {
+            "epoch": 15,
+            "loss": 4.478962951236301
+          },
+          {
+            "epoch": 16,
+            "loss": 4.468485567304823
+          },
+          {
+            "epoch": 17,
+            "loss": 4.466955661773682
+          },
+          {
+            "epoch": 18,
+            "loss": 4.464598390791151
+          },
+          {
+            "epoch": 19,
+            "loss": 4.47342586517334
+          },
+          {
+            "epoch": 20,
+            "loss": 4.4467488924662275
+          },
+          {
+            "epoch": 21,
+            "loss": 4.4356967608133955
+          },
+          {
+            "epoch": 22,
+            "loss": 4.4462606641981335
+          },
+          {
+            "epoch": 23,
+            "loss": 4.434827592637804
+          },
+          {
+            "epoch": 24,
+            "loss": 4.434592670864529
+          },
+          {
+            "epoch": 25,
+            "loss": 4.436011208428277
+          },
+          {
+            "epoch": 26,
+            "loss": 4.429405848185222
+          },
+          {
+            "epoch": 27,
+            "loss": 4.425592263539632
+          },
+          {
+            "epoch": 28,
+            "loss": 4.422207249535455
+          },
+          {
+            "epoch": 29,
+            "loss": 4.4248199462890625
+          },
+          {
+            "epoch": 30,
+            "loss": 4.410631603664822
+          },
+          {
+            "epoch": 31,
+            "loss": 4.417723920610216
+          },
+          {
+            "epoch": 32,
+            "loss": 4.406044377221002
+          },
+          {
+            "epoch": 33,
+            "loss": 4.398598617977566
+          },
+          {
+            "epoch": 34,
+            "loss": 4.408160209655762
+          },
+          {
+            "epoch": 35,
+            "loss": 4.403532981872559
+          },
+          {
+            "epoch": 36,
+            "loss": 4.413598749372694
+          },
+          {
+            "epoch": 37,
+            "loss": 4.39269298977322
+          },
+          {
+            "epoch": 38,
+            "loss": 4.39883910285102
+          },
+          {
+            "epoch": 39,
+            "loss": 4.391981283823649
+          },
+          {
+            "epoch": 40,
+            "loss": 4.399469587537977
+          }
+        ],
+        "input_channels": 18,
+        "source_channels": 22
+      },
+      "directions": {
+        "T_to_E": {
+          "N_known": 192,
+          "N_unknown": 144,
+          "known_acceptance": 0.9583333333333334,
+          "unknown_FAR": 0.6875,
+          "unknown_rejection": 0.3125,
+          "AUROC": 0.8124276620370371,
+          "identity_macro_F1": 0.7138671560578254,
+          "unknown_F1": 0.45685279187817257,
+          "EER": 0.2569444444444444,
+          "C": 0.6979166666666666,
+          "threshold": 0.94014573097229,
+          "hard_unknown_policy": "subject-held-out outer run-5"
+        },
+        "E_to_T": {
+          "N_known": 192,
+          "N_unknown": 144,
+          "known_acceptance": 0.9635416666666666,
+          "unknown_FAR": 0.6805555555555556,
+          "unknown_rejection": 0.3194444444444444,
+          "AUROC": 0.765769675925926,
+          "identity_macro_F1": 0.6525127192240889,
+          "unknown_F1": 0.467005076142132,
+          "EER": 0.3125,
+          "C": 0.6510416666666666,
+          "threshold": 0.9485191106796265,
+          "hard_unknown_policy": "subject-held-out outer run-5"
+        }
+      }
+    }
+  ],
+  "test": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "accessed": false
+  },
+  "primary_summary": {
+    "N_known": 192.0,
+    "N_unknown": 144.0,
+    "known_acceptance": 0.9522569444444445,
+    "unknown_FAR": 0.8738425925925926,
+    "unknown_rejection": 0.1261574074074074,
+    "AUROC": 0.6180676118827161,
+    "identity_macro_F1": 0.7529745990654693,
+    "unknown_F1": 0.19144468650323307,
+    "EER": 0.4065393518518518,
+    "C": 0.7395833333333334,
+    "threshold": 0.9310670495033264
+  },
+  "pos_label": 0
+}

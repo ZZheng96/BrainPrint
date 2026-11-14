@@ -1,0 +1,51 @@
+{
+  "status": "complete_one_shot_frozen_audit",
+  "experiment": "E94_raw_identity_spd_gate",
+  "train_only_metrics": {
+    "AUC": 0.3852745669996751,
+    "F1": 0.6093152448530613,
+    "C": 0.7046688382193268,
+    "U": 0.09653605905735378
+  },
+  "gate_params": {
+    "mode": "spd",
+    "raw_bounds": [
+      0.2736233562231064,
+      0.7263461190462113
+    ],
+    "spd_bounds": [
+      -22.047595825195312,
+      10.486941413879395
+    ],
+    "threshold": 0.4378189444541931,
+    "q": 0.2
+  },
+  "audit": {
+    "N": 22251,
+    "overall_rejection_rate": 0.5037526403307716,
+    "session_used_by_inference": false,
+    "audit_after_predictions_csv": true,
+    "S1_N": 3033,
+    "S1_rejection_rate": 0.7270029673590505,
+    "S1_acceptance_rate": 0.27299703264094954,
+    "S2_N": 19218,
+    "S2_rejection_rate": 0.46851909668019565,
+    "S2_acceptance_rate": 0.5314809033198044
+  },
+  "test_metrics": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "C": "N/A",
+    "RA": "N/A",
+    "ASafeR": "N/A",
+    "U": "N/A",
+    "Official Score": "N/A"
+  },
+  "protocol_checks": {
+    "train_session1_only": true,
+    "train_only_calibration": true,
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "test_frozen_before_read": true,
+    "predictions_complete_before_session_audit": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "status": "complete_smoke",
+  "experiment": "E94",
+  "mode": "smoke",
+  "summary": {
+    "AUC": 0.6994049684181735,
+    "F1": 0.5673466979647341,
+    "known_acceptance": 0.4802981895633653,
+    "unknown_FAR": 0.15675165250236073,
+    "unknown_F1_pos_label_0": 0.7319672131147541,
+    "EER": 0.3509052183173589,
+    "C": 0.46485623003194887,
+    "U": 0.8432483474976393,
+    "threshold": 0.612400233745575,
+    "N_known": 1878,
+    "N_unknown": 2118
+  },
+  "folds": [
+    {
+      "outer_fold": 1,
+      "outer_unknown": [
+        16,
+        10,
+        15,
+        8
+      ],
+      "inner": [
+        {
+          "threshold": 0.612400233745575,
+          "enrolled": [
+            3,
+            5,
+            6,
+            7,
+            11,
+            13,
+            14,
+            19
+          ],
+          "N_fit": 2735
+        }
+      ],
+      "metrics": {
+        "N_known": 1878,
+        "N_unknown": 2118,
+        "AUC": 0.6994049684181735,
+        "F1": 0.5673466979647341,
+        "known_acceptance": 0.4802981895633653,
+        "unknown_FAR": 0.15675165250236073,
+        "unknown_F1_pos_label_0": 0.7319672131147541,
+        "EER": 0.3509052183173589,
+        "C": 0.46485623003194887,
+        "U": 0.8432483474976393,
+        "threshold": 0.612400233745575
+      }
+    }
+  ],
+  "data": {
+    "metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_accessed": false,
+    "test_metrics": "N/A"
+  },
+  "protocol_checks": {
+    "train_only": true,
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "pseudo_unknown_calibration": true,
+    "test_accessed": false
+  }
+}

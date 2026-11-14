@@ -1,0 +1,9 @@
+{
+  "experiment": "E94_raw_identity_spd_gate",
+  "date": "2026-11-14",
+  "seed": 20261114,
+  "data": {"train_metadata": "BrainPrint_cache/train_metadata.csv", "train_root": "Brainprint_Competition", "test_csv": "Brainprint_Competition/test.csv", "test_metadata": "BrainPrint_cache/test_metadata.csv", "expected_trials": 11304, "expected_test_rows": 22251, "channels": 18, "samples_per_trial": 1200, "session": "session1"},
+  "model": {"width": 48, "channel_dropout": 0.1},
+  "training": {"epochs": 6, "smoke_epochs": 1, "batch_size": 128, "learning_rate": 0.001, "weight_decay": 0.0001, "pgd_steps": 2, "pgd_epsilon_ratio": 0.015, "shift_samples": 24, "amplitude_std": 0.03},
+  "protocol": {"fit_fraction": 0.6, "calibration_end": 0.8, "inner_seed": 94, "threshold_quantiles": [0.01, 0.02, 0.05, 0.1, 0.2]}
+}

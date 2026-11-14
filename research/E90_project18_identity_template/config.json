@@ -1,0 +1,25 @@
+{
+  "experiment": "E90 project18 Train-only identity templates",
+  "date": "2026-11-14",
+  "seed": 20261114,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "feature_cache": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "expected_trials": 11304,
+    "expected_subjects": 20,
+    "channels": 18,
+    "session": "session1",
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "test_access": "forbidden"
+  },
+  "protocol": {
+    "outer_seed": 42,
+    "outer_folds": 5,
+    "inner_folds": 2,
+    "time_fit_fraction": 0.60,
+    "time_inner_query_end": 0.80,
+    "template_time_bins": 3,
+    "calibration_quantile": 0.05,
+    "prediction_batch_size": 2048
+  }
+}

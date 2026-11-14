@@ -1,0 +1,23 @@
+{
+  "status": "frozen_smoke",
+  "experiment": "E92 frozen project candidate",
+  "strategy": "E91 quantile_fusion",
+  "freeze_manifest": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E92_frozen_project_candidate\\frozen_manifest.json",
+  "test_accessed": false,
+  "metrics": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "C": "N/A",
+    "RA": "N/A",
+    "ASafeR": "N/A",
+    "U": "N/A",
+    "Official Score": "N/A"
+  },
+  "protocol_checks": {
+    "train_only_freeze": true,
+    "test_accessed_before_freeze": false,
+    "session_used_for_inference": false,
+    "sample_order_or_count_used_for_inference": false,
+    "near_duplicate_pairing": false
+  }
+}

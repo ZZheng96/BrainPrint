@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "experiment": "E87 external 22-channel representation with simulated 18-channel mask/projection and stratified hard-unknown",
+  "completed_at": "2026-11-14T10:49:41.337633+00:00",
+  "smoke": true,
+  "channel_projection": {
+    "source_channels_22": [
+      "Fz",
+      "FC3",
+      "FC1",
+      "FCz",
+      "FC2",
+      "FC4",
+      "C5",
+      "C3",
+      "C1",
+      "Cz",
+      "C2",
+      "C4",
+      "C6",
+      "CP3",
+      "CP1",
+      "CPz",
+      "CP2",
+      "CP4",
+      "P1",
+      "Pz",
+      "P2",
+      "POz"
+    ],
+    "target_channels_18": [
+      "P3",
+      "C3",
+      "F3",
+      "Fz",
+      "F4",
+      "C4",
+      "P4",
+      "Cz",
+      "Fp1",
+      "Fp2",
+      "T3",
+      "T5",
+      "O1",
+      "O2",
+      "F7",
+      "F8",
+      "T6",
+      "T4"
+    ],
+    "target_to_source_index": [
+      -1,
+      7,
+      -1,
+      0,
+      -1,
+      11,
+      -1,
+      9,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "policy": "Exact-name projection from external native 22 channels; missing target channels are explicit zero-filled mask positions, never fabricated or learned from project Test.",
+    "observed_target_mask": [
+      false,
+      true,
+      false,
+      true,
+      false,
+      true,
+      false,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "data": {
+    "N": 5184,
+    "source_channels": 22,
+    "model_channels": 18,
+    "competition_test_accessed": false
+  },
+  "runs": [
+    {
+      "outer_fold": 1,
+      "roles": {
+        "enrolled": [
+          5,
+          6,
+          7,
+          9
+        ],
+        "calibration_unknown": [
+          2,
+          3
+        ],
+        "outer_unknown": [
+          4,
+          1,
+          8
+        ]
+      },
+      "training": {
+        "seed": 20262114,
+        "epochs": 2,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 4.780043760935466
+          },
+          {
+            "epoch": 2,
+            "loss": 4.596318138970269
+          }
+        ],
+        "input_channels": 18,
+        "source_channels": 22
+      },
+      "directions": {
+        "T_to_E": null,
+        "E_to_T": null
+      }
+    }
+  ],
+  "test": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "accessed": false
+  },
+  "scope": "smoke trains one fold and does not access outer evaluation"
+}

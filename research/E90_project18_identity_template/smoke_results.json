@@ -1,0 +1,200 @@
+{
+  "status": "complete_smoke",
+  "experiment": "E90 project18 Train-only identity templates",
+  "mode": "smoke",
+  "config_sha256": "47b03220dd0789515bee00342c54be5f330bf5ce9daccc4a3f8e66f1354f3e6d",
+  "data": {
+    "metadata": "BrainPrint_cache/train_metadata.csv",
+    "feature_cache": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_accessed": false,
+    "test_metrics": {
+      "AUC": "N/A",
+      "F1": "N/A",
+      "C": "N/A",
+      "RA": "N/A",
+      "ASafeR": "N/A",
+      "U": "N/A",
+      "Score": "N/A"
+    }
+  },
+  "folds": [
+    {
+      "outer_fold": 1,
+      "outer_unknown": [
+        16,
+        10,
+        15,
+        8
+      ],
+      "registered": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        17,
+        18,
+        19,
+        20
+      ],
+      "inner": [
+        {
+          "outer_fold": 1,
+          "inner_fold": 1,
+          "outer_unknown": [
+            16,
+            10,
+            15,
+            8
+          ],
+          "calibration_unknown": [
+            4,
+            20,
+            1,
+            12,
+            2,
+            17,
+            18,
+            9
+          ],
+          "enrolled": [
+            3,
+            5,
+            6,
+            7,
+            11,
+            13,
+            14,
+            19
+          ],
+          "N_fit": 2735,
+          "N_calibration_known": 481,
+          "N_calibration_unknown": 3623,
+          "variants": {
+            "single_centroid": {
+              "calibration_threshold": 0.7436259388923645,
+              "metrics": {
+                "N_known": 469,
+                "N_unknown": 450,
+                "AUC": 0.789225302061123,
+                "F1": 0.8927222413529177,
+                "known_acceptance": 0.9616204690831557,
+                "unknown_FAR": 0.9044444444444445,
+                "unknown_F1_pos_label_0": 0.16829745596868884,
+                "EER": 0.2911111111111111,
+                "C": 0.8827292110874201,
+                "U": 0.09555555555555556,
+                "direct_C": 0.9104477611940298,
+                "threshold": 0.7436259388923645
+              },
+              "N_templates": 8
+            },
+            "task_time_multi_template": {
+              "calibration_threshold": 0.761096179485321,
+              "metrics": {
+                "N_known": 469,
+                "N_unknown": 450,
+                "AUC": 0.8203364131722342,
+                "F1": 0.9696660782900208,
+                "known_acceptance": 0.9680170575692963,
+                "unknown_FAR": 0.8444444444444444,
+                "unknown_F1_pos_label_0": 0.2616822429906542,
+                "EER": 0.2814498933901919,
+                "C": 0.9573560767590619,
+                "U": 0.15555555555555556,
+                "direct_C": 0.9872068230277186,
+                "threshold": 0.761096179485321
+              },
+              "N_templates": 64
+            }
+          }
+        }
+      ],
+      "N_outer_fit": 7308,
+      "N_outer_known": 1878,
+      "N_outer_unknown": 2118,
+      "variants": {
+        "single_centroid": {
+          "calibration_threshold": 0.7436259388923645,
+          "metrics": {
+            "N_known": 1878,
+            "N_unknown": 2118,
+            "AUC": 0.7468377948131588,
+            "F1": 0.8981538490355847,
+            "known_acceptance": 0.9760383386581469,
+            "unknown_FAR": 0.8064211520302171,
+            "unknown_F1_pos_label_0": 0.31869413136416636,
+            "EER": 0.33663833805476867,
+            "C": 0.8956336528221512,
+            "U": 0.1935788479697828,
+            "direct_C": 0.9110756123535676,
+            "threshold": 0.7436259388923645
+          },
+          "N_templates": 16
+        },
+        "task_time_multi_template": {
+          "calibration_threshold": 0.761096179485321,
+          "metrics": {
+            "N_known": 1878,
+            "N_unknown": 2118,
+            "AUC": 0.8351408284987646,
+            "F1": 0.9764790996813013,
+            "known_acceptance": 0.9829605963791267,
+            "unknown_FAR": 0.7606232294617564,
+            "unknown_F1_pos_label_0": 0.3816334211516748,
+            "EER": 0.24920127795527158,
+            "C": 0.9701810436634718,
+            "U": 0.23937677053824363,
+            "direct_C": 0.9850905218317358,
+            "threshold": 0.761096179485321
+          },
+          "N_templates": 192
+        }
+      },
+      "inner_isolation": true
+    }
+  ],
+  "summary": {
+    "single_centroid": {
+      "AUC": 0.7468377948131588,
+      "F1": 0.8981538490355847,
+      "known_acceptance": 0.9760383386581469,
+      "unknown_FAR": 0.8064211520302171,
+      "unknown_F1_pos_label_0": 0.31869413136416636,
+      "EER": 0.33663833805476867,
+      "C": 0.8956336528221512,
+      "U": 0.1935788479697828,
+      "direct_C": 0.9110756123535676,
+      "threshold": 0.7436259388923645,
+      "N_known": 1878,
+      "N_unknown": 2118
+    },
+    "task_time_multi_template": {
+      "AUC": 0.8351408284987646,
+      "F1": 0.9764790996813013,
+      "known_acceptance": 0.9829605963791267,
+      "unknown_FAR": 0.7606232294617564,
+      "unknown_F1_pos_label_0": 0.3816334211516748,
+      "EER": 0.24920127795527158,
+      "C": 0.9701810436634718,
+      "U": 0.23937677053824363,
+      "direct_C": 0.9850905218317358,
+      "threshold": 0.761096179485321,
+      "N_known": 1878,
+      "N_unknown": 2118
+    }
+  },
+  "protocol_checks": {
+    "train_only": true,
+    "outer_subject_task_time_split": true,
+    "independent_calibration": true,
+    "test_accessed": false
+  }
+}

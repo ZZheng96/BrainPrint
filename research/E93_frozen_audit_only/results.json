@@ -1,0 +1,38 @@
+{
+  "status": "complete_one_shot_frozen_audit",
+  "experiment": "E93 frozen audit only",
+  "test_accessed": true,
+  "predictions_csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E93_frozen_audit_only\\predictions.csv",
+  "prediction_rows": 22251,
+  "metrics": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "C": "N/A",
+    "RA": "N/A",
+    "ASafeR": "N/A",
+    "U": "N/A",
+    "Official Score": "N/A"
+  },
+  "frozen_validation": {
+    "frozen": true,
+    "model_hash_valid": true,
+    "source_hash_valid": true,
+    "params_hash_valid": true
+  },
+  "audit": {
+    "N": 22251,
+    "total_rejection": 21788,
+    "overall_rejection_rate": 0.979191946429374,
+    "session_used_by_inference": false,
+    "audit_after_predictions_csv": true,
+    "S1_N": 3033,
+    "S1_rejection_rate": 0.9993405868776789,
+    "S1_acceptance_rate": 0.0006594131223210953,
+    "S2_N": 19218,
+    "S2_rejection_rate": 0.9760120720158185,
+    "S2_acceptance_rate": 0.02398792798418148,
+    "S1_target_pass": true,
+    "S2_target_pass": false
+  },
+  "post_audit_changes": false
+}

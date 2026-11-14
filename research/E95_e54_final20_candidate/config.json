@@ -1,0 +1,35 @@
+{
+  "experiment": "E95_e54_final20_candidate",
+  "seed": 20261114,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_csv": "Brainprint_Competition/test.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_trials": 11304,
+    "expected_test_rows": 22251,
+    "classes": 20
+  },
+  "training": {
+    "fit_end": 0.8,
+    "calibration_fit_end": 0.6,
+    "epochs": 12,
+    "smoke_epochs": 1,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "pgd_steps": 3,
+    "cache_refresh_epochs": 4,
+    "clean_weight": 0.5,
+    "adversarial_weight": 0.5
+  },
+  "threshold": {
+    "known_acceptance_target": 0.95,
+    "grid_quantiles": [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
+  },
+  "protocol": {
+    "train_only_oof_time_blocks": true,
+    "test_read_once_after_freeze": true,
+    "session_audit_after_predictions": true
+  }
+}

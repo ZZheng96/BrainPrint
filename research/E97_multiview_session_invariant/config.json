@@ -1,0 +1,28 @@
+{
+  "experiment": "E97_multiview_session_invariant",
+  "seed": 20261114,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_csv": "Brainprint_Competition/test.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_trials": 11304,
+    "expected_test_rows": 22251,
+    "classes": 20
+  },
+  "source_checkpoint": "research/E95_e54_final20_candidate/model_checkpoint.pt",
+  "windows": [[0, 600], [300, 900], [600, 1200]],
+  "aggregation": "mean_l2_embedding_then_cosine_and_logit_mean",
+  "calibration": {
+    "pseudo_unknown_subjects": [4, 15, 16, 18],
+    "known_fraction": [0.6, 0.8],
+    "fit_fraction": 0.6,
+    "known_acceptance_target": 0.95,
+    "grid_quantiles": [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
+  },
+  "protocol": {
+    "train_session1_only": true,
+    "test_read_once_after_freeze": true,
+    "session_audit_after_predictions": true
+  }
+}

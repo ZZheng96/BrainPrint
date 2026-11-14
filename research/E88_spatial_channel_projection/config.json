@@ -1,0 +1,22 @@
+{
+  "experiment": "E88 external-only standard 10-20 spatial projection from 22 to 18 channels",
+  "seed_base": 20261114,
+  "data": {
+    "dataset": "BNCI2014_001 / BCI Competition IV dataset 2a (E73-derived external only)",
+    "derived_root": "cache/bciciv2a/derived", "subjects": [1,2,3,4,5,6,7,8,9], "sessions": ["T","E"],
+    "feature_key": "data", "channels": 22, "channels_22": 22, "channels_18": 18,
+    "samples_per_trial": 1200, "expected_trials_per_subject_session": 288, "expected_runs_per_session": 6, "sampling_rate_hz": 300,
+    "competition_train_access": "forbidden", "competition_test_access": "forbidden"
+  },
+  "channel_projection": {
+    "method": "idw", "power": 2.0, "k": 4,
+    "source_channels_22": ["Fz","FC3","FC1","FCz","FC2","FC4","C5","C3","C1","Cz","C2","C4","C6","CP3","CP1","CPz","CP2","CP4","P1","Pz","P2","POz"],
+    "target_channels_18": ["P3","C3","F3","Fz","F4","C4","P4","Cz","Fp1","Fp2","T3","T5","O1","O2","F7","F8","T6","T4"],
+    "source_xy": {"Fz":[0,0.75],"FC3":[-0.35,0.38],"FC1":[-0.18,0.40],"FCz":[0,0.40],"FC2":[0.18,0.40],"FC4":[0.35,0.38],"C5":[-0.70,0],"C3":[-0.38,0],"C1":[-0.18,0],"Cz":[0,0],"C2":[0.18,0],"C4":[0.38,0],"C6":[0.70,0],"CP3":[-0.35,-0.38],"CP1":[-0.18,-0.40],"CPz":[0,-0.42],"CP2":[0.18,-0.40],"CP4":[0.35,-0.38],"P1":[-0.18,-0.72],"Pz":[0,-0.75],"P2":[0.18,-0.72],"POz":[0,-0.98]},
+    "target_xy": {"P3":[-0.38,-0.72],"C3":[-0.38,0],"F3":[-0.38,0.75],"Fz":[0,0.75],"F4":[0.38,0.75],"C4":[0.38,0],"P4":[0.38,-0.72],"Cz":[0,0],"Fp1":[-0.38,1.12],"Fp2":[0.38,1.12],"T3":[-0.98,0],"T5":[-0.98,-0.65],"O1":[-0.38,-1.08],"O2":[0.38,-1.08],"F7":[-0.72,0.82],"F8":[0.72,0.82],"T6":[0.98,-0.65],"T4":[0.98,0]}
+  },
+  "model": {"branch_filters": 8, "embedding_dim": 64, "dropout": 0.2, "channels": 18},
+  "training": {"max_epochs": 40, "smoke_epochs": 2, "temperature": 0.07, "trials_per_subject_session": 16, "train_runs": [0,1,2], "learning_rate": 0.001, "weight_decay": 0.0001, "amp": true, "gradient_clip_norm": 5.0},
+  "protocol": {"outer_seed": 42, "outer_folds": 3, "outer_unknown_subjects": 3, "calibration_unknown_subjects": 2, "enrolled_subjects": 4, "template_run": 3, "calibration_known_query_run": 4, "evaluation_query_run": 5, "calibration_unknown_query_run": 5, "outer_unknown_query_run": 5, "threshold": "q05 known calibration confidence; hard-unknown roles are subject-held-out and task/run-balanced", "primary": "cosine_max"},
+  "features": {"prediction_batch_size": 256}, "reporting": {"pos_label": 0, "test": "AUC/F1=N/A; project Test not accessed"}
+}

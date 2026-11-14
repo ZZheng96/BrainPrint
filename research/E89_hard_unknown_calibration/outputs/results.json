@@ -1,0 +1,1002 @@
+{
+  "schema_version": 1,
+  "experiment": "E89 layered hard-unknown calibration using E88 embeddings",
+  "completed_at": "2026-11-14T11:01:48.592274+00:00",
+  "smoke": false,
+  "data": {
+    "source": "E73-derived BCIC IV-2a",
+    "competition_test_accessed": false
+  },
+  "runs": [
+    {
+      "outer_fold": 1,
+      "roles": {
+        "enrolled": [
+          5,
+          6,
+          7,
+          9
+        ],
+        "calibration_unknown": [
+          2,
+          3
+        ],
+        "outer_unknown": [
+          4,
+          1,
+          8
+        ]
+      },
+      "directions": {
+        "T_to_E": {
+          "q05_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9479166666666666,
+            "unknown_FAR": 0.4305555555555556,
+            "unknown_rejection": 0.5694444444444444,
+            "AUROC": 0.8992332175925927,
+            "identity_macro_F1": 0.9729977116704804,
+            "unknown_F1": 0.6949152542372882,
+            "EER": 0.18229166666666663,
+            "threshold": 0.9474571943283081
+          },
+          "tail_q01_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9895833333333334,
+            "unknown_FAR": 0.5208333333333334,
+            "unknown_rejection": 0.4791666666666667,
+            "AUROC": 0.8992332175925927,
+            "identity_macro_F1": 0.9947368421052631,
+            "unknown_F1": 0.641860465116279,
+            "EER": 0.18229166666666663,
+            "threshold": 0.9251331686973572
+          },
+          "known_unknown_far10": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.671875,
+            "unknown_FAR": 0.10416666666666667,
+            "unknown_rejection": 0.8958333333333334,
+            "AUROC": 0.8992332175925927,
+            "identity_macro_F1": 0.7953516828902262,
+            "unknown_F1": 0.7678571428571429,
+            "EER": 0.18229166666666663,
+            "threshold": 0.9802864789962769
+          },
+          "known_unknown_youden": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.78125,
+            "unknown_FAR": 0.1527777777777778,
+            "unknown_rejection": 0.8472222222222222,
+            "AUROC": 0.8992332175925927,
+            "identity_macro_F1": 0.8732600732600733,
+            "unknown_F1": 0.7922077922077922,
+            "EER": 0.18229166666666663,
+            "threshold": 0.9738767743110657
+          },
+          "per_identity_q05": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9375,
+            "unknown_FAR": 0.3333333333333333,
+            "unknown_rejection": 0.6666666666666666,
+            "AUROC": 0.8992332175925927,
+            "identity_macro_F1": 0.9675647744888167,
+            "unknown_F1": 0.7619047619047619,
+            "EER": 0.18229166666666663,
+            "threshold": null
+          }
+        },
+        "E_to_T": {
+          "q05_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9375,
+            "unknown_FAR": 0.4097222222222222,
+            "unknown_rejection": 0.5902777777777778,
+            "AUROC": 0.8684172453703703,
+            "identity_macro_F1": 0.9674434431628064,
+            "unknown_F1": 0.7053941908713693,
+            "EER": 0.20833333333333337,
+            "threshold": 0.9356123805046082
+          },
+          "tail_q01_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9739583333333334,
+            "unknown_FAR": 0.6111111111111112,
+            "unknown_rejection": 0.3888888888888889,
+            "AUROC": 0.8684172453703703,
+            "identity_macro_F1": 0.9864988558352402,
+            "unknown_F1": 0.5463414634146342,
+            "EER": 0.20833333333333337,
+            "threshold": 0.9061495661735535
+          },
+          "known_unknown_far10": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.8229166666666666,
+            "unknown_FAR": 0.2361111111111111,
+            "unknown_rejection": 0.7638888888888888,
+            "AUROC": 0.8684172453703703,
+            "identity_macro_F1": 0.9012411194864096,
+            "unknown_F1": 0.7638888888888888,
+            "EER": 0.20833333333333337,
+            "threshold": 0.9629863500595093
+          },
+          "known_unknown_youden": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.8489583333333334,
+            "unknown_FAR": 0.2708333333333333,
+            "unknown_rejection": 0.7291666666666666,
+            "AUROC": 0.8684172453703703,
+            "identity_macro_F1": 0.9171292823205801,
+            "unknown_F1": 0.7553956834532374,
+            "EER": 0.20833333333333337,
+            "threshold": 0.9589433670043945
+          },
+          "per_identity_q05": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9375,
+            "unknown_FAR": 0.3541666666666667,
+            "unknown_rejection": 0.6458333333333334,
+            "AUROC": 0.8684172453703703,
+            "identity_macro_F1": 0.9674434431628064,
+            "unknown_F1": 0.7469879518072289,
+            "EER": 0.20833333333333337,
+            "threshold": null
+          }
+        }
+      },
+      "training": {
+        "seed": 20262114,
+        "epochs": 40,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 4.759340657128228
+          },
+          {
+            "epoch": 2,
+            "loss": 4.485731601715088
+          },
+          {
+            "epoch": 3,
+            "loss": 4.289113203684489
+          },
+          {
+            "epoch": 4,
+            "loss": 4.1934990882873535
+          },
+          {
+            "epoch": 5,
+            "loss": 4.081318908267551
+          },
+          {
+            "epoch": 6,
+            "loss": 3.974673483106825
+          },
+          {
+            "epoch": 7,
+            "loss": 3.8667920695410833
+          },
+          {
+            "epoch": 8,
+            "loss": 3.7820726500617132
+          },
+          {
+            "epoch": 9,
+            "loss": 3.7231286101871066
+          },
+          {
+            "epoch": 10,
+            "loss": 3.6889759169684515
+          },
+          {
+            "epoch": 11,
+            "loss": 3.663001378377279
+          },
+          {
+            "epoch": 12,
+            "loss": 3.6387872960832386
+          },
+          {
+            "epoch": 13,
+            "loss": 3.628652705086602
+          },
+          {
+            "epoch": 14,
+            "loss": 3.6095890204111734
+          },
+          {
+            "epoch": 15,
+            "loss": 3.5965696970621743
+          },
+          {
+            "epoch": 16,
+            "loss": 3.584995296266344
+          },
+          {
+            "epoch": 17,
+            "loss": 3.57728558116489
+          },
+          {
+            "epoch": 18,
+            "loss": 3.575186676449246
+          },
+          {
+            "epoch": 19,
+            "loss": 3.5659894943237305
+          },
+          {
+            "epoch": 20,
+            "loss": 3.5657173262702093
+          },
+          {
+            "epoch": 21,
+            "loss": 3.558441744910346
+          },
+          {
+            "epoch": 22,
+            "loss": 3.5597682529025607
+          },
+          {
+            "epoch": 23,
+            "loss": 3.5482181708017984
+          },
+          {
+            "epoch": 24,
+            "loss": 3.5476393699645996
+          },
+          {
+            "epoch": 25,
+            "loss": 3.5470475355784097
+          },
+          {
+            "epoch": 26,
+            "loss": 3.5477186573876276
+          },
+          {
+            "epoch": 27,
+            "loss": 3.538661691877577
+          },
+          {
+            "epoch": 28,
+            "loss": 3.5368087821536593
+          },
+          {
+            "epoch": 29,
+            "loss": 3.524222215016683
+          },
+          {
+            "epoch": 30,
+            "loss": 3.529340770509508
+          },
+          {
+            "epoch": 31,
+            "loss": 3.5243853198157415
+          },
+          {
+            "epoch": 32,
+            "loss": 3.526069482167562
+          },
+          {
+            "epoch": 33,
+            "loss": 3.5265378687116833
+          },
+          {
+            "epoch": 34,
+            "loss": 3.5261805057525635
+          },
+          {
+            "epoch": 35,
+            "loss": 3.5176009602016873
+          },
+          {
+            "epoch": 36,
+            "loss": 3.516586356692844
+          },
+          {
+            "epoch": 37,
+            "loss": 3.5169571505652533
+          },
+          {
+            "epoch": 38,
+            "loss": 3.519924428727892
+          },
+          {
+            "epoch": 39,
+            "loss": 3.5159226258595786
+          },
+          {
+            "epoch": 40,
+            "loss": 3.517250246471829
+          }
+        ],
+        "input_channels": 18,
+        "source_channels": 22
+      }
+    },
+    {
+      "outer_fold": 2,
+      "roles": {
+        "enrolled": [
+          1,
+          2,
+          6,
+          8
+        ],
+        "calibration_unknown": [
+          4,
+          9
+        ],
+        "outer_unknown": [
+          3,
+          5,
+          7
+        ]
+      },
+      "directions": {
+        "T_to_E": {
+          "q05_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.8645833333333334,
+            "unknown_FAR": 0.05555555555555555,
+            "unknown_rejection": 0.9444444444444444,
+            "AUROC": 0.9672309027777778,
+            "identity_macro_F1": 0.9255673802649657,
+            "unknown_F1": 0.8888888888888888,
+            "EER": 0.09375,
+            "threshold": 0.9539099335670471
+          },
+          "tail_q01_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9791666666666666,
+            "unknown_FAR": 0.2708333333333333,
+            "unknown_rejection": 0.7291666666666666,
+            "AUROC": 0.9672309027777778,
+            "identity_macro_F1": 0.9893617021276595,
+            "unknown_F1": 0.8300395256916996,
+            "EER": 0.09375,
+            "threshold": 0.9244073033332825
+          },
+          "known_unknown_far10": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.90625,
+            "unknown_FAR": 0.11805555555555555,
+            "unknown_rejection": 0.8819444444444444,
+            "AUROC": 0.9672309027777778,
+            "identity_macro_F1": 0.9497055722218184,
+            "unknown_F1": 0.8788927335640139,
+            "EER": 0.09375,
+            "threshold": 0.9481695890426636
+          },
+          "known_unknown_youden": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.8645833333333334,
+            "unknown_FAR": 0.05555555555555555,
+            "unknown_rejection": 0.9444444444444444,
+            "AUROC": 0.9672309027777778,
+            "identity_macro_F1": 0.9255673802649657,
+            "unknown_F1": 0.8888888888888888,
+            "EER": 0.09375,
+            "threshold": 0.9555818438529968
+          },
+          "per_identity_q05": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.8541666666666666,
+            "unknown_FAR": 0.06944444444444445,
+            "unknown_rejection": 0.9305555555555556,
+            "AUROC": 0.9672309027777778,
+            "identity_macro_F1": 0.9194904895623291,
+            "unknown_F1": 0.8758169934640523,
+            "EER": 0.09375,
+            "threshold": null
+          }
+        },
+        "E_to_T": {
+          "q05_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9322916666666666,
+            "unknown_FAR": 0.10416666666666667,
+            "unknown_rejection": 0.8958333333333334,
+            "AUROC": 0.9685691550925926,
+            "identity_macro_F1": 0.9646305193319606,
+            "unknown_F1": 0.9020979020979021,
+            "EER": 0.09722222222222222,
+            "threshold": 0.9486406445503235
+          },
+          "tail_q01_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.984375,
+            "unknown_FAR": 0.4027777777777778,
+            "unknown_rejection": 0.5972222222222222,
+            "AUROC": 0.9685691550925926,
+            "identity_macro_F1": 0.9921052631578947,
+            "unknown_F1": 0.7381974248927039,
+            "EER": 0.09722222222222222,
+            "threshold": 0.9110486507415771
+          },
+          "known_unknown_far10": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.8645833333333334,
+            "unknown_FAR": 0.06944444444444445,
+            "unknown_rejection": 0.9305555555555556,
+            "AUROC": 0.9685691550925926,
+            "identity_macro_F1": 0.9267273340074149,
+            "unknown_F1": 0.881578947368421,
+            "EER": 0.09722222222222222,
+            "threshold": 0.9590490460395813
+          },
+          "known_unknown_youden": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9322916666666666,
+            "unknown_FAR": 0.10416666666666667,
+            "unknown_rejection": 0.8958333333333334,
+            "AUROC": 0.9685691550925926,
+            "identity_macro_F1": 0.9646305193319606,
+            "unknown_F1": 0.9020979020979021,
+            "EER": 0.09722222222222222,
+            "threshold": 0.9481056332588196
+          },
+          "per_identity_q05": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9270833333333334,
+            "unknown_FAR": 0.10416666666666667,
+            "unknown_rejection": 0.8958333333333334,
+            "AUROC": 0.9685691550925926,
+            "identity_macro_F1": 0.9616342646503127,
+            "unknown_F1": 0.8989547038327527,
+            "EER": 0.09722222222222222,
+            "threshold": null
+          }
+        }
+      },
+      "training": {
+        "seed": 20263114,
+        "epochs": 40,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 4.776677290598552
+          },
+          {
+            "epoch": 2,
+            "loss": 4.584802468617757
+          },
+          {
+            "epoch": 3,
+            "loss": 4.3079514503479
+          },
+          {
+            "epoch": 4,
+            "loss": 4.162783622741699
+          },
+          {
+            "epoch": 5,
+            "loss": 4.040755536821154
+          },
+          {
+            "epoch": 6,
+            "loss": 3.96120384004381
+          },
+          {
+            "epoch": 7,
+            "loss": 3.8970448440975614
+          },
+          {
+            "epoch": 8,
+            "loss": 3.8275328477223716
+          },
+          {
+            "epoch": 9,
+            "loss": 3.8075608942243786
+          },
+          {
+            "epoch": 10,
+            "loss": 3.7608795960744223
+          },
+          {
+            "epoch": 11,
+            "loss": 3.7607457637786865
+          },
+          {
+            "epoch": 12,
+            "loss": 3.7419760492112903
+          },
+          {
+            "epoch": 13,
+            "loss": 3.7274537086486816
+          },
+          {
+            "epoch": 14,
+            "loss": 3.7045863469441733
+          },
+          {
+            "epoch": 15,
+            "loss": 3.684160417980618
+          },
+          {
+            "epoch": 16,
+            "loss": 3.6662631829579673
+          },
+          {
+            "epoch": 17,
+            "loss": 3.6730925507015653
+          },
+          {
+            "epoch": 18,
+            "loss": 3.657965554131402
+          },
+          {
+            "epoch": 19,
+            "loss": 3.654823621114095
+          },
+          {
+            "epoch": 20,
+            "loss": 3.641996913486057
+          },
+          {
+            "epoch": 21,
+            "loss": 3.6298201084136963
+          },
+          {
+            "epoch": 22,
+            "loss": 3.637133068508572
+          },
+          {
+            "epoch": 23,
+            "loss": 3.618190288543701
+          },
+          {
+            "epoch": 24,
+            "loss": 3.6093357139163547
+          },
+          {
+            "epoch": 25,
+            "loss": 3.614497184753418
+          },
+          {
+            "epoch": 26,
+            "loss": 3.6089502705468073
+          },
+          {
+            "epoch": 27,
+            "loss": 3.5953558021121554
+          },
+          {
+            "epoch": 28,
+            "loss": 3.591444624794854
+          },
+          {
+            "epoch": 29,
+            "loss": 3.594392008251614
+          },
+          {
+            "epoch": 30,
+            "loss": 3.5909614033169217
+          },
+          {
+            "epoch": 31,
+            "loss": 3.578091091579861
+          },
+          {
+            "epoch": 32,
+            "loss": 3.5862151516808405
+          },
+          {
+            "epoch": 33,
+            "loss": 3.578914244969686
+          },
+          {
+            "epoch": 34,
+            "loss": 3.5722781817118325
+          },
+          {
+            "epoch": 35,
+            "loss": 3.571324189503988
+          },
+          {
+            "epoch": 36,
+            "loss": 3.554562701119317
+          },
+          {
+            "epoch": 37,
+            "loss": 3.5604136255052357
+          },
+          {
+            "epoch": 38,
+            "loss": 3.565611547893948
+          },
+          {
+            "epoch": 39,
+            "loss": 3.5498785177866616
+          },
+          {
+            "epoch": 40,
+            "loss": 3.5539998213450112
+          }
+        ],
+        "input_channels": 18,
+        "source_channels": 22
+      }
+    },
+    {
+      "outer_fold": 3,
+      "roles": {
+        "enrolled": [
+          3,
+          4,
+          5,
+          7
+        ],
+        "calibration_unknown": [
+          1,
+          8
+        ],
+        "outer_unknown": [
+          2,
+          6,
+          9
+        ]
+      },
+      "directions": {
+        "T_to_E": {
+          "q05_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.890625,
+            "unknown_FAR": 0.4027777777777778,
+            "unknown_rejection": 0.5972222222222222,
+            "AUROC": 0.8482711226851851,
+            "identity_macro_F1": 0.9402522319473281,
+            "unknown_F1": 0.6852589641434262,
+            "EER": 0.22916666666666663,
+            "threshold": 0.9409977793693542
+          },
+          "tail_q01_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.953125,
+            "unknown_FAR": 0.4791666666666667,
+            "unknown_rejection": 0.5208333333333334,
+            "AUROC": 0.8482711226851851,
+            "identity_macro_F1": 0.9758027607588396,
+            "unknown_F1": 0.6578947368421053,
+            "EER": 0.22916666666666663,
+            "threshold": 0.9187921285629272
+          },
+          "known_unknown_far10": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.671875,
+            "unknown_FAR": 0.14583333333333334,
+            "unknown_rejection": 0.8541666666666666,
+            "AUROC": 0.8482711226851851,
+            "identity_macro_F1": 0.7991128276170886,
+            "unknown_F1": 0.7454545454545455,
+            "EER": 0.22916666666666663,
+            "threshold": 0.970413088798523
+          },
+          "known_unknown_youden": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.8333333333333334,
+            "unknown_FAR": 0.3333333333333333,
+            "unknown_rejection": 0.6666666666666666,
+            "AUROC": 0.8482711226851851,
+            "identity_macro_F1": 0.9062614901260344,
+            "unknown_F1": 0.7058823529411765,
+            "EER": 0.22916666666666663,
+            "threshold": 0.9526541829109192
+          },
+          "per_identity_q05": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.8958333333333334,
+            "unknown_FAR": 0.3958333333333333,
+            "unknown_rejection": 0.6041666666666666,
+            "AUROC": 0.8482711226851851,
+            "identity_macro_F1": 0.9413018291581607,
+            "unknown_F1": 0.6932270916334662,
+            "EER": 0.22916666666666663,
+            "threshold": null
+          }
+        },
+        "E_to_T": {
+          "q05_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9739583333333334,
+            "unknown_FAR": 0.4583333333333333,
+            "unknown_rejection": 0.5416666666666666,
+            "AUROC": 0.8790509259259259,
+            "identity_macro_F1": 0.9866163349347975,
+            "unknown_F1": 0.6872246696035242,
+            "EER": 0.20833333333333334,
+            "threshold": 0.9236907362937927
+          },
+          "tail_q01_known_only": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9947916666666666,
+            "unknown_FAR": 0.6666666666666666,
+            "unknown_rejection": 0.3333333333333333,
+            "AUROC": 0.8790509259259259,
+            "identity_macro_F1": 0.9973684210526316,
+            "unknown_F1": 0.49740932642487046,
+            "EER": 0.20833333333333334,
+            "threshold": 0.8898160457611084
+          },
+          "known_unknown_far10": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.8177083333333334,
+            "unknown_FAR": 0.20833333333333334,
+            "unknown_rejection": 0.7916666666666666,
+            "AUROC": 0.8790509259259259,
+            "identity_macro_F1": 0.8956612432206925,
+            "unknown_F1": 0.7781569965870307,
+            "EER": 0.20833333333333334,
+            "threshold": 0.962428092956543
+          },
+          "known_unknown_youden": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9166666666666666,
+            "unknown_FAR": 0.3125,
+            "unknown_rejection": 0.6875,
+            "AUROC": 0.8790509259259259,
+            "identity_macro_F1": 0.9553429027113238,
+            "unknown_F1": 0.7644787644787645,
+            "EER": 0.20833333333333334,
+            "threshold": 0.9503260850906372
+          },
+          "per_identity_q05": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "known_acceptance": 0.9791666666666666,
+            "unknown_FAR": 0.4166666666666667,
+            "unknown_rejection": 0.5833333333333334,
+            "AUROC": 0.8790509259259259,
+            "identity_macro_F1": 0.9894176931690929,
+            "unknown_F1": 0.7241379310344828,
+            "EER": 0.20833333333333334,
+            "threshold": null
+          }
+        }
+      },
+      "training": {
+        "seed": 20264114,
+        "epochs": 40,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 4.809224075741238
+          },
+          {
+            "epoch": 2,
+            "loss": 4.694623205396864
+          },
+          {
+            "epoch": 3,
+            "loss": 4.460835138956706
+          },
+          {
+            "epoch": 4,
+            "loss": 4.23574686050415
+          },
+          {
+            "epoch": 5,
+            "loss": 4.1148965623643665
+          },
+          {
+            "epoch": 6,
+            "loss": 4.038090017106798
+          },
+          {
+            "epoch": 7,
+            "loss": 3.98753195338779
+          },
+          {
+            "epoch": 8,
+            "loss": 3.942993402481079
+          },
+          {
+            "epoch": 9,
+            "loss": 3.8767796887291803
+          },
+          {
+            "epoch": 10,
+            "loss": 3.856640656789144
+          },
+          {
+            "epoch": 11,
+            "loss": 3.812216599782308
+          },
+          {
+            "epoch": 12,
+            "loss": 3.798391342163086
+          },
+          {
+            "epoch": 13,
+            "loss": 3.7723015679253473
+          },
+          {
+            "epoch": 14,
+            "loss": 3.743578407499525
+          },
+          {
+            "epoch": 15,
+            "loss": 3.7291595141092935
+          },
+          {
+            "epoch": 16,
+            "loss": 3.701540364159478
+          },
+          {
+            "epoch": 17,
+            "loss": 3.6946798165639243
+          },
+          {
+            "epoch": 18,
+            "loss": 3.6620591481526694
+          },
+          {
+            "epoch": 19,
+            "loss": 3.636444436179267
+          },
+          {
+            "epoch": 20,
+            "loss": 3.647952609592014
+          },
+          {
+            "epoch": 21,
+            "loss": 3.64332381884257
+          },
+          {
+            "epoch": 22,
+            "loss": 3.6099616951412625
+          },
+          {
+            "epoch": 23,
+            "loss": 3.6101232369740806
+          },
+          {
+            "epoch": 24,
+            "loss": 3.6068741745418973
+          },
+          {
+            "epoch": 25,
+            "loss": 3.6046864721510143
+          },
+          {
+            "epoch": 26,
+            "loss": 3.5994649728139243
+          },
+          {
+            "epoch": 27,
+            "loss": 3.592851506339179
+          },
+          {
+            "epoch": 28,
+            "loss": 3.5809228950076633
+          },
+          {
+            "epoch": 29,
+            "loss": 3.5853576130337186
+          },
+          {
+            "epoch": 30,
+            "loss": 3.5696654849582248
+          },
+          {
+            "epoch": 31,
+            "loss": 3.5701170762379966
+          },
+          {
+            "epoch": 32,
+            "loss": 3.568787203894721
+          },
+          {
+            "epoch": 33,
+            "loss": 3.563209374745687
+          },
+          {
+            "epoch": 34,
+            "loss": 3.572353548473782
+          },
+          {
+            "epoch": 35,
+            "loss": 3.571145455042521
+          },
+          {
+            "epoch": 36,
+            "loss": 3.5668949286142984
+          },
+          {
+            "epoch": 37,
+            "loss": 3.557016372680664
+          },
+          {
+            "epoch": 38,
+            "loss": 3.554826021194458
+          },
+          {
+            "epoch": 39,
+            "loss": 3.5668737623426647
+          },
+          {
+            "epoch": 40,
+            "loss": 3.548081715901693
+          }
+        ],
+        "input_channels": 18,
+        "source_channels": 22
+      }
+    }
+  ],
+  "test": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "accessed": false
+  },
+  "strategy_summary": {
+    "q05_known_only": {
+      "AUROC": 0.9051287615740741,
+      "known_acceptance": 0.9244791666666665,
+      "unknown_FAR": 0.3101851851851852,
+      "identity_macro_F1": 0.9595846035520564,
+      "unknown_F1": 0.7606299783070666,
+      "EER": 0.169849537037037
+    },
+    "tail_q01_known_only": {
+      "AUROC": 0.9051287615740741,
+      "known_acceptance": 0.9791666666666669,
+      "unknown_FAR": 0.49189814814814814,
+      "identity_macro_F1": 0.9893123075062548,
+      "unknown_F1": 0.6519571570637154,
+      "EER": 0.169849537037037
+    },
+    "known_unknown_far10": {
+      "AUROC": 0.9051287615740741,
+      "known_acceptance": 0.7925347222222222,
+      "unknown_FAR": 0.14699074074074076,
+      "identity_macro_F1": 0.8779666299072751,
+      "unknown_F1": 0.802638209120007,
+      "EER": 0.169849537037037
+    },
+    "known_unknown_youden": {
+      "AUROC": 0.9051287615740741,
+      "known_acceptance": 0.8628472222222223,
+      "unknown_FAR": 0.20486111111111108,
+      "identity_macro_F1": 0.9236986080024897,
+      "unknown_F1": 0.8014918973446269,
+      "EER": 0.169849537037037
+    },
+    "per_identity_q05": {
+      "AUROC": 0.9051287615740741,
+      "known_acceptance": 0.921875,
+      "unknown_FAR": 0.2789351851851852,
+      "identity_macro_F1": 0.9578087490319199,
+      "unknown_F1": 0.7835049056127908,
+      "EER": 0.169849537037037
+    }
+  },
+  "pos_label": 0
+}

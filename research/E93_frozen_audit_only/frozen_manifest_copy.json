@@ -1,0 +1,62 @@
+{
+  "frozen": true,
+  "experiment": "E92 frozen project candidate",
+  "strategy": "E91 quantile_fusion",
+  "classes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "params": {
+    "cos_bounds": [
+      0.7004160284996033,
+      0.2379300594329834
+    ],
+    "spd_bounds": [
+      -23.15843963623047,
+      11.741357803344727
+    ],
+    "mode": "quantile",
+    "weight": 1.0,
+    "threshold": 0.7971239261751238
+  },
+  "model_sha256": "9a87b66278a8807cbb277e430848c656d0fab83f9a4f76e711faf29f86bbe052",
+  "source_sha256": {
+    "e92_script": "e65a113f6ea53260c8d1e08411eedc4c8beb53287fd119aa7ba6125859f010a3",
+    "e91_script": "7bcbaf47a4322f511209438eea5d34c2065d286736ccd18896a529fcdd4b8c27",
+    "e90_script": "d94ab16a60d09f265bac9aa9414286dc137b3d5dc1593c68a7d75e1fef316e73",
+    "e65_script": "dd273fff55674e82bf9034f7691f878650be6f741eee9f963e7c4e75604ae991",
+    "e91_results": "dc461cbcd3c07c07c420277a342f0da12a76d1e0ef00eec7bb33f3e55e87d154",
+    "train_metadata": "f3be516e93082b78a9f483f9edb92f6330b1be39d32dff999a0a60b9bb92b545",
+    "train_features": "bc9a1c32bac175498d95f2f2d7641be13b7fe880550fcc792fe675fdef4b43f6"
+  },
+  "test_session_used_for_freeze": false,
+  "test_index_or_waveform_used_for_freeze": false,
+  "post_audit_changes_forbidden": true,
+  "test_metrics": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "C": "N/A",
+    "RA": "N/A",
+    "ASafeR": "N/A",
+    "U": "N/A",
+    "Official Score": "N/A"
+  }
+}

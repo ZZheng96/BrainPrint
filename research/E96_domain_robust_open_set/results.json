@@ -1,0 +1,56 @@
+{
+  "status": "complete_one_shot_frozen_audit",
+  "experiment": "E96_domain_robust_open_set",
+  "external": {
+    "N": 5184,
+    "AUC": 0.8597127067287599,
+    "F1": 0.4366510249444307,
+    "known_acceptance": 0.9500268672756582,
+    "unknown_FAR": 0.8620756172839507,
+    "unknown_rejection": 0.13792438271604937,
+    "subjects": 9,
+    "source": "E73-derived BCIC IV-2a; projected 22->18 IDW"
+  },
+  "train_calibration": {
+    "N_known": 1861,
+    "N_pseudo_unknown": 440,
+    "AUC": 0.6518294172243662,
+    "F1": 0.8745980707395499
+  },
+  "gate": {
+    "threshold": 0.4550895690917969,
+    "known_acceptance": 0.9500268672756582,
+    "pseudo_unknown_FAR": 0.9409090909090909,
+    "external_unknown_FAR": 0.8620756172839507,
+    "selection_source": "Train pseudo-unknown plus E73 external calibration; no project Test"
+  },
+  "test_metrics": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "C": "N/A",
+    "RA": "N/A",
+    "ASafeR": "N/A",
+    "U": "N/A",
+    "Official Score": "N/A"
+  },
+  "protocol_checks": {
+    "train_session1_only": true,
+    "external_used_as_unknown_domain": true,
+    "test_accessed": true,
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "e95_checkpoint_reused": true,
+    "test_read_once_after_freeze": true
+  },
+  "audit": {
+    "S1": {
+      "N": 3033,
+      "rejection_rate": 0.40685789647213977,
+      "acceptance_rate": 0.5931421035278602
+    },
+    "S2": {
+      "N": 19218,
+      "rejection_rate": 0.12321781663024248,
+      "acceptance_rate": 0.8767821833697576
+    }
+  }
+}
