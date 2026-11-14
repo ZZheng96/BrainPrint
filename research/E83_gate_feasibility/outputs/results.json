@@ -1,0 +1,537 @@
+{
+  "schema_version": 1,
+  "experiment": "E83 gate feasibility audit",
+  "scope": "outer only; no competition Test access; audit only, no model or threshold selection",
+  "thresholds": {
+    "known_acceptance_min": 0.95,
+    "unknown_false_acceptance_max": 0.02
+  },
+  "candidates": {
+    "E76": {
+      "outer_fold_direction": [
+        {
+          "outer_fold": 1,
+          "direction": "T_to_E",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.96875,
+          "fpr_at_max_known_acceptance": 0.1597222222222222,
+          "min_reachable_unknown_false_acceptance": 0.1597222222222222,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.96875,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": 0.1597222222222222,
+          "n_frontier_points": 1,
+          "frontier": [
+            {
+              "label": "reported_threshold",
+              "threshold": -67.88235473632812,
+              "tpr": 0.96875,
+              "fpr": 0.1597222222222222,
+              "auroc": 0.982494212962963
+            }
+          ]
+        },
+        {
+          "outer_fold": 1,
+          "direction": "E_to_T",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.90625,
+          "fpr_at_max_known_acceptance": 0.05555555555555558,
+          "min_reachable_unknown_false_acceptance": 0.05555555555555558,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.90625,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 1,
+          "frontier": [
+            {
+              "label": "reported_threshold",
+              "threshold": -51.67080307006836,
+              "tpr": 0.90625,
+              "fpr": 0.05555555555555558,
+              "auroc": 0.9752604166666666
+            }
+          ]
+        },
+        {
+          "outer_fold": 2,
+          "direction": "T_to_E",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.8177083333333334,
+          "fpr_at_max_known_acceptance": 0.0,
+          "min_reachable_unknown_false_acceptance": 0.0,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.8177083333333334,
+          "TPR_at_FPR_2pct": 0.8177083333333334,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 1,
+          "frontier": [
+            {
+              "label": "reported_threshold",
+              "threshold": -45.92875671386719,
+              "tpr": 0.8177083333333334,
+              "fpr": 0.0,
+              "auroc": 0.9828559027777778
+            }
+          ]
+        },
+        {
+          "outer_fold": 2,
+          "direction": "E_to_T",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.9270833333333334,
+          "fpr_at_max_known_acceptance": 0.01388888888888884,
+          "min_reachable_unknown_false_acceptance": 0.01388888888888884,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.9270833333333334,
+          "TPR_at_FPR_2pct": 0.9270833333333334,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 1,
+          "frontier": [
+            {
+              "label": "reported_threshold",
+              "threshold": -48.77153396606445,
+              "tpr": 0.9270833333333334,
+              "fpr": 0.01388888888888884,
+              "auroc": 0.9924768518518519
+            }
+          ]
+        },
+        {
+          "outer_fold": 3,
+          "direction": "T_to_E",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.9322916666666666,
+          "fpr_at_max_known_acceptance": 0.16666666666666663,
+          "min_reachable_unknown_false_acceptance": 0.16666666666666663,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.9322916666666666,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 1,
+          "frontier": [
+            {
+              "label": "reported_threshold",
+              "threshold": -50.81414794921875,
+              "tpr": 0.9322916666666666,
+              "fpr": 0.16666666666666663,
+              "auroc": 0.9651331018518519
+            }
+          ]
+        },
+        {
+          "outer_fold": 3,
+          "direction": "E_to_T",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.953125,
+          "fpr_at_max_known_acceptance": 0.22916666666666663,
+          "min_reachable_unknown_false_acceptance": 0.22916666666666663,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.953125,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": 0.22916666666666663,
+          "n_frontier_points": 1,
+          "frontier": [
+            {
+              "label": "reported_threshold",
+              "threshold": -50.66103744506836,
+              "tpr": 0.953125,
+              "fpr": 0.22916666666666663,
+              "auroc": 0.9599609375
+            }
+          ]
+        }
+      ],
+      "macro_average": {
+        "max_reachable_known_acceptance": 0.9175347222222222,
+        "fpr_at_max_known_acceptance": 0.10416666666666664,
+        "min_reachable_unknown_false_acceptance": 0.10416666666666664,
+        "known_acceptance_at_min_unknown_false_acceptance": 0.9175347222222222,
+        "TPR_at_FPR_2pct": 0.8723958333333334,
+        "FPR_at_TPR_95pct": 0.19444444444444442,
+        "simultaneous_gate_feasible_rate": 0.0,
+        "n_fold_direction_cells": 6
+      },
+      "source_test": {
+        "AUC": "N/A",
+        "F1": "N/A",
+        "accessed": false
+      }
+    },
+    "E79": {
+      "outer_fold_direction": [
+        {
+          "outer_fold": 1,
+          "direction": "T_to_E",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.953125,
+          "fpr_at_max_known_acceptance": 0.20833333333333337,
+          "min_reachable_unknown_false_acceptance": 0.13194444444444442,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.9010416666666666,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": 0.20833333333333337,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "q05",
+              "threshold": 1.333498239517212,
+              "tpr": 0.9010416666666666,
+              "fpr": 0.13194444444444442,
+              "auroc": 0.957863136574074
+            },
+            {
+              "label": "q02",
+              "threshold": 1.1790179014205933,
+              "tpr": 0.953125,
+              "fpr": 0.20833333333333337,
+              "auroc": 0.957863136574074
+            }
+          ]
+        },
+        {
+          "outer_fold": 1,
+          "direction": "E_to_T",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.9583333333333334,
+          "fpr_at_max_known_acceptance": 0.23611111111111116,
+          "min_reachable_unknown_false_acceptance": 0.19444444444444442,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.9427083333333334,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": 0.23611111111111116,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "q05",
+              "threshold": 1.3411537408828735,
+              "tpr": 0.9427083333333334,
+              "fpr": 0.19444444444444442,
+              "auroc": 0.9497251157407407
+            },
+            {
+              "label": "q02",
+              "threshold": 1.190585970878601,
+              "tpr": 0.9583333333333334,
+              "fpr": 0.23611111111111116,
+              "auroc": 0.9497251157407407
+            }
+          ]
+        },
+        {
+          "outer_fold": 2,
+          "direction": "T_to_E",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.9479166666666666,
+          "fpr_at_max_known_acceptance": 0.1597222222222222,
+          "min_reachable_unknown_false_acceptance": 0.07638888888888884,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.9166666666666666,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "q05",
+              "threshold": 1.1865744590759277,
+              "tpr": 0.9166666666666666,
+              "fpr": 0.07638888888888884,
+              "auroc": 0.9680266203703703
+            },
+            {
+              "label": "q02",
+              "threshold": 0.9157911539077759,
+              "tpr": 0.9479166666666666,
+              "fpr": 0.1597222222222222,
+              "auroc": 0.9680266203703703
+            }
+          ]
+        },
+        {
+          "outer_fold": 2,
+          "direction": "E_to_T",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.9635416666666666,
+          "fpr_at_max_known_acceptance": 0.07638888888888884,
+          "min_reachable_unknown_false_acceptance": 0.00694444444444442,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.9010416666666666,
+          "TPR_at_FPR_2pct": 0.9010416666666666,
+          "FPR_at_TPR_95pct": 0.07638888888888884,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "q05",
+              "threshold": 1.2363636493682861,
+              "tpr": 0.9010416666666666,
+              "fpr": 0.00694444444444442,
+              "auroc": 0.9887514467592592
+            },
+            {
+              "label": "q02",
+              "threshold": 0.969878613948822,
+              "tpr": 0.9635416666666666,
+              "fpr": 0.07638888888888884,
+              "auroc": 0.9887514467592592
+            }
+          ]
+        },
+        {
+          "outer_fold": 3,
+          "direction": "T_to_E",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.921875,
+          "fpr_at_max_known_acceptance": 0.4097222222222222,
+          "min_reachable_unknown_false_acceptance": 0.3125,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.875,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "q05",
+              "threshold": 0.32295408844947815,
+              "tpr": 0.875,
+              "fpr": 0.3125,
+              "auroc": 0.8366608796296297
+            },
+            {
+              "label": "q02",
+              "threshold": 0.2200978696346283,
+              "tpr": 0.921875,
+              "fpr": 0.4097222222222222,
+              "auroc": 0.8366608796296297
+            }
+          ]
+        },
+        {
+          "outer_fold": 3,
+          "direction": "E_to_T",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.9895833333333334,
+          "fpr_at_max_known_acceptance": 0.4930555555555556,
+          "min_reachable_unknown_false_acceptance": 0.4930555555555556,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.9895833333333334,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": 0.4930555555555556,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "q05",
+              "threshold": -0.031798649579286575,
+              "tpr": 0.9895833333333334,
+              "fpr": 0.4930555555555556,
+              "auroc": 0.8101128472222223
+            },
+            {
+              "label": "q02",
+              "threshold": -0.16389359533786774,
+              "tpr": 0.9895833333333334,
+              "fpr": 0.5625,
+              "auroc": 0.8101128472222223
+            }
+          ]
+        }
+      ],
+      "macro_average": {
+        "max_reachable_known_acceptance": 0.9557291666666666,
+        "fpr_at_max_known_acceptance": 0.2638888888888889,
+        "min_reachable_unknown_false_acceptance": 0.20254629629629628,
+        "known_acceptance_at_min_unknown_false_acceptance": 0.9210069444444444,
+        "TPR_at_FPR_2pct": 0.9010416666666666,
+        "FPR_at_TPR_95pct": 0.2534722222222222,
+        "simultaneous_gate_feasible_rate": 0.0,
+        "n_fold_direction_cells": 6
+      },
+      "source_test": {
+        "AUC": "N/A",
+        "F1": "N/A",
+        "accessed": false
+      }
+    },
+    "E82": {
+      "outer_fold_direction": [
+        {
+          "outer_fold": 1,
+          "direction": "T_to_E",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.7083333333333334,
+          "fpr_at_max_known_acceptance": 0.020833333333333332,
+          "min_reachable_unknown_false_acceptance": 0.013888888888888888,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.671875,
+          "TPR_at_FPR_2pct": 0.671875,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "target_fpir_0.01",
+              "threshold": null,
+              "tpr": 0.671875,
+              "fpr": 0.013888888888888888,
+              "auroc": 0.957863136574074
+            },
+            {
+              "label": "target_fpir_0.02",
+              "threshold": null,
+              "tpr": 0.7083333333333334,
+              "fpr": 0.020833333333333332,
+              "auroc": 0.957863136574074
+            }
+          ]
+        },
+        {
+          "outer_fold": 1,
+          "direction": "E_to_T",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.6822916666666666,
+          "fpr_at_max_known_acceptance": 0.041666666666666664,
+          "min_reachable_unknown_false_acceptance": 0.041666666666666664,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.6822916666666666,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "target_fpir_0.01",
+              "threshold": null,
+              "tpr": 0.6822916666666666,
+              "fpr": 0.041666666666666664,
+              "auroc": 0.9497251157407407
+            },
+            {
+              "label": "target_fpir_0.02",
+              "threshold": null,
+              "tpr": 0.6822916666666666,
+              "fpr": 0.041666666666666664,
+              "auroc": 0.9497251157407407
+            }
+          ]
+        },
+        {
+          "outer_fold": 2,
+          "direction": "T_to_E",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.9427083333333334,
+          "fpr_at_max_known_acceptance": 0.11805555555555555,
+          "min_reachable_unknown_false_acceptance": 0.1111111111111111,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.9375,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "target_fpir_0.01",
+              "threshold": null,
+              "tpr": 0.9375,
+              "fpr": 0.1111111111111111,
+              "auroc": 0.9680266203703703
+            },
+            {
+              "label": "target_fpir_0.02",
+              "threshold": null,
+              "tpr": 0.9427083333333334,
+              "fpr": 0.11805555555555555,
+              "auroc": 0.9680266203703703
+            }
+          ]
+        },
+        {
+          "outer_fold": 2,
+          "direction": "E_to_T",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.9947916666666666,
+          "fpr_at_max_known_acceptance": 0.1736111111111111,
+          "min_reachable_unknown_false_acceptance": 0.1388888888888889,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.9739583333333334,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": 0.1388888888888889,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "target_fpir_0.01",
+              "threshold": null,
+              "tpr": 0.9739583333333334,
+              "fpr": 0.1388888888888889,
+              "auroc": 0.9887514467592592
+            },
+            {
+              "label": "target_fpir_0.02",
+              "threshold": null,
+              "tpr": 0.9947916666666666,
+              "fpr": 0.1736111111111111,
+              "auroc": 0.9887514467592592
+            }
+          ]
+        },
+        {
+          "outer_fold": 3,
+          "direction": "T_to_E",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.4635416666666667,
+          "fpr_at_max_known_acceptance": 0.1111111111111111,
+          "min_reachable_unknown_false_acceptance": 0.1111111111111111,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.4635416666666667,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "target_fpir_0.01",
+              "threshold": null,
+              "tpr": 0.4270833333333333,
+              "fpr": 0.1111111111111111,
+              "auroc": 0.8366608796296297
+            },
+            {
+              "label": "target_fpir_0.02",
+              "threshold": null,
+              "tpr": 0.4635416666666667,
+              "fpr": 0.1111111111111111,
+              "auroc": 0.8366608796296297
+            }
+          ]
+        },
+        {
+          "outer_fold": 3,
+          "direction": "E_to_T",
+          "simultaneous_gate_feasible": false,
+          "max_reachable_known_acceptance": 0.6666666666666666,
+          "fpr_at_max_known_acceptance": 0.22916666666666666,
+          "min_reachable_unknown_false_acceptance": 0.14583333333333334,
+          "known_acceptance_at_min_unknown_false_acceptance": 0.46875,
+          "TPR_at_FPR_2pct": null,
+          "FPR_at_TPR_95pct": null,
+          "n_frontier_points": 2,
+          "frontier": [
+            {
+              "label": "target_fpir_0.01",
+              "threshold": null,
+              "tpr": 0.46875,
+              "fpr": 0.14583333333333334,
+              "auroc": 0.8101128472222223
+            },
+            {
+              "label": "target_fpir_0.02",
+              "threshold": null,
+              "tpr": 0.6666666666666666,
+              "fpr": 0.22916666666666666,
+              "auroc": 0.8101128472222223
+            }
+          ]
+        }
+      ],
+      "macro_average": {
+        "max_reachable_known_acceptance": 0.7430555555555556,
+        "fpr_at_max_known_acceptance": 0.11574074074074074,
+        "min_reachable_unknown_false_acceptance": 0.09375,
+        "known_acceptance_at_min_unknown_false_acceptance": 0.6996527777777778,
+        "TPR_at_FPR_2pct": 0.671875,
+        "FPR_at_TPR_95pct": 0.1388888888888889,
+        "simultaneous_gate_feasible_rate": 0.0,
+        "n_fold_direction_cells": 6
+      },
+      "source_test": {
+        "AUC": "N/A",
+        "F1": "N/A",
+        "accessed": false
+      }
+    }
+  },
+  "test": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "accessed": false
+  },
+  "competition_test_accessed": false,
+  "interpretation": "Frontier uses only operating points already present in the three frozen outer results.json files; it does not choose a model or alter a threshold."
+}

@@ -1,0 +1,25 @@
+{
+  "experiment": "E84 frozen E74 hard-negative pair head",
+  "outer_fold": 1,
+  "created_at": "2026-11-14T08:39:23.853655+00:00",
+  "head_sha256": "74c898acd32b7280310fe3c68c79b518d11e33117ffd8fdaa4144905b687573b",
+  "calibrations": {
+    "T_to_E": {
+      "N_known": 192,
+      "N_calibration_unknown": 96,
+      "q05": 0.8960386514663696,
+      "q02": 0.780994176864624,
+      "calibration_unknown_false_acceptance_diagnostic": 0.21875,
+      "unknown_samples_used": 0
+    },
+    "E_to_T": {
+      "N_known": 192,
+      "N_calibration_unknown": 96,
+      "q05": 0.8861367702484131,
+      "q02": 0.7960243225097656,
+      "calibration_unknown_false_acceptance_diagnostic": 0.17708333333333334,
+      "unknown_samples_used": 0
+    }
+  },
+  "outer_scored": false
+}

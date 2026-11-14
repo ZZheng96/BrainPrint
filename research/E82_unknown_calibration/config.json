@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "experiment": "E82 nested pseudo-unknown calibration",
+  "date_preregistered": "2026-11-14",
+  "base_experiment": "E74_multiscale_native22",
+  "score_source": "saved E79 pair score; frozen E74 encoder",
+  "output_subdir": "outputs",
+  "seed_base": 20261114,
+  "protocol": {
+    "fit_runs": [0, 1, 2],
+    "template_run": 3,
+    "inner_known_run": 4,
+    "calibration_unknown_run": 5,
+    "outer_evaluation_run": 5,
+    "directions": ["T_to_E", "E_to_T"],
+    "target_fpirs": [0.01, 0.02],
+    "threshold_rule": "calibration_unknown confidence upper quantile at 1-target FPIR; fixed before outer evaluation",
+    "calibration_unknown_role": "used only to determine thresholds; never used for model or weight selection",
+    "outer_unknown_role": "run5 once for final evaluation; never used for threshold selection"
+  },
+  "gates": {"known_acceptance_min": 0.95, "unknown_false_acceptance_max": 0.02},
+  "reporting": {"test_auc": "N/A", "test_f1": "N/A", "official_score": "N/A"}
+}

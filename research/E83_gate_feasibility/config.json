@@ -1,0 +1,15 @@
+{
+  "experiment": "E83 gate feasibility audit",
+  "source_results": {
+    "E76": "../E76_open_set_head/outputs/results.json",
+    "E79": "../E79_pair_open_set/outputs/results.json",
+    "E82": "../E82_unknown_calibration/outputs/results.json"
+  },
+  "known_acceptance_min": 0.95,
+  "unknown_false_acceptance_max": 0.02,
+  "roc_targets": {
+    "fpr": 0.02,
+    "tpr": 0.95
+  },
+  "scope": "outer only; no competition Test access; audit only, no model or threshold selection"
+}

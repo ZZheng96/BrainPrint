@@ -1,0 +1,36 @@
+{
+  "experiment": "E81 preregistered classwise tail-calibrated open-set",
+  "date_preregistered": "2026-11-14",
+  "base_experiment": "E74_multiscale_native22",
+  "pair_experiment": "E79_pair_open_set",
+  "output_subdir": "outputs",
+  "seed_base": 20261114,
+  "protocol": {
+    "fit_runs": [0, 1, 2],
+    "template_run": 3,
+    "calibration_known_query_run": 4,
+    "calibration_unknown_query_run": 5,
+    "evaluation_query_run": 5,
+    "directions": ["T_to_E", "E_to_T"],
+    "threshold_rule": "per-identity lower-tail quantile of true-class run4 confidence",
+    "tail_fraction": 0.02,
+    "alternative_fixed_rule": "q05 is diagnostic only; no scanning",
+    "calibration_unknown": "diagnostic only; never used for fit, threshold, or selection",
+    "outer_unknown": "run5 once; never used for fit, threshold, or selection"
+  },
+  "mahalanobis": {
+    "covariance_shrinkage": 0.10,
+    "covariance_floor": 1e-5,
+    "mad_floor": 1e-6
+  },
+  "fusion": {
+    "pair_temperature": 1.0,
+    "mahalanobis_temperature": 1.0,
+    "rule": "elementwise_min(pair_sigmoid_logit, mahalanobis_sigmoid_logit)"
+  },
+  "gates": {
+    "S1_known_acceptance_min": 0.95,
+    "S2_unknown_false_acceptance_max": 0.02
+  },
+  "reporting": {"test": "N/A; competition Test not accessed", "official_score": "N/A"}
+}

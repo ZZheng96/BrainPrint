@@ -1,0 +1,22 @@
+{
+  "experiment": "E77 preregistered EEG-only cosine-Mahalanobis score fusion",
+  "date_preregistered": "2026-11-14",
+  "base_experiment": "E74_multiscale_native22 + E76_open_set_head",
+  "forbidden_inputs": ["E75_image_template", "competition Test", "outer unknown for weight or threshold selection"],
+  "data": {
+    "dataset": "BNCI2014_001 / BCI Competition IV dataset 2a",
+    "train_runs": [0, 1, 2], "template_run": 3, "inner_known_run": 4,
+    "calibration_unknown_run": 5, "outer_evaluation_run": 5,
+    "outer_folds": 3, "directions": ["T_to_E", "E_to_T"]
+  },
+  "fusion": {
+    "components": ["cosine_prototype", "mahalanobis"],
+    "weights": {"cosine_prototype": 0.5, "mahalanobis": 0.5},
+    "normalization": "per-component mean/std fitted only on enrolled train run0-2 scores against run3 templates",
+    "epsilon": 1e-8
+  },
+  "head": {"shrinkage": 0.05, "eigenvalue_floor": 1e-6, "type": "E76 class-conditional Mahalanobis"},
+  "threshold": {"quantiles": [0.05, 0.02], "primary": "q05", "source": "inner enrolled known run4 only", "calibration_unknown": "diagnostic only"},
+  "gates": {"S1_known_acceptance_min": 0.95, "S2_unknown_false_acceptance_max": 0.02},
+  "reporting": {"test": "N/A; competition Test not accessed", "official_score": "N/A"}
+}

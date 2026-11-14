@@ -1,0 +1,11 @@
+{
+  "experiment": "E78 preregistered per-identity Mahalanobis calibration",
+  "date_preregistered": "2026-11-14",
+  "base_experiment": "E74_multiscale_native22 + E76_open_set_head",
+  "forbidden_inputs": ["E71", "E75_image_template", "calibration_unknown_for_threshold", "outer_unknown_for_threshold", "competition Test"],
+  "data": {"dataset": "BNCI2014_001 / BCI Competition IV dataset 2a", "train_runs": [0, 1, 2], "prototype_run": 3, "known_calibration_run": 4, "calibration_unknown_run": 5, "outer_evaluation_run": 5, "outer_folds": 3, "directions": ["T_to_E", "E_to_T"]},
+  "head": {"type": "E76 class-conditional Mahalanobis with run-3 prototypes", "shrinkage": 0.05, "eigenvalue_floor": 1e-6},
+  "threshold": {"primary": "q05", "reported": ["q05", "q02"], "source": "each identity's enrolled known run4 same-identity score only", "global_floor": null, "calibration_unknown": "never used; diagnostic only"},
+  "gates": {"S1_known_acceptance_min": 0.95, "S2_unknown_false_acceptance_max": 0.02},
+  "reporting": {"test": "N/A; competition Test not accessed", "official_score": "N/A"}
+}

@@ -1,0 +1,13 @@
+{
+  "experiment": "E84 frozen E74 hard-negative pair head",
+  "date_preregistered": "2026-11-14",
+  "base_experiment": "E74_multiscale_native22",
+  "base_config": "../E74_multiscale_native22/config.json",
+  "output_subdir": "outputs",
+  "seed_base": 20261114,
+  "pair_head": {"embedding_dim": 64, "hidden_dim": 16, "learning_rate": 0.001, "weight_decay": 0.0001, "positive_class_weight": 3.0, "margin": 0.20, "max_epochs": 40},
+  "training": {"train_runs": [0, 1, 2], "pair_sampling": "all same pairs plus all different pairs; per-query maximum wrong-identity score hard-negative mining", "loss": "BCEWithLogitsLoss plus hinge(margin - positive + max_wrong_identity)", "frozen_encoder": true},
+  "protocol": {"template_run": 3, "calibration_known_query_run": 4, "calibration_unknown_query_run": 5, "evaluation_query_run": 5, "directions": ["T_to_E", "E_to_T"], "thresholds": ["q05", "q02"], "threshold_source": "enrolled known run4 only", "calibration_unknown": "diagnostic only; never used for threshold or model selection", "outer_unknown": "never used for threshold or model selection"},
+  "gates": {"S1_known_acceptance_min": 0.95, "S2_unknown_false_acceptance_max": 0.02},
+  "reporting": {"test": "N/A; competition Test not accessed", "official_score": "N/A"}
+}

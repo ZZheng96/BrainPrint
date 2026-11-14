@@ -1,0 +1,925 @@
+{
+  "schema_version": 1,
+  "experiment": "E81 preregistered classwise tail-calibrated open-set",
+  "completed_at": "2026-11-14T08:22:13.594910+00:00",
+  "config_sha256": "0ac01519de75f142179c3d612c207cf9f4c2a397e55f2bcfa9cbfe8c32876470",
+  "data": {
+    "dataset": "BNCI2014_001 / BCI Competition IV dataset 2a",
+    "N": 5184,
+    "competition_train_accessed": false,
+    "competition_test_accessed": false
+  },
+  "runs": [
+    {
+      "outer_fold": 1,
+      "roles": {
+        "enrolled": [
+          5,
+          6,
+          7,
+          9
+        ],
+        "calibration_unknown": [
+          2,
+          3
+        ],
+        "outer_unknown": [
+          4,
+          1,
+          8
+        ]
+      },
+      "frozen_encoder": {
+        "path": "outputs\\models\\supcon_outer1.pt",
+        "sha256": "816ab11e05f9f3c1dc723802d2b6aa35d1e162c424571ee69166651f339470dc"
+      },
+      "pair_training": {
+        "seed": 20262114,
+        "epochs": 40,
+        "parameter_count": 2097,
+        "n_query_template_pairs": 4608,
+        "n_training_queries": 1152,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 1.0299253066380818
+          },
+          {
+            "epoch": 2,
+            "loss": 1.0126628478368123
+          },
+          {
+            "epoch": 3,
+            "loss": 0.9983132282892863
+          },
+          {
+            "epoch": 4,
+            "loss": 0.9839402337869009
+          },
+          {
+            "epoch": 5,
+            "loss": 0.9689237972100576
+          },
+          {
+            "epoch": 6,
+            "loss": 0.9530896345774332
+          },
+          {
+            "epoch": 7,
+            "loss": 0.9365794062614441
+          },
+          {
+            "epoch": 8,
+            "loss": 0.9190926452477773
+          },
+          {
+            "epoch": 9,
+            "loss": 0.9005882441997528
+          },
+          {
+            "epoch": 10,
+            "loss": 0.8811902503172556
+          },
+          {
+            "epoch": 11,
+            "loss": 0.8609438240528107
+          },
+          {
+            "epoch": 12,
+            "loss": 0.8398312429587046
+          },
+          {
+            "epoch": 13,
+            "loss": 0.818026622136434
+          },
+          {
+            "epoch": 14,
+            "loss": 0.7955320080121359
+          },
+          {
+            "epoch": 15,
+            "loss": 0.772540956735611
+          },
+          {
+            "epoch": 16,
+            "loss": 0.749028871456782
+          },
+          {
+            "epoch": 17,
+            "loss": 0.7252123554547628
+          },
+          {
+            "epoch": 18,
+            "loss": 0.701137125492096
+          },
+          {
+            "epoch": 19,
+            "loss": 0.6769042809804281
+          },
+          {
+            "epoch": 20,
+            "loss": 0.6526886423428854
+          },
+          {
+            "epoch": 21,
+            "loss": 0.6285554766654968
+          },
+          {
+            "epoch": 22,
+            "loss": 0.6045851012070974
+          },
+          {
+            "epoch": 23,
+            "loss": 0.580951988697052
+          },
+          {
+            "epoch": 24,
+            "loss": 0.5576591094334921
+          },
+          {
+            "epoch": 25,
+            "loss": 0.5348428984483083
+          },
+          {
+            "epoch": 26,
+            "loss": 0.5125328501065572
+          },
+          {
+            "epoch": 27,
+            "loss": 0.49085099001725513
+          },
+          {
+            "epoch": 28,
+            "loss": 0.46978310743967694
+          },
+          {
+            "epoch": 29,
+            "loss": 0.4493911216656367
+          },
+          {
+            "epoch": 30,
+            "loss": 0.42971770962079364
+          },
+          {
+            "epoch": 31,
+            "loss": 0.4107647438844045
+          },
+          {
+            "epoch": 32,
+            "loss": 0.3925544669230779
+          },
+          {
+            "epoch": 33,
+            "loss": 0.37510234117507935
+          },
+          {
+            "epoch": 34,
+            "loss": 0.35838234424591064
+          },
+          {
+            "epoch": 35,
+            "loss": 0.3424055874347687
+          },
+          {
+            "epoch": 36,
+            "loss": 0.3271551926930745
+          },
+          {
+            "epoch": 37,
+            "loss": 0.3126218219598134
+          },
+          {
+            "epoch": 38,
+            "loss": 0.29877065618832904
+          },
+          {
+            "epoch": 39,
+            "loss": 0.28559305270512897
+          },
+          {
+            "epoch": 40,
+            "loss": 0.2730608532826106
+          }
+        ],
+        "elapsed_seconds": 0.40209078788757324,
+        "unknown_training_samples": 0
+      },
+      "directions": {
+        "T_to_E": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.9894736842105263,
+            "unknown_F1": 0.8764044943820225,
+            "C": 0.9791666666666666,
+            "U": 0.8125,
+            "known_acceptance": 0.9791666666666666,
+            "q02_known_acceptance": 0.9791666666666666,
+            "q02_unknown_false_acceptance": 0.1875,
+            "q02_unknown_rejection": 0.8125,
+            "AUROC": 0.9525824652777777,
+            "U_at_95": 0.75,
+            "U_at_98": 0.71875,
+            "DIR_at_FPIR_1": 0.625,
+            "DIR_at_FPIR_5": 0.7708333333333334,
+            "calibration_unknown_false_acceptance_diagnostic": 0.1875,
+            "thresholds": {
+              "5": 0.004676397809246207,
+              "6": 0.02368381184870248,
+              "7": 0.06393914640956777,
+              "9": 0.005653150614715345
+            },
+            "tail_samples": 192
+          },
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.9527788573649436,
+            "unknown_F1": 0.8888888888888888,
+            "C": 0.9166666666666666,
+            "U": 0.8888888888888888,
+            "known_acceptance": 0.9166666666666666,
+            "q02_known_acceptance": 0.9166666666666666,
+            "q02_unknown_false_acceptance": 0.1111111111111111,
+            "q02_unknown_rejection": 0.8888888888888888,
+            "AUROC": 0.9650245949074074,
+            "U_at_95": 0.8611111111111112,
+            "U_at_98": 0.7916666666666666,
+            "DIR_at_FPIR_1": 0.40625,
+            "DIR_at_FPIR_5": 0.8072916666666666,
+            "pair_AUROC": 0.9956280743634259,
+            "pair_EER": 0.026041666666666668
+          }
+        },
+        "E_to_T": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.9894736842105263,
+            "unknown_F1": 0.8888888888888888,
+            "C": 0.9791666666666666,
+            "U": 0.8333333333333334,
+            "known_acceptance": 0.9791666666666666,
+            "q02_known_acceptance": 0.9791666666666666,
+            "q02_unknown_false_acceptance": 0.16666666666666666,
+            "q02_unknown_rejection": 0.8333333333333334,
+            "AUROC": 0.9756944444444444,
+            "U_at_95": 0.875,
+            "U_at_98": 0.84375,
+            "DIR_at_FPIR_1": 0.7604166666666666,
+            "DIR_at_FPIR_5": 0.8125,
+            "calibration_unknown_false_acceptance_diagnostic": 0.16666666666666666,
+            "thresholds": {
+              "5": 0.013353149799987772,
+              "6": 0.047065956037790846,
+              "7": 0.021292749394020948,
+              "9": 0.05114144538827259
+            },
+            "tail_samples": 192
+          },
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.9757467697174061,
+            "unknown_F1": 0.8992805755395683,
+            "C": 0.953125,
+            "U": 0.8680555555555556,
+            "known_acceptance": 0.953125,
+            "q02_known_acceptance": 0.953125,
+            "q02_unknown_false_acceptance": 0.13194444444444445,
+            "q02_unknown_rejection": 0.8680555555555556,
+            "AUROC": 0.956271701388889,
+            "U_at_95": 0.8472222222222222,
+            "U_at_98": 0.6319444444444444,
+            "DIR_at_FPIR_1": 0.5572916666666666,
+            "DIR_at_FPIR_5": 0.75,
+            "pair_AUROC": 0.9945113570601852,
+            "pair_EER": 0.03211805555555555
+          }
+        }
+      }
+    },
+    {
+      "outer_fold": 2,
+      "roles": {
+        "enrolled": [
+          1,
+          2,
+          6,
+          8
+        ],
+        "calibration_unknown": [
+          4,
+          9
+        ],
+        "outer_unknown": [
+          3,
+          5,
+          7
+        ]
+      },
+      "frozen_encoder": {
+        "path": "outputs\\models\\supcon_outer2.pt",
+        "sha256": "db29a228dfab6607dd404c5f992df4172d56ce0c4c2246a26130105aae8ea072"
+      },
+      "pair_training": {
+        "seed": 20263114,
+        "epochs": 40,
+        "parameter_count": 2097,
+        "n_query_template_pairs": 4608,
+        "n_training_queries": 1152,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 1.0392399827639263
+          },
+          {
+            "epoch": 2,
+            "loss": 1.0194382071495056
+          },
+          {
+            "epoch": 3,
+            "loss": 1.00112180908521
+          },
+          {
+            "epoch": 4,
+            "loss": 0.9827703634897867
+          },
+          {
+            "epoch": 5,
+            "loss": 0.9636820256710052
+          },
+          {
+            "epoch": 6,
+            "loss": 0.9432320594787598
+          },
+          {
+            "epoch": 7,
+            "loss": 0.9212035437424978
+          },
+          {
+            "epoch": 8,
+            "loss": 0.8976950248082479
+          },
+          {
+            "epoch": 9,
+            "loss": 0.8727416892846426
+          },
+          {
+            "epoch": 10,
+            "loss": 0.8465506931145986
+          },
+          {
+            "epoch": 11,
+            "loss": 0.8190424839655558
+          },
+          {
+            "epoch": 12,
+            "loss": 0.7905258138974508
+          },
+          {
+            "epoch": 13,
+            "loss": 0.761257141828537
+          },
+          {
+            "epoch": 14,
+            "loss": 0.7315200964609782
+          },
+          {
+            "epoch": 15,
+            "loss": 0.7013045648733774
+          },
+          {
+            "epoch": 16,
+            "loss": 0.6710686782995859
+          },
+          {
+            "epoch": 17,
+            "loss": 0.640875925620397
+          },
+          {
+            "epoch": 18,
+            "loss": 0.6109956900278727
+          },
+          {
+            "epoch": 19,
+            "loss": 0.581569770971934
+          },
+          {
+            "epoch": 20,
+            "loss": 0.552829384803772
+          },
+          {
+            "epoch": 21,
+            "loss": 0.5248904625574747
+          },
+          {
+            "epoch": 22,
+            "loss": 0.4978511184453964
+          },
+          {
+            "epoch": 23,
+            "loss": 0.47175974647204083
+          },
+          {
+            "epoch": 24,
+            "loss": 0.4467568000157674
+          },
+          {
+            "epoch": 25,
+            "loss": 0.42282843093077344
+          },
+          {
+            "epoch": 26,
+            "loss": 0.40003039439519245
+          },
+          {
+            "epoch": 27,
+            "loss": 0.3783700813849767
+          },
+          {
+            "epoch": 28,
+            "loss": 0.35783598323663074
+          },
+          {
+            "epoch": 29,
+            "loss": 0.3384040544430415
+          },
+          {
+            "epoch": 30,
+            "loss": 0.32006438076496124
+          },
+          {
+            "epoch": 31,
+            "loss": 0.30277925233046216
+          },
+          {
+            "epoch": 32,
+            "loss": 0.28649238248666126
+          },
+          {
+            "epoch": 33,
+            "loss": 0.2711823483308156
+          },
+          {
+            "epoch": 34,
+            "loss": 0.25679318110148114
+          },
+          {
+            "epoch": 35,
+            "loss": 0.24328779180844626
+          },
+          {
+            "epoch": 36,
+            "loss": 0.23061414311329523
+          },
+          {
+            "epoch": 37,
+            "loss": 0.2187183847030004
+          },
+          {
+            "epoch": 38,
+            "loss": 0.20757099986076355
+          },
+          {
+            "epoch": 39,
+            "loss": 0.19711004694302878
+          },
+          {
+            "epoch": 40,
+            "loss": 0.1873022417227427
+          }
+        ],
+        "elapsed_seconds": 0.39308881759643555,
+        "unknown_training_samples": 0
+      },
+      "directions": {
+        "T_to_E": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.9894736842105263,
+            "unknown_F1": 0.9690721649484536,
+            "C": 0.9791666666666666,
+            "U": 0.9791666666666666,
+            "known_acceptance": 0.9791666666666666,
+            "q02_known_acceptance": 0.9791666666666666,
+            "q02_unknown_false_acceptance": 0.020833333333333332,
+            "q02_unknown_rejection": 0.9791666666666666,
+            "AUROC": 0.9966362847222222,
+            "U_at_95": 1.0,
+            "U_at_98": 0.9895833333333334,
+            "DIR_at_FPIR_1": 0.9791666666666666,
+            "DIR_at_FPIR_5": 0.984375,
+            "calibration_unknown_false_acceptance_diagnostic": 0.020833333333333332,
+            "thresholds": {
+              "1": 0.003763257478967471,
+              "2": 0.08218529425097662,
+              "6": 0.06122661770205738,
+              "8": 0.07749498274456251
+            },
+            "tail_samples": 192
+          },
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.9484405458089669,
+            "unknown_F1": 0.9230769230769231,
+            "C": 0.9114583333333334,
+            "U": 0.9583333333333334,
+            "known_acceptance": 0.9114583333333334,
+            "q02_known_acceptance": 0.9114583333333334,
+            "q02_unknown_false_acceptance": 0.041666666666666664,
+            "q02_unknown_rejection": 0.9583333333333334,
+            "AUROC": 0.9807219328703703,
+            "U_at_95": 0.9166666666666666,
+            "U_at_98": 0.7569444444444444,
+            "DIR_at_FPIR_1": 0.7864583333333334,
+            "DIR_at_FPIR_5": 0.9166666666666666,
+            "pair_AUROC": 0.9975133825231481,
+            "pair_EER": 0.028645833333333332
+          }
+        },
+        "E_to_T": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.9894736842105263,
+            "unknown_F1": 0.9743589743589743,
+            "C": 0.9791666666666666,
+            "U": 0.9895833333333334,
+            "known_acceptance": 0.9791666666666666,
+            "q02_known_acceptance": 0.9791666666666666,
+            "q02_unknown_false_acceptance": 0.010416666666666666,
+            "q02_unknown_rejection": 0.9895833333333334,
+            "AUROC": 0.9994032118055556,
+            "U_at_95": 1.0,
+            "U_at_98": 0.9895833333333334,
+            "DIR_at_FPIR_1": 0.9791666666666666,
+            "DIR_at_FPIR_5": 1.0,
+            "calibration_unknown_false_acceptance_diagnostic": 0.010416666666666666,
+            "thresholds": {
+              "1": 0.018484417124755504,
+              "2": 0.02491043762495352,
+              "6": 0.05076763587542381,
+              "8": 0.13676503317056607
+            },
+            "tail_samples": 192
+          },
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.973172987974098,
+            "unknown_F1": 0.9488054607508533,
+            "C": 0.9479166666666666,
+            "U": 0.9652777777777778,
+            "known_acceptance": 0.9479166666666666,
+            "q02_known_acceptance": 0.9479166666666666,
+            "q02_unknown_false_acceptance": 0.034722222222222224,
+            "q02_unknown_rejection": 0.9652777777777778,
+            "AUROC": 0.9949725115740742,
+            "U_at_95": 0.9930555555555556,
+            "U_at_98": 0.9861111111111112,
+            "DIR_at_FPIR_1": 0.9739583333333334,
+            "DIR_at_FPIR_5": 0.9895833333333334,
+            "pair_AUROC": 0.9993715639467592,
+            "pair_EER": 0.009548611111111112
+          }
+        }
+      }
+    },
+    {
+      "outer_fold": 3,
+      "roles": {
+        "enrolled": [
+          3,
+          4,
+          5,
+          7
+        ],
+        "calibration_unknown": [
+          1,
+          8
+        ],
+        "outer_unknown": [
+          2,
+          6,
+          9
+        ]
+      },
+      "frozen_encoder": {
+        "path": "outputs\\models\\supcon_outer3.pt",
+        "sha256": "8b95e7a2592676d950ef9c7dda4fa04f6214ef15f36627ce1d051a52dae6bcc9"
+      },
+      "pair_training": {
+        "seed": 20264114,
+        "epochs": 40,
+        "parameter_count": 2097,
+        "n_query_template_pairs": 4608,
+        "n_training_queries": 1152,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 1.0405989090601604
+          },
+          {
+            "epoch": 2,
+            "loss": 1.0225530862808228
+          },
+          {
+            "epoch": 3,
+            "loss": 1.0045354664325714
+          },
+          {
+            "epoch": 4,
+            "loss": 0.9860069354375204
+          },
+          {
+            "epoch": 5,
+            "loss": 0.9661881426970164
+          },
+          {
+            "epoch": 6,
+            "loss": 0.945054829120636
+          },
+          {
+            "epoch": 7,
+            "loss": 0.9226864675680796
+          },
+          {
+            "epoch": 8,
+            "loss": 0.8994095226128896
+          },
+          {
+            "epoch": 9,
+            "loss": 0.875479648510615
+          },
+          {
+            "epoch": 10,
+            "loss": 0.8509347140789032
+          },
+          {
+            "epoch": 11,
+            "loss": 0.8260862131913503
+          },
+          {
+            "epoch": 12,
+            "loss": 0.801290233929952
+          },
+          {
+            "epoch": 13,
+            "loss": 0.7767549554506937
+          },
+          {
+            "epoch": 14,
+            "loss": 0.7527195413907369
+          },
+          {
+            "epoch": 15,
+            "loss": 0.7293858528137207
+          },
+          {
+            "epoch": 16,
+            "loss": 0.7068963448206583
+          },
+          {
+            "epoch": 17,
+            "loss": 0.6852836310863495
+          },
+          {
+            "epoch": 18,
+            "loss": 0.6647005279858907
+          },
+          {
+            "epoch": 19,
+            "loss": 0.6450589994589487
+          },
+          {
+            "epoch": 20,
+            "loss": 0.626432885726293
+          },
+          {
+            "epoch": 21,
+            "loss": 0.6087460219860077
+          },
+          {
+            "epoch": 22,
+            "loss": 0.5919889112313589
+          },
+          {
+            "epoch": 23,
+            "loss": 0.5760713318983713
+          },
+          {
+            "epoch": 24,
+            "loss": 0.5609553555647532
+          },
+          {
+            "epoch": 25,
+            "loss": 0.546539843082428
+          },
+          {
+            "epoch": 26,
+            "loss": 0.5327932238578796
+          },
+          {
+            "epoch": 27,
+            "loss": 0.519653727610906
+          },
+          {
+            "epoch": 28,
+            "loss": 0.5070317685604095
+          },
+          {
+            "epoch": 29,
+            "loss": 0.49491046865781146
+          },
+          {
+            "epoch": 30,
+            "loss": 0.4832301487525304
+          },
+          {
+            "epoch": 31,
+            "loss": 0.4719483902057012
+          },
+          {
+            "epoch": 32,
+            "loss": 0.4610010286172231
+          },
+          {
+            "epoch": 33,
+            "loss": 0.45038290818532306
+          },
+          {
+            "epoch": 34,
+            "loss": 0.4400363862514496
+          },
+          {
+            "epoch": 35,
+            "loss": 0.4299463629722595
+          },
+          {
+            "epoch": 36,
+            "loss": 0.42008113861083984
+          },
+          {
+            "epoch": 37,
+            "loss": 0.41042504211266834
+          },
+          {
+            "epoch": 38,
+            "loss": 0.40091530978679657
+          },
+          {
+            "epoch": 39,
+            "loss": 0.3915787686904271
+          },
+          {
+            "epoch": 40,
+            "loss": 0.3824147880077362
+          }
+        ],
+        "elapsed_seconds": 0.35554027557373047,
+        "unknown_training_samples": 0
+      },
+      "directions": {
+        "T_to_E": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.9894736842105263,
+            "unknown_F1": 0.9010989010989011,
+            "C": 0.9791666666666666,
+            "U": 0.8541666666666666,
+            "known_acceptance": 0.9791666666666666,
+            "q02_known_acceptance": 0.9791666666666666,
+            "q02_unknown_false_acceptance": 0.14583333333333334,
+            "q02_unknown_rejection": 0.8541666666666666,
+            "AUROC": 0.9586588541666666,
+            "U_at_95": 0.8125,
+            "U_at_98": 0.75,
+            "DIR_at_FPIR_1": 0.578125,
+            "DIR_at_FPIR_5": 0.7864583333333334,
+            "calibration_unknown_false_acceptance_diagnostic": 0.14583333333333334,
+            "thresholds": {
+              "3": 0.07448077083708796,
+              "4": 0.001617183589988893,
+              "5": 0.05997376372983107,
+              "7": 0.03376363717260143
+            },
+            "tail_samples": 192
+          },
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.957546567492937,
+            "unknown_F1": 0.7125506072874493,
+            "C": 0.921875,
+            "U": 0.6111111111111112,
+            "known_acceptance": 0.921875,
+            "q02_known_acceptance": 0.921875,
+            "q02_unknown_false_acceptance": 0.3888888888888889,
+            "q02_unknown_rejection": 0.6111111111111112,
+            "AUROC": 0.8470052083333334,
+            "U_at_95": 0.5138888888888888,
+            "U_at_98": 0.3888888888888889,
+            "DIR_at_FPIR_1": 0.20833333333333334,
+            "DIR_at_FPIR_5": 0.4270833333333333,
+            "pair_AUROC": 0.9806948061342593,
+            "pair_EER": 0.059027777777777776
+          }
+        },
+        "E_to_T": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.9894736842105263,
+            "unknown_F1": 0.6928104575163399,
+            "C": 0.9791666666666666,
+            "U": 0.5520833333333334,
+            "known_acceptance": 0.9791666666666666,
+            "q02_known_acceptance": 0.9791666666666666,
+            "q02_unknown_false_acceptance": 0.4479166666666667,
+            "q02_unknown_rejection": 0.5520833333333334,
+            "AUROC": 0.9332139756944444,
+            "U_at_95": 0.6875,
+            "U_at_98": 0.4375,
+            "DIR_at_FPIR_1": 0.5052083333333334,
+            "DIR_at_FPIR_5": 0.7552083333333334,
+            "calibration_unknown_false_acceptance_diagnostic": 0.4479166666666667,
+            "thresholds": {
+              "3": 0.024938015191395463,
+              "4": 0.008843325531724296,
+              "5": 0.002152426557839941,
+              "7": 0.010567983096447383
+            },
+            "tail_samples": 192
+          },
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold_rule_tail_fraction": 0.02,
+            "identity_macro_F1": 0.9947368421052631,
+            "unknown_F1": 0.6355140186915887,
+            "C": 0.9895833333333334,
+            "U": 0.4722222222222222,
+            "known_acceptance": 0.9895833333333334,
+            "q02_known_acceptance": 0.9895833333333334,
+            "q02_unknown_false_acceptance": 0.5277777777777778,
+            "q02_unknown_rejection": 0.4722222222222222,
+            "AUROC": 0.8578559027777779,
+            "U_at_95": 0.6111111111111112,
+            "U_at_98": 0.5694444444444444,
+            "DIR_at_FPIR_1": 0.036458333333333336,
+            "DIR_at_FPIR_5": 0.3385416666666667,
+            "pair_AUROC": 0.982227466724537,
+            "pair_EER": 0.049479166666666664
+          }
+        }
+      }
+    }
+  ],
+  "primary_method": "per-identity q02 of fused confidence",
+  "primary_summary": {
+    "N_known": 192.0,
+    "N_unknown": 144.0,
+    "threshold_rule_tail_fraction": 0.02,
+    "identity_macro_F1": 0.9670704284106025,
+    "unknown_F1": 0.8346860790392118,
+    "C": 0.9401041666666665,
+    "U": 0.7939814814814814,
+    "known_acceptance": 0.9401041666666665,
+    "q02_known_acceptance": 0.9401041666666665,
+    "q02_unknown_false_acceptance": 0.20601851851851852,
+    "q02_unknown_rejection": 0.7939814814814814,
+    "AUROC": 0.9336419753086419,
+    "U_at_95": 0.7905092592592592,
+    "U_at_98": 0.6875,
+    "DIR_at_FPIR_1": 0.49479166666666674,
+    "DIR_at_FPIR_5": 0.7048611111111112,
+    "pair_AUROC": 0.9916577751253858,
+    "pair_EER": 0.03414351851851851
+  },
+  "gates": {
+    "S1_known_acceptance_ge_95": false,
+    "S2_unknown_false_acceptance_le_02": false
+  },
+  "stage_passed": false,
+  "official_score": "N/A",
+  "test": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "accessed": false
+  }
+}
