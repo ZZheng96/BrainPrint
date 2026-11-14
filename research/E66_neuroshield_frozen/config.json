@@ -1,0 +1,103 @@
+{
+  "experiment": "E66 frozen NeuroShield-FM trial embeddings with normalized prototypes",
+  "date_preregistered": "2026-11-13",
+  "seed": 20261113,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_csv": "Brainprint_Competition/test.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_train_trials": 11304,
+    "expected_test_rows": 22251,
+    "expected_subjects": 20,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "train_session": "session1",
+    "inner_test_access": "forbidden"
+  },
+  "channel_order": ["P3", "C3", "F3", "FZ", "F4", "C4", "P4", "CZ", "FP1", "FP2", "T3", "T5", "O1", "O2", "F7", "F8", "T6", "T4"],
+  "foundation": {
+    "repo": "BrainPrint_cache/e66_neuroshield_fm/repo",
+    "checkpoint": "BrainPrint_cache/e66_neuroshield_fm/repo/ckpts_bw_replicate_varlen/replicate_best_trial_varlen_final.pth",
+    "meta": "BrainPrint_cache/e66_neuroshield_fm/repo/ckpts_bw_replicate_varlen/replicate_best_trial_varlen_meta.json",
+    "source": "https://github.com/kit-ps/NeuroShield-FM",
+    "license": "MIT",
+    "expected_embedding_dim": 128,
+    "frozen": true,
+    "strict_checkpoint_load": true,
+    "positions": "MNE standard_1005 metres through official names_norm_to_ref_pos3d; model coord_scale from metadata",
+    "known_pretraining_overlap": "No BrainPrint dataset is listed in the official repository; TUH-EEG, DVS-rsEEG and PREDICT are listed"
+  },
+  "preprocess": {
+    "scope": "trial-local only; no batch or cross-trial statistics",
+    "robust_scale": "per channel over the full 4 s: subtract median and divide by 1.4826*MAD, with RMS fallback near zero",
+    "scale_epsilon": 1e-8,
+    "absolute_microvolt_quality_thresholds": false,
+    "common_average_reference_after_channel_scaling": true,
+    "bandpass_hz": [1.0, 45.0],
+    "resample": "GPU FFT band-limit and zero-padded Fourier resampling from 300 Hz/1200 to 500 Hz/2000",
+    "windows": "four non-overlapping 500-sample windows; mean of four L2-normalized window embeddings followed by L2 normalization",
+    "official_amplitude_protocol_deviation": "BrainPrint amplitude units are unconfirmed, so robust unitless scaling replaces the official absolute microvolt QC/clipping"
+  },
+  "identity": {
+    "model": "class means of frozen fit-block trial embeddings, each L2-normalized; no WCCN and no encoder training",
+    "score": "cosine similarity to enrolled prototypes",
+    "confidence": "maximum prototype cosine similarity; larger means more likely known",
+    "decision": "if max_cosine < tau_low output 0, otherwise output argmax identity",
+    "tau_low_quantile": 0.02,
+    "u95_quantile": 0.05,
+    "inner_quantile_method": "linear",
+    "final20_quantile_method": "higher",
+    "threshold_source": "clean known continuous blocks only; no unknown or Test threshold tuning",
+    "feature_batch_size": 64,
+    "test_batch_size": 64,
+    "io_workers": 4
+  },
+  "protocol": {
+    "source": "E58/E65 ten inner runs and E54 subject roles, without CNN or logSPD branches",
+    "outer_seed": 42,
+    "outer_groups": 5,
+    "inner_folds_per_group": 2,
+    "roles": "outer_unknown=4, enrolled=8, unused_oe_only=4, calibration_eval_unknown=4; pairwise disjoint",
+    "fit": "trial <= 0.60 * within-subject/task maximum",
+    "known_evaluation_and_inner_threshold": "0.60 * maximum < trial <= 0.80 * maximum",
+    "unknown_evaluation": "calibration subjects only, trial <= 0.80 * maximum",
+    "formal_trials_per_subject_task": 8,
+    "aggregation": "two inner runs averaged within each outer group, then five outer groups averaged",
+    "final20": "fit <=60%, calibration 60-70% for q02/q05, sanity 70-80%; >80% unused"
+  },
+  "test_gate": {
+    "clean_direct_C_min": 0.95,
+    "clean_identity_macro_F1_direct_min": 0.92,
+    "clean_AUROC_min": 0.98,
+    "clean_U_at_95_min": 0.95,
+    "aggregation": "five-outer-fold clean means",
+    "single_frozen_test_audit_allowed_only_if_all_pass": true,
+    "if_any_clean_gate_fails": "Test=N/A; do not read Test and do not create predictions",
+    "all_train_gates_claim": "false: E66 does not run the attack suite or claim RA/ASafeR gates"
+  },
+  "test_audit": {
+    "prediction_rows": 22251,
+    "prediction_file": "e66_predictions.csv",
+    "S1_rejection_min": 0.95,
+    "S2_acceptance_min": 0.98,
+    "session_read_timing": "only after all predictions and CSV are written",
+    "post_audit_threshold_or_variant_change": "forbidden",
+    "metrics_without_truth": ["AUC", "F1", "C", "RA", "ASafeR", "U", "Score"]
+  },
+  "numerical_check": {
+    "trials": 8,
+    "embedding_atol": 0.0002,
+    "embedding_rtol": 0.0002,
+    "score_atol": 0.0002,
+    "score_rtol": 0.0002,
+    "tolerance_reason": "CUDA FP16 GEMM/attention kernels vary with batch size; permutation must remain exact and final labels must remain identical"
+  },
+  "reporting": {
+    "AUC": "clean pseudo-unknown detection AUROC using max prototype cosine; larger means known",
+    "AUPR": "unknown-class AUPR using negative max cosine",
+    "F1": "registered identity macro-F1 direct and with rejection; unknown-class F1 and joint macro-F1 separately",
+    "evidence_boundary": "Train session1 pseudo-unknown subjects and continuous within-session file blocks only; not cross-session or official Test truth evidence"
+  }
+}
