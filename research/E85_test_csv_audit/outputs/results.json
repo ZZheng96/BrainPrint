@@ -1,0 +1,424 @@
+{
+  "candidates": {
+    "e64_predictions": {
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E64_e58_test_audit\\e64_predictions.csv",
+      "csv_sha256": "5668b66722815bdef011e29efc0c4b6d59875648fd81192e607a51757c4ec92e",
+      "n_rows": 22251,
+      "integrity": {
+        "sample_order_valid": true,
+        "label_range_valid": true
+      },
+      "overall": {
+        "n": 22251,
+        "reject": 15270,
+        "rejection_rate": 0.6862612916273426,
+        "acceptance_rate": 0.3137387083726574
+      },
+      "S1": {
+        "n": 3033,
+        "reject": 1760,
+        "rejection_rate": 0.580283547642598,
+        "acceptance_rate": 0.4197164523574019,
+        "rejection_gate_ge_0.95": false
+      },
+      "S2": {
+        "n": 19218,
+        "reject": 13510,
+        "rejection_rate": 0.7029867832240608,
+        "acceptance_rate": 0.2970132167759392,
+        "rejection_gate_le_0.02": false,
+        "acceptance_gate_ge_0.98": false
+      },
+      "by_task": {
+        "EC": {
+          "n": 1972,
+          "reject": 1457,
+          "rejection_rate": 0.7388438133874239,
+          "acceptance_rate": 0.26115618661257606
+        },
+        "EO": {
+          "n": 2312,
+          "reject": 1622,
+          "rejection_rate": 0.7015570934256056,
+          "acceptance_rate": 0.2984429065743945
+        },
+        "Imagery": {
+          "n": 11207,
+          "reject": 7755,
+          "rejection_rate": 0.691978227893281,
+          "acceptance_rate": 0.308021772106719
+        },
+        "SSVEP": {
+          "n": 6760,
+          "reject": 4436,
+          "rejection_rate": 0.6562130177514793,
+          "acceptance_rate": 0.3437869822485207
+        }
+      },
+      "by_session_task": {
+        "S1/EC": {
+          "n": 292,
+          "reject": 169,
+          "rejection_rate": 0.5787671232876712,
+          "acceptance_rate": 0.4212328767123288
+        },
+        "S1/EO": {
+          "n": 291,
+          "reject": 169,
+          "rejection_rate": 0.5807560137457045,
+          "acceptance_rate": 0.41924398625429554
+        },
+        "S1/Imagery": {
+          "n": 1459,
+          "reject": 837,
+          "rejection_rate": 0.5736806031528444,
+          "acceptance_rate": 0.4263193968471556
+        },
+        "S1/SSVEP": {
+          "n": 991,
+          "reject": 585,
+          "rejection_rate": 0.5903128153380424,
+          "acceptance_rate": 0.40968718466195764
+        },
+        "S2/EC": {
+          "n": 1680,
+          "reject": 1288,
+          "rejection_rate": 0.7666666666666667,
+          "acceptance_rate": 0.23333333333333334
+        },
+        "S2/EO": {
+          "n": 2021,
+          "reject": 1453,
+          "rejection_rate": 0.7189510143493321,
+          "acceptance_rate": 0.281048985650668
+        },
+        "S2/Imagery": {
+          "n": 9748,
+          "reject": 6918,
+          "rejection_rate": 0.7096840377513336,
+          "acceptance_rate": 0.2903159622486664
+        },
+        "S2/SSVEP": {
+          "n": 5769,
+          "reject": 3851,
+          "rejection_rate": 0.6675333680013867,
+          "acceptance_rate": 0.33246663199861326
+        }
+      },
+      "label_distribution": {
+        "0": 15270,
+        "1": 29,
+        "2": 4,
+        "3": 569,
+        "4": 12,
+        "5": 2722,
+        "6": 396,
+        "7": 404,
+        "8": 1,
+        "9": 35,
+        "10": 104,
+        "11": 67,
+        "12": 30,
+        "13": 813,
+        "14": 268,
+        "15": 587,
+        "16": 177,
+        "17": 469,
+        "18": 105,
+        "19": 137,
+        "20": 52
+      },
+      "session_used_by_inference": false,
+      "test_labels_used": false,
+      "test_metrics": {
+        "AUC": "N/A（无Test真实标签）",
+        "F1": "N/A（无Test真实标签）",
+        "C": "N/A（无Test真实标签）",
+        "RA": "N/A（无Test真实标签）",
+        "ASafeR": "N/A（无Test真实标签）",
+        "U": "N/A（无Test真实标签）",
+        "Official_Score": "N/A（无Test真实标签）"
+      }
+    },
+    "candidate_e36c_rule": {
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E42_submission_candidates\\candidate_e36c_rule.csv",
+      "csv_sha256": "6a50f3b899151fbe25d213ad1812aae5eb25fc8d597174c0010c2eae2d1e720a",
+      "n_rows": 22251,
+      "integrity": {
+        "sample_order_valid": true,
+        "label_range_valid": true
+      },
+      "overall": {
+        "n": 22251,
+        "reject": 18008,
+        "rejection_rate": 0.809311941036358,
+        "acceptance_rate": 0.19068805896364208
+      },
+      "S1": {
+        "n": 3033,
+        "reject": 1796,
+        "rejection_rate": 0.5921529838443785,
+        "acceptance_rate": 0.4078470161556215,
+        "rejection_gate_ge_0.95": false
+      },
+      "S2": {
+        "n": 19218,
+        "reject": 16212,
+        "rejection_rate": 0.8435841398688729,
+        "acceptance_rate": 0.15641586013112707,
+        "rejection_gate_le_0.02": false,
+        "acceptance_gate_ge_0.98": false
+      },
+      "by_task": {
+        "EC": {
+          "n": 1972,
+          "reject": 1637,
+          "rejection_rate": 0.8301217038539553,
+          "acceptance_rate": 0.16987829614604463
+        },
+        "EO": {
+          "n": 2312,
+          "reject": 1917,
+          "rejection_rate": 0.8291522491349481,
+          "acceptance_rate": 0.1708477508650519
+        },
+        "Imagery": {
+          "n": 11207,
+          "reject": 9145,
+          "rejection_rate": 0.8160078522352101,
+          "acceptance_rate": 0.18399214776478987
+        },
+        "SSVEP": {
+          "n": 6760,
+          "reject": 5309,
+          "rejection_rate": 0.7853550295857988,
+          "acceptance_rate": 0.2146449704142012
+        }
+      },
+      "by_session_task": {
+        "S1/EC": {
+          "n": 292,
+          "reject": 172,
+          "rejection_rate": 0.589041095890411,
+          "acceptance_rate": 0.410958904109589
+        },
+        "S1/EO": {
+          "n": 291,
+          "reject": 171,
+          "rejection_rate": 0.5876288659793815,
+          "acceptance_rate": 0.41237113402061853
+        },
+        "S1/Imagery": {
+          "n": 1459,
+          "reject": 860,
+          "rejection_rate": 0.5894448252227553,
+          "acceptance_rate": 0.4105551747772447
+        },
+        "S1/SSVEP": {
+          "n": 991,
+          "reject": 593,
+          "rejection_rate": 0.5983854692230071,
+          "acceptance_rate": 0.40161453077699294
+        },
+        "S2/EC": {
+          "n": 1680,
+          "reject": 1465,
+          "rejection_rate": 0.8720238095238095,
+          "acceptance_rate": 0.12797619047619047
+        },
+        "S2/EO": {
+          "n": 2021,
+          "reject": 1746,
+          "rejection_rate": 0.863928748144483,
+          "acceptance_rate": 0.13607125185551708
+        },
+        "S2/Imagery": {
+          "n": 9748,
+          "reject": 8285,
+          "rejection_rate": 0.8499179318834633,
+          "acceptance_rate": 0.15008206811653674
+        },
+        "S2/SSVEP": {
+          "n": 5769,
+          "reject": 4716,
+          "rejection_rate": 0.8174726989079563,
+          "acceptance_rate": 0.18252730109204368
+        }
+      },
+      "label_distribution": {
+        "0": 18008,
+        "1": 0,
+        "2": 0,
+        "3": 272,
+        "4": 0,
+        "5": 2709,
+        "6": 74,
+        "7": 108,
+        "8": 0,
+        "9": 2,
+        "10": 14,
+        "11": 8,
+        "12": 0,
+        "13": 567,
+        "14": 69,
+        "15": 130,
+        "16": 26,
+        "17": 263,
+        "18": 0,
+        "19": 1,
+        "20": 0
+      },
+      "session_used_by_inference": false,
+      "test_labels_used": false,
+      "test_metrics": {
+        "AUC": "N/A（无Test真实标签）",
+        "F1": "N/A（无Test真实标签）",
+        "C": "N/A（无Test真实标签）",
+        "RA": "N/A（无Test真实标签）",
+        "ASafeR": "N/A（无Test真实标签）",
+        "U": "N/A（无Test真实标签）",
+        "Official_Score": "N/A（无Test真实标签）"
+      }
+    },
+    "candidate_two_gate_rule": {
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E42_submission_candidates\\candidate_two_gate_rule.csv",
+      "csv_sha256": "2b96ccc46ece5f4a8c61245251fbfbc857c390ec160e2a9b4264133998cd615c",
+      "n_rows": 22251,
+      "integrity": {
+        "sample_order_valid": true,
+        "label_range_valid": true
+      },
+      "overall": {
+        "n": 22251,
+        "reject": 18146,
+        "rejection_rate": 0.815513909487214,
+        "acceptance_rate": 0.18448609051278594
+      },
+      "S1": {
+        "n": 3033,
+        "reject": 1798,
+        "rejection_rate": 0.5928123969666996,
+        "acceptance_rate": 0.40718760303330037,
+        "rejection_gate_ge_0.95": false
+      },
+      "S2": {
+        "n": 19218,
+        "reject": 16348,
+        "rejection_rate": 0.8506608387969612,
+        "acceptance_rate": 0.1493391612030388,
+        "rejection_gate_le_0.02": false,
+        "acceptance_gate_ge_0.98": false
+      },
+      "by_task": {
+        "EC": {
+          "n": 1972,
+          "reject": 1644,
+          "rejection_rate": 0.8336713995943205,
+          "acceptance_rate": 0.1663286004056795
+        },
+        "EO": {
+          "n": 2312,
+          "reject": 1924,
+          "rejection_rate": 0.8321799307958477,
+          "acceptance_rate": 0.16782006920415224
+        },
+        "Imagery": {
+          "n": 11207,
+          "reject": 9183,
+          "rejection_rate": 0.81939859016686,
+          "acceptance_rate": 0.18060140983314
+        },
+        "SSVEP": {
+          "n": 6760,
+          "reject": 5395,
+          "rejection_rate": 0.7980769230769231,
+          "acceptance_rate": 0.20192307692307693
+        }
+      },
+      "by_session_task": {
+        "S1/EC": {
+          "n": 292,
+          "reject": 172,
+          "rejection_rate": 0.589041095890411,
+          "acceptance_rate": 0.410958904109589
+        },
+        "S1/EO": {
+          "n": 291,
+          "reject": 171,
+          "rejection_rate": 0.5876288659793815,
+          "acceptance_rate": 0.41237113402061853
+        },
+        "S1/Imagery": {
+          "n": 1459,
+          "reject": 861,
+          "rejection_rate": 0.5901302261823167,
+          "acceptance_rate": 0.40986977381768336
+        },
+        "S1/SSVEP": {
+          "n": 991,
+          "reject": 594,
+          "rejection_rate": 0.5993945509586277,
+          "acceptance_rate": 0.40060544904137235
+        },
+        "S2/EC": {
+          "n": 1680,
+          "reject": 1472,
+          "rejection_rate": 0.8761904761904762,
+          "acceptance_rate": 0.12380952380952381
+        },
+        "S2/EO": {
+          "n": 2021,
+          "reject": 1753,
+          "rejection_rate": 0.867392380009896,
+          "acceptance_rate": 0.1326076199901039
+        },
+        "S2/Imagery": {
+          "n": 9748,
+          "reject": 8322,
+          "rejection_rate": 0.8537135822732869,
+          "acceptance_rate": 0.14628641772671316
+        },
+        "S2/SSVEP": {
+          "n": 5769,
+          "reject": 4801,
+          "rejection_rate": 0.8322066215981972,
+          "acceptance_rate": 0.16779337840180275
+        }
+      },
+      "label_distribution": {
+        "0": 18146,
+        "1": 0,
+        "2": 0,
+        "3": 254,
+        "4": 0,
+        "5": 2698,
+        "6": 74,
+        "7": 108,
+        "8": 0,
+        "9": 2,
+        "10": 6,
+        "11": 8,
+        "12": 0,
+        "13": 538,
+        "14": 7,
+        "15": 124,
+        "16": 23,
+        "17": 262,
+        "18": 0,
+        "19": 1,
+        "20": 0
+      },
+      "session_used_by_inference": false,
+      "test_labels_used": false,
+      "test_metrics": {
+        "AUC": "N/A（无Test真实标签）",
+        "F1": "N/A（无Test真实标签）",
+        "C": "N/A（无Test真实标签）",
+        "RA": "N/A（无Test真实标签）",
+        "ASafeR": "N/A（无Test真实标签）",
+        "U": "N/A（无Test真实标签）",
+        "Official_Score": "N/A（无Test真实标签）"
+      }
+    }
+  }
+}
