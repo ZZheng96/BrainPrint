@@ -1,0 +1,65 @@
+{
+  "experiment": "E140_metric_learning",
+  "purpose": "Replace the unsupervised PCA-96 + nearest-prototype space with a supervised metric-learning embedding (ArcFace / batch-hard triplet) trained on the Train fit block, and measure whether the Test S1-vs-S2 diagnostic AUC rises well above 0.7566 so that the clean three-way objective (LOSO rejection + Test S1 rejection + Test S2 acceptance)/3 can approach 0.85.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_features": "research/E121_pca_sweep/test_logspd.npy",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "bands": 5,
+  "band_width": 171,
+  "fit_fraction": 0.6,
+  "ref_fraction": [0.6, 0.8],
+  "acceptance_grid": [0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95],
+  "prototype_k": [1, 3, 8],
+  "prototype_sources": ["fit", "all"],
+  "train": {
+    "epochs": 80,
+    "batch_size": 256,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 0,
+    "hidden": [512, 256],
+    "dropout": 0.1,
+    "arc_scale": 28.0,
+    "arc_margin": 0.25,
+    "triplet_margin": 0.3,
+    "triplet_weight": 0.5
+  },
+  "augmentations": {
+    "mild": {"band_scale": 0.15, "band_drop": 0.05, "noise": 0.10, "feat_drop": 0.05, "global_scale": 0.05},
+    "strong": {"band_scale": 0.30, "band_drop": 0.12, "noise": 0.25, "feat_drop": 0.10, "global_scale": 0.10}
+  },
+  "variants": [
+    {"name": "A_D96_e128_arc_mild", "pca_dim": 96, "emb_dim": 128, "loss": "arcface", "aug": "mild"},
+    {"name": "B_D128_e128_arc_mild", "pca_dim": 128, "emb_dim": 128, "loss": "arcface", "aug": "mild"},
+    {"name": "C_D160_e128_arc_mild", "pca_dim": 160, "emb_dim": 128, "loss": "arcface", "aug": "mild"},
+    {"name": "D_D128_e128_triplet_mild", "pca_dim": 128, "emb_dim": 128, "loss": "triplet", "aug": "mild"},
+    {"name": "E_D128_e128_arc_triplet_mild", "pca_dim": 128, "emb_dim": 128, "loss": "arc_triplet", "aug": "mild"},
+    {"name": "F_D128_e64_arc_mild", "pca_dim": 128, "emb_dim": 64, "loss": "arcface", "aug": "mild"},
+    {"name": "G_D128_e128_arc_strong", "pca_dim": 128, "emb_dim": 128, "loss": "arcface", "aug": "strong"},
+    {"name": "H_D128_e128_arc_mild_ep20", "pca_dim": 128, "emb_dim": 128, "loss": "arcface", "aug": "mild", "epochs": 20},
+    {"name": "I_D128_e64_arc_strong_wd1e-2", "pca_dim": 128, "emb_dim": 64, "loss": "arcface", "aug": "strong", "weight_decay": 0.01}
+  ],
+  "primary": "B_D128_e128_arc_mild",
+  "input_space_controls": [
+    {
+      "label": "PCA128_whitened_control",
+      "pca_dim": 128,
+      "whiten": true,
+      "prototype_k": [1, 3],
+      "purpose": "Same prototype/threshold protocol in the exact space the network consumes (whitened PCA), without any learning."
+    },
+    {
+      "label": "PCA128_raw_control",
+      "pca_dim": 128,
+      "whiten": false,
+      "prototype_k": [1, 3],
+      "purpose": "Unwhitened PCA-128: the baseline-style space, to check that the scoring protocol itself reproduces the ~0.75 baseline separability."
+    }
+  ],
+  "selection_policy": "Primary configuration is pre-registered (suggested protocol: PCA 128, 128-d embedding, ArcFace, mild augmentation). The other variants are reported for transparency. No variant, working point or hyper-parameter is selected with Test metrics or LOSO metrics.",
+  "targets": {"three_way_mean": 0.85, "test_auc": 0.87}
+}

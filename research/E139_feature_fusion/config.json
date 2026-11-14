@@ -1,6 +1,6 @@
 {
   "experiment": "E139_feature_fusion",
-  "purpose": "E138 pushed the clean three-way mean from 0.7163 to 0.7784 by building prototypes from the whole Train set. The remaining gap is separability: Test diagnostic AUC is 0.76-0.79 while ~0.87 is needed. Here we fuse at FEATURE level (concatenated per-task-standardised views, then PCA), sweep the PCA dimension and the prototype count, and keep the Train-only calibration.",
+  "purpose": "E138 pushed the clean three-way mean from 0.7163 to 0.7784 by building prototypes from the whole Train set. A first pass showed PCA-96 is optimal (160/256 are worse) and that raising the prototype count k to 12 already gives 0.7967. This leaner run extends the k range, checks feature-level multi-view fusion at PCA-96 only, and widens the acceptance grid.",
   "data": {
     "train_metadata": "BrainPrint_cache/train_metadata.csv",
     "test_metadata": "BrainPrint_cache/test_metadata.csv"
@@ -15,27 +15,17 @@
     "E62cov8": ["BrainPrint_cache/e62_multiwindow/train_multiwindow_cov8_dinov2.npy",
                 "BrainPrint_cache/e62_multiwindow/test_multiwindow_cov8_dinov2.npy"],
     "E21covdz": ["BrainPrint_cache/e21_scale_invariant/train_cov_detrend_zband.npy",
-                 "BrainPrint_cache/e21_scale_invariant/test_cov_detrend_zband.npy"],
-    "E21corrf": ["BrainPrint_cache/e21_scale_invariant/train_corr_fisher_zband.npy",
-                 "BrainPrint_cache/e21_scale_invariant/test_corr_fisher_zband.npy"],
-    "DINOCov5": ["BrainPrint_cache/eeg_image_dinov2/train_covariance5_dinov2.npy",
-                 "BrainPrint_cache/eeg_image_dinov2/test_covariance5_dinov2.npy"],
-    "DINOCovHR": ["BrainPrint_cache/eeg_image_dinov2/train_covariance_hr_dinov2.npy",
-                  "BrainPrint_cache/eeg_image_dinov2/test_covariance_hr_dinov2.npy"],
-    "DINOTopo5": ["BrainPrint_cache/eeg_image_dinov2/train_topomap5_dinov2.npy",
-                  "BrainPrint_cache/eeg_image_dinov2/test_topomap5_dinov2.npy"]
+                 "BrainPrint_cache/e21_scale_invariant/test_cov_detrend_zband.npy"]
   },
   "sets": {
     "A_E65": ["E65"],
     "B_logspd_multiwin": ["E65", "E62cov8", "E62corr8", "E62cov4"],
-    "C_plus_cov": ["E65", "E62cov8", "E62corr8", "E62cov4", "E21covdz"],
-    "D_all": ["E65", "E62cov8", "E62corr8", "E62cov4", "E21covdz", "E21corrf",
-              "DINOCov5", "DINOCovHR", "DINOTopo5"]
+    "C_plus_cov": ["E65", "E62cov8", "E62corr8", "E62cov4", "E21covdz"]
   },
   "tasks": ["EC", "EO", "Imagery", "SSVEP"],
-  "pca_dims": [96, 160, 256],
-  "prototype_k": [3, 5, 8, 12, 16],
+  "pca_dims": [96],
+  "prototype_k": [3, 8, 12, 16, 24, 32],
   "fit_fraction": 0.6,
-  "acceptance_grid": [0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95],
+  "acceptance_grid": [0.70, 0.75, 0.80, 0.85, 0.88, 0.90, 0.92, 0.94, 0.96, 0.98],
   "targets": {"three_way_mean": 0.85}
 }

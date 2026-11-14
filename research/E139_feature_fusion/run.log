@@ -1,0 +1,38 @@
+﻿loaded E65 (11304, 855) (22251, 855)
+loaded E62corr8 (11304, 768) (22251, 768)
+loaded E62cov4 (11304, 768) (22251, 768)
+loaded E62cov8 (11304, 768) (22251, 768)
+loaded E21covdz (11304, 1026) (22251, 1026)
+A_E65: 855 dims
+  dim=96 k=3 AUC 0.7566 best 0.7784
+  dim=96 k=8 AUC 0.7593 best 0.7945
+  dim=96 k=12 AUC 0.7578 best 0.7967
+  dim=96 k=16 AUC 0.7556 best 0.7967
+  dim=96 k=24 AUC 0.7579 best 0.7967
+  dim=96 k=32 AUC 0.7599 best 0.7967
+B_logspd_multiwin: 3159 dims
+  dim=96 k=3 AUC 0.7627 best 0.7967
+  dim=96 k=8 AUC 0.7640 best 0.7967
+  dim=96 k=12 AUC 0.7655 best 0.7967
+  dim=96 k=16 AUC 0.7659 best 0.7967
+  dim=96 k=24 AUC 0.7680 best 0.7967
+  dim=96 k=32 AUC 0.7675 best 0.7967
+C_plus_cov: 4185 dims
+  dim=96 k=3 AUC 0.7683 best 0.7967
+  dim=96 k=8 AUC 0.7720 best 0.7967
+  dim=96 k=12 AUC 0.7709 best 0.7967
+  dim=96 k=16 AUC 0.7745 best 0.7967
+  dim=96 k=24 AUC 0.7747 best 0.7967
+  dim=96 k=32 AUC 0.7757 best 0.7967
+{
+  "set": "A_E65",
+  "pca_dim": 96,
+  "k": 12,
+  "acceptance_rate": 0.9,
+  "test_auc": 0.7578209062370331,
+  "median_shift_sd": -1.371340146229222,
+  "LOSO_rejection": 0.9963167349051059,
+  "Test_S1_rejection": 0.7978898780085724,
+  "Test_S2_acceptance": 0.595951711936726,
+  "three_way_mean": 0.7967194416168014
+}

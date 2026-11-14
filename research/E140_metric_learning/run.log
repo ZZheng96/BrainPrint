@@ -1,0 +1,138 @@
+﻿train (11304, 855)  test (22251, 855)
+[1/9] A_D96_e128_arc_mild  (pca 96, emb 128, arcface, aug mild)
+    epoch  20  loss 0.0182  (2s)
+    epoch  40  loss 0.0044  (4s)
+    epoch  60  loss 0.0022  (6s)
+    epoch  80  loss 0.0028  (8s)
+  fit k=1  Test AUC 0.4933 (raw 0.4942)  best3way 0.6689
+  fit k=3  Test AUC 0.4990 (raw 0.4995)  best3way 0.6742
+  fit k=8  Test AUC 0.4950 (raw 0.4948)  best3way 0.6744
+  all k=1  Test AUC 0.4892 (raw 0.4891)  best3way 0.6744
+  all k=3  Test AUC 0.4935 (raw 0.4923)  best3way 0.6744
+  all k=8  Test AUC 0.4987 (raw 0.4964)  best3way 0.6744
+  done in 8s
+[2/9] B_D128_e128_arc_mild  (pca 128, emb 128, arcface, aug mild)
+    epoch  20  loss 0.0222  (2s)
+    epoch  40  loss 0.0074  (4s)
+    epoch  60  loss 0.0036  (6s)
+    epoch  80  loss 0.0046  (8s)
+  fit k=1  Test AUC 0.5327 (raw 0.5318)  best3way 0.6700
+  fit k=3  Test AUC 0.5361 (raw 0.5352)  best3way 0.6710
+  fit k=8  Test AUC 0.5371 (raw 0.5356)  best3way 0.6718
+  all k=1  Test AUC 0.5365 (raw 0.5351)  best3way 0.6718
+  all k=3  Test AUC 0.5405 (raw 0.5379)  best3way 0.6718
+  all k=8  Test AUC 0.5483 (raw 0.5472)  best3way 0.6718
+  done in 8s
+[3/9] C_D160_e128_arc_mild  (pca 160, emb 128, arcface, aug mild)
+    epoch  20  loss 0.0219  (2s)
+    epoch  40  loss 0.0062  (4s)
+    epoch  60  loss 0.0026  (6s)
+    epoch  80  loss 0.0049  (8s)
+  fit k=1  Test AUC 0.5051 (raw 0.5047)  best3way 0.6723
+  fit k=3  Test AUC 0.5099 (raw 0.5095)  best3way 0.6757
+  fit k=8  Test AUC 0.5061 (raw 0.5060)  best3way 0.6757
+  all k=1  Test AUC 0.5028 (raw 0.5023)  best3way 0.6757
+  all k=3  Test AUC 0.5050 (raw 0.5037)  best3way 0.6757
+  all k=8  Test AUC 0.5163 (raw 0.5149)  best3way 0.6760
+  done in 8s
+[4/9] D_D128_e128_triplet_mild  (pca 128, emb 128, triplet, aug mild)
+    epoch  20  loss 0.0053  (2s)
+    epoch  40  loss 0.0010  (4s)
+    epoch  60  loss 0.0003  (6s)
+    epoch  80  loss 0.0004  (8s)
+  fit k=1  Test AUC 0.4988 (raw 0.4991)  best3way 0.6706
+  fit k=3  Test AUC 0.4963 (raw 0.4964)  best3way 0.6706
+  fit k=8  Test AUC 0.4983 (raw 0.4986)  best3way 0.6711
+  all k=1  Test AUC 0.4984 (raw 0.4983)  best3way 0.6711
+  all k=3  Test AUC 0.5000 (raw 0.5003)  best3way 0.6711
+  all k=8  Test AUC 0.5020 (raw 0.5048)  best3way 0.6711
+  done in 8s
+[5/9] E_D128_e128_arc_triplet_mild  (pca 128, emb 128, arc_triplet, aug mild)
+    epoch  20  loss 0.0257  (3s)
+    epoch  40  loss 0.0073  (5s)
+    epoch  60  loss 0.0028  (8s)
+    epoch  80  loss 0.0036  (11s)
+  fit k=1  Test AUC 0.5242 (raw 0.5236)  best3way 0.6747
+  fit k=3  Test AUC 0.5256 (raw 0.5249)  best3way 0.6758
+  fit k=8  Test AUC 0.5249 (raw 0.5241)  best3way 0.6764
+  all k=1  Test AUC 0.5285 (raw 0.5272)  best3way 0.6764
+  all k=3  Test AUC 0.5351 (raw 0.5337)  best3way 0.6764
+  all k=8  Test AUC 0.5392 (raw 0.5370)  best3way 0.6765
+  done in 11s
+[6/9] F_D128_e64_arc_mild  (pca 128, emb 64, arcface, aug mild)
+    epoch  20  loss 0.0248  (2s)
+    epoch  40  loss 0.0108  (4s)
+    epoch  60  loss 0.0035  (6s)
+    epoch  80  loss 0.0038  (8s)
+  fit k=1  Test AUC 0.5335 (raw 0.5345)  best3way 0.6739
+  fit k=3  Test AUC 0.5357 (raw 0.5361)  best3way 0.6758
+  fit k=8  Test AUC 0.5321 (raw 0.5325)  best3way 0.6758
+  all k=1  Test AUC 0.5338 (raw 0.5343)  best3way 0.6758
+  all k=3  Test AUC 0.5405 (raw 0.5414)  best3way 0.6758
+  all k=8  Test AUC 0.5468 (raw 0.5478)  best3way 0.6767
+  done in 8s
+[7/9] G_D128_e128_arc_strong  (pca 128, emb 128, arcface, aug strong)
+    epoch  20  loss 0.0687  (2s)
+    epoch  40  loss 0.0329  (4s)
+    epoch  60  loss 0.0228  (6s)
+    epoch  80  loss 0.0173  (8s)
+  fit k=1  Test AUC 0.5523 (raw 0.5512)  best3way 0.6721
+  fit k=3  Test AUC 0.5588 (raw 0.5565)  best3way 0.6770
+  fit k=8  Test AUC 0.5563 (raw 0.5544)  best3way 0.6770
+  all k=1  Test AUC 0.5556 (raw 0.5539)  best3way 0.6770
+  all k=3  Test AUC 0.5632 (raw 0.5613)  best3way 0.6780
+  all k=8  Test AUC 0.5698 (raw 0.5695)  best3way 0.6799
+  done in 8s
+[8/9] H_D128_e128_arc_mild_ep20  (pca 128, emb 128, arcface, aug mild)
+    epoch  20  loss 0.0154  (2s)
+  fit k=1  Test AUC 0.5130 (raw 0.5116)  best3way 0.6742
+  fit k=3  Test AUC 0.5189 (raw 0.5164)  best3way 0.6761
+  fit k=8  Test AUC 0.5256 (raw 0.5239)  best3way 0.6761
+  all k=1  Test AUC 0.5213 (raw 0.5175)  best3way 0.6761
+  all k=3  Test AUC 0.5272 (raw 0.5230)  best3way 0.6761
+  all k=8  Test AUC 0.5292 (raw 0.5249)  best3way 0.6761
+  done in 2s
+[9/9] I_D128_e64_arc_strong_wd1e-2  (pca 128, emb 64, arcface, aug strong)
+    epoch  20  loss 0.0531  (2s)
+    epoch  40  loss 0.0262  (4s)
+    epoch  60  loss 0.0182  (6s)
+    epoch  80  loss 0.0116  (8s)
+  fit k=1  Test AUC 0.5241 (raw 0.5236)  best3way 0.6733
+  fit k=3  Test AUC 0.5275 (raw 0.5265)  best3way 0.6773
+  fit k=8  Test AUC 0.5244 (raw 0.5236)  best3way 0.6781
+  all k=1  Test AUC 0.5204 (raw 0.5193)  best3way 0.6781
+  all k=3  Test AUC 0.5319 (raw 0.5299)  best3way 0.6781
+  all k=8  Test AUC 0.5350 (raw 0.5332)  best3way 0.6781
+  done in 8s
+  fit k=1  Test AUC 0.6911 (raw 0.6957)  best3way 0.6549
+  fit k=3  Test AUC 0.7037 (raw 0.7034)  best3way 0.6722
+  all k=1  Test AUC 0.6961 (raw 0.6955)  best3way 0.6722
+  all k=3  Test AUC 0.6966 (raw 0.7034)  best3way 0.6722
+control PCA128_whitened_control done
+  fit k=1  Test AUC 0.7389 (raw 0.7493)  best3way 0.7065
+  fit k=3  Test AUC 0.7599 (raw 0.7606)  best3way 0.7276
+  all k=1  Test AUC 0.7509 (raw 0.7491)  best3way 0.7276
+  all k=3  Test AUC 0.7524 (raw 0.7595)  best3way 0.7276
+control PCA128_raw_control done
+{
+  "primary_best": {
+    "variant": "B_D128_e128_arc_mild",
+    "pca_dim": 128,
+    "emb_dim": 128,
+    "loss": "arcface",
+    "aug": "mild",
+    "prototype_k": 8,
+    "prototype_source": "fit",
+    "acceptance_rate": 0.75,
+    "LOSO_rejection": 1.0,
+    "Test_S1_rejection": 0.987800857237059,
+    "Test_S2_acceptance": 0.027474242897283795,
+    "three_way_mean": 0.6717583667114476,
+    "test_auc": 0.5371400338806174,
+    "test_auc_raw": 0.5355908608182302
+  },
+  "baseline": {
+    "test_auc": 0.7566,
+    "three_way_mean": 0.7784
+  }
+}
