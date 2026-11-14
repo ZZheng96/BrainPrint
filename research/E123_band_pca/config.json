@@ -1,0 +1,21 @@
+{
+  "experiment": "E123_band_pca",
+  "purpose": "Select frequency bands before PCA on correlation-logSPD; report LOSO rejection, Test S1 rejection and Test S2 acceptance together.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_trials": 11304
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "pca_dim": 96,
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  }
+}

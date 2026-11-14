@@ -1,0 +1,44 @@
+{
+  "experiment": "E125_band_fusion",
+  "pca_dim": 96,
+  "variants": {
+    "band1": {
+      "Test_S1_rejection": 0.5456643587207386,
+      "Test_S2_acceptance": 0.7114163804766365,
+      "diagnostic_AUC": 0.6967430145459645
+    },
+    "band2": {
+      "Test_S1_rejection": 0.6096274315858886,
+      "Test_S2_acceptance": 0.7213549797065252,
+      "diagnostic_AUC": 0.7132915457974217
+    },
+    "band3": {
+      "Test_S1_rejection": 0.6343554236729311,
+      "Test_S2_acceptance": 0.6876886252471641,
+      "diagnostic_AUC": 0.6980160768062226
+    },
+    "band4": {
+      "Test_S1_rejection": 0.7303000329706562,
+      "Test_S2_acceptance": 0.5798210011447601,
+      "diagnostic_AUC": 0.7137029412851597
+    },
+    "band5": {
+      "Test_S1_rejection": 0.7194197164523574,
+      "Test_S2_acceptance": 0.528879175772713,
+      "diagnostic_AUC": 0.6817617903893196
+    },
+    "F1_mean_raw": {
+      "Test_S1_rejection": 0.7151335311572701,
+      "Test_S2_acceptance": 0.6217608492038714,
+      "diagnostic_AUC": 0.732920666576151
+    },
+    "F2_mean_rank": {
+      "Test_S1_rejection": 0.722057368941642,
+      "Test_S2_acceptance": 0.6403371838901031,
+      "diagnostic_AUC": 0.7457945514661168,
+      "LOSO_AUC": 0.7458576178226459,
+      "LOSO_rejection": 0.38311741318480635,
+      "LOSO_folds_ge_0.80": 2
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "experiment": "E121_pca_sweep",
+  "diagnostic_only": true,
+  "warning": "Session is used only to measure separability, never to build a score.",
+  "N_S1": 3033,
+  "N_S2": 19218,
+  "best": {
+    "name": "p96_max",
+    "diagnostic_AUC": 0.7657705949853242,
+    "best_S2_accept_at_S1_rej_0.80": 0.5706108856280571,
+    "best_joint_min": 0.6838114078470161
+  },
+  "scores": {
+    "p8_max": {
+      "diagnostic_AUC": 0.7032700481335894,
+      "best_S2_accept_at_S1_rej_0.80": 0.4316786346133833,
+      "best_joint_min": 0.6375273181392445
+    },
+    "p8_wccn_max": {
+      "diagnostic_AUC": 0.6941130308480651,
+      "best_S2_accept_at_S1_rej_0.80": 0.4027994588406702,
+      "best_joint_min": 0.6308668956186908
+    },
+    "p8_wccn_z_max": {
+      "diagnostic_AUC": 0.6916221919656662,
+      "best_S2_accept_at_S1_rej_0.80": 0.39697158913518577,
+      "best_joint_min": 0.630814861067749
+    },
+    "p8_wccn_ratio": {
+      "diagnostic_AUC": 0.5125782246744511,
+      "best_S2_accept_at_S1_rej_0.80": 0.20298678322406077,
+      "best_joint_min": 0.5103028410864814
+    },
+    "p16_max": {
+      "diagnostic_AUC": 0.7195638365463853,
+      "best_S2_accept_at_S1_rej_0.80": 0.45764387553335417,
+      "best_joint_min": 0.6583411385159746
+    },
+    "p16_wccn_max": {
+      "diagnostic_AUC": 0.6945881871035496,
+      "best_S2_accept_at_S1_rej_0.80": 0.3768342179206993,
+      "best_joint_min": 0.6429277942631059
+    },
+    "p16_wccn_z_max": {
+      "diagnostic_AUC": 0.6797006954787448,
+      "best_S2_accept_at_S1_rej_0.80": 0.3681964824643563,
+      "best_joint_min": 0.6165512693702605
+    },
+    "p16_wccn_ratio": {
+      "diagnostic_AUC": 0.4166747643613731,
+      "best_S2_accept_at_S1_rej_0.80": 0.1162972213549797,
+      "best_joint_min": 0.4362017804154303
+    },
+    "p24_max": {
+      "diagnostic_AUC": 0.7316467979776488,
+      "best_S2_accept_at_S1_rej_0.80": 0.4692475803933812,
+      "best_joint_min": 0.6660072535443455
+    },
+    "p24_wccn_max": {
+      "diagnostic_AUC": 0.7192087217524702,
+      "best_S2_accept_at_S1_rej_0.80": 0.4318347382662088,
+      "best_joint_min": 0.6524892845367622
+    },
+    "p24_wccn_z_max": {
+      "diagnostic_AUC": 0.7254044275243801,
+      "best_S2_accept_at_S1_rej_0.80": 0.44905817462795294,
+      "best_joint_min": 0.6551269370260469
+    },
+    "p24_wccn_ratio": {
+      "diagnostic_AUC": 0.43384023015020845,
+      "best_S2_accept_at_S1_rej_0.80": 0.13934852742220835,
+      "best_joint_min": 0.44885003642418564
+    },
+    "p32_max": {
+      "diagnostic_AUC": 0.7507270254418931,
+      "best_S2_accept_at_S1_rej_0.80": 0.518472265584348,
+      "best_joint_min": 0.6757206785305443
+    },
+    "p32_wccn_max": {
+      "diagnostic_AUC": 0.7543534030236037,
+      "best_S2_accept_at_S1_rej_0.80": 0.5328858361952337,
+      "best_joint_min": 0.6788427515870538
+    },
+    "p32_wccn_z_max": {
+      "diagnostic_AUC": 0.7653658046087343,
+      "best_S2_accept_at_S1_rej_0.80": 0.5534915183681964,
+      "best_joint_min": 0.6880975931421035
+    },
+    "p32_wccn_ratio": {
+      "diagnostic_AUC": 0.43248514441878233,
+      "best_S2_accept_at_S1_rej_0.80": 0.10474555104589447,
+      "best_joint_min": 0.45582266625039025
+    },
+    "p48_max": {
+      "diagnostic_AUC": 0.761502646659459,
+      "best_S2_accept_at_S1_rej_0.80": 0.5590592153189718,
+      "best_joint_min": 0.6827453429076907
+    },
+    "p48_wccn_max": {
+      "diagnostic_AUC": 0.7585948451242116,
+      "best_S2_accept_at_S1_rej_0.80": 0.5272140701425747,
+      "best_joint_min": 0.6838114078470161
+    },
+    "p48_wccn_z_max": {
+      "diagnostic_AUC": 0.7584880224630051,
+      "best_S2_accept_at_S1_rej_0.80": 0.5388177750026018,
+      "best_joint_min": 0.6894057654282444
+    },
+    "p48_wccn_ratio": {
+      "diagnostic_AUC": 0.4282354159060066,
+      "best_S2_accept_at_S1_rej_0.80": 0.07560620251847226,
+      "best_joint_min": 0.4587886356540743
+    },
+    "p64_max": {
+      "diagnostic_AUC": 0.7621642729229181,
+      "best_S2_accept_at_S1_rej_0.80": 0.5564574877718805,
+      "best_joint_min": 0.6815034619188922
+    },
+    "p64_wccn_max": {
+      "diagnostic_AUC": 0.7614311913661281,
+      "best_S2_accept_at_S1_rej_0.80": 0.5360079092517431,
+      "best_joint_min": 0.6841411144081767
+    },
+    "p64_wccn_z_max": {
+      "diagnostic_AUC": 0.7449009485522917,
+      "best_S2_accept_at_S1_rej_0.80": 0.5271620355916329,
+      "best_joint_min": 0.6749093306956808
+    },
+    "p64_wccn_ratio": {
+      "diagnostic_AUC": 0.4354163812315064,
+      "best_S2_accept_at_S1_rej_0.80": 0.06436673951503799,
+      "best_joint_min": 0.4671941971645236
+    },
+    "p96_max": {
+      "diagnostic_AUC": 0.7657705949853242,
+      "best_S2_accept_at_S1_rej_0.80": 0.5706108856280571,
+      "best_joint_min": 0.6838114078470161
+    },
+    "p96_wccn_max": {
+      "diagnostic_AUC": 0.7643586195173588,
+      "best_S2_accept_at_S1_rej_0.80": 0.5388698095535436,
+      "best_joint_min": 0.6861193537751401
+    },
+    "p96_wccn_z_max": {
+      "diagnostic_AUC": 0.7480483011705595,
+      "best_S2_accept_at_S1_rej_0.80": 0.5242481007388906,
+      "best_joint_min": 0.6848005275304978
+    },
+    "p96_wccn_ratio": {
+      "diagnostic_AUC": 0.42770721288774183,
+      "best_S2_accept_at_S1_rej_0.80": 0.0557810386096368,
+      "best_joint_min": 0.4629080118694362
+    },
+    "p128_max": {
+      "diagnostic_AUC": 0.7632998630906287,
+      "best_S2_accept_at_S1_rej_0.80": 0.5680091580809657,
+      "best_joint_min": 0.6828222881635344
+    },
+    "p128_wccn_max": {
+      "diagnostic_AUC": 0.7552099658466,
+      "best_S2_accept_at_S1_rej_0.80": 0.5358518055989177,
+      "best_joint_min": 0.6795252225519288
+    },
+    "p128_wccn_z_max": {
+      "diagnostic_AUC": 0.7231116047273655,
+      "best_S2_accept_at_S1_rej_0.80": 0.5042147986262878,
+      "best_joint_min": 0.6666666666666666
+    },
+    "p128_wccn_ratio": {
+      "diagnostic_AUC": 0.4206128517208819,
+      "best_S2_accept_at_S1_rej_0.80": 0.04735144135706109,
+      "best_joint_min": 0.46356742499175735
+    },
+    "p192_max": {
+      "diagnostic_AUC": 0.7576902880195602,
+      "best_S2_accept_at_S1_rej_0.80": 0.5534394838172546,
+      "best_joint_min": 0.6838114078470161
+    },
+    "p192_wccn_max": {
+      "diagnostic_AUC": 0.7380501615816061,
+      "best_S2_accept_at_S1_rej_0.80": 0.4895410552606931,
+      "best_joint_min": 0.668643979602456
+    },
+    "p192_wccn_z_max": {
+      "diagnostic_AUC": 0.6942855700761632,
+      "best_S2_accept_at_S1_rej_0.80": 0.4465084816318035,
+      "best_joint_min": 0.6413778749089395
+    },
+    "p192_wccn_ratio": {
+      "diagnostic_AUC": 0.41360678459174766,
+      "best_S2_accept_at_S1_rej_0.80": 0.041315433447809344,
+      "best_joint_min": 0.46158918562479395
+    },
+    "p256_max": {
+      "diagnostic_AUC": 0.7500227318760295,
+      "best_S2_accept_at_S1_rej_0.80": 0.5418878135081694,
+      "best_joint_min": 0.6787386824851701
+    },
+    "p256_wccn_max": {
+      "diagnostic_AUC": 0.7149720319006625,
+      "best_S2_accept_at_S1_rej_0.80": 0.45779997918617965,
+      "best_joint_min": 0.6616193152253096
+    },
+    "p256_wccn_z_max": {
+      "diagnostic_AUC": 0.6579598863536584,
+      "best_S2_accept_at_S1_rej_0.80": 0.4057133936934124,
+      "best_joint_min": 0.6056709528519617
+    },
+    "p256_wccn_ratio": {
+      "diagnostic_AUC": 0.40778299804588214,
+      "best_S2_accept_at_S1_rej_0.80": 0.03574773649703403,
+      "best_joint_min": 0.46060006594131225
+    }
+  }
+}

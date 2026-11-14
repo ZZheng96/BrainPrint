@@ -1,0 +1,30 @@
+{
+  "experiment": "E122_pca96_deploy",
+  "purpose": "Deploy PCA-96 correlation-logSPD + task-conditioned max cosine, and report LOSO rejection, Test S1 rejection and Test S2 acceptance together.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "train_root": "Brainprint_Competition",
+    "test_csv": "Brainprint_Competition/test.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_trials": 11304,
+    "expected_test_rows": 22251
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "pca_dim": 96,
+  "prototype_counts": [1, 3],
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  },
+  "protocol": {
+    "train_session1_only": true,
+    "test_read_once_after_freeze": true,
+    "session_audit_after_predictions": true
+  }
+}

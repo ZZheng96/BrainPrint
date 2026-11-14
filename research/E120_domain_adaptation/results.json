@@ -1,0 +1,49 @@
+{
+  "experiment": "E120_domain_adaptation",
+  "diagnostic_only": true,
+  "warning": "Session is used only to measure separability, never to build a score.",
+  "N_S1": 3033,
+  "N_S2": 19218,
+  "scores": {
+    "D0_baseline_max": {
+      "diagnostic_AUC": 0.6854051696986871,
+      "best_S2_accept_at_S1_rej_0.80": 0.42298886460609847,
+      "best_joint_min": 0.6547507545009886
+    },
+    "D0b_baseline_ratio": {
+      "diagnostic_AUC": 0.5798102957178601,
+      "best_S2_accept_at_S1_rej_0.80": 0.3332812987823915,
+      "best_joint_min": 0.5584868352586118
+    },
+    "D1_pertask_z_max": {
+      "diagnostic_AUC": 0.6416676162586201,
+      "best_S2_accept_at_S1_rej_0.80": 0.37688625247164115,
+      "best_joint_min": 0.6134873556041212
+    },
+    "D2_wccn_max": {
+      "diagnostic_AUC": 0.5878659836329807,
+      "best_S2_accept_at_S1_rej_0.80": 0.28702258299510874,
+      "best_joint_min": 0.5624793933399275
+    },
+    "D3_wccn_pertask_z_max": {
+      "diagnostic_AUC": 0.5805414643658371,
+      "best_S2_accept_at_S1_rej_0.80": 0.28686647934228326,
+      "best_joint_min": 0.5519304818399418
+    },
+    "D4_pca64_wccn_max": {
+      "diagnostic_AUC": 0.7614311913661281,
+      "best_S2_accept_at_S1_rej_0.80": 0.5360079092517431,
+      "best_joint_min": 0.6841411144081767
+    },
+    "D5_pca64_wccn_ratio": {
+      "diagnostic_AUC": 0.4354163812315064,
+      "best_S2_accept_at_S1_rej_0.80": 0.06436673951503799,
+      "best_joint_min": 0.4671941971645236
+    },
+    "D6_pertask_center_renorm_max": {
+      "diagnostic_AUC": 0.5487262394851349,
+      "best_S2_accept_at_S1_rej_0.80": 0.27240087418045583,
+      "best_joint_min": 0.5413674679987511
+    }
+  }
+}

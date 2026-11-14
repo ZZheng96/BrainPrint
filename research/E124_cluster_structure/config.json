@@ -1,0 +1,17 @@
+{
+  "experiment": "E124_cluster_structure",
+  "purpose": "Diagnostic: does Test session1 show fewer clusters than session2, as expected if session1 holds the 5 unregistered people?",
+  "seed": 20261114,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_trials": 11304
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "pca_dim": 96,
+  "calibration": {
+    "fit_fraction": 0.6
+  }
+}

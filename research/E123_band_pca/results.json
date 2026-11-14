@@ -1,0 +1,87 @@
+{
+  "experiment": "E123_band_pca",
+  "pca_dim": 96,
+  "best_by_test_joint_min": {
+    "name": "MID_8-20",
+    "LOSO_AUC": 0.80102649133627,
+    "LOSO_rejection": 0.5155067294354916,
+    "LOSO_folds_ge_0.80": 3,
+    "Test_S1_rejection": 0.6966699637322783,
+    "Test_S2_acceptance": 0.6497034030596316,
+    "train_known_acceptance": 0.8500651890482399
+  },
+  "variants": {
+    "B1_1-8": {
+      "LOSO_AUC": 0.597025162056786,
+      "LOSO_rejection": 0.23117941701729494,
+      "LOSO_folds_ge_0.80": 1,
+      "Test_S1_rejection": 0.5456643587207386,
+      "Test_S2_acceptance": 0.7114163804766365,
+      "train_known_acceptance": 0.8500651890482399
+    },
+    "B2_8-13": {
+      "LOSO_AUC": 0.689108152011315,
+      "LOSO_rejection": 0.2975588360839575,
+      "LOSO_folds_ge_0.80": 2,
+      "Test_S1_rejection": 0.6096274315858886,
+      "Test_S2_acceptance": 0.7213549797065252,
+      "train_known_acceptance": 0.8500651890482399
+    },
+    "B3_13-20": {
+      "LOSO_AUC": 0.7174666903969561,
+      "LOSO_rejection": 0.4073971665345792,
+      "LOSO_folds_ge_0.80": 3,
+      "Test_S1_rejection": 0.6343554236729311,
+      "Test_S2_acceptance": 0.6876886252471641,
+      "train_known_acceptance": 0.8500651890482399
+    },
+    "B4_20-30": {
+      "LOSO_AUC": 0.7684387151287867,
+      "LOSO_rejection": 0.5033571043897376,
+      "LOSO_folds_ge_0.80": 5,
+      "Test_S1_rejection": 0.7303000329706562,
+      "Test_S2_acceptance": 0.5798210011447601,
+      "train_known_acceptance": 0.8500651890482399
+    },
+    "B5_30-40": {
+      "LOSO_AUC": 0.7682597056671894,
+      "LOSO_rejection": 0.5271161407056113,
+      "LOSO_folds_ge_0.80": 4,
+      "Test_S1_rejection": 0.7194197164523574,
+      "Test_S2_acceptance": 0.528879175772713,
+      "train_known_acceptance": 0.8500651890482399
+    },
+    "LO_1-20": {
+      "LOSO_AUC": 0.8006576449123866,
+      "LOSO_rejection": 0.4458396464199207,
+      "LOSO_folds_ge_0.80": 2,
+      "Test_S1_rejection": 0.7006264424662051,
+      "Test_S2_acceptance": 0.6459048808408784,
+      "train_known_acceptance": 0.8500651890482399
+    },
+    "HI_20-40": {
+      "LOSO_AUC": 0.8061216002239548,
+      "LOSO_rejection": 0.5669339916917315,
+      "LOSO_folds_ge_0.80": 7,
+      "Test_S1_rejection": 0.7682162875041213,
+      "Test_S2_acceptance": 0.5511499635758144,
+      "train_known_acceptance": 0.8500651890482399
+    },
+    "MID_8-20": {
+      "LOSO_AUC": 0.80102649133627,
+      "LOSO_rejection": 0.5155067294354916,
+      "LOSO_folds_ge_0.80": 3,
+      "Test_S1_rejection": 0.6966699637322783,
+      "Test_S2_acceptance": 0.6497034030596316,
+      "train_known_acceptance": 0.8500651890482399
+    },
+    "ALL": {
+      "LOSO_AUC": 0.8579173639741775,
+      "LOSO_rejection": 0.6261294725876169,
+      "LOSO_folds_ge_0.80": 9,
+      "Test_S1_rejection": 0.7916254533465216,
+      "Test_S2_acceptance": 0.5823186595899678,
+      "train_known_acceptance": 0.8500651890482399
+    }
+  }
+}

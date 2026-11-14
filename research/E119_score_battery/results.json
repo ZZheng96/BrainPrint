@@ -1,0 +1,75 @@
+{
+  "experiment": "E119_score_battery",
+  "diagnostic_only": true,
+  "warning": "Session is used only to measure separability, never to build a score.",
+  "N_S1": 3033,
+  "N_S2": 19218,
+  "scores": {
+    "S01_e95_max": {
+      "diagnostic_AUC": 0.5849539273767858,
+      "best_S2_accept_at_S1_rej_0.80": 0.30731605786242067,
+      "best_S2_accept_at_S1_rej_0.90": 0.1493391612030388,
+      "best_joint_min": 0.5584348007076699
+    },
+    "S02_e95_margin": {
+      "diagnostic_AUC": 0.48405284267342374,
+      "best_S2_accept_at_S1_rej_0.80": 0.14247060047871787,
+      "best_S2_accept_at_S1_rej_0.90": 0.0481839941721303,
+      "best_joint_min": 0.5028025057698648
+    },
+    "S03_e95_ratio": {
+      "diagnostic_AUC": 0.5180945475853995,
+      "best_S2_accept_at_S1_rej_0.80": 0.200541159329795,
+      "best_S2_accept_at_S1_rej_0.90": 0.09158080965761266,
+      "best_joint_min": 0.5174836091164533
+    },
+    "S04_e95_neg_energy": {
+      "diagnostic_AUC": 0.4910082305861114,
+      "best_S2_accept_at_S1_rej_0.80": 0.1482984701842023,
+      "best_S2_accept_at_S1_rej_0.90": 0.04823602872307212,
+      "best_joint_min": 0.5047807451368282
+    },
+    "S05_e95_entropy": {
+      "diagnostic_AUC": 0.5034862119763052,
+      "best_S2_accept_at_S1_rej_0.80": 0.17712561140597358,
+      "best_S2_accept_at_S1_rej_0.90": 0.08856280570298679,
+      "best_joint_min": 0.49313143927567904
+    },
+    "S06_e95_max_taskz": {
+      "diagnostic_AUC": 0.584071982055234,
+      "best_S2_accept_at_S1_rej_0.80": 0.3073680924133625,
+      "best_S2_accept_at_S1_rej_0.90": 0.1493391612030388,
+      "best_joint_min": 0.557533794922519
+    },
+    "S07_e95_max_idcal": {
+      "diagnostic_AUC": 0.615786706309686,
+      "best_S2_accept_at_S1_rej_0.80": 0.365022374856905,
+      "best_S2_accept_at_S1_rej_0.90": 0.1929961494432303,
+      "best_joint_min": 0.5783053082756346
+    },
+    "S08_e95_mahal": {
+      "diagnostic_AUC": 0.535503904958867,
+      "best_S2_accept_at_S1_rej_0.80": 0.3130918930169633,
+      "best_S2_accept_at_S1_rej_0.90": 0.20444375065043188,
+      "best_joint_min": 0.5144135706108857
+    },
+    "S09_spd_ratio": {
+      "diagnostic_AUC": 0.5798102957178601,
+      "best_S2_accept_at_S1_rej_0.80": 0.3332812987823915,
+      "best_S2_accept_at_S1_rej_0.90": 0.20720158185034862,
+      "best_joint_min": 0.5584868352586118
+    },
+    "S10_spd_max": {
+      "diagnostic_AUC": 0.6853305233646457,
+      "best_S2_accept_at_S1_rej_0.80": 0.4230408991570403,
+      "best_S2_accept_at_S1_rej_0.90": 0.26511603704860026,
+      "best_joint_min": 0.6528189910979229
+    },
+    "S11_mahal_x_spd": {
+      "diagnostic_AUC": 0.562029816878526,
+      "best_S2_accept_at_S1_rej_0.80": 0.32474763242793214,
+      "best_S2_accept_at_S1_rej_0.90": 0.19845977729212197,
+      "best_joint_min": 0.5357731618859215
+    }
+  }
+}
