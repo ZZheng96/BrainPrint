@@ -1,0 +1,280 @@
+{
+  "experiment": "E72 Train-only nested query-to-enrollment-template pair protocol",
+  "invocation": {
+    "command": ".venv/Scripts/python.exe research/E72_pair_protocol/run_e72.py --stage full",
+    "executable": "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+    "argv": [
+      "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+      "research\\E72_pair_protocol\\run_e72.py",
+      "--stage",
+      "full"
+    ],
+    "cwd": "D:\\WORK\\BCIC2026\\BrainPrint"
+  },
+  "config_sha256": "20e259f0a2e9aeeec62bac837feacbc6ecedd840ef2f00c6b36b5d015461aaec",
+  "environment": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "sklearn": "1.9.1",
+    "torch": "2.7.1+cu118",
+    "cuda": "11.8",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU"
+  },
+  "formal_features": {
+    "e36_covariance": {
+      "path": "BrainPrint_cache/e36_pure_eeg/train_detrend_zband_cov5.npy",
+      "shape": [
+        11304,
+        855
+      ],
+      "dtype": "float32",
+      "finite": true,
+      "sha256": "fdc68441c1099ce57128cb892211eb7bb3c9c5dbde9beeed2789b519e8564f27",
+      "metadata_sha256": "f3be516e93082b78a9f483f9edb92f6330b1be39d32dff999a0a60b9bb92b545",
+      "rebuild_sample_indices": [
+        144,
+        1878,
+        2216,
+        3041,
+        4448,
+        8466,
+        10594,
+        10731
+      ],
+      "rebuild_sample_train_paths": [
+        "Train/Subject_01/Task3/trial_026.mat",
+        "Train/Subject_04/Task3/trial_064.mat",
+        "Train/Subject_04/Task4/trial_146.mat",
+        "Train/Subject_06/Task3/trial_194.mat",
+        "Train/Subject_09/Task1/trial_024.mat",
+        "Train/Subject_16/Task1/trial_018.mat",
+        "Train/Subject_19/Task4/trial_096.mat",
+        "Train/Subject_20/Task1/trial_045.mat"
+      ],
+      "cache_vs_rebuilt_max_abs": 4.76837158203125e-07,
+      "row_alignment_allclose": true,
+      "single_trial_rebuild_on_gpu": true,
+      "passed": true
+    },
+    "e65_correlation": {
+      "path": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "shape": [
+        11304,
+        855
+      ],
+      "dtype": "float32",
+      "finite": true,
+      "sha256": "bc9a1c32bac175498d95f2f2d7641be13b7fe880550fcc792fe675fdef4b43f6",
+      "metadata_sha256": "f3be516e93082b78a9f483f9edb92f6330b1be39d32dff999a0a60b9bb92b545",
+      "rebuild_sample_indices": [
+        144,
+        1878,
+        2216,
+        3041,
+        4448,
+        8466,
+        10594,
+        10731
+      ],
+      "rebuild_sample_train_paths": [
+        "Train/Subject_01/Task3/trial_026.mat",
+        "Train/Subject_04/Task3/trial_064.mat",
+        "Train/Subject_04/Task4/trial_146.mat",
+        "Train/Subject_06/Task3/trial_194.mat",
+        "Train/Subject_09/Task1/trial_024.mat",
+        "Train/Subject_16/Task1/trial_018.mat",
+        "Train/Subject_19/Task4/trial_096.mat",
+        "Train/Subject_20/Task1/trial_045.mat"
+      ],
+      "cache_vs_rebuilt_max_abs": 4.76837158203125e-07,
+      "row_alignment_allclose": true,
+      "single_trial_rebuild_on_gpu": true,
+      "passed": true,
+      "sha256_matches_e65_manifest": true,
+      "metadata_hash_matches_e65_manifest": true
+    }
+  },
+  "all_formal_cache_checks_passed": true,
+  "metadata": {
+    "path": "BrainPrint_cache/train_metadata.csv",
+    "sha256": "f3be516e93082b78a9f483f9edb92f6330b1be39d32dff999a0a60b9bb92b545",
+    "rows": 11304,
+    "subjects": 20,
+    "sessions": [
+      "session1"
+    ],
+    "tasks": [
+      "EC",
+      "EO",
+      "Imagery",
+      "SSVEP"
+    ],
+    "all_paths_train_only": true
+  },
+  "source_sha256": {
+    "e36_run": "87e889ee83656751358f38575021c3b2301d24f34e94371a6552d0a88c73244f",
+    "e36_config": "b8e2d1ee6f0b2b16a2ccef145870a67a3421fe868f0f2c91d9f76beb88e42856",
+    "e65_run": "dd273fff55674e82bf9034f7691f878650be6f741eee9f963e7c4e75604ae991",
+    "e65_config": "103b1fc7542b6d6bb92aa82177fd04aa595f782e960ee77c96310212fdc82a06"
+  },
+  "elapsed_seconds": 0.40154314041137695,
+  "image_audit": {
+    "direct_encode": {
+      "method": "covariance5",
+      "samples": 2,
+      "shape": [
+        3,
+        224,
+        224
+      ],
+      "dtype": "float32",
+      "finite": true,
+      "min": 0.0,
+      "max": 1.0,
+      "passed": true
+    },
+    "encoder_bands_hz": [
+      [
+        1.0,
+        8.0
+      ],
+      [
+        8.0,
+        13.0
+      ],
+      [
+        13.0,
+        30.0
+      ],
+      [
+        30.0,
+        45.0
+      ],
+      [
+        45.0,
+        90.0
+      ]
+    ],
+    "official_band_hz": [
+      1.0,
+      40.0
+    ],
+    "out_of_official_band_definitions": [
+      [
+        30.0,
+        45.0
+      ],
+      [
+        45.0,
+        90.0
+      ]
+    ],
+    "all_bands_within_official_1_40hz": false,
+    "legacy_uint8_image_cache": {
+      "path": "BrainPrint_cache/eeg_image_dinov2/train_covariance5.npy",
+      "shape": [
+        11304,
+        3,
+        224,
+        224
+      ],
+      "dtype": "uint8",
+      "sample_min": 0,
+      "sample_max": 255,
+      "not_directly_encoder_compatible": true,
+      "historical_extraction_scaling": "E20 run_e20a.py converts uint8 to float32 and divides by 255 before DINO; old caches were not modified"
+    },
+    "legacy_dino_features": {
+      "legacy_dinov2_covariance5": {
+        "path": "BrainPrint_cache/eeg_image_dinov2/train_covariance5_dinov2.npy",
+        "shape": [
+          11304,
+          768
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "sha256": "b36c3797a02b5e2be66739337b8b371eed3d619ad37db7c1ac327f0d57e69de9",
+        "formal_use": false,
+        "row_alignment_rebuilt": false,
+        "restriction": "forbidden: legacy cache lacks a contemporary E72 lineage manifest and the shared encoder BANDS extend to 90 Hz"
+      }
+    },
+    "formal_image_conclusions_allowed": false,
+    "reason": "45-90 Hz definitions exceed the official 1-40 Hz preprocessing band; legacy DINO lineage was not rebuilt under E72"
+  },
+  "data_access": {
+    "train_metadata_read": "BrainPrint_cache/train_metadata.csv",
+    "train_waveforms_read": [
+      "Train/Subject_01/Task3/trial_026.mat",
+      "Train/Subject_04/Task3/trial_064.mat",
+      "Train/Subject_04/Task4/trial_146.mat",
+      "Train/Subject_06/Task3/trial_194.mat",
+      "Train/Subject_09/Task1/trial_024.mat",
+      "Train/Subject_16/Task1/trial_018.mat",
+      "Train/Subject_19/Task4/trial_096.mat",
+      "Train/Subject_20/Task1/trial_045.mat"
+    ],
+    "test_accessed": false,
+    "test_data_index_or_labels_read": false,
+    "legacy_test_cache_read": false
+  },
+  "audit_history": [
+    {
+      "command": ".venv/Scripts/python.exe research/E72_pair_protocol/run_e72.py --stage audit",
+      "executable": "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+      "argv": [
+        "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+        "research\\E72_pair_protocol\\run_e72.py",
+        "--stage",
+        "audit"
+      ],
+      "cwd": "D:\\WORK\\BCIC2026\\BrainPrint"
+    },
+    {
+      "command": ".venv/Scripts/python.exe research/E72_pair_protocol/run_e72.py --stage audit",
+      "executable": "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+      "argv": [
+        "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+        "research\\E72_pair_protocol\\run_e72.py",
+        "--stage",
+        "audit"
+      ],
+      "cwd": "D:\\WORK\\BCIC2026\\BrainPrint"
+    },
+    {
+      "command": ".venv/Scripts/python.exe research/E72_pair_protocol/run_e72.py --stage smoke",
+      "executable": "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+      "argv": [
+        "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+        "research\\E72_pair_protocol\\run_e72.py",
+        "--stage",
+        "smoke"
+      ],
+      "cwd": "D:\\WORK\\BCIC2026\\BrainPrint"
+    },
+    {
+      "command": ".venv/Scripts/python.exe research/E72_pair_protocol/run_e72.py --stage smoke",
+      "executable": "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+      "argv": [
+        "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+        "research\\E72_pair_protocol\\run_e72.py",
+        "--stage",
+        "smoke"
+      ],
+      "cwd": "D:\\WORK\\BCIC2026\\BrainPrint"
+    },
+    {
+      "command": ".venv/Scripts/python.exe research/E72_pair_protocol/run_e72.py --stage full",
+      "executable": "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+      "argv": [
+        "D:\\WORK\\BCIC2026\\BrainPrint\\.venv\\Scripts\\python.exe",
+        "research\\E72_pair_protocol\\run_e72.py",
+        "--stage",
+        "full"
+      ],
+      "cwd": "D:\\WORK\\BCIC2026\\BrainPrint"
+    }
+  ]
+}

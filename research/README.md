@@ -17,6 +17,7 @@
 | [E00-E19既往实验经验总结.md](E00-E19既往实验经验总结.md) | E00–E19 的经验与负结果 |
 | [对话交接_实验历程与下一步.md](对话交接_实验历程与下一步.md) | 对话交接：实验历程、官方反馈与下一步方向 |
 | [问题梳理.md](问题梳理.md) | 赛题结构、Session 元数据捷径与开放集问题梳理 |
+| [现状不足难点与解决方案.md](现状不足难点与解决方案.md) | 双路线现状、Test 共同瓶颈、身份验证式开放集与外部多 Session 预训练方案 |
 
 ## 实验目录
 
@@ -94,6 +95,7 @@
 | E69 | [E69_image_adversarial](E69_image_adversarial) | 图像化路线对抗鲁棒性（首次测量） | **完全失效**：FGSM/PGD SNR30/20 下 RA=ASafeR=**0.0667**（1/15 随机水平）、拒识率 0；冻结 DINOv2 + 线性探针无任何对抗鲁棒性 |
 | E70 | [E70_image_adversarial_training](E70_image_adversarial_training) | 图像化路线特征空间对抗训练 | **骨干互斥**：DINOv2 MLP λ=1.0 → RA 0.1425 但 U 崩到 0.1800；DINOv3 线性 λ=0 → RA **0.7525**、ASafeR **0.8100** 但 clean C 仅 0.7717；DINOv3 MLP λ=0.1 → RA 0.7900、C 0.8017；两骨干无法兼得 clean 与 RA |
 | E71 | [E71_covmix_geometry](E71_covmix_geometry) | 协方差混合几何（另一会话） | 仅 config，未执行 |
+| E72 | [E72_pair_protocol](E72_pair_protocol) | 配对协议审计与模板匹配基线 | 5×2 Train；WCCN+margin：协方差 C=0.9598、身份F1=0.9784、AUROC=0.9975、U@95=0.9979；相关 C=0.9583、身份F1=0.9777、AUROC=0.9938、U@95=0.9801；两路均过出口，Test=N/A且未读取 |
 
 ## 其他
 

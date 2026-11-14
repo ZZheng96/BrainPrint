@@ -1,0 +1,86 @@
+{
+  "experiment": "E72 Train-only nested query-to-enrollment-template pair protocol",
+  "date_preregistered": "2026-11-14",
+  "seed": 20261114,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "expected_trials": 11304,
+    "expected_subjects": 20,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "session": "session1",
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "official_preprocessing": "1-40 Hz filtered according to the competition description",
+    "test_access": "forbidden"
+  },
+  "features": {
+    "formal": {
+      "e36_covariance": "BrainPrint_cache/e36_pure_eeg/train_detrend_zband_cov5.npy",
+      "e65_correlation": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy"
+    },
+    "smoke_only": {
+      "legacy_dinov2_covariance5": "BrainPrint_cache/eeg_image_dinov2/train_covariance5_dinov2.npy"
+    },
+    "legacy_image_cache": "BrainPrint_cache/eeg_image_dinov2/train_covariance5.npy",
+    "expected_formal_shape": [11304, 855],
+    "expected_dtype": "float32",
+    "wccn_shrinkage": 0.05,
+    "wccn_eigenvalue_floor": 1e-06,
+    "prediction_batch_size": 512,
+    "audit_seed": 20261114,
+    "audit_rebuild_samples": 8,
+    "audit_atol": 2e-05,
+    "audit_rtol": 2e-05,
+    "finite_check_batch_size": 1024
+  },
+  "protocol": {
+    "outer_seed": 42,
+    "outer_folds": 5,
+    "inner_folds": 2,
+    "inner_seed": "100 + one-based outer fold",
+    "roles": "outer unknown=4; inner enrolled=8; inner calibration unknown=8; no OE role",
+    "inner_fit": "enrolled and trial <= 0.60 * within-subject/task maximum trial",
+    "inner_known_query": "enrolled and 0.60 * maximum < trial <= 0.80 * maximum",
+    "inner_unknown": "all eight inner held-out subjects and trial <= 0.80 * maximum; calibration only",
+    "outer_fit": "all 16 enrolled subjects and trial <= 0.80 * maximum",
+    "outer_known_query": "all 16 enrolled subjects and trial > 0.80 * maximum; continuous final file block",
+    "outer_unknown": "four outer held-out subjects, all trials; final evaluation only",
+    "methods": [
+      {"space": "cosine", "score": "max_cosine"},
+      {"space": "wccn", "score": "max_cosine"},
+      {"space": "wccn", "score": "margin"},
+      {"space": "wccn", "score": "distance_ratio"}
+    ],
+    "distance_ratio": "(1-second_cosine)/max(1-max_cosine,1e-6), reused from E65",
+    "threshold": "q05 of pooled inner-known confidence within each outer group; linear quantile; no threshold grid and no unknown-based threshold selection",
+    "pair_sampling": "all query-to-enrolled-template pairs, with one same pair per known query and all other pairs different; unknown-query pairs are all different; no N^2 trial-trial matrix",
+    "model_selection": "none; every predeclared feature/space/confidence combination is reported on identical folds",
+    "smoke_scope": "first outer group and first inner split only; legacy DINO cache allowed only here"
+  },
+  "image_audit": {
+    "method": "covariance5",
+    "samples": 2,
+    "required_shape": [3, 224, 224],
+    "required_dtype": "float32",
+    "required_range": [0.0, 1.0],
+    "official_band_hz": [1.0, 40.0],
+    "legacy_dino_formal_use": "forbidden: legacy cache lacks a contemporary E72 lineage manifest and the shared encoder BANDS extend to 90 Hz"
+  },
+  "gates": {
+    "C_min": 0.95,
+    "AUROC_min": 0.98,
+    "U_at_95_min": 0.95,
+    "aggregation": "five outer-fold means; descriptive confirmation only, not outer model selection"
+  },
+  "reporting": {
+    "AUROC": "known=1, unknown=0 detection AUROC; larger confidence means more known-like",
+    "U_at_95": "src.metrics.open_set_metrics: unknown fraction below q05 of the corresponding evaluation known confidences",
+    "working_metrics": "C, U, identity macro-F1 and unknown-F1 use the frozen inner-known q05 threshold",
+    "official_score": "N/A because RA, ASafeR and A are unavailable in this clean-only experiment",
+    "proxy": "100*C^0.40*U^0.25 is explicitly non-official and omits the adversarial A term",
+    "test": "AUC/F1 and all Test metrics are N/A; no public truth and no Test data, index or label was read",
+    "evidence_boundary": "Train session1 pseudo-unknown subjects and continuous within-session time blocks only; not real cross-session evidence"
+  }
+}
