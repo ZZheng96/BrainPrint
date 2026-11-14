@@ -1,0 +1,418 @@
+{
+  "experiment": "E136_clean_three_way",
+  "objective": "(LOSO rejection + Test S1 rejection + Test S2 acceptance)/3",
+  "target": 0.85,
+  "clean": true,
+  "best": {
+    "space": "P96_LDA48",
+    "acceptance_rate": 0.95,
+    "LOSO_rejection": 0.9810303516004106,
+    "Test_S1_rejection": 0.8977909660402242,
+    "Test_S2_acceptance": 0.26995525028619005,
+    "three_way_mean": 0.7162588559756083,
+    "sum": 2.148776567926825,
+    "diagnostic_AUC": 0.7264233817228922
+  },
+  "curve": [
+    {
+      "space": "P96_k1",
+      "acceptance_rate": 0.6,
+      "LOSO_rejection": 0.9522549869084225,
+      "Test_S1_rejection": 0.9973623475107155,
+      "Test_S2_acceptance": 0.10672286398168383,
+      "three_way_mean": 0.685446732800274,
+      "sum": 2.056340198400822,
+      "diagnostic_AUC": 0.7657705949853242
+    },
+    {
+      "space": "P96_k1",
+      "acceptance_rate": 0.65,
+      "LOSO_rejection": 0.9222466004020582,
+      "Test_S1_rejection": 0.9924167490933069,
+      "Test_S2_acceptance": 0.15839317306691644,
+      "three_way_mean": 0.6910188408540939,
+      "sum": 2.0730565225622817,
+      "diagnostic_AUC": 0.7657705949853242
+    },
+    {
+      "space": "P96_k1",
+      "acceptance_rate": 0.7,
+      "LOSO_rejection": 0.8771807377859793,
+      "Test_S1_rejection": 0.9769205407187603,
+      "Test_S2_acceptance": 0.22177125611405973,
+      "three_way_mean": 0.6919575115395998,
+      "sum": 2.0758725346187994,
+      "diagnostic_AUC": 0.7657705949853242
+    },
+    {
+      "space": "P96_k1",
+      "acceptance_rate": 0.75,
+      "LOSO_rejection": 0.8046541869107926,
+      "Test_S1_rejection": 0.9449390042861853,
+      "Test_S2_acceptance": 0.308096576126548,
+      "three_way_mean": 0.685896589107842,
+      "sum": 2.057689767323526,
+      "diagnostic_AUC": 0.7657705949853242
+    },
+    {
+      "space": "P96_k1",
+      "acceptance_rate": 0.8,
+      "LOSO_rejection": 0.7247535404523677,
+      "Test_S1_rejection": 0.8935047807451368,
+      "Test_S2_acceptance": 0.42257258819856386,
+      "three_way_mean": 0.6802769697986895,
+      "sum": 2.0408309093960684,
+      "diagnostic_AUC": 0.7657705949853242
+    },
+    {
+      "space": "P96_k1",
+      "acceptance_rate": 0.85,
+      "LOSO_rejection": 0.6261294725876169,
+      "Test_S1_rejection": 0.8176722716782064,
+      "Test_S2_acceptance": 0.5498490998022687,
+      "three_way_mean": 0.6645502813560307,
+      "sum": 1.993650844068092,
+      "diagnostic_AUC": 0.7657705949853242
+    },
+    {
+      "space": "P96_k1",
+      "acceptance_rate": 0.9,
+      "LOSO_rejection": 0.4886177559046724,
+      "Test_S1_rejection": 0.6828222881635344,
+      "Test_S2_acceptance": 0.6859714850660839,
+      "three_way_mean": 0.619137176378097,
+      "sum": 1.8574115291342908,
+      "diagnostic_AUC": 0.7657705949853242
+    },
+    {
+      "space": "P96_k1",
+      "acceptance_rate": 0.95,
+      "LOSO_rejection": 0.31205195438905015,
+      "Test_S1_rejection": 0.5275304978569073,
+      "Test_S2_acceptance": 0.8283900509938599,
+      "three_way_mean": 0.5559908344132724,
+      "sum": 1.6679725032398172,
+      "diagnostic_AUC": 0.7657705949853242
+    },
+    {
+      "space": "P96_k2",
+      "acceptance_rate": 0.6,
+      "LOSO_rejection": 0.9799911625359607,
+      "Test_S1_rejection": 0.997692054071876,
+      "Test_S2_acceptance": 0.057550213341658864,
+      "three_way_mean": 0.6784111433164987,
+      "sum": 2.035233429949496,
+      "diagnostic_AUC": 0.7840323205073054
+    },
+    {
+      "space": "P96_k2",
+      "acceptance_rate": 0.65,
+      "LOSO_rejection": 0.9700478569139797,
+      "Test_S1_rejection": 0.9960435212660732,
+      "Test_S2_acceptance": 0.08918722031428869,
+      "three_way_mean": 0.6850928661647805,
+      "sum": 2.0552785984943416,
+      "diagnostic_AUC": 0.7840323205073054
+    },
+    {
+      "space": "P96_k2",
+      "acceptance_rate": 0.7,
+      "LOSO_rejection": 0.9468002233898059,
+      "Test_S1_rejection": 0.9927464556544675,
+      "Test_S2_acceptance": 0.13711104173170985,
+      "three_way_mean": 0.692219240258661,
+      "sum": 2.076657720775983,
+      "diagnostic_AUC": 0.7840323205073054
+    },
+    {
+      "space": "P96_k2",
+      "acceptance_rate": 0.75,
+      "LOSO_rejection": 0.9144817063746977,
+      "Test_S1_rejection": 0.9851632047477745,
+      "Test_S2_acceptance": 0.20657716723904673,
+      "three_way_mean": 0.7020740261205063,
+      "sum": 2.106222078361519,
+      "diagnostic_AUC": 0.7840323205073054
+    },
+    {
+      "space": "P96_k2",
+      "acceptance_rate": 0.8,
+      "LOSO_rejection": 0.8569063747049608,
+      "Test_S1_rejection": 0.9564787339268052,
+      "Test_S2_acceptance": 0.29826204599854306,
+      "three_way_mean": 0.7038823848767697,
+      "sum": 2.111647154630309,
+      "diagnostic_AUC": 0.7840323205073054
+    },
+    {
+      "space": "P96_k2",
+      "acceptance_rate": 0.85,
+      "LOSO_rejection": 0.7537638324161584,
+      "Test_S1_rejection": 0.909330695680844,
+      "Test_S2_acceptance": 0.42028306795712356,
+      "three_way_mean": 0.6944591986847087,
+      "sum": 2.083377596054126,
+      "diagnostic_AUC": 0.7840323205073054
+    },
+    {
+      "space": "P96_k2",
+      "acceptance_rate": 0.9,
+      "LOSO_rejection": 0.6054002881071294,
+      "Test_S1_rejection": 0.8189910979228486,
+      "Test_S2_acceptance": 0.5689978145488604,
+      "three_way_mean": 0.6644630668596129,
+      "sum": 1.9933892005788385,
+      "diagnostic_AUC": 0.7840323205073054
+    },
+    {
+      "space": "P96_k2",
+      "acceptance_rate": 0.95,
+      "LOSO_rejection": 0.3445253885401033,
+      "Test_S1_rejection": 0.6574348829541707,
+      "Test_S2_acceptance": 0.7473722551774378,
+      "three_way_mean": 0.583110842223904,
+      "sum": 1.749332526671712,
+      "diagnostic_AUC": 0.7840323205073054
+    },
+    {
+      "space": "P96_k3",
+      "acceptance_rate": 0.6,
+      "LOSO_rejection": 0.9905534006781634,
+      "Test_S1_rejection": 0.9996702934388394,
+      "Test_S2_acceptance": 0.042876469976064105,
+      "three_way_mean": 0.6777000546976889,
+      "sum": 2.033100164093067,
+      "diagnostic_AUC": 0.7822144052018493
+    },
+    {
+      "space": "P96_k3",
+      "acceptance_rate": 0.65,
+      "LOSO_rejection": 0.9803272225031217,
+      "Test_S1_rejection": 0.997692054071876,
+      "Test_S2_acceptance": 0.06759288167343115,
+      "three_way_mean": 0.681870719416143,
+      "sum": 2.045612158248429,
+      "diagnostic_AUC": 0.7822144052018493
+    },
+    {
+      "space": "P96_k3",
+      "acceptance_rate": 0.7,
+      "LOSO_rejection": 0.9672864094319262,
+      "Test_S1_rejection": 0.9960435212660732,
+      "Test_S2_acceptance": 0.10136330523467582,
+      "three_way_mean": 0.6882310786442251,
+      "sum": 2.0646932359326753,
+      "diagnostic_AUC": 0.7822144052018493
+    },
+    {
+      "space": "P96_k3",
+      "acceptance_rate": 0.75,
+      "LOSO_rejection": 0.9474476366839537,
+      "Test_S1_rejection": 0.9920870425321464,
+      "Test_S2_acceptance": 0.1591736913310438,
+      "three_way_mean": 0.6995694568490479,
+      "sum": 2.098708370547144,
+      "diagnostic_AUC": 0.7822144052018493
+    },
+    {
+      "space": "P96_k3",
+      "acceptance_rate": 0.8,
+      "LOSO_rejection": 0.9045922619538407,
+      "Test_S1_rejection": 0.9772502472799208,
+      "Test_S2_acceptance": 0.23732958684566552,
+      "three_way_mean": 0.7063906986931423,
+      "sum": 2.119172096079427,
+      "diagnostic_AUC": 0.7822144052018493
+    },
+    {
+      "space": "P96_k3",
+      "acceptance_rate": 0.85,
+      "LOSO_rejection": 0.8300732469680396,
+      "Test_S1_rejection": 0.9390042861852951,
+      "Test_S2_acceptance": 0.349516078676241,
+      "three_way_mean": 0.7061978706098585,
+      "sum": 2.1185936118295756,
+      "diagnostic_AUC": 0.7822144052018493
+    },
+    {
+      "space": "P96_k3",
+      "acceptance_rate": 0.9,
+      "LOSO_rejection": 0.695445387476724,
+      "Test_S1_rejection": 0.8611935377514013,
+      "Test_S2_acceptance": 0.5008325528150692,
+      "three_way_mean": 0.6858238260143982,
+      "sum": 2.0574714780431944,
+      "diagnostic_AUC": 0.7822144052018493
+    },
+    {
+      "space": "P96_k3",
+      "acceptance_rate": 0.95,
+      "LOSO_rejection": 0.481852527185241,
+      "Test_S1_rejection": 0.7042532146389713,
+      "Test_S2_acceptance": 0.6930481839941721,
+      "three_way_mean": 0.6263846419394614,
+      "sum": 1.8791539258183843,
+      "diagnostic_AUC": 0.7822144052018493
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.6,
+      "LOSO_rejection": 1.0,
+      "Test_S1_rejection": 1.0,
+      "Test_S2_acceptance": 0.008117389946924758,
+      "three_way_mean": 0.6693724633156416,
+      "sum": 2.008117389946925,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.65,
+      "LOSO_rejection": 1.0,
+      "Test_S1_rejection": 1.0,
+      "Test_S2_acceptance": 0.010875221146841503,
+      "three_way_mean": 0.6702917403822806,
+      "sum": 2.0108752211468417,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.7,
+      "LOSO_rejection": 1.0,
+      "Test_S1_rejection": 1.0,
+      "Test_S2_acceptance": 0.013685086897700073,
+      "three_way_mean": 0.6712283622992333,
+      "sum": 2.0136850868977,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.75,
+      "LOSO_rejection": 1.0,
+      "Test_S1_rejection": 0.9996702934388394,
+      "Test_S2_acceptance": 0.019044645644708084,
+      "three_way_mean": 0.6729049796945158,
+      "sum": 2.0187149390835475,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.8,
+      "LOSO_rejection": 1.0,
+      "Test_S1_rejection": 0.9996702934388394,
+      "Test_S2_acceptance": 0.026485586429389113,
+      "three_way_mean": 0.6753852932894095,
+      "sum": 2.0261558798682286,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.85,
+      "LOSO_rejection": 1.0,
+      "Test_S1_rejection": 0.9980217606330366,
+      "Test_S2_acceptance": 0.038297429493183474,
+      "three_way_mean": 0.6787730633754067,
+      "sum": 2.03631919012622,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.9,
+      "LOSO_rejection": 0.999586776859504,
+      "Test_S1_rejection": 0.9950544015825915,
+      "Test_S2_acceptance": 0.06025600999063378,
+      "three_way_mean": 0.6849657294775765,
+      "sum": 2.0548971884327294,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.95,
+      "LOSO_rejection": 0.9987533856517814,
+      "Test_S1_rejection": 0.9782393669634025,
+      "Test_S2_acceptance": 0.11431990841919035,
+      "three_way_mean": 0.6971042203447914,
+      "sum": 2.091312661034374,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.6,
+      "LOSO_rejection": 1.0,
+      "Test_S1_rejection": 0.9996702934388394,
+      "Test_S2_acceptance": 0.015766468935373087,
+      "three_way_mean": 0.6718122541247374,
+      "sum": 2.0154367623742124,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.65,
+      "LOSO_rejection": 1.0,
+      "Test_S1_rejection": 0.9996702934388394,
+      "Test_S2_acceptance": 0.02013737121448642,
+      "three_way_mean": 0.6732692215511086,
+      "sum": 2.019807664653326,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.7,
+      "LOSO_rejection": 1.0,
+      "Test_S1_rejection": 0.9993405868776789,
+      "Test_S2_acceptance": 0.028254761161411176,
+      "three_way_mean": 0.6758651160130301,
+      "sum": 2.0275953480390903,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.75,
+      "LOSO_rejection": 1.0,
+      "Test_S1_rejection": 0.997692054071876,
+      "Test_S2_acceptance": 0.039390155062961806,
+      "three_way_mean": 0.6790274030449459,
+      "sum": 2.0370822091348377,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.8,
+      "LOSO_rejection": 0.9987603305785123,
+      "Test_S1_rejection": 0.9947246950214309,
+      "Test_S2_acceptance": 0.054844416692683945,
+      "three_way_mean": 0.682776480764209,
+      "sum": 2.0483294422926273,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.85,
+      "LOSO_rejection": 0.9979336584462448,
+      "Test_S1_rejection": 0.9868117375535773,
+      "Test_S2_acceptance": 0.08106983036736393,
+      "three_way_mean": 0.6886050754557287,
+      "sum": 2.065815226367186,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.9,
+      "LOSO_rejection": 0.9952851749391478,
+      "Test_S1_rejection": 0.9663699307616221,
+      "Test_S2_acceptance": 0.13851597460713913,
+      "three_way_mean": 0.7000570267693029,
+      "sum": 2.1001710803079088,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.95,
+      "LOSO_rejection": 0.9810303516004106,
+      "Test_S1_rejection": 0.8977909660402242,
+      "Test_S2_acceptance": 0.26995525028619005,
+      "three_way_mean": 0.7162588559756083,
+      "sum": 2.148776567926825,
+      "diagnostic_AUC": 0.7264233817228922
+    }
+  ]
+}
