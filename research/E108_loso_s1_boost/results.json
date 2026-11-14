@@ -1,0 +1,902 @@
+{
+  "experiment": "E108_loso_s1_boost",
+  "test_accessed": false,
+  "protocol": "LOSO; S2 operating point fixed at known acceptance 0.85",
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.8
+  },
+  "summary": {
+    "and_base_cal": {
+      "AUC_mean": null,
+      "known_acceptance_mean": 0.7852611860383769,
+      "unknown_rejection_mean": 0.9011053369992628,
+      "folds_meeting_both": 0,
+      "n_folds": 20
+    },
+    "base_ratio": {
+      "AUC_mean": 0.9143749272519688,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.8309507336125147,
+      "folds_meeting_both": 4,
+      "n_folds": 20
+    },
+    "cal_ratio": {
+      "AUC_mean": 0.841897011834613,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.5567610880300702,
+      "folds_meeting_both": 1,
+      "n_folds": 20
+    },
+    "neg_d1": {
+      "AUC_mean": 0.7700620823720745,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.455121976454573,
+      "folds_meeting_both": 2,
+      "n_folds": 20
+    },
+    "neg_hb": {
+      "AUC_mean": 0.5008515026411128,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.16017167470801702,
+      "folds_meeting_both": 0,
+      "n_folds": 20
+    },
+    "neg_z_d1": {
+      "AUC_mean": 0.7803029373971044,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.44547797753712964,
+      "folds_meeting_both": 2,
+      "n_folds": 20
+    },
+    "or_base_cal": {
+      "AUC_mean": null,
+      "known_acceptance_mean": 0.914457410146906,
+      "unknown_rejection_mean": 0.4866064846433223,
+      "folds_meeting_both": 1,
+      "n_folds": 20
+    }
+  },
+  "folds": [
+    {
+      "held_out": 1,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9284788181427535,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9112903225806451
+        },
+        "neg_d1": {
+          "AUC": 0.7106850208188243,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.25
+        },
+        "neg_z_d1": {
+          "AUC": 0.723809770770667,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.1935483870967742
+        },
+        "neg_hb": {
+          "AUC": 0.3299227999466564,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.024193548387096774
+        },
+        "cal_ratio": {
+          "AUC": 0.8788359239557249,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.7258064516129032
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.8015617822691777,
+          "unknown_rejection": 0.9112903225806451
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.8980248047772164,
+          "unknown_rejection": 0.7258064516129032
+        }
+      }
+    },
+    {
+      "held_out": 2,
+      "N_known": 2199,
+      "N_unknown": 102,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9145823859329998,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.8431372549019608
+        },
+        "neg_d1": {
+          "AUC": 0.8400074900355776,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.7254901960784313
+        },
+        "neg_z_d1": {
+          "AUC": 0.8635609769146404,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.696078431372549
+        },
+        "neg_hb": {
+          "AUC": 0.6936486281643172,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.3627450980392157
+        },
+        "cal_ratio": {
+          "AUC": 0.9181356944778821,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.8431372549019608
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7858117326057299,
+          "unknown_rejection": 0.9411764705882353
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9140518417462483,
+          "unknown_rejection": 0.7450980392156863
+        }
+      }
+    },
+    {
+      "held_out": 3,
+      "N_known": 2179,
+      "N_unknown": 122,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9298369683792386,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.8688524590163934
+        },
+        "neg_d1": {
+          "AUC": 0.764288777375695,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.4098360655737705
+        },
+        "neg_z_d1": {
+          "AUC": 0.7836990949375183,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.36885245901639346
+        },
+        "neg_hb": {
+          "AUC": 0.05082042446903755,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.0
+        },
+        "cal_ratio": {
+          "AUC": 0.808127506225596,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.39344262295081966
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7847636530518587,
+          "unknown_rejection": 0.9016393442622951
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9150986691142726,
+          "unknown_rejection": 0.36065573770491804
+        }
+      }
+    },
+    {
+      "held_out": 4,
+      "N_known": 2188,
+      "N_unknown": 113,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9149665917069776,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.8407079646017699
+        },
+        "neg_d1": {
+          "AUC": 0.8493795602724434,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.5752212389380531
+        },
+        "neg_z_d1": {
+          "AUC": 0.8545242756143727,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.6017699115044248
+        },
+        "neg_hb": {
+          "AUC": 0.5503429810227953,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.23008849557522124
+        },
+        "cal_ratio": {
+          "AUC": 0.866431541311417,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.6548672566371682
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7829067641681902,
+          "unknown_rejection": 0.911504424778761
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9163619744058501,
+          "unknown_rejection": 0.584070796460177
+        }
+      }
+    },
+    {
+      "held_out": 5,
+      "N_known": 2200,
+      "N_unknown": 101,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9589086408640863,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.9900990099009901
+        },
+        "neg_d1": {
+          "AUC": 0.9961656165616561,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 1.0
+        },
+        "neg_z_d1": {
+          "AUC": 0.9963636363636362,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 1.0
+        },
+        "neg_hb": {
+          "AUC": 0.7952385238523852,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.38613861386138615
+        },
+        "cal_ratio": {
+          "AUC": 0.8669936993699371,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.5148514851485149
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7895454545454546,
+          "unknown_rejection": 0.9900990099009901
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9104545454545454,
+          "unknown_rejection": 0.5148514851485149
+        }
+      }
+    },
+    {
+      "held_out": 6,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9390549290974559,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9032258064516129
+        },
+        "neg_d1": {
+          "AUC": 0.7922266510587224,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.41935483870967744
+        },
+        "neg_z_d1": {
+          "AUC": 0.8115711174003881,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.3387096774193548
+        },
+        "neg_hb": {
+          "AUC": 0.2784684457747418,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.0
+        },
+        "cal_ratio": {
+          "AUC": 0.8568539126053907,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.5645161290322581
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7831878732200276,
+          "unknown_rejection": 0.9516129032258065
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9163987138263665,
+          "unknown_rejection": 0.5161290322580645
+        }
+      }
+    },
+    {
+      "held_out": 7,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.7987093810659831,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.45161290322580644
+        },
+        "neg_d1": {
+          "AUC": 0.7489923985360143,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.12096774193548387
+        },
+        "neg_z_d1": {
+          "AUC": 0.7566049757731119,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.12903225806451613
+        },
+        "neg_hb": {
+          "AUC": 0.5670369849007957,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.08870967741935484
+        },
+        "cal_ratio": {
+          "AUC": 0.903225806451613,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.7903225806451613
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7822691777675701,
+          "unknown_rejection": 0.9435483870967742
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9173174092788241,
+          "unknown_rejection": 0.29838709677419356
+        }
+      }
+    },
+    {
+      "held_out": 8,
+      "N_known": 2197,
+      "N_unknown": 104,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9309898112811177,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.9230769230769231
+        },
+        "neg_d1": {
+          "AUC": 0.8868299429291692,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.7115384615384616
+        },
+        "neg_z_d1": {
+          "AUC": 0.8952680228283323,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.7115384615384616
+        },
+        "neg_hb": {
+          "AUC": 0.41863030005952173,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.0673076923076923
+        },
+        "cal_ratio": {
+          "AUC": 0.8543862259724799,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.5480769230769231
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7847064178425125,
+          "unknown_rejection": 0.9326923076923077
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9148839326354119,
+          "unknown_rejection": 0.5384615384615384
+        }
+      }
+    },
+    {
+      "held_out": 9,
+      "N_known": 2185,
+      "N_unknown": 116,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9078986822378283,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.8448275862068966
+        },
+        "neg_d1": {
+          "AUC": 0.8617927878166181,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.6120689655172413
+        },
+        "neg_z_d1": {
+          "AUC": 0.86524500907441,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.603448275862069
+        },
+        "neg_hb": {
+          "AUC": 0.8004142665509351,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.5258620689655172
+        },
+        "cal_ratio": {
+          "AUC": 0.9488045450958731,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.9396551724137931
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7862700228832952,
+          "unknown_rejection": 0.9741379310344828
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9135011441647597,
+          "unknown_rejection": 0.8103448275862069
+        }
+      }
+    },
+    {
+      "held_out": 10,
+      "N_known": 2194,
+      "N_unknown": 107,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9345411019006806,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.8785046728971962
+        },
+        "neg_d1": {
+          "AUC": 0.8201296654427113,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.6448598130841121
+        },
+        "neg_z_d1": {
+          "AUC": 0.8516259296807777,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.6448598130841121
+        },
+        "neg_hb": {
+          "AUC": 0.085692500362075,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.0
+        },
+        "cal_ratio": {
+          "AUC": 0.9137324393630888,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.8317757009345794
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7862351868732907,
+          "unknown_rejection": 0.9252336448598131
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9138559708295351,
+          "unknown_rejection": 0.7850467289719626
+        }
+      }
+    },
+    {
+      "held_out": 11,
+      "N_known": 2180,
+      "N_unknown": 121,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9101523997270453,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.8181818181818182
+        },
+        "neg_d1": {
+          "AUC": 0.5978466904238381,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.01652892561983471
+        },
+        "neg_z_d1": {
+          "AUC": 0.6154067783759193,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.01652892561983471
+        },
+        "neg_hb": {
+          "AUC": 0.4405489423004018,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.008264462809917356
+        },
+        "cal_ratio": {
+          "AUC": 0.7593752369398742,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.3305785123966942
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7802752293577981,
+          "unknown_rejection": 0.8842975206611571
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9197247706422018,
+          "unknown_rejection": 0.2644628099173554
+        }
+      }
+    },
+    {
+      "held_out": 12,
+      "N_known": 2179,
+      "N_unknown": 122,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9213092183961662,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.8360655737704918
+        },
+        "neg_d1": {
+          "AUC": 0.7303244833319541,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.12295081967213115
+        },
+        "neg_z_d1": {
+          "AUC": 0.734846034050813,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.13934426229508196
+        },
+        "neg_hb": {
+          "AUC": 0.5109277078521506,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.01639344262295082
+        },
+        "cal_ratio": {
+          "AUC": 0.7034998758642481,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.09016393442622951
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.783845800826067,
+          "unknown_rejection": 0.8360655737704918
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9160165213400643,
+          "unknown_rejection": 0.09016393442622951
+        }
+      }
+    },
+    {
+      "held_out": 13,
+      "N_known": 2178,
+      "N_unknown": 123,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9175569441644829,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.8780487804878049
+        },
+        "neg_d1": {
+          "AUC": 0.8726884514024204,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.8536585365853658
+        },
+        "neg_z_d1": {
+          "AUC": 0.8931667002620439,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.8455284552845529
+        },
+        "neg_hb": {
+          "AUC": 0.7973900124676179,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.5772357723577236
+        },
+        "cal_ratio": {
+          "AUC": 0.8887097135434165,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.7154471544715447
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.783287419651056,
+          "unknown_rejection": 0.9512195121951219
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9164370982552801,
+          "unknown_rejection": 0.6422764227642277
+        }
+      }
+    },
+    {
+      "held_out": 14,
+      "N_known": 2180,
+      "N_unknown": 121,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.8779740693001743,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.6115702479338843
+        },
+        "neg_d1": {
+          "AUC": 0.9721169156114946,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 1.0
+        },
+        "neg_z_d1": {
+          "AUC": 0.9730950034119341,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 1.0
+        },
+        "neg_hb": {
+          "AUC": 0.7574986731367048,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.34710743801652894
+        },
+        "cal_ratio": {
+          "AUC": 0.7373379331260899,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.17355371900826447
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7834862385321101,
+          "unknown_rejection": 0.6115702479338843
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9165137614678899,
+          "unknown_rejection": 0.17355371900826447
+        }
+      }
+    },
+    {
+      "held_out": 15,
+      "N_known": 2191,
+      "N_unknown": 110,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.8942367536616739,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.7363636363636363
+        },
+        "neg_d1": {
+          "AUC": 0.6317206754906435,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.2545454545454545
+        },
+        "neg_z_d1": {
+          "AUC": 0.6366706775652462,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.23636363636363636
+        },
+        "neg_hb": {
+          "AUC": 0.3522073772872495,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.00909090909090909
+        },
+        "cal_ratio": {
+          "AUC": 0.8242852993651715,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.5363636363636364
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7818347786398905,
+          "unknown_rejection": 0.8
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9178457325422181,
+          "unknown_rejection": 0.4727272727272727
+        }
+      }
+    },
+    {
+      "held_out": 16,
+      "N_known": 2182,
+      "N_unknown": 119,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9235725454251362,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.8739495798319328
+        },
+        "neg_d1": {
+          "AUC": 0.46804257908479613,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.0
+        },
+        "neg_z_d1": {
+          "AUC": 0.4732763866316463,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.01680672268907563
+        },
+        "neg_hb": {
+          "AUC": 0.5859515208466521,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.08403361344537816
+        },
+        "cal_ratio": {
+          "AUC": 0.8240608800807216,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.48739495798319327
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7836846929422548,
+          "unknown_rejection": 0.9159663865546218
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9156736938588451,
+          "unknown_rejection": 0.44537815126050423
+        }
+      }
+    },
+    {
+      "held_out": 17,
+      "N_known": 2189,
+      "N_unknown": 112,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9130351432487112,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.8571428571428571
+        },
+        "neg_d1": {
+          "AUC": 0.5338502577824187,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.09821428571428571
+        },
+        "neg_z_d1": {
+          "AUC": 0.5364770279971285,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.09821428571428571
+        },
+        "neg_hb": {
+          "AUC": 0.2772996475885923,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.0
+        },
+        "cal_ratio": {
+          "AUC": 0.8531170462703126,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.6160714285714286
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7830059387848333,
+          "unknown_rejection": 0.9553571428571429
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.916400182731841,
+          "unknown_rejection": 0.5178571428571429
+        }
+      }
+    },
+    {
+      "held_out": 18,
+      "N_known": 2203,
+      "N_unknown": 98,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.8955274347596506,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.7551020408163265
+        },
+        "neg_d1": {
+          "AUC": 0.6806395731238478,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.16326530612244897
+        },
+        "neg_z_d1": {
+          "AUC": 0.6710607983547482,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.15306122448979592
+        },
+        "neg_hb": {
+          "AUC": 0.5506915430720631,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.10204081632653061
+        },
+        "cal_ratio": {
+          "AUC": 0.7665521042733934,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.3469387755102041
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7930095324557421,
+          "unknown_rejection": 0.7857142857142857
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9064911484339537,
+          "unknown_rejection": 0.3163265306122449
+        }
+      }
+    },
+    {
+      "held_out": 19,
+      "N_known": 2187,
+      "N_unknown": 114,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9377341387304566,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.8859649122807017
+        },
+        "neg_d1": {
+          "AUC": 0.885571839979464,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.7368421052631579
+        },
+        "neg_z_d1": {
+          "AUC": 0.8894103113293064,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.7368421052631579
+        },
+        "neg_hb": {
+          "AUC": 0.483354591325135,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.14035087719298245
+        },
+        "cal_ratio": {
+          "AUC": 0.8405770943132865,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.5
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7828074988568816,
+          "unknown_rejection": 0.9473684210526315
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9172382258802012,
+          "unknown_rejection": 0.43859649122807015
+        }
+      }
+    },
+    {
+      "held_out": 20,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "base_ratio": {
+          "AUC": 0.9384325870167589,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9112903225806451
+        },
+        "neg_d1": {
+          "AUC": 0.7579422703631811,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.3870967741935484
+        },
+        "neg_z_d1": {
+          "AUC": 0.7803762206054499,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.3790322580645161
+        },
+        "neg_hb": {
+          "AUC": 0.6909441818424289,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.23387096774193547
+        },
+        "cal_ratio": {
+          "AUC": 0.8248977580867426,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.532258064516129
+        },
+        "and_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.7827285254937988,
+          "unknown_rejection": 0.9516129032258065
+        },
+        "or_base_cal": {
+          "AUC": null,
+          "known_acceptance": 0.9168580615525953,
+          "unknown_rejection": 0.49193548387096775
+        }
+      }
+    }
+  ]
+}
