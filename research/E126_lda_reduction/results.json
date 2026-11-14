@@ -1,0 +1,92 @@
+{
+  "experiment": "E126_lda_reduction",
+  "variants": {
+    "REF_PCA96": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.7916254533465216,
+      "Test_S2_acceptance": 0.5823186595899678,
+      "diagnostic_AUC": 0.7657705949853242,
+      "LOSO": {
+        "AUC": 0.8579173639741775,
+        "unknown_rejection": 0.6261294725876169,
+        "folds_ge_0.80": 9
+      }
+    },
+    "LDA19": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.9914276294098252,
+      "Test_S2_acceptance": 0.07331668227703195,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    "LDA32": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.9914276294098252,
+      "Test_S2_acceptance": 0.07331668227703195,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    "LDA48": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.9914276294098252,
+      "Test_S2_acceptance": 0.07331668227703195,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    "LDA64": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.9914276294098252,
+      "Test_S2_acceptance": 0.07331668227703195,
+      "diagnostic_AUC": 0.7198898802731819,
+      "LOSO": {
+        "AUC": 0.998597127025714,
+        "unknown_rejection": 1.0,
+        "folds_ge_0.80": 20
+      }
+    },
+    "LDA96": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.9914276294098252,
+      "Test_S2_acceptance": 0.07331668227703195,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    "LDA128": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.9914276294098252,
+      "Test_S2_acceptance": 0.07331668227703195,
+      "diagnostic_AUC": 0.7198898802731819
+    },
+    "PCA96_LDA19": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.9798878997692054,
+      "Test_S2_acceptance": 0.10641065667603289,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    "PCA96_LDA32": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.9798878997692054,
+      "Test_S2_acceptance": 0.10641065667603289,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    "PCA96_LDA48": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.9798878997692054,
+      "Test_S2_acceptance": 0.10641065667603289,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    "PCA96_LDA64": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.9798878997692054,
+      "Test_S2_acceptance": 0.10641065667603289,
+      "diagnostic_AUC": 0.7264233817228922
+    },
+    "PERTASK_PCA96": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.7678865809429608,
+      "Test_S2_acceptance": 0.5970964720574461,
+      "diagnostic_AUC": 0.7560393533551579,
+      "LOSO": {
+        "AUC": 0.8671338495165992,
+        "unknown_rejection": 0.6583307476173578,
+        "folds_ge_0.80": 10
+      }
+    }
+  }
+}

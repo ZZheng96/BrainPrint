@@ -1,0 +1,50 @@
+{
+  "experiment": "E127_cross_task",
+  "variants": {
+    "pertask_pca96/own_task_max": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.643587207385427,
+      "Test_S2_acceptance": 0.3779269434904777,
+      "diagnostic_AUC": 0.5388536827886621,
+      "LOSO": {
+        "AUC": 0.9521626577992007,
+        "unknown_rejection": 0.9373624277800175,
+        "folds_ge_0.80": 19
+      }
+    },
+    "pertask_pca96/cross_task_max": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.5713814704912628,
+      "Test_S2_acceptance": 0.42772400874180455,
+      "diagnostic_AUC": 0.5092018119484024,
+      "LOSO": {
+        "AUC": 0.8344945765323472,
+        "unknown_rejection": 0.5708264372143212,
+        "folds_ge_0.80": 3
+      }
+    },
+    "pertask_pca96/relative_fit": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.6205077481041873,
+      "Test_S2_acceptance": 0.38979082110521385,
+      "diagnostic_AUC": 0.5265976588672485
+    },
+    "pertask_pca96/both_task_gap": {
+      "train_known_acceptance": 0.8917861799217731,
+      "Test_S1_rejection": 0.5806132542037586,
+      "Test_S2_acceptance": 0.5159225725881985,
+      "diagnostic_AUC": 0.5598394161946414,
+      "LOSO": {
+        "AUC": 0.9543238863460134,
+        "unknown_rejection": 0.9466485724140927,
+        "folds_ge_0.80": 20
+      }
+    },
+    "pertask_pca96/fuse_own_cross": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.5984174085064293,
+      "Test_S2_acceptance": 0.40555729004058694,
+      "diagnostic_AUC": 0.5225800270977687
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "experiment": "E129_more_prototype_data",
+  "pca_dim": 96,
+  "variants": {
+    "E0_ref_fit60_thr6080": {
+      "threshold": -11.85400676727295,
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.7916254533465216,
+      "Test_S2_acceptance": 0.5823186595899678,
+      "diagnostic_AUC": 0.7657705949853242,
+      "calibration_set": "0.6-0.8 block",
+      "prototype_trials_per_subject": 334.75,
+      "LOSO": {
+        "AUC": 0.8579173639741775,
+        "unknown_rejection": 0.6261294725876169,
+        "folds_ge_0.80": 9
+      }
+    },
+    "E1_fit80_thrOOF": {
+      "threshold": -11.675966262817383,
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.7906363336630399,
+      "Test_S2_acceptance": 0.5772192735976689,
+      "diagnostic_AUC": 0.7630591882809064,
+      "calibration_set": "5-fold out-of-fold",
+      "prototype_trials_per_subject": 449.8,
+      "LOSO": {
+        "AUC": 0.8579173639741775,
+        "unknown_rejection": 0.6261294725876169,
+        "folds_ge_0.80": 9
+      }
+    },
+    "E2_fit80_thr6080": {
+      "threshold": -10.866409301757812,
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.899439498846027,
+      "Test_S2_acceptance": 0.41700489124778856,
+      "diagnostic_AUC": 0.7630591882809064,
+      "calibration_set": "0.6-0.8 block",
+      "prototype_trials_per_subject": 449.8
+    },
+    "E3_fit90_thrOOF": {
+      "threshold": -11.675966262817383,
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.7903066271018794,
+      "Test_S2_acceptance": 0.5833593506088043,
+      "diagnostic_AUC": 0.7642605293277744,
+      "calibration_set": "5-fold out-of-fold",
+      "prototype_trials_per_subject": 507.65
+    },
+    "E4_fit100_thrOOF": {
+      "threshold": -11.675966262817383,
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.7932739861523245,
+      "Test_S2_acceptance": 0.5871578728275575,
+      "diagnostic_AUC": 0.7655124723884908,
+      "calibration_set": "5-fold out-of-fold",
+      "prototype_trials_per_subject": 565.2
+    }
+  }
+}

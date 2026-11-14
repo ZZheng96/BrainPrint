@@ -1,0 +1,61 @@
+{
+  "experiment": "E128_distance_forms",
+  "variants": {
+    "neg_d1": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.7916254533465216,
+      "Test_S2_acceptance": 0.5823186595899678,
+      "diagnostic_AUC": 0.7657705949853242,
+      "LOSO": {
+        "AUC": 0.8579173639741775,
+        "unknown_rejection": 0.6261294725876169,
+        "folds_ge_0.80": 9
+      }
+    },
+    "ratio_d2_d1": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.8216287504121332,
+      "Test_S2_acceptance": 0.35461546466853994,
+      "diagnostic_AUC": 0.6107785909441628,
+      "LOSO": {
+        "AUC": 0.9188993102686348,
+        "unknown_rejection": 0.8427332349620844,
+        "folds_ge_0.80": 15
+      }
+    },
+    "margin_ratio": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.8216287504121332,
+      "Test_S2_acceptance": 0.35461546466853994,
+      "diagnostic_AUC": 0.6107785480538306,
+      "LOSO": {
+        "AUC": 0.9188992014274471,
+        "unknown_rejection": 0.8427332349620844,
+        "folds_ge_0.80": 15
+      }
+    },
+    "neg_d1_rel": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.6142433234421365,
+      "Test_S2_acceptance": 0.41830575502133416,
+      "diagnostic_AUC": 0.4960136181265111,
+      "LOSO": {
+        "AUC": 0.8817704656546026,
+        "unknown_rejection": 0.713098758405844,
+        "folds_ge_0.80": 6
+      }
+    },
+    "neg_d1_mahal": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.7870095614902737,
+      "Test_S2_acceptance": 0.5736809241336247,
+      "diagnostic_AUC": 0.7489692338040188
+    },
+    "fuse_d1_ratio": {
+      "train_known_acceptance": 0.8500651890482399,
+      "Test_S1_rejection": 0.8344873062973953,
+      "Test_S2_acceptance": 0.44510354875637426,
+      "diagnostic_AUC": 0.7340836894002926
+    }
+  }
+}

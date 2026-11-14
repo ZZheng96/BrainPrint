@@ -1,0 +1,38 @@
+{
+  "experiment": "E130_per_identity_thresholds",
+  "pca_dim": 96,
+  "variants": {
+    "G_global": {
+      "label": "global threshold",
+      "threshold": -11.675966262817383,
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.7932739861523245,
+      "Test_S2_acceptance": 0.5871578728275575,
+      "diagnostic_AUC": 0.7655124723884908
+    },
+    "P1_per_identity": {
+      "label": "identity",
+      "threshold": -3.8501691818237305,
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.6109462578305308,
+      "Test_S2_acceptance": 0.721407014257467,
+      "diagnostic_AUC": 0.7137838067173603
+    },
+    "P2_per_prototype": {
+      "label": "prototype",
+      "threshold": -3.0435523986816406,
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.693043191559512,
+      "Test_S2_acceptance": 0.5851805598917681,
+      "diagnostic_AUC": 0.6954805805100086
+    },
+    "P3_per_task": {
+      "label": "task",
+      "threshold": -3.8229146003723145,
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.7794263105835806,
+      "Test_S2_acceptance": 0.5939223644499948,
+      "diagnostic_AUC": 0.7638296616292486
+    }
+  }
+}

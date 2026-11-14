@@ -1,0 +1,149 @@
+{
+  "A_global": {
+    "train_known_acceptance": 0.8499646142958245,
+    "Test_S1_rejection": 0.7932739861523245,
+    "Test_S2_acceptance": 0.5871578728275575,
+    "diagnostic_AUC": 0.7655124723884908
+  },
+  "B_identity": {
+    "train_known_acceptance": 0.8499646142958245,
+    "Test_S1_rejection": 0.6109462578305308,
+    "Test_S2_acceptance": 0.721407014257467,
+    "diagnostic_AUC": 0.7137838067173603
+  },
+  "C_fuse_global_identity": {
+    "train_known_acceptance": 0.8500530785562632,
+    "Test_S1_rejection": 0.6861193537751401,
+    "Test_S2_acceptance": 0.6535019252783848,
+    "diagnostic_AUC": 0.7401343486470005
+  },
+  "D_fuse_three": {
+    "train_known_acceptance": 0.8499646142958245,
+    "Test_S1_rejection": 0.7240356083086054,
+    "Test_S2_acceptance": 0.6363825580185243,
+    "diagnostic_AUC": 0.7497918532181662
+  },
+  "E_identity_curve": [
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.5314869765908341,
+      "Test_S2_acceptance": 0.8358830263294827,
+      "diagnostic_AUC": 0.7302572798875875,
+      "identity_quantile": 0.8
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.5107154632377184,
+      "Test_S2_acceptance": 0.8518055989176814,
+      "diagnostic_AUC": 0.7250454783347723,
+      "identity_quantile": 0.85
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.5215957797560171,
+      "Test_S2_acceptance": 0.8477469039442189,
+      "diagnostic_AUC": 0.7266098774650661,
+      "identity_quantile": 0.88
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.511045169798879,
+      "Test_S2_acceptance": 0.8504527005931939,
+      "diagnostic_AUC": 0.7236175991316527,
+      "identity_quantile": 0.9
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.4869765908341576,
+      "Test_S2_acceptance": 0.8624726818607555,
+      "diagnostic_AUC": 0.7187329650323356,
+      "identity_quantile": 0.92
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.49455984174085066,
+      "Test_S2_acceptance": 0.8583619523363514,
+      "diagnostic_AUC": 0.7190206047557417,
+      "identity_quantile": 0.94
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.5014836795252225,
+      "Test_S2_acceptance": 0.8551878447289,
+      "diagnostic_AUC": 0.7194509663483484,
+      "identity_quantile": 0.96
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.5004945598417408,
+      "Test_S2_acceptance": 0.8565407430533875,
+      "diagnostic_AUC": 0.7199570551113661,
+      "identity_quantile": 0.98
+    }
+  ],
+  "F_fusion_curve": [
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.6112759643916914,
+      "Test_S2_acceptance": 0.7213549797065252,
+      "diagnostic_AUC": 0.7137812676096982,
+      "global_weight": 0.0
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.6379821958456974,
+      "Test_S2_acceptance": 0.6929441148922885,
+      "diagnostic_AUC": 0.7238707035596266,
+      "global_weight": 0.2
+    },
+    {
+      "train_known_acceptance": 0.8500530785562632,
+      "Test_S1_rejection": 0.658094296076492,
+      "Test_S2_acceptance": 0.6782183369757518,
+      "diagnostic_AUC": 0.7291513955639113,
+      "global_weight": 0.3
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.6729310913287174,
+      "Test_S2_acceptance": 0.6646893537308773,
+      "diagnostic_AUC": 0.7346005865270074,
+      "global_weight": 0.4
+    },
+    {
+      "train_known_acceptance": 0.8500530785562632,
+      "Test_S1_rejection": 0.6861193537751401,
+      "Test_S2_acceptance": 0.6535019252783848,
+      "diagnostic_AUC": 0.7401343486470005,
+      "global_weight": 0.5
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.7088691064952193,
+      "Test_S2_acceptance": 0.6390883546674992,
+      "diagnostic_AUC": 0.745702474501097,
+      "global_weight": 0.6
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.7266732607978899,
+      "Test_S2_acceptance": 0.6308668956186908,
+      "diagnostic_AUC": 0.7511984502384822,
+      "global_weight": 0.7
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.7484338938344873,
+      "Test_S2_acceptance": 0.6164012904568633,
+      "diagnostic_AUC": 0.7565124594527666,
+      "global_weight": 0.8
+    },
+    {
+      "train_known_acceptance": 0.8499646142958245,
+      "Test_S1_rejection": 0.793603692713485,
+      "Test_S2_acceptance": 0.5871578728275575,
+      "diagnostic_AUC": 0.7655095815801052,
+      "global_weight": 1.0
+    }
+  ]
+}

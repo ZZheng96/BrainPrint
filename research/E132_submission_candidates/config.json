@@ -1,0 +1,27 @@
+{
+  "experiment": "E132_submission_candidates",
+  "purpose": "Materialise three submission CSVs covering the S1-priority, balanced and S2-priority operating points of the PCA-96 score family.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "train_root": "Brainprint_Competition",
+    "test_csv": "Brainprint_Competition/test.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_trials": 11304,
+    "expected_test_rows": 22251
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "pca_dim": 96,
+  "oof_blocks": 5,
+  "fusion_global_weight": 0.4,
+  "s2_quantile": 0.85,
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  }
+}

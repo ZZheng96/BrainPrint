@@ -1,0 +1,15 @@
+{
+  "experiment": "E131_fusion_thresholds",
+  "purpose": "Fuse global and per-identity acceptance scores and sweep thresholds to find the best simultaneous Test S1 rejection and S2 acceptance.",
+  "data": {
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "pca_dim": 96,
+  "oof_blocks": 5,
+  "identity_quantiles": [0.80, 0.85, 0.88, 0.90, 0.92, 0.94, 0.96, 0.98],
+  "global_weights": [0.0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1.0],
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  }
+}

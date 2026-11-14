@@ -1,0 +1,23 @@
+{
+  "cand_S1": {
+    "S1_rejection_rate": 0.7932739861523245,
+    "S2_acceptance_rate": 0.5871578728275575,
+    "overall_rejection_rate": 0.4646982158105254
+  },
+  "cand_bal": {
+    "S1_rejection_rate": 0.6729310913287174,
+    "S2_acceptance_rate": 0.6646893537308773,
+    "overall_rejection_rate": 0.38133117612691564
+  },
+  "cand_S2": {
+    "S1_rejection_rate": 0.5107154632377184,
+    "S2_acceptance_rate": 0.8518055989176814,
+    "overall_rejection_rate": 0.19760909622039458
+  },
+  "LOSO_global": {
+    "AUC": 0.8579173639741775,
+    "unknown_rejection": 0.6261294725876169,
+    "folds_ge_0.80": 9,
+    "n_folds": 20
+  }
+}

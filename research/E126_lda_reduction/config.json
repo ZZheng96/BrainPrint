@@ -1,0 +1,23 @@
+{
+  "experiment": "E126_lda_reduction",
+  "purpose": "Test supervised reduction (multi-class LDA) and per-task PCA for raising Test S1-vs-S2 separability; report LOSO, Test S1 and Test S2 together.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_trials": 11304
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "pca_dim": 96,
+  "lda_dims": [19, 32, 48, 64, 96, 128],
+  "lda_on_pca_dims": [19, 32, 48, 64],
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  }
+}
