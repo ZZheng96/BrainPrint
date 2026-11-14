@@ -1,0 +1,13 @@
+{
+  "experiment": "E144_retrospective",
+  "purpose": "Summarise the E137-E145 batch, review every earlier experiment from project memory, recompute the new weighted objective W = 0.25*LOSO + 0.25*S1 + 0.5*S2 for every experiment whose stored results allow it, and write an overall retrospective. No model training here; only a recompute pass over stored operating points.",
+  "inputs": {
+    "results_glob": "research/E*/results.json",
+    "loso_contaminated": ["E137_multi_view", "E138_scale_free_score", "E139_feature_fusion",
+                          "E140_metric_learning", "E141_weighted_image_route", "E142_cdf_fusion"],
+    "forbidden": ["E135_rank_calibration"]
+  },
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "targets": {"weighted": 0.80},
+  "outputs": ["recomputed.md", "recomputed_all_points.csv", "recomputed_best_per_experiment.csv", "report.md"]
+}

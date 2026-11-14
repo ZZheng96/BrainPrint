@@ -11,6 +11,7 @@ Clean protocol: Train-only standardisation / PCA / prototypes / threshold.
 """
 from __future__ import annotations
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -18,9 +19,12 @@ import pandas as pd
 import torch
 from sklearn.metrics import roc_auc_score
 
-OUT = Path(__file__).resolve().parent
+# config path may be overridden so the same harness can serve other view sets
+CFG_PATH = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent / "config.json"
+CFG_PATH = CFG_PATH.resolve()
+OUT = CFG_PATH.parent
 ROOT = OUT.parents[1]
-CFG = json.loads((OUT / "config.json").read_text(encoding="utf-8"))
+CFG = json.loads(CFG_PATH.read_text(encoding="utf-8"))
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 CLASSES = np.arange(1, 21, dtype=int)
 TASKS = CFG["tasks"]

@@ -1,0 +1,43 @@
+﻿projected B_E65logspd
+projected A_E62corr8
+projected A_E62cov4
+projected A_E62cov8
+projected A_DINOcorr
+projected A_DINOcov5
+projected A_DINOcovHR
+projected A_DINOtope5
+projected N_E21covdz
+  k=12 B_E65logspd    AUC 0.7578
+  k=12 A_E62corr8     AUC 0.7206
+  k=12 A_E62cov4      AUC 0.7206
+  k=12 A_E62cov8      AUC 0.7482
+  k=12 A_DINOcorr     AUC 0.4984
+  k=12 A_DINOcov5     AUC 0.7223
+  k=12 A_DINOcovHR    AUC 0.7399
+  k=12 A_DINOtope5    AUC 0.4635
+  k=12 N_E21covdz     AUC 0.4749
+  k=12 B_only       AUC 0.7578 bestW 0.6958 @a=0.900
+  k=12 C_plus_cov   AUC 0.7939 bestW 0.6712 @a=0.880
+  k=12 B_plus_A     AUC 0.7765 bestW 0.4014 @a=0.850
+  k=32 B_E65logspd    AUC 0.7599
+  k=32 A_E62corr8     AUC 0.7203
+  k=32 A_E62cov4      AUC 0.7230
+  k=32 A_E62cov8      AUC 0.7495
+  k=32 A_DINOcorr     AUC 0.5009
+  k=32 A_DINOcov5     AUC 0.7230
+  k=32 A_DINOcovHR    AUC 0.7426
+  k=32 A_DINOtope5    AUC 0.4529
+  k=32 N_E21covdz     AUC 0.4725
+  k=32 B_only       AUC 0.7599 bestW 0.6908 @a=0.900
+  k=32 C_plus_cov   AUC 0.7945 bestW 0.6704 @a=0.900
+  k=32 B_plus_A     AUC 0.7786 bestW 0.3913 @a=0.850
+{
+  "set": "B_only",
+  "k": 12,
+  "acceptance_rate": 0.9,
+  "test_auc": 0.7578208290344354,
+  "LOSO_rejection": 0.7935548348177022,
+  "Test_S1_rejection": 0.7978898780085724,
+  "Test_S2_acceptance": 0.595951711936726,
+  "W": 0.6958370341749316
+}
