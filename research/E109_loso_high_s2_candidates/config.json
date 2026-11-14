@@ -1,0 +1,52 @@
+{
+  "experiment": "E109_loso_high_s2_candidates",
+  "purpose": "Apply the E108 leave-one-identity-out protocol to the candidates that reached high Test S2 acceptance (E95, E97, E98, E104), to test whether LOSO rejection tracks Test S1 rejection.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "expected_trials": 11304
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  },
+  "candidates": {
+    "E95_raw_cosine": {
+      "source": "research/E95_e54_final20_candidate/model_checkpoint.pt",
+      "score": "max_cosine over 20 EEGNet prototypes",
+      "test_s2_acceptance": 0.9413570610885628,
+      "test_s1_rejection": 0.1543026706231454
+    },
+    "E97_multiview": {
+      "source": "research/E95_e54_final20_candidate/model_checkpoint.pt",
+      "score": "mean of L2 embeddings over three 600-sample windows, then max cosine",
+      "windows": [[0, 600], [300, 900], [600, 1200]],
+      "test_s2_acceptance": 0.9689874076386721,
+      "test_s1_rejection": 0.10121991427629409
+    },
+    "E98_dual_gate": {
+      "source": "research/E95_e54_final20_candidate/model_checkpoint.pt",
+      "score": "AND gate of E95 raw max cosine and E65 correlation-logSPD max cosine",
+      "test_s2_acceptance": 0.7686023519617026,
+      "test_s1_rejection": 0.4516979887899769
+    },
+    "E104_session_invariant": {
+      "source": "research/E104_session_invariant_pretrain/encoder.pt",
+      "score": "task-conditioned distance ratio on E88 18-channel embeddings",
+      "test_s2_acceptance": 0.6149963575814341,
+      "test_s1_rejection": 0.42631058358061324
+    }
+  },
+  "protocol": {
+    "leave_one_identity_out": true,
+    "s2_operating_point_fixed": true,
+    "test_accessed": false,
+    "note": "No project Test is read. Only Train/session1 is used."
+  }
+}
