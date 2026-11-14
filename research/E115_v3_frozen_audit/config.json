@@ -1,0 +1,38 @@
+{
+  "experiment": "E115_v3_frozen_audit",
+  "purpose": "Freeze the E114 V3 recipe on all 20 identities and audit the project Test once, checking both S1 rejection and S2 acceptance.",
+  "seed": 20261114,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_csv": "Brainprint_Competition/test.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_trials": 11304,
+    "expected_test_rows": 22251
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "training": {
+    "epochs": 8,
+    "batch_size": 64,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 5.0
+  },
+  "prototypes": {
+    "k": 3
+  },
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  },
+  "protocol": {
+    "train_session1_only": true,
+    "test_read_once_after_freeze": true,
+    "session_audit_after_predictions": true
+  }
+}
