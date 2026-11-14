@@ -1,0 +1,48 @@
+{
+  "experiment": "E135_rank_calibration",
+  "objective": "(LOSO rejection + Test S2 acceptance)/2",
+  "target": 0.85,
+  "best": {
+    "name": "k3_TASK_RANK",
+    "LOSO_rejection": 0.8300732469680396,
+    "Test_S1_rejection": 0.39630728651500163,
+    "Test_S2_acceptance": 0.9174732022062649,
+    "overall_acceptance": 0.8747022605725585,
+    "mean_objective": 0.8737732245871523,
+    "diagnostic_AUC": 0.7822144052018493
+  },
+  "variants": {
+    "k1_RAW": {
+      "LOSO_rejection": 0.6261294725876169,
+      "Test_S1_rejection": 0.7916254533465216,
+      "Test_S2_acceptance": 0.5823186595899678,
+      "overall_acceptance": 0.5313469057570446,
+      "mean_objective": 0.6042240660887923,
+      "diagnostic_AUC": 0.7657705949853242
+    },
+    "k1_TASK_RANK": {
+      "LOSO_rejection": 0.6261294725876169,
+      "Test_S1_rejection": 0.40685789647213977,
+      "Test_S2_acceptance": 0.9099281923197002,
+      "overall_acceptance": 0.86674756190733,
+      "mean_objective": 0.7680288324536586,
+      "diagnostic_AUC": 0.7657705949853242
+    },
+    "k3_RAW": {
+      "LOSO_rejection": 0.8300732469680396,
+      "Test_S1_rejection": 0.9244971974942301,
+      "Test_S2_acceptance": 0.379904256426267,
+      "overall_acceptance": 0.3384117567749764,
+      "mean_objective": 0.6049887516971533,
+      "diagnostic_AUC": 0.7822144052018493
+    },
+    "k3_TASK_RANK": {
+      "LOSO_rejection": 0.8300732469680396,
+      "Test_S1_rejection": 0.39630728651500163,
+      "Test_S2_acceptance": 0.9174732022062649,
+      "overall_acceptance": 0.8747022605725585,
+      "mean_objective": 0.8737732245871523,
+      "diagnostic_AUC": 0.7822144052018493
+    }
+  }
+}

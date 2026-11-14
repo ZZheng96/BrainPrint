@@ -1,0 +1,412 @@
+{
+  "experiment": "E134_steep_loso",
+  "objective": "(LOSO rejection + Test S2 acceptance)/2",
+  "target": 0.85,
+  "best": {
+    "space": "P96",
+    "acceptance_rate": 0.9,
+    "LOSO_rejection": 0.3500665293884661,
+    "Test_S2_acceptance": 0.7074617546050578,
+    "Test_S1_rejection": 0.6607319485657764,
+    "mean_objective": 0.5287641419967619,
+    "loso_folds_ge_0.80": 1
+  },
+  "curve": [
+    {
+      "space": "P96",
+      "acceptance_rate": 0.3,
+      "LOSO_rejection": 0.9941311073915557,
+      "Test_S2_acceptance": 0.004422936830055156,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.49927702211080544,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96",
+      "acceptance_rate": 0.4,
+      "LOSO_rejection": 0.9818103725776199,
+      "Test_S2_acceptance": 0.015662399833489438,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.4987363862055547,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96",
+      "acceptance_rate": 0.5,
+      "LOSO_rejection": 0.9615598630913272,
+      "Test_S2_acceptance": 0.040847122489332914,
+      "Test_S1_rejection": 0.9996702934388394,
+      "mean_objective": 0.50120349279033,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96",
+      "acceptance_rate": 0.6,
+      "LOSO_rejection": 0.9002487457247732,
+      "Test_S2_acceptance": 0.09896971589135185,
+      "Test_S1_rejection": 0.997692054071876,
+      "mean_objective": 0.4996092308080625,
+      "loso_folds_ge_0.80": 15
+    },
+    {
+      "space": "P96",
+      "acceptance_rate": 0.65,
+      "LOSO_rejection": 0.852395047201733,
+      "Test_S2_acceptance": 0.15386616713497764,
+      "Test_S1_rejection": 0.9930761622156281,
+      "mean_objective": 0.5031306071683553,
+      "loso_folds_ge_0.80": 14
+    },
+    {
+      "space": "P96",
+      "acceptance_rate": 0.7,
+      "LOSO_rejection": 0.7739022388340742,
+      "Test_S2_acceptance": 0.2313456134873556,
+      "Test_S1_rejection": 0.9749423013517969,
+      "mean_objective": 0.5026239261607148,
+      "loso_folds_ge_0.80": 10
+    },
+    {
+      "space": "P96",
+      "acceptance_rate": 0.75,
+      "LOSO_rejection": 0.6719865262094424,
+      "Test_S2_acceptance": 0.3321885732126132,
+      "Test_S1_rejection": 0.9357072205736894,
+      "mean_objective": 0.5020875497110278,
+      "loso_folds_ge_0.80": 9
+    },
+    {
+      "space": "P96",
+      "acceptance_rate": 0.8,
+      "LOSO_rejection": 0.5778990087619481,
+      "Test_S2_acceptance": 0.44635237797897803,
+      "Test_S1_rejection": 0.8783382789317508,
+      "mean_objective": 0.5121256933704631,
+      "loso_folds_ge_0.80": 6
+    },
+    {
+      "space": "P96",
+      "acceptance_rate": 0.85,
+      "LOSO_rejection": 0.47897475690902097,
+      "Test_S2_acceptance": 0.5768550317410761,
+      "Test_S1_rejection": 0.7955819320804484,
+      "mean_objective": 0.5279148943250486,
+      "loso_folds_ge_0.80": 4
+    },
+    {
+      "space": "P96",
+      "acceptance_rate": 0.9,
+      "LOSO_rejection": 0.3500665293884661,
+      "Test_S2_acceptance": 0.7074617546050578,
+      "Test_S1_rejection": 0.6607319485657764,
+      "mean_objective": 0.5287641419967619,
+      "loso_folds_ge_0.80": 1
+    },
+    {
+      "space": "P96",
+      "acceptance_rate": 0.95,
+      "LOSO_rejection": 0.17924364306417234,
+      "Test_S2_acceptance": 0.844468727234884,
+      "Test_S1_rejection": 0.5140125288493241,
+      "mean_objective": 0.5118561851495281,
+      "loso_folds_ge_0.80": 1
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.3,
+      "LOSO_rejection": 0.9995454545454546,
+      "Test_S2_acceptance": 0.0006764491622437298,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5001109518538491,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.4,
+      "LOSO_rejection": 0.9995454545454546,
+      "Test_S2_acceptance": 0.0011967946716619836,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5003711246085583,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.5,
+      "LOSO_rejection": 0.9995454545454546,
+      "Test_S2_acceptance": 0.0020293474867311896,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5007874010160929,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.6,
+      "LOSO_rejection": 0.9986101398601399,
+      "Test_S2_acceptance": 0.003226142158393173,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5009181410092666,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.65,
+      "LOSO_rejection": 0.998196916719644,
+      "Test_S2_acceptance": 0.005151420543240711,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5016741686314423,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.7,
+      "LOSO_rejection": 0.9977870806540702,
+      "Test_S2_acceptance": 0.006868560724320949,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5023278206891956,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.75,
+      "LOSO_rejection": 0.997319790934444,
+      "Test_S2_acceptance": 0.009366219169528567,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5033430050519863,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.8,
+      "LOSO_rejection": 0.9956220182066019,
+      "Test_S2_acceptance": 0.012956603184514517,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5042893106955582,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.85,
+      "LOSO_rejection": 0.9881984869293307,
+      "Test_S2_acceptance": 0.018368196482464356,
+      "Test_S1_rejection": 0.9996702934388394,
+      "mean_objective": 0.5032833417058975,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.9,
+      "LOSO_rejection": 0.9670221485596289,
+      "Test_S2_acceptance": 0.029763763138724114,
+      "Test_S1_rejection": 0.9996702934388394,
+      "mean_objective": 0.4983929558491765,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "LDA64",
+      "acceptance_rate": 0.95,
+      "LOSO_rejection": 0.8758181686801212,
+      "Test_S2_acceptance": 0.05869497346237902,
+      "Test_S1_rejection": 0.9957138147049126,
+      "mean_objective": 0.4672565710712501,
+      "loso_folds_ge_0.80": 15
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.3,
+      "LOSO_rejection": 0.9995454545454546,
+      "Test_S2_acceptance": 0.001665105630138412,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5006052800877965,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.4,
+      "LOSO_rejection": 0.9995454545454546,
+      "Test_S2_acceptance": 0.003902591320636903,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5017240229330457,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.5,
+      "LOSO_rejection": 0.9978923361321954,
+      "Test_S2_acceptance": 0.006868560724320949,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5023804484282581,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.6,
+      "LOSO_rejection": 0.9962045607383974,
+      "Test_S2_acceptance": 0.012332188573212614,
+      "Test_S1_rejection": 0.9996702934388394,
+      "mean_objective": 0.504268374655805,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.65,
+      "LOSO_rejection": 0.9948973452266365,
+      "Test_S2_acceptance": 0.01685919450515142,
+      "Test_S1_rejection": 0.9996702934388394,
+      "mean_objective": 0.505878269865894,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.7,
+      "LOSO_rejection": 0.9910767404087852,
+      "Test_S2_acceptance": 0.02325944427099594,
+      "Test_S1_rejection": 0.9996702934388394,
+      "mean_objective": 0.5071680923398906,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.75,
+      "LOSO_rejection": 0.9876760357586372,
+      "Test_S2_acceptance": 0.03371838901030284,
+      "Test_S1_rejection": 0.9986811737553577,
+      "mean_objective": 0.51069721238447,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.8,
+      "LOSO_rejection": 0.9749017036606759,
+      "Test_S2_acceptance": 0.04849620147778125,
+      "Test_S1_rejection": 0.9967029343883943,
+      "mean_objective": 0.5116989525692286,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.85,
+      "LOSO_rejection": 0.9577360256074959,
+      "Test_S2_acceptance": 0.0703507128733479,
+      "Test_S1_rejection": 0.9910979228486647,
+      "mean_objective": 0.5140433692404219,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.9,
+      "LOSO_rejection": 0.8974011105380921,
+      "Test_S2_acceptance": 0.1199916744718493,
+      "Test_S1_rejection": 0.9736234751071546,
+      "mean_objective": 0.5086963925049707,
+      "loso_folds_ge_0.80": 18
+    },
+    {
+      "space": "P96_LDA48",
+      "acceptance_rate": 0.95,
+      "LOSO_rejection": 0.7391329166198772,
+      "Test_S2_acceptance": 0.2483609116453325,
+      "Test_S1_rejection": 0.9080118694362018,
+      "mean_objective": 0.49374691413260485,
+      "loso_folds_ge_0.80": 8
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.3,
+      "LOSO_rejection": 1.0,
+      "Test_S2_acceptance": 0.0,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.5,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.4,
+      "LOSO_rejection": 0.999586776859504,
+      "Test_S2_acceptance": 0.0,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.499793388429752,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.5,
+      "LOSO_rejection": 0.996666330712894,
+      "Test_S2_acceptance": 0.0002601727547091269,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.49846325173380157,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.6,
+      "LOSO_rejection": 0.9839968903192352,
+      "Test_S2_acceptance": 0.0006764491622437298,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.4923366697407395,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.65,
+      "LOSO_rejection": 0.9772764640187634,
+      "Test_S2_acceptance": 0.0015610365282547611,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.4894187502735091,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.7,
+      "LOSO_rejection": 0.9610343087968761,
+      "Test_S2_acceptance": 0.0030180039546258714,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.482026156375751,
+      "loso_folds_ge_0.80": 20
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.75,
+      "LOSO_rejection": 0.9162533382507766,
+      "Test_S2_acceptance": 0.006348215214902695,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.46130077673283965,
+      "loso_folds_ge_0.80": 19
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.8,
+      "LOSO_rejection": 0.8395318032362316,
+      "Test_S2_acceptance": 0.012436257675096265,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.4259840304556639,
+      "loso_folds_ge_0.80": 13
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.85,
+      "LOSO_rejection": 0.7260981635274265,
+      "Test_S2_acceptance": 0.031584972421688,
+      "Test_S1_rejection": 1.0,
+      "mean_objective": 0.37884156797455726,
+      "loso_folds_ge_0.80": 10
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.9,
+      "LOSO_rejection": 0.5497980050804383,
+      "Test_S2_acceptance": 0.09683629930273702,
+      "Test_S1_rejection": 0.9983514671941972,
+      "mean_objective": 0.32331715219158763,
+      "loso_folds_ge_0.80": 6
+    },
+    {
+      "space": "FUSE",
+      "acceptance_rate": 0.95,
+      "LOSO_rejection": 0.3471945571636711,
+      "Test_S2_acceptance": 0.3637735456343012,
+      "Test_S1_rejection": 0.9218595450049456,
+      "mean_objective": 0.35548405139898615,
+      "loso_folds_ge_0.80": 1
+    }
+  ]
+}

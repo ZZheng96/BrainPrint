@@ -1,0 +1,23 @@
+{
+  "experiment": "E133_mean_objective",
+  "purpose": "Maximise (LOSO held-out rejection + Test S2 acceptance) / 2 by sweeping per-identity threshold quantiles and fusion weights.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_trials": 11304
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "pca_dim": 96,
+  "identity_quantiles": [0.60, 0.70, 0.80, 0.85, 0.90, 0.95],
+  "fusion_weights": [0.0, 0.3, 0.5, 0.7, 1.0],
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "mean_objective": 0.85
+  }
+}

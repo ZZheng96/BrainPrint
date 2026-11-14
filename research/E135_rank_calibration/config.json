@@ -1,0 +1,23 @@
+{
+  "experiment": "E135_rank_calibration",
+  "purpose": "Remove the Train-to-Test score shift with per-task rank calibration of the Test batch, targeting (LOSO rejection + Test S2 acceptance)/2 > 0.85.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "test_csv": "Brainprint_Competition/test.csv",
+    "expected_trials": 11304
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "pca_dim": 96,
+  "prototype_counts": [1, 3],
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "mean_objective": 0.85
+  }
+}
