@@ -1,0 +1,69 @@
+{
+  "experiment": "E116_test_separability",
+  "diagnostic_only": true,
+  "warning": "Thresholds here are chosen with the Session grouping. This is an upper bound, not a deployable candidate.",
+  "N_S1": 3033,
+  "N_S2": 19218,
+  "scores": {
+    "E95_raw_cosine": {
+      "diagnostic_AUC_S1_vs_S2": 0.7037116898835465,
+      "S1_quantiles": {
+        "0.1": 0.30347558856010437,
+        "0.5": 0.43318286538124084,
+        "0.9": 0.5629563927650452
+      },
+      "S2_quantiles": {
+        "0.1": 0.3677440285682678,
+        "0.5": 0.515475332736969,
+        "0.9": 0.6496427655220032
+      },
+      "best_S2_accept_at_S1_rej_0.80": 0.48683525861171817,
+      "best_S2_accept_at_S1_rej_0.90": 0.3231345613487356,
+      "best_S2_accept_at_S1_rej_0.95": 0.19481735872619418,
+      "best_S1_rej_at_S2_accept_0.85": 0.3567424991757336,
+      "best_S1_rej_at_S2_accept_0.90": 0.24925816023738873,
+      "best_S1_rej_at_S2_accept_0.95": 0.13188262446422683,
+      "best_joint_min": 0.6549068581538141
+    },
+    "E102_spd_ratio": {
+      "diagnostic_AUC_S1_vs_S2": 0.5476037994932559,
+      "S1_quantiles": {
+        "0.1": 1.0034072399139404,
+        "0.5": 1.0219398736953735,
+        "0.9": 1.0934977531433105
+      },
+      "S2_quantiles": {
+        "0.1": 1.0038652420043945,
+        "0.5": 1.0273587703704834,
+        "0.9": 1.1150506734848022
+      },
+      "best_S2_accept_at_S1_rej_0.80": 0.24929753356228534,
+      "best_S2_accept_at_S1_rej_0.90": 0.14080549484857946,
+      "best_S2_accept_at_S1_rej_0.95": 0.0590592153189718,
+      "best_S1_rej_at_S2_accept_0.85": 0.1793603692713485,
+      "best_S1_rej_at_S2_accept_0.90": 0.11374876360039565,
+      "best_S1_rej_at_S2_accept_0.95": 0.05341246290801187,
+      "best_joint_min": 0.5357731618859215
+    },
+    "E115_V3_cosine": {
+      "diagnostic_AUC_S1_vs_S2": 0.5033262224593886,
+      "S1_quantiles": {
+        "0.1": 0.6286217570304871,
+        "0.5": 0.7699588537216187,
+        "0.9": 0.9026503562927246
+      },
+      "S2_quantiles": {
+        "0.1": 0.6438248753547668,
+        "0.5": 0.7702781558036804,
+        "0.9": 0.8933559060096741
+      },
+      "best_S2_accept_at_S1_rej_0.80": 0.17150587990425642,
+      "best_S2_accept_at_S1_rej_0.90": 0.07982100114476012,
+      "best_S2_accept_at_S1_rej_0.95": 0.04454157560620252,
+      "best_S1_rej_at_S2_accept_0.85": 0.18001978239366964,
+      "best_S1_rej_at_S2_accept_0.90": 0.1282558522914606,
+      "best_S1_rej_at_S2_accept_0.95": 0.07583250906693043,
+      "best_joint_min": 0.5001040691018837
+    }
+  }
+}
