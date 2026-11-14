@@ -1,0 +1,45 @@
+{
+  "status": "complete_one_shot_frozen_audit",
+  "experiment": "E98_dual_gate_operating_curve",
+  "train_only_metrics": {
+    "AUC": 0.6301035611352646,
+    "F1": 0.9293197447910551,
+    "N_known": 1861,
+    "N_pseudo_unknown": 440,
+    "rule": {
+      "raw_threshold": 0.05432869866490364,
+      "spd_threshold": -19.572368621826172,
+      "known_acceptance": 0.9500268672756582,
+      "unknown_rejection": 0.075,
+      "identity_accuracy": 0.9513574660633484,
+      "selection_source": "Train-only known/calibration blocks; no Test access"
+    }
+  },
+  "test_metrics": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "C": "N/A",
+    "RA": "N/A",
+    "ASafeR": "N/A",
+    "U": "N/A",
+    "Official Score": "N/A"
+  },
+  "protocol_checks": {
+    "train_session1_only": true,
+    "test_accessed": true,
+    "e95_checkpoint_reused": true,
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "test_read_once_after_freeze": true
+  },
+  "audit": {
+    "N": 22251,
+    "predictions_complete_before_session_audit": true,
+    "session_used_by_inference": false,
+    "S1_N": 3033,
+    "S1_rejection_rate": 0.4516979887899769,
+    "S1_acceptance_rate": 0.5483020112100231,
+    "S2_N": 19218,
+    "S2_rejection_rate": 0.23139764803829743,
+    "S2_acceptance_rate": 0.7686023519617026
+  }
+}
