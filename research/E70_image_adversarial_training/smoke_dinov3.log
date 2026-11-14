@@ -1,0 +1,21 @@
+﻿加载原始波形...
+raw (11304, 18, 1200)
+提取 dinov3 干净特征...
+  完成 81s
+clean features (11304, 768)
+fold1: 生成对抗样本（7308 条）...
+  攻击完成 699s
+  fold1 untargeted_fgsm_snr30: RA=0.6400 ASafeR=0.6967 reject=0.0567
+  fold1 untargeted_pgd_snr30: RA=0.6400 ASafeR=0.6967 reject=0.0567
+  fold1 untargeted_fgsm_snr20: RA=0.6317 ASafeR=0.6750 reject=0.0433
+  fold1 untargeted_pgd_snr20: RA=0.6317 ASafeR=0.6750 reject=0.0433
+fold1 clean: C=0.6417 U=0.1017 AUROC=0.6687
+
+=== 汇总 ===
+clean: C=0.6417 F1=0.6137 U=0.1017 AUROC=0.6687
+untargeted_fgsm_snr30: RA=0.6400 ASafeR=0.6967
+untargeted_pgd_snr30: RA=0.6400 ASafeR=0.6967
+untargeted_fgsm_snr20: RA=0.6317 ASafeR=0.6750
+untargeted_pgd_snr20: RA=0.6317 ASafeR=0.6750
+macro: RA=0.6358 ASafeR=0.6858
+saved D:\WORK\BCIC2026\BrainPrint\research\E70_image_adversarial_training\results.json

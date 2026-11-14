@@ -1,0 +1,25 @@
+﻿Q3 任务 × 分组交叉表（行=任务，列=分组）
+grp        S1    S2
+task               
+EC        292  1680
+EO        291  2021
+Imagery  1459  9748
+SSVEP     991  5769
+
+列内占比：
+grp          S1      S2
+task                   
+EC       0.0963  0.0874
+EO       0.0959  0.1052
+Imagery  0.4810  0.5072
+SSVEP    0.3267  0.3002
+
+Q1 S2 范数双峰检测：中心 [23.399999618530273, 28.1299991607666]，计数 [7106, 12112]，silhouette=0.5674 → 双峰
+Q2 KMeans k= 5: silhouette=0.1731，各簇 S2 占比 std=0.3748
+Q2 KMeans k=10: silhouette=0.1583，各簇 S2 占比 std=0.3037
+Q2 KMeans k=20: silhouette=0.1562，各簇 S2 占比 std=0.2881
+Q2 KMeans k=25: silhouette=0.1629，各簇 S2 占比 std=0.2734
+
+补充：S1/S2 均值差（白化后）能量集中度：top1=0.031 top5=0.131 top10=0.207 top20=0.305
+
+saved D:\WORK\BCIC2026\BrainPrint\research\E63_test_root_cause\structure.json

@@ -1,0 +1,79 @@
+{
+  "protocol": {
+    "note": "图像化路线特征空间对抗训练；DINOv2 冻结，只训练 MLP 头",
+    "train_snr": 30.0,
+    "train_steps": 5,
+    "eval_snr": [
+      30.0,
+      20.0
+    ],
+    "eval_steps": 10,
+    "epochs": 40,
+    "lambda_adv": 1.0,
+    "folds": 1
+  },
+  "folds": {
+    "fold1": {
+      "fold": 1,
+      "threshold": 0.28104734420776367,
+      "clean_C": 0.865,
+      "clean_identity_f1": 0.8353928218475695,
+      "U": 0.18,
+      "unknown_auroc": 0.8185916666666666,
+      "attacks": {
+        "untargeted_fgsm_snr30": {
+          "RA": 0.14,
+          "ASafeR": 0.15,
+          "direct_RA": 0.14333333333333334,
+          "reject_rate": 0.01
+        },
+        "untargeted_pgd_snr30": {
+          "RA": 0.14,
+          "ASafeR": 0.15,
+          "direct_RA": 0.14333333333333334,
+          "reject_rate": 0.01
+        },
+        "untargeted_fgsm_snr20": {
+          "RA": 0.145,
+          "ASafeR": 0.15833333333333333,
+          "direct_RA": 0.145,
+          "reject_rate": 0.013333333333333334
+        },
+        "untargeted_pgd_snr20": {
+          "RA": 0.145,
+          "ASafeR": 0.15833333333333333,
+          "direct_RA": 0.145,
+          "reject_rate": 0.013333333333333334
+        }
+      }
+    }
+  },
+  "summary": {
+    "untargeted_fgsm_snr30": {
+      "RA": 0.14,
+      "ASafeR": 0.15
+    },
+    "untargeted_pgd_snr30": {
+      "RA": 0.14,
+      "ASafeR": 0.15
+    },
+    "untargeted_fgsm_snr20": {
+      "RA": 0.145,
+      "ASafeR": 0.15833333333333333
+    },
+    "untargeted_pgd_snr20": {
+      "RA": 0.145,
+      "ASafeR": 0.15833333333333333
+    },
+    "clean": {
+      "C": 0.865,
+      "identity_f1": 0.8353928218475695,
+      "U": 0.18,
+      "unknown_auroc": 0.8185916666666666
+    },
+    "macro": {
+      "RA": 0.14250000000000002,
+      "ASafeR": 0.15416666666666667
+    }
+  }
+}

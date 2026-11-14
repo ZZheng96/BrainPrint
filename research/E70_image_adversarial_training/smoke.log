@@ -1,0 +1,19 @@
+﻿加载原始波形...
+raw (11304, 18, 1200)
+clean features (11304, 768)
+fold1: 生成对抗样本（7308 条）...
+  攻击完成 749s
+  fold1 untargeted_fgsm_snr30: RA=0.1400 ASafeR=0.1500 reject=0.0100
+  fold1 untargeted_pgd_snr30: RA=0.1400 ASafeR=0.1500 reject=0.0100
+  fold1 untargeted_fgsm_snr20: RA=0.1450 ASafeR=0.1583 reject=0.0133
+  fold1 untargeted_pgd_snr20: RA=0.1450 ASafeR=0.1583 reject=0.0133
+fold1 clean: C=0.8650 U=0.1800 AUROC=0.8186
+
+=== 汇总 ===
+clean: C=0.8650 F1=0.8354 U=0.1800 AUROC=0.8186
+untargeted_fgsm_snr30: RA=0.1400 ASafeR=0.1500
+untargeted_pgd_snr30: RA=0.1400 ASafeR=0.1500
+untargeted_fgsm_snr20: RA=0.1450 ASafeR=0.1583
+untargeted_pgd_snr20: RA=0.1450 ASafeR=0.1583
+macro: RA=0.1425 ASafeR=0.1542
+saved D:\WORK\BCIC2026\BrainPrint\research\E70_image_adversarial_training\results.json

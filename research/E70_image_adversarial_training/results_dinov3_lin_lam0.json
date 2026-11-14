@@ -1,0 +1,80 @@
+{
+  "protocol": {
+    "note": "图像化路线特征空间对抗训练；骨干冻结，只训练 MLP 头",
+    "backbone": "vit_base_patch16_dinov3.lvd1689m",
+    "train_snr": 30.0,
+    "train_steps": 5,
+    "eval_snr": [
+      30.0,
+      20.0
+    ],
+    "eval_steps": 10,
+    "epochs": 60,
+    "lambda_adv": 0.0,
+    "folds": 1
+  },
+  "folds": {
+    "fold1": {
+      "fold": 1,
+      "threshold": 0.09920811653137207,
+      "clean_C": 0.7716666666666666,
+      "clean_identity_f1": 0.7429550617348424,
+      "U": 0.11666666666666667,
+      "unknown_auroc": 0.7402638888888888,
+      "attacks": {
+        "untargeted_fgsm_snr30": {
+          "RA": 0.7633333333333333,
+          "ASafeR": 0.8183333333333334,
+          "direct_RA": 0.7783333333333333,
+          "reject_rate": 0.055
+        },
+        "untargeted_pgd_snr30": {
+          "RA": 0.7633333333333333,
+          "ASafeR": 0.8183333333333334,
+          "direct_RA": 0.7783333333333333,
+          "reject_rate": 0.055
+        },
+        "untargeted_fgsm_snr20": {
+          "RA": 0.7416666666666667,
+          "ASafeR": 0.8016666666666666,
+          "direct_RA": 0.7633333333333333,
+          "reject_rate": 0.06
+        },
+        "untargeted_pgd_snr20": {
+          "RA": 0.7416666666666667,
+          "ASafeR": 0.8016666666666666,
+          "direct_RA": 0.7633333333333333,
+          "reject_rate": 0.06
+        }
+      }
+    }
+  },
+  "summary": {
+    "untargeted_fgsm_snr30": {
+      "RA": 0.7633333333333333,
+      "ASafeR": 0.8183333333333334
+    },
+    "untargeted_pgd_snr30": {
+      "RA": 0.7633333333333333,
+      "ASafeR": 0.8183333333333334
+    },
+    "untargeted_fgsm_snr20": {
+      "RA": 0.7416666666666667,
+      "ASafeR": 0.8016666666666666
+    },
+    "untargeted_pgd_snr20": {
+      "RA": 0.7416666666666667,
+      "ASafeR": 0.8016666666666666
+    },
+    "clean": {
+      "C": 0.7716666666666666,
+      "identity_f1": 0.7429550617348424,
+      "U": 0.11666666666666667,
+      "unknown_auroc": 0.7402638888888888
+    },
+    "macro": {
+      "RA": 0.7525000000000001,
+      "ASafeR": 0.81
+    }
+  }
+}

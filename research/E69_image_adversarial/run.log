@@ -1,0 +1,7 @@
+﻿加载 Train 原始波形...
+raw (11304, 18, 1200) in 4s
+提取干净 DINOv2 特征...
+reuse train_covariance5_dinov2.npy (11304, 768)
+  fold1 untargeted_fgsm_snr30: RA=0.0667 ASafeR=0.0667 reject=0.0000
+  fold1 untargeted_pgd_snr30: RA=0.0667 ASafeR=0.0667 reject=0.0000
+  fold1 untargeted_fgsm_snr20: RA=0.0667 ASafeR=0.0667 reject=0.0000

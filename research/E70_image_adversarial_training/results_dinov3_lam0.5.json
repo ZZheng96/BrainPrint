@@ -1,0 +1,80 @@
+{
+  "protocol": {
+    "note": "图像化路线特征空间对抗训练；骨干冻结，只训练 MLP 头",
+    "backbone": "vit_base_patch16_dinov3.lvd1689m",
+    "train_snr": 30.0,
+    "train_steps": 5,
+    "eval_snr": [
+      30.0,
+      20.0
+    ],
+    "eval_steps": 10,
+    "epochs": 40,
+    "lambda_adv": 0.5,
+    "folds": 1
+  },
+  "folds": {
+    "fold1": {
+      "fold": 1,
+      "threshold": 0.11548280715942383,
+      "clean_C": 0.72,
+      "clean_identity_f1": 0.6842566555371012,
+      "U": 0.09166666666666666,
+      "unknown_auroc": 0.7069444444444444,
+      "attacks": {
+        "untargeted_fgsm_snr30": {
+          "RA": 0.7116666666666667,
+          "ASafeR": 0.755,
+          "direct_RA": 0.725,
+          "reject_rate": 0.043333333333333335
+        },
+        "untargeted_pgd_snr30": {
+          "RA": 0.7116666666666667,
+          "ASafeR": 0.755,
+          "direct_RA": 0.725,
+          "reject_rate": 0.043333333333333335
+        },
+        "untargeted_fgsm_snr20": {
+          "RA": 0.6966666666666667,
+          "ASafeR": 0.7483333333333333,
+          "direct_RA": 0.7166666666666667,
+          "reject_rate": 0.051666666666666666
+        },
+        "untargeted_pgd_snr20": {
+          "RA": 0.6966666666666667,
+          "ASafeR": 0.7483333333333333,
+          "direct_RA": 0.7166666666666667,
+          "reject_rate": 0.051666666666666666
+        }
+      }
+    }
+  },
+  "summary": {
+    "untargeted_fgsm_snr30": {
+      "RA": 0.7116666666666667,
+      "ASafeR": 0.755
+    },
+    "untargeted_pgd_snr30": {
+      "RA": 0.7116666666666667,
+      "ASafeR": 0.755
+    },
+    "untargeted_fgsm_snr20": {
+      "RA": 0.6966666666666667,
+      "ASafeR": 0.7483333333333333
+    },
+    "untargeted_pgd_snr20": {
+      "RA": 0.6966666666666667,
+      "ASafeR": 0.7483333333333333
+    },
+    "clean": {
+      "C": 0.72,
+      "identity_f1": 0.6842566555371012,
+      "U": 0.09166666666666666,
+      "unknown_auroc": 0.7069444444444444
+    },
+    "macro": {
+      "RA": 0.7041666666666667,
+      "ASafeR": 0.7516666666666667
+    }
+  }
+}

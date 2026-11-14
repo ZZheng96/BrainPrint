@@ -1,0 +1,22 @@
+﻿Q1 用范数做 4 类聚类，看 S1/S2 与批次的交叉
+grp               S1    S2
+batch1(c=22.9)   595  9396
+batch2(c=26.6)  1469  8365
+batch3(c=32.3)   687  1457
+batch4(c=53.9)   282     0
+  silhouette = 0.5582
+
+Q2 同批次内 S1/S2 可分性（关键）
+  low_batch: N(S1)=2640 N(S2)=19180 AUROC(S2 vs S1)=0.9978
+  high_batch: 样本不足（S1=393, S2=38）
+  对照 全量 AUROC = 0.9971
+
+Q3 批次（低/高范数）能否用逐样本特征识别
+  L0_raw_stats: AUROC(批次) = 0.9994
+  L1_band_power: AUROC(批次) = 0.9954
+
+补充：各批次内 S1/S2 范数中位
+  low_batch: S1 中位 26.49，S2 中位 24.82
+  high_batch: S1 中位 53.32，S2 中位 38.10
+
+saved D:\WORK\BCIC2026\BrainPrint\research\E64_acquisition_invariance\batch_probe.json

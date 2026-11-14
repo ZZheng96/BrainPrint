@@ -83,6 +83,13 @@
 | E59 | [E59_online_three_region](E59_online_three_region) | E58 + E55 每批次在线 PGD7 | **无增益**：Score 96.65（E58 96.74，−0.09）、RA 0.9362（−0.0009）、ASafeR 持平；未达 RA≥0.95/ASafeR≥0.98 判据，保留 E58 |
 | E60 | [E60_test_audit_diagnosis](E60_test_audit_diagnosis) | Test S1/S2 拒识门禁可达性诊断 | **不可达**：S1/S2 的 dr 分布几乎重合（中位 1.0371 vs 1.0329），AUROC(S2 vs S1)=**0.4159**；S2 拒识=2% 时 S1 拒识仅 0.0201，S1 拒识=95% 时 S2 拒识 0.9978；两项门禁互斥，是特征问题而非阈值问题 |
 | E61 | [E61_feature_screen](E61_feature_screen) | Test 上 10 个逐样本特征的 S1/S2 区分力筛查 | 仅 **raw_high_band_ratio（20–40Hz 能量占比）** 有实质区分力：AUROC **0.7233**、效应量 1.01（S1 0.137 vs S2 0.076）；其余 0.50–0.60，logSPD 系列反向 0.37–0.42；0.72 仍远不足以满足 S2≤2%/S1≥95%（需约 0.99） |
+| E62 | [E62_multiwindow_image](E62_multiwindow_image) | 多窗口时序图像（8/4 段 × 5 频带协方差平铺） | **负结果**：Train 闭集 0.9776（优于 E20 的 0.9294），但 Test AUROC(S2 vs S1) 仅 **0.4331 / 0.3964 / 0.4739**（cov8/cov4/corr8），全部劣于 E31 的 0.7327；时间结构越细，跨会话越不稳定 |
+| E63 | [E63_adaptive_fusion](E63_adaptive_fusion) | 自适应融合（另一会话） | 见目录内报告 |
+| E64 | [E64_e58_test_audit](E64_e58_test_audit) | E58 系统 Test 审计（另一会话） | 见目录内报告 |
+| E65 | [E65_correlation_spd](E65_correlation_spd) | 相关 SPD（另一会话） | 见目录内报告 |
+| E66 | [E66_neuroshield_frozen](E66_neuroshield_frozen) | NeuroShield-FM 冻结四窗嵌入 + 归一化原型 | **负结果**：direct C=0.6207、身份F1=0.6080、AUROC=0.6698、U@95=0.1234，四项clean门禁均未通过；Test=N/A，未读取Test或生成预测 |
+| E67 | [E67_test_root_cause](E67_test_root_cause) | **Test 不可分根因诊断** | **信息存在但不可迁移**：用 Test 标签训练 L2 二分类器 AUROC **0.9971**，但 Train 留被试训练迁移到 Test 仅 **0.4911**；差异非低秩（top20 仅 30.5%）；S2 内部双峰（7,106/12,112，silhouette 0.5674）；任务分布均衡（差 ≤2.7pp） |
+| E68 | [E68_acquisition_invariance](E68_acquisition_invariance) | 采集条件不变性诊断 | **不存在可迁移共同成分**：同批次内 S1/S2 仍可分（AUROC 0.9978，排除批次混杂）；30 个留出组合的方向彼此正交（平均余弦 **-0.0031**），集成后 AUROC 反降至 0.3186；证明 S1/S2 可分性来自特定人群组合，非通用规律 |
 
 ## 其他
 

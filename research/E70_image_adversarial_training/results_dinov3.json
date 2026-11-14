@@ -1,0 +1,80 @@
+{
+  "protocol": {
+    "note": "图像化路线特征空间对抗训练；骨干冻结，只训练 MLP 头",
+    "backbone": "vit_base_patch16_dinov3.lvd1689m",
+    "train_snr": 30.0,
+    "train_steps": 5,
+    "eval_snr": [
+      30.0,
+      20.0
+    ],
+    "eval_steps": 10,
+    "epochs": 40,
+    "lambda_adv": 1.0,
+    "folds": 1
+  },
+  "folds": {
+    "fold1": {
+      "fold": 1,
+      "threshold": 0.10193109512329102,
+      "clean_C": 0.6416666666666667,
+      "clean_identity_f1": 0.6136512961546411,
+      "U": 0.10166666666666667,
+      "unknown_auroc": 0.6686805555555555,
+      "attacks": {
+        "untargeted_fgsm_snr30": {
+          "RA": 0.64,
+          "ASafeR": 0.6966666666666667,
+          "direct_RA": 0.665,
+          "reject_rate": 0.056666666666666664
+        },
+        "untargeted_pgd_snr30": {
+          "RA": 0.64,
+          "ASafeR": 0.6966666666666667,
+          "direct_RA": 0.665,
+          "reject_rate": 0.056666666666666664
+        },
+        "untargeted_fgsm_snr20": {
+          "RA": 0.6316666666666667,
+          "ASafeR": 0.675,
+          "direct_RA": 0.6466666666666666,
+          "reject_rate": 0.043333333333333335
+        },
+        "untargeted_pgd_snr20": {
+          "RA": 0.6316666666666667,
+          "ASafeR": 0.675,
+          "direct_RA": 0.6466666666666666,
+          "reject_rate": 0.043333333333333335
+        }
+      }
+    }
+  },
+  "summary": {
+    "untargeted_fgsm_snr30": {
+      "RA": 0.64,
+      "ASafeR": 0.6966666666666667
+    },
+    "untargeted_pgd_snr30": {
+      "RA": 0.64,
+      "ASafeR": 0.6966666666666667
+    },
+    "untargeted_fgsm_snr20": {
+      "RA": 0.6316666666666667,
+      "ASafeR": 0.675
+    },
+    "untargeted_pgd_snr20": {
+      "RA": 0.6316666666666667,
+      "ASafeR": 0.675
+    },
+    "clean": {
+      "C": 0.6416666666666667,
+      "identity_f1": 0.6136512961546411,
+      "U": 0.10166666666666667,
+      "unknown_auroc": 0.6686805555555555
+    },
+    "macro": {
+      "RA": 0.6358333333333334,
+      "ASafeR": 0.6858333333333333
+    }
+  }
+}

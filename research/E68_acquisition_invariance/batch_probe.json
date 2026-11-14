@@ -1,0 +1,35 @@
+{
+  "q1_cross_4cluster": {
+    "S1": {
+      "batch1(c=22.9)": 595,
+      "batch2(c=26.6)": 1469,
+      "batch3(c=32.3)": 687,
+      "batch4(c=53.9)": 282
+    },
+    "S2": {
+      "batch1(c=22.9)": 9396,
+      "batch2(c=26.6)": 8365,
+      "batch3(c=32.3)": 1457,
+      "batch4(c=53.9)": 0
+    }
+  },
+  "q1_silhouette_4cluster": 0.5581821203231812,
+  "q2_within_batch": {
+    "low_batch": {
+      "n_s1": 2640,
+      "n_s2": 19180,
+      "auroc_s2_vs_s1": 0.9977738016241666
+    }
+  },
+  "q2_full_auroc": 0.9971125713725151,
+  "q3_batch_auroc_L0_raw_stats": 0.9994144242813485,
+  "q3_batch_auroc_L1_band_power": 0.9954469281465523,
+  "norm_low_batch": {
+    "s1_median": 26.49283218383789,
+    "s2_median": 24.819236755371094
+  },
+  "norm_high_batch": {
+    "s1_median": 53.31736755371094,
+    "s2_median": 38.09815216064453
+  }
+}

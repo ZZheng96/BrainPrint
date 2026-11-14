@@ -1,0 +1,114 @@
+{
+  "experiment": "E63 full-chain adaptive attack on E55 main_online_pgd7 plus E36 logSPD/WCCN hard routing",
+  "date_preregistered": "2026-11-13",
+  "seed_base": 20261113,
+  "allowed_reuse": [
+    "research/E36_pure_eeg",
+    "research/E53_raw_eeg_open_robust",
+    "research/E54_outlier_exposure",
+    "research/E55_online_adversarial",
+    "research/E58_oe_three_region (reported non-adaptive reference only)",
+    "research/E59_online_three_region (reported non-adaptive reference only)"
+  ],
+  "forbidden_reuse": "E38-E52 including E40; no FrozenPrototype import; no Test access",
+  "identity_model": {
+    "variant": "main_online_pgd7",
+    "artifact_pattern": "BrainPrint_cache/e55_online_adversarial/main_online_pgd7_outer{outer}_inner{inner}.pt",
+    "artifact_validation": "E55 config/script/E54 script hashes plus saved model fingerprint; no retraining or outcome-based selection in E63"
+  },
+  "logspd_model": {
+    "implementation": "E36 gpu_logspd -> detrend_zband -> E36 TorchPrototype(wccn=True), independently wrapped for differentiable raw-waveform forward in E63",
+    "fit_features": "E36 train_detrend_zband_cov5.npy, current fold fit samples only",
+    "attack_features": "recomputed from current attacked raw waveform at every FGSM/PGD step",
+    "wccn_shrinkage": 0.05,
+    "wccn_eigenvalue_floor": 1e-6,
+    "confidence": "distance_ratio=(1-second_cosine)/max(1-max_cosine,1e-6)"
+  },
+  "routing": {
+    "hard_rule": "dr>=tau_high -> logSPD; tau_low<=dr<tau_high -> E55; dr<tau_low -> 0",
+    "fixed_quantiles": [0.02, 0.05],
+    "quantile_method": "higher",
+    "threshold_source": "current inner run clean-known attack subset only; no outer, unknown or Test values",
+    "soft_route": "sigmoid on log(dr) thresholds; three normalized soft weights for rejection/logSPD/E55; straight-through hard-forward and soft-backward",
+    "log_route_temperature": 0.10,
+    "direct_decision": "same high/low identity routing with rejection disabled; dr>=tau_high -> logSPD else E55",
+    "hard_soft_audit": "straight-through weight forward error and independent hard-decision label mismatch at every step"
+  },
+  "attacks": {
+    "objectives": ["direct", "threshold"],
+    "order": ["untargeted_fgsm_snr30", "untargeted_fgsm_snr20", "untargeted_pgd_snr30", "untargeted_pgd_snr20", "targeted_pgd_snr30", "targeted_pgd_snr20"],
+    "pgd_steps": 20,
+    "fgsm_steps": 1,
+    "batch_size": 128,
+    "temperature": 0.05,
+    "snr_db": [30, 20],
+    "radius": "per-trial L2 norm after temporal demeaning divided by 10^(SNR/20)",
+    "initialization": "FGSM zero; PGD one seeded random L2 point uniformly scaled inside radius; one start and no EOT",
+    "update": "L2-normalized gradient, FGSM radius step or PGD 2*radius/20, followed by per-trial L2 projection",
+    "target_rule": "next identity in sorted enrolled-class cycle",
+    "direct_loss": "signed CE of hard-forward/ST-soft-backward two-branch routed identity logits; no rejection loss",
+    "threshold_loss": "direct identity loss plus rejection_weight * mean softplus((log(dr)-log(tau_low))/rejection_temperature); targeted identity CE drives next-class false acceptance and rejection term drives dr below tau_low",
+    "rejection_weight": 1.0,
+    "rejection_temperature": 0.25,
+    "seed_rule": "seed_base +1000000*stage +10000*outer +1000*inner +100*attack_code +snr +batch_start; threshold objective adds 500000",
+    "formal_stage_code": 1,
+    "smoke_stage_code": 9,
+    "attack_codes": {"untargeted_fgsm": 1, "untargeted_pgd": 2, "targeted_pgd": 3},
+    "required_audit": ["finite total gradient every step", "nonzero total/E55/logSPD raw-branch gradient every step", "ST hard-soft consistency every step", "clean-to-attack route migration", "per-sample L2/SNR constraint", "actual step and full-chain forward counts"]
+  },
+  "protocol": {
+    "data": "Train session1 only; E55 metadata loader and E55 inner_layout",
+    "outer_seed": 42,
+    "outer_groups": 5,
+    "inner_folds_per_group": 2,
+    "formal_trials_per_subject_task": 8,
+    "subset_rule": "E54/E55 stratified_subset sorted by subject/task/trial/path; first 8, no outcome sampling",
+    "clean_metrics": "all current inner known continuous-block and calibration/eval-unknown samples; per-attack Score uses the same stratified subset as E58/E59",
+    "train_fit": "all current fit-known samples through the actual raw-waveform E55+logSPD/WCCN hard fusion; report direct and rejection-inclusive values",
+    "aggregation": "pool two inner runs within each outer group using each run's own fixed thresholds, then unweighted mean over five outer groups; macro over six attacks",
+    "outer_rule": "N/A unless every fixed-threshold inner gate passes; never use outer for threshold review",
+    "test_rule": "always N/A; never read Test"
+  },
+  "smoke": {
+    "outer": 1,
+    "inner": 1,
+    "n_samples": 16,
+    "batch_size": 16,
+    "scope": "all 2 objectives x 6 attacks, real FGSM/PGD20, every-step branch gradient/ST/SNR audit; no model selection"
+  },
+  "threshold_review": {
+    "enabled_only_if": "fixed-threshold inner is near all gates: every clean gate passes and both objectives have direct_RA>=0.90, threshold_RA>=0.90 and ASafeR>=0.95",
+    "pairs": [[0.01, 0.03], [0.02, 0.05], [0.05, 0.08]],
+    "selection": "maximum complete adaptive threshold-objective Score subject to pooled clean-known acceptance>=0.95; inner only",
+    "status_preregistered": "not run unless fixed results meet enabled_only_if; fixed q02/q05 remains the primary result"
+  },
+  "targets": {
+    "train_fit_each_fold": 1.0,
+    "C": 0.95,
+    "identity_f1": 0.92,
+    "continuous_block_accuracy": 0.90,
+    "clean_unknown_auroc": 0.98,
+    "U_at_95": 0.95,
+    "direct_RA": 0.95,
+    "threshold_RA": 0.95,
+    "ASafeR": 0.98
+  },
+  "e58_nonadaptive_reference": {
+    "identity_model": "E54 OE-EEGNet, not E55 main_online_pgd7",
+    "gradient_scope": "CNN only; logSPD/dr and routing passive forward only",
+    "C": 0.9714,
+    "RA": 0.9371,
+    "ASafeR": 0.9758,
+    "U": 0.9875,
+    "Score": 96.74,
+    "valid_as_full_chain_adaptive_result": false
+  },
+  "reporting": {
+    "auc": "AUROC uses known=1/unknown=0 and larger dr means known; AUPR is unknown-class with -dr",
+    "direct_ra": "correct routed identity without rejection",
+    "threshold_ra": "correct routed identity and dr>=tau_low",
+    "asafer": "correct original identity or prediction 0",
+    "score": "100*C^0.40*A^0.35*U^0.25; A=0.7*threshold_RA+0.3*ASafeR",
+    "evidence_boundary": "Train-only inner pseudo-unknown and continuous file-block proxy, not cross-session or official-new-subject evidence; E58 is non-adaptive reference only; outer/Test=N/A unless explicitly gated, and Test is never read"
+  }
+}

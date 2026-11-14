@@ -1,0 +1,22 @@
+{
+  "L1_band_power": {
+    "n_hypotheses": 30,
+    "mean_pairwise_cosine": 0.016412306149757985,
+    "single_auroc_mean": 0.34075648949882825,
+    "single_auroc_std": 0.06116130127117161,
+    "single_auroc_min": 0.23498364866133956,
+    "single_auroc_max": 0.5896907185012457,
+    "ensemble_auroc": 0.3356301792435017,
+    "aligned_ensemble_auroc": 0.3356301792435017
+  },
+  "L2_log_cov": {
+    "n_hypotheses": 30,
+    "mean_pairwise_cosine": -0.0031243855255127266,
+    "single_auroc_mean": 0.45061968266392566,
+    "single_auroc_std": 0.15192582172495567,
+    "single_auroc_min": 0.2522123262216702,
+    "single_auroc_max": 0.7172430406747549,
+    "ensemble_auroc": 0.31860125053797345,
+    "aligned_ensemble_auroc": 0.31860125053797345
+  }
+}

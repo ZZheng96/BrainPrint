@@ -1,0 +1,101 @@
+﻿
+=== multiwindow_cov8 ===
+train/multiwindow_cov8: 2000/11304 | 11s
+train/multiwindow_cov8: 4000/11304 | 17s
+train/multiwindow_cov8: 6000/11304 | 24s
+train/multiwindow_cov8: 8000/11304 | 30s
+train/multiwindow_cov8: 10000/11304 | 37s
+train/multiwindow_cov8: 11304/11304 | 41s
+test/multiwindow_cov8: 2000/22251 | 11s
+test/multiwindow_cov8: 4000/22251 | 18s
+test/multiwindow_cov8: 6000/22251 | 24s
+test/multiwindow_cov8: 8000/22251 | 31s
+test/multiwindow_cov8: 10000/22251 | 37s
+test/multiwindow_cov8: 12000/22251 | 44s
+test/multiwindow_cov8: 14000/22251 | 50s
+test/multiwindow_cov8: 16000/22251 | 57s
+test/multiwindow_cov8: 18000/22251 | 63s
+test/multiwindow_cov8: 20000/22251 | 70s
+test/multiwindow_cov8: 22000/22251 | 76s
+test/multiwindow_cov8: 22251/22251 | 77s
+.\.venv\Scripts\python.exe : D:\WORK\BCIC2026\BrainPrint\src\eeg_image_dinov2\backbone.py:58: UserWarning: The given Nu
+mPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will re
+sult in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it
+ to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at C:\actions
+-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:209.)
+所在位置 行:15 字符: 4044
++ ... BrainPrint; .\.venv\Scripts\python.exe research\E62_multiwindow_image ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (D:\WORK\BCIC202...numpy.cpp:209.):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  batch = torch.as_tensor(images[start : start + batch_size], device=device)
+train/multiwindow_cov8 DINOv2 (11304, 768) in 113s
+test/multiwindow_cov8 DINOv2 (22251, 768) in 207s
+  fold 1: closed=0.9814 C=0.9590 U=0.6128 AUROC=0.9548
+  fold 2: closed=0.9768 C=0.9581 U=0.6088 AUROC=0.9565
+  fold 3: closed=0.9750 C=0.9478 U=0.5577 AUROC=0.9404
+  fold 4: closed=0.9784 C=0.9509 U=0.4745 AUROC=0.9133
+  fold 5: closed=0.9762 C=0.9589 U=0.4948 AUROC=0.9488
+  nested summary: closed=0.9776 C=0.9549 F1=0.9153 U=0.5497 AUROC=0.9428
+  test audit: AUROC(S2 vs S1)=0.4331 (flipped 0.5669) | S2拒识2%→S1拒识0.0155 | S1拒识95%→S2拒识0.9957
+
+=== multiwindow_cov4 ===
+train/multiwindow_cov4: 2000/11304 | 9s
+train/multiwindow_cov4: 4000/11304 | 14s
+train/multiwindow_cov4: 6000/11304 | 19s
+train/multiwindow_cov4: 8000/11304 | 24s
+train/multiwindow_cov4: 10000/11304 | 29s
+train/multiwindow_cov4: 11304/11304 | 32s
+test/multiwindow_cov4: 2000/22251 | 9s
+test/multiwindow_cov4: 4000/22251 | 14s
+test/multiwindow_cov4: 6000/22251 | 19s
+test/multiwindow_cov4: 8000/22251 | 24s
+test/multiwindow_cov4: 10000/22251 | 28s
+test/multiwindow_cov4: 12000/22251 | 33s
+test/multiwindow_cov4: 14000/22251 | 38s
+test/multiwindow_cov4: 16000/22251 | 43s
+test/multiwindow_cov4: 18000/22251 | 47s
+test/multiwindow_cov4: 20000/22251 | 52s
+test/multiwindow_cov4: 22000/22251 | 57s
+test/multiwindow_cov4: 22251/22251 | 57s
+train/multiwindow_cov4 DINOv2 (11304, 768) in 109s
+test/multiwindow_cov4 DINOv2 (22251, 768) in 208s
+  fold 1: closed=0.9734 C=0.9425 U=0.6313 AUROC=0.9419
+  fold 2: closed=0.9686 C=0.9355 U=0.6047 AUROC=0.9409
+  fold 3: closed=0.9674 C=0.9363 U=0.5453 AUROC=0.9304
+  fold 4: closed=0.9687 C=0.9428 U=0.5214 AUROC=0.9155
+  fold 5: closed=0.9703 C=0.9476 U=0.5107 AUROC=0.9415
+  nested summary: closed=0.9697 C=0.9409 F1=0.9055 U=0.5627 AUROC=0.9341
+  test audit: AUROC(S2 vs S1)=0.3964 (flipped 0.6036) | S2拒识2%→S1拒识0.0185 | S1拒识95%→S2拒识0.9967
+
+=== multiwindow_corr8 ===
+train/multiwindow_corr8: 2000/11304 | 10s
+train/multiwindow_corr8: 4000/11304 | 15s
+train/multiwindow_corr8: 6000/11304 | 20s
+train/multiwindow_corr8: 8000/11304 | 25s
+train/multiwindow_corr8: 10000/11304 | 31s
+train/multiwindow_corr8: 11304/11304 | 34s
+test/multiwindow_corr8: 2000/22251 | 10s
+test/multiwindow_corr8: 4000/22251 | 15s
+test/multiwindow_corr8: 6000/22251 | 20s
+test/multiwindow_corr8: 8000/22251 | 25s
+test/multiwindow_corr8: 10000/22251 | 30s
+test/multiwindow_corr8: 12000/22251 | 35s
+test/multiwindow_corr8: 14000/22251 | 40s
+test/multiwindow_corr8: 16000/22251 | 45s
+test/multiwindow_corr8: 18000/22251 | 50s
+test/multiwindow_corr8: 20000/22251 | 56s
+test/multiwindow_corr8: 22000/22251 | 61s
+test/multiwindow_corr8: 22251/22251 | 61s
+train/multiwindow_corr8 DINOv2 (11304, 768) in 109s
+test/multiwindow_corr8 DINOv2 (22251, 768) in 208s
+  fold 1: closed=0.9675 C=0.9361 U=0.4363 AUROC=0.9078
+  fold 2: closed=0.9581 C=0.9288 U=0.4555 AUROC=0.9068
+  fold 3: closed=0.9603 C=0.9255 U=0.4632 AUROC=0.9133
+  fold 4: closed=0.9638 C=0.9255 U=0.4010 AUROC=0.8733
+  fold 5: closed=0.9600 C=0.9341 U=0.4168 AUROC=0.9083
+  nested summary: closed=0.9619 C=0.9300 F1=0.8972 U=0.4345 AUROC=0.9019
+  test audit: AUROC(S2 vs S1)=0.4739 (flipped 0.5261) | S2拒识2%→S1拒识0.0181 | S1拒识95%→S2拒识0.9832
+
+saved D:\WORK\BCIC2026\BrainPrint\research\E62_multiwindow_image\results_all.json

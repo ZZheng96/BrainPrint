@@ -1,0 +1,26 @@
+{
+  "L0_raw_stats": {
+    "dim": 4,
+    "test_auroc_s2_vs_s1": 0.7383609277720974,
+    "test_auroc_flipped": 0.7383609277720974,
+    "train_auroc_known_vs_unknown": 0.6849804748655784
+  },
+  "L1_band_power": {
+    "dim": 90,
+    "test_auroc_s2_vs_s1": 0.9645675160221984,
+    "test_auroc_flipped": 0.9645675160221984,
+    "train_auroc_known_vs_unknown": 0.9726603915676585
+  },
+  "L2_log_cov": {
+    "dim": 855,
+    "test_auroc_s2_vs_s1": 0.9971125713725151,
+    "test_auroc_flipped": 0.9971125713725151,
+    "train_auroc_known_vs_unknown": 0.9992826358294133
+  },
+  "L3_dino_cov5": {
+    "dim": 768,
+    "test_auroc_s2_vs_s1": 0.9734309575623497,
+    "test_auroc_flipped": 0.9734309575623497,
+    "train_auroc_known_vs_unknown": 0.9857014934456033
+  }
+}

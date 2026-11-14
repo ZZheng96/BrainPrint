@@ -1,0 +1,25 @@
+﻿S2 低范数簇 N=12112，高范数簇 N=7106
+
+Q1 两簇在各层的差异（|Cohen's d| 均值 / 最大）
+  L0_raw_stats     mean|d|=0.6109 max|d|=1.1395 |d|>1 维数=1/4
+  L1_band_power    mean|d|=0.5154 max|d|=0.8821 |d|>1 维数=0/90
+  L2_log_cov       mean|d|=0.1524 max|d|=1.0929 |d|>1 维数=6/855
+
+Q2 两簇的任务分布与样本顺序
+            low    high
+EC       0.0637  0.1278
+EO       0.0956  0.1214
+Imagery  0.4918  0.5335
+SSVEP    0.3488  0.2173
+  行号中位：低簇 11174，高簇 11012
+
+Q3 双峰差异方向与 S1/S2 差异方向的余弦相似度
+  cos = -0.6116
+
+Q4 S1 与两簇的距离
+  S1 范数中位 26.98 [25.20, 31.94]
+  S2 低簇中位 23.52 [22.25, 24.63]
+  S2 高簇中位 27.52 [26.51, 29.04]
+  S1 内部双峰 silhouette = 0.8054
+
+saved D:\WORK\BCIC2026\BrainPrint\research\E64_acquisition_invariance\bimodal_probe.json
