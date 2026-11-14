@@ -13,6 +13,7 @@
 | [brainprint_research_and_experiments.md](brainprint_research_and_experiments.md) | 研究假设、文献依据与四轮迭代主报告（历史数字主记录） |
 | [E20-E35_DINO路线总结.md](E20-E35_DINO路线总结.md) | **EEG 图像化 + DINO 路线总结**：目标、E20–E35 全部尝试、困难、当前最优配置与指标 |
 | [E36-E59_实验总结.md](E36-E59_实验总结.md) | **E36–E59 总结**：两条并行路线归属、10 项完整门禁、训练侧进展、已排除方向、跨会话瓶颈 |
+| [E62-E70_实验总结.md](E62-E70_实验总结.md) | **E62–E70 总结**：多窗口图像负结果、Test 不可分根因闭合（信息存在但不可迁移）、图像化路线对抗鲁棒性首次测量与对抗训练、DINOv2/DINOv3 骨干互斥 |
 | [E00-E19既往实验经验总结.md](E00-E19既往实验经验总结.md) | E00–E19 的经验与负结果 |
 | [对话交接_实验历程与下一步.md](对话交接_实验历程与下一步.md) | 对话交接：实验历程、官方反馈与下一步方向 |
 | [问题梳理.md](问题梳理.md) | 赛题结构、Session 元数据捷径与开放集问题梳理 |
@@ -90,6 +91,9 @@
 | E66 | [E66_neuroshield_frozen](E66_neuroshield_frozen) | NeuroShield-FM 冻结四窗嵌入 + 归一化原型 | **负结果**：direct C=0.6207、身份F1=0.6080、AUROC=0.6698、U@95=0.1234，四项clean门禁均未通过；Test=N/A，未读取Test或生成预测 |
 | E67 | [E67_test_root_cause](E67_test_root_cause) | **Test 不可分根因诊断** | **信息存在但不可迁移**：用 Test 标签训练 L2 二分类器 AUROC **0.9971**，但 Train 留被试训练迁移到 Test 仅 **0.4911**；差异非低秩（top20 仅 30.5%）；S2 内部双峰（7,106/12,112，silhouette 0.5674）；任务分布均衡（差 ≤2.7pp） |
 | E68 | [E68_acquisition_invariance](E68_acquisition_invariance) | 采集条件不变性诊断 | **不存在可迁移共同成分**：同批次内 S1/S2 仍可分（AUROC 0.9978，排除批次混杂）；30 个留出组合的方向彼此正交（平均余弦 **-0.0031**），集成后 AUROC 反降至 0.3186；证明 S1/S2 可分性来自特定人群组合，非通用规律 |
+| E69 | [E69_image_adversarial](E69_image_adversarial) | 图像化路线对抗鲁棒性（首次测量） | **完全失效**：FGSM/PGD SNR30/20 下 RA=ASafeR=**0.0667**（1/15 随机水平）、拒识率 0；冻结 DINOv2 + 线性探针无任何对抗鲁棒性 |
+| E70 | [E70_image_adversarial_training](E70_image_adversarial_training) | 图像化路线特征空间对抗训练 | **骨干互斥**：DINOv2 MLP λ=1.0 → RA 0.1425 但 U 崩到 0.1800；DINOv3 线性 λ=0 → RA **0.7525**、ASafeR **0.8100** 但 clean C 仅 0.7717；DINOv3 MLP λ=0.1 → RA 0.7900、C 0.8017；两骨干无法兼得 clean 与 RA |
+| E71 | [E71_covmix_geometry](E71_covmix_geometry) | 协方差混合几何（另一会话） | 仅 config，未执行 |
 
 ## 其他
 
