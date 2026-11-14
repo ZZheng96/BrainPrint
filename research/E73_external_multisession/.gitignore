@@ -1,0 +1,2 @@
+# Large external raw/derived data stay local; manifests and reports remain indexable.
+cache/

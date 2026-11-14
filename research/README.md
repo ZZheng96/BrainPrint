@@ -96,6 +96,7 @@
 | E70 | [E70_image_adversarial_training](E70_image_adversarial_training) | 图像化路线特征空间对抗训练 | **骨干互斥**：DINOv2 MLP λ=1.0 → RA 0.1425 但 U 崩到 0.1800；DINOv3 线性 λ=0 → RA **0.7525**、ASafeR **0.8100** 但 clean C 仅 0.7717；DINOv3 MLP λ=0.1 → RA 0.7900、C 0.8017；两骨干无法兼得 clean 与 RA |
 | E71 | [E71_covmix_geometry](E71_covmix_geometry) | 协方差混合几何（另一会话） | 仅 config，未执行 |
 | E72 | [E72_pair_protocol](E72_pair_protocol) | 配对协议审计与模板匹配基线 | 5×2 Train；WCCN+margin：协方差 C=0.9598、身份F1=0.9784、AUROC=0.9975、U@95=0.9979；相关 C=0.9583、身份F1=0.9777、AUROC=0.9938、U@95=0.9801；两路均过出口，Test=N/A且未读取 |
+| E73 | [E73_external_multisession](E73_external_multisession) | BCIC IV-2a 跨 Session SupCon 与模板匹配 | 9人双向留被试；native22 Pair AUC=0.9869、Detection AUC=0.9141、EER=0.1534、身份F1=0.9578；通用匹配头提升至 Pair AUC=0.9902、Detection AUC=0.9243、EER=0.1331、身份F1=0.9635，但开放集门禁仍未通过；Test=N/A且未读取 |
 
 ## 其他
 

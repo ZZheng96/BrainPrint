@@ -1,0 +1,35 @@
+{
+  "experiment": "E73c native22 frozen SupCon with generic sample-template pair head",
+  "date_preregistered": "2026-11-14",
+  "iteration_reason": "E73b native22 pair AUROC was 0.986889 but detection AUROC was 0.914144; change only the sample-template matching head while freezing the encoder and all outer roles/runs",
+  "base_config": "config_native22.json",
+  "output_subdir": "native22_pair",
+  "seed_base": 20261114,
+  "pair_head": {
+    "type": "symmetric MLP on elementwise product, absolute difference, and cosine",
+    "embedding_dim": 64,
+    "hidden_dim": 16,
+    "max_epochs": 80,
+    "epoch_selection": "none; fixed final epoch",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "positive_class_weight": 3.0,
+    "training_data": "enrolled subjects only; runs 0-2; opposite-session sample/template pairs; both directions share one head per outer fold",
+    "forbidden_data": "calibration_unknown and outer_unknown identities, labels, scores, thresholds, and model selection"
+  },
+  "protocol": {
+    "template_run": 3,
+    "calibration_known_query_run": 4,
+    "evaluation_query_run": 5,
+    "threshold": "per-direction q05 of enrolled-known run-4 maximum pair logit",
+    "working_threshold": "per-direction q02 of the same enrolled-known run-4 maximum pair logit",
+    "outer_rule": "freeze all three fold heads and both direction thresholds before any outer run-5 scoring; evaluate once without selection"
+  },
+  "reporting": {
+    "AUC": "same/different query-template pair AUROC and known/unknown detection AUROC",
+    "F1": "identity macro-F1 and unknown-F1 at frozen known-only q05",
+    "official_score": "N/A",
+    "test": "N/A; competition Train and Test are not read"
+  }
+}

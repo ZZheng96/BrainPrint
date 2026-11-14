@@ -1,0 +1,21 @@
+{
+  "experiment": "E73c native22 frozen SupCon with generic sample-template pair head",
+  "outer_fold": 2,
+  "created_at": "2026-11-14T06:00:39.173434+00:00",
+  "head_sha256": "dce98991c5e0c5c969cfdbe19b004a62c04fbd9e1e03aacd09477eebbc18f4b6",
+  "calibrations": {
+    "T_to_E": {
+      "N_known": 192,
+      "q05": 2.3039088249206543,
+      "q02": 1.9056451320648193,
+      "unknown_samples_used": 0
+    },
+    "E_to_T": {
+      "N_known": 192,
+      "q05": 2.375565528869629,
+      "q02": 2.0172061920166016,
+      "unknown_samples_used": 0
+    }
+  },
+  "outer_scored": false
+}

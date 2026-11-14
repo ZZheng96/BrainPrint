@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "dataset": "Lee2019_MI / OpenBMI",
+  "status": "assessed_only_not_downloaded",
+  "assessed_at": "2026-11-14",
+  "documentation": {
+    "moabb": "https://moabb.neurotechx.com/docs/generated/moabb.datasets.Lee2019_MI.html",
+    "gigadb": "https://gigadb.org/dataset/100542",
+    "nemar": "https://nemar.org/dataset/nm000338",
+    "moabb_source_commit": "https://github.com/NeuroTechX/moabb/blob/890139153d5bf20aa343acddbf19932428fcd5ee/moabb/datasets/Lee2019.py#L250-L264",
+    "nemar_provenance": "https://data.nemar.org/nm000338/v1.0.5/sourcedata/sourcedata_provenance.json"
+  },
+  "structure": {
+    "subjects": 54,
+    "sessions_per_subject": 2,
+    "eeg_channels": 62,
+    "emg_channels": 4,
+    "source_sfreq_hz": 1000,
+    "trials_per_session": {
+      "offline_train_labeled": 100,
+      "online_test_unlabeled_for_classification": 100
+    },
+    "labeled_trial_duration_seconds": 4,
+    "classes": ["left_hand", "right_hand"],
+    "important_label_note": "MOABB documents MI online test runs as lacking trial labels; any later E73 use must select labeled offline train runs, not unlabeled online test runs."
+  },
+  "per_subject_download": {
+    "url_pattern": "https://s3.ap-northeast-1.wasabisys.com/gigadb-datasets/live/pub/10.5524/100001_101000/100542/session{session}/s{subject}/sess{session:02d}_subj{subject:02d}_EEG_MI.mat",
+    "subject": 1,
+    "files": [
+      {
+        "session": 1,
+        "path": "session1/s1/sess01_subj01_EEG_MI.mat",
+        "url": "https://s3.ap-northeast-1.wasabisys.com/gigadb-datasets/live/pub/10.5524/100001_101000/100542/session1/s1/sess01_subj01_EEG_MI.mat",
+        "head_http_status": 200,
+        "bytes": 609007751,
+        "sha256_from_nemar_provenance": "da1e4ce677f95bf2feed9ba0bc5edaef9daa4fb5ef2102d90fdcece69cc48b5c",
+        "download_performed": false
+      },
+      {
+        "session": 2,
+        "path": "session2/s1/sess02_subj01_EEG_MI.mat",
+        "url": "https://s3.ap-northeast-1.wasabisys.com/gigadb-datasets/live/pub/10.5524/100001_101000/100542/session2/s1/sess02_subj01_EEG_MI.mat",
+        "head_http_status": 200,
+        "bytes": 610856419,
+        "sha256_from_nemar_provenance": "5b8f0664dae03306328927e1fb43242f00d0335aad21aacb09db355f7301bb58",
+        "download_performed": false
+      }
+    ],
+    "pair_bytes": 1219864170,
+    "pair_gib": 1.1361,
+    "fits_in_38_543_gib_free": true,
+    "moabb_required_for_direct_mat_loading": false,
+    "loader_dependencies_already_available": ["numpy", "scipy", "mne"]
+  },
+  "full_dataset_download": {
+    "source_files": 108,
+    "total_bytes_from_nemar_provenance": 64847432285,
+    "total_gib": 60.3939,
+    "fits_in_38_543_gib_free": false,
+    "download_performed": false
+  },
+  "target_18_channel_mapping": {
+    "target_order": ["P3", "C3", "F3", "Fz", "F4", "C4", "P4", "Cz", "Fp1", "Fp2", "T3", "T5", "O1", "O2", "F7", "F8", "T6", "T4"],
+    "aliases": {"T3": "T7", "T4": "T8", "T5": "P7", "T6": "P8"},
+    "n_covered": 18,
+    "n_missing_after_aliases": 0,
+    "feasibility": "All 18 target channels exist in the 62-channel OpenBMI montage after standard 10-10 naming aliases; no zero-filled channels are required."
+  },
+  "preprocessing_feasibility": {
+    "resample_hz": [1000, 300],
+    "resample_ratio": "3/10 with polyphase anti-alias filtering",
+    "bandpass_hz": [1, 40],
+    "trial_window_seconds": 4,
+    "target_samples_per_trial": 1200,
+    "feasible_with_existing_scipy_mne": true
+  },
+  "license": {
+    "nemar_dataset_description_and_source_provenance": "GPL-3.0",
+    "paper_openbmi_software_availability": "GPL 3.0; non-academic use requires a license according to the paper availability statement",
+    "moabb_dataset_snapshot": "CC0 1.0",
+    "assessment": "Metadata conflict is unresolved. Do not redistribute or treat as CC0 until GigaDB/upstream terms are explicitly confirmed; no Lee2019 bytes were downloaded in E73."
+  },
+  "access_policy": {
+    "competition_test_accessed": false,
+    "competition_train_accessed": false,
+    "model_training_started": false,
+    "full_lee2019_downloaded": false,
+    "single_lee2019_subject_downloaded": false
+  }
+}
