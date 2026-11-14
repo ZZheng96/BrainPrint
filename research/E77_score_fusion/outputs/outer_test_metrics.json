@@ -1,0 +1,390 @@
+{
+  "experiment": "E77",
+  "method": "fusion_q05",
+  "csv": {
+    "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E77_score_fusion\\outputs\\outer_test_predictions.csv",
+    "sha256": "3380dc7247deb53035773141ec3cc5d937c815517455ea12353f4e20cc7f371f",
+    "n_rows": 2016,
+    "n_groups": 6,
+    "columns": [
+      "experiment",
+      "outer_fold",
+      "direction",
+      "method",
+      "role",
+      "sample_id",
+      "session",
+      "run",
+      "task",
+      "artifact",
+      "true_identity",
+      "pred_label",
+      "accepted",
+      "confidence",
+      "threshold"
+    ]
+  },
+  "groups": {
+    "fold1/E_to_T/fusion_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -2.044830083847046,
+      "AUROC": 0.9759476273148149,
+      "detection_EER": 0.08333333333333333,
+      "C": 0.9114583333333334,
+      "identity_macro_F1": 0.9516318148109585,
+      "unknown_F1": 0.9084745762711864,
+      "known_acceptance": 0.9114583333333334,
+      "unknown_false_acceptance": 0.06944444444444445,
+      "unknown_rejection": 0.9305555555555556,
+      "U_at_95": 0.9027777777777778,
+      "DIR_at_FPIR_1": 0.734375
+    },
+    "fold1/T_to_E/fusion_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -3.360255479812622,
+      "AUROC": 0.9765625,
+      "detection_EER": 0.0763888888888889,
+      "C": 0.9479166666666666,
+      "identity_macro_F1": 0.9727510265024263,
+      "unknown_F1": 0.9078014184397163,
+      "known_acceptance": 0.9479166666666666,
+      "unknown_false_acceptance": 0.1111111111111111,
+      "unknown_rejection": 0.8888888888888888,
+      "U_at_95": 0.8888888888888888,
+      "DIR_at_FPIR_1": 0.5677083333333334
+    },
+    "fold2/E_to_T/fusion_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -1.806135654449463,
+      "AUROC": 0.9946108217592593,
+      "detection_EER": 0.027777777777777776,
+      "C": 0.8802083333333334,
+      "identity_macro_F1": 0.9312971859986273,
+      "unknown_F1": 0.9225806451612903,
+      "known_acceptance": 0.8802083333333334,
+      "unknown_false_acceptance": 0.006944444444444444,
+      "unknown_rejection": 0.9930555555555556,
+      "U_at_95": 0.9791666666666666,
+      "DIR_at_FPIR_1": 0.8802083333333334
+    },
+    "fold2/T_to_E/fusion_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -2.0441372394561768,
+      "AUROC": 0.982349537037037,
+      "detection_EER": 0.0625,
+      "C": 0.8802083333333334,
+      "identity_macro_F1": 0.9288065481429326,
+      "unknown_F1": 0.919093851132686,
+      "known_acceptance": 0.8802083333333334,
+      "unknown_false_acceptance": 0.013888888888888888,
+      "unknown_rejection": 0.9861111111111112,
+      "U_at_95": 0.9097222222222222,
+      "DIR_at_FPIR_1": 0.8645833333333334
+    },
+    "fold3/E_to_T/fusion_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -3.218925952911377,
+      "AUROC": 0.9381510416666666,
+      "detection_EER": 0.13020833333333337,
+      "C": 0.9635416666666666,
+      "identity_macro_F1": 0.9813531770400606,
+      "unknown_F1": 0.7416666666666667,
+      "known_acceptance": 0.9635416666666666,
+      "unknown_false_acceptance": 0.3819444444444444,
+      "unknown_rejection": 0.6180555555555556,
+      "U_at_95": 0.6805555555555556,
+      "DIR_at_FPIR_1": 0.4895833333333333
+    },
+    "fold3/T_to_E/fusion_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -2.040811538696289,
+      "AUROC": 0.9417679398148148,
+      "detection_EER": 0.125,
+      "C": 0.8854166666666666,
+      "identity_macro_F1": 0.9376743945709463,
+      "unknown_F1": 0.8472222222222222,
+      "known_acceptance": 0.8854166666666666,
+      "unknown_false_acceptance": 0.1527777777777778,
+      "unknown_rejection": 0.8472222222222222,
+      "U_at_95": 0.6527777777777778,
+      "DIR_at_FPIR_1": 0.5520833333333334
+    }
+  },
+  "group_mean": {
+    "AUROC": 0.9682315779320989,
+    "identity_macro_F1": 0.9505856911776586,
+    "unknown_F1": 0.8744732299822947,
+    "known_acceptance": 0.9114583333333335,
+    "unknown_false_acceptance": 0.12268518518518517,
+    "unknown_rejection": 0.8773148148148149,
+    "C": 0.9114583333333335,
+    "U_at_95": 0.835648148148148,
+    "DIR_at_FPIR_1": 0.6814236111111112,
+    "detection_EER": 0.0842013888888889
+  },
+  "reference_check": {
+    "max_abs_diff": 0.0,
+    "per_group": {
+      "fold1/T_to_E": {
+        "AUROC": {
+          "reference": 0.9765625,
+          "recomputed": 0.9765625,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9727510265024263,
+          "recomputed": 0.9727510265024263,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.9078014184397163,
+          "recomputed": 0.9078014184397163,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9479166666666666,
+          "recomputed": 0.9479166666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.1111111111111111,
+          "recomputed": 0.1111111111111111,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8888888888888888,
+          "recomputed": 0.8888888888888888,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -3.360255479812622,
+          "recomputed": -3.360255479812622,
+          "abs_diff": 0.0
+        }
+      },
+      "fold1/E_to_T": {
+        "AUROC": {
+          "reference": 0.9759476273148149,
+          "recomputed": 0.9759476273148149,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9516318148109585,
+          "recomputed": 0.9516318148109585,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.9084745762711864,
+          "recomputed": 0.9084745762711864,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9114583333333334,
+          "recomputed": 0.9114583333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.06944444444444445,
+          "recomputed": 0.06944444444444445,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9305555555555556,
+          "recomputed": 0.9305555555555556,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -2.044830083847046,
+          "recomputed": -2.044830083847046,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/T_to_E": {
+        "AUROC": {
+          "reference": 0.982349537037037,
+          "recomputed": 0.982349537037037,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9288065481429326,
+          "recomputed": 0.9288065481429326,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.919093851132686,
+          "recomputed": 0.919093851132686,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.8802083333333334,
+          "recomputed": 0.8802083333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.013888888888888888,
+          "recomputed": 0.013888888888888888,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9861111111111112,
+          "recomputed": 0.9861111111111112,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -2.0441372394561768,
+          "recomputed": -2.0441372394561768,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/E_to_T": {
+        "AUROC": {
+          "reference": 0.9946108217592593,
+          "recomputed": 0.9946108217592593,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9312971859986273,
+          "recomputed": 0.9312971859986273,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.9225806451612903,
+          "recomputed": 0.9225806451612903,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.8802083333333334,
+          "recomputed": 0.8802083333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.006944444444444444,
+          "recomputed": 0.006944444444444444,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9930555555555556,
+          "recomputed": 0.9930555555555556,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -1.806135654449463,
+          "recomputed": -1.806135654449463,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/T_to_E": {
+        "AUROC": {
+          "reference": 0.9417679398148148,
+          "recomputed": 0.9417679398148148,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9376743945709463,
+          "recomputed": 0.9376743945709463,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8472222222222222,
+          "recomputed": 0.8472222222222222,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.8854166666666666,
+          "recomputed": 0.8854166666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.1527777777777778,
+          "recomputed": 0.1527777777777778,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8472222222222222,
+          "recomputed": 0.8472222222222222,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -2.040811538696289,
+          "recomputed": -2.040811538696289,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/E_to_T": {
+        "AUROC": {
+          "reference": 0.9381510416666666,
+          "recomputed": 0.9381510416666666,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9813531770400606,
+          "recomputed": 0.9813531770400606,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.7416666666666667,
+          "recomputed": 0.7416666666666667,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9635416666666666,
+          "recomputed": 0.9635416666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.3819444444444444,
+          "recomputed": 0.3819444444444444,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.6180555555555556,
+          "recomputed": 0.6180555555555556,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -3.218925952911377,
+          "recomputed": -3.218925952911377,
+          "abs_diff": 0.0
+        }
+      }
+    }
+  },
+  "checkpoints": {
+    "fold1/T_to_E": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E77_score_fusion\\outputs\\models\\fusion_outer1_T_to_E.pt",
+      "sha256": "5dde25cec70d52fdc371662f227e7a4413a4bbd5834a00e6e11c2dccd462cc3e"
+    },
+    "fold1/E_to_T": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E77_score_fusion\\outputs\\models\\fusion_outer1_E_to_T.pt",
+      "sha256": "0f712dd139e0fd2ad5f0f10f80363725fb1b38b28d7d092adc1ad1bbe0a8c16e"
+    },
+    "fold2/T_to_E": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E77_score_fusion\\outputs\\models\\fusion_outer2_T_to_E.pt",
+      "sha256": "9820ca4dd29ba40afd927b0390c1c4779e9dba1608baac1f1e0c229e06499ec2"
+    },
+    "fold2/E_to_T": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E77_score_fusion\\outputs\\models\\fusion_outer2_E_to_T.pt",
+      "sha256": "1926f28309caec3f3e13ac877a7aeb43bd243f28461259b40787f29e4d477c83"
+    },
+    "fold3/T_to_E": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E77_score_fusion\\outputs\\models\\fusion_outer3_T_to_E.pt",
+      "sha256": "987e518083390212e730b757e49eb0ccb4c86f94f3f012d4980649df33864a20"
+    },
+    "fold3/E_to_T": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E77_score_fusion\\outputs\\models\\fusion_outer3_E_to_T.pt",
+      "sha256": "9b6480f4230d33429eeb7fa9ff708ef700d2f216073f3df236a59f6d412479dd"
+    }
+  },
+  "role_definition": {
+    "enrolled": "run5 known query",
+    "outer_unknown": "run5 held-out subject query"
+  },
+  "threshold_definition": "q05 of enrolled run4 known fused confidence; identical across all rows",
+  "competition_test": "N/A; 外部 BCIC IV-2a outer test，未访问项目 Test"
+}

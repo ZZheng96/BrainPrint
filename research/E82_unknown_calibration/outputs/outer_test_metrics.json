@@ -1,0 +1,589 @@
+{
+  "experiment": "E82",
+  "method": "fpir02",
+  "methods": [
+    "fpir01",
+    "fpir02"
+  ],
+  "csv": {
+    "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E82_unknown_calibration\\outputs\\outer_test_predictions.csv",
+    "sha256": "0edff9e6fb5e997e39fb879f1743ef3dda813a5c9868d249ea849408aa06cadb",
+    "n_rows": 4032,
+    "n_groups": 12,
+    "columns": [
+      "experiment",
+      "outer_fold",
+      "direction",
+      "method",
+      "role",
+      "sample_id",
+      "session",
+      "run",
+      "task",
+      "artifact",
+      "true_identity",
+      "pred_label",
+      "accepted",
+      "confidence",
+      "threshold"
+    ]
+  },
+  "groups": {
+    "fold1/E_to_T/fpir02": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.8569703102111816,
+      "AUROC": 0.9497251157407407,
+      "detection_EER": 0.125,
+      "C": 0.6822916666666666,
+      "identity_macro_F1": 0.7913419913419915,
+      "unknown_F1": 0.8046647230320699,
+      "known_acceptance": 0.6822916666666666,
+      "unknown_false_acceptance": 0.041666666666666664,
+      "unknown_rejection": 0.9583333333333334,
+      "U_at_95": 0.7916666666666666,
+      "DIR_at_FPIR_1": 0.59375
+    },
+    "fold1/T_to_E/fpir02": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.8503218293190002,
+      "AUROC": 0.957863136574074,
+      "detection_EER": 0.11458333333333337,
+      "C": 0.7083333333333334,
+      "identity_macro_F1": 0.813913113285817,
+      "unknown_F1": 0.8269794721407625,
+      "known_acceptance": 0.7083333333333334,
+      "unknown_false_acceptance": 0.020833333333333332,
+      "unknown_rejection": 0.9791666666666666,
+      "U_at_95": 0.7916666666666666,
+      "DIR_at_FPIR_1": 0.5520833333333334
+    },
+    "fold2/E_to_T/fpir02": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.6621150374412537,
+      "AUROC": 0.9887514467592592,
+      "detection_EER": 0.0625,
+      "C": 0.9947916666666666,
+      "identity_macro_F1": 0.9973684210526316,
+      "unknown_F1": 0.9015151515151515,
+      "known_acceptance": 0.9947916666666666,
+      "unknown_false_acceptance": 0.1736111111111111,
+      "unknown_rejection": 0.8263888888888888,
+      "U_at_95": 0.9375,
+      "DIR_at_FPIR_1": 0.90625
+    },
+    "fold2/T_to_E/fpir02": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.7240403294563293,
+      "AUROC": 0.9680266203703703,
+      "detection_EER": 0.078125,
+      "C": 0.9427083333333334,
+      "identity_macro_F1": 0.9688747731397459,
+      "unknown_F1": 0.900709219858156,
+      "known_acceptance": 0.9427083333333334,
+      "unknown_false_acceptance": 0.11805555555555555,
+      "unknown_rejection": 0.8819444444444444,
+      "U_at_95": 0.8402777777777778,
+      "DIR_at_FPIR_1": 0.75
+    },
+    "fold3/E_to_T/fpir02": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.6438437104225159,
+      "AUROC": 0.8101128472222223,
+      "detection_EER": 0.24479166666666663,
+      "C": 0.6666666666666666,
+      "identity_macro_F1": 0.793390309475339,
+      "unknown_F1": 0.6959247648902821,
+      "known_acceptance": 0.6666666666666666,
+      "unknown_false_acceptance": 0.22916666666666666,
+      "unknown_rejection": 0.7708333333333334,
+      "U_at_95": 0.5902777777777778,
+      "DIR_at_FPIR_1": 0.005208333333333333
+    },
+    "fold3/T_to_E/fpir02": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.6448240280151367,
+      "AUROC": 0.8366608796296297,
+      "detection_EER": 0.203125,
+      "C": 0.4635416666666667,
+      "identity_macro_F1": 0.6177019443342214,
+      "unknown_F1": 0.6826666666666666,
+      "known_acceptance": 0.4635416666666667,
+      "unknown_false_acceptance": 0.1111111111111111,
+      "unknown_rejection": 0.8888888888888888,
+      "U_at_95": 0.5347222222222222,
+      "DIR_at_FPIR_1": 0.015625
+    }
+  },
+  "group_mean": {
+    "AUROC": 0.9185233410493826,
+    "identity_macro_F1": 0.8304317587716245,
+    "unknown_F1": 0.8020766663505149,
+    "known_acceptance": 0.7430555555555555,
+    "unknown_false_acceptance": 0.11574074074074074,
+    "unknown_rejection": 0.8842592592592592,
+    "U_at_95": 0.7476851851851851,
+    "DIR_at_FPIR_1": 0.47048611111111116,
+    "detection_EER": 0.13802083333333334
+  },
+  "reference_check": {
+    "max_abs_diff": 0.0,
+    "per_group": {
+      "fold1/T_to_E/fpir01": {
+        "AUROC": {
+          "reference": 0.957863136574074,
+          "recomputed": 0.957863136574074,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.786680767855829,
+          "recomputed": 0.786680767855829,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.671875,
+          "recomputed": 0.671875,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.013888888888888888,
+          "recomputed": 0.013888888888888888,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.7987616099071208,
+          "recomputed": 0.7987616099071208,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.8137535816618912,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.8538509607315063,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold1/T_to_E/fpir02": {
+        "AUROC": {
+          "reference": 0.957863136574074,
+          "recomputed": 0.957863136574074,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.813913113285817,
+          "recomputed": 0.813913113285817,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.7083333333333334,
+          "recomputed": 0.7083333333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.020833333333333332,
+          "recomputed": 0.020833333333333332,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.8217522658610272,
+          "recomputed": 0.8217522658610272,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.8269794721407625,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.8503218293190002,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold1/E_to_T/fpir01": {
+        "AUROC": {
+          "reference": 0.9497251157407407,
+          "recomputed": 0.9497251157407407,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.7913419913419915,
+          "recomputed": 0.7913419913419915,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.6822916666666666,
+          "recomputed": 0.6822916666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.041666666666666664,
+          "recomputed": 0.041666666666666664,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.7963525835866262,
+          "recomputed": 0.7963525835866262,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.8046647230320699,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.8575248122215271,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold1/E_to_T/fpir02": {
+        "AUROC": {
+          "reference": 0.9497251157407407,
+          "recomputed": 0.9497251157407407,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.7913419913419915,
+          "recomputed": 0.7913419913419915,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.6822916666666666,
+          "recomputed": 0.6822916666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.041666666666666664,
+          "recomputed": 0.041666666666666664,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.7963525835866262,
+          "recomputed": 0.7963525835866262,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.8046647230320699,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.8569703102111816,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold2/T_to_E/fpir01": {
+        "AUROC": {
+          "reference": 0.9680266203703703,
+          "recomputed": 0.9680266203703703,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9661872031509441,
+          "recomputed": 0.9661872031509441,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9375,
+          "recomputed": 0.9375,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.1111111111111111,
+          "recomputed": 0.1111111111111111,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.9278350515463918,
+          "recomputed": 0.9278350515463918,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.9014084507042254,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.7265361547470093,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold2/T_to_E/fpir02": {
+        "AUROC": {
+          "reference": 0.9680266203703703,
+          "recomputed": 0.9680266203703703,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9688747731397459,
+          "recomputed": 0.9688747731397459,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9427083333333334,
+          "recomputed": 0.9427083333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.11805555555555555,
+          "recomputed": 0.11805555555555555,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.9282051282051282,
+          "recomputed": 0.9282051282051282,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.900709219858156,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.7240403294563293,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold2/E_to_T/fpir01": {
+        "AUROC": {
+          "reference": 0.9887514467592592,
+          "recomputed": 0.9887514467592592,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9862637362637363,
+          "recomputed": 0.9862637362637363,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9739583333333334,
+          "recomputed": 0.9739583333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.1388888888888889,
+          "recomputed": 0.1388888888888889,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.9373433583959899,
+          "recomputed": 0.9373433583959899,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.9084249084249084,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.6788727045059204,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold2/E_to_T/fpir02": {
+        "AUROC": {
+          "reference": 0.9887514467592592,
+          "recomputed": 0.9887514467592592,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9973684210526316,
+          "recomputed": 0.9973684210526316,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9947916666666666,
+          "recomputed": 0.9947916666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.1736111111111111,
+          "recomputed": 0.1736111111111111,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.9362745098039216,
+          "recomputed": 0.9362745098039216,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.9015151515151515,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.6621150374412537,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold3/T_to_E/fpir01": {
+        "AUROC": {
+          "reference": 0.8366608796296297,
+          "recomputed": 0.8366608796296297,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.5829762963061985,
+          "recomputed": 0.5829762963061985,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.4270833333333333,
+          "recomputed": 0.4270833333333333,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.1111111111111111,
+          "recomputed": 0.1111111111111111,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.5655172413793104,
+          "recomputed": 0.5655172413793104,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.6701570680628273,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.6452407836914062,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold3/T_to_E/fpir02": {
+        "AUROC": {
+          "reference": 0.8366608796296297,
+          "recomputed": 0.8366608796296297,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.6177019443342214,
+          "recomputed": 0.6177019443342214,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.4635416666666667,
+          "recomputed": 0.4635416666666667,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.1111111111111111,
+          "recomputed": 0.1111111111111111,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.5993265993265994,
+          "recomputed": 0.5993265993265994,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.6826666666666666,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.6448240280151367,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold3/E_to_T/fpir01": {
+        "AUROC": {
+          "reference": 0.8101128472222223,
+          "recomputed": 0.8101128472222223,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.6321522680218332,
+          "recomputed": 0.6321522680218332,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.46875,
+          "recomputed": 0.46875,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.14583333333333334,
+          "recomputed": 0.14583333333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.594059405940594,
+          "recomputed": 0.594059405940594,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.6666666666666666,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.6459665298461914,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      },
+      "fold3/E_to_T/fpir02": {
+        "AUROC": {
+          "reference": 0.8101128472222223,
+          "recomputed": 0.8101128472222223,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.793390309475339,
+          "recomputed": 0.793390309475339,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.6666666666666666,
+          "recomputed": 0.6666666666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.22916666666666666,
+          "recomputed": 0.22916666666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_as_reported_pos_label_1": {
+          "reference": 0.7252124645892352,
+          "recomputed": 0.7252124645892352,
+          "abs_diff": 0.0
+        },
+        "unknown_F1_common_pos_label_0": {
+          "value": 0.6959247648902821,
+          "note": "E82 报告值用 pos_label=1（known 接受类）；E86 common 固定 pos_label=0（unknown 拒识类），定义不同不参与 1e-9 校验"
+        },
+        "threshold": {
+          "reference": null,
+          "recomputed": 0.6438437104225159,
+          "abs_diff": 0.0,
+          "note": "E82 results.json 未记录阈值"
+        }
+      }
+    }
+  },
+  "metric_definition_note": "E82 run_e82.evaluate 的 unknown_F1 用 pos_label=1 计算（known 接受类的 F1），E86 common.metrics_from_frame 固定 pos_label=0（unknown 拒识类的 F1）；CSV 重算的 pos_label=1 值已与 results.json 逐组比对",
+  "role_definition": {
+    "enrolled": "run5 known query",
+    "outer_unknown": "run5 held-out subject query"
+  },
+  "competition_test": "N/A; 外部 BCIC IV-2a outer test，未访问项目 Test"
+}

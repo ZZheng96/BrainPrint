@@ -1,0 +1,950 @@
+{
+  "experiment": "E73",
+  "methods": {
+    "native22": "wccn:margin",
+    "native22_pair": "pair_head:max_logit"
+  },
+  "csv": {
+    "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E73_external_multisession\\outputs\\outer_test_predictions.csv",
+    "sha256": "68bd90ae3c0b5b734d3803f9a53b6dbec9565fd1b52e6db183b09a984cbc1503",
+    "n_rows": 4032,
+    "n_groups": 12,
+    "columns": [
+      "experiment",
+      "outer_fold",
+      "direction",
+      "method",
+      "role",
+      "sample_id",
+      "session",
+      "run",
+      "task",
+      "artifact",
+      "true_identity",
+      "pred_label",
+      "accepted",
+      "confidence",
+      "threshold"
+    ]
+  },
+  "checkpoints": {
+    "1": {
+      "encoder": {
+        "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E73_external_multisession\\native22\\models\\supcon_outer1.pt",
+        "sha256": "ca11156f2691d39f146b7364ab329057e11965976a1e69db1e774a97eef250a5"
+      },
+      "pair_head": {
+        "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E73_external_multisession\\native22_pair\\models\\pair_outer1.pt",
+        "sha256": "e75c409939bbe9026e8e1058be694ed765cd206a92f7fa505dce09cb05d429ad"
+      }
+    },
+    "2": {
+      "encoder": {
+        "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E73_external_multisession\\native22\\models\\supcon_outer2.pt",
+        "sha256": "c20e33e367b7ce1d37f57f41367ec1c6078b839e4b253360c18b6cd99b55d698"
+      },
+      "pair_head": {
+        "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E73_external_multisession\\native22_pair\\models\\pair_outer2.pt",
+        "sha256": "dce98991c5e0c5c969cfdbe19b004a62c04fbd9e1e03aacd09477eebbc18f4b6"
+      }
+    },
+    "3": {
+      "encoder": {
+        "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E73_external_multisession\\native22\\models\\supcon_outer3.pt",
+        "sha256": "1598a1780934b425b80585a48ad7b04ec8fcc10ec956c9181fd10a3e9cb81c81"
+      },
+      "pair_head": {
+        "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E73_external_multisession\\native22_pair\\models\\pair_outer3.pt",
+        "sha256": "b8f9d8620bd349bcfe3c0e7a679ca9aeb268befe566f86230842dd05f1075a49"
+      }
+    }
+  },
+  "groups": {
+    "fold1/E_to_T/native22": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.15562228560447694,
+      "AUROC": 0.9677010995370371,
+      "detection_EER": 0.09895833333333337,
+      "C": 0.9322916666666666,
+      "identity_macro_F1": 0.9647597254004576,
+      "unknown_F1": 0.8705035971223022,
+      "known_acceptance": 0.9322916666666666,
+      "unknown_false_acceptance": 0.1597222222222222,
+      "unknown_rejection": 0.8402777777777778,
+      "U_at_95": 0.8263888888888888,
+      "DIR_at_FPIR_1": 0.6302083333333334
+    },
+    "fold1/E_to_T/native22_pair": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 2.227543830871582,
+      "AUROC": 0.9741030092592594,
+      "detection_EER": 0.07291666666666663,
+      "C": 0.9427083333333334,
+      "identity_macro_F1": 0.9698321891685736,
+      "unknown_F1": 0.900709219858156,
+      "known_acceptance": 0.9427083333333334,
+      "unknown_false_acceptance": 0.11805555555555555,
+      "unknown_rejection": 0.8819444444444444,
+      "U_at_95": 0.8819444444444444,
+      "DIR_at_FPIR_1": 0.6927083333333334
+    },
+    "fold1/T_to_E/native22": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.12977577447891236,
+      "AUROC": 0.9934172453703705,
+      "detection_EER": 0.041666666666666664,
+      "C": 0.9635416666666666,
+      "identity_macro_F1": 0.98117970689907,
+      "unknown_F1": 0.9550173010380623,
+      "known_acceptance": 0.9635416666666666,
+      "unknown_false_acceptance": 0.041666666666666664,
+      "unknown_rejection": 0.9583333333333334,
+      "U_at_95": 0.9722222222222222,
+      "DIR_at_FPIR_1": 0.8645833333333334
+    },
+    "fold1/T_to_E/native22_pair": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 2.5121712684631348,
+      "AUROC": 0.9830005787037037,
+      "detection_EER": 0.06770833333333337,
+      "C": 0.9375,
+      "identity_macro_F1": 0.9665766321963266,
+      "unknown_F1": 0.9241379310344827,
+      "known_acceptance": 0.9375,
+      "unknown_false_acceptance": 0.06944444444444445,
+      "unknown_rejection": 0.9305555555555556,
+      "U_at_95": 0.9097222222222222,
+      "DIR_at_FPIR_1": 0.8489583333333334
+    },
+    "fold2/E_to_T/native22": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.10335187315940858,
+      "AUROC": 0.9242259837962964,
+      "detection_EER": 0.14583333333333334,
+      "C": 0.9375,
+      "identity_macro_F1": 0.9673296549173127,
+      "unknown_F1": 0.7953667953667953,
+      "known_acceptance": 0.9375,
+      "unknown_false_acceptance": 0.2847222222222222,
+      "unknown_rejection": 0.7152777777777778,
+      "U_at_95": 0.6875,
+      "DIR_at_FPIR_1": 0.2708333333333333
+    },
+    "fold2/E_to_T/native22_pair": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 2.375565528869629,
+      "AUROC": 0.9532335069444444,
+      "detection_EER": 0.11979166666666663,
+      "C": 0.9166666666666666,
+      "identity_macro_F1": 0.9555857356529248,
+      "unknown_F1": 0.8363636363636363,
+      "known_acceptance": 0.9166666666666666,
+      "unknown_false_acceptance": 0.2013888888888889,
+      "unknown_rejection": 0.7986111111111112,
+      "U_at_95": 0.7152777777777778,
+      "DIR_at_FPIR_1": 0.6770833333333334
+    },
+    "fold2/T_to_E/native22": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.11682684421539306,
+      "AUROC": 0.9034288194444445,
+      "detection_EER": 0.1736111111111111,
+      "C": 0.8489583333333334,
+      "identity_macro_F1": 0.915359651526734,
+      "unknown_F1": 0.8109965635738832,
+      "known_acceptance": 0.8489583333333334,
+      "unknown_false_acceptance": 0.18055555555555555,
+      "unknown_rejection": 0.8194444444444444,
+      "U_at_95": 0.625,
+      "DIR_at_FPIR_1": 0.375
+    },
+    "fold2/T_to_E/native22_pair": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 2.3039088249206543,
+      "AUROC": 0.932834201388889,
+      "detection_EER": 0.13194444444444445,
+      "C": 0.8854166666666666,
+      "identity_macro_F1": 0.9377661670450652,
+      "unknown_F1": 0.8268551236749117,
+      "known_acceptance": 0.8854166666666666,
+      "unknown_false_acceptance": 0.1875,
+      "unknown_rejection": 0.8125,
+      "U_at_95": 0.6597222222222222,
+      "DIR_at_FPIR_1": 0.4270833333333333
+    },
+    "fold3/E_to_T/native22": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.058056610822677615,
+      "AUROC": 0.8914749710648148,
+      "detection_EER": 0.203125,
+      "C": 0.9322916666666666,
+      "identity_macro_F1": 0.9637715831079676,
+      "unknown_F1": 0.6347826086956522,
+      "known_acceptance": 0.9322916666666666,
+      "unknown_false_acceptance": 0.4930555555555556,
+      "unknown_rejection": 0.5069444444444444,
+      "U_at_95": 0.4930555555555556,
+      "DIR_at_FPIR_1": 0.546875
+    },
+    "fold3/E_to_T/native22_pair": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 1.0545703172683716,
+      "AUROC": 0.8444010416666667,
+      "detection_EER": 0.19791666666666663,
+      "C": 0.9427083333333334,
+      "identity_macro_F1": 0.9646024295288783,
+      "unknown_F1": 0.5145631067961165,
+      "known_acceptance": 0.953125,
+      "unknown_false_acceptance": 0.6319444444444444,
+      "unknown_rejection": 0.3680555555555556,
+      "U_at_95": 0.3888888888888889,
+      "DIR_at_FPIR_1": 0.06770833333333333
+    },
+    "fold3/T_to_E/native22": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.0644852191209793,
+      "AUROC": 0.804615162037037,
+      "detection_EER": 0.2569444444444444,
+      "C": 0.9166666666666666,
+      "identity_macro_F1": 0.9543193847997603,
+      "unknown_F1": 0.6086956521739131,
+      "known_acceptance": 0.9166666666666666,
+      "unknown_false_acceptance": 0.5138888888888888,
+      "unknown_rejection": 0.48611111111111116,
+      "U_at_95": 0.3541666666666667,
+      "DIR_at_FPIR_1": 0.0625
+    },
+    "fold3/T_to_E/native22_pair": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 1.1535955667495728,
+      "AUROC": 0.8582899305555556,
+      "detection_EER": 0.20833333333333334,
+      "C": 0.9739583333333334,
+      "identity_macro_F1": 0.9867301231802911,
+      "unknown_F1": 0.639269406392694,
+      "known_acceptance": 0.9739583333333334,
+      "unknown_false_acceptance": 0.5138888888888888,
+      "unknown_rejection": 0.48611111111111116,
+      "U_at_95": 0.5138888888888888,
+      "DIR_at_FPIR_1": 0.03125
+    }
+  },
+  "group_mean": {
+    "AUROC": 0.9192271291473765,
+    "identity_macro_F1": 0.9606510819519466,
+    "unknown_F1": 0.7764384118408839,
+    "known_acceptance": 0.9283854166666666,
+    "unknown_false_acceptance": 0.2829861111111111,
+    "unknown_rejection": 0.7170138888888888,
+    "U_at_95": 0.6689814814814815,
+    "DIR_at_FPIR_1": 0.4578993055555556,
+    "detection_EER": 0.14322916666666666
+  },
+  "method_group_mean": {
+    "native22": {
+      "AUROC": 0.9141438802083334,
+      "identity_macro_F1": 0.9577866177752169,
+      "unknown_F1": 0.7792270863284347,
+      "known_acceptance": 0.921875,
+      "unknown_false_acceptance": 0.2789351851851852,
+      "unknown_rejection": 0.7210648148148149,
+      "U_at_95": 0.6597222222222222,
+      "DIR_at_FPIR_1": 0.4583333333333333,
+      "detection_EER": 0.15335648148148148
+    },
+    "native22_pair": {
+      "AUROC": 0.9243103780864197,
+      "identity_macro_F1": 0.9635155461286766,
+      "unknown_F1": 0.7736497373533329,
+      "known_acceptance": 0.9348958333333331,
+      "unknown_false_acceptance": 0.28703703703703703,
+      "unknown_rejection": 0.7129629629629631,
+      "U_at_95": 0.6782407407407408,
+      "DIR_at_FPIR_1": 0.45746527777777785,
+      "detection_EER": 0.13310185185185183
+    }
+  },
+  "reference_check": {
+    "max_abs_diff": 5.551115123125783e-17,
+    "per_group": {
+      "fold1/T_to_E/native22": {
+        "AUROC": {
+          "reference": 0.9934172453703705,
+          "recomputed": 0.9934172453703705,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9635416666666666,
+          "recomputed": 0.9635416666666666,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.98117970689907,
+          "recomputed": 0.98117970689907,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.9550173010380623,
+          "recomputed": 0.9550173010380623,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9635416666666666,
+          "recomputed": 0.9635416666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9583333333333334,
+          "recomputed": 0.9583333333333334,
+          "abs_diff": 0.0
+        },
+        "U_at_95": {
+          "reference": 0.9722222222222222,
+          "recomputed": 0.9722222222222222,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.8645833333333334,
+          "recomputed": 0.8645833333333334,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.041666666666666664,
+          "recomputed": 0.041666666666666664,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.12977577447891236,
+          "recomputed": 0.12977577447891236,
+          "abs_diff": 0.0
+        }
+      },
+      "fold1/E_to_T/native22": {
+        "AUROC": {
+          "reference": 0.9677010995370371,
+          "recomputed": 0.9677010995370371,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9322916666666666,
+          "recomputed": 0.9322916666666666,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9647597254004576,
+          "recomputed": 0.9647597254004576,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8705035971223022,
+          "recomputed": 0.8705035971223022,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9322916666666666,
+          "recomputed": 0.9322916666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8402777777777778,
+          "recomputed": 0.8402777777777778,
+          "abs_diff": 0.0
+        },
+        "U_at_95": {
+          "reference": 0.8263888888888888,
+          "recomputed": 0.8263888888888888,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.6302083333333334,
+          "recomputed": 0.6302083333333334,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.09895833333333337,
+          "recomputed": 0.09895833333333337,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.15562228560447694,
+          "recomputed": 0.15562228560447694,
+          "abs_diff": 0.0
+        }
+      },
+      "fold1/T_to_E/native22_pair": {
+        "AUROC": {
+          "reference": 0.9830005787037037,
+          "recomputed": 0.9830005787037037,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9375,
+          "recomputed": 0.9375,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9665766321963266,
+          "recomputed": 0.9665766321963266,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.9241379310344827,
+          "recomputed": 0.9241379310344827,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9375,
+          "recomputed": 0.9375,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9305555555555556,
+          "recomputed": 0.9305555555555556,
+          "abs_diff": 0.0
+        },
+        "U_at_95": {
+          "reference": 0.9097222222222222,
+          "recomputed": 0.9097222222222222,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.8489583333333334,
+          "recomputed": 0.8489583333333334,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.06770833333333337,
+          "recomputed": 0.06770833333333337,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 2.5121712684631348,
+          "recomputed": 2.5121712684631348,
+          "abs_diff": 0.0
+        },
+        "saved_calibration_q05": {
+          "reference": 2.5121712684631348,
+          "recomputed": 2.5121712684631348,
+          "abs_diff": 0.0
+        }
+      },
+      "fold1/E_to_T/native22_pair": {
+        "AUROC": {
+          "reference": 0.9741030092592594,
+          "recomputed": 0.9741030092592594,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9427083333333334,
+          "recomputed": 0.9427083333333334,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9698321891685736,
+          "recomputed": 0.9698321891685736,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.900709219858156,
+          "recomputed": 0.900709219858156,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9427083333333334,
+          "recomputed": 0.9427083333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8819444444444444,
+          "recomputed": 0.8819444444444444,
+          "abs_diff": 0.0
+        },
+        "U_at_95": {
+          "reference": 0.8819444444444444,
+          "recomputed": 0.8819444444444444,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.6927083333333334,
+          "recomputed": 0.6927083333333334,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.07291666666666663,
+          "recomputed": 0.07291666666666663,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 2.227543830871582,
+          "recomputed": 2.227543830871582,
+          "abs_diff": 0.0
+        },
+        "saved_calibration_q05": {
+          "reference": 2.227543830871582,
+          "recomputed": 2.227543830871582,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/T_to_E/native22": {
+        "AUROC": {
+          "reference": 0.9034288194444445,
+          "recomputed": 0.9034288194444445,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.8489583333333334,
+          "recomputed": 0.8489583333333334,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.915359651526734,
+          "recomputed": 0.915359651526734,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8109965635738832,
+          "recomputed": 0.8109965635738832,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.8489583333333334,
+          "recomputed": 0.8489583333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8194444444444444,
+          "recomputed": 0.8194444444444444,
+          "abs_diff": 0.0
+        },
+        "U_at_95": {
+          "reference": 0.625,
+          "recomputed": 0.625,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.375,
+          "recomputed": 0.375,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.1736111111111111,
+          "recomputed": 0.1736111111111111,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.11682684421539306,
+          "recomputed": 0.11682684421539306,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/E_to_T/native22": {
+        "AUROC": {
+          "reference": 0.9242259837962964,
+          "recomputed": 0.9242259837962964,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9375,
+          "recomputed": 0.9375,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9673296549173127,
+          "recomputed": 0.9673296549173127,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.7953667953667953,
+          "recomputed": 0.7953667953667953,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9375,
+          "recomputed": 0.9375,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.7152777777777778,
+          "recomputed": 0.7152777777777778,
+          "abs_diff": 0.0
+        },
+        "U_at_95": {
+          "reference": 0.6875,
+          "recomputed": 0.6875,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.2708333333333333,
+          "recomputed": 0.2708333333333333,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.14583333333333334,
+          "recomputed": 0.14583333333333334,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.10335187315940858,
+          "recomputed": 0.10335187315940858,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/T_to_E/native22_pair": {
+        "AUROC": {
+          "reference": 0.932834201388889,
+          "recomputed": 0.932834201388889,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.8854166666666666,
+          "recomputed": 0.8854166666666666,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9377661670450652,
+          "recomputed": 0.9377661670450652,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8268551236749117,
+          "recomputed": 0.8268551236749117,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.8854166666666666,
+          "recomputed": 0.8854166666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8125,
+          "recomputed": 0.8125,
+          "abs_diff": 0.0
+        },
+        "U_at_95": {
+          "reference": 0.6597222222222222,
+          "recomputed": 0.6597222222222222,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.4270833333333333,
+          "recomputed": 0.4270833333333333,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.13194444444444445,
+          "recomputed": 0.13194444444444445,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 2.3039088249206543,
+          "recomputed": 2.3039088249206543,
+          "abs_diff": 0.0
+        },
+        "saved_calibration_q05": {
+          "reference": 2.3039088249206543,
+          "recomputed": 2.3039088249206543,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/E_to_T/native22_pair": {
+        "AUROC": {
+          "reference": 0.9532335069444444,
+          "recomputed": 0.9532335069444444,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9166666666666666,
+          "recomputed": 0.9166666666666666,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9555857356529248,
+          "recomputed": 0.9555857356529248,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8363636363636363,
+          "recomputed": 0.8363636363636363,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9166666666666666,
+          "recomputed": 0.9166666666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.7986111111111112,
+          "recomputed": 0.7986111111111112,
+          "abs_diff": 0.0
+        },
+        "U_at_95": {
+          "reference": 0.7152777777777778,
+          "recomputed": 0.7152777777777778,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.6770833333333334,
+          "recomputed": 0.6770833333333334,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.11979166666666663,
+          "recomputed": 0.11979166666666663,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 2.375565528869629,
+          "recomputed": 2.375565528869629,
+          "abs_diff": 0.0
+        },
+        "saved_calibration_q05": {
+          "reference": 2.375565528869629,
+          "recomputed": 2.375565528869629,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/T_to_E/native22": {
+        "AUROC": {
+          "reference": 0.804615162037037,
+          "recomputed": 0.804615162037037,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9166666666666666,
+          "recomputed": 0.9166666666666666,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9543193847997603,
+          "recomputed": 0.9543193847997603,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.6086956521739131,
+          "recomputed": 0.6086956521739131,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9166666666666666,
+          "recomputed": 0.9166666666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.4861111111111111,
+          "recomputed": 0.48611111111111116,
+          "abs_diff": 5.551115123125783e-17
+        },
+        "U_at_95": {
+          "reference": 0.3541666666666667,
+          "recomputed": 0.3541666666666667,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.0625,
+          "recomputed": 0.0625,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.2569444444444444,
+          "recomputed": 0.2569444444444444,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.0644852191209793,
+          "recomputed": 0.0644852191209793,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/E_to_T/native22": {
+        "AUROC": {
+          "reference": 0.8914749710648148,
+          "recomputed": 0.8914749710648148,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9322916666666666,
+          "recomputed": 0.9322916666666666,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9637715831079676,
+          "recomputed": 0.9637715831079676,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.6347826086956522,
+          "recomputed": 0.6347826086956522,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9322916666666666,
+          "recomputed": 0.9322916666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.5069444444444444,
+          "recomputed": 0.5069444444444444,
+          "abs_diff": 0.0
+        },
+        "U_at_95": {
+          "reference": 0.4930555555555556,
+          "recomputed": 0.4930555555555556,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.546875,
+          "recomputed": 0.546875,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.203125,
+          "recomputed": 0.203125,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.058056610822677615,
+          "recomputed": 0.058056610822677615,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/T_to_E/native22_pair": {
+        "AUROC": {
+          "reference": 0.8582899305555556,
+          "recomputed": 0.8582899305555556,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9739583333333334,
+          "recomputed": 0.9739583333333334,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9867301231802911,
+          "recomputed": 0.9867301231802911,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.639269406392694,
+          "recomputed": 0.639269406392694,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9739583333333334,
+          "recomputed": 0.9739583333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.4861111111111111,
+          "recomputed": 0.48611111111111116,
+          "abs_diff": 5.551115123125783e-17
+        },
+        "U_at_95": {
+          "reference": 0.5138888888888888,
+          "recomputed": 0.5138888888888888,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.03125,
+          "recomputed": 0.03125,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.20833333333333334,
+          "recomputed": 0.20833333333333334,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 1.1535955667495728,
+          "recomputed": 1.1535955667495728,
+          "abs_diff": 0.0
+        },
+        "saved_calibration_q05": {
+          "reference": 1.1535955667495728,
+          "recomputed": 1.1535955667495728,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/E_to_T/native22_pair": {
+        "AUROC": {
+          "reference": 0.8444010416666667,
+          "recomputed": 0.8444010416666667,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9427083333333334,
+          "recomputed": 0.9427083333333334,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9646024295288783,
+          "recomputed": 0.9646024295288783,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.5145631067961165,
+          "recomputed": 0.5145631067961165,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.953125,
+          "recomputed": 0.953125,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.3680555555555556,
+          "recomputed": 0.3680555555555556,
+          "abs_diff": 0.0
+        },
+        "U_at_95": {
+          "reference": 0.3888888888888889,
+          "recomputed": 0.3888888888888889,
+          "abs_diff": 0.0
+        },
+        "DIR_at_FPIR_1": {
+          "reference": 0.06770833333333333,
+          "recomputed": 0.06770833333333333,
+          "abs_diff": 0.0
+        },
+        "detection_EER": {
+          "reference": 0.19791666666666663,
+          "recomputed": 0.19791666666666663,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 1.0545703172683716,
+          "recomputed": 1.0545703172683716,
+          "abs_diff": 0.0
+        },
+        "saved_calibration_q05": {
+          "reference": 1.0545703172683716,
+          "recomputed": 1.0545703172683716,
+          "abs_diff": 0.0
+        }
+      }
+    }
+  },
+  "not_exportable_from_csv": {
+    "pair_AUROC": "需要完整的 query x template 分数矩阵；CSV 只保存逐样本置信度",
+    "pair_EER": "同上",
+    "working_98_threshold": "run4 已知样本 q02 阈值未写入 CSV（CSV 只有单一 operating threshold）",
+    "working_98_known_acceptance": "同上",
+    "working_98_unknown_rejection": "同上"
+  },
+  "role_definition": {
+    "enrolled": "run5 known query",
+    "outer_unknown": "run5 held-out subject query"
+  },
+  "competition_test": "N/A; 外部 BCIC IV-2a outer test，未访问项目 Test"
+}

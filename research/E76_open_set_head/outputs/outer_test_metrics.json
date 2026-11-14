@@ -1,0 +1,390 @@
+{
+  "experiment": "E76",
+  "method": "mahalanobis",
+  "csv": {
+    "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E76_open_set_head\\outputs\\outer_test_predictions.csv",
+    "sha256": "a85c28be2c176582943ee7b5f7ddb983f12f7ec2e446293072cab84e6979a4ec",
+    "n_rows": 2016,
+    "n_groups": 6,
+    "columns": [
+      "experiment",
+      "outer_fold",
+      "direction",
+      "method",
+      "role",
+      "sample_id",
+      "session",
+      "run",
+      "task",
+      "artifact",
+      "true_identity",
+      "pred_label",
+      "accepted",
+      "confidence",
+      "threshold"
+    ]
+  },
+  "groups": {
+    "fold1/E_to_T/mahalanobis": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -51.67080307006836,
+      "AUROC": 0.9752604166666666,
+      "detection_EER": 0.05729166666666663,
+      "C": 0.90625,
+      "identity_macro_F1": 0.9498847007518889,
+      "unknown_F1": 0.912751677852349,
+      "known_acceptance": 0.90625,
+      "unknown_false_acceptance": 0.05555555555555555,
+      "unknown_rejection": 0.9444444444444444,
+      "U_at_95": 0.9097222222222222,
+      "DIR_at_FPIR_1": 0.7708333333333334
+    },
+    "fold1/T_to_E/mahalanobis": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -67.88235473632812,
+      "AUROC": 0.982494212962963,
+      "detection_EER": 0.05555555555555555,
+      "C": 0.96875,
+      "identity_macro_F1": 0.9840407470288625,
+      "unknown_F1": 0.8929889298892989,
+      "known_acceptance": 0.96875,
+      "unknown_false_acceptance": 0.1597222222222222,
+      "unknown_rejection": 0.8402777777777778,
+      "U_at_95": 0.9444444444444444,
+      "DIR_at_FPIR_1": 0.7083333333333334
+    },
+    "fold2/E_to_T/mahalanobis": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -48.77153396606445,
+      "AUROC": 0.9924768518518519,
+      "detection_EER": 0.03645833333333337,
+      "C": 0.9270833333333334,
+      "identity_macro_F1": 0.9600606673407482,
+      "unknown_F1": 0.9466666666666667,
+      "known_acceptance": 0.9270833333333334,
+      "unknown_false_acceptance": 0.013888888888888888,
+      "unknown_rejection": 0.9861111111111112,
+      "U_at_95": 0.9791666666666666,
+      "DIR_at_FPIR_1": 0.9010416666666666
+    },
+    "fold2/T_to_E/mahalanobis": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -45.92875671386719,
+      "AUROC": 0.9828559027777778,
+      "detection_EER": 0.0625,
+      "C": 0.8177083333333334,
+      "identity_macro_F1": 0.8806082527496863,
+      "unknown_F1": 0.891640866873065,
+      "known_acceptance": 0.8177083333333334,
+      "unknown_false_acceptance": 0.0,
+      "unknown_rejection": 1.0,
+      "U_at_95": 0.9027777777777778,
+      "DIR_at_FPIR_1": 0.8177083333333334
+    },
+    "fold3/E_to_T/mahalanobis": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -50.66103744506836,
+      "AUROC": 0.9599609375,
+      "detection_EER": 0.11458333333333337,
+      "C": 0.953125,
+      "identity_macro_F1": 0.9759202398583968,
+      "unknown_F1": 0.8409090909090909,
+      "known_acceptance": 0.953125,
+      "unknown_false_acceptance": 0.22916666666666666,
+      "unknown_rejection": 0.7708333333333334,
+      "U_at_95": 0.7777777777777778,
+      "DIR_at_FPIR_1": 0.6875
+    },
+    "fold3/T_to_E/mahalanobis": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -50.81414794921875,
+      "AUROC": 0.9651331018518519,
+      "detection_EER": 0.08854166666666663,
+      "C": 0.9322916666666666,
+      "identity_macro_F1": 0.9641483644981239,
+      "unknown_F1": 0.8664259927797834,
+      "known_acceptance": 0.9322916666666666,
+      "unknown_false_acceptance": 0.16666666666666666,
+      "unknown_rejection": 0.8333333333333334,
+      "U_at_95": 0.7916666666666666,
+      "DIR_at_FPIR_1": 0.71875
+    }
+  },
+  "group_mean": {
+    "AUROC": 0.976363570601852,
+    "identity_macro_F1": 0.9524438287046179,
+    "unknown_F1": 0.891897204161709,
+    "known_acceptance": 0.9175347222222223,
+    "unknown_false_acceptance": 0.10416666666666667,
+    "unknown_rejection": 0.8958333333333334,
+    "C": 0.9175347222222223,
+    "U_at_95": 0.8842592592592592,
+    "DIR_at_FPIR_1": 0.7673611111111112,
+    "detection_EER": 0.0691550925925926
+  },
+  "reference_check": {
+    "max_abs_diff": 0.0,
+    "per_group": {
+      "fold1/T_to_E": {
+        "AUROC": {
+          "reference": 0.982494212962963,
+          "recomputed": 0.982494212962963,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9840407470288625,
+          "recomputed": 0.9840407470288625,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8929889298892989,
+          "recomputed": 0.8929889298892989,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.96875,
+          "recomputed": 0.96875,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.96875,
+          "recomputed": 0.96875,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8402777777777778,
+          "recomputed": 0.8402777777777778,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -67.88235473632812,
+          "recomputed": -67.88235473632812,
+          "abs_diff": 0.0
+        }
+      },
+      "fold1/E_to_T": {
+        "AUROC": {
+          "reference": 0.9752604166666666,
+          "recomputed": 0.9752604166666666,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9498847007518889,
+          "recomputed": 0.9498847007518889,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.912751677852349,
+          "recomputed": 0.912751677852349,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.90625,
+          "recomputed": 0.90625,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.90625,
+          "recomputed": 0.90625,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9444444444444444,
+          "recomputed": 0.9444444444444444,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -51.67080307006836,
+          "recomputed": -51.67080307006836,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/T_to_E": {
+        "AUROC": {
+          "reference": 0.9828559027777778,
+          "recomputed": 0.9828559027777778,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.8806082527496863,
+          "recomputed": 0.8806082527496863,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.891640866873065,
+          "recomputed": 0.891640866873065,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.8177083333333334,
+          "recomputed": 0.8177083333333334,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.8177083333333334,
+          "recomputed": 0.8177083333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 1.0,
+          "recomputed": 1.0,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -45.92875671386719,
+          "recomputed": -45.92875671386719,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/E_to_T": {
+        "AUROC": {
+          "reference": 0.9924768518518519,
+          "recomputed": 0.9924768518518519,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9600606673407482,
+          "recomputed": 0.9600606673407482,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.9466666666666667,
+          "recomputed": 0.9466666666666667,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9270833333333334,
+          "recomputed": 0.9270833333333334,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9270833333333334,
+          "recomputed": 0.9270833333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9861111111111112,
+          "recomputed": 0.9861111111111112,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -48.77153396606445,
+          "recomputed": -48.77153396606445,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/T_to_E": {
+        "AUROC": {
+          "reference": 0.9651331018518519,
+          "recomputed": 0.9651331018518519,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9641483644981239,
+          "recomputed": 0.9641483644981239,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8664259927797834,
+          "recomputed": 0.8664259927797834,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9322916666666666,
+          "recomputed": 0.9322916666666666,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9322916666666666,
+          "recomputed": 0.9322916666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8333333333333334,
+          "recomputed": 0.8333333333333334,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -50.81414794921875,
+          "recomputed": -50.81414794921875,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/E_to_T": {
+        "AUROC": {
+          "reference": 0.9599609375,
+          "recomputed": 0.9599609375,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9759202398583968,
+          "recomputed": 0.9759202398583968,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8409090909090909,
+          "recomputed": 0.8409090909090909,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.953125,
+          "recomputed": 0.953125,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.953125,
+          "recomputed": 0.953125,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.7708333333333334,
+          "recomputed": 0.7708333333333334,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -50.66103744506836,
+          "recomputed": -50.66103744506836,
+          "abs_diff": 0.0
+        }
+      }
+    }
+  },
+  "checkpoints": {
+    "fold1/T_to_E": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E76_open_set_head\\outputs\\models\\mahalanobis_outer1_T_to_E.pt",
+      "sha256": "39bde66fe55140c1f241effda1778bf7450ae34fdc699aea7d981d2cbcbc67e5"
+    },
+    "fold1/E_to_T": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E76_open_set_head\\outputs\\models\\mahalanobis_outer1_E_to_T.pt",
+      "sha256": "a132cd586bf1b3541cc49ad09d4e26b11c6b6b92e3b27e0f74f509b5b52dec76"
+    },
+    "fold2/T_to_E": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E76_open_set_head\\outputs\\models\\mahalanobis_outer2_T_to_E.pt",
+      "sha256": "a3b53b78a669b0de43db36c6e377ada89b8d9357d2114f202ea85ea247dba198"
+    },
+    "fold2/E_to_T": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E76_open_set_head\\outputs\\models\\mahalanobis_outer2_E_to_T.pt",
+      "sha256": "ba3d2872cceb82985eb4705480902e4bb6e265775712ff3003ccec30f25e8f19"
+    },
+    "fold3/T_to_E": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E76_open_set_head\\outputs\\models\\mahalanobis_outer3_T_to_E.pt",
+      "sha256": "86e475f12c1d7d673a4b096a5b2bb5fd87747a22da99398a95c54dfb48461c8d"
+    },
+    "fold3/E_to_T": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E76_open_set_head\\outputs\\models\\mahalanobis_outer3_E_to_T.pt",
+      "sha256": "911369d3b37eb1f384430627909f29d4d5215835b390085e8207259658b0028f"
+    }
+  },
+  "role_definition": {
+    "enrolled": "run5 known query",
+    "outer_unknown": "run5 held-out subject query"
+  },
+  "threshold_definition": "q05 of enrolled run4 known max Mahalanobis score; identical across all rows",
+  "competition_test": "N/A; 外部 BCIC IV-2a outer test，未访问项目 Test"
+}

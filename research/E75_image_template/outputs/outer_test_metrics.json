@@ -1,0 +1,243 @@
+{
+  "experiment": "E75",
+  "method": "cosine_prototype_margin",
+  "primary_method": "cosine prototype margin",
+  "image_encoder": "topomap5",
+  "backbone": "vit_base_patch14_dinov2.lvd142m",
+  "csv": {
+    "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E75_image_template\\outputs\\outer_test_predictions.csv",
+    "sha256": "68b4881a3e31cb17ee9f8d2674fcf38aa367be5433e23cdd19930fac816ba878",
+    "n_rows": 1008,
+    "n_groups": 3,
+    "columns": [
+      "experiment",
+      "outer_fold",
+      "direction",
+      "method",
+      "role",
+      "sample_id",
+      "session",
+      "run",
+      "task",
+      "artifact",
+      "true_identity",
+      "pred_label",
+      "accepted",
+      "confidence",
+      "threshold"
+    ]
+  },
+  "groups": {
+    "fold1/T_to_E/cosine_prototype_margin": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.029272977262735367,
+      "AUROC": 0.5190610532407407,
+      "detection_EER": 0.5347222222222222,
+      "C": 0.546875,
+      "identity_macro_F1": 0.5214633957591704,
+      "unknown_F1": 0.11042944785276074,
+      "known_acceptance": 0.9479166666666666,
+      "unknown_false_acceptance": 0.9375,
+      "unknown_rejection": 0.0625,
+      "U_at_95": 0.06944444444444445,
+      "DIR_at_FPIR_1": 0.08333333333333333
+    },
+    "fold2/T_to_E/cosine_prototype_margin": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.01604410819709301,
+      "AUROC": 0.3575303819444444,
+      "detection_EER": 0.6111111111111112,
+      "C": 0.515625,
+      "identity_macro_F1": 0.5145815625826481,
+      "unknown_F1": 0.05194805194805195,
+      "known_acceptance": 0.96875,
+      "unknown_false_acceptance": 0.9722222222222222,
+      "unknown_rejection": 0.02777777777777779,
+      "U_at_95": 0.05555555555555555,
+      "DIR_at_FPIR_1": 0.005208333333333333
+    },
+    "fold3/T_to_E/cosine_prototype_margin": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.021146511659026146,
+      "AUROC": 0.5154441550925927,
+      "detection_EER": 0.46875,
+      "C": 0.4739583333333333,
+      "identity_macro_F1": 0.4617067516661837,
+      "unknown_F1": 0.14285714285714285,
+      "known_acceptance": 0.9375,
+      "unknown_false_acceptance": 0.9166666666666666,
+      "unknown_rejection": 0.08333333333333337,
+      "U_at_95": 0.0625,
+      "DIR_at_FPIR_1": 0.0
+    }
+  },
+  "group_mean": {
+    "AUROC": 0.4640118634259259,
+    "identity_macro_F1": 0.4992505700026674,
+    "unknown_F1": 0.10174488088598517,
+    "known_acceptance": 0.9513888888888888,
+    "unknown_false_acceptance": 0.9421296296296297,
+    "unknown_rejection": 0.057870370370370385,
+    "detection_EER": 0.5381944444444445
+  },
+  "reference_group_mean": {
+    "C": 0.53125,
+    "identity_macro_F1": 0.3372572490127927,
+    "unknown_F1": 0.7158533779358928,
+    "detection_AUROC": 0.4640118634259259,
+    "known_acceptance": 0.9513888888888888,
+    "unknown_rejection": 0.05787037037037037
+  },
+  "definition_note": {
+    "AUROC": "known-vs-unknown confidence AUROC",
+    "identity_macro_F1": "enrolled 四类 + 拒识类的 joint macro-F1（run_e75.py 定义）",
+    "unknown_F1": "accepted 为正类的检测 F1（run_e75.py 定义）",
+    "C": "run_e75.py 的 C 不含拒识；CSV 只能复现含拒识的准确率"
+  },
+  "reference_check": {
+    "max_abs_diff": 4.163336342344337e-17,
+    "C_replay_max_abs_diff": 0.0,
+    "per_group": {
+      "fold1/T_to_E/cosine_prototype_margin": {
+        "AUROC": {
+          "reference": 0.5190610532407407,
+          "recomputed": 0.5190610532407407,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.40258791207846195,
+          "recomputed": 0.40258791207846195,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.7151277013752456,
+          "recomputed": 0.7151277013752456,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9479166666666666,
+          "recomputed": 0.9479166666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.0625,
+          "recomputed": 0.0625,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.029272977262735367,
+          "recomputed": 0.029272977262735367,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.5572916666666666,
+          "csv_recomputed_with_rejection": 0.546875,
+          "abs_diff_with_rejection": 0.01041666666666663,
+          "comparable": false,
+          "reason": "E75 的 C 是 argmax 直接身份准确率（不含拒识）；统一 CSV 用 pred_label=0 表示拒识，被拒样本的 argmax 身份无法从逐样本预测行恢复"
+        },
+        "C_replay_direct": {
+          "reference": 0.5572916666666666,
+          "recomputed_from_cached_features": 0.5572916666666666,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/T_to_E/cosine_prototype_margin": {
+        "AUROC": {
+          "reference": 0.3575303819444444,
+          "recomputed": 0.3575303819444444,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.31387371340622683,
+          "recomputed": 0.31387371340622683,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.7181467181467182,
+          "recomputed": 0.7181467181467182,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.96875,
+          "recomputed": 0.96875,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.027777777777777776,
+          "recomputed": 0.02777777777777779,
+          "abs_diff": 1.3877787807814457e-17
+        },
+        "threshold": {
+          "reference": 0.01604410819709301,
+          "recomputed": 0.01604410819709301,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.5260416666666666,
+          "csv_recomputed_with_rejection": 0.515625,
+          "abs_diff_with_rejection": 0.01041666666666663,
+          "comparable": false,
+          "reason": "E75 的 C 是 argmax 直接身份准确率（不含拒识）；统一 CSV 用 pred_label=0 表示拒识，被拒样本的 argmax 身份无法从逐样本预测行恢复"
+        },
+        "C_replay_direct": {
+          "reference": 0.5260416666666666,
+          "recomputed_from_cached_features": 0.5260416666666666,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/T_to_E/cosine_prototype_margin": {
+        "AUROC": {
+          "reference": 0.5154441550925927,
+          "recomputed": 0.5154441550925927,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.2953101215536893,
+          "recomputed": 0.2953101215536893,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.7142857142857143,
+          "recomputed": 0.7142857142857143,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9375,
+          "recomputed": 0.9375,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.08333333333333333,
+          "recomputed": 0.08333333333333337,
+          "abs_diff": 4.163336342344337e-17
+        },
+        "threshold": {
+          "reference": 0.021146511659026146,
+          "recomputed": 0.021146511659026146,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.5104166666666666,
+          "csv_recomputed_with_rejection": 0.4739583333333333,
+          "abs_diff_with_rejection": 0.036458333333333315,
+          "comparable": false,
+          "reason": "E75 的 C 是 argmax 直接身份准确率（不含拒识）；统一 CSV 用 pred_label=0 表示拒识，被拒样本的 argmax 身份无法从逐样本预测行恢复"
+        },
+        "C_replay_direct": {
+          "reference": 0.5104166666666666,
+          "recomputed_from_cached_features": 0.5104166666666666,
+          "abs_diff": 0.0
+        }
+      }
+    }
+  },
+  "role_definition": {
+    "enrolled": "run5 E-session known query",
+    "outer_unknown": "run5 E-session held-out subject query"
+  },
+  "competition_test": "N/A; 外部 BCIC IV-2a outer test，未访问项目 Test"
+}

@@ -1,0 +1,499 @@
+{
+  "experiment": "E79",
+  "method": "pair_q05",
+  "methods": [
+    "pair_q05",
+    "pair_q02"
+  ],
+  "method_note": "results.json 的 outer 主指标使用冻结 run4 q05 阈值（pair_q05）；pair_q02 为同分数下冻结 q02 working 阈值，对应 working_98_* 字段",
+  "csv": {
+    "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E79_pair_open_set\\outputs\\outer_test_predictions.csv",
+    "sha256": "0803542f30f53194593eda3c91fd929ff83c2b5674bca5c9e52f6b898a799f00",
+    "n_rows": 4032,
+    "n_groups": 12,
+    "columns": [
+      "experiment",
+      "outer_fold",
+      "direction",
+      "method",
+      "role",
+      "sample_id",
+      "session",
+      "run",
+      "task",
+      "artifact",
+      "true_identity",
+      "pred_label",
+      "accepted",
+      "confidence",
+      "threshold"
+    ]
+  },
+  "groups": {
+    "fold1/E_to_T/pair_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 1.3411537408828735,
+      "AUROC": 0.9497251157407407,
+      "detection_EER": 0.125,
+      "C": 0.9427083333333334,
+      "identity_macro_F1": 0.9696409835752847,
+      "unknown_F1": 0.8560885608856088,
+      "known_acceptance": 0.9427083333333334,
+      "unknown_false_acceptance": 0.19444444444444445,
+      "unknown_rejection": 0.8055555555555556,
+      "U_at_95": 0.7916666666666666,
+      "DIR_at_FPIR_1": 0.59375
+    },
+    "fold1/T_to_E/pair_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 1.333498239517212,
+      "AUROC": 0.957863136574074,
+      "detection_EER": 0.11458333333333337,
+      "C": 0.9010416666666666,
+      "identity_macro_F1": 0.9461391957337977,
+      "unknown_F1": 0.8680555555555556,
+      "known_acceptance": 0.9010416666666666,
+      "unknown_false_acceptance": 0.13194444444444445,
+      "unknown_rejection": 0.8680555555555556,
+      "U_at_95": 0.7916666666666666,
+      "DIR_at_FPIR_1": 0.5416666666666666
+    },
+    "fold2/E_to_T/pair_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 1.2363636493682861,
+      "AUROC": 0.9887514467592592,
+      "detection_EER": 0.0625,
+      "C": 0.9010416666666666,
+      "identity_macro_F1": 0.9431213968727966,
+      "unknown_F1": 0.934640522875817,
+      "known_acceptance": 0.9010416666666666,
+      "unknown_false_acceptance": 0.006944444444444444,
+      "unknown_rejection": 0.9930555555555556,
+      "U_at_95": 0.9375,
+      "DIR_at_FPIR_1": 0.9010416666666666
+    },
+    "fold2/T_to_E/pair_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 1.1865744590759277,
+      "AUROC": 0.9680266203703703,
+      "detection_EER": 0.078125,
+      "C": 0.9166666666666666,
+      "identity_macro_F1": 0.9535896192093136,
+      "unknown_F1": 0.9078498293515358,
+      "known_acceptance": 0.9166666666666666,
+      "unknown_false_acceptance": 0.0763888888888889,
+      "unknown_rejection": 0.9236111111111112,
+      "U_at_95": 0.8402777777777778,
+      "DIR_at_FPIR_1": 0.75
+    },
+    "fold3/E_to_T/pair_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -0.031798649579286575,
+      "AUROC": 0.8101128472222223,
+      "detection_EER": 0.24479166666666663,
+      "C": 0.9895833333333334,
+      "identity_macro_F1": 0.9947368421052631,
+      "unknown_F1": 0.6666666666666666,
+      "known_acceptance": 0.9895833333333334,
+      "unknown_false_acceptance": 0.4930555555555556,
+      "unknown_rejection": 0.5069444444444444,
+      "U_at_95": 0.5902777777777778,
+      "DIR_at_FPIR_1": 0.005208333333333333
+    },
+    "fold3/T_to_E/pair_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": 0.32295408844947815,
+      "AUROC": 0.8366608796296297,
+      "detection_EER": 0.203125,
+      "C": 0.875,
+      "identity_macro_F1": 0.9316162947915827,
+      "unknown_F1": 0.7415730337078652,
+      "known_acceptance": 0.875,
+      "unknown_false_acceptance": 0.3125,
+      "unknown_rejection": 0.6875,
+      "U_at_95": 0.5347222222222222,
+      "DIR_at_FPIR_1": 0.015625
+    }
+  },
+  "group_mean": {
+    "AUROC": 0.9185233410493826,
+    "identity_macro_F1": 0.9564740553813399,
+    "unknown_F1": 0.8291456948405083,
+    "known_acceptance": 0.9210069444444443,
+    "unknown_false_acceptance": 0.20254629629629628,
+    "unknown_rejection": 0.7974537037037037,
+    "U_at_95": 0.7476851851851851,
+    "DIR_at_FPIR_1": 0.4678819444444444,
+    "detection_EER": 0.13802083333333334
+  },
+  "reference_check": {
+    "max_abs_diff": 5.551115123125783e-17,
+    "per_group": {
+      "fold1/T_to_E/pair_q05": {
+        "AUROC": {
+          "reference": 0.957863136574074,
+          "recomputed": 0.957863136574074,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9461391957337977,
+          "recomputed": 0.9461391957337977,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8680555555555556,
+          "recomputed": 0.8680555555555556,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9010416666666666,
+          "recomputed": 0.9010416666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.13194444444444442,
+          "recomputed": 0.13194444444444445,
+          "abs_diff": 2.7755575615628914e-17
+        },
+        "C": {
+          "reference": 0.9010416666666666,
+          "recomputed": 0.9010416666666666,
+          "abs_diff": 0.0
+        },
+        "pair_AUROC_from_scores": {
+          "reference": 0.9947328920717592,
+          "recomputed": 0.9947328920717592,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 1.333498239517212,
+          "recomputed": 1.333498239517212,
+          "abs_diff": 0.0
+        }
+      },
+      "fold1/T_to_E/pair_q02": {
+        "known_acceptance": {
+          "reference": 0.953125,
+          "recomputed": 0.953125,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.7916666666666666,
+          "recomputed": 0.7916666666666666,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 1.1790179014205933,
+          "recomputed": 1.1790179014205933,
+          "abs_diff": 0.0
+        }
+      },
+      "fold1/E_to_T/pair_q05": {
+        "AUROC": {
+          "reference": 0.9497251157407407,
+          "recomputed": 0.9497251157407407,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9696409835752847,
+          "recomputed": 0.9696409835752847,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8560885608856088,
+          "recomputed": 0.8560885608856088,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9427083333333334,
+          "recomputed": 0.9427083333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.19444444444444442,
+          "recomputed": 0.19444444444444445,
+          "abs_diff": 2.7755575615628914e-17
+        },
+        "C": {
+          "reference": 0.9427083333333334,
+          "recomputed": 0.9427083333333334,
+          "abs_diff": 0.0
+        },
+        "pair_AUROC_from_scores": {
+          "reference": 0.9936885127314815,
+          "recomputed": 0.9936885127314815,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 1.3411537408828735,
+          "recomputed": 1.3411537408828735,
+          "abs_diff": 0.0
+        }
+      },
+      "fold1/E_to_T/pair_q02": {
+        "known_acceptance": {
+          "reference": 0.9583333333333334,
+          "recomputed": 0.9583333333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.7638888888888888,
+          "recomputed": 0.7638888888888888,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 1.190585970878601,
+          "recomputed": 1.190585970878601,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/T_to_E/pair_q05": {
+        "AUROC": {
+          "reference": 0.9680266203703703,
+          "recomputed": 0.9680266203703703,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9535896192093136,
+          "recomputed": 0.9535896192093136,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.9078498293515358,
+          "recomputed": 0.9078498293515358,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9166666666666666,
+          "recomputed": 0.9166666666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.07638888888888884,
+          "recomputed": 0.0763888888888889,
+          "abs_diff": 5.551115123125783e-17
+        },
+        "C": {
+          "reference": 0.9166666666666666,
+          "recomputed": 0.9166666666666666,
+          "abs_diff": 0.0
+        },
+        "pair_AUROC_from_scores": {
+          "reference": 0.9958043981481481,
+          "recomputed": 0.9958043981481481,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 1.1865744590759277,
+          "recomputed": 1.1865744590759277,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/T_to_E/pair_q02": {
+        "known_acceptance": {
+          "reference": 0.9479166666666666,
+          "recomputed": 0.9479166666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8402777777777778,
+          "recomputed": 0.8402777777777778,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.9157911539077759,
+          "recomputed": 0.9157911539077759,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/E_to_T/pair_q05": {
+        "AUROC": {
+          "reference": 0.9887514467592592,
+          "recomputed": 0.9887514467592592,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9431213968727966,
+          "recomputed": 0.9431213968727966,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.934640522875817,
+          "recomputed": 0.934640522875817,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9010416666666666,
+          "recomputed": 0.9010416666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.00694444444444442,
+          "recomputed": 0.006944444444444444,
+          "abs_diff": 2.42861286636753e-17
+        },
+        "C": {
+          "reference": 0.9010416666666666,
+          "recomputed": 0.9010416666666666,
+          "abs_diff": 0.0
+        },
+        "pair_AUROC_from_scores": {
+          "reference": 0.9985939308449074,
+          "recomputed": 0.9985939308449074,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 1.2363636493682861,
+          "recomputed": 1.2363636493682861,
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/E_to_T/pair_q02": {
+        "known_acceptance": {
+          "reference": 0.9635416666666666,
+          "recomputed": 0.9635416666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9236111111111112,
+          "recomputed": 0.9236111111111112,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.969878613948822,
+          "recomputed": 0.969878613948822,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/T_to_E/pair_q05": {
+        "AUROC": {
+          "reference": 0.8366608796296297,
+          "recomputed": 0.8366608796296297,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9316162947915827,
+          "recomputed": 0.9316162947915827,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.7415730337078652,
+          "recomputed": 0.7415730337078652,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.875,
+          "recomputed": 0.875,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.3125,
+          "recomputed": 0.3125,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.875,
+          "recomputed": 0.875,
+          "abs_diff": 0.0
+        },
+        "pair_AUROC_from_scores": {
+          "reference": 0.9795826099537037,
+          "recomputed": 0.9795826099537037,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.32295408844947815,
+          "recomputed": 0.32295408844947815,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/T_to_E/pair_q02": {
+        "known_acceptance": {
+          "reference": 0.921875,
+          "recomputed": 0.921875,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.5902777777777778,
+          "recomputed": 0.5902777777777778,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": 0.2200978696346283,
+          "recomputed": 0.2200978696346283,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/E_to_T/pair_q05": {
+        "AUROC": {
+          "reference": 0.8101128472222223,
+          "recomputed": 0.8101128472222223,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9947368421052631,
+          "recomputed": 0.9947368421052631,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.6666666666666666,
+          "recomputed": 0.6666666666666666,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9895833333333334,
+          "recomputed": 0.9895833333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.4930555555555556,
+          "recomputed": 0.4930555555555556,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9895833333333334,
+          "recomputed": 0.9895833333333334,
+          "abs_diff": 0.0
+        },
+        "pair_AUROC_from_scores": {
+          "reference": 0.9762641059027778,
+          "recomputed": 0.9762641059027778,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -0.031798649579286575,
+          "recomputed": -0.031798649579286575,
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/E_to_T/pair_q02": {
+        "known_acceptance": {
+          "reference": 0.9895833333333334,
+          "recomputed": 0.9895833333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.4375,
+          "recomputed": 0.4375,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": -0.16389359533786774,
+          "recomputed": -0.16389359533786774,
+          "abs_diff": 0.0
+        }
+      }
+    }
+  },
+  "role_definition": {
+    "enrolled": "run5 known query",
+    "outer_unknown": "run5 held-out subject query"
+  },
+  "competition_test": "N/A; 外部 BCIC IV-2a outer test，未访问项目 Test"
+}

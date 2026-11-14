@@ -1,0 +1,475 @@
+{
+  "experiment": "E78",
+  "method": "per_identity_q05",
+  "csv": {
+    "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E78_identity_calibration\\outputs\\outer_test_predictions.csv",
+    "sha256": "b472cc19257b26da3039c658ac7caa3564163a91707e10baa3f0fdd39c485497",
+    "n_rows": 2016,
+    "n_groups": 6,
+    "columns": [
+      "experiment",
+      "outer_fold",
+      "direction",
+      "method",
+      "role",
+      "sample_id",
+      "session",
+      "run",
+      "task",
+      "artifact",
+      "true_identity",
+      "pred_label",
+      "accepted",
+      "confidence",
+      "threshold"
+    ]
+  },
+  "groups": {
+    "fold1/E_to_T/per_identity_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -42.06449890136719,
+      "AUROC": 0.9752604166666666,
+      "detection_EER": 0.05729166666666663,
+      "C": 0.890625,
+      "identity_macro_F1": 0.9419949859617667,
+      "unknown_F1": 0.8926174496644296,
+      "known_acceptance": 0.890625,
+      "unknown_false_acceptance": 0.0763888888888889,
+      "unknown_rejection": 0.9236111111111112,
+      "U_at_95": 0.9097222222222222,
+      "DIR_at_FPIR_1": 0.7708333333333334
+    },
+    "fold1/T_to_E/per_identity_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -92.03321838378906,
+      "AUROC": 0.982494212962963,
+      "detection_EER": 0.05555555555555555,
+      "C": 0.9479166666666666,
+      "identity_macro_F1": 0.9726372382569327,
+      "unknown_F1": 0.8920863309352518,
+      "known_acceptance": 0.9479166666666666,
+      "unknown_false_acceptance": 0.1388888888888889,
+      "unknown_rejection": 0.8611111111111112,
+      "U_at_95": 0.9444444444444444,
+      "DIR_at_FPIR_1": 0.7083333333333334
+    },
+    "fold2/E_to_T/per_identity_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -45.81419372558594,
+      "AUROC": 0.9924768518518519,
+      "detection_EER": 0.03645833333333337,
+      "C": 0.890625,
+      "identity_macro_F1": 0.9400324840031206,
+      "unknown_F1": 0.9250814332247557,
+      "known_acceptance": 0.890625,
+      "unknown_false_acceptance": 0.013888888888888888,
+      "unknown_rejection": 0.9861111111111112,
+      "U_at_95": 0.9791666666666666,
+      "DIR_at_FPIR_1": 0.8541666666666666
+    },
+    "fold2/T_to_E/per_identity_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -65.07546997070312,
+      "AUROC": 0.9828559027777778,
+      "detection_EER": 0.0625,
+      "C": 0.828125,
+      "identity_macro_F1": 0.8860411899313501,
+      "unknown_F1": 0.89375,
+      "known_acceptance": 0.828125,
+      "unknown_false_acceptance": 0.006944444444444444,
+      "unknown_rejection": 0.9930555555555556,
+      "U_at_95": 0.9027777777777778,
+      "DIR_at_FPIR_1": 0.828125
+    },
+    "fold3/E_to_T/per_identity_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -41.45687484741211,
+      "AUROC": 0.9599609375,
+      "detection_EER": 0.11458333333333337,
+      "C": 0.9427083333333334,
+      "identity_macro_F1": 0.9703062894552257,
+      "unknown_F1": 0.8928571428571429,
+      "known_acceptance": 0.9427083333333334,
+      "unknown_false_acceptance": 0.13194444444444445,
+      "unknown_rejection": 0.8680555555555556,
+      "U_at_95": 0.7777777777777778,
+      "DIR_at_FPIR_1": 0.6875
+    },
+    "fold3/T_to_E/per_identity_q05": {
+      "N_known": 192,
+      "N_unknown": 144,
+      "threshold": -44.039939880371094,
+      "AUROC": 0.9651331018518519,
+      "detection_EER": 0.08854166666666663,
+      "C": 0.921875,
+      "identity_macro_F1": 0.9593267882187939,
+      "unknown_F1": 0.9146757679180887,
+      "known_acceptance": 0.921875,
+      "unknown_false_acceptance": 0.06944444444444445,
+      "unknown_rejection": 0.9305555555555556,
+      "U_at_95": 0.7916666666666666,
+      "DIR_at_FPIR_1": 0.71875
+    }
+  },
+  "group_mean": {
+    "AUROC": 0.976363570601852,
+    "identity_macro_F1": 0.9450564959711983,
+    "unknown_F1": 0.9018446874332783,
+    "known_acceptance": 0.9036458333333334,
+    "unknown_false_acceptance": 0.07291666666666667,
+    "unknown_rejection": 0.9270833333333334,
+    "C": 0.9036458333333334,
+    "U_at_95": 0.8842592592592592,
+    "DIR_at_FPIR_1": 0.7612847222222223,
+    "detection_EER": 0.0691550925925926
+  },
+  "reference_check": {
+    "max_abs_diff": 0.0,
+    "threshold_max_abs_diff": 0.0,
+    "per_group": {
+      "fold1/T_to_E": {
+        "AUROC": {
+          "reference": 0.982494212962963,
+          "recomputed": 0.982494212962963,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9726372382569327,
+          "recomputed": 0.9726372382569327,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8920863309352518,
+          "recomputed": 0.8920863309352518,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9479166666666666,
+          "recomputed": 0.9479166666666666,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9479166666666666,
+          "recomputed": 0.9479166666666666,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.1388888888888889,
+          "recomputed": 0.1388888888888889,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8611111111111112,
+          "recomputed": 0.8611111111111112,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": "no scalar threshold in E78 results.json",
+          "recomputed": {
+            "per_identity_q05": {
+              "5": -92.03321838378906,
+              "6": -43.09228515625,
+              "7": -57.75132369995117,
+              "9": -62.277748107910156
+            },
+            "csv_threshold_min": -92.03321838378906,
+            "csv_threshold_max": -43.09228515625
+          },
+          "abs_diff": 0.0
+        }
+      },
+      "fold1/E_to_T": {
+        "AUROC": {
+          "reference": 0.9752604166666666,
+          "recomputed": 0.9752604166666666,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9419949859617667,
+          "recomputed": 0.9419949859617667,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8926174496644296,
+          "recomputed": 0.8926174496644296,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.890625,
+          "recomputed": 0.890625,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.890625,
+          "recomputed": 0.890625,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.0763888888888889,
+          "recomputed": 0.0763888888888889,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9236111111111112,
+          "recomputed": 0.9236111111111112,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": "no scalar threshold in E78 results.json",
+          "recomputed": {
+            "per_identity_q05": {
+              "5": -42.06449890136719,
+              "6": -40.87712860107422,
+              "7": -60.04356384277344,
+              "9": -45.66994094848633
+            },
+            "csv_threshold_min": -60.04356384277344,
+            "csv_threshold_max": -40.87712860107422
+          },
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/T_to_E": {
+        "AUROC": {
+          "reference": 0.9828559027777778,
+          "recomputed": 0.9828559027777778,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.8860411899313501,
+          "recomputed": 0.8860411899313501,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.89375,
+          "recomputed": 0.89375,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.828125,
+          "recomputed": 0.828125,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.828125,
+          "recomputed": 0.828125,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.006944444444444444,
+          "recomputed": 0.006944444444444444,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9930555555555556,
+          "recomputed": 0.9930555555555556,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": "no scalar threshold in E78 results.json",
+          "recomputed": {
+            "per_identity_q05": {
+              "1": -65.07546997070312,
+              "2": -44.94419479370117,
+              "6": -43.12445831298828,
+              "8": -43.20564270019531
+            },
+            "csv_threshold_min": -65.07546997070312,
+            "csv_threshold_max": -43.12445831298828
+          },
+          "abs_diff": 0.0
+        }
+      },
+      "fold2/E_to_T": {
+        "AUROC": {
+          "reference": 0.9924768518518519,
+          "recomputed": 0.9924768518518519,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9400324840031206,
+          "recomputed": 0.9400324840031206,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.9250814332247557,
+          "recomputed": 0.9250814332247557,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.890625,
+          "recomputed": 0.890625,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.890625,
+          "recomputed": 0.890625,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.013888888888888888,
+          "recomputed": 0.013888888888888888,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9861111111111112,
+          "recomputed": 0.9861111111111112,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": "no scalar threshold in E78 results.json",
+          "recomputed": {
+            "per_identity_q05": {
+              "1": -45.81419372558594,
+              "2": -62.471771240234375,
+              "6": -34.72010803222656,
+              "8": -40.74367904663086
+            },
+            "csv_threshold_min": -62.471771240234375,
+            "csv_threshold_max": -34.72010803222656
+          },
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/T_to_E": {
+        "AUROC": {
+          "reference": 0.9651331018518519,
+          "recomputed": 0.9651331018518519,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9593267882187939,
+          "recomputed": 0.9593267882187939,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.9146757679180887,
+          "recomputed": 0.9146757679180887,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.921875,
+          "recomputed": 0.921875,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.921875,
+          "recomputed": 0.921875,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.06944444444444445,
+          "recomputed": 0.06944444444444445,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.9305555555555556,
+          "recomputed": 0.9305555555555556,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": "no scalar threshold in E78 results.json",
+          "recomputed": {
+            "per_identity_q05": {
+              "3": -44.039939880371094,
+              "4": -58.73366165161133,
+              "5": -45.757164001464844,
+              "7": -46.942203521728516
+            },
+            "csv_threshold_min": -58.73366165161133,
+            "csv_threshold_max": -44.039939880371094
+          },
+          "abs_diff": 0.0
+        }
+      },
+      "fold3/E_to_T": {
+        "AUROC": {
+          "reference": 0.9599609375,
+          "recomputed": 0.9599609375,
+          "abs_diff": 0.0
+        },
+        "identity_macro_F1": {
+          "reference": 0.9703062894552257,
+          "recomputed": 0.9703062894552257,
+          "abs_diff": 0.0
+        },
+        "unknown_F1": {
+          "reference": 0.8928571428571429,
+          "recomputed": 0.8928571428571429,
+          "abs_diff": 0.0
+        },
+        "C": {
+          "reference": 0.9427083333333334,
+          "recomputed": 0.9427083333333334,
+          "abs_diff": 0.0
+        },
+        "known_acceptance": {
+          "reference": 0.9427083333333334,
+          "recomputed": 0.9427083333333334,
+          "abs_diff": 0.0
+        },
+        "unknown_false_acceptance": {
+          "reference": 0.13194444444444445,
+          "recomputed": 0.13194444444444445,
+          "abs_diff": 0.0
+        },
+        "unknown_rejection": {
+          "reference": 0.8680555555555556,
+          "recomputed": 0.8680555555555556,
+          "abs_diff": 0.0
+        },
+        "threshold": {
+          "reference": "no scalar threshold in E78 results.json",
+          "recomputed": {
+            "per_identity_q05": {
+              "3": -41.45687484741211,
+              "4": -49.81413269042969,
+              "5": -61.16869354248047,
+              "7": -48.78570556640625
+            },
+            "csv_threshold_min": -61.16869354248047,
+            "csv_threshold_max": -41.45687484741211
+          },
+          "abs_diff": 0.0
+        }
+      }
+    }
+  },
+  "checkpoints": {
+    "fold1/T_to_E": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E78_identity_calibration\\outputs\\models\\mahalanobis_calibrated_outer1_T_to_E.pt",
+      "sha256": "dcae2eab542fc46c20a2785c1221713c1fd4c7e82606086d9be92d201f5b7ce1"
+    },
+    "fold1/E_to_T": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E78_identity_calibration\\outputs\\models\\mahalanobis_calibrated_outer1_E_to_T.pt",
+      "sha256": "c596b1674c2c4a845c76d62a17b9c4d588402c2095f3e8525a4081e7de8d71c9"
+    },
+    "fold2/T_to_E": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E78_identity_calibration\\outputs\\models\\mahalanobis_calibrated_outer2_T_to_E.pt",
+      "sha256": "be5a91cffd87e972289299f738360887ad35d3765a30ce48071672de402e24f7"
+    },
+    "fold2/E_to_T": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E78_identity_calibration\\outputs\\models\\mahalanobis_calibrated_outer2_E_to_T.pt",
+      "sha256": "0fd2bcd97a1b4fc0e91524fc98ab46b972e207f474ae49dd8971f408331366ea"
+    },
+    "fold3/T_to_E": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E78_identity_calibration\\outputs\\models\\mahalanobis_calibrated_outer3_T_to_E.pt",
+      "sha256": "f8b9c0714cfee32d66bfb50c3547b56bf69eac67cc8edb3fbe7c736ee99ef94f"
+    },
+    "fold3/E_to_T": {
+      "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E78_identity_calibration\\outputs\\models\\mahalanobis_calibrated_outer3_E_to_T.pt",
+      "sha256": "69f95bab6aa513b1fcea0e267ffd6ee3d7e24e6da76ed37bf8f6e2c115bac74a"
+    }
+  },
+  "role_definition": {
+    "enrolled": "run5 known query",
+    "outer_unknown": "run5 held-out subject query"
+  },
+  "threshold_definition": "per-identity q05 from enrolled run4 known; CSV threshold column is the applied per-sample threshold (class of argmax for unknowns)",
+  "competition_test": "N/A; 外部 BCIC IV-2a outer test，未访问项目 Test"
+}

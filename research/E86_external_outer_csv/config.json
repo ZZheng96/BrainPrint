@@ -1,0 +1,35 @@
+{
+  "experiment": "E86 external outer-test prediction CSV export and cross-experiment comparison",
+  "purpose": "为 E73-E84 外部实验补做 outer test 逐样本 CSV，并从 CSV 重算 test 指标；E72/E83 无预测模型不产 CSV",
+  "data": {
+    "dataset": "BNCI2014_001 / BCI Competition IV dataset 2a",
+    "channels": 22,
+    "samples_per_trial": 1200,
+    "subjects": 9,
+    "outer_folds": 3,
+    "directions": ["T_to_E", "E_to_T"],
+    "outer_test_role": "run5 enrolled queries + run5 held-out outer_unknown queries"
+  },
+  "constraints": {
+    "retraining": false,
+    "checkpoint_reuse_only": true,
+    "outer_data_used_for_threshold_selection": false,
+    "historical_scripts_modified": false,
+    "competition_test_accessed": false
+  },
+  "csv_schema": [
+    "experiment", "outer_fold", "direction", "method", "role", "sample_id",
+    "session", "run", "task", "artifact", "true_identity", "pred_label",
+    "accepted", "confidence", "threshold"
+  ],
+  "validation": {
+    "recompute_from_disk_csv": true,
+    "compare_against_results_json": true,
+    "max_abs_diff_tolerance": 1e-09
+  },
+  "test_metrics_note": "外部 outer test 有真实身份与 known/unknown 标签，可计算 AUC/F1/C/RA/U；项目 Test 无真实标签，仍为 N/A",
+  "outputs": {
+    "per_experiment": ["outputs/outer_test_predictions.csv", "outputs/outer_test_metrics.json"],
+    "aggregate": ["outputs/all_experiments_metrics.json", "outputs/cross_experiment_comparison.json"]
+  }
+}

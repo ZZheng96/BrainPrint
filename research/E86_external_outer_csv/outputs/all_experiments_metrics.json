@@ -1,0 +1,274 @@
+{
+  "experiments": {
+    "E73": {
+      "experiment": "E73",
+      "method": "native22_pair",
+      "methods": [
+        "native22",
+        "native22_pair"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E73_external_multisession\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "68bd90ae3c0b5b734d3803f9a53b6dbec9565fd1b52e6db183b09a984cbc1503",
+      "n_rows": 2016,
+      "n_groups": 6,
+      "max_abs_diff": 5.551115123125783e-17,
+      "group_mean": {
+        "AUROC": 0.9243103780864197,
+        "identity_macro_F1": 0.9635155461286766,
+        "unknown_F1": 0.7736497373533329,
+        "known_acceptance": 0.9348958333333331,
+        "unknown_false_acceptance": 0.28703703703703703,
+        "unknown_rejection": 0.7129629629629631,
+        "C": 0.9331597222222222,
+        "U_at_95": 0.6782407407407408,
+        "DIR_at_FPIR_1": 0.45746527777777785,
+        "detection_EER": 0.13310185185185183
+      }
+    },
+    "E74": {
+      "experiment": "E74",
+      "method": "wccn:margin",
+      "methods": [
+        "wccn:margin"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E74_multiscale_native22\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "e2c90cd14e26606885859197cd8661f74ec3df21efab1ead6ebdcf250bf25b49",
+      "n_rows": 2016,
+      "n_groups": 6,
+      "max_abs_diff": 1.1102230246251565e-16,
+      "group_mean": {
+        "AUROC": 0.9225742669753086,
+        "identity_macro_F1": 0.9584204777088942,
+        "unknown_F1": 0.818508542619532,
+        "known_acceptance": 0.9253472222222223,
+        "unknown_false_acceptance": 0.23148148148148148,
+        "unknown_rejection": 0.7685185185185185,
+        "C": 0.9253472222222223,
+        "U_at_95": 0.7395833333333334,
+        "DIR_at_FPIR_1": 0.3758680555555555,
+        "detection_EER": 0.14438657407407407
+      }
+    },
+    "E75": {
+      "experiment": "E75",
+      "method": "cosine_prototype_margin",
+      "methods": [
+        "cosine_prototype_margin"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E75_image_template\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "68b4881a3e31cb17ee9f8d2674fcf38aa367be5433e23cdd19930fac816ba878",
+      "n_rows": 1008,
+      "n_groups": 3,
+      "max_abs_diff": 4.163336342344337e-17,
+      "group_mean": {
+        "AUROC": 0.4640118634259259,
+        "identity_macro_F1": 0.4992505700026674,
+        "unknown_F1": 0.10174488088598517,
+        "known_acceptance": 0.9513888888888888,
+        "unknown_false_acceptance": 0.9421296296296297,
+        "unknown_rejection": 0.057870370370370385,
+        "C": 0.5121527777777778,
+        "U_at_95": 0.0625,
+        "DIR_at_FPIR_1": 0.029513888888888885,
+        "detection_EER": 0.5381944444444445
+      }
+    },
+    "E76": {
+      "experiment": "E76",
+      "method": "mahalanobis",
+      "methods": [
+        "mahalanobis"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E76_open_set_head\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "a85c28be2c176582943ee7b5f7ddb983f12f7ec2e446293072cab84e6979a4ec",
+      "n_rows": 2016,
+      "n_groups": 6,
+      "max_abs_diff": 0.0,
+      "group_mean": {
+        "AUROC": 0.976363570601852,
+        "identity_macro_F1": 0.9524438287046179,
+        "unknown_F1": 0.891897204161709,
+        "known_acceptance": 0.9175347222222223,
+        "unknown_false_acceptance": 0.10416666666666667,
+        "unknown_rejection": 0.8958333333333334,
+        "C": 0.9175347222222223,
+        "U_at_95": 0.8842592592592592,
+        "DIR_at_FPIR_1": 0.7673611111111112,
+        "detection_EER": 0.0691550925925926
+      }
+    },
+    "E77": {
+      "experiment": "E77",
+      "method": "fusion_q05",
+      "methods": [
+        "fusion_q05"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E77_score_fusion\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "3380dc7247deb53035773141ec3cc5d937c815517455ea12353f4e20cc7f371f",
+      "n_rows": 2016,
+      "n_groups": 6,
+      "max_abs_diff": 0.0,
+      "group_mean": {
+        "AUROC": 0.9682315779320989,
+        "identity_macro_F1": 0.9505856911776586,
+        "unknown_F1": 0.8744732299822947,
+        "known_acceptance": 0.9114583333333335,
+        "unknown_false_acceptance": 0.12268518518518517,
+        "unknown_rejection": 0.8773148148148149,
+        "C": 0.9114583333333335,
+        "U_at_95": 0.835648148148148,
+        "DIR_at_FPIR_1": 0.6814236111111112,
+        "detection_EER": 0.0842013888888889
+      }
+    },
+    "E78": {
+      "experiment": "E78",
+      "method": "per_identity_q05",
+      "methods": [
+        "per_identity_q05"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E78_identity_calibration\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "b472cc19257b26da3039c658ac7caa3564163a91707e10baa3f0fdd39c485497",
+      "n_rows": 2016,
+      "n_groups": 6,
+      "max_abs_diff": 0.0,
+      "group_mean": {
+        "AUROC": 0.976363570601852,
+        "identity_macro_F1": 0.9450564959711983,
+        "unknown_F1": 0.9018446874332783,
+        "known_acceptance": 0.9036458333333334,
+        "unknown_false_acceptance": 0.07291666666666667,
+        "unknown_rejection": 0.9270833333333334,
+        "C": 0.9036458333333334,
+        "U_at_95": 0.8842592592592592,
+        "DIR_at_FPIR_1": 0.7612847222222223,
+        "detection_EER": 0.0691550925925926
+      }
+    },
+    "E79": {
+      "experiment": "E79",
+      "method": "pair_q05",
+      "methods": [
+        "pair_q05",
+        "pair_q02"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E79_pair_open_set\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "0803542f30f53194593eda3c91fd929ff83c2b5674bca5c9e52f6b898a799f00",
+      "n_rows": 2016,
+      "n_groups": 6,
+      "max_abs_diff": 5.551115123125783e-17,
+      "group_mean": {
+        "AUROC": 0.9185233410493826,
+        "identity_macro_F1": 0.9564740553813399,
+        "unknown_F1": 0.8291456948405083,
+        "known_acceptance": 0.9210069444444443,
+        "unknown_false_acceptance": 0.20254629629629628,
+        "unknown_rejection": 0.7974537037037037,
+        "C": 0.9210069444444443,
+        "U_at_95": 0.7476851851851851,
+        "DIR_at_FPIR_1": 0.4678819444444444,
+        "detection_EER": 0.13802083333333334
+      }
+    },
+    "E80": {
+      "experiment": "E80",
+      "method": "min_fusion_q02",
+      "methods": [
+        "min_fusion_q02"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E80_robust_open_set\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "08f1a5ef9e0461f0c7a6356d74c7da18f8453b44688d8b1360662ac0a5af8149",
+      "n_rows": 2016,
+      "n_groups": 6,
+      "max_abs_diff": 0.0,
+      "group_mean": {
+        "AUROC": 0.9336419753086419,
+        "identity_macro_F1": 0.9813653959331549,
+        "unknown_F1": 0.8148622493898822,
+        "known_acceptance": 0.9644097222222222,
+        "unknown_false_acceptance": 0.2569444444444444,
+        "unknown_rejection": 0.7430555555555555,
+        "C": 0.9644097222222222,
+        "U_at_95": 0.7905092592592592,
+        "DIR_at_FPIR_1": 0.49479166666666674,
+        "detection_EER": 0.1244212962962963
+      }
+    },
+    "E81": {
+      "experiment": "E81",
+      "method": "evt_q02",
+      "methods": [
+        "evt_q02"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E81_evt_open_set\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "10a7af5c20af6e5f86bfbe933aca608898311d0f621859dfe8f0ba9a69d0795e",
+      "n_rows": 2016,
+      "n_groups": 6,
+      "max_abs_diff": 0.0,
+      "group_mean": {
+        "AUROC": 0.9336419753086419,
+        "identity_macro_F1": 0.9670704284106025,
+        "unknown_F1": 0.8346860790392118,
+        "known_acceptance": 0.9401041666666666,
+        "unknown_false_acceptance": 0.20601851851851852,
+        "unknown_rejection": 0.7939814814814815,
+        "C": 0.9401041666666666,
+        "U_at_95": 0.7905092592592592,
+        "DIR_at_FPIR_1": 0.4904513888888889,
+        "detection_EER": 0.1244212962962963
+      }
+    },
+    "E82": {
+      "experiment": "E82",
+      "method": "fpir02",
+      "methods": [
+        "fpir01",
+        "fpir02"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E82_unknown_calibration\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "0edff9e6fb5e997e39fb879f1743ef3dda813a5c9868d249ea849408aa06cadb",
+      "n_rows": 2016,
+      "n_groups": 6,
+      "max_abs_diff": 0.0,
+      "group_mean": {
+        "AUROC": 0.9185233410493826,
+        "identity_macro_F1": 0.8304317587716245,
+        "unknown_F1": 0.8020766663505149,
+        "known_acceptance": 0.7430555555555555,
+        "unknown_false_acceptance": 0.11574074074074074,
+        "unknown_rejection": 0.8842592592592592,
+        "C": 0.7430555555555555,
+        "U_at_95": 0.7476851851851851,
+        "DIR_at_FPIR_1": 0.47048611111111116,
+        "detection_EER": 0.13802083333333334
+      }
+    },
+    "E84": {
+      "experiment": "E84",
+      "method": "pair_q05",
+      "methods": [
+        "pair_q05",
+        "pair_q02"
+      ],
+      "csv": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E84_hard_negative_pair\\outputs\\outer_test_predictions.csv",
+      "csv_sha256": "00b7bfb901ceacc48eb8fc96b641c34740e59e241b9b7e7b0d2cd3915d0dad46",
+      "n_rows": 2016,
+      "n_groups": 6,
+      "max_abs_diff": 1.1102230246251565e-16,
+      "group_mean": {
+        "AUROC": 0.9332019193672839,
+        "identity_macro_F1": 0.9553172075902068,
+        "unknown_F1": 0.8336426731179447,
+        "known_acceptance": 0.9192708333333334,
+        "unknown_false_acceptance": 0.19444444444444442,
+        "unknown_rejection": 0.8055555555555555,
+        "C": 0.9192708333333334,
+        "U_at_95": 0.7534722222222222,
+        "DIR_at_FPIR_1": 0.5390625,
+        "detection_EER": 0.13570601851851852
+      }
+    }
+  },
+  "missing_csv": [],
+  "note": "所有指标均由 outer_test_predictions.csv 重算；外部 BCIC IV-2a outer test，非项目 Test"
+}
