@@ -6,6 +6,10 @@ Brainprint_Competition/Test/*.mat
 BrainPrint_cache/
 .trae-html-share-packages/
 
+# 实验中间产物：可重建的大数组缓存
+research/*/test_logspd.npy
+research/*/*.npy
+
 # 系统与工具
 .DS_Store
 Thumbs.db
