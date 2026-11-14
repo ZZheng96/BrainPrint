@@ -1,0 +1,54 @@
+{
+  "experiment": "E75 frozen EEG image template",
+  "date_preregistered": "2026-11-14",
+  "seed_base": 20261114,
+  "data": {
+    "dataset": "BNCI2014_001 / BCI Competition IV dataset 2a",
+    "derived_root": "cache/bciciv2a/derived",
+    "subjects": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "sessions": ["T", "E"],
+    "feature_key": "target_data",
+    "expected_trials_per_subject_session": 288,
+    "expected_runs_per_session": 6,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "expected_observed_target_channels": 4,
+    "competition_train_access": "forbidden",
+    "competition_test_access": "forbidden"
+  },
+  "image": {
+    "encoder": "topomap5",
+    "backbone": "vit_base_patch14_dinov2.lvd142m",
+    "img_size": 224,
+    "batch_size": 16,
+    "frozen": true,
+    "weights": "timm pretrained=True; no local fallback; unavailable weights block the run"
+  },
+  "protocol": {
+    "outer_seed": 42,
+    "outer_folds": 3,
+    "outer_unknown_subjects": 3,
+    "calibration_unknown_subjects": 2,
+    "enrolled_subjects": 4,
+    "train_runs": [0, 1, 2],
+    "template_run": 3,
+    "calibration_known_query_run": 4,
+    "calibration_unknown_query_run": 5,
+    "evaluation_query_run": 5,
+    "outer_unknown_query_run": 5,
+    "threshold": "q05 of enrolled calibration-known confidence; calibration unknown is never used for threshold selection",
+    "score": "cosine prototype margin",
+    "outer_rule": "three fixed subject folds; roles and outer evaluation are isolated"
+  },
+  "training": {
+    "normalization": "feature mean/std fitted only on enrolled train runs 0-2",
+    "classifier": "template prototypes from enrolled run 3; no unknown samples"
+  },
+  "reporting": {
+    "AUC": "outer known-vs-unknown confidence AUROC",
+    "F1": "identity macro-F1 and unknown detection F1 at inner-known q05 threshold",
+    "test": "N/A; competition Train and Test are not accessed"
+  },
+  "output_subdir": "outputs"
+}

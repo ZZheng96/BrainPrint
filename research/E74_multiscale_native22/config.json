@@ -1,0 +1,142 @@
+﻿{
+    "experiment":  "E74 multiscale native22 cross-session SupCon",
+    "iteration_reason":  "E73a achieved pair AUROC 0.9765 but detection AUROC 0.7609; change only the measured channel representation, not thresholds or training hyperparameters",
+    "date_preregistered":  "2026-11-14",
+    "seed_base":  20261114,
+    "data":  {
+                 "dataset":  "BNCI2014_001 / BCI Competition IV dataset 2a",
+                 "derived_root":  "cache/bciciv2a/derived",
+                 "subjects":  [
+                                  1,
+                                  2,
+                                  3,
+                                  4,
+                                  5,
+                                  6,
+                                  7,
+                                  8,
+                                  9
+                              ],
+                 "sessions":  [
+                                  "T",
+                                  "E"
+                              ],
+                 "feature_key":  "data",
+                 "expected_trials_per_subject_session":  288,
+                 "expected_runs_per_session":  6,
+                 "channels":  22,
+                 "samples_per_trial":  1200,
+                 "sampling_rate_hz":  300,
+                 "expected_observed_target_channels":  4,
+                 "observed_target_channels":  [
+                                                  "C3",
+                                                  "Fz",
+                                                  "C4",
+                                                  "Cz"
+                                              ],
+                 "channel_policy":  "use all 22 measured native EEG channels; no zero placeholder is treated as measured input",
+                 "artifact_policy":  "retain and report; do not select trials by artifact status",
+                 "competition_train_access":  "forbidden",
+                 "competition_test_access":  "forbidden"
+             },
+    "model":  {
+                  "type":  "multiscale temporal 33/65/129 native-22 encoder",
+                  "mad_floor":  1E-08,
+                  "temporal_filters":  8,
+                  "temporal_kernel":  65,
+                  "depthwise_multiplier":  2,
+                  "separable_filters":  16,
+                  "separable_kernel":  15,
+                  "pool":  [
+                               4,
+                               4
+                           ],
+                  "dropout":  0.2,
+                  "embedding_dim":  64,
+                  "embedding_normalization":  "L2",
+                  "arpl_radius_initial":  1.0,
+                  "unused_e54_heads":  "prototypes and radius_raw are excluded from optimization; retained only for source-compatible state_dict",
+                  "branch_filters":  8
+              },
+    "training":  {
+                     "loss":  "cross-session-only supervised contrastive loss; positives have the same subject and the opposite session",
+                     "temperature":  0.07,
+                     "max_epochs":  40,
+                     "epoch_selection":  "none; fixed final epoch, no outer feedback",
+                     "batch_subjects":  "all four enrolled subjects",
+                     "batch_sessions":  2,
+                     "trials_per_subject_session":  16,
+                     "train_runs":  [
+                                        0,
+                                        1,
+                                        2
+                                    ],
+                     "optimizer":  "AdamW",
+                     "learning_rate":  0.001,
+                     "weight_decay":  0.0001,
+                     "amp":  true,
+                     "gradient_clip_norm":  5.0,
+                     "fit_capacity":  "reported only as a diagnostic, never as generalization evidence"
+                 },
+    "protocol":  {
+                     "outer_seed":  42,
+                     "outer_folds":  3,
+                     "outer_unknown_subjects":  3,
+                     "calibration_unknown_subjects":  2,
+                     "enrolled_subjects":  4,
+                     "inner_seed":  "100 + one-based outer fold",
+                     "template_run":  3,
+                     "calibration_known_query_run":  4,
+                     "evaluation_query_run":  5,
+                     "calibration_unknown_query_run":  5,
+                     "outer_unknown_query_run":  5,
+                     "directions":  [
+                                        "T_to_E",
+                                        "E_to_T"
+                                    ],
+                     "threshold":  "q05 of inner-known run-4 confidence; no unknown-based threshold selection",
+                     "primary_method":  {
+                                            "space":  "wccn",
+                                            "score":  "margin"
+                                        },
+                     "methods":  [
+                                     {
+                                         "space":  "cosine",
+                                         "score":  "max_cosine"
+                                     },
+                                     {
+                                         "space":  "wccn",
+                                         "score":  "max_cosine"
+                                     },
+                                     {
+                                         "space":  "wccn",
+                                         "score":  "margin"
+                                     },
+                                     {
+                                         "space":  "wccn",
+                                         "score":  "distance_ratio"
+                                     }
+                                 ],
+                     "outer_rule":  "run each fixed outer fold once; all methods are descriptive and no outer-based selection is allowed"
+                 },
+    "features":  {
+                     "wccn_shrinkage":  0.05,
+                     "wccn_eigenvalue_floor":  1E-06,
+                     "prediction_batch_size":  256
+                 },
+    "gates":  {
+                  "pair_AUROC_min":  0.95,
+                  "detection_AUROC_min":  0.95,
+                  "detection_EER_max":  0.10,
+                  "known_acceptance_at_frozen_inner_q02_min":  0.98,
+                  "unknown_rejection_at_frozen_inner_q02_min":  0.95,
+                  "aggregation":  "mean over three outer folds and two session directions for the primary method"
+              },
+    "reporting":  {
+                      "AUC":  "report both same/different query-template pair AUROC and known/unknown detection AUROC",
+                      "F1":  "identity macro-F1 and unknown-F1 at the inner-known q05 threshold",
+                      "official_score":  "N/A in this clean external experiment",
+                      "test":  "N/A; competition Train and Test are not read"
+                  },
+    "output_subdir":  "outputs"
+}

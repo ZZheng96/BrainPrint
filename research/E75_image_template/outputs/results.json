@@ -1,0 +1,146 @@
+{
+  "experiment": "E75 frozen EEG image template",
+  "completed_at": "2026-11-14T07:36:50.644789+00:00",
+  "smoke": false,
+  "config_sha256": "ce9f49a0bb5ffa3634478fcf52e736fb180ae2b92b5c5af1ba35fc34cb4004dc",
+  "source_sha256": {
+    "config": "ce9f49a0bb5ffa3634478fcf52e736fb180ae2b92b5c5af1ba35fc34cb4004dc",
+    "run_e75.py": "21dc4c1ec0f72d6caf0869ae62fc12b64d42cb3a76ba2b1b2a1be38d0a4dab51",
+    "external_data.py": "e8745789d57f01961e35d5d079349c6270f4c7ac9e3c93ed246f6436e20729e1",
+    "image_encoders.py": "187a58e9931e1ac2235372e1a0d922f5f39759cf70ee7d4230c9c906cd9dd1fe",
+    "backbone.py": "69171f01e9a94ff94270f250242905257dca75acf6bc8db33ccd07fc3cacf8df"
+  },
+  "data": {
+    "dataset": "BNCI2014_001 / BCI Competition IV dataset 2a",
+    "N": 5184,
+    "competition_train_accessed": false,
+    "competition_test_accessed": false
+  },
+  "image": {
+    "encoder": "topomap5",
+    "backbone": "vit_base_patch14_dinov2.lvd142m",
+    "img_size": 224,
+    "batch_size": 16,
+    "frozen": true,
+    "weights": "timm pretrained=True; no local fallback; unavailable weights block the run"
+  },
+  "folds": [
+    {
+      "outer_fold": 1,
+      "roles": {
+        "enrolled": [
+          5,
+          6,
+          7,
+          9
+        ],
+        "calibration_unknown": [
+          2,
+          3
+        ],
+        "outer_unknown": [
+          4,
+          1,
+          8
+        ]
+      },
+      "N": {
+        "train": 576,
+        "template": 192,
+        "calibration_known": 192,
+        "calibration_unknown": 96,
+        "outer_known": 192,
+        "outer_unknown": 144
+      },
+      "threshold": 0.029272977262735367,
+      "C": 0.5572916666666666,
+      "identity_macro_F1": 0.40258791207846195,
+      "unknown_F1": 0.7151277013752456,
+      "detection_AUROC": 0.5190610532407407,
+      "known_acceptance": 0.9479166666666666,
+      "unknown_rejection": 0.0625,
+      "checkpoint": null
+    },
+    {
+      "outer_fold": 2,
+      "roles": {
+        "enrolled": [
+          1,
+          2,
+          6,
+          8
+        ],
+        "calibration_unknown": [
+          4,
+          9
+        ],
+        "outer_unknown": [
+          3,
+          5,
+          7
+        ]
+      },
+      "N": {
+        "train": 576,
+        "template": 192,
+        "calibration_known": 192,
+        "calibration_unknown": 96,
+        "outer_known": 192,
+        "outer_unknown": 144
+      },
+      "threshold": 0.01604410819709301,
+      "C": 0.5260416666666666,
+      "identity_macro_F1": 0.31387371340622683,
+      "unknown_F1": 0.7181467181467182,
+      "detection_AUROC": 0.3575303819444444,
+      "known_acceptance": 0.96875,
+      "unknown_rejection": 0.027777777777777776,
+      "checkpoint": null
+    },
+    {
+      "outer_fold": 3,
+      "roles": {
+        "enrolled": [
+          3,
+          4,
+          5,
+          7
+        ],
+        "calibration_unknown": [
+          1,
+          8
+        ],
+        "outer_unknown": [
+          2,
+          6,
+          9
+        ]
+      },
+      "N": {
+        "train": 576,
+        "template": 192,
+        "calibration_known": 192,
+        "calibration_unknown": 96,
+        "outer_known": 192,
+        "outer_unknown": 144
+      },
+      "threshold": 0.021146511659026146,
+      "C": 0.5104166666666666,
+      "identity_macro_F1": 0.2953101215536893,
+      "unknown_F1": 0.7142857142857143,
+      "detection_AUROC": 0.5154441550925927,
+      "known_acceptance": 0.9375,
+      "unknown_rejection": 0.08333333333333333,
+      "checkpoint": null
+    }
+  ],
+  "summary": {
+    "C": 0.53125,
+    "identity_macro_F1": 0.3372572490127927,
+    "unknown_F1": 0.7158533779358928,
+    "detection_AUROC": 0.4640118634259259,
+    "known_acceptance": 0.9513888888888888,
+    "unknown_rejection": 0.05787037037037037
+  },
+  "elapsed_seconds": 0.042009830474853516
+}

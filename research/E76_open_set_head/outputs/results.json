@@ -1,0 +1,250 @@
+{
+  "experiment": "E76 frozen E74 encoder structural unknown-aware distance head",
+  "runs": [
+    {
+      "outer_fold": 1,
+      "roles": {
+        "enrolled": [
+          5,
+          6,
+          7,
+          9
+        ],
+        "calibration_unknown": [
+          2,
+          3
+        ],
+        "outer_unknown": [
+          4,
+          1,
+          8
+        ]
+      },
+      "frozen_encoder": {
+        "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E74_multiscale_native22\\outputs\\models\\supcon_outer1.pt",
+        "sha256": "816ab11e05f9f3c1dc723802d2b6aa35d1e162c424571ee69166651f339470dc"
+      },
+      "directions": {
+        "T_to_E": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold": -67.88235473632812,
+            "AUROC": 0.9671766493055555,
+            "identity_macro_F1": 0.9729938594440274,
+            "unknown_F1": 0.8415300546448088,
+            "C": 0.9479166666666666,
+            "U": 0.8020833333333334,
+            "known_acceptance": 0.9479166666666666
+          },
+          "calibration_unknown_diagnostic_only": true,
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold": -67.88235473632812,
+            "AUROC": 0.982494212962963,
+            "identity_macro_F1": 0.9840407470288625,
+            "unknown_F1": 0.8929889298892989,
+            "C": 0.96875,
+            "U": 0.8402777777777778,
+            "known_acceptance": 0.96875
+          }
+        },
+        "E_to_T": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold": -51.67080307006836,
+            "AUROC": 0.9962565104166667,
+            "identity_macro_F1": 0.9729938594440274,
+            "unknown_F1": 0.945273631840796,
+            "C": 0.9479166666666666,
+            "U": 0.9895833333333334,
+            "known_acceptance": 0.9479166666666666
+          },
+          "calibration_unknown_diagnostic_only": true,
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold": -51.67080307006836,
+            "AUROC": 0.9752604166666666,
+            "identity_macro_F1": 0.9498847007518889,
+            "unknown_F1": 0.912751677852349,
+            "C": 0.90625,
+            "U": 0.9444444444444444,
+            "known_acceptance": 0.90625
+          }
+        }
+      }
+    },
+    {
+      "outer_fold": 2,
+      "roles": {
+        "enrolled": [
+          1,
+          2,
+          6,
+          8
+        ],
+        "calibration_unknown": [
+          4,
+          9
+        ],
+        "outer_unknown": [
+          3,
+          5,
+          7
+        ]
+      },
+      "frozen_encoder": {
+        "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E74_multiscale_native22\\outputs\\models\\supcon_outer2.pt",
+        "sha256": "db29a228dfab6607dd404c5f992df4172d56ce0c4c2246a26130105aae8ea072"
+      },
+      "directions": {
+        "T_to_E": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold": -45.92875671386719,
+            "AUROC": 0.9979926215277778,
+            "identity_macro_F1": 0.9729938594440274,
+            "unknown_F1": 0.9504950495049505,
+            "C": 0.9479166666666666,
+            "U": 1.0,
+            "known_acceptance": 0.9479166666666666
+          },
+          "calibration_unknown_diagnostic_only": true,
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold": -45.92875671386719,
+            "AUROC": 0.9828559027777778,
+            "identity_macro_F1": 0.8806082527496863,
+            "unknown_F1": 0.891640866873065,
+            "C": 0.8177083333333334,
+            "U": 1.0,
+            "known_acceptance": 0.8177083333333334
+          }
+        },
+        "E_to_T": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold": -48.77153396606445,
+            "AUROC": 0.9950629340277777,
+            "identity_macro_F1": 0.9720095693779904,
+            "unknown_F1": 0.9504950495049505,
+            "C": 0.9479166666666666,
+            "U": 1.0,
+            "known_acceptance": 0.9479166666666666
+          },
+          "calibration_unknown_diagnostic_only": true,
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold": -48.77153396606445,
+            "AUROC": 0.9924768518518519,
+            "identity_macro_F1": 0.9600606673407482,
+            "unknown_F1": 0.9466666666666667,
+            "C": 0.9270833333333334,
+            "U": 0.9861111111111112,
+            "known_acceptance": 0.9270833333333334
+          }
+        }
+      }
+    },
+    {
+      "outer_fold": 3,
+      "roles": {
+        "enrolled": [
+          3,
+          4,
+          5,
+          7
+        ],
+        "calibration_unknown": [
+          1,
+          8
+        ],
+        "outer_unknown": [
+          2,
+          6,
+          9
+        ]
+      },
+      "frozen_encoder": {
+        "path": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E74_multiscale_native22\\outputs\\models\\supcon_outer3.pt",
+        "sha256": "8b95e7a2592676d950ef9c7dda4fa04f6214ef15f36627ce1d051a52dae6bcc9"
+      },
+      "directions": {
+        "T_to_E": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold": -50.81414794921875,
+            "AUROC": 0.9775390625,
+            "identity_macro_F1": 0.9729938594440274,
+            "unknown_F1": 0.9015544041450777,
+            "C": 0.9479166666666666,
+            "U": 0.90625,
+            "known_acceptance": 0.9479166666666666
+          },
+          "calibration_unknown_diagnostic_only": true,
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold": -50.81414794921875,
+            "AUROC": 0.9651331018518519,
+            "identity_macro_F1": 0.9641483644981239,
+            "unknown_F1": 0.8664259927797834,
+            "C": 0.9322916666666666,
+            "U": 0.8333333333333334,
+            "known_acceptance": 0.9322916666666666
+          }
+        },
+        "E_to_T": {
+          "inner": {
+            "N_known": 192,
+            "N_unknown": 96,
+            "threshold": -50.66103744506836,
+            "AUROC": 0.9691297743055556,
+            "identity_macro_F1": 0.9729360622399671,
+            "unknown_F1": 0.8842105263157894,
+            "C": 0.9479166666666666,
+            "U": 0.875,
+            "known_acceptance": 0.9479166666666666
+          },
+          "calibration_unknown_diagnostic_only": true,
+          "outer": {
+            "N_known": 192,
+            "N_unknown": 144,
+            "threshold": -50.66103744506836,
+            "AUROC": 0.9599609375,
+            "identity_macro_F1": 0.9759202398583968,
+            "unknown_F1": 0.8409090909090909,
+            "C": 0.953125,
+            "U": 0.7708333333333334,
+            "known_acceptance": 0.953125
+          }
+        }
+      }
+    }
+  ],
+  "primary_summary": {
+    "N_known": 192.0,
+    "N_unknown": 144.0,
+    "threshold": -52.62143898010254,
+    "AUROC": 0.976363570601852,
+    "identity_macro_F1": 0.9524438287046179,
+    "unknown_F1": 0.891897204161709,
+    "C": 0.9175347222222223,
+    "U": 0.8958333333333334,
+    "known_acceptance": 0.9175347222222223
+  },
+  "test": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "accessed": false
+  },
+  "competition_test_accessed": false
+}

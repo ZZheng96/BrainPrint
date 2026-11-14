@@ -1,0 +1,32 @@
+{
+  "experiment": "E76 frozen E74 encoder structural unknown-aware distance head",
+  "date_preregistered": "2026-11-14",
+  "base_experiment": "E74_multiscale_native22",
+  "base_config": "../E74_multiscale_native22/config.json",
+  "output_subdir": "outputs",
+  "data": {
+    "dataset": "BNCI2014_001 / BCI Competition IV dataset 2a",
+    "sessions": ["T", "E"],
+    "train_runs": [0, 1, 2],
+    "template_run": 3,
+    "calibration_known_run": 4,
+    "calibration_unknown_run": 5,
+    "evaluation_run": 5,
+    "competition_train_accessed": false,
+    "competition_test_accessed": false
+  },
+  "head": {
+    "type": "class-conditional Mahalanobis distance with run-3 templates",
+    "covariance_fit": "enrolled subjects run0-2 only; pooled shrinkage covariance",
+    "prototype_fit": "run-3 enrolled template mean per identity",
+    "shrinkage": 0.05,
+    "eigenvalue_floor": 1e-6
+  },
+  "protocol": {
+    "outer_folds": 3,
+    "directions": ["T_to_E", "E_to_T"],
+    "threshold": "q05 of inner-known run4 confidence; calibration unknown diagnostic only",
+    "outer_rule": "freeze head, run3 templates, and known-only threshold before run5 outer scoring"
+  },
+  "reporting": {"test": "N/A; Test not accessed", "official_score": "N/A"}
+}

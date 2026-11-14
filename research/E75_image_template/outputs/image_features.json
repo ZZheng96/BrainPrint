@@ -1,0 +1,14 @@
+{
+  "source_hashes": {
+    "config": "ce9f49a0bb5ffa3634478fcf52e736fb180ae2b92b5c5af1ba35fc34cb4004dc",
+    "run_e75.py": "21dc4c1ec0f72d6caf0869ae62fc12b64d42cb3a76ba2b1b2a1be38d0a4dab51",
+    "external_data.py": "e8745789d57f01961e35d5d079349c6270f4c7ac9e3c93ed246f6436e20729e1",
+    "image_encoders.py": "187a58e9931e1ac2235372e1a0d922f5f39759cf70ee7d4230c9c906cd9dd1fe",
+    "backbone.py": "69171f01e9a94ff94270f250242905257dca75acf6bc8db33ccd07fc3cacf8df"
+  },
+  "shape": [
+    5184,
+    768
+  ],
+  "encoder": "topomap5"
+}
