@@ -1,0 +1,9 @@
+{
+  "experiment": "E79 frozen E74 sample-template pair open-set head",
+  "smoke": true,
+  "scope": "enrolled training and known-only calibration; outer not scored",
+  "folds": [
+    1
+  ],
+  "test_accessed": false
+}

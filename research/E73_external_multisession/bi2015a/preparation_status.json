@@ -1,0 +1,19 @@
+{
+  "dataset": "BI2015a",
+  "record": "3266930",
+  "status": "blocked",
+  "blocked_reason": "NEMAR CLI unavailable: `nemar` was not recognized as a command; git-annex unavailable (`git: 'annex' is not a git command`). The controlled CLI trial was not started. Existing .part files were preserved.",
+  "download_options": {"only_bdf": true, "chunk_size_mib": 4, "subjects": [1]},
+  "downloaded": 0,
+  "download_total": 43,
+  "derived": 0,
+  "derived_total": 129,
+  "errors": [
+    {"stage": "cli_check", "type": "CommandNotFound", "error": "nemar --help: PowerShell could not recognize nemar; git annex version: git: 'annex' is not a git command"},
+    {"stage": "download", "subject": 1, "session": 2, "file": "sub-1/ses-2/eeg/sub-1_ses-2_task-p300_run-0_eeg.bdf", "type": "ReadTimeout", "error": "TLS/redirect connection timed out before first range response"},
+    {"stage": "download", "subject": 1, "session": 1, "file": "sub-1/ses-1/eeg/sub-1_ses-1_task-p300_run-0_eeg.bdf", "type": "ReadTimeout", "error": "download process timed out before first range response"},
+    {"stage": "download", "subject": 1, "session": 0, "file": "sub-1/ses-0/eeg/sub-1_ses-0_task-p300_run-0_eeg.bdf", "type": "ReadTimeout", "error": "download process timed out before first range response"}
+  ],
+  "updated_at": "2026-11-14T07:08:45.0476962+00:00",
+  "source": "nemar"
+}

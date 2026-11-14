@@ -1,4 +1,4 @@
-﻿"""Train and evaluate E74 with fixed cross-session-only supervised contrastive loss.
+﻿﻿"""Train and evaluate E74 with fixed cross-session-only supervised contrastive loss.
 
 Only derived public BCIC IV-2a files under this experiment are read.  The three
 outer folds and all hyperparameters are fixed before outer evaluation.

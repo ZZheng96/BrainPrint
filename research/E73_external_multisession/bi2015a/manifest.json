@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "dataset": "BI2015a",
+  "record": "3266930",
+  "license": "CC BY 4.0",
+  "source_api": "https://zenodo.org/api/records/3266930",
+  "files": [],
+  "preprocessing": {
+    "input_sfreq_hz": 512,
+    "output_sfreq_hz": 300,
+    "bandpass_hz": [1, 40],
+    "trial_seconds": 1,
+    "channels": 32,
+    "trials_per_session": 504,
+    "runs": 6,
+    "trials_per_run": 84,
+    "scaling": "per-trial median/IQR with near-zero IQR=1",
+    "labels_used": false
+  },
+  "validation": {
+    "status": "blocked_before_download",
+    "downloaded_zips": 0,
+    "derived_npz": 0
+  }
+}

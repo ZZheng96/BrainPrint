@@ -1,0 +1,21 @@
+{
+  "experiment": "E79 frozen E74 sample-template pair open-set head",
+  "outer_fold": 1,
+  "created_at": "2026-11-14T08:08:09.016699+00:00",
+  "head_sha256": "3043f0e32a4ac19dfdc34784200686c7eef8737fd24ef8db2b1a2fdee40aa5fd",
+  "calibrations": {
+    "T_to_E": {
+      "N_known": 192,
+      "q05": -0.08329050987958908,
+      "q02": -0.08785181492567062,
+      "unknown_samples_used": 0
+    },
+    "E_to_T": {
+      "N_known": 192,
+      "q05": -0.08543428033590317,
+      "q02": -0.08951815217733383,
+      "unknown_samples_used": 0
+    }
+  },
+  "outer_scored": false
+}

@@ -1,0 +1,9 @@
+{
+  "experiment": "E84 frozen E74 hard-negative pair head",
+  "smoke": true,
+  "scope": "enrolled training with hard-negative mining and known-only calibration; outer not scored",
+  "folds": [
+    1
+  ],
+  "test_accessed": false
+}

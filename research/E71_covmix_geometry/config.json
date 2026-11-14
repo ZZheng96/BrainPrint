@@ -1,0 +1,114 @@
+{
+  "experiment": "E71 CovMix-inspired fixed-reference covariance geometry augmentation on E36 logSPD/WCCN",
+  "date_preregistered": "2026-11-14",
+  "seed": 20261114,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "e36_raw_logspd": "BrainPrint_cache/e36_pure_eeg/train_raw_cov5.npy",
+    "e36_feature_manifest": "research/E36_pure_eeg/feature_build.json",
+    "expected_raw_sha256": "71bbc9eecd4e493920c4b8a72edac773454b1e92174fe5989a1f2ea277ee4a8e",
+    "expected_trials": 11304,
+    "expected_subjects": 20,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "session": "session1",
+    "test_access": "forbidden"
+  },
+  "features": {
+    "source_note": "The requested logspd_raw.npy does not exist; use the actual E36 RAW_PATH constant train_raw_cov5.npy. It contains five un-detrended 171-entry logSPD vectors per trial.",
+    "bands_hz": [[1, 8], [8, 13], [13, 20], [20, 30], [30, 40]],
+    "source_covariance_shrinkage": 0.05,
+    "off_diagonal_multiplier": 1.4142135623730951,
+    "spd_eigenvalue_floor": 1e-12,
+    "post_logspd": "E36 per-trial/per-band diagonal detrend followed by population zband standardization",
+    "zband_epsilon": 1e-6,
+    "geometry_dtype": "float64 on CUDA",
+    "feature_dtype": "float32 on CUDA",
+    "geometry_batch_size": 256,
+    "prediction_batch_size": 512
+  },
+  "covmix": {
+    "formula": "M=R^1/2 (R^-1/2 C R^-1/2)^alpha R^1/2; C'=M^-1/2 C M^-1/2",
+    "reference_scope": "for each current inner run and frequency band, only covariances from the eight enrolled subjects with trial<=0.60*within-subject/task maximum",
+    "reference_initialization": "affine-invariant SPD log-Euclidean mean exp(mean(log(C_i)))",
+    "karcher_iterations": 5,
+    "karcher_update": "R <- R^1/2 exp(mean(log(R^-1/2 C_i R^-1/2))) R^1/2",
+    "failure_fallback": "fixed log-Euclidean initialization for the affected band; record the failure and fallback",
+    "alpha_at_inference": 0.0,
+    "control_fit": "one alpha=0 copy",
+    "covmix_fit": "the identical alpha=0 copy plus three independent augmented copies",
+    "alpha_distribution": "independent Uniform[0,1] per fit trial and per copy; the same alpha is shared by the five bands within a trial-copy",
+    "target_trial_or_batch_statistics": false
+  },
+  "model": {
+    "type": "WCCN within-class whitening followed by normalized class-prototype cosine",
+    "wccn_shrinkage": 0.05,
+    "wccn_eigenvalue_floor": 1e-6,
+    "confidence": "distance_ratio=(1-second_cosine)/max(1-max_cosine,1e-6)",
+    "variants": ["control", "covmix"]
+  },
+  "protocol": {
+    "source": "E65/E54 ten inner runs replicated without CNN, OE, or attacks",
+    "outer_seed": 42,
+    "outer_groups": 5,
+    "inner_folds_per_group": 2,
+    "inner_seed": "100 + one-based outer-group index",
+    "oe_split_seed_base": 54000,
+    "roles": "outer_unknown=4, enrolled=8, OE-only=4 (unused), calibration_eval_unknown=4; pairwise disjoint",
+    "fit": "enrolled subjects, trial<=0.60*within-subject/task maximum",
+    "known_evaluation": "enrolled subjects, 0.60*maximum<trial<=0.80*maximum",
+    "unknown_evaluation": "calibration subjects only, trial<=0.80*maximum",
+    "formal_trials_per_subject_task": 8,
+    "subset_rule": "sort eligible trials by subject/task/trial/path and take first eight per subject/task",
+    "dr_blocks": {
+      "fit": "enrolled, trial<=0.60*maximum",
+      "calibration": "enrolled, 0.60*maximum<trial<=0.70*maximum",
+      "sanity": "enrolled, 0.70*maximum<trial<=0.80*maximum"
+    },
+    "aggregation": "average two inner runs within each outer group, then average five outer groups",
+    "smoke": "numerical checks and outer1/inner1 only; never a substitute for the full ten-run evaluation"
+  },
+  "decision": {
+    "tau_low": "q02 of current inner run clean-known distance ratio; dr<tau_low predicts unknown 0",
+    "tau_high": "q05 of the same clean-known distance ratio; diagnostic U@95 only",
+    "quantile_method": "linear",
+    "U_at_95": "unknown fraction with dr<q05",
+    "working_U": "unknown fraction rejected by the actual q02 rule"
+  },
+  "numerical_checks": {
+    "trials": 16,
+    "single_batch_atol": 0.00005,
+    "single_batch_rtol": 0.00005,
+    "endpoint_atol": 0.0001,
+    "endpoint_rtol": 0.0001,
+    "symmetry_atol": 1e-10,
+    "selection": "fixed-seed selection from outer1/inner1 enrolled-fit trials; reference remains fitted on all and only that run's fit trials"
+  },
+  "gates": {
+    "absolute_covmix_outer_mean": {
+      "threshold_C_min": 0.95,
+      "identity_macro_F1_direct_min": 0.92,
+      "AUROC_min": 0.98,
+      "U_at_95_min": 0.95
+    },
+    "comparison_covmix_minus_control_outer_mean": {
+      "direct_C_min": -0.002,
+      "AUROC_min": 0.0,
+      "U_at_95_min": 0.0
+    },
+    "all_must_pass_for_eligibility": true,
+    "eligibility_meaning": "eligible_for_later_frozen_test only; this experiment still never accesses Test"
+  },
+  "literature": {
+    "title": "CovMix: Covariance Mixing Regularization for Motor Imagery Decoding",
+    "url": "https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/77747/Zoumpourlis%20CovMix:%20Covariance%20Mixing%20Regularization%20for%20Motor%20Imagery%20Decoding%202022%20Accepted.pdf?sequence=2",
+    "adaptation_boundary": "fixed train-fit reference and deterministic alpha=0 inference; no target-session/trial-batch adaptation"
+  },
+  "reporting": {
+    "AUC": "clean calibration-pseudo-unknown AUROC; larger distance ratio means known",
+    "F1": "registered identity macro-F1 direct and with q02 rejection; unknown-class F1 and joint macro-F1 are separate",
+    "evidence_boundary": "Train session1 pseudo-unknown subjects and continuous within-session file blocks only; no cross-session or official Test truth evidence; Test=N/A",
+    "attacks": "N/A; no CNN, OE training, or adversarial attack in E71"
+  }
+}

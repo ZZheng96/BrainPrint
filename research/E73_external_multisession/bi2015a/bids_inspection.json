@@ -1,0 +1,110 @@
+{
+  "subject": 1,
+  "source": "https://data.nemar.org/nm000216/v1.0.0",
+  "sessions": [
+    {
+      "session": 0,
+      "event_rows": 2574,
+      "unique_trial_type": [
+        "NonTarget",
+        "Target"
+      ],
+      "bdf": {
+        "complete": false,
+        "error": "BDF absent or incomplete .part; not retried"
+      },
+      "errors": []
+    },
+    {
+      "session": 1,
+      "event_rows": 1659,
+      "unique_trial_type": [
+        "NonTarget",
+        "Target"
+      ],
+      "bdf": {
+        "complete": false,
+        "error": "BDF absent or incomplete .part; not retried"
+      },
+      "errors": []
+    },
+    {
+      "session": 2,
+      "event_rows": 723,
+      "unique_trial_type": [
+        "NonTarget",
+        "Target"
+      ],
+      "bdf": {
+        "complete": false,
+        "error": "BDF absent or incomplete .part; not retried"
+      },
+      "errors": []
+    }
+  ],
+  "files": [
+    {
+      "session": 0,
+      "name": "sub-1_ses-0_task-p300_run-0_eeg.bdf",
+      "size": 59279104,
+      "url": "https://data.nemar.org/nm000216/v1.0.0/sub-1/ses-0/eeg/sub-1_ses-0_task-p300_run-0_eeg.bdf",
+      "path": "sub-1/ses-0/eeg/sub-1_ses-0_task-p300_run-0_eeg.bdf"
+    },
+    {
+      "session": 0,
+      "name": "sub-1_ses-0_task-p300_run-0_events.json",
+      "size": 1012,
+      "url": "https://data.nemar.org/nm000216/v1.0.0/sub-1/ses-0/eeg/sub-1_ses-0_task-p300_run-0_events.json",
+      "path": "sub-1/ses-0/eeg/sub-1_ses-0_task-p300_run-0_events.json"
+    },
+    {
+      "session": 0,
+      "name": "sub-1_ses-0_task-p300_run-0_events.tsv",
+      "size": 91416,
+      "url": "https://data.nemar.org/nm000216/v1.0.0/sub-1/ses-0/eeg/sub-1_ses-0_task-p300_run-0_events.tsv",
+      "path": "sub-1/ses-0/eeg/sub-1_ses-0_task-p300_run-0_events.tsv"
+    },
+    {
+      "session": 1,
+      "name": "sub-1_ses-1_task-p300_run-0_eeg.bdf",
+      "size": 39070657,
+      "url": "https://data.nemar.org/nm000216/v1.0.0/sub-1/ses-1/eeg/sub-1_ses-1_task-p300_run-0_eeg.bdf",
+      "path": "sub-1/ses-1/eeg/sub-1_ses-1_task-p300_run-0_eeg.bdf"
+    },
+    {
+      "session": 1,
+      "name": "sub-1_ses-1_task-p300_run-0_events.json",
+      "size": 1012,
+      "url": "https://data.nemar.org/nm000216/v1.0.0/sub-1/ses-1/eeg/sub-1_ses-1_task-p300_run-0_events.json",
+      "path": "sub-1/ses-1/eeg/sub-1_ses-1_task-p300_run-0_events.json"
+    },
+    {
+      "session": 1,
+      "name": "sub-1_ses-1_task-p300_run-0_events.tsv",
+      "size": 58237,
+      "url": "https://data.nemar.org/nm000216/v1.0.0/sub-1/ses-1/eeg/sub-1_ses-1_task-p300_run-0_events.tsv",
+      "path": "sub-1/ses-1/eeg/sub-1_ses-1_task-p300_run-0_events.tsv"
+    },
+    {
+      "session": 2,
+      "name": "sub-1_ses-2_task-p300_run-0_eeg.bdf",
+      "size": 17785504,
+      "url": "https://data.nemar.org/nm000216/v1.0.0/sub-1/ses-2/eeg/sub-1_ses-2_task-p300_run-0_eeg.bdf",
+      "path": "sub-1/ses-2/eeg/sub-1_ses-2_task-p300_run-0_eeg.bdf"
+    },
+    {
+      "session": 2,
+      "name": "sub-1_ses-2_task-p300_run-0_events.json",
+      "size": 1012,
+      "url": "https://data.nemar.org/nm000216/v1.0.0/sub-1/ses-2/eeg/sub-1_ses-2_task-p300_run-0_events.json",
+      "path": "sub-1/ses-2/eeg/sub-1_ses-2_task-p300_run-0_events.json"
+    },
+    {
+      "session": 2,
+      "name": "sub-1_ses-2_task-p300_run-0_events.tsv",
+      "size": 24983,
+      "url": "https://data.nemar.org/nm000216/v1.0.0/sub-1/ses-2/eeg/sub-1_ses-2_task-p300_run-0_events.tsv",
+      "path": "sub-1/ses-2/eeg/sub-1_ses-2_task-p300_run-0_events.tsv"
+    }
+  ]
+}

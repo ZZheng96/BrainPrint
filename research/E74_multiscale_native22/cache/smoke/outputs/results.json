@@ -1,0 +1,292 @@
+{
+  "experiment": "E74 multiscale native22 cross-session SupCon",
+  "completed_at": "2026-11-14T07:17:38.640220+00:00",
+  "smoke": true,
+  "scope": "inner known/calibration unknown only; outer metrics not computed",
+  "runs": [
+    {
+      "outer_fold": 1,
+      "roles": {
+        "enrolled": [
+          5,
+          6,
+          7,
+          9
+        ],
+        "calibration_unknown": [
+          2,
+          3
+        ],
+        "outer_unknown": [
+          4,
+          1,
+          8
+        ]
+      },
+      "training": {
+        "seed": 20262114,
+        "epochs": 2,
+        "parameter_count": 5744,
+        "n_encoder_train_trials": 1152,
+        "history": [
+          {
+            "epoch": 1,
+            "loss": 4.636125617557102,
+            "steps": 9,
+            "seconds": 1.0018939971923828
+          },
+          {
+            "epoch": 2,
+            "loss": 4.297721756829156,
+            "steps": 9,
+            "seconds": 0.6461467742919922
+          }
+        ],
+        "elapsed_seconds": 1.649040937423706,
+        "fit_diagnostic_not_generalization": {
+          "T_to_E": {
+            "C": 0.7951388888888888,
+            "identity_macro_F1": 0.7911892404075632
+          },
+          "E_to_T": {
+            "C": 0.75,
+            "identity_macro_F1": 0.7543086957916332
+          }
+        }
+      },
+      "directions": {
+        "T_to_E": {
+          "N": {
+            "template": 192,
+            "inner_known": 192,
+            "inner_unknown": 96,
+            "outer_known": 0,
+            "outer_unknown": 0
+          },
+          "methods": {
+            "cosine:max_cosine": {
+              "space": "cosine",
+              "score": "max_cosine",
+              "inner": {
+                "N_known": 192,
+                "N_unknown": 96,
+                "N_same_pairs": 192,
+                "N_different_pairs": 960,
+                "threshold": 0.9875648558139801,
+                "direct_C": 0.7916666666666666,
+                "continuous_block_accuracy": 0.7916666666666666,
+                "continuous_block_accuracy_with_rejection": 0.7552083333333334,
+                "identity_macro_F1_direct": 0.7883928571428571,
+                "C": 0.7552083333333334,
+                "U": 0.07291666666666667,
+                "known_acceptance": 0.9479166666666666,
+                "identity_macro_F1": 0.7747067660111138,
+                "unknown_F1": 0.12389380530973451,
+                "joint_macro_F1": 0.5498038465275448,
+                "unknown_AUPR": 0.47017607285732865,
+                "C_U_proxy_not_official": 46.44440581910274,
+                "U_at_95": 0.07291666666666667,
+                "AUROC": 0.6347113715277778
+              },
+              "outer": "not_accessed_in_smoke"
+            },
+            "wccn:max_cosine": {
+              "space": "wccn",
+              "score": "max_cosine",
+              "inner": {
+                "N_known": 192,
+                "N_unknown": 96,
+                "N_same_pairs": 192,
+                "N_different_pairs": 960,
+                "threshold": 0.9973066449165344,
+                "direct_C": 0.90625,
+                "continuous_block_accuracy": 0.90625,
+                "continuous_block_accuracy_with_rejection": 0.8645833333333334,
+                "identity_macro_F1_direct": 0.9049000590378646,
+                "C": 0.8645833333333334,
+                "U": 0.15625,
+                "known_acceptance": 0.9479166666666666,
+                "identity_macro_F1": 0.8862586367503755,
+                "unknown_F1": 0.24793388429752067,
+                "joint_macro_F1": 0.6492727725877708,
+                "unknown_AUPR": 0.5359808246749169,
+                "C_U_proxy_not_official": 59.31680497194636,
+                "U_at_95": 0.15625,
+                "AUROC": 0.6830512152777778
+              },
+              "outer": "not_accessed_in_smoke"
+            },
+            "wccn:margin": {
+              "space": "wccn",
+              "score": "margin",
+              "inner": {
+                "N_known": 192,
+                "N_unknown": 96,
+                "N_same_pairs": 192,
+                "N_different_pairs": 960,
+                "threshold": 3.8015842437744145e-05,
+                "direct_C": 0.90625,
+                "continuous_block_accuracy": 0.90625,
+                "continuous_block_accuracy_with_rejection": 0.875,
+                "identity_macro_F1_direct": 0.9049000590378646,
+                "C": 0.875,
+                "U": 0.07291666666666667,
+                "known_acceptance": 0.9479166666666666,
+                "identity_macro_F1": 0.8925171613891988,
+                "unknown_F1": 0.12389380530973451,
+                "joint_macro_F1": 0.6232953552619549,
+                "unknown_AUPR": 0.5044594960129394,
+                "C_U_proxy_not_official": 49.26175987659852,
+                "U_at_95": 0.07291666666666667,
+                "AUROC": 0.7327473958333334
+              },
+              "outer": "not_accessed_in_smoke"
+            },
+            "wccn:distance_ratio": {
+              "space": "wccn",
+              "score": "distance_ratio",
+              "inner": {
+                "N_known": 192,
+                "N_unknown": 96,
+                "N_same_pairs": 192,
+                "N_different_pairs": 960,
+                "threshold": 1.0205726873876573,
+                "direct_C": 0.90625,
+                "continuous_block_accuracy": 0.90625,
+                "continuous_block_accuracy_with_rejection": 0.875,
+                "identity_macro_F1_direct": 0.9049000590378646,
+                "C": 0.875,
+                "U": 0.0625,
+                "known_acceptance": 0.9479166666666666,
+                "identity_macro_F1": 0.8925171613891988,
+                "unknown_F1": 0.10714285714285714,
+                "joint_macro_F1": 0.618824116135437,
+                "unknown_AUPR": 0.5562614839973646,
+                "C_U_proxy_not_official": 47.39944161599329,
+                "U_at_95": 0.0625,
+                "AUROC": 0.7962782118055557
+              },
+              "outer": "not_accessed_in_smoke"
+            }
+          }
+        },
+        "E_to_T": {
+          "N": {
+            "template": 192,
+            "inner_known": 192,
+            "inner_unknown": 96,
+            "outer_known": 0,
+            "outer_unknown": 0
+          },
+          "methods": {
+            "cosine:max_cosine": {
+              "space": "cosine",
+              "score": "max_cosine",
+              "inner": {
+                "N_known": 192,
+                "N_unknown": 96,
+                "N_same_pairs": 192,
+                "N_different_pairs": 960,
+                "threshold": 0.9906201303005219,
+                "direct_C": 0.7447916666666666,
+                "continuous_block_accuracy": 0.7447916666666666,
+                "continuous_block_accuracy_with_rejection": 0.7083333333333334,
+                "identity_macro_F1_direct": 0.7472612618248292,
+                "C": 0.7083333333333334,
+                "U": 0.3020833333333333,
+                "known_acceptance": 0.9479166666666666,
+                "identity_macro_F1": 0.7288051810190279,
+                "unknown_F1": 0.42962962962962964,
+                "joint_macro_F1": 0.5947374817291294,
+                "unknown_AUPR": 0.5895078872084845,
+                "C_U_proxy_not_official": 64.5842711893243,
+                "U_at_95": 0.3020833333333333,
+                "AUROC": 0.6763780381944444
+              },
+              "outer": "not_accessed_in_smoke"
+            },
+            "wccn:max_cosine": {
+              "space": "wccn",
+              "score": "max_cosine",
+              "inner": {
+                "N_known": 192,
+                "N_unknown": 96,
+                "N_same_pairs": 192,
+                "N_different_pairs": 960,
+                "threshold": 0.9962935656309128,
+                "direct_C": 0.7708333333333334,
+                "continuous_block_accuracy": 0.7708333333333334,
+                "continuous_block_accuracy_with_rejection": 0.734375,
+                "identity_macro_F1_direct": 0.7753392381866573,
+                "C": 0.734375,
+                "U": 0.17708333333333334,
+                "known_acceptance": 0.9479166666666666,
+                "identity_macro_F1": 0.7553054400462671,
+                "unknown_F1": 0.2764227642276423,
+                "joint_macro_F1": 0.567904007208353,
+                "unknown_AUPR": 0.5636002388942465,
+                "C_U_proxy_not_official": 57.33391202050697,
+                "U_at_95": 0.17708333333333334,
+                "AUROC": 0.7242296006944445
+              },
+              "outer": "not_accessed_in_smoke"
+            },
+            "wccn:margin": {
+              "space": "wccn",
+              "score": "margin",
+              "inner": {
+                "N_known": 192,
+                "N_unknown": 96,
+                "N_same_pairs": 192,
+                "N_different_pairs": 960,
+                "threshold": 4.8309564590454115e-05,
+                "direct_C": 0.7708333333333334,
+                "continuous_block_accuracy": 0.7708333333333334,
+                "continuous_block_accuracy_with_rejection": 0.75,
+                "identity_macro_F1_direct": 0.7753392381866573,
+                "C": 0.75,
+                "U": 0.010416666666666666,
+                "known_acceptance": 0.9479166666666666,
+                "identity_macro_F1": 0.7733288770053476,
+                "unknown_F1": 0.018691588785046728,
+                "joint_macro_F1": 0.5150534238453529,
+                "unknown_AUPR": 0.24457770208979102,
+                "C_U_proxy_not_official": 28.47453870324584,
+                "U_at_95": 0.010416666666666666,
+                "AUROC": 0.2889539930555555
+              },
+              "outer": "not_accessed_in_smoke"
+            },
+            "wccn:distance_ratio": {
+              "space": "wccn",
+              "score": "distance_ratio",
+              "inner": {
+                "N_known": 192,
+                "N_unknown": 96,
+                "N_same_pairs": 192,
+                "N_different_pairs": 960,
+                "threshold": 1.0204117452581538,
+                "direct_C": 0.7708333333333334,
+                "continuous_block_accuracy": 0.7708333333333334,
+                "continuous_block_accuracy_with_rejection": 0.75,
+                "identity_macro_F1_direct": 0.7753392381866573,
+                "C": 0.75,
+                "U": 0.010416666666666666,
+                "known_acceptance": 0.9479166666666666,
+                "identity_macro_F1": 0.7733288770053476,
+                "unknown_F1": 0.018691588785046728,
+                "joint_macro_F1": 0.5150534238453529,
+                "unknown_AUPR": 0.261521039497693,
+                "C_U_proxy_not_official": 28.47453870324584,
+                "U_at_95": 0.010416666666666666,
+                "AUROC": 0.3458116319444445
+              },
+              "outer": "not_accessed_in_smoke"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "test_accessed": false
+}
