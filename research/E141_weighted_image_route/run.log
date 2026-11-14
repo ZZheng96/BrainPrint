@@ -1,0 +1,37 @@
+﻿projected B_E65logspd
+projected A_E62corr8
+projected A_E62cov4
+projected A_E62cov8
+projected A_DINOcorr
+projected A_DINOcov5
+projected A_DINOcovHR
+projected A_DINOtope5
+projected N_E21corrf
+projected N_E21covdz
+  score:B_E65logspd                  AUC 0.7603 bestW 0.7796
+  score:A_E62corr8                   AUC 0.7239 bestW 0.7796
+  score:A_E62cov4                    AUC 0.7222 bestW 0.7796
+  score:A_E62cov8                    AUC 0.7480 bestW 0.7796
+  score:A_DINOcorr                   AUC 0.4971 bestW 0.7796
+  score:A_DINOcov5                   AUC 0.7222 bestW 0.7796
+  score:A_DINOcovHR                  AUC 0.7409 bestW 0.7796
+  score:A_DINOtope5                  AUC 0.4538 bestW 0.7796
+  score:N_E21corrf                   AUC 0.5659 bestW 0.7796
+  score:N_E21covdz                   AUC 0.4721 bestW 0.7796
+  scorefuse:routeA_only                  AUC 0.7645
+  scorefuse:B_plus_A                     AUC 0.7775
+  scorefuse:B_plus_A_plus_N              AUC 0.7954
+  featfuse:routeB_only               AUC 0.7603 bestW 0.7796
+  featfuse:routeA_only               AUC 0.7221 bestW 0.7796
+  featfuse:B_plus_A                  AUC 0.7275 bestW 0.7796
+  featfuse:B_plus_A_plus_N           AUC 0.7478 bestW 0.7796
+{
+  "label": "score:B_E65logspd",
+  "mode": "score",
+  "acceptance_rate": 0.97,
+  "test_auc": 0.7603378224413679,
+  "LOSO_rejection": 0.9481154685743854,
+  "Test_S1_rejection": 0.5123639960435212,
+  "Test_S2_acceptance": 0.8290144656051618,
+  "W": 0.7796270989570575
+}

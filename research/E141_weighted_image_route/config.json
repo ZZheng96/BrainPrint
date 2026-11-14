@@ -1,0 +1,46 @@
+{
+  "experiment": "E141_weighted_image_route",
+  "purpose": "User changed the objective to W = 0.25*LOSO_rejection + 0.25*Test_S1_rejection + 0.5*Test_S2_acceptance, target 0.80. S2 now dominates, so the optimal operating point moves to a looser threshold. This run brings back the image route (frozen DINOv2 embeddings) as both a standalone view and a fusion partner, and evaluates every option under the new weights. Clean protocol unchanged: no Test-side statistics.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "views": {
+    "B_E65logspd": ["BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+                    "research/E121_pca_sweep/test_logspd.npy"],
+    "A_E62corr8": ["BrainPrint_cache/e62_multiwindow/train_multiwindow_corr8_dinov2.npy",
+                   "BrainPrint_cache/e62_multiwindow/test_multiwindow_corr8_dinov2.npy"],
+    "A_E62cov4": ["BrainPrint_cache/e62_multiwindow/train_multiwindow_cov4_dinov2.npy",
+                  "BrainPrint_cache/e62_multiwindow/test_multiwindow_cov4_dinov2.npy"],
+    "A_E62cov8": ["BrainPrint_cache/e62_multiwindow/train_multiwindow_cov8_dinov2.npy",
+                  "BrainPrint_cache/e62_multiwindow/test_multiwindow_cov8_dinov2.npy"],
+    "A_DINOcorr": ["BrainPrint_cache/eeg_image_dinov2/train_correlation_dinov2.npy",
+                   "BrainPrint_cache/eeg_image_dinov2/test_correlation_dinov2.npy"],
+    "A_DINOcov5": ["BrainPrint_cache/eeg_image_dinov2/train_covariance5_dinov2.npy",
+                   "BrainPrint_cache/eeg_image_dinov2/test_covariance5_dinov2.npy"],
+    "A_DINOcovHR": ["BrainPrint_cache/eeg_image_dinov2/train_covariance_hr_dinov2.npy",
+                    "BrainPrint_cache/eeg_image_dinov2/test_covariance_hr_dinov2.npy"],
+    "A_DINOtope5": ["BrainPrint_cache/eeg_image_dinov2/train_topomap5_dinov2.npy",
+                    "BrainPrint_cache/eeg_image_dinov2/test_topomap5_dinov2.npy"],
+    "N_E21corrf": ["BrainPrint_cache/e21_scale_invariant/train_corr_fisher_zband.npy",
+                   "BrainPrint_cache/e21_scale_invariant/test_corr_fisher_zband.npy"],
+    "N_E21covdz": ["BrainPrint_cache/e21_scale_invariant/train_cov_detrend_zband.npy",
+                   "BrainPrint_cache/e21_scale_invariant/test_cov_detrend_zband.npy"]
+  },
+  "sets": {
+    "routeB_only": ["B_E65logspd"],
+    "routeA_only": ["A_E62corr8", "A_E62cov4", "A_E62cov8", "A_DINOcorr", "A_DINOcov5",
+                    "A_DINOcovHR", "A_DINOtope5"],
+    "B_plus_A": ["B_E65logspd", "A_E62corr8", "A_E62cov4", "A_E62cov8", "A_DINOcorr",
+                 "A_DINOcov5", "A_DINOcovHR", "A_DINOtope5"],
+    "B_plus_A_plus_N": ["B_E65logspd", "A_E62corr8", "A_E62cov4", "A_E62cov8", "A_DINOcorr",
+                        "A_DINOcov5", "A_DINOcovHR", "A_DINOtope5", "N_E21corrf", "N_E21covdz"]
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "pca_dim": 96,
+  "prototype_k": 32,
+  "fit_fraction": 0.6,
+  "acceptance_grid": [0.90, 0.92, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99],
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "targets": {"weighted": 0.80}
+}
