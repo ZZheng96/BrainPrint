@@ -1,0 +1,44 @@
+﻿projected B_E65logspd
+projected A_E62corr8
+projected A_E62cov4
+projected A_E62cov8
+  k=1 B_E65logspd    AUC 0.7504
+  k=1 A_E62corr8     AUC 0.7145
+  k=1 A_E62cov4      AUC 0.7062
+  k=1 A_E62cov8      AUC 0.7435
+  k=1 B_only       AUC 0.7504 bestW 0.6697 @a=0.850
+  k=1 B_plus_3A    AUC 0.7695 bestW 0.6275 @a=0.880
+  k=3 B_E65logspd    AUC 0.7566
+  k=3 A_E62corr8     AUC 0.7148
+  k=3 A_E62cov4      AUC 0.7135
+  k=3 A_E62cov8      AUC 0.7467
+  k=3 B_only       AUC 0.7566 bestW 0.6771 @a=0.910
+  k=3 B_plus_3A    AUC 0.7734 bestW 0.6283 @a=0.920
+  k=6 B_E65logspd    AUC 0.7554
+  k=6 A_E62corr8     AUC 0.7169
+  k=6 A_E62cov4      AUC 0.7185
+  k=6 A_E62cov8      AUC 0.7459
+  k=6 B_only       AUC 0.7554 bestW 0.6904 @a=0.920
+  k=6 B_plus_3A    AUC 0.7759 bestW 0.6349 @a=0.880
+  k=12 B_E65logspd    AUC 0.7578
+  k=12 A_E62corr8     AUC 0.7206
+  k=12 A_E62cov4      AUC 0.7206
+  k=12 A_E62cov8      AUC 0.7482
+  k=12 B_only       AUC 0.7578 bestW 0.6958 @a=0.900
+  k=12 B_plus_3A    AUC 0.7781 bestW 0.6401 @a=0.880
+  k=32 B_E65logspd    AUC 0.7599
+  k=32 A_E62corr8     AUC 0.7203
+  k=32 A_E62cov4      AUC 0.7230
+  k=32 A_E62cov8      AUC 0.7495
+  k=32 B_only       AUC 0.7599 bestW 0.6928 @a=0.910
+  k=32 B_plus_3A    AUC 0.7786 bestW 0.6388 @a=0.900
+{
+  "set": "B_only",
+  "k": 12,
+  "acceptance_rate": 0.9,
+  "test_auc": 0.7578208805028339,
+  "LOSO_rejection": 0.7935548348177022,
+  "Test_S1_rejection": 0.7978898780085724,
+  "Test_S2_acceptance": 0.595951711936726,
+  "W": 0.6958370341749316
+}

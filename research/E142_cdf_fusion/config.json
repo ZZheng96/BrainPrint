@@ -42,7 +42,7 @@
   "pca_dim": 96,
   "prototype_k": 32,
   "fit_fraction": 0.6,
-  "acceptance_grid": [0.90, 0.92, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99],
+  "acceptance_grid": [0.90, 0.92, 0.94, 0.95, 0.955, 0.96, 0.965, 0.97, 0.975, 0.98, 0.99],
   "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
   "targets": {"weighted": 0.80}
 }

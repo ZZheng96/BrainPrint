@@ -1,0 +1,47 @@
+﻿projected B_E65logspd
+projected A_E62corr8
+projected A_E62cov4
+projected A_E62cov8
+projected A_DINOcorr
+projected A_DINOcov5
+projected A_DINOcovHR
+projected A_DINOtope5
+projected N_E21corrf
+projected N_E21covdz
+  B_E65logspd    raw AUC 0.7599
+  A_E62corr8     raw AUC 0.7203
+  A_E62cov4      raw AUC 0.7230
+  A_E62cov8      raw AUC 0.7495
+  A_DINOcorr     raw AUC 0.5009
+  A_DINOcov5     raw AUC 0.7230
+  A_DINOcovHR    raw AUC 0.7426
+  A_DINOtope5    raw AUC 0.4529
+  N_E21corrf     raw AUC 0.5671
+  N_E21covdz     raw AUC 0.4725
+  cdf:routeA_only        mean   done
+  cdf:routeA_only        median done
+  rawz:routeA_only        mean   done
+  rawz:routeA_only        median done
+  cdf:B_plus_A           mean   done
+  cdf:B_plus_A           median done
+  rawz:B_plus_A           mean   done
+  rawz:B_plus_A           median done
+  cdf:B_plus_A_plus_N    mean   done
+  cdf:B_plus_A_plus_N    median done
+  rawz:B_plus_A_plus_N    mean   done
+  rawz:B_plus_A_plus_N    median done
+  cdf:B_plus_cleanA      mean   done
+  cdf:B_plus_cleanA      median done
+  rawz:B_plus_cleanA      mean   done
+  rawz:B_plus_cleanA      median done
+{
+  "label": "rawz:B_plus_cleanA",
+  "transform": "rawz",
+  "how": "mean",
+  "acceptance_rate": 0.95,
+  "test_auc": 0.7870507276310534,
+  "LOSO_rejection": 0.9475459350595983,
+  "Test_S1_rejection": 0.5987471150675898,
+  "Test_S2_acceptance": 0.8022166718701218,
+  "W": 0.7876815984668579
+}

@@ -44,13 +44,17 @@ def pca_basis(x, dim):
 
 
 def kmeans_t(x, k, iters=20, seed=0):
+    """Vectorised k-means on GPU (no Python loop over clusters)."""
     rng = np.random.default_rng(seed)
     if len(x) <= k:
         return x.clone()
     c = x[rng.choice(len(x), size=k, replace=False)].clone()
     for _ in range(iters):
         a = torch.cdist(x, c).argmin(1)
-        new = torch.stack([x[a == j].mean(0) if (a == j).any() else c[j] for j in range(k)])
+        sums = torch.zeros_like(c).index_add_(0, a, x)
+        cnt = torch.zeros(k, device=x.device, dtype=x.dtype).index_add_(
+            0, a, torch.ones(len(x), device=x.device, dtype=x.dtype))
+        new = torch.where(cnt[:, None] > 0, sums / cnt.clamp(min=1)[:, None], c)
         if torch.allclose(new, c, atol=1e-6):
             break
         c = new
@@ -111,15 +115,16 @@ def space_scores(tr, te, subjects, tasks, test_tasks, f, blocks5):
 
 
 def cdf_map(values, values_tasks, ref, ref_tasks):
-    """Train out-of-fold empirical CDF, computed per task. Clean: reference is Train."""
+    """GLOBAL Train out-of-fold empirical CDF (all tasks pooled).
+
+    Pooled on purpose: per-task normalisation reorders tasks and E141 showed that
+    this damages the operating point.  The reference is Train only, so it is clean.
+    """
+    r = np.sort(ref[np.isfinite(ref)])
     out = np.full(len(values), np.nan, dtype=np.float32)
-    for t in TASKS:
-        m = values_tasks == t
-        r = np.sort(ref[ref_tasks == t])
-        r = r[np.isfinite(r)]
-        if len(r) < 20:
-            continue
-        out[m] = np.searchsorted(r, values[m], side="right") / float(len(r))
+    if len(r) < 20:
+        return out
+    out[:] = np.searchsorted(r, values, side="right") / float(len(r))
     return out
 
 
@@ -167,6 +172,10 @@ def main():
                 "known": cdf_map(fd["known"], fd["known_task"], ref, tasks),
                 "unknown": cdf_map(fd["unknown"], fd["unknown_task"], ref, tasks),
             } for fd in loso],
+            "te_raw": te_raw, "ref_raw": ref,
+            "loso_raw": [{"known": fd["known"], "unknown": fd["unknown"],
+                          "known_task": fd["known_task"], "unknown_task": fd["unknown_task"]}
+                         for fd in loso],
             "auc_raw": float(roc_auc_score(y_test, np.r_[te_raw[is_s1], te_raw[~is_s1]])),
         }
         raw[name] = entry
@@ -174,16 +183,30 @@ def main():
     with open(OUT / "raw_scores.pkl", "wb") as fh:
         pickle.dump({"raw": raw, "is_s1": is_s1, "tasks": tasks}, fh)
 
-    def evaluate(label, sel, how):
-        te = np.stack([raw[v]["te"] for v in sel])
-        rf = np.stack([raw[v]["ref"] for v in sel])
+    def bank(name, kind):
+        """Return (te, ref, [(known_i, unknown_i)]) for one view under one transform."""
+        e = raw[name]
+        if kind == "cdf":
+            return (e["te"], e["ref"],
+                    [(fd["known"], fd["unknown"]) for fd in e["loso"]])
+        r = e["ref_raw"][np.isfinite(e["ref_raw"])]
+        mu, sd = float(r.mean()), float(r.std()) + 1e-6
+        return ((e["te_raw"] - mu) / sd, (e["ref_raw"] - mu) / sd,
+                [((fd["known"] - mu) / sd, (fd["unknown"] - mu) / sd) for fd in e["loso_raw"]])
+
+    def evaluate(label, sel, how, kind):
+        te = np.stack([bank(v, kind)[0] for v in sel])
+        rf = np.stack([bank(v, kind)[1] for v in sel])
+        stacks = [[bank(v, kind)[2] for v in sel]]
         agg = np.mean if how == "mean" else np.median
         te, rf = agg(te, axis=0), agg(rf, axis=0)
         auc = float(roc_auc_score(y_test, np.r_[te[is_s1], te[~is_s1]]))
-        n_fold = len(raw[sel[0]]["loso"])
-        parts = [(agg(np.stack([raw[v]["loso"][i]["known"] for v in sel]), axis=0),
-                  agg(np.stack([raw[v]["loso"][i]["unknown"] for v in sel]), axis=0))
-                 for i in range(n_fold)]
+        n_fold = len(stacks[0][0])
+        parts = []
+        for i in range(n_fold):
+            kn = agg(np.stack([s[i][0] for s in stacks[0]]), axis=0)
+            un = agg(np.stack([s[i][1] for s in stacks[0]]), axis=0)
+            parts.append((kn, un))
         best = None
         for a in CFG["acceptance_grid"]:
             th = float(np.nanquantile(rf, 1 - a))
@@ -191,7 +214,8 @@ def main():
             s1 = float(np.mean(te[is_s1] < th))
             loso_r = float(np.mean([np.mean(u < np.quantile(kn, 1 - a)) for kn, u in parts]))
             w = W_["LOSO"] * loso_r + W_["S1"] * s1 + W_["S2"] * s2
-            row = {"label": label, "how": how, "acceptance_rate": a, "test_auc": auc,
+            row = {"label": label, "transform": kind, "how": how,
+                   "acceptance_rate": a, "test_auc": auc,
                    "LOSO_rejection": loso_r, "Test_S1_rejection": s1,
                    "Test_S2_acceptance": s2, "W": w}
             rows.append(row)
@@ -201,14 +225,16 @@ def main():
 
     rows = []
     for name in raw:
-        evaluate(f"cdf:{name}", [name], "mean")
+        for kind in ("cdf", "rawz"):
+            evaluate(f"{kind}:{name}", [name], "mean", kind)
     for sname, views in CFG["sets"].items():
         views = [v for v in views if v in raw]
         if len(views) < 2:
             continue
-        for how in ("mean", "median"):
-            evaluate(f"cdf:{sname}", views, how)
-            print(f"  cdf:{sname:20s} {how:6s} done", flush=True)
+        for kind in ("cdf", "rawz"):
+            for how in ("mean", "median"):
+                evaluate(f"{kind}:{sname}", views, how, kind)
+                print(f"  {kind}:{sname:18s} {how:6s} done", flush=True)
 
     rows.sort(key=lambda r: -r["W"])
     best = rows[0]
@@ -218,34 +244,39 @@ def main():
          "target": CFG["targets"]["weighted"], "best": best, "curve": rows},
         ensure_ascii=False, indent=2), encoding="utf-8")
 
-    lines = ["# E142 CDF 映射的多视图融合", "",
+    lines = ["# E142 有界化（全局 CDF）多视图融合", "",
              "新目标：**W = 0.25×LOSO 拒识 + 0.25×Test S1 拒识 + 0.5×Test S2 接受 > 0.80**。",
-             "每个视图的分数先经**自己的 Train out-of-fold 经验 CDF**（逐任务）映射到 [0,1]，"
-             "再做等权平均/中位数融合。该变换单调、有界、只用 Train 统计量，因此单一视图的分布偏移"
-             "不会再摧毁融合分数。Test 只被评分，不使用任何 Test 侧统计。", "",
-             f"**当前最好：{best['label']}（{best['how']}）@ 接受率 {best['acceptance_rate']:.2f} → "
-             f"W = {best['W']:.4f}**",
+             "两种融合前变换，都只用 Train 统计量：",
+             "- `cdf`：把每个视图的分数映射到**全局 Train out-of-fold 经验 CDF**（所有任务合并，保持任务间排序），落在 [0,1]，"
+             "因此单一视图的分布偏移不会再摧毁融合分数。",
+             "- `rawz`：用全局 Train OOF 均值/方差做 z 标准化（E139 的做法，对照组）。",
+             "Test 只被评分，不使用任何 Test 侧统计。", "",
+             f"**当前最好：{best['label']}（{best['transform']}/{best['how']}）@ 接受率 "
+             f"{best['acceptance_rate']:.2f} → W = {best['W']:.4f}**",
              f"（LOSO {best['LOSO_rejection']:.4f} / S1 {best['Test_S1_rejection']:.4f} / "
              f"S2 {best['Test_S2_acceptance']:.4f}，诊断 AUC {best['test_auc']:.4f}）", "",
-             "## 单视图（CDF 后）", "",
-             "| 视图 | 原始 AUC | 最好 W | LOSO | S1 拒识 | S2 接受 | 接受率 |",
-             "|---|---:|---:|---:|---:|---:|---:|"]
+             "## 单视图", "",
+             "| 视图 | 变换 | 原始 AUC | 最好 W | LOSO | S1 拒识 | S2 接受 | 接受率 |",
+             "|---|---|---:|---:|---:|---:|---:|---:|"]
     singles = {}
     for r in rows:
-        if r["label"].startswith("cdf:") and r["label"].count(":") == 1 and r["how"] == "mean":
+        core = r["label"].split(":", 1)[1]
+        if core in raw:
             if r["label"] not in singles or r["W"] > singles[r["label"]]["W"]:
                 singles[r["label"]] = r
     for lab, r in sorted(singles.items(), key=lambda kv: -kv[1]["W"]):
-        lines.append(f"| {lab[4:]} | {r['test_auc']:.4f} | {r['W']:.4f} | {r['LOSO_rejection']:.4f} | "
+        lines.append(f"| {lab.split(':', 1)[1]} | {r['transform']} | {r['test_auc']:.4f} | "
+                     f"{r['W']:.4f} | {r['LOSO_rejection']:.4f} | "
                      f"{r['Test_S1_rejection']:.4f} | {r['Test_S2_acceptance']:.4f} | "
                      f"{r['acceptance_rate']:.2f} |")
     lines += ["", "## 融合（前 24 个工作点）", "",
-              "| 方案 | 聚合 | 接受率 | 诊断 AUC | LOSO | S1 拒识 | S2 接受 | W |",
-              "|---|---|---:|---:|---:|---:|---:|---:|"]
+              "| 方案 | 变换 | 聚合 | 接受率 | 诊断 AUC | LOSO | S1 拒识 | S2 接受 | W |",
+              "|---|---|---|---:|---:|---:|---:|---:|---:|"]
     for r in rows[:24]:
-        lines.append(f"| {r['label']} | {r['how']} | {r['acceptance_rate']:.2f} | "
-                     f"{r['test_auc']:.4f} | {r['LOSO_rejection']:.4f} | "
-                     f"{r['Test_S1_rejection']:.4f} | {r['Test_S2_acceptance']:.4f} | {r['W']:.4f} |")
+        lines.append(f"| {r['label'].split(':', 1)[1]} | {r['transform']} | {r['how']} | "
+                     f"{r['acceptance_rate']:.2f} | {r['test_auc']:.4f} | "
+                     f"{r['LOSO_rejection']:.4f} | {r['Test_S1_rejection']:.4f} | "
+                     f"{r['Test_S2_acceptance']:.4f} | {r['W']:.4f} |")
     lines += ["", "项目 Test AUC/F1/C/RA/ASafeR/U/Official Score = N/A（无真实标签）。"]
     (OUT / "report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(json.dumps(best, ensure_ascii=False, indent=2))
