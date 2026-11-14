@@ -1,0 +1,1752 @@
+{
+  "experiment": "E110_loso_rejection_boost",
+  "test_accessed": false,
+  "protocol": "LOSO; 19 enrolled, 1 held out; threshold fixed at known acceptance 0.85",
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.8
+  },
+  "summary": {
+    "B1_E95_raw_cosine": {
+      "AUC_mean": 0.5039310798995686,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.1573006272081678,
+      "unknown_rejection_median": 0.11930740037950664,
+      "folds_rejection_ge_0_80": 0,
+      "folds_rejection_ge_0_50": 1,
+      "n_folds": 20
+    },
+    "B2_E97_multiview": {
+      "AUC_mean": 0.5030058448905887,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.1588326338965357,
+      "unknown_rejection_median": 0.10179799048122687,
+      "folds_rejection_ge_0_80": 0,
+      "folds_rejection_ge_0_50": 1,
+      "n_folds": 20
+    },
+    "B3_E98_dual_gate": {
+      "AUC_mean": null,
+      "known_acceptance_mean": 0.7584591382447996,
+      "unknown_rejection_mean": 0.4844352453843091,
+      "unknown_rejection_median": 0.467741935483871,
+      "folds_rejection_ge_0_80": 4,
+      "folds_rejection_ge_0_50": 10,
+      "n_folds": 20
+    },
+    "B4_E102_spd_ratio": {
+      "AUC_mean": 0.9143749272519688,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.8309507336125147,
+      "unknown_rejection_median": 0.8629976580796253,
+      "folds_rejection_ge_0_80": 16,
+      "folds_rejection_ge_0_50": 19,
+      "n_folds": 20
+    },
+    "N1_spd_ratio_plus_raw_cosine": {
+      "AUC_mean": 0.7747486514738788,
+      "known_acceptance_mean": 0.8499050338239929,
+      "unknown_rejection_mean": 0.4262088590451124,
+      "unknown_rejection_median": 0.38180190108830414,
+      "folds_rejection_ge_0_80": 2,
+      "folds_rejection_ge_0_50": 6,
+      "n_folds": 20
+    },
+    "N2_spd_ratio_plus_raw_ratio": {
+      "AUC_mean": 0.756392739620257,
+      "known_acceptance_mean": 0.8499966102059109,
+      "unknown_rejection_mean": 0.3769388723948775,
+      "unknown_rejection_median": 0.2969328397673189,
+      "folds_rejection_ge_0_80": 0,
+      "folds_rejection_ge_0_50": 7,
+      "n_folds": 20
+    },
+    "N3_multiband_spd_ratio": {
+      "AUC_mean": 0.9138452240306647,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.8166830150852771,
+      "unknown_rejection_median": 0.8306010928961749,
+      "folds_rejection_ge_0_80": 14,
+      "folds_rejection_ge_0_50": 20,
+      "n_folds": 20
+    },
+    "N4_task_agnostic_spd_ratio": {
+      "AUC_mean": 0.7831110525343523,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.42854339040222394,
+      "unknown_rejection_median": 0.4294609079445145,
+      "folds_rejection_ge_0_80": 0,
+      "folds_rejection_ge_0_50": 4,
+      "n_folds": 20
+    },
+    "N5_spd_margin_ratio": {
+      "AUC_mean": 0.91437503976322,
+      "known_acceptance_mean": 0.8498592980926416,
+      "unknown_rejection_mean": 0.8309507336125147,
+      "unknown_rejection_median": 0.8629976580796253,
+      "folds_rejection_ge_0_80": 16,
+      "folds_rejection_ge_0_50": 19,
+      "n_folds": 20
+    },
+    "N6_N1_and_N2": {
+      "AUC_mean": null,
+      "known_acceptance_mean": 0.7906862962124005,
+      "unknown_rejection_mean": 0.5937413060120398,
+      "unknown_rejection_median": 0.6312316715542522,
+      "folds_rejection_ge_0_80": 4,
+      "folds_rejection_ge_0_50": 11,
+      "n_folds": 20
+    },
+    "N7_N1_or_N2": {
+      "AUC_mean": null,
+      "known_acceptance_mean": 0.909215347817503,
+      "unknown_rejection_mean": 0.20940642542795024,
+      "unknown_rejection_median": 0.18010752688172044,
+      "folds_rejection_ge_0_80": 0,
+      "folds_rejection_ge_0_50": 1,
+      "n_folds": 20
+    }
+  },
+  "folds": [
+    {
+      "held_out": 1,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4289270526175411,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.08870967741935484,
+          "threshold": 0.46630221605300903
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.34304014106420494,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.056451612903225805,
+          "threshold": 0.35632750391960144
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7565457050987597,
+          "unknown_rejection": 0.21774193548387097,
+          "threshold": [
+            0.46630221605300903,
+            -17.79788589477539
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9284788181427535,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9112903225806451,
+          "threshold": 1.0547022819519043
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.7442989020107575,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.3467741935483871,
+          "threshold": 0.2574532926082611
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.8088502230059121,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.46774193548387094,
+          "threshold": 0.24019990861415863
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7877813504823151,
+          "unknown_rejection": 0.5806451612903226,
+          "threshold": [
+            0.2574532926082611,
+            0.24019990861415863
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.911805236564079,
+          "unknown_rejection": 0.23387096774193547,
+          "threshold": [
+            0.2574532926082611,
+            0.24019990861415863
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9201253574762546,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.8548387096774194,
+          "threshold": 1.0558820962905884
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.8019118496895697,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.4838709677419355,
+          "threshold": 1.0110807418823242
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9284788181427535,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9112903225806451,
+          "threshold": 0.054702263325452805
+        }
+      }
+    },
+    {
+      "held_out": 2,
+      "N_known": 2199,
+      "N_unknown": 102,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.36548698606318375,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.049019607843137254,
+          "threshold": 0.4653467535972595
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.2749110558275152,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.0,
+          "threshold": 0.3555539548397064
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7598908594815825,
+          "unknown_rejection": 0.7058823529411765,
+          "threshold": [
+            0.4653467535972595,
+            -17.745119094848633
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9145823859329998,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.8431372549019608,
+          "threshold": 1.0454732179641724
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.7000998671410357,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.21568627450980393,
+          "threshold": 0.25688832998275757
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.8758125351095418,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.7058823529411765,
+          "threshold": 0.2395697385072708
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7917235106866758,
+          "unknown_rejection": 0.7549019607843137,
+          "threshold": [
+            0.25688832998275757,
+            0.2395697385072708
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9081400636653024,
+          "unknown_rejection": 0.16666666666666666,
+          "threshold": [
+            0.25688832998275757,
+            0.2395697385072708
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9226876744331203,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.8333333333333334,
+          "threshold": 1.0504941940307617
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.8149270167366628,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.5,
+          "threshold": 1.0097508430480957
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9145823859329998,
+          "known_acceptance": 0.849931787175989,
+          "unknown_rejection": 0.8431372549019608,
+          "threshold": 0.04547327384352684
+        }
+      }
+    },
+    {
+      "held_out": 3,
+      "N_known": 2179,
+      "N_unknown": 122,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.48438522709319215,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.12295081967213115,
+          "threshold": 0.4671388864517212
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.5892686523371375,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.06557377049180328,
+          "threshold": 0.35655173659324646
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7572280862781092,
+          "unknown_rejection": 0.4016393442622951,
+          "threshold": [
+            0.4671388864517212,
+            -17.81993293762207
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9298369683792386,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.8688524590163934,
+          "threshold": 1.0456008911132812
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.7820721642504082,
+          "known_acceptance": 0.8503900871959614,
+          "unknown_rejection": 0.3770491803278688,
+          "threshold": 0.2646675407886505
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.7034528547461236,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.20491803278688525,
+          "threshold": 0.23650586605072021
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7934832491968793,
+          "unknown_rejection": 0.4426229508196721,
+          "threshold": [
+            0.2646675407886505,
+            0.23650586605072021
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9068379990821478,
+          "unknown_rejection": 0.13934426229508196,
+          "threshold": [
+            0.2646675407886505,
+            0.23650586605072021
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9168252845718068,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.8278688524590164,
+          "threshold": 1.0499190092086792
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.8063820823208118,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.4262295081967213,
+          "threshold": 1.0098856687545776
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9298369683792386,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.8688524590163934,
+          "threshold": 0.045600954443216324
+        }
+      }
+    },
+    {
+      "held_out": 4,
+      "N_known": 2188,
+      "N_unknown": 113,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.7153540631926356,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.21238938053097345,
+          "threshold": 0.46997934579849243
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.6808779990616556,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.45132743362831856,
+          "threshold": 0.365848571062088
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7595978062157221,
+          "unknown_rejection": 0.6371681415929203,
+          "threshold": [
+            0.46997934579849243,
+            -17.780067443847656
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9149665917069776,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.8407079646017699,
+          "threshold": 1.0461617708206177
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.8914149585025318,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.8230088495575221,
+          "threshold": 0.2664167881011963
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.7081182960961641,
+          "known_acceptance": 0.850091407678245,
+          "unknown_rejection": 0.23893805309734514,
+          "threshold": 0.23924380540847778
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7920475319926874,
+          "unknown_rejection": 0.8495575221238938,
+          "threshold": [
+            0.2664167881011963,
+            0.23924380540847778
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9076782449725777,
+          "unknown_rejection": 0.21238938053097345,
+          "threshold": [
+            0.2664167881011963,
+            0.23924380540847778
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9319619485204897,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.8849557522123894,
+          "threshold": 1.0512547492980957
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.786134345019495,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.4424778761061947,
+          "threshold": 1.0101697444915771
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9149665917069776,
+          "known_acceptance": 0.8496343692870201,
+          "unknown_rejection": 0.8407079646017699,
+          "threshold": 0.046161774545907974
+        }
+      }
+    },
+    {
+      "held_out": 5,
+      "N_known": 2200,
+      "N_unknown": 101,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.8604545454545456,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.5841584158415841,
+          "threshold": 0.47999995946884155
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.8100135013501351,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.5841584158415841,
+          "threshold": 0.36753395199775696
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7513636363636363,
+          "unknown_rejection": 1.0,
+          "threshold": [
+            0.47999995946884155,
+            -17.62579917907715
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9589086408640863,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.9900990099009901,
+          "threshold": 1.0439256429672241
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.9567754275427542,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.9900990099009901,
+          "threshold": 0.2568122446537018
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.49683168316831683,
+          "known_acceptance": 0.8504545454545455,
+          "unknown_rejection": 0.0,
+          "threshold": 0.2353324592113495
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7890909090909091,
+          "unknown_rejection": 0.9900990099009901,
+          "threshold": [
+            0.2568122446537018,
+            0.2353324592113495
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9113636363636364,
+          "unknown_rejection": 0.0,
+          "threshold": [
+            0.2568122446537018,
+            0.2353324592113495
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9867821782178218,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 1.0,
+          "threshold": 1.0485728979110718
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.8933213321332134,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.7128712871287128,
+          "threshold": 1.0096570253372192
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9589108910891089,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.9900990099009901,
+          "threshold": 0.043925691395998
+        }
+      }
+    },
+    {
+      "held_out": 6,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4832263991583564,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.12096774193548387,
+          "threshold": 0.46709632873535156
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.5671870137952495,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.08064516129032258,
+          "threshold": 0.3566837012767792
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7588424437299035,
+          "unknown_rejection": 0.4112903225806452,
+          "threshold": [
+            0.46709632873535156,
+            -17.8596248626709
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9390549290974559,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9032258064516129,
+          "threshold": 1.0455689430236816
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.782828544756768,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.3870967741935484,
+          "threshold": 0.25901782512664795
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.7177826840724881,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.27419354838709675,
+          "threshold": 0.23550629615783691
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7882406982085439,
+          "unknown_rejection": 0.46774193548387094,
+          "threshold": [
+            0.25901782512664795,
+            0.23550629615783691
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9113458888378503,
+          "unknown_rejection": 0.1935483870967742,
+          "threshold": [
+            0.25901782512664795,
+            0.23550629615783691
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9493124601775157,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9596774193548387,
+          "threshold": 1.04940664768219
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.8165016966230534,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.4596774193548387,
+          "threshold": 1.0098062753677368
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9390549290974559,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9032258064516129,
+          "threshold": 0.04556901752948761
+        }
+      }
+    },
+    {
+      "held_out": 7,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.5926326551780343,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.12903225806451613,
+          "threshold": 0.4672890901565552
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.5982522559900425,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.24193548387096775,
+          "threshold": 0.360205739736557
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.757923748277446,
+          "unknown_rejection": 0.1532258064516129,
+          "threshold": [
+            0.4672890901565552,
+            -17.854328155517578
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.7987093810659831,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.45161290322580644,
+          "threshold": 1.0455689430236816
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.7678200986856727,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.3951612903225806,
+          "threshold": 0.25571492314338684
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.6373227436395157,
+          "known_acceptance": 0.8502526412494258,
+          "unknown_rejection": 0.12903225806451613,
+          "threshold": 0.23033463954925537
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7919154800183739,
+          "unknown_rejection": 0.41935483870967744,
+          "threshold": [
+            0.25571492314338684,
+            0.23033463954925537
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9081304547542489,
+          "unknown_rejection": 0.10483870967741936,
+          "threshold": [
+            0.25571492314338684,
+            0.23033463954925537
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.8621178893712863,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.6370967741935484,
+          "threshold": 1.0500779151916504
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.8158719457080623,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.5,
+          "threshold": 1.0098062753677368
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.7987093810659831,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.45161290322580644,
+          "threshold": 0.04556901752948761
+        }
+      }
+    },
+    {
+      "held_out": 8,
+      "N_known": 2197,
+      "N_unknown": 104,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4326791778999335,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.14423076923076922,
+          "threshold": 0.4678093492984772
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.6198224852071006,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.19230769230769232,
+          "threshold": 0.3586001694202423
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.758306781975421,
+          "unknown_rejection": 0.6634615384615384,
+          "threshold": [
+            0.4678093492984772,
+            -17.723369598388672
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9309898112811177,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.9230769230769231,
+          "threshold": 1.0442521572113037
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.7373975876194812,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.3942307692307692,
+          "threshold": 0.2614515423774719
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.8477556808235006,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.6346153846153846,
+          "threshold": 0.23698392510414124
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7901684114701866,
+          "unknown_rejection": 0.7307692307692307,
+          "threshold": [
+            0.2614515423774719,
+            0.23698392510414124
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9094219390077378,
+          "unknown_rejection": 0.2980769230769231,
+          "threshold": [
+            0.2614515423774719,
+            0.23698392510414124
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9362548580231784,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.8653846153846154,
+          "threshold": 1.0490151643753052
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.7940723364027871,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.4326923076923077,
+          "threshold": 1.0101993083953857
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9309898112811177,
+          "known_acceptance": 0.8497951752389622,
+          "unknown_rejection": 0.9230769230769231,
+          "threshold": 0.044252198189496994
+        }
+      }
+    },
+    {
+      "held_out": 9,
+      "N_known": 2185,
+      "N_unknown": 116,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.27444172650516846,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.0,
+          "threshold": 0.4632483720779419
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.2883768641994792,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.0,
+          "threshold": 0.35513249039649963
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7592677345537757,
+          "unknown_rejection": 0.5775862068965517,
+          "threshold": [
+            0.4632483720779419,
+            -17.824405670166016
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9078986822378283,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.8448275862068966,
+          "threshold": 1.046847939491272
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.6467884478813226,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.0603448275862069,
+          "threshold": 0.2574532926082611
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.6783042689181725,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.1810344827586207,
+          "threshold": 0.23459365963935852
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7903890160183067,
+          "unknown_rejection": 0.19827586206896552,
+          "threshold": [
+            0.2574532926082611,
+            0.23459365963935852
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9093821510297483,
+          "unknown_rejection": 0.04310344827586207,
+          "threshold": [
+            0.2574532926082611,
+            0.23459365963935852
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9105065888108577,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.8189655172413793,
+          "threshold": 1.0507957935333252
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.7332360135721612,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.3448275862068966,
+          "threshold": 1.0105164051055908
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9078986822378283,
+          "known_acceptance": 0.8498855835240274,
+          "unknown_rejection": 0.8448275862068966,
+          "threshold": 0.04684801772236824
+        }
+      }
+    },
+    {
+      "held_out": 10,
+      "N_known": 2194,
+      "N_unknown": 107,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4297702314724099,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.04672897196261682,
+          "threshold": 0.4653410315513611
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.16307857453207134,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.0,
+          "threshold": 0.35546785593032837
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7611668185961714,
+          "unknown_rejection": 0.6074766355140186,
+          "threshold": [
+            0.4653410315513611,
+            -17.685937881469727
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9345411019006806,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.8785046728971962,
+          "threshold": 1.0504335165023804
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.7483664028488912,
+          "known_acceptance": 0.8505013673655424,
+          "unknown_rejection": 0.34579439252336447,
+          "threshold": 0.26010429859161377
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.8961441143645796,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.7102803738317757,
+          "threshold": 0.24464364349842072
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7912488605287147,
+          "unknown_rejection": 0.7476635514018691,
+          "threshold": [
+            0.26010429859161377,
+            0.24464364349842072
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9092980856882407,
+          "unknown_rejection": 0.308411214953271,
+          "threshold": [
+            0.26010429859161377,
+            0.24464364349842072
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9173787474761244,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.8504672897196262,
+          "threshold": 1.0526388883590698
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.7843268387019824,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.45794392523364486,
+          "threshold": 1.0102732181549072
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9345411019006806,
+          "known_acceptance": 0.850045578851413,
+          "unknown_rejection": 0.8785046728971962,
+          "threshold": 0.05043354257941246
+        }
+      }
+    },
+    {
+      "held_out": 11,
+      "N_known": 2180,
+      "N_unknown": 121,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4016680567139283,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.03305785123966942,
+          "threshold": 0.4643322825431824
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.33965046629767226,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.008264462809917356,
+          "threshold": 0.355134516954422
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7587155963302752,
+          "unknown_rejection": 0.049586776859504134,
+          "threshold": [
+            0.4643322825431824,
+            -17.855655670166016
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9101523997270453,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.8181818181818182,
+          "threshold": 1.0459307432174683
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.722355751004625,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.30578512396694213,
+          "threshold": 0.26062580943107605
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.6728846008037,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.2066115702479339,
+          "threshold": 0.237874835729599
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7903669724770642,
+          "unknown_rejection": 0.34710743801652894,
+          "threshold": [
+            0.26062580943107605,
+            0.237874835729599
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9096330275229357,
+          "unknown_rejection": 0.1652892561983471,
+          "threshold": [
+            0.26062580943107605,
+            0.237874835729599
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9160777920994769,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.8181818181818182,
+          "threshold": 1.0508021116256714
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.7142315566001971,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.30578512396694213,
+          "threshold": 1.0101674795150757
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9101523997270453,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.8181818181818182,
+          "threshold": 0.04593083634972572
+        }
+      }
+    },
+    {
+      "held_out": 12,
+      "N_known": 2179,
+      "N_unknown": 122,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.38470798004799917,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.08196721311475409,
+          "threshold": 0.4659365117549896
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.6264491908605994,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.12295081967213115,
+          "threshold": 0.35798346996307373
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.757687012391005,
+          "unknown_rejection": 0.14754098360655737,
+          "threshold": [
+            0.4659365117549896,
+            -17.842378616333008
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9213092183961662,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.8360655737704918,
+          "threshold": 1.0461997985839844
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.7128758868182878,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.22950819672131148,
+          "threshold": 0.2571490705013275
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.7491949984577073,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.319672131147541,
+          "threshold": 0.23520208895206451
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7898118402937128,
+          "unknown_rejection": 0.4180327868852459,
+          "threshold": [
+            0.2571490705013275,
+            0.23520208895206451
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9100504818724185,
+          "unknown_rejection": 0.13114754098360656,
+          "threshold": [
+            0.2571490705013275,
+            0.23520208895206451
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.908237347557535,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.7950819672131147,
+          "threshold": 1.0515371561050415
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.788792422452772,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.36065573770491804,
+          "threshold": 1.0105000734329224
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9213092183961662,
+          "known_acceptance": 0.8499311610830657,
+          "unknown_rejection": 0.8360655737704918,
+          "threshold": 0.046199776232242584
+        }
+      }
+    },
+    {
+      "held_out": 13,
+      "N_known": 2178,
+      "N_unknown": 123,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.30197391505595494,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.032520325203252036,
+          "threshold": 0.46433210372924805
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.0689675767281089,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.0,
+          "threshold": 0.3547212779521942
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.758494031221304,
+          "unknown_rejection": 0.8455284552845529,
+          "threshold": [
+            0.46433210372924805,
+            -17.86910629272461
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9175569441644829,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.8780487804878049,
+          "threshold": 1.047603964805603
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.6719374080793149,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.17073170731707318,
+          "threshold": 0.26391786336898804
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.7362202960872585,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.2032520325203252,
+          "threshold": 0.23958061635494232
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.790633608815427,
+          "unknown_rejection": 0.2682926829268293,
+          "threshold": [
+            0.26391786336898804,
+            0.23958061635494232
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9090909090909091,
+          "unknown_rejection": 0.10569105691056911,
+          "threshold": [
+            0.26391786336898804,
+            0.23958061635494232
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.8970749624851619,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.7723577235772358,
+          "threshold": 1.0502406358718872
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.7169365495307846,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.3252032520325203,
+          "threshold": 1.0104823112487793
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.917556944164483,
+          "known_acceptance": 0.849862258953168,
+          "unknown_rejection": 0.8780487804878049,
+          "threshold": 0.04760397970676422
+        }
+      }
+    },
+    {
+      "held_out": 14,
+      "N_known": 2180,
+      "N_unknown": 121,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.4164189855182349,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.05785123966942149,
+          "threshold": 0.4653404951095581
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.39242550610357113,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.024793388429752067,
+          "threshold": 0.35556864738464355
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7660550458715596,
+          "unknown_rejection": 1.0,
+          "threshold": [
+            0.4653404951095581,
+            -17.33872413635254
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.8779740693001743,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.6115702479338843,
+          "threshold": 1.0445939302444458
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.7124383956327242,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.2644628099173554,
+          "threshold": 0.25723597407341003
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.6992474789597392,
+          "known_acceptance": 0.8504587155963302,
+          "unknown_rejection": 0.2066115702479339,
+          "threshold": 0.23272490501403809
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7922018348623853,
+          "unknown_rejection": 0.4049586776859504,
+          "threshold": [
+            0.25723597407341003,
+            0.23272490501403809
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.908256880733945,
+          "unknown_rejection": 0.06611570247933884,
+          "threshold": [
+            0.25723597407341003,
+            0.23272490501403809
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9205550079611798,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.859504132231405,
+          "threshold": 1.048534870147705
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.7628174994313444,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.39669421487603307,
+          "threshold": 1.0105006694793701
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.8779740693001744,
+          "known_acceptance": 0.85,
+          "unknown_rejection": 0.6115702479338843,
+          "threshold": 0.044593870639801025
+        }
+      }
+    },
+    {
+      "held_out": 15,
+      "N_known": 2191,
+      "N_unknown": 110,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.6296585203933447,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.2909090909090909,
+          "threshold": 0.47226858139038086
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.6910377162773329,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.2545454545454545,
+          "threshold": 0.36020976305007935
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7590141487905067,
+          "unknown_rejection": 0.39090909090909093,
+          "threshold": [
+            0.47226858139038086,
+            -17.776138305664062
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.8942367536616739,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.7363636363636363,
+          "threshold": 1.045745611190796
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.8281627318368532,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.5545454545454546,
+          "threshold": 0.2633637487888336
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.7906435417617526,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.4,
+          "threshold": 0.23935244977474213
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.792332268370607,
+          "unknown_rejection": 0.6818181818181818,
+          "threshold": [
+            0.2633637487888336,
+            0.23935244977474213
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9073482428115016,
+          "unknown_rejection": 0.2727272727272727,
+          "threshold": [
+            0.2633637487888336,
+            0.23935244977474213
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.8339778432430189,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.5545454545454546,
+          "threshold": 1.0522871017456055
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.760366789759761,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.38181818181818183,
+          "threshold": 1.0099890232086182
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.8942367536616738,
+          "known_acceptance": 0.8498402555910544,
+          "unknown_rejection": 0.7363636363636363,
+          "threshold": 0.0457456149160862
+        }
+      }
+    },
+    {
+      "held_out": 16,
+      "N_known": 2182,
+      "N_unknown": 119,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.42649947238290375,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.11764705882352941,
+          "threshold": 0.4670608639717102
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.3914110098668248,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.01680672268907563,
+          "threshold": 0.3555000424385071
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7584784601283227,
+          "unknown_rejection": 0.11764705882352941,
+          "threshold": [
+            0.4670608639717102,
+            -17.857921600341797
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9235725454251362,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.8739495798319328,
+          "threshold": 1.0511070489883423
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.7342273297953462,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.3865546218487395,
+          "threshold": 0.2584311068058014
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.8608246231581541,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.6218487394957983,
+          "threshold": 0.24495871365070343
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7910174152153987,
+          "unknown_rejection": 0.7394957983193278,
+          "threshold": [
+            0.2584311068058014,
+            0.24495871365070343
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9083409715857012,
+          "unknown_rejection": 0.2689075630252101,
+          "threshold": [
+            0.2584311068058014,
+            0.24495871365070343
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.8793566922644402,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.6890756302521008,
+          "threshold": 1.0543941259384155
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.755424442921073,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.3865546218487395,
+          "threshold": 1.0101639032363892
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9235725454251362,
+          "known_acceptance": 0.84967919340055,
+          "unknown_rejection": 0.8739495798319328,
+          "threshold": 0.05110704526305199
+        }
+      }
+    },
+    {
+      "held_out": 17,
+      "N_known": 2189,
+      "N_unknown": 112,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.39359949096130004,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.07142857142857142,
+          "threshold": 0.4657520651817322
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.7222027344514782,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.36607142857142855,
+          "threshold": 0.3627515435218811
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7574234810415715,
+          "unknown_rejection": 0.10714285714285714,
+          "threshold": [
+            0.4657520651817322,
+            -17.79822540283203
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9130351432487112,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.8571428571428571,
+          "threshold": 1.0501658916473389
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.717758842915878,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.21428571428571427,
+          "threshold": 0.2577574849128723
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.7133088331266723,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.19642857142857142,
+          "threshold": 0.2292046844959259
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7912288716308817,
+          "unknown_rejection": 0.3482142857142857,
+          "threshold": [
+            0.2577574849128723,
+            0.2292046844959259
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9081772498857926,
+          "unknown_rejection": 0.0625,
+          "threshold": [
+            0.2577574849128723,
+            0.2292046844959259
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9030379168570124,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.7589285714285714,
+          "threshold": 1.0524895191192627
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.7926687006460875,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.45535714285714285,
+          "threshold": 1.0105799436569214
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.913035143248711,
+          "known_acceptance": 0.8497030607583371,
+          "unknown_rejection": 0.8571428571428571,
+          "threshold": 0.050165873020887375
+        }
+      }
+    },
+    {
+      "held_out": 18,
+      "N_known": 2203,
+      "N_unknown": 98,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.6976386560071146,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.29591836734693877,
+          "threshold": 0.4718725085258484
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.626677906750535,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.17346938775510204,
+          "threshold": 0.3584325909614563
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7585111211983658,
+          "unknown_rejection": 0.30612244897959184,
+          "threshold": [
+            0.4718725085258484,
+            -17.843244552612305
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.8955274347596506,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.7551020408163265,
+          "threshold": 1.0529192686080933
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.874343427793269,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.7244897959183674,
+          "threshold": 0.2670360803604126
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.8196962398213938,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.5816326530612245,
+          "threshold": 0.23713602125644684
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7898320472083522,
+          "unknown_rejection": 0.826530612244898,
+          "threshold": [
+            0.2670360803604126,
+            0.23713602125644684
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9096686336813437,
+          "unknown_rejection": 0.47959183673469385,
+          "threshold": [
+            0.2670360803604126,
+            0.23713602125644684
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9211325928464895,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.8673469387755102,
+          "threshold": 1.0544096231460571
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.7163191195679361,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.24489795918367346,
+          "threshold": 1.009950041770935
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.8955274347596506,
+          "known_acceptance": 0.849750340444848,
+          "unknown_rejection": 0.7551020408163265,
+          "threshold": 0.05291929095983505
+        }
+      }
+    },
+    {
+      "held_out": 19,
+      "N_known": 2187,
+      "N_unknown": 114,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.7554488645023625,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.4649122807017544,
+          "threshold": 0.4783291518688202
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.6385860627792619,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.2631578947368421,
+          "threshold": 0.3606673777103424
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7562871513488797,
+          "unknown_rejection": 0.8245614035087719,
+          "threshold": [
+            0.4783291518688202,
+            -17.59709358215332
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9377341387304566,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.8859649122807017,
+          "threshold": 1.0541951656341553
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.9166385900737212,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.7982456140350878,
+          "threshold": 0.2772490382194519
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.8754121242750222,
+          "known_acceptance": 0.850480109739369,
+          "unknown_rejection": 0.6754385964912281,
+          "threshold": 0.24641460180282593
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7878372199359853,
+          "unknown_rejection": 0.868421052631579,
+          "threshold": [
+            0.2772490382194519,
+            0.24641460180282593
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.912665752171925,
+          "unknown_rejection": 0.6052631578947368,
+          "threshold": [
+            0.2772490382194519,
+            0.24641460180282593
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9143964735799259,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.8070175438596491,
+          "threshold": 1.0540199279785156
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.7690539792554087,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.42105263157894735,
+          "threshold": 1.010496973991394
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9377341387304569,
+          "known_acceptance": 0.8500228623685414,
+          "unknown_rejection": 0.8859649122807017,
+          "threshold": 0.05419512838125229
+        }
+      }
+    },
+    {
+      "held_out": 20,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "signals": {
+        "B1_E95_raw_cosine": {
+          "AUC": 0.6036495917732304,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.20161290322580644,
+          "threshold": 0.469630628824234
+        },
+        "B2_E97_multiview": {
+          "AUC": 0.6278801843317972,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.27419354838709675,
+          "threshold": 0.3613784909248352
+        },
+        "B3_E98_dual_gate": {
+          "AUC": null,
+          "known_acceptance": 0.7583830960036748,
+          "unknown_rejection": 0.5241935483870968,
+          "threshold": [
+            0.469630628824234,
+            -17.84027862548828
+          ]
+        },
+        "B4_E102_spd_ratio": {
+          "AUC": 0.9384325870167589,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9112903225806451,
+          "threshold": 1.0479991436004639
+        },
+        "N1_spd_ratio_plus_raw_cosine": {
+          "AUC": 0.8463722642879368,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.5403225806451613,
+          "threshold": 0.2641025483608246
+        },
+        "N2_spd_ratio_plus_raw_ratio": {
+          "AUC": 0.8400469720094239,
+          "known_acceptance": 0.8502526412494258,
+          "unknown_rejection": 0.5806451612903226,
+          "threshold": 0.2442416250705719
+        },
+        "N6_N1_and_N2": {
+          "AUC": null,
+          "known_acceptance": 0.7923748277446027,
+          "unknown_rejection": 0.7903225806451613,
+          "threshold": [
+            0.2641025483608246,
+            0.2442416250705719
+          ]
+        },
+        "N7_N1_or_N2": {
+          "AUC": null,
+          "known_acceptance": 0.9076711070280202,
+          "unknown_rejection": 0.33064516129032256,
+          "threshold": [
+            0.2641025483608246,
+            0.2442416250705719
+          ]
+        },
+        "N3_multiband_spd_ratio": {
+          "AUC": 0.9291048646405974,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.8790322580645161,
+          "threshold": 1.051108479499817
+        },
+        "N4_task_agnostic_spd_ratio": {
+          "AUC": 0.8389245336138812,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.532258064516129,
+          "threshold": 1.0101995468139648
+        },
+        "N5_spd_margin_ratio": {
+          "AUC": 0.9384325870167587,
+          "known_acceptance": 0.8497932935231971,
+          "unknown_rejection": 0.9112903225806451,
+          "threshold": 0.04799910634756088
+        }
+      }
+    }
+  ]
+}
