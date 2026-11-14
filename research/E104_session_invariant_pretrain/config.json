@@ -1,0 +1,46 @@
+{
+  "experiment": "E104_session_invariant_pretrain",
+  "seed": 20261114,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_csv": "Brainprint_Competition/test.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_test_rows": 22251
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "channel_projection": {
+    "method": "idw", "power": 2.0, "k": 4,
+    "source_channels_22": ["Fz","FC3","FC1","FCz","FC2","FC4","C5","C3","C1","Cz","C2","C4","C6","CP3","CP1","CPz","CP2","CP4","P1","Pz","P2","POz"],
+    "target_channels_18": ["P3","C3","F3","Fz","F4","C4","P4","Cz","Fp1","Fp2","T3","T5","O1","O2","F7","F8","T6","T4"],
+    "source_xy": {"Fz":[0,0.75],"FC3":[-0.35,0.38],"FC1":[-0.18,0.40],"FCz":[0,0.40],"FC2":[0.18,0.40],"FC4":[0.35,0.38],"C5":[-0.70,0],"C3":[-0.38,0],"C1":[-0.18,0],"Cz":[0,0],"C2":[0.18,0],"C4":[0.38,0],"C6":[0.70,0],"CP3":[-0.35,-0.38],"CP1":[-0.18,-0.40],"CPz":[0,-0.42],"CP2":[0.18,-0.40],"CP4":[0.35,-0.38],"P1":[-0.18,-0.72],"Pz":[0,-0.75],"P2":[0.18,-0.72],"POz":[0,-0.98]},
+    "target_xy": {"P3":[-0.38,-0.72],"C3":[-0.38,0],"F3":[-0.38,0.75],"Fz":[0,0.75],"F4":[0.38,0.75],"C4":[0.38,0],"P4":[0.38,-0.72],"Cz":[0,0],"Fp1":[-0.38,1.12],"Fp2":[0.38,1.12],"T3":[-0.98,0],"T5":[-0.98,-0.65],"O1":[-0.38,-1.08],"O2":[0.38,-1.08],"F7":[-0.72,0.82],"F8":[0.72,0.82],"T6":[0.98,-0.65],"T4":[0.98,0]}
+  },
+  "model": {"branch_filters": 8, "embedding_dim": 64, "dropout": 0.2, "channels": 18},
+  "training": {
+    "epochs": 30,
+    "trials_per_group": 16,
+    "temperature": 0.07,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 5.0
+  },
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "threshold": {
+    "grid_quantiles": [0.0, 0.02, 0.05, 0.08, 0.10, 0.12, 0.15, 0.18, 0.20, 0.25, 0.30, 0.35, 0.40]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  },
+  "protocol": {
+    "train_session1_only_for_prototypes": true,
+    "external_used_for_pretraining_and_unknown": true,
+    "test_read_once_after_freeze": true,
+    "session_audit_after_predictions": true
+  }
+}

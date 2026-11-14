@@ -1,0 +1,174 @@
+{
+  "status": "complete_one_shot_frozen_audit",
+  "experiment": "E104_session_invariant_pretrain",
+  "pretraining": {
+    "reused": false,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 5.488267766104804
+      },
+      {
+        "epoch": 2,
+        "loss": 5.135342544979519
+      },
+      {
+        "epoch": 3,
+        "loss": 4.947519699732463
+      },
+      {
+        "epoch": 4,
+        "loss": 4.806670268376668
+      },
+      {
+        "epoch": 5,
+        "loss": 4.677523242102729
+      },
+      {
+        "epoch": 6,
+        "loss": 4.574819644292195
+      },
+      {
+        "epoch": 7,
+        "loss": 4.4754988882276745
+      },
+      {
+        "epoch": 8,
+        "loss": 4.373797549141778
+      },
+      {
+        "epoch": 9,
+        "loss": 4.278724776373969
+      },
+      {
+        "epoch": 10,
+        "loss": 4.212933275434706
+      },
+      {
+        "epoch": 11,
+        "loss": 4.157703055275811
+      },
+      {
+        "epoch": 12,
+        "loss": 4.113305595186022
+      },
+      {
+        "epoch": 13,
+        "loss": 4.087825059890747
+      },
+      {
+        "epoch": 14,
+        "loss": 4.066870768864949
+      },
+      {
+        "epoch": 15,
+        "loss": 4.049102955394321
+      },
+      {
+        "epoch": 16,
+        "loss": 4.02235225836436
+      },
+      {
+        "epoch": 17,
+        "loss": 4.005383955107795
+      },
+      {
+        "epoch": 18,
+        "loss": 3.9838326109780207
+      },
+      {
+        "epoch": 19,
+        "loss": 3.965321103731791
+      },
+      {
+        "epoch": 20,
+        "loss": 3.9486984544330173
+      },
+      {
+        "epoch": 21,
+        "loss": 3.9267928865220814
+      },
+      {
+        "epoch": 22,
+        "loss": 3.9287623829311795
+      },
+      {
+        "epoch": 23,
+        "loss": 3.908871981832716
+      },
+      {
+        "epoch": 24,
+        "loss": 3.896293534172906
+      },
+      {
+        "epoch": 25,
+        "loss": 3.8861225975884333
+      },
+      {
+        "epoch": 26,
+        "loss": 3.8706578281190662
+      },
+      {
+        "epoch": 27,
+        "loss": 3.861303938759698
+      },
+      {
+        "epoch": 28,
+        "loss": 3.851313180393643
+      },
+      {
+        "epoch": 29,
+        "loss": 3.8393081956439548
+      },
+      {
+        "epoch": 30,
+        "loss": 3.8329753743277655
+      }
+    ]
+  },
+  "train_only_metrics": {
+    "AUC": 0.8320170611543022,
+    "F1": 0.31460035386398555,
+    "N_known": 2301,
+    "N_external_unknown": 5184,
+    "rule": {
+      "threshold": 1.070291769504547,
+      "known_acceptance": 0.6571056062581486,
+      "unknown_rejection": 0.8981481481481481,
+      "quantile": null,
+      "target_met": false,
+      "selection_source": "Train known + external unknown fallback: joint-closest point"
+    }
+  },
+  "test_metrics": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "C": "N/A",
+    "RA": "N/A",
+    "ASafeR": "N/A",
+    "U": "N/A",
+    "Official Score": "N/A"
+  },
+  "protocol_checks": {
+    "train_session1_only_for_prototypes": true,
+    "external_used_for_pretraining_and_unknown": true,
+    "test_accessed": true,
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "test_read_once_after_freeze": true
+  },
+  "audit": {
+    "N": 22251,
+    "predictions_complete_before_session_audit": true,
+    "session_used_by_inference": false,
+    "S1_N": 3033,
+    "S1_rejection_rate": 0.42631058358061324,
+    "S1_acceptance_rate": 0.5736894164193868,
+    "S2_N": 19218,
+    "S2_rejection_rate": 0.38500364241856594,
+    "S2_acceptance_rate": 0.6149963575814341,
+    "S1_target": 0.8,
+    "S2_target": 0.85,
+    "S1_pass": false,
+    "S2_pass": false
+  }
+}
