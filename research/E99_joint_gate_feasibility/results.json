@@ -1,0 +1,44 @@
+{
+  "experiment": "E99_joint_gate_feasibility",
+  "test_accessed": false,
+  "N_known": 1861,
+  "N_pseudo_unknown": 440,
+  "targets": {
+    "known_acceptance": 0.98,
+    "unknown_rejection": 0.95
+  },
+  "branches": {
+    "raw": {
+      "AUC": 0.6319891553905524,
+      "feasible_points": 0,
+      "best_joint": {
+        "threshold": 0.5797878503799438,
+        "known_acceptance": 0.5969908651262762,
+        "unknown_rejection": 0.6477272727272727
+      },
+      "known_acceptance_at_unknown_rejection_95": 0.07791509940891994
+    },
+    "spd": {
+      "AUC": 0.6405256216110595,
+      "feasible_points": 0,
+      "best_joint": {
+        "threshold": -14.839024543762207,
+        "known_acceptance": 0.3825900053734551,
+        "unknown_rejection": 0.8386363636363636
+      },
+      "known_acceptance_at_unknown_rejection_95": 0.2606125738850081
+    },
+    "min_fusion": {
+      "AUC": 0.6301035611352646,
+      "feasible_points": 0,
+      "best_joint": {
+        "threshold": 0.31782608695652176,
+        "known_acceptance": 0.5814078452444922,
+        "unknown_rejection": 0.6454545454545455
+      },
+      "known_acceptance_at_unknown_rejection_95": 0.1337990327780763
+    }
+  },
+  "any_feasible": false,
+  "conclusion": "Train-only 代理下不存在同时满足 S1/S2 目标的工作点；瓶颈是分布重叠"
+}
