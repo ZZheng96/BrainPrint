@@ -1,0 +1,20 @@
+{
+  "experiment": "E146_phase_features",
+  "purpose": "Build a phase-based feature family that is NOT derived from second-order statistics, then test whether it transfers across sessions better than correlation-logSPD. Rationale: every view tried so far (logSPD, Fisher correlations, covariance, DINOv2 image embeddings) is a function of the covariance matrix, and the cross-session instability lives exactly there. Phase-amplitude coupling (PAC), weighted phase lag index (wPLI), spectral entropy and Hjorth parameters do not require a stable covariance.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "root": "Brainprint_Competition",
+    "sampling_rate_hz": 300,
+    "channels": 18,
+    "samples_per_trial": 1200
+  },
+  "bands_hz": [[1, 4], [4, 8], [8, 13], [13, 30], [30, 40]],
+  "band_names": ["delta", "theta", "alpha", "beta", "gamma"],
+  "pac_pairs": [[1, 2], [2, 4], [0, 2], [2, 3]],
+  "pac_pair_names": ["theta-alpha", "alpha-gamma", "delta-alpha", "alpha-beta"],
+  "pac_bins": 18,
+  "wpli_bands": [2, 3],
+  "chunk": 128,
+  "outputs": ["train_phase.npy", "test_phase.npy", "manifest.json"]
+}

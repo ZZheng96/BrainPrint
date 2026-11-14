@@ -7,12 +7,14 @@
 |---|---|---:|---:|---:|---:|---:|---:|---|
 | E142_cdf_fusion | rawz:B_plus_cleanA | 0.95 | 0.9475 | 0.5987 | 0.8022 | **0.7877** | nan | **LOSO 被污染，W 偏高** |
 | E139_feature_fusion | C_plus_cov | 0.96 | 0.9724 | 0.5997 | 0.7888 | **0.7875** | nan | **LOSO 被污染，W 偏高** |
-| E141_weighted_image_route | score:B_E65logspd | 0.97 | 0.9481 | 0.5124 | 0.8290 | **0.7796** | nan | **LOSO 被污染，W 偏高** |
+| E141_weighted_image_route | featfuse:routeB_only | 0.97 | 0.9481 | 0.5124 | 0.8290 | **0.7796** | nan | **LOSO 被污染，W 偏高** |
 | E135_rank_calibration | - | nan | 0.8301 | 0.3963 | 0.9175 | **0.7653** | 0.7822 | **犯规：用了 Test 侧统计** |
 | E138_scale_free_score | d1 | 0.95 | 0.8244 | 0.6159 | 0.7597 | **0.7399** | nan | **LOSO 被污染，W 偏高** |
 | E137_multi_view | greedy | 0.90 | 0.9902 | 0.5740 | 0.6133 | **0.6977** | nan | **LOSO 被污染，W 偏高** |
 | E143_k_sweep_nearest | B_only | 0.90 | 0.7936 | 0.7979 | 0.5960 | **0.6958** | nan | 干净 |
+| E147_phase_features_eval | B_only | 0.90 | 0.7936 | 0.7979 | 0.5960 | **0.6958** | nan | 干净 |
 | E145_fusion_recheck_fixed_loso | B_only | 0.90 | 0.7936 | 0.7979 | 0.5960 | **0.6958** | nan | 干净 |
+| E148_logbandpower_probe | B_plus_logbp | 0.85 | 0.8282 | 0.8675 | 0.4809 | **0.6644** | nan | 干净 |
 | E140_metric_learning | PCA128_raw_control | 0.90 | 0.7138 | 0.8190 | 0.5458 | **0.6561** | nan | **LOSO 被污染，W 偏高** |
 | E123_band_pca | - | nan | 0.6261 | 0.7916 | 0.5823 | **0.6456** | nan | 干净 |
 | E136_clean_three_way | P96_k3 | 0.95 | 0.4819 | 0.7043 | 0.6930 | **0.6431** | 0.7822 | 干净 |

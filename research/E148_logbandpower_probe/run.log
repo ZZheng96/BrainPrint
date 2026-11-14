@@ -1,0 +1,26 @@
+﻿projected B_E65logspd
+projected P_logbp
+projected P_pac
+projected P_wpli
+projected P_hjorth
+  k=12 B_E65logspd    AUC 0.7578
+  k=12 P_logbp        AUC 0.7772
+  k=12 P_pac          AUC 0.5265
+  k=12 P_wpli         AUC 0.5611
+  k=12 P_hjorth       AUC 0.6177
+  k=12 P_logbp      AUC 0.7772 bestW 0.6135 @a=0.950
+  k=12 P_logbp_plus_hjorth AUC 0.7322 bestW 0.5756 @a=0.950
+  k=12 P_logbp_plus_pac AUC 0.7626 bestW 0.6055 @a=0.930
+  k=12 B_plus_logbp AUC 0.7894 bestW 0.6644 @a=0.850
+  k=12 B_plus_logbp_plus_wpli AUC 0.7855 bestW 0.6461 @a=0.880
+  k=12 C_plus_logbp AUC 0.7490 bestW 0.6069 @a=0.850
+{
+  "set": "B_plus_logbp",
+  "k": 12,
+  "acceptance_rate": 0.85,
+  "test_auc": 0.7894033567071918,
+  "LOSO_rejection": 0.828201435988672,
+  "Test_S1_rejection": 0.8674579624134521,
+  "Test_S2_acceptance": 0.4809033198043501,
+  "W": 0.664366509502706
+}

@@ -1,0 +1,35 @@
+{
+  "experiment": "E148_logbandpower_probe",
+  "purpose": "E147 found that raw log band power (90 dims, no covariance at all) reaches Test AUC 0.7772, above the E65 correlation-logSPD baseline of 0.7578, while PAC (0.5265) and wPLI (0.5611) carry no transferable signal. This run measures the weighted objective for log band power alone and for its combinations, since E147 forgot to register it as a set.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "views": {
+    "B_E65logspd": ["BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+                    "research/E121_pca_sweep/test_logspd.npy"],
+    "P_logbp": ["research/E146_phase_features/train_log_band_power.npy",
+                "research/E146_phase_features/test_log_band_power.npy"],
+    "P_pac": ["research/E146_phase_features/train_pac.npy",
+              "research/E146_phase_features/test_pac.npy"],
+    "P_wpli": ["research/E146_phase_features/train_wpli.npy",
+               "research/E146_phase_features/test_wpli.npy"],
+    "P_hjorth": ["research/E146_phase_features/train_hjorth.npy",
+                 "research/E146_phase_features/test_hjorth.npy"]
+  },
+  "sets": {
+    "P_logbp": ["P_logbp"],
+    "P_logbp_plus_hjorth": ["P_logbp", "P_hjorth"],
+    "P_logbp_plus_pac": ["P_logbp", "P_pac"],
+    "B_plus_logbp": ["B_E65logspd", "P_logbp"],
+    "B_plus_logbp_plus_wpli": ["B_E65logspd", "P_logbp", "P_wpli"],
+    "C_plus_logbp": ["B_E65logspd", "P_logbp", "P_pac", "P_wpli", "P_hjorth"]
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "pca_dim": 96,
+  "prototype_k": [12],
+  "fit_fraction": 0.6,
+  "acceptance_grid": [0.85, 0.88, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95],
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "targets": {"weighted": 0.80}
+}

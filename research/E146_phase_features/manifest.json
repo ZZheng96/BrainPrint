@@ -1,0 +1,44 @@
+{
+  "dim": 594,
+  "layout": {
+    "log_band_power": [
+      0,
+      90
+    ],
+    "spectral_entropy": [
+      90,
+      180
+    ],
+    "pac": [
+      180,
+      252
+    ],
+    "wpli": [
+      252,
+      558
+    ],
+    "hjorth": [
+      558,
+      594
+    ]
+  },
+  "band_names": [
+    "delta",
+    "theta",
+    "alpha",
+    "beta",
+    "gamma"
+  ],
+  "pac_pairs": [
+    "theta-alpha",
+    "alpha-gamma",
+    "delta-alpha",
+    "alpha-beta"
+  ],
+  "wpli_bands": [
+    "alpha",
+    "beta"
+  ],
+  "n_train": 11304,
+  "n_test": 22251
+}

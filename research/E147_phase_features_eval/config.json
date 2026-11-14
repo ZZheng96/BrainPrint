@@ -1,0 +1,42 @@
+{
+  "experiment": "E147_phase_features_eval",
+  "purpose": "Evaluate the E146 phase-based feature family under the exact same clean protocol as E143/E145, so it is directly comparable with the E65 correlation-logSPD baseline (W = 0.6958 at k=12). Objective: W = 0.25*LOSO + 0.25*S1 + 0.5*S2.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "views": {
+    "B_E65logspd": ["BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+                    "research/E121_pca_sweep/test_logspd.npy"],
+    "P_all": ["research/E146_phase_features/train_phase.npy",
+              "research/E146_phase_features/test_phase.npy"],
+    "P_logbp": ["research/E146_phase_features/train_log_band_power.npy",
+                "research/E146_phase_features/test_log_band_power.npy"],
+    "P_ent": ["research/E146_phase_features/train_spectral_entropy.npy",
+              "research/E146_phase_features/test_spectral_entropy.npy"],
+    "P_pac": ["research/E146_phase_features/train_pac.npy",
+              "research/E146_phase_features/test_pac.npy"],
+    "P_wpli": ["research/E146_phase_features/train_wpli.npy",
+               "research/E146_phase_features/test_wpli.npy"],
+    "P_hjorth": ["research/E146_phase_features/train_hjorth.npy",
+                 "research/E146_phase_features/test_hjorth.npy"]
+  },
+  "sets": {
+    "P_all": ["P_all"],
+    "P_pac": ["P_pac"],
+    "P_wpli": ["P_wpli"],
+    "P_pac_wpli": ["P_pac", "P_wpli"],
+    "P_pac_ent_hjorth": ["P_pac", "P_ent", "P_hjorth"],
+    "B_only": ["B_E65logspd"],
+    "B_plus_P": ["B_E65logspd", "P_all"],
+    "B_plus_pac": ["B_E65logspd", "P_pac"],
+    "B_plus_pac_wpli": ["B_E65logspd", "P_pac", "P_wpli"]
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "pca_dim": 96,
+  "prototype_k": [12],
+  "fit_fraction": 0.6,
+  "acceptance_grid": [0.85, 0.88, 0.90, 0.92, 0.94, 0.95, 0.96],
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "targets": {"weighted": 0.80}
+}
