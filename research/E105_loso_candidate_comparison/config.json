@@ -1,0 +1,22 @@
+{
+  "experiment": "E105_loso_candidate_comparison",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "min_fit_per_task": 100,
+  "model": {"branch_filters": 8, "embedding_dim": 64, "dropout": 0.2, "channels": 18},
+  "calibration": {
+    "fit_fraction": 0.6,
+    "known_fraction": [0.6, 0.8]
+  },
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.80
+  },
+  "protocol": {
+    "leave_one_identity_out": true,
+    "test_accessed": false
+  }
+}

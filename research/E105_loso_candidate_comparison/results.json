@@ -1,0 +1,893 @@
+{
+  "experiment": "E105_loso_candidate_comparison",
+  "test_accessed": false,
+  "protocol": "leave-one-identity-out; 19 enrolled, 1 held out as unknown",
+  "targets": {
+    "known_acceptance": 0.85,
+    "unknown_rejection": 0.8
+  },
+  "summary": {
+    "A_spd_ratio": {
+      "AUC_mean": 0.9143749272519688,
+      "AUC_std": 0.03202076028326134,
+      "best_known_acceptance_mean": 0.7994309000453066,
+      "best_unknown_rejection_mean": 0.9390956329037558,
+      "folds_with_feasible_point": 16,
+      "n_folds": 20
+    },
+    "B_raw_cosine": {
+      "AUC_mean": 0.9352711286525249,
+      "AUC_std": 0.04947122717190683,
+      "best_known_acceptance_mean": 0.8622666409790494,
+      "best_unknown_rejection_mean": 0.8989430130748876,
+      "folds_with_feasible_point": 16,
+      "n_folds": 20
+    },
+    "C_raw_ratio": {
+      "AUC_mean": 0.8641246026422374,
+      "AUC_std": 0.04126569298014634,
+      "best_known_acceptance_mean": 0.7224065095198384,
+      "best_unknown_rejection_mean": 0.9199651081686155,
+      "folds_with_feasible_point": 2,
+      "n_folds": 20
+    },
+    "D_inv_ratio": {
+      "AUC_mean": 0.5563548604262383,
+      "AUC_std": 0.05949606237772786,
+      "best_known_acceptance_mean": 0.4029228069199964,
+      "best_unknown_rejection_mean": 0.7305323600749398,
+      "folds_with_feasible_point": 0,
+      "n_folds": 20
+    },
+    "E_mean_fusion": {
+      "AUC_mean": 0.9289161879394658,
+      "AUC_std": 0.0267892233294417,
+      "best_known_acceptance_mean": 0.8209470771505691,
+      "best_unknown_rejection_mean": 0.9454301271742663,
+      "folds_with_feasible_point": 17,
+      "n_folds": 20
+    }
+  },
+  "folds": [
+    {
+      "held_out": 1,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9284788181427535,
+          "best_known_acceptance": 0.8511713367018833,
+          "best_unknown_rejection": 0.9112903225806451,
+          "feasible_points": 11,
+          "threshold": 1.05459725856781
+        },
+        "B_raw_cosine": {
+          "AUC": 0.972076103545868,
+          "best_known_acceptance": 0.8998621956821313,
+          "best_unknown_rejection": 0.9354838709677419,
+          "feasible_points": 45,
+          "threshold": 0.6650504469871521
+        },
+        "C_raw_ratio": {
+          "AUC": 0.9000474165394816,
+          "best_known_acceptance": 0.7179604960955444,
+          "best_unknown_rejection": 0.9838709677419355,
+          "feasible_points": 0,
+          "threshold": 1.3039495944976807
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5726806644242595,
+          "best_known_acceptance": 0.5314653192466697,
+          "best_unknown_rejection": 0.5887096774193549,
+          "feasible_points": 0,
+          "threshold": 1.1078466176986694
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9526334701498065,
+          "best_known_acceptance": 0.8594395957740009,
+          "best_unknown_rejection": 0.9596774193548387,
+          "feasible_points": 28,
+          "threshold": 0.21999999999999997
+        }
+      }
+    },
+    {
+      "held_out": 2,
+      "N_known": 2199,
+      "N_unknown": 102,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9145823859329998,
+          "best_known_acceptance": 0.8194633924511141,
+          "best_unknown_rejection": 0.9019607843137255,
+          "feasible_points": 8,
+          "threshold": 1.0561281144618988
+        },
+        "B_raw_cosine": {
+          "AUC": 0.8735521493727095,
+          "best_known_acceptance": 0.7644383810823101,
+          "best_unknown_rejection": 0.9019607843137255,
+          "feasible_points": 0,
+          "threshold": 0.7427039444446564
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8626648476580264,
+          "best_known_acceptance": 0.7207821737153252,
+          "best_unknown_rejection": 0.9215686274509803,
+          "feasible_points": 0,
+          "threshold": 1.3040536940097809
+        },
+        "D_inv_ratio": {
+          "AUC": 0.48994195222427306,
+          "best_known_acceptance": 0.3155979990904957,
+          "best_unknown_rejection": 0.7549019607843137,
+          "feasible_points": 0,
+          "threshold": 1.2021454870700836
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9290564338513942,
+          "best_known_acceptance": 0.7603456116416553,
+          "best_unknown_rejection": 0.9803921568627451,
+          "feasible_points": 19,
+          "threshold": 0.314945652173913
+        }
+      }
+    },
+    {
+      "held_out": 3,
+      "N_known": 2179,
+      "N_unknown": 122,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9298369683792386,
+          "best_known_acceptance": 0.8090867370353373,
+          "best_unknown_rejection": 0.9754098360655737,
+          "feasible_points": 18,
+          "threshold": 1.0593519508838654
+        },
+        "B_raw_cosine": {
+          "AUC": 0.966261407323257,
+          "best_known_acceptance": 0.8926112895823772,
+          "best_unknown_rejection": 0.9098360655737705,
+          "feasible_points": 40,
+          "threshold": 0.667784571647644
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8796334609799954,
+          "best_known_acceptance": 0.7287746672785681,
+          "best_unknown_rejection": 0.9590163934426229,
+          "feasible_points": 0,
+          "threshold": 1.278712421655655
+        },
+        "D_inv_ratio": {
+          "AUC": 0.6234849795740262,
+          "best_known_acceptance": 0.5534648921523635,
+          "best_unknown_rejection": 0.6557377049180327,
+          "feasible_points": 0,
+          "threshold": 1.097076267004013
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9434185481383399,
+          "best_known_acceptance": 0.8352455254703993,
+          "best_unknown_rejection": 0.9672131147540983,
+          "feasible_points": 24,
+          "threshold": 0.24391304347826087
+        }
+      }
+    },
+    {
+      "held_out": 4,
+      "N_known": 2188,
+      "N_unknown": 113,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9149665917069776,
+          "best_known_acceptance": 0.7911334552102377,
+          "best_unknown_rejection": 0.9469026548672567,
+          "feasible_points": 7,
+          "threshold": 1.0651687979698181
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9405890537283008,
+          "best_known_acceptance": 0.806672760511883,
+          "best_unknown_rejection": 0.9380530973451328,
+          "feasible_points": 6,
+          "threshold": 0.7274409532546997
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8834673440002588,
+          "best_known_acceptance": 0.6741316270566727,
+          "best_unknown_rejection": 0.9734513274336283,
+          "feasible_points": 0,
+          "threshold": 1.367183357477188
+        },
+        "D_inv_ratio": {
+          "AUC": 0.4565975311837699,
+          "best_known_acceptance": 0.12888482632541134,
+          "best_unknown_rejection": 0.9469026548672567,
+          "feasible_points": 0,
+          "threshold": 1.3669409155845642
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9401097701056446,
+          "best_known_acceptance": 0.8404936014625228,
+          "best_unknown_rejection": 0.9380530973451328,
+          "feasible_points": 26,
+          "threshold": 0.23418478260869563
+        }
+      }
+    },
+    {
+      "held_out": 5,
+      "N_known": 2200,
+      "N_unknown": 101,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9589086408640863,
+          "best_known_acceptance": 0.9009090909090909,
+          "best_unknown_rejection": 0.9801980198019802,
+          "feasible_points": 38,
+          "threshold": 1.0308006703853607
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9995904590459046,
+          "best_known_acceptance": 0.9881818181818182,
+          "best_unknown_rejection": 1.0,
+          "feasible_points": 61,
+          "threshold": 0.5376758873462677
+        },
+        "C_raw_ratio": {
+          "AUC": 0.9568001800180017,
+          "best_known_acceptance": 0.8595454545454545,
+          "best_unknown_rejection": 0.9900990099009901,
+          "feasible_points": 36,
+          "threshold": 1.1191259026527405
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5099549954995499,
+          "best_known_acceptance": 0.5340909090909091,
+          "best_unknown_rejection": 0.5544554455445545,
+          "feasible_points": 0,
+          "threshold": 1.1076284646987915
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9861903690369037,
+          "best_known_acceptance": 0.9459090909090909,
+          "best_unknown_rejection": 0.9900990099009901,
+          "feasible_points": 53,
+          "threshold": 0.13478260869565217
+        }
+      }
+    },
+    {
+      "held_out": 6,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9390549290974559,
+          "best_known_acceptance": 0.8346348185576481,
+          "best_unknown_rejection": 0.9516129032258065,
+          "feasible_points": 21,
+          "threshold": 1.051641434431076
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9718723606027828,
+          "best_known_acceptance": 0.9223702342673403,
+          "best_unknown_rejection": 0.9112903225806451,
+          "feasible_points": 47,
+          "threshold": 0.64231738448143
+        },
+        "C_raw_ratio": {
+          "AUC": 0.9144983478299524,
+          "best_known_acceptance": 0.7965089572806615,
+          "best_unknown_rejection": 0.9274193548387096,
+          "feasible_points": 2,
+          "threshold": 1.1833345293998718
+        },
+        "D_inv_ratio": {
+          "AUC": 0.605805562552788,
+          "best_known_acceptance": 0.43178686265502986,
+          "best_unknown_rejection": 0.7419354838709677,
+          "feasible_points": 0,
+          "threshold": 1.1422868967056274
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9637059730022077,
+          "best_known_acceptance": 0.8663298116674323,
+          "best_unknown_rejection": 0.9919354838709677,
+          "feasible_points": 38,
+          "threshold": 0.2182608695652174
+        }
+      }
+    },
+    {
+      "held_out": 7,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.7987093810659831,
+          "best_known_acceptance": 0.6118511713367019,
+          "best_unknown_rejection": 0.8870967741935484,
+          "feasible_points": 0,
+          "threshold": 1.1128628849983215
+        },
+        "B_raw_cosine": {
+          "AUC": 0.973909790033636,
+          "best_known_acceptance": 0.9315571887919155,
+          "best_unknown_rejection": 0.9354838709677419,
+          "feasible_points": 45,
+          "threshold": 0.6310332119464874
+        },
+        "C_raw_ratio": {
+          "AUC": 0.852204869085898,
+          "best_known_acceptance": 0.7138263665594855,
+          "best_unknown_rejection": 0.9596774193548387,
+          "feasible_points": 0,
+          "threshold": 1.300068348646164
+        },
+        "D_inv_ratio": {
+          "AUC": 0.6933816883251589,
+          "best_known_acceptance": 0.5241157556270096,
+          "best_unknown_rejection": 0.8306451612903226,
+          "feasible_points": 0,
+          "threshold": 1.0982812643051147
+        },
+        "E_mean_fusion": {
+          "AUC": 0.8668910308652037,
+          "best_known_acceptance": 0.6724850711988976,
+          "best_unknown_rejection": 0.9758064516129032,
+          "feasible_points": 0,
+          "threshold": 0.38842391304347823
+        }
+      }
+    },
+    {
+      "held_out": 8,
+      "N_known": 2197,
+      "N_unknown": 104,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9309898112811177,
+          "best_known_acceptance": 0.837960855712335,
+          "best_unknown_rejection": 0.9519230769230769,
+          "feasible_points": 21,
+          "threshold": 1.0487580597400665
+        },
+        "B_raw_cosine": {
+          "AUC": 0.90203861909597,
+          "best_known_acceptance": 0.8238507055075103,
+          "best_unknown_rejection": 0.875,
+          "feasible_points": 2,
+          "threshold": 0.7185835838317871
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8653408494100348,
+          "best_known_acceptance": 0.7146108329540283,
+          "best_unknown_rejection": 0.9423076923076923,
+          "feasible_points": 0,
+          "threshold": 1.3201943635940552
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5878842652568188,
+          "best_known_acceptance": 0.3445607646791079,
+          "best_unknown_rejection": 0.8076923076923077,
+          "feasible_points": 0,
+          "threshold": 1.1865686774253845
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9374080914533804,
+          "best_known_acceptance": 0.8461538461538461,
+          "best_unknown_rejection": 0.9519230769230769,
+          "feasible_points": 20,
+          "threshold": 0.2241304347826087
+        }
+      }
+    },
+    {
+      "held_out": 9,
+      "N_known": 2185,
+      "N_unknown": 116,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9078986822378283,
+          "best_known_acceptance": 0.8100686498855835,
+          "best_unknown_rejection": 0.8879310344827587,
+          "feasible_points": 2,
+          "threshold": 1.059794008731842
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9776493332281229,
+          "best_known_acceptance": 0.9299771167048055,
+          "best_unknown_rejection": 0.9137931034482759,
+          "feasible_points": 51,
+          "threshold": 0.6398854106664658
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8825731870906651,
+          "best_known_acceptance": 0.7167048054919909,
+          "best_unknown_rejection": 0.9655172413793104,
+          "feasible_points": 0,
+          "threshold": 1.3030439913272858
+        },
+        "D_inv_ratio": {
+          "AUC": 0.519074015623767,
+          "best_known_acceptance": 0.47414187643020594,
+          "best_unknown_rejection": 0.603448275862069,
+          "feasible_points": 0,
+          "threshold": 1.1294423341751099
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9350134143454588,
+          "best_known_acceptance": 0.8356979405034325,
+          "best_unknown_rejection": 0.9224137931034483,
+          "feasible_points": 17,
+          "threshold": 0.23684782608695654
+        }
+      }
+    },
+    {
+      "held_out": 10,
+      "N_known": 2194,
+      "N_unknown": 107,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9345411019006806,
+          "best_known_acceptance": 0.8924339106654512,
+          "best_unknown_rejection": 0.8598130841121495,
+          "feasible_points": 27,
+          "threshold": 1.0364010632038116
+        },
+        "B_raw_cosine": {
+          "AUC": 0.7870573100810196,
+          "best_known_acceptance": 0.7461257976298997,
+          "best_unknown_rejection": 0.7102803738317757,
+          "feasible_points": 0,
+          "threshold": 0.7575947940349579
+        },
+        "C_raw_ratio": {
+          "AUC": 0.7532565450378688,
+          "best_known_acceptance": 0.6453965360072926,
+          "best_unknown_rejection": 0.794392523364486,
+          "feasible_points": 0,
+          "threshold": 1.4176440834999084
+        },
+        "D_inv_ratio": {
+          "AUC": 0.6462058800978029,
+          "best_known_acceptance": 0.6385597082953509,
+          "best_unknown_rejection": 0.5981308411214953,
+          "feasible_points": 0,
+          "threshold": 1.0766762495040894
+        },
+        "E_mean_fusion": {
+          "AUC": 0.8851199959106825,
+          "best_known_acceptance": 0.8163172288058341,
+          "best_unknown_rejection": 0.8037383177570093,
+          "feasible_points": 0,
+          "threshold": 0.2534239130434783
+        }
+      }
+    },
+    {
+      "held_out": 11,
+      "N_known": 2180,
+      "N_unknown": 121,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9101523997270453,
+          "best_known_acceptance": 0.7990825688073394,
+          "best_unknown_rejection": 0.9421487603305785,
+          "feasible_points": 2,
+          "threshold": 1.0635781288146973
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9275305178557889,
+          "best_known_acceptance": 0.9036697247706422,
+          "best_unknown_rejection": 0.8347107438016529,
+          "feasible_points": 31,
+          "threshold": 0.6600042581558228
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8311016756387899,
+          "best_known_acceptance": 0.6660550458715596,
+          "best_unknown_rejection": 0.8760330578512396,
+          "feasible_points": 0,
+          "threshold": 1.366720587015152
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5200545909470013,
+          "best_known_acceptance": 0.8766055045871559,
+          "best_unknown_rejection": 0.2066115702479339,
+          "feasible_points": 0,
+          "threshold": 1.0230649411678314
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9104935931458035,
+          "best_known_acceptance": 0.8123853211009174,
+          "best_unknown_rejection": 0.9008264462809917,
+          "feasible_points": 8,
+          "threshold": 0.2579347826086957
+        }
+      }
+    },
+    {
+      "held_out": 12,
+      "N_known": 2179,
+      "N_unknown": 122,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9213092183961662,
+          "best_known_acceptance": 0.7856815052776503,
+          "best_unknown_rejection": 0.9836065573770492,
+          "feasible_points": 6,
+          "threshold": 1.067295491695404
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9644445113189235,
+          "best_known_acceptance": 0.8889398806792106,
+          "best_unknown_rejection": 0.9426229508196722,
+          "feasible_points": 37,
+          "threshold": 0.6745129227638245
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8627096201445994,
+          "best_known_acceptance": 0.7021569527306104,
+          "best_unknown_rejection": 0.9508196721311475,
+          "feasible_points": 0,
+          "threshold": 1.325755089521408
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5517345150053792,
+          "best_known_acceptance": 0.22854520422212024,
+          "best_unknown_rejection": 0.8852459016393442,
+          "feasible_points": 0,
+          "threshold": 1.2608132660388947
+        },
+        "E_mean_fusion": {
+          "AUC": 0.932972336535785,
+          "best_known_acceptance": 0.8458008260670032,
+          "best_unknown_rejection": 0.9262295081967213,
+          "feasible_points": 18,
+          "threshold": 0.23032608695652174
+        }
+      }
+    },
+    {
+      "held_out": 13,
+      "N_known": 2178,
+      "N_unknown": 123,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9175569441644829,
+          "best_known_acceptance": 0.8383838383838383,
+          "best_unknown_rejection": 0.926829268292683,
+          "feasible_points": 10,
+          "threshold": 1.0522732436656952
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9506147954041524,
+          "best_known_acceptance": 0.8590449954086318,
+          "best_unknown_rejection": 0.9186991869918699,
+          "feasible_points": 32,
+          "threshold": 0.6876871287822723
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8497950681986159,
+          "best_known_acceptance": 0.699265381083563,
+          "best_unknown_rejection": 0.943089430894309,
+          "feasible_points": 0,
+          "threshold": 1.3090070486068726
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5158439532053722,
+          "best_known_acceptance": 0.09963269054178145,
+          "best_unknown_rejection": 0.983739837398374,
+          "feasible_points": 0,
+          "threshold": 1.422212541103363
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9264671847820407,
+          "best_known_acceptance": 0.8402203856749312,
+          "best_unknown_rejection": 0.959349593495935,
+          "feasible_points": 16,
+          "threshold": 0.2370652173913044
+        }
+      }
+    },
+    {
+      "held_out": 14,
+      "N_known": 2180,
+      "N_unknown": 121,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.8779740693001743,
+          "best_known_acceptance": 0.7087155963302753,
+          "best_unknown_rejection": 0.9834710743801653,
+          "feasible_points": 0,
+          "threshold": 1.0850461423397064
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9146144514368034,
+          "best_known_acceptance": 0.8027522935779816,
+          "best_unknown_rejection": 0.9173553719008265,
+          "feasible_points": 6,
+          "threshold": 0.7243286669254303
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8130222154825991,
+          "best_known_acceptance": 0.6922018348623853,
+          "best_unknown_rejection": 0.8760330578512396,
+          "feasible_points": 0,
+          "threshold": 1.3358052670955658
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5017400864356661,
+          "best_known_acceptance": 0.20825688073394497,
+          "best_unknown_rejection": 0.8512396694214877,
+          "feasible_points": 0,
+          "threshold": 1.2706509828567505
+        },
+        "E_mean_fusion": {
+          "AUC": 0.8899897641974372,
+          "best_known_acceptance": 0.7844036697247706,
+          "best_unknown_rejection": 0.9173553719008265,
+          "feasible_points": 0,
+          "threshold": 0.28641304347826085
+        }
+      }
+    },
+    {
+      "held_out": 15,
+      "N_known": 2191,
+      "N_unknown": 110,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.8942367536616739,
+          "best_known_acceptance": 0.7247832040164308,
+          "best_unknown_rejection": 0.9545454545454546,
+          "feasible_points": 0,
+          "threshold": 1.0824449360370636
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9556740384216423,
+          "best_known_acceptance": 0.8484710178000913,
+          "best_unknown_rejection": 0.9545454545454546,
+          "feasible_points": 32,
+          "threshold": 0.7026811838150024
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8289614538815818,
+          "best_known_acceptance": 0.7101780009128252,
+          "best_unknown_rejection": 0.8727272727272727,
+          "feasible_points": 0,
+          "threshold": 1.3154949843883514
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5390315754533006,
+          "best_known_acceptance": 0.26563213144682796,
+          "best_unknown_rejection": 0.8454545454545455,
+          "feasible_points": 0,
+          "threshold": 1.2358379364013672
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9037052404464545,
+          "best_known_acceptance": 0.772706526700137,
+          "best_unknown_rejection": 0.9545454545454546,
+          "feasible_points": 5,
+          "threshold": 0.3010869565217391
+        }
+      }
+    },
+    {
+      "held_out": 16,
+      "N_known": 2182,
+      "N_unknown": 119,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9235725454251362,
+          "best_known_acceptance": 0.8437213565536206,
+          "best_unknown_rejection": 0.907563025210084,
+          "feasible_points": 14,
+          "threshold": 1.0539474487304688
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9586147933050397,
+          "best_known_acceptance": 0.8675527039413382,
+          "best_unknown_rejection": 0.907563025210084,
+          "feasible_points": 35,
+          "threshold": 0.6932260394096375
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8946999514746319,
+          "best_known_acceptance": 0.7378551787351054,
+          "best_unknown_rejection": 0.9495798319327731,
+          "feasible_points": 0,
+          "threshold": 1.2843298614025116
+        },
+        "D_inv_ratio": {
+          "AUC": 0.6373614523719662,
+          "best_known_acceptance": 0.5375802016498625,
+          "best_unknown_rejection": 0.7058823529411765,
+          "feasible_points": 0,
+          "threshold": 1.1064972877502441
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9476484452626147,
+          "best_known_acceptance": 0.8538038496791934,
+          "best_unknown_rejection": 0.9495798319327731,
+          "feasible_points": 29,
+          "threshold": 0.2228804347826087
+        }
+      }
+    },
+    {
+      "held_out": 17,
+      "N_known": 2189,
+      "N_unknown": 112,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9130351432487112,
+          "best_known_acceptance": 0.8177249885792599,
+          "best_unknown_rejection": 0.9107142857142857,
+          "feasible_points": 3,
+          "threshold": 1.0596938729286194
+        },
+        "B_raw_cosine": {
+          "AUC": 0.966198688246427,
+          "best_known_acceptance": 0.9319323892188214,
+          "best_unknown_rejection": 0.8839285714285714,
+          "feasible_points": 48,
+          "threshold": 0.6370259076356888
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8929224042289368,
+          "best_known_acceptance": 0.7734125171311101,
+          "best_unknown_rejection": 0.9107142857142857,
+          "feasible_points": 0,
+          "threshold": 1.2104262113571167
+        },
+        "D_inv_ratio": {
+          "AUC": 0.4921645565489786,
+          "best_known_acceptance": 0.06532663316582915,
+          "best_unknown_rejection": 0.9910714285714286,
+          "feasible_points": 0,
+          "threshold": 1.536102294921875
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9429554427984076,
+          "best_known_acceptance": 0.84376427592508,
+          "best_unknown_rejection": 0.9553571428571429,
+          "feasible_points": 23,
+          "threshold": 0.23141304347826086
+        }
+      }
+    },
+    {
+      "held_out": 18,
+      "N_known": 2203,
+      "N_unknown": 98,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.8955274347596506,
+          "best_known_acceptance": 0.6935996368588289,
+          "best_unknown_rejection": 0.9795918367346939,
+          "feasible_points": 0,
+          "threshold": 1.0999969244003296
+        },
+        "B_raw_cosine": {
+          "AUC": 0.9522172918191334,
+          "best_known_acceptance": 0.8987743985474353,
+          "best_unknown_rejection": 0.8979591836734694,
+          "feasible_points": 32,
+          "threshold": 0.6685822010040283
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8771665724846452,
+          "best_known_acceptance": 0.7453472537448933,
+          "best_unknown_rejection": 0.9081632653061225,
+          "feasible_points": 0,
+          "threshold": 1.2794939875602724
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5426922471212725,
+          "best_known_acceptance": 0.2233318202451203,
+          "best_unknown_rejection": 0.9081632653061225,
+          "feasible_points": 0,
+          "threshold": 1.2760745882987976
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9239997406134491,
+          "best_known_acceptance": 0.781661370857921,
+          "best_unknown_rejection": 0.9591836734693877,
+          "feasible_points": 12,
+          "threshold": 0.29478260869565215
+        }
+      }
+    },
+    {
+      "held_out": 19,
+      "N_known": 2187,
+      "N_unknown": 114,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9377341387304566,
+          "best_known_acceptance": 0.8152720621856424,
+          "best_unknown_rejection": 0.9473684210526315,
+          "feasible_points": 21,
+          "threshold": 1.0639154613018036
+        },
+        "B_raw_cosine": {
+          "AUC": 0.8719105720405265,
+          "best_known_acceptance": 0.7581161408321903,
+          "best_unknown_rejection": 0.8596491228070176,
+          "feasible_points": 0,
+          "threshold": 0.7528763115406036
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8344443642256074,
+          "best_known_acceptance": 0.7453132144490169,
+          "best_unknown_rejection": 0.8157894736842105,
+          "feasible_points": 0,
+          "threshold": 1.2785101234912872
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5788711605259147,
+          "best_known_acceptance": 0.7640603566529492,
+          "best_unknown_rejection": 0.3684210526315789,
+          "feasible_points": 0,
+          "threshold": 1.0443625748157501
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9294415164568944,
+          "best_known_acceptance": 0.8221307727480567,
+          "best_unknown_rejection": 0.9210526315789473,
+          "feasible_points": 16,
+          "threshold": 0.25717391304347825
+        }
+      }
+    },
+    {
+      "held_out": 20,
+      "N_known": 2177,
+      "N_unknown": 124,
+      "candidates": {
+        "A_spd_ratio": {
+          "AUC": 0.9384325870167589,
+          "best_known_acceptance": 0.802939825447864,
+          "best_unknown_rejection": 0.9919354838709677,
+          "feasible_points": 24,
+          "threshold": 1.0628324747085571
+        },
+        "B_raw_cosine": {
+          "AUC": 0.879006327144487,
+          "best_known_acceptance": 0.780431786862655,
+          "best_unknown_rejection": 0.8306451612903226,
+          "feasible_points": 0,
+          "threshold": 0.7375032156705856
+        },
+        "C_raw_ratio": {
+          "AUC": 0.8471816794345578,
+          "best_known_acceptance": 0.6881028938906752,
+          "best_unknown_rejection": 0.8790322580645161,
+          "feasible_points": 0,
+          "threshold": 1.3697243630886078
+        },
+        "D_inv_ratio": {
+          "AUC": 0.5425915361477025,
+          "best_known_acceptance": 0.3128158015617823,
+          "best_unknown_rejection": 0.782258064516129,
+          "feasible_points": 0,
+          "threshold": 1.2065420150756836
+        },
+        "E_mean_fusion": {
+          "AUC": 0.9311033976914074,
+          "best_known_acceptance": 0.7836472209462563,
+          "best_unknown_rejection": 0.9838709677419355,
+          "feasible_points": 15,
+          "threshold": 0.2939673913043478
+        }
+      }
+    }
+  ]
+}

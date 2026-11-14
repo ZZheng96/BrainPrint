@@ -1,0 +1,66 @@
+{
+  "experiment": "E107_proxy_test_gap",
+  "note": "Test diagnostic AUC uses Session labels only after predictions were written; it is not used for selection.",
+  "loso": {
+    "A_spd_ratio": 0.9144,
+    "B_raw_cosine": 0.9353,
+    "C_raw_ratio": 0.8641,
+    "D_inv_ratio": 0.5564,
+    "E_mean_fusion": 0.9289
+  },
+  "test_diagnostic": {
+    "E102_spd_ratio": 0.5856,
+    "E104_inv_ratio": 0.5305,
+    "E106_mean_fusion": 0.5308
+  },
+  "audit": {
+    "E102_spd_ratio": {
+      "S1_rejection": 0.8427,
+      "S2_acceptance": 0.2873
+    },
+    "E103_external_cal": {
+      "S1_rejection": 0.9291,
+      "S2_acceptance": 0.1258
+    },
+    "E104_inv_ratio": {
+      "S1_rejection": 0.4263,
+      "S2_acceptance": 0.615
+    },
+    "E106_mean_fusion": {
+      "S1_rejection": 0.5345,
+      "S2_acceptance": 0.5176
+    }
+  },
+  "gap_table": [
+    {
+      "candidate": "A_spd_ratio",
+      "loso_auc": 0.9144,
+      "test_diag_auc": 0.5856,
+      "gap": 0.3288
+    },
+    {
+      "candidate": "B_raw_cosine",
+      "loso_auc": 0.9353,
+      "test_diag_auc": NaN,
+      "gap": NaN
+    },
+    {
+      "candidate": "C_raw_ratio",
+      "loso_auc": 0.8641,
+      "test_diag_auc": NaN,
+      "gap": NaN
+    },
+    {
+      "candidate": "D_inv_ratio",
+      "loso_auc": 0.5564,
+      "test_diag_auc": 0.5305,
+      "gap": 0.025900000000000034
+    },
+    {
+      "candidate": "E_mean_fusion",
+      "loso_auc": 0.9289,
+      "test_diag_auc": 0.5308,
+      "gap": 0.3980999999999999
+    }
+  ]
+}
