@@ -1,0 +1,106 @@
+{
+  "experiment": "E191_fix_gate1_gate7",
+  "date": "2026-11-15",
+  "purpose": "Attack only two gates: #1 (Train in-sample accuracy = 1.00) and #7 (RA under the self-built PGD >= 0.95), while keeping Test S1 rejection >= 0.70 AND Test S2 acceptance >= 0.70 and the other eight gates. Identity model is retrained (branch A v3) with wider/deeper EEGNet, longer schedule, lower weight decay and stronger mixed-objective adversarial training; the gate side is E189's frozen Train-only stream cache, reused read-only.",
+  "frozen_sources": {
+    "e180": "research/E180_dual_branch_adversarial_openset",
+    "e189": "research/E189_balanced_gate_gates",
+    "e162": "research/E162_raw_eeg_contrastive_v2",
+    "note": "E180 provides data/model utilities and the v2 reference model; E189 provides the frozen gate streams, candidate definitions, PGD and metric code. Nothing is written into another experiment directory."
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_root": "Brainprint_Competition",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "classes": [1, 20]
+  },
+  "protocol": {
+    "fit_fraction": 0.6,
+    "eval_window": "0.6 < frac <= 0.8 (blocks 3 and 4)",
+    "blocks": 5,
+    "seed": 20261115,
+    "fit_rows": "frac <= 0.6 only for prototypes / PCA / statistics",
+    "train_oof": "5 contiguous frac blocks; model for block b trained on blocks != b",
+    "note": "identical protocol to E180/E189 so every delta is attributable to the identity model"
+  },
+  "branch_a_v3": {
+    "architecture": "EEGNet-style 1D CNN, widths [32,64,128,192,192], kernel 9, stride 2, BN+ELU, global average pool, dropout 0.2, Linear(192,20)",
+    "widths": [32, 64, 128, 192, 192],
+    "kernel": 9,
+    "stride": 2,
+    "dropout": 0.2,
+    "input_normalisation": "per-trial channel mean removal then division by per-trial global RMS (differentiable, inside forward)",
+    "batch_size": 64,
+    "learning_rate": 0.002,
+    "weight_decay": 0.00005,
+    "scheduler": "cosine",
+    "fold_epochs": 30,
+    "full_epochs": 60,
+    "early_stop": "none - the full model is taken at the last epoch so that #1 measures true fitting capacity; the best-window snapshot is kept for reference only",
+    "adv_weight": 0.7,
+    "loss": "0.3 * CE(clean augmented) + 0.7 * CE(adversarial)",
+    "pgd_steps": 5,
+    "pgd_eps_mix": [[0.02, 0.5], [0.03, 0.3], [0.04, 0.2]],
+    "pgd_goal_mix": ["A", "B", "C"],
+    "pgd_goal_sampling": "one goal per batch, uniform over impostor / broad-confusion / boundary-impostor",
+    "polish": {"epochs": 10, "learning_rate": 0.0002, "adv_weight": 0.0,
+               "trigger": "only if the 60-epoch model is still below 1.00 in-sample accuracy"},
+    "augment": {
+      "time_shift_samples": 50,
+      "channel_dropout": 0.1,
+      "amplitude_scale": [0.9, 1.1],
+      "gaussian_noise_snr_db": [20, 30]
+    }
+  },
+  "branch_a_v2_reference": {
+    "in_sample_accuracy": 0.998761500353857,
+    "oof_accuracy_5block": 0.9881457891012031,
+    "oof_macro_f1": 0.9877870965340975,
+    "oof_accuracy_forward_blocks": 0.9889346929919722,
+    "note": "E180 model_branch_a.pt, frozen; used for the before/after table only"
+  },
+  "gate": {
+    "source": "research/E189_balanced_gate_gates/cache/{candidates,stream_scores}.npz (read-only)",
+    "candidates": "all 14 E189 candidates (6 single streams + 8 weighted fusions)",
+    "threshold": "tau = quantile(Train 5-block OOF score, 1 - a), a = Train known acceptance",
+    "grid": [0.84, 0.86, 0.87, 0.88, 0.885, 0.89, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.955, 0.96, 0.97, 0.98],
+    "primary_work_point": "a = 0.90 for every candidate - the project's a-priori 90% Train known acceptance convention (E170/E180 branch B), NOT tuned on Test",
+    "candidate_rule": "Train-only: among all candidates, maximise LOSO unknown rejection at the primary work point",
+    "posthoc_dual_rule": "reporting only: enumerate every candidate x a and list those with Test S1 >= 0.70 and Test S2 >= 0.70; this is an audit, not a deployable selector"
+  },
+  "attack": {
+    "code": "E189.pgd / E189.score_condition / E189.attack_metrics, unchanged",
+    "domain": "Train window 0.6 < frac <= 0.8, stratified cap 400 per task, same seed and subset as E180/E183/E189",
+    "eps_normalised": [0.005, 0.01, 0.02],
+    "steps": 8,
+    "goals": {"A": "impersonation", "B": "broad confusion", "C": "boundary impersonation",
+              "D": "gate evasion at eps 0.02"},
+    "reading": "#7 = min RA over eps x goals; #8 = min ASafeR over the same conditions",
+    "identity_model": "model_branch_a_v3.pt (trained on all Train rows, so the window rows are in its training set - same construct as E180/E189, RA is robustness not generalisation)"
+  },
+  "gates": {
+    "1": "Train in-sample accuracy = 1.00 (capacity check only; a k-NN readout would be a technical satisfy)",
+    "2": "5-block OOF closed-set accuracy C >= 0.95",
+    "3": "5-block OOF identity macro-F1 >= 0.92",
+    "4": "block-out accuracy on forward blocks >= 0.90",
+    "5": "pseudo-unknown LOSO AUROC >= 0.98",
+    "6": "U@95% >= 0.95",
+    "7": "RA worst over eps x goal >= 0.95",
+    "8": "ASafeR worst over the same conditions >= 0.98",
+    "9": "Test S2 acceptance >= 0.70",
+    "10": "Test S1 rejection >= 0.70",
+    "criterion_note": "user criterion: S1 >= 0.70 AND S2 >= 0.70 in the same work point (both, not their mean)"
+  },
+  "reporting": {
+    "test_official": "N/A - Test has no public identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "Test scores are computed before the Session column is read; Session is used only for the #9/#10 audit",
+    "single_work_point": "every counted column is one candidate at one a; nothing is spliced across work points"
+  }
+}

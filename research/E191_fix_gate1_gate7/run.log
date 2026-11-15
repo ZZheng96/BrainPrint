@@ -1,0 +1,265 @@
+
+===== E191 stage train =====
+stage train: 11304 rows, fit_rows 6695, window 2301, pca/prototypes Train-only
+  raw 4096/11304 (2s)
+  raw 8192/11304 (3s)
+  raw 11304/11304 (4s)
+raw on GPU: (11304, 18, 1200) (0.91 GiB)
+  [fold0] epoch 1/30 loss 1.8941 4.1s
+  [fold0] epoch 2/30 loss 1.0491 3.7s
+  [fold0] epoch 3/30 loss 0.7345 3.7s
+  [fold0] epoch 4/30 loss 0.5717 3.6s
+  [fold0] epoch 5/30 loss 0.5215 3.7s
+  [fold0] epoch 6/30 loss 0.4490 3.7s
+  [fold0] epoch 7/30 loss 0.3970 3.7s
+  [fold0] epoch 8/30 loss 0.3591 3.7s
+  [fold0] epoch 9/30 loss 0.3399 3.7s
+  [fold0] epoch 10/30 loss 0.2919 3.7s
+  [fold0] epoch 11/30 loss 0.2756 3.7s
+  [fold0] epoch 12/30 loss 0.2583 3.7s
+  [fold0] epoch 13/30 loss 0.2431 3.7s
+  [fold0] epoch 14/30 loss 0.2280 3.7s
+  [fold0] epoch 15/30 loss 0.2151 3.8s
+  [fold0] epoch 16/30 loss 0.1989 4.1s
+  [fold0] epoch 17/30 loss 0.1695 4.1s
+  [fold0] epoch 18/30 loss 0.1898 3.7s
+  [fold0] epoch 19/30 loss 0.1721 3.7s
+  [fold0] epoch 20/30 loss 0.1408 3.7s
+  [fold0] epoch 21/30 loss 0.1383 3.7s
+  [fold0] epoch 22/30 loss 0.1274 3.7s
+  [fold0] epoch 23/30 loss 0.1108 3.8s
+  [fold0] epoch 24/30 loss 0.1204 4.1s
+  [fold0] epoch 25/30 loss 0.1100 4.3s
+  [fold0] epoch 26/30 loss 0.1117 4.3s
+  [fold0] epoch 27/30 loss 0.1042 4.3s
+  [fold0] epoch 28/30 loss 0.1092 4.3s
+  [fold0] epoch 29/30 loss 0.0984 4.3s
+  [fold0] epoch 30/30 loss 0.1007 4.3s
+  fold0 OOF accuracy 0.9830
+  [fold1] epoch 1/30 loss 2.0071 4.3s
+  [fold1] epoch 2/30 loss 1.1833 4.3s
+  [fold1] epoch 3/30 loss 0.8278 4.4s
+  [fold1] epoch 4/30 loss 0.6397 4.4s
+  [fold1] epoch 5/30 loss 0.5462 4.3s
+  [fold1] epoch 6/30 loss 0.4763 4.3s
+  [fold1] epoch 7/30 loss 0.4056 4.3s
+  [fold1] epoch 8/30 loss 0.3839 4.4s
+  [fold1] epoch 9/30 loss 0.3344 4.3s
+  [fold1] epoch 10/30 loss 0.3072 4.3s
+  [fold1] epoch 11/30 loss 0.2855 4.3s
+  [fold1] epoch 12/30 loss 0.2595 4.3s
+  [fold1] epoch 13/30 loss 0.2500 4.4s
+  [fold1] epoch 14/30 loss 0.2414 4.3s
+  [fold1] epoch 15/30 loss 0.2131 4.3s
+  [fold1] epoch 16/30 loss 0.2062 4.4s
+  [fold1] epoch 17/30 loss 0.1868 4.5s
+  [fold1] epoch 18/30 loss 0.1821 4.4s
+  [fold1] epoch 19/30 loss 0.1662 4.3s
+  [fold1] epoch 20/30 loss 0.1662 4.3s
+  [fold1] epoch 21/30 loss 0.1575 4.3s
+  [fold1] epoch 22/30 loss 0.1476 4.3s
+  [fold1] epoch 23/30 loss 0.1383 4.3s
+  [fold1] epoch 24/30 loss 0.1272 4.3s
+  [fold1] epoch 25/30 loss 0.1251 4.3s
+  [fold1] epoch 26/30 loss 0.1199 4.5s
+  [fold1] epoch 27/30 loss 0.1112 4.4s
+  [fold1] epoch 28/30 loss 0.1119 4.4s
+  [fold1] epoch 29/30 loss 0.0982 4.3s
+  [fold1] epoch 30/30 loss 0.1047 4.3s
+  fold1 OOF accuracy 0.9905
+  [fold2] epoch 1/30 loss 1.9723 4.3s
+  [fold2] epoch 2/30 loss 1.1135 4.3s
+  [fold2] epoch 3/30 loss 0.8269 4.3s
+  [fold2] epoch 4/30 loss 0.6810 4.3s
+  [fold2] epoch 5/30 loss 0.5730 4.3s
+  [fold2] epoch 6/30 loss 0.4816 4.3s
+  [fold2] epoch 7/30 loss 0.4309 4.3s
+  [fold2] epoch 8/30 loss 0.3612 4.3s
+  [fold2] epoch 9/30 loss 0.3467 4.3s
+  [fold2] epoch 10/30 loss 0.3141 4.3s
+  [fold2] epoch 11/30 loss 0.2975 4.3s
+  [fold2] epoch 12/30 loss 0.2727 4.3s
+  [fold2] epoch 13/30 loss 0.2378 4.3s
+  [fold2] epoch 14/30 loss 0.2367 4.3s
+  [fold2] epoch 15/30 loss 0.2197 4.3s
+  [fold2] epoch 16/30 loss 0.1921 4.3s
+  [fold2] epoch 17/30 loss 0.1949 4.3s
+  [fold2] epoch 18/30 loss 0.1980 4.3s
+  [fold2] epoch 19/30 loss 0.1645 4.3s
+  [fold2] epoch 20/30 loss 0.1478 4.3s
+  [fold2] epoch 21/30 loss 0.1378 4.3s
+  [fold2] epoch 22/30 loss 0.1415 4.3s
+  [fold2] epoch 23/30 loss 0.1332 4.3s
+  [fold2] epoch 24/30 loss 0.1215 4.3s
+  [fold2] epoch 25/30 loss 0.1217 4.4s
+  [fold2] epoch 26/30 loss 0.1153 4.3s
+  [fold2] epoch 27/30 loss 0.1080 4.3s
+  [fold2] epoch 28/30 loss 0.1083 4.3s
+  [fold2] epoch 29/30 loss 0.1097 4.4s
+  [fold2] epoch 30/30 loss 0.1104 4.3s
+  fold2 OOF accuracy 0.9889
+  [fold3] epoch 1/30 loss 1.8838 4.3s
+  [fold3] epoch 2/30 loss 1.0507 4.3s
+  [fold3] epoch 3/30 loss 0.7447 4.3s
+  [fold3] epoch 4/30 loss 0.6102 4.3s
+  [fold3] epoch 5/30 loss 0.5179 4.3s
+  [fold3] epoch 6/30 loss 0.4314 4.3s
+  [fold3] epoch 7/30 loss 0.3914 4.3s
+  [fold3] epoch 8/30 loss 0.3442 4.3s
+  [fold3] epoch 9/30 loss 0.3348 4.3s
+  [fold3] epoch 10/30 loss 0.3056 4.3s
+  [fold3] epoch 11/30 loss 0.2769 4.3s
+  [fold3] epoch 12/30 loss 0.2544 4.3s
+  [fold3] epoch 13/30 loss 0.2363 4.3s
+  [fold3] epoch 14/30 loss 0.2299 4.3s
+  [fold3] epoch 15/30 loss 0.2147 4.3s
+  [fold3] epoch 16/30 loss 0.1827 4.3s
+  [fold3] epoch 17/30 loss 0.1639 4.3s
+  [fold3] epoch 18/30 loss 0.1700 4.3s
+  [fold3] epoch 19/30 loss 0.1431 4.3s
+  [fold3] epoch 20/30 loss 0.1323 4.3s
+  [fold3] epoch 21/30 loss 0.1360 4.3s
+  [fold3] epoch 22/30 loss 0.1172 4.3s
+  [fold3] epoch 23/30 loss 0.1110 4.3s
+  [fold3] epoch 24/30 loss 0.1153 4.3s
+  [fold3] epoch 25/30 loss 0.1120 4.3s
+  [fold3] epoch 26/30 loss 0.1096 4.3s
+  [fold3] epoch 27/30 loss 0.0999 4.3s
+  [fold3] epoch 28/30 loss 0.1092 4.3s
+  [fold3] epoch 29/30 loss 0.1108 4.3s
+  [fold3] epoch 30/30 loss 0.1028 4.3s
+  fold3 OOF accuracy 0.9913
+  [fold4] epoch 1/30 loss 1.9811 4.3s
+  [fold4] epoch 2/30 loss 1.1758 4.3s
+  [fold4] epoch 3/30 loss 0.8026 4.2s
+  [fold4] epoch 4/30 loss 0.6133 4.2s
+  [fold4] epoch 5/30 loss 0.5482 4.3s
+  [fold4] epoch 6/30 loss 0.5018 4.2s
+  [fold4] epoch 7/30 loss 0.4108 4.2s
+  [fold4] epoch 8/30 loss 0.3752 4.3s
+  [fold4] epoch 9/30 loss 0.3486 4.3s
+  [fold4] epoch 10/30 loss 0.3167 4.2s
+  [fold4] epoch 11/30 loss 0.2869 4.3s
+  [fold4] epoch 12/30 loss 0.2539 4.3s
+  [fold4] epoch 13/30 loss 0.2456 4.3s
+  [fold4] epoch 14/30 loss 0.2207 4.3s
+  [fold4] epoch 15/30 loss 0.2100 4.2s
+  [fold4] epoch 16/30 loss 0.1775 4.3s
+  [fold4] epoch 17/30 loss 0.2066 4.2s
+  [fold4] epoch 18/30 loss 0.1823 4.2s
+  [fold4] epoch 19/30 loss 0.1651 4.3s
+  [fold4] epoch 20/30 loss 0.1594 4.2s
+  [fold4] epoch 21/30 loss 0.1573 4.2s
+  [fold4] epoch 22/30 loss 0.1202 4.3s
+  [fold4] epoch 23/30 loss 0.1334 4.3s
+  [fold4] epoch 24/30 loss 0.1187 4.2s
+  [fold4] epoch 25/30 loss 0.1147 4.2s
+  [fold4] epoch 26/30 loss 0.1204 4.3s
+  [fold4] epoch 27/30 loss 0.0999 4.3s
+  [fold4] epoch 28/30 loss 0.1073 4.3s
+  [fold4] epoch 29/30 loss 0.1129 4.3s
+  [fold4] epoch 30/30 loss 0.1129 4.2s
+  fold4 OOF accuracy 0.9882
+  [full] epoch 1/60 loss 1.9000 5.4s eval_acc 0.8127
+  [full] epoch 2/60 loss 0.9839 5.4s eval_acc 0.9066
+  [full] epoch 3/60 loss 0.7090 5.4s eval_acc 0.9487
+  [full] epoch 4/60 loss 0.5731 5.4s eval_acc 0.9570
+  [full] epoch 5/60 loss 0.4795 5.4s eval_acc 0.9631
+  [full] epoch 6/60 loss 0.4216 5.4s eval_acc 0.9831
+  [full] epoch 7/60 loss 0.3732 5.4s eval_acc 0.9726
+  [full] epoch 8/60 loss 0.3404 5.4s eval_acc 0.9813
+  [full] epoch 9/60 loss 0.3230 5.4s eval_acc 0.9857
+  [full] epoch 10/60 loss 0.3047 5.4s eval_acc 0.9817
+  [full] epoch 11/60 loss 0.2802 5.4s eval_acc 0.9870
+  [full] epoch 12/60 loss 0.2703 5.4s eval_acc 0.9917
+  [full] epoch 13/60 loss 0.2421 5.4s eval_acc 0.9944
+  [full] epoch 14/60 loss 0.2443 5.4s eval_acc 0.9948
+  [full] epoch 15/60 loss 0.2347 5.4s eval_acc 0.9939
+  [full] epoch 16/60 loss 0.2325 5.4s eval_acc 0.9935
+  [full] epoch 17/60 loss 0.1977 5.4s eval_acc 0.9961
+  [full] epoch 18/60 loss 0.1965 5.4s eval_acc 0.9965
+  [full] epoch 19/60 loss 0.1862 5.4s eval_acc 0.9983
+  [full] epoch 20/60 loss 0.1884 5.4s eval_acc 0.9961
+  [full] epoch 21/60 loss 0.1726 5.4s eval_acc 0.9991
+  [full] epoch 22/60 loss 0.1573 5.6s eval_acc 0.9991
+  [full] epoch 23/60 loss 0.1721 5.4s eval_acc 0.9978
+  [full] epoch 24/60 loss 0.1519 5.4s eval_acc 0.9974
+  [full] epoch 25/60 loss 0.1378 5.4s eval_acc 0.9983
+  [full] epoch 26/60 loss 0.1440 5.4s eval_acc 0.9991
+  [full] epoch 27/60 loss 0.1530 5.4s eval_acc 0.9961
+  [full] epoch 28/60 loss 0.1351 5.4s eval_acc 0.9983
+  [full] epoch 29/60 loss 0.1173 5.4s eval_acc 0.9987
+  [full] epoch 30/60 loss 0.1276 5.4s eval_acc 1.0000
+  [full] epoch 31/60 loss 0.1179 5.4s eval_acc 0.9996
+  [full] epoch 32/60 loss 0.1197 5.4s eval_acc 0.9996
+  [full] epoch 33/60 loss 0.1243 5.4s eval_acc 1.0000
+  [full] epoch 34/60 loss 0.1004 5.4s eval_acc 0.9987
+  [full] epoch 35/60 loss 0.0942 5.4s eval_acc 0.9991
+  [full] epoch 36/60 loss 0.0885 5.4s eval_acc 1.0000
+  [full] epoch 37/60 loss 0.1012 5.4s eval_acc 0.9991
+  [full] epoch 38/60 loss 0.0919 5.4s eval_acc 0.9991
+  [full] epoch 39/60 loss 0.1018 5.4s eval_acc 1.0000
+  [full] epoch 40/60 loss 0.0906 5.4s eval_acc 0.9996
+  [full] epoch 41/60 loss 0.0825 5.4s eval_acc 1.0000
+  [full] epoch 42/60 loss 0.0899 5.4s eval_acc 1.0000
+  [full] epoch 43/60 loss 0.0806 5.4s eval_acc 1.0000
+  [full] epoch 44/60 loss 0.0618 5.4s eval_acc 1.0000
+  [full] epoch 45/60 loss 0.0739 5.4s eval_acc 1.0000
+  [full] epoch 46/60 loss 0.0639 5.4s eval_acc 1.0000
+  [full] epoch 47/60 loss 0.0706 5.4s eval_acc 1.0000
+  [full] epoch 48/60 loss 0.0648 5.4s eval_acc 1.0000
+  [full] epoch 49/60 loss 0.0658 5.4s eval_acc 1.0000
+  [full] epoch 50/60 loss 0.0614 5.4s eval_acc 1.0000
+  [full] epoch 51/60 loss 0.0530 5.4s eval_acc 1.0000
+  [full] epoch 52/60 loss 0.0634 5.4s eval_acc 1.0000
+  [full] epoch 53/60 loss 0.0615 5.5s eval_acc 1.0000
+  [full] epoch 54/60 loss 0.0516 5.4s eval_acc 1.0000
+  [full] epoch 55/60 loss 0.0519 5.4s eval_acc 1.0000
+  [full] epoch 56/60 loss 0.0565 5.4s eval_acc 1.0000
+  [full] epoch 57/60 loss 0.0559 5.4s eval_acc 1.0000
+  [full] epoch 58/60 loss 0.0553 5.4s eval_acc 1.0000
+  [full] epoch 59/60 loss 0.0570 5.4s eval_acc 1.0000
+  [full] epoch 60/60 loss 0.0578 5.4s eval_acc 1.0000
+  full model (last epoch) in-sample accuracy 1.0000
+D:\WORK\BCIC2026\BrainPrint\research\E191_fix_gate1_gate7\run_e191.py:191: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:209.)
+  lab = torch.as_tensor(labels, dtype=torch.long, device=DEVICE)
+  in-sample macro-F1 1.0000; LOO 1-NN on features 0.9976 (27 wrong)
+stage train done in 965s: OOF 0.9884, in-sample 1.0000
+
+===== E191 stage attack =====
+stage attack: 1252 window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  eps=0.005 goal A done (3s)
+  eps=0.005 goal B done (4s)
+  eps=0.005 goal C done (5s)
+  eps=0.010 goal A done (6s)
+  eps=0.010 goal B done (7s)
+  eps=0.010 goal C done (8s)
+  eps=0.020 goal A done (9s)
+  eps=0.020 goal B done (10s)
+  eps=0.020 goal C done (11s)
+  goal D [e65_pca96_k12] done (12s)
+  goal D [e65_pca64_k1] done (14s)
+  goal D [subwin6_pca96_k1] done (16s)
+  goal D [subwin12_pca48_k1] done (19s)
+  goal D [logbp_pca16_k1] done (21s)
+  goal D [e162_pca128_k1] done (22s)
+  goal D [fuse_e65v64k1__sw6v96k1__logbpv16k1] done (26s)
+  goal D [fuse_e65v64k1__logbpv16k1__e162v128k1] done (29s)
+  goal D [fuse_e65v64k1__sw6v96k1__logbpv16k1__e162v128k1] done (34s)
+stage attack done in 34s
+
+===== E191 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E191_fix_gate1_gate7\report.md
+
+===== E191 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E191_fix_gate1_gate7\report.md
+
+===== E191 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E191_fix_gate1_gate7\report.md
+
+===== E191 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E191_fix_gate1_gate7\report.md
+
+===== E191 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E191_fix_gate1_gate7\report.md

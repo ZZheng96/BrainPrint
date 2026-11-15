@@ -1,0 +1,357 @@
+{
+  "branch_a_v3": {
+    "architecture": "widths [32, 64, 128, 192, 192]",
+    "n_parameters": 655380,
+    "fold_epochs": 30,
+    "full_epochs": 60,
+    "folds": [
+      {
+        "block": 0,
+        "n_train": 9131,
+        "n_eval": 2173,
+        "accuracy": 0.9829728485964105,
+        "mean_epoch_seconds": 3.872804061571757,
+        "parameter_count": 655380
+      },
+      {
+        "block": 1,
+        "n_train": 9101,
+        "n_eval": 2203,
+        "accuracy": 0.9904675442578302,
+        "mean_epoch_seconds": 4.348171718915304,
+        "parameter_count": 655380
+      },
+      {
+        "block": 2,
+        "n_train": 9058,
+        "n_eval": 2246,
+        "accuracy": 0.9888691006233303,
+        "mean_epoch_seconds": 4.301880804697673,
+        "parameter_count": 655380
+      },
+      {
+        "block": 3,
+        "n_train": 9001,
+        "n_eval": 2303,
+        "accuracy": 0.9913156752062527,
+        "mean_epoch_seconds": 4.277237733205159,
+        "parameter_count": 655380
+      },
+      {
+        "block": 4,
+        "n_train": 8925,
+        "n_eval": 2379,
+        "accuracy": 0.9882303488860866,
+        "mean_epoch_seconds": 4.2545438528060915,
+        "parameter_count": 655380
+      }
+    ],
+    "fold_mean_epoch_seconds": 4.210927634239196,
+    "oof_accuracy_5block": 0.9884111818825194,
+    "oof_macro_f1": 0.9881630532961442,
+    "oof_accuracy_forward_blocks": 0.9900195270123671,
+    "oof_accuracy_per_block": {
+      "0": 0.9829728485964105,
+      "1": 0.9904675442578302,
+      "2": 0.9888691006233303,
+      "3": 0.9913156752062527,
+      "4": 0.9882303488860866
+    },
+    "in_sample_accuracy": 1.0,
+    "in_sample_macro_f1": 1.0,
+    "in_sample_per_task_accuracy": {
+      "EC": 1.0,
+      "EO": 1.0,
+      "Imagery": 1.0,
+      "SSVEP": 1.0
+    },
+    "in_sample_n_wrong": 0,
+    "knn_loo": {
+      "loo_1nn_accuracy": 0.9976114630699158,
+      "n_wrong": 27
+    },
+    "polish": null,
+    "best_window": {
+      "epoch": 30,
+      "accuracy": 1.0
+    },
+    "full_last_window_accuracy": 1.0,
+    "eps_histogram": {
+      "0.02": 5256,
+      "0.04": 2175,
+      "0.03": 3189
+    },
+    "goal_histogram": {
+      "A": 3533,
+      "C": 3590,
+      "B": 3497
+    },
+    "adversarial_training": {
+      "pgd_steps": 5,
+      "eps_mix": [
+        [
+          0.02,
+          0.5
+        ],
+        [
+          0.03,
+          0.3
+        ],
+        [
+          0.04,
+          0.2
+        ]
+      ],
+      "goals": [
+        "A",
+        "B",
+        "C"
+      ],
+      "adv_weight": 0.7
+    },
+    "elapsed_seconds": 965.0166833400726,
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU"
+  },
+  "stage_seconds": {
+    "train": 965.0166833400726,
+    "attack": 33.680896043777466
+  },
+  "attack": {
+    "n_trials": 1252,
+    "per_task": {
+      "EC": 222,
+      "EO": 230,
+      "Imagery": 400,
+      "SSVEP": 400
+    },
+    "conditions": [
+      {
+        "index": 0,
+        "eps": 0.0,
+        "goal": "clean",
+        "gate": null,
+        "signature": null,
+        "max_rel_linf": 0.0
+      },
+      {
+        "index": 1,
+        "eps": 0.005,
+        "goal": "A",
+        "gate": null,
+        "signature": null,
+        "max_rel_linf": 0.005000782199203968
+      },
+      {
+        "index": 2,
+        "eps": 0.005,
+        "goal": "B",
+        "gate": null,
+        "signature": null,
+        "max_rel_linf": 0.005000782199203968
+      },
+      {
+        "index": 3,
+        "eps": 0.005,
+        "goal": "C",
+        "gate": null,
+        "signature": null,
+        "max_rel_linf": 0.005000782199203968
+      },
+      {
+        "index": 4,
+        "eps": 0.01,
+        "goal": "A",
+        "gate": null,
+        "signature": null,
+        "max_rel_linf": 0.010000942274928093
+      },
+      {
+        "index": 5,
+        "eps": 0.01,
+        "goal": "B",
+        "gate": null,
+        "signature": null,
+        "max_rel_linf": 0.010000942274928093
+      },
+      {
+        "index": 6,
+        "eps": 0.01,
+        "goal": "C",
+        "gate": null,
+        "signature": null,
+        "max_rel_linf": 0.010000942274928093
+      },
+      {
+        "index": 7,
+        "eps": 0.02,
+        "goal": "A",
+        "gate": null,
+        "signature": null,
+        "max_rel_linf": 0.02000061608850956
+      },
+      {
+        "index": 8,
+        "eps": 0.02,
+        "goal": "B",
+        "gate": null,
+        "signature": null,
+        "max_rel_linf": 0.02000061608850956
+      },
+      {
+        "index": 9,
+        "eps": 0.02,
+        "goal": "C",
+        "gate": null,
+        "signature": null,
+        "max_rel_linf": 0.02000061608850956
+      },
+      {
+        "index": 10,
+        "eps": 0.02,
+        "goal": "D",
+        "gate": "e65_pca96_k12",
+        "signature": "(('e65_pca96_k12', 1.0),)",
+        "max_rel_linf": 0.02000061608850956
+      },
+      {
+        "index": 11,
+        "eps": 0.02,
+        "goal": "D",
+        "gate": "e65_pca64_k1",
+        "signature": "(('e65_pca64_k1', 1.0),)",
+        "max_rel_linf": 0.02000061608850956
+      },
+      {
+        "index": 12,
+        "eps": 0.02,
+        "goal": "D",
+        "gate": "subwin6_pca96_k1",
+        "signature": "(('subwin6_pca96_k1', 1.0),)",
+        "max_rel_linf": 0.02000061608850956
+      },
+      {
+        "index": 13,
+        "eps": 0.02,
+        "goal": "D",
+        "gate": "subwin12_pca48_k1",
+        "signature": "(('subwin12_pca48_k1', 1.0),)",
+        "max_rel_linf": 0.020000586286187172
+      },
+      {
+        "index": 14,
+        "eps": 0.02,
+        "goal": "D",
+        "gate": "logbp_pca16_k1",
+        "signature": "(('logbp_pca16_k1', 1.0),)",
+        "max_rel_linf": 0.020000705495476723
+      },
+      {
+        "index": 15,
+        "eps": 0.02,
+        "goal": "D",
+        "gate": "e162_pca128_k1",
+        "signature": "(('e162_pca128_k1', 1.0),)",
+        "max_rel_linf": 0.02000061608850956
+      },
+      {
+        "index": 16,
+        "eps": 0.02,
+        "goal": "D",
+        "gate": "fuse_e65v64k1__sw6v96k1__logbpv16k1",
+        "signature": "(('e65_pca64_k1', 0.5), ('subwin6_pca96_k1', 0.5))",
+        "max_rel_linf": 0.02000061608850956
+      },
+      {
+        "index": 17,
+        "eps": 0.02,
+        "goal": "D",
+        "gate": "fuse_e65v64k1__logbpv16k1__e162v128k1",
+        "signature": "(('e162_pca128_k1', 0.4), ('e65_pca64_k1', 0.6))",
+        "max_rel_linf": 0.02000061608850956
+      },
+      {
+        "index": 18,
+        "eps": 0.02,
+        "goal": "D",
+        "gate": "fuse_e65v64k1__sw6v96k1__logbpv16k1__e162v128k1",
+        "signature": "(('e162_pca128_k1', 0.4), ('e65_pca64_k1', 0.3), ('subwin6_pca96_k1', 0.3))",
+        "max_rel_linf": 0.02000061608850956
+      }
+    ]
+  },
+  "gate_matrix": {
+    "max_pass_single_work_point": 7,
+    "max_pass_under_dual_070": 7,
+    "primary": {
+      "candidate": "fuse_e65v64k1__sw6v96k1__logbpv16k1__e162v128k1",
+      "a": 0.9,
+      "values": {
+        "#1": 1.0,
+        "#2": 0.9884111818825194,
+        "#3": 0.9881630532961442,
+        "#4": 0.9900195270123671,
+        "#5": 0.9195262902321579,
+        "#6": 0.5323457518554073,
+        "#7": 0.8761980830670927,
+        "#8": 0.9992012779552716,
+        "#9": 0.7179206993443646,
+        "#10": 0.6910649521925486
+      },
+      "passed": {
+        "#1": true,
+        "#2": true,
+        "#3": true,
+        "#4": true,
+        "#5": false,
+        "#6": false,
+        "#7": false,
+        "#8": true,
+        "#9": true,
+        "#10": false
+      },
+      "count": 6
+    },
+    "best_dual": {
+      "candidate": "subwin6_pca96_k1",
+      "a": 0.9,
+      "values": {
+        "#1": 1.0,
+        "#2": 0.9884111818825194,
+        "#3": 0.9881630532961442,
+        "#4": 0.9900195270123671,
+        "#5": 0.8835048591057789,
+        "#6": 0.32919073361722273,
+        "#7": 0.8817891373801917,
+        "#8": 1.0,
+        "#9": 0.7068893745446977,
+        "#10": 0.7134849983514672
+      },
+      "passed": {
+        "#1": true,
+        "#2": true,
+        "#3": true,
+        "#4": true,
+        "#5": false,
+        "#6": false,
+        "#7": false,
+        "#8": true,
+        "#9": true,
+        "#10": true
+      },
+      "count": 7
+    },
+    "structural_failures": [
+      "#5",
+      "#6"
+    ],
+    "test_official": {
+      "AUC": "N/A",
+      "F1": "N/A",
+      "C": "N/A",
+      "RA": "N/A",
+      "ASafeR": "N/A",
+      "U": "N/A",
+      "Score": "N/A"
+    }
+  }
+}
