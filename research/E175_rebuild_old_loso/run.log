@@ -1,0 +1,58 @@
+E175 开始：重建 E26–E35 的 Test 管线并补算同阈值 LOSO
+数据：Train 11304 行（20 身份 × 4 任务），Test 22251 行（session1 3033 / session2 19218）
+fit 块 6695 行（frac<=0.6），known/unknown 评分块 2301 行（0.6<frac<=0.8）
+[E26_final_candidates] rebuilt Test 距离 AUROC(S2 vs S1) = 0.7576 | inner p50 29.68 S2 31.26 S1 34.33
+[E26_final_candidates] 完成，用时 6.3s，候选 8 个
+[E27_unknown_rejection] rebuilt Test 距离 AUROC(S2 vs S1) = 0.7576 | inner p50 29.68 S2 31.26 S1 34.33
+[E27_unknown_rejection] 完成，用时 4.3s，候选 8 个
+[E28] cov5: Test AUROC 0.7065 | inner p50 19.07
+[E28] cov5_topo5: Test AUROC 0.7042 | inner p50 28.06
+[E28_dino_openset] 完成，用时 7.3s，候选 12 个
+[E29] rebuilt Test AUROC 0.7065 | inner known p50 20.17
+[E29_dino_calibration] 完成，用时 3.4s，候选 8 个
+[E30] cov5: Test AUROC(dist) 0.7065
+[E30] topo5: Test AUROC(dist) 0.5892
+[E30] LOSO 折数 20
+[E30_dino_multiview] 完成，用时 33.1s，候选 48 个
+[E31] global_global: Test AUROC 0.7081 | train(inner) p50 18.66
+[E31] global_taskcenter: Test AUROC 0.7103 | train(inner) p50 17.99
+[E31] task_model_taskcenter: Test AUROC 0.7121 | train(inner) p50 18.17
+[E31] task_model_wccn: Test AUROC 0.7327 | train(inner) p50 13.97
+[E31_task_conditional] 完成，用时 24.0s，候选 20 个
+[E32_distance_ratio] 完成，用时 14.8s，候选 35 个
+[E33] m0.0_d0.5: Test AUROC 0.6522 | train(inner) p50 -0.9140
+[E33] LOSO held=1 known=2177 unknown=124
+[E33] LOSO held=2 known=2199 unknown=102
+[E33] LOSO held=3 known=2179 unknown=122
+[E33] LOSO held=4 known=2188 unknown=113
+[E33] LOSO held=5 known=2200 unknown=101
+[E33] LOSO held=6 known=2177 unknown=124
+[E33] LOSO held=7 known=2177 unknown=124
+[E33] LOSO held=8 known=2197 unknown=104
+[E33] LOSO held=9 known=2185 unknown=116
+[E33] LOSO held=10 known=2194 unknown=107
+[E33] LOSO held=11 known=2180 unknown=121
+[E33] LOSO held=12 known=2179 unknown=122
+[E33] LOSO held=13 known=2178 unknown=123
+[E33] LOSO held=14 known=2180 unknown=121
+[E33] LOSO held=15 known=2191 unknown=110
+[E33] LOSO held=16 known=2182 unknown=119
+[E33] LOSO held=17 known=2189 unknown=112
+[E33] LOSO held=18 known=2203 unknown=98
+[E33] LOSO held=19 known=2187 unknown=114
+[E33] LOSO held=20 known=2177 unknown=124
+[E33_arcface_head] 完成，用时 53.4s，候选 5 个
+[E34] covariance_hr: Test AUROC 0.7223 | train(inner) p50 5.25
+[E34_covariance_hr] 完成，用时 32.7s，候选 5 个
+[E35_per_task_analysis] 完成，用时 35.9s，候选 10 个
+  W=0.6394 E27_unknown_rejection / reject30 (LOSO 0.7501, S1 0.8622, S2 0.4726)
+  W=0.6370 E26_final_candidates / reject20 (LOSO 0.5920, S1 0.7570, S2 0.5994)
+  W=0.6370 E27_unknown_rejection / reject20 (LOSO 0.5920, S1 0.7570, S2 0.5994)
+  W=0.6272 E27_unknown_rejection / reject40 (LOSO 0.8592, S1 0.9261, S2 0.3616)
+  W=0.6211 E27_unknown_rejection / reject10 (LOSO 0.3800, S1 0.6037, S2 0.7503)
+  W=0.6130 E35_per_task_analysis / per_task_q20 (LOSO 0.3867, S1 0.6169, S2 0.7242)
+  W=0.6085 E26_final_candidates / reject50 (LOSO 0.9164, S1 0.9588, S2 0.2793)
+  W=0.6085 E27_unknown_rejection / reject50 (LOSO 0.9164, S1 0.9588, S2 0.2793)
+  W=0.6025 E34_covariance_hr / covariance_hr_q02 (LOSO 0.0657, S1 0.4906, S2 0.9269)
+  W=0.6001 E26_final_candidates / reject5 (LOSO 0.2433, S1 0.4669, S2 0.8450)
+输出：results.json / config.json / report.md；总耗时 215.2s

@@ -1,0 +1,62 @@
+{
+  "experiment": "E175_rebuild_old_loso",
+  "purpose": "Rebuild Test pipelines of E26-E35 and compute the missing same-threshold LOSO rejection, so that W becomes available for candidates that only stored Test CSVs.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "fit_block": "trial <= 0.6 * max_trial (prototypes / standardisation / whitening / PCA)",
+    "known_block": "0.6 < trial/max <= 0.8 of the 19 enrolled identities",
+    "unknown_block": "0.6 < trial/max <= 0.8 of the held-out identity"
+  },
+  "protocol": {
+    "loso": "leave-one-identity-out, 20 folds, prototypes never contain the scored block",
+    "threshold_rule": "same percentile of the fold-level known-block scores as the original candidate",
+    "weights": {
+      "LOSO": 0.25,
+      "Test_S1": 0.25,
+      "Test_S2": 0.5
+    }
+  },
+  "experiments": [
+    {
+      "name": "E26_final_candidates",
+      "pipeline": "cov 原始特征 + SNR30 增广 + LR，距离型拒识；阈值 = Train 内层距离分位"
+    },
+    {
+      "name": "E27_unknown_rejection",
+      "pipeline": "同 E26（E27B 只用 dist 八个工作点）"
+    },
+    {
+      "name": "E28_dino_openset",
+      "pipeline": "DINO cov5 / cov5+topo5 距离；阈值 = Train 内层距离分位"
+    },
+    {
+      "name": "E29_dino_calibration",
+      "pipeline": "DINO cov5 距离；阈值 = 10 个内层留出被试模型的 known 分位"
+    },
+    {
+      "name": "E30_dino_multiview",
+      "pipeline": "DINO 多视图分位融合（参考 = Train 内层已知分布）"
+    },
+    {
+      "name": "E31_task_conditional",
+      "pipeline": "任务条件化中心 / 任务内 WCCN"
+    },
+    {
+      "name": "E32_distance_ratio",
+      "pipeline": "任务内 WCCN 的 dist/ratio/gap 分位融合"
+    },
+    {
+      "name": "E33_arcface_head",
+      "pipeline": "ArcFace/CE 身份头（未保存权重，按原 seed 重训）"
+    },
+    {
+      "name": "E34_covariance_hr",
+      "pipeline": "高分辨率协方差 DINO 特征 + 任务内 WCCN"
+    },
+    {
+      "name": "E35_per_task_analysis",
+      "pipeline": "cov5 任务内 WCCN，global / 逐任务阈值"
+    }
+  ]
+}
