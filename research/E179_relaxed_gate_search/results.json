@@ -1,0 +1,46 @@
+{
+  "n_records": 21437,
+  "n_valid": 20039,
+  "max_S1_plus_S2": 1.4479322004727064,
+  "max_sum_record": {
+    "experiment": "E149_image_route_audit",
+    "S1": 0.6327068908671283,
+    "S2": 0.8152253096055782,
+    "LOSO": 0.2043842602653073,
+    "W": 0.616885442585898
+  },
+  "n_both_075": 0,
+  "both_075": [],
+  "best_loso": [
+    {
+      "experiment": "E134_steep_loso",
+      "LOSO": 1.0,
+      "S1": 1.0,
+      "S2": 0.0
+    },
+    {
+      "experiment": "E152_session_robust_scoring",
+      "LOSO": 1.0,
+      "S1": 0.0,
+      "S2": 1.0
+    },
+    {
+      "experiment": "E152_session_robust_scoring",
+      "LOSO": 1.0,
+      "S1": 0.0,
+      "S2": 1.0
+    },
+    {
+      "experiment": "E152_session_robust_scoring",
+      "LOSO": 1.0,
+      "S1": 0.0,
+      "S2": 1.0
+    },
+    {
+      "experiment": "E152_session_robust_scoring",
+      "LOSO": 1.0,
+      "S1": 0.0,
+      "S2": 1.0
+    }
+  ]
+}
