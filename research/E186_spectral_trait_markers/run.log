@@ -1,0 +1,90 @@
+extract train=11304 test=22251 dim=126 device=cuda nfft=2048 df=0.1465Hz alpha_bins=41 reg_bins=151 edge_bins=267
+  extract train 2048/11304  1s
+  extract train 4096/11304  2s
+  extract train 6144/11304  2s
+  extract train 8192/11304  3s
+  extract train 10240/11304  4s
+  extract train 11304/11304  4s
+  extract test 2048/22251  1s
+  extract test 4096/22251  1s
+  extract test 6144/22251  2s
+  extract test 8192/22251  3s
+  extract test 10240/22251  4s
+  extract test 12288/22251  5s
+  extract test 14336/22251  5s
+  extract test 16384/22251  6s
+  extract test 18432/22251  7s
+  extract test 20480/22251  8s
+  extract test 22251/22251  9s
+extract done in 13s
+device cuda | train 11304 | test 22251 | fit_rows 6695 | window 2301
+tasks {'Imagery': np.int64(5504), 'SSVEP': np.int64(3658), 'EC': np.int64(1072), 'EO': np.int64(1070)}
+traits train (11304, 126) / test (22251, 126)
+E65 train (11304, 855) / test (22251, 855)
+    iaf@16 k=12: diagAUC 0.5447 bestS1+S2 1.0167 (8s)
+  [iaf] PCA-16: AUC 0.5447 OOF 0.5195 bestS1+S2 1.0167 (8s)
+    iaf@18 k=12: diagAUC 0.5425 bestS1+S2 1.0162 (15s)
+  [iaf] PCA-18: AUC 0.5425 OOF 0.5207 bestS1+S2 1.0162 (15s)
+    prominence@16 k=12: diagAUC 0.5358 bestS1+S2 1.0694 (22s)
+  [prominence] PCA-16: AUC 0.5358 OOF 0.5325 bestS1+S2 1.0694 (22s)
+    prominence@18 k=12: diagAUC 0.5369 bestS1+S2 1.0639 (29s)
+  [prominence] PCA-18: AUC 0.5369 OOF 0.5390 bestS1+S2 1.0639 (29s)
+    width@16 k=12: diagAUC 0.5377 bestS1+S2 1.0268 (36s)
+  [width] PCA-16: AUC 0.5377 OOF 0.5264 bestS1+S2 1.0268 (36s)
+    width@18 k=12: diagAUC 0.5391 bestS1+S2 1.0263 (43s)
+  [width] PCA-18: AUC 0.5391 OOF 0.5291 bestS1+S2 1.0263 (43s)
+    centroid@16 k=12: diagAUC 0.7320 bestS1+S2 1.3054 (50s)
+  [centroid] PCA-16: AUC 0.7320 OOF 0.6021 bestS1+S2 1.3054 (50s)
+    centroid@18 k=12: diagAUC 0.7280 bestS1+S2 1.2932 (58s)
+  [centroid] PCA-18: AUC 0.7280 OOF 0.6018 bestS1+S2 1.2932 (58s)
+    aperiodic@16 k=12: diagAUC 0.7549 bestS1+S2 1.3901 (65s)
+  [aperiodic] PCA-16: AUC 0.7549 OOF 0.6621 bestS1+S2 1.3901 (65s)
+    aperiodic@32 k=12: diagAUC 0.7557 bestS1+S2 1.3952 (72s)
+  [aperiodic] PCA-32: AUC 0.7557 OOF 0.6847 bestS1+S2 1.3952 (72s)
+    aperiodic@36 k=12: diagAUC 0.7556 bestS1+S2 1.3940 (80s)
+  [aperiodic] PCA-36: AUC 0.7556 OOF 0.6853 bestS1+S2 1.3940 (80s)
+    edge95@16 k=12: diagAUC 0.6801 bestS1+S2 1.2261 (87s)
+  [edge95] PCA-16: AUC 0.6801 OOF 0.6316 bestS1+S2 1.2261 (87s)
+    edge95@18 k=12: diagAUC 0.6823 bestS1+S2 1.2310 (95s)
+  [edge95] PCA-18: AUC 0.6823 OOF 0.6312 bestS1+S2 1.2310 (95s)
+    all@16 k=1: diagAUC 0.6865 bestS1+S2 1.2881 (98s)
+    all@16 k=3: diagAUC 0.7357 bestS1+S2 1.3559 (107s)
+    all@16 k=6: diagAUC 0.7492 bestS1+S2 1.3657 (115s)
+    all@16 k=12: diagAUC 0.7528 bestS1+S2 1.3678 (122s)
+  [all] PCA-16: AUC 0.7528 OOF 0.6890 bestS1+S2 1.3678 (122s)
+    all@32 k=1: diagAUC 0.6938 bestS1+S2 1.2917 (125s)
+    all@32 k=3: diagAUC 0.7398 bestS1+S2 1.3534 (133s)
+    all@32 k=6: diagAUC 0.7487 bestS1+S2 1.3620 (141s)
+    all@32 k=12: diagAUC 0.7535 bestS1+S2 1.3652 (148s)
+  [all] PCA-32: AUC 0.7535 OOF 0.6919 bestS1+S2 1.3652 (148s)
+    all@48 k=1: diagAUC 0.6944 bestS1+S2 1.2949 (151s)
+    all@48 k=3: diagAUC 0.7399 bestS1+S2 1.3580 (159s)
+    all@48 k=6: diagAUC 0.7466 bestS1+S2 1.3634 (167s)
+    all@48 k=12: diagAUC 0.7479 bestS1+S2 1.3627 (174s)
+  [all] PCA-48: AUC 0.7479 OOF 0.6863 bestS1+S2 1.3634 (174s)
+    E65@96 k=1: diagAUC 0.7504 bestS1+S2 1.3733 (178s)
+    E65@96 k=3: diagAUC 0.7566 bestS1+S2 1.3797 (185s)
+    E65@96 k=6: diagAUC 0.7554 bestS1+S2 1.3857 (192s)
+    E65@96 k=12: diagAUC 0.7578 bestS1+S2 1.3938 (198s)
+  [E65] PCA-96 k=12 AUC 0.7578 S1 0.7979 S2 0.5960 sum 1.3938 (198s)
+    fusion16@96 k=1: diagAUC 0.7412 bestS1+S2 1.3372 (201s)
+    fusion16@96 k=3: diagAUC 0.7590 bestS1+S2 1.3730 (209s)
+    fusion16@96 k=6: diagAUC 0.7609 bestS1+S2 1.3759 (216s)
+    fusion16@96 k=12: diagAUC 0.7666 bestS1+S2 1.3952 (222s)
+  [fusion 96+16 -> PCA-96] AUC 0.7666 S1+S2 1.3952 @a=0.90 (222s)
+    fusion16@128 k=1: diagAUC 0.7444 bestS1+S2 1.3417 (225s)
+    fusion16@128 k=3: diagAUC 0.7612 bestS1+S2 1.3715 (232s)
+    fusion16@128 k=6: diagAUC 0.7650 bestS1+S2 1.3761 (239s)
+    fusion16@128 k=12: diagAUC 0.7685 bestS1+S2 1.3921 (245s)
+  [fusion 96+16 -> PCA-128] AUC 0.7685 S1+S2 1.3921 @a=0.90 (245s)
+    fusion32@96 k=1: diagAUC 0.7351 bestS1+S2 1.3295 (248s)
+    fusion32@96 k=3: diagAUC 0.7694 bestS1+S2 1.3920 (256s)
+    fusion32@96 k=6: diagAUC 0.7683 bestS1+S2 1.3835 (263s)
+    fusion32@96 k=12: diagAUC 0.7730 bestS1+S2 1.3948 (269s)
+  [fusion 96+32 -> PCA-96] AUC 0.7730 S1+S2 1.3948 @a=0.90 (269s)
+    fusion32@128 k=1: diagAUC 0.7395 bestS1+S2 1.3327 (272s)
+    fusion32@128 k=3: diagAUC 0.7684 bestS1+S2 1.3807 (279s)
+    fusion32@128 k=6: diagAUC 0.7688 bestS1+S2 1.3819 (287s)
+    fusion32@128 k=12: diagAUC 0.7746 bestS1+S2 1.3914 (292s)
+  [fusion 96+32 -> PCA-128] AUC 0.7746 S1+S2 1.3914 @a=0.90 (292s)
+done in 293s
