@@ -1,0 +1,69 @@
+
+E196 start 2026-11-16 00:15:21 device cuda
+Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033, device cuda
+  fold plan k=1: 20 folds (pool 20)
+  fold plan k=2: 190 folds (pool 190)
+  fold plan k=5: 200 folds (pool 15504)
+  fold plan k=10: 100 folds (pool 184756)
+  k= 1 fold   2/2  2.67s/fold  elapsed 6s  eta 0s
+  k=1 done: e65_pca96 0.5627, e65_pca64 0.5762, subwin6_dist 0.1954, subwin12_dist 0.1156
+  k= 2 fold   2/2  5.25s/fold  elapsed 11s  eta 0s
+  k=2 done: e65_pca96 0.4748, e65_pca64 0.5167, subwin6_dist 0.2531, subwin12_dist 0.1887
+  k= 5 fold   2/2  7.66s/fold  elapsed 15s  eta 0s
+  k=5 done: e65_pca96 0.5449, e65_pca64 0.5787, subwin6_dist 0.1774, subwin12_dist 0.1179
+  k=10 fold   2/2  9.62s/fold  elapsed 19s  eta 0s
+  k=10 done: e65_pca96 0.8279, e65_pca64 0.8344, subwin6_dist 0.4774, subwin12_dist 0.3692
+stage scores done in 19s (8 folds)
+E196 done
+
+E196 start 2026-11-16 00:15:54 device cuda
+Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033, device cuda
+  k= 1 fold  20/20  3.20s/fold  elapsed 64s  eta 0s
+  k=1 done: e65_pca96 0.6448, e65_pca64 0.6645, subwin6_dist 0.3982, subwin12_dist 0.3239
+  k= 2 fold  25/190  5.63s/fold  elapsed 141s  eta 929s
+  k= 2 fold  50/190  4.34s/fold  elapsed 217s  eta 607s
+  k= 2 fold  75/190  3.89s/fold  elapsed 292s  eta 448s
+  k= 2 fold 100/190  3.69s/fold  elapsed 369s  eta 332s
+  k= 2 fold 125/190  3.57s/fold  elapsed 446s  eta 232s
+  k= 2 fold 150/190  3.48s/fold  elapsed 522s  eta 139s
+  k= 2 fold 175/190  3.41s/fold  elapsed 597s  eta 51s
+  k= 2 fold 190/190  3.38s/fold  elapsed 642s  eta 0s
+  k=2 done: e65_pca96 0.6505, e65_pca64 0.6796, subwin6_dist 0.3944, subwin12_dist 0.3231
+  k= 5 fold  25/200  28.64s/fold  elapsed 716s  eta 5011s
+  k= 5 fold  50/200  15.87s/fold  elapsed 793s  eta 2380s
+  k= 5 fold  75/200  11.57s/fold  elapsed 868s  eta 1446s
+  k= 5 fold 100/200  9.40s/fold  elapsed 940s  eta 940s
+  k= 5 fold 125/200  8.08s/fold  elapsed 1010s  eta 606s
+  k= 5 fold 150/200  7.20s/fold  elapsed 1081s  eta 360s
+  k= 5 fold 175/200  6.58s/fold  elapsed 1152s  eta 165s
+  k= 5 fold 200/200  6.13s/fold  elapsed 1226s  eta 0s
+  k=5 done: e65_pca96 0.6750, e65_pca64 0.7024, subwin6_dist 0.4100, subwin12_dist 0.3400
+  k=10 fold  25/100  51.69s/fold  elapsed 1292s  eta 3877s
+  k=10 fold  50/100  27.04s/fold  elapsed 1352s  eta 1352s
+  k=10 fold  75/100  18.82s/fold  elapsed 1412s  eta 471s
+  k=10 fold 100/100  14.71s/fold  elapsed 1471s  eta 0s
+  k=10 done: e65_pca96 0.7110, e65_pca64 0.7400, subwin6_dist 0.4299, subwin12_dist 0.3641
+stage scores done in 1471s (510 folds)
+stage verify: E195 reference e65_dist 0.6447794567477073, subwin6_dist 0.39821025119612374, subwin12_dist 0.3239057404431083, logbp_dist 0.18872205924532803, e162_dist 0.589740419866678, wccn_dr 0.987676380451987, e183_fuse 0.9848025713085906
+stage verify: ours vs E195 e65_pca96 0.6448/0.6448, subwin6_dist 0.3982/0.3982, subwin12_dist 0.3239/0.3239, logbp_dist 0.1887/0.1887, e162_dist 0.5897/0.5897, wccn_dr 0.9877/0.9877
+stage report done
+E196 done
+
+E196 start 2026-11-16 00:46:56 device cuda
+stage scores: results present, reusing
+stage verify: E195 reference e65_dist 0.6447794567477073, subwin6_dist 0.39821025119612374, subwin12_dist 0.3239057404431083, logbp_dist 0.18872205924532803, e162_dist 0.589740419866678, wccn_dr 0.987676380451987, e183_fuse 0.9848025713085906
+stage verify: ours vs E195 e65_pca96 0.6448/0.6448, subwin6_dist 0.3982/0.3982, subwin12_dist 0.3239/0.3239, logbp_dist 0.1887/0.1887, e162_dist 0.5897/0.5897, wccn_dr 0.9877/0.9877
+stage report done
+E196 done
+
+E196 start 2026-11-16 00:47:31 device cuda
+stage report done
+E196 done
+
+E196 start 2026-11-16 00:47:53 device cuda
+stage report done
+E196 done
+
+E196 start 2026-11-16 00:48:20 device cuda
+stage report done
+E196 done

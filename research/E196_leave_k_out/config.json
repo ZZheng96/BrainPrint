@@ -1,0 +1,100 @@
+{
+  "experiment": "E196_leave_k_out",
+  "date": "2026-11-16",
+  "purpose": "Test whether the Train-side unknown-pool composition explains the E194 finding that LOSO-1 (one unknown identity per fold) has no predictive power for Test S1 (five unregistered identities). Implements leave-k-out (k = 1, 2, 5, 10) with a strict protocol: task-wise standardisation, the PCA basis and the prototypes use only the 20-k registered identities' fit rows; the held-out block is excluded from every fitted statistic. For every k and every gate candidate it reports the fold-internal unknown rejection (a = 0.90), the pooled AUROC and the Test S1 / S2 readings, then measures the cross-gate Spearman rank correlation between the Train-side reading and Test S1.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "classes": [1, 20]
+  },
+  "protocol": {
+    "fit_fraction": 0.6,
+    "eval_window": "0.6 < frac <= 0.8",
+    "fit_rows": "frac <= 0.6",
+    "primary_acceptance": 0.90,
+    "threshold_rule": "tau = quantile(fold known scores, 1 - a); known = the 20-k registered identities' 0.6<frac<=0.8 rows, unknown = the k held-out identities' same window",
+    "seed": 20261116
+  },
+  "leave_k": {
+    "1": {"mode": "enumerate", "note": "C(20,1) = 20, all folds"},
+    "2": {"mode": "enumerate", "note": "C(20,2) = 190 < the requested 200, so the full enumeration is used, not a 200-fold sample"},
+    "5": {"mode": "sample", "limit": 200, "note": "C(20,5) = 15504, 200 distinct folds sampled with seed 20261116+5"},
+    "10": {"mode": "sample", "limit": 100, "note": "C(20,10) = 184756, 100 distinct folds sampled with seed 20261116+10"}
+  },
+  "families": {
+    "e65": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "dim": 855,
+      "prototypes": 12,
+      "variants": [{"gate": "e65_pca96", "pca": 96}, {"gate": "e65_pca64", "pca": 64}],
+      "source": "E65 / E143 / E194 / E195",
+      "note": "both variants share one z-transform and one eigendecomposition per fold"
+    },
+    "subwin6": {
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n6.npy",
+      "test": "research/E171_multiscale_fusion/test_subwin_mean_n6.npy",
+      "dim": 855,
+      "prototypes": 1,
+      "variants": [{"gate": "subwin6_dist", "pca": 96}],
+      "source": "E168 / E171 / E195"
+    },
+    "subwin12": {
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n12.npy",
+      "test": "research/E171_multiscale_fusion/test_subwin_mean_n12.npy",
+      "dim": 855,
+      "prototypes": 1,
+      "variants": [{"gate": "subwin12_dist", "pca": 48}],
+      "source": "E168 / E171 / E195"
+    },
+    "logbp": {
+      "train": "research/E146_phase_features/train_log_band_power.npy",
+      "test": "research/E146_phase_features/test_log_band_power.npy",
+      "dim": 90,
+      "prototypes": 1,
+      "variants": [{"gate": "logbp_dist", "pca": 16}],
+      "source": "E146 / E195"
+    },
+    "e162": {
+      "train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+      "test": "research/E162_raw_eeg_contrastive_v2/test_emb.npy",
+      "dim": 256,
+      "prototypes": 1,
+      "variants": [{"gate": "e162_dist", "pca": 128}],
+      "source": "E162 / E195"
+    },
+    "wccn": {
+      "kind": "wccn",
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "dim": 855,
+      "shrinkage": 0.05,
+      "eigenvalue_floor": 1e-06,
+      "variants": [{"gate": "wccn_dr", "pca": 0}],
+      "source": "E192 WCCN distance-ratio gate, reimplemented exactly as in E195"
+    }
+  },
+  "fusions": {
+    "e65+subwin6": {"e65_pca96": 0.5, "subwin6_dist": 0.5},
+    "e65+logbp": {"e65_pca96": 0.5, "logbp_dist": 0.5},
+    "all5_mean": {"e65_pca96": 0.2, "subwin6_dist": 0.2, "subwin12_dist": 0.2, "logbp_dist": 0.2, "e162_dist": 0.2}
+  },
+  "fusion_normalisation": "Each stream is fold-z-scored with the mean / sd of that fold's known block before the weighted sum, so the equal weights are equal in fold-standardised units and the single-gate readings are invariant to this step. Train-only: the held-out identities never enter the mean / sd.",
+  "gates": {
+    "primary": [
+      "e65_pca96", "e65_pca64", "subwin6_dist", "subwin12_dist", "logbp_dist",
+      "e162_dist", "wccn_dr", "e65+subwin6", "e65+logbp", "all5_mean"
+    ],
+    "e183_note": "E183 three-view fusion is included for k=1 only: its head is retrained per fold from 19 identities (10 reps x pseudo-unknown sampling), so a leave-k>1 head would have to be retrained 490 more times. Its k=1 arrays are read from the E195 cache so the E183 row is comparable to the E195 loso_strict reading but is not available for k>1.",
+    "e183_source": "research/E195_eleven_gates_loso90/cache/streams.npz"
+  },
+  "reporting": {
+    "test_official": "N/A - Test has no identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "all Test scores are computed before the Session column is read; Session only splits S1 / S2 for the audit",
+    "predictive_power": "cross-gate Spearman rank correlation between the leave-k Train reading and the Test reading, plus the mean absolute deviation",
+    "decomposition": "A = leave-1 (unknown pool 1, gallery 19); B = leave-5 instrument with per-identity unknown readings (pool 1, gallery 15); C = leave-5 (pool 5, gallery 15). B vs C isolates the unknown-pool size at a fixed instrument; A vs B varies the gallery size at a fixed pool of 1."
+  }
+}
