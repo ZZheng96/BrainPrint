@@ -1,0 +1,63 @@
+{
+  "experiment": "E194_loso_vs_s1_gap",
+  "date": "2026-11-15",
+  "purpose": "Separate the huge LOSO-vs-Test-S1 rejection gap (E183 gate: LOSO ~0.98 vs S1 0.2733 at a=0.90) into three candidate causes: A = the held-out identity still participates in feature fitting (task-wise z statistics / PCA), B = the threshold reference distribution differs, C = one-identity-per-fold vs five-identity-pooled estimation. Reads every source read-only; never writes into an existing experiment directory.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_features": "research/E121_pca_sweep/test_logspd.npy",
+    "feature_dim": 855,
+    "train_trials": 11304,
+    "test_trials": 22251
+  },
+  "protocol": {
+    "fit_fraction": 0.6,
+    "eval_interval": "0.6 < frac <= 0.8",
+    "blocks": 5,
+    "blocks_rule": "block = clip(int(frac * 5), 0, 4) per (subject, task) trial order",
+    "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.92, 0.95, 0.97],
+    "primary_acceptance": 0.90,
+    "seed": 20261115
+  },
+  "gates": {
+    "e65_distance": {
+      "definition": "E143 protocol: per-task z, PCA-96, k=12 k-means prototypes per (task, identity), score = -nearest-prototype distance",
+      "pca_dim": 96,
+      "prototype_k": 12,
+      "kmeans_seed": "int(identity) * 17 (E143 convention)",
+      "contaminated_instrument": "task-wise mean/std from all Train rows of the task, PCA basis from fit_rows of all 20 identities",
+      "strict_instrument": "task-wise mean/std from the other 19 identities' Train rows, PCA basis from the other 19 identities' fit_rows, prototypes from the other 19 identities' fit_rows",
+      "deployment_prototype_rows": "all Train rows for the Test score and the 5-block OOF reference (E143 convention); LOSO folds use fit_rows only"
+    },
+    "e183_fusion": {
+      "definition": "E183 selected gate: 0.85*g_head + 0.10*g_dist + 0.05*g_entropy, g_head = conf_max_over_views (identity-head max softmax, z-scored on the fold's training rows)",
+      "source": "research/E183_gate_head_and_capacity/cache/loso_head.npz (LOSO) + config.json for weights",
+      "contaminated_counterfactual": "re-train the 20 x 3 heads with the E143-style transform (z statistics and PCA basis fitted on all 20 identities' Train rows, the held-out identity included) while keeping prototypes and head training rows restricted to the 19 enrolled identities",
+      "strict": "as published in E183 (every fold statistic already excludes the held-out identity)"
+    }
+  },
+  "head": {
+    "hidden": [128, 64],
+    "dropout": 0.2,
+    "pca_dim": 96,
+    "pseudo_unknown_per_repeat": 4,
+    "repeats_per_fold": 3,
+    "loss_open_weight": 1.0,
+    "epochs": 60,
+    "batch_size": 256,
+    "learning_rate": 0.002,
+    "weight_decay": 0.0001,
+    "note": "copied verbatim from E183 config.json; the counterfactual run changes only the feature transform"
+  },
+  "domain_probe": {
+    "space": "deployment instrument = per-task z (all Train) + PCA-96 fitted on all Train fit_rows, applied unchanged to Test",
+    "shift_metric": "per task: mean |mu_test - mu_train| / sd_train over the 96 PCA scores, plus ||mu_test - mu_train|| / sd_train (Euclidean, per-dim sd)",
+    "separability": "per task 5-fold stratified CV logistic regression, AUC(Train vs Test-S1), AUC(Train vs Test-S2), AUC(S1 vs S2)",
+    "train_rows": "eval window rows (0.6 < frac <= 0.8)"
+  },
+  "reporting": {
+    "test_official": "N/A: Test has no identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "Test is only scored. Session is read only to split the audit into S1 / S2."
+  }
+}

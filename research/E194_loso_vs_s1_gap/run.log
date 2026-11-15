@@ -1,0 +1,159 @@
+E194 start: Train (11304, 855), Test (22251, 855), S1 3033, device cuda
+=== exp1: E65 distance gate ===
+  distance gate contaminated LOSO 5s
+  distance gate strict fold  1: known 2177 unknown 124
+  distance gate strict fold  2: known 2199 unknown 102
+  distance gate strict fold  3: known 2179 unknown 122
+  distance gate strict fold  4: known 2188 unknown 113
+  distance gate strict fold  5: known 2200 unknown 101
+  distance gate strict fold  6: known 2177 unknown 124
+  distance gate strict fold  7: known 2177 unknown 124
+  distance gate strict fold  8: known 2197 unknown 104
+  distance gate strict fold  9: known 2185 unknown 116
+  distance gate strict fold 10: known 2194 unknown 107
+  distance gate strict fold 11: known 2180 unknown 121
+  distance gate strict fold 12: known 2179 unknown 122
+  distance gate strict fold 13: known 2178 unknown 123
+  distance gate strict fold 14: known 2180 unknown 121
+  distance gate strict fold 15: known 2191 unknown 110
+  distance gate strict fold 16: known 2182 unknown 119
+  distance gate strict fold 17: known 2189 unknown 112
+  distance gate strict fold 18: known 2203 unknown 98
+  distance gate strict fold 19: known 2187 unknown 114
+  distance gate strict fold 20: known 2177 unknown 124
+  distance gate strict LOSO 18s
+E194 start: Train (11304, 855), Test (22251, 855), S1 3033, device cuda
+=== exp1: E65 distance gate ===
+  distance gate contaminated LOSO 6s
+  distance gate strict fold  1: known 2177 unknown 124
+  distance gate strict fold  2: known 2199 unknown 102
+  distance gate strict fold  3: known 2179 unknown 122
+  distance gate strict fold  4: known 2188 unknown 113
+  distance gate strict fold  5: known 2200 unknown 101
+  distance gate strict fold  6: known 2177 unknown 124
+  distance gate strict fold  7: known 2177 unknown 124
+  distance gate strict fold  8: known 2197 unknown 104
+  distance gate strict fold  9: known 2185 unknown 116
+  distance gate strict fold 10: known 2194 unknown 107
+  distance gate strict fold 11: known 2180 unknown 121
+  distance gate strict fold 12: known 2179 unknown 122
+  distance gate strict fold 13: known 2178 unknown 123
+  distance gate strict fold 14: known 2180 unknown 121
+  distance gate strict fold 15: known 2191 unknown 110
+  distance gate strict fold 16: known 2182 unknown 119
+  distance gate strict fold 17: known 2189 unknown 112
+  distance gate strict fold 18: known 2203 unknown 98
+  distance gate strict fold 19: known 2187 unknown 114
+  distance gate strict fold 20: known 2177 unknown 124
+  distance gate strict LOSO 20s
+  distance: LOSO contam 0.7936 strict 0.6448 S1 0.8375
+=== exp1: E183 gate ===
+  E183 strict (published) LOSO gate rebuilt from the cache
+  E183 contaminated head fold  1 done (18s)
+  E183 contaminated head fold  2 done (36s)
+  E183 contaminated head fold  3 done (54s)
+  E183 contaminated head fold  4 done (72s)
+  E183 contaminated head fold  5 done (89s)
+  E183 contaminated head fold  6 done (105s)
+  E183 contaminated head fold  7 done (122s)
+  E183 contaminated head fold  8 done (138s)
+  E183 contaminated head fold  9 done (154s)
+  E183 contaminated head fold 10 done (171s)
+  E183 contaminated head fold 11 done (188s)
+  E183 contaminated head fold 12 done (205s)
+  E183 contaminated head fold 13 done (223s)
+  E183 contaminated head fold 14 done (241s)
+  E183 contaminated head fold 15 done (259s)
+  E183 contaminated head fold 16 done (277s)
+  E183 contaminated head fold 17 done (295s)
+  E183 contaminated head fold 18 done (313s)
+  E183 contaminated head fold 19 done (331s)
+  E183 contaminated head fold 20 done (349s)
+E194 start: Train (11304, 855), Test (22251, 855), S1 3033, device cuda
+=== exp1: E65 distance gate ===
+  distance gate contaminated LOSO 5s
+  distance gate strict fold  1: known 2177 unknown 124
+  distance gate strict fold  2: known 2199 unknown 102
+  distance gate strict fold  3: known 2179 unknown 122
+  distance gate strict fold  4: known 2188 unknown 113
+  distance gate strict fold  5: known 2200 unknown 101
+  distance gate strict fold  6: known 2177 unknown 124
+  distance gate strict fold  7: known 2177 unknown 124
+  distance gate strict fold  8: known 2197 unknown 104
+  distance gate strict fold  9: known 2185 unknown 116
+  distance gate strict fold 10: known 2194 unknown 107
+  distance gate strict fold 11: known 2180 unknown 121
+  distance gate strict fold 12: known 2179 unknown 122
+  distance gate strict fold 13: known 2178 unknown 123
+  distance gate strict fold 14: known 2180 unknown 121
+  distance gate strict fold 15: known 2191 unknown 110
+  distance gate strict fold 16: known 2182 unknown 119
+  distance gate strict fold 17: known 2189 unknown 112
+  distance gate strict fold 18: known 2203 unknown 98
+  distance gate strict fold 19: known 2187 unknown 114
+  distance gate strict fold 20: known 2177 unknown 124
+  distance gate strict LOSO 16s
+  distance: LOSO contam 0.7936 strict 0.6448 S1 0.7979
+=== exp1: E183 gate ===
+  E183 strict (published) LOSO gate rebuilt from the cache
+  E183 contaminated heads: cache hit
+  E183: LOSO strict 0.9848 contam 0.9914 S1 0.2733
+=== exp2: domain probe ===
+  domain EC      : shift S1 0.356 sd / S2 0.145 sd | AUC Train-S1 0.9818, Train-S2 0.8655, S1-S2 0.9724
+  domain EO      : shift S1 0.312 sd / S2 0.149 sd | AUC Train-S1 0.9731, Train-S2 0.8598, S1-S2 0.9762
+  domain Imagery : shift S1 0.342 sd / S2 0.140 sd | AUC Train-S1 0.9870, Train-S2 0.8929, S1-S2 0.9847
+  domain SSVEP   : shift S1 0.311 sd / S2 0.124 sd | AUC Train-S1 0.9738, Train-S2 0.8610, S1-S2 0.9735
+=== exp3: thresholds ===
+  e65_distance: a=0.90 S1 rejection global 0.7979 fold-mean 0.8286 mixture 0.3891
+  e183_fusion: a=0.90 S1 rejection global 0.2733 fold-mean 0.2667 mixture 0.2460
+E194 done in 26s
+E194 start: Train (11304, 855), Test (22251, 855), S1 3033, device cuda
+=== exp1: E65 distance gate ===
+  distance gate: cache hit
+  distance: LOSO contam 0.7936 strict 0.6448 S1 0.7979
+=== exp1: E183 gate ===
+  E183 strict (published) LOSO gate rebuilt from the cache
+  E183 contaminated heads: cache hit
+  E183: LOSO strict 0.9848 contam 0.9914 S1 0.2733
+=== exp2: domain probe ===
+  domain EC      : shift S1 0.356 sd / S2 0.145 sd | AUC Train-S1 0.9818, Train-S2 0.8655, S1-S2 0.9724
+  domain EO      : shift S1 0.312 sd / S2 0.149 sd | AUC Train-S1 0.9731, Train-S2 0.8598, S1-S2 0.9762
+  domain Imagery : shift S1 0.342 sd / S2 0.140 sd | AUC Train-S1 0.9870, Train-S2 0.8929, S1-S2 0.9847
+  domain SSVEP   : shift S1 0.311 sd / S2 0.124 sd | AUC Train-S1 0.9738, Train-S2 0.8610, S1-S2 0.9735
+=== exp3: thresholds ===
+  e65_distance: a=0.90 S1 rejection global 0.7979 fold-mean 0.8286 mixture 0.3891
+  e183_fusion: a=0.90 S1 rejection global 0.2733 fold-mean 0.2667 mixture 0.2460
+E194 done in 3s
+E194 start: Train (11304, 855), Test (22251, 855), S1 3033, device cuda
+=== exp1: E65 distance gate ===
+  distance gate: cache hit
+  distance: LOSO contam 0.7936 strict 0.6448 S1 0.7979
+=== exp1: E183 gate ===
+  E183 strict (published) LOSO gate rebuilt from the cache
+  E183 contaminated heads: cache hit
+  E183: LOSO strict 0.9848 contam 0.9914 S1 0.2733
+=== exp2: domain probe ===
+  domain EC      : shift S1 0.356 sd / S2 0.145 sd | AUC Train-S1 0.9818, Train-S2 0.8655, S1-S2 0.9724
+  domain EO      : shift S1 0.312 sd / S2 0.149 sd | AUC Train-S1 0.9731, Train-S2 0.8598, S1-S2 0.9762
+  domain Imagery : shift S1 0.342 sd / S2 0.140 sd | AUC Train-S1 0.9870, Train-S2 0.8929, S1-S2 0.9847
+  domain SSVEP   : shift S1 0.311 sd / S2 0.124 sd | AUC Train-S1 0.9738, Train-S2 0.8610, S1-S2 0.9735
+=== exp3: thresholds ===
+  e65_distance: a=0.90 S1 rejection global 0.7979 fold-mean 0.8286 mixture 0.3891
+  e183_fusion: a=0.90 S1 rejection global 0.2733 fold-mean 0.2667 mixture 0.2460
+E194 start: Train (11304, 855), Test (22251, 855), S1 3033, device cuda
+=== exp1: E65 distance gate ===
+  distance gate: cache hit
+  distance: LOSO contam 0.7936 strict 0.6448 S1 0.7979
+=== exp1: E183 gate ===
+  E183 strict (published) LOSO gate rebuilt from the cache
+  E183 contaminated heads: cache hit
+  E183: LOSO strict 0.9848 contam 0.9914 S1 0.2733
+=== exp2: domain probe ===
+  domain EC      : shift S1 0.356 sd / S2 0.145 sd | AUC Train-S1 0.9818, Train-S2 0.8655, S1-S2 0.9724
+  domain EO      : shift S1 0.312 sd / S2 0.149 sd | AUC Train-S1 0.9731, Train-S2 0.8598, S1-S2 0.9762
+  domain Imagery : shift S1 0.342 sd / S2 0.140 sd | AUC Train-S1 0.9870, Train-S2 0.8929, S1-S2 0.9847
+  domain SSVEP   : shift S1 0.311 sd / S2 0.124 sd | AUC Train-S1 0.9738, Train-S2 0.8610, S1-S2 0.9735
+=== exp3: thresholds ===
+  e65_distance: a=0.90 S1 rejection global 0.7979 fold-mean 0.8286 mixture 0.3891
+  e183_fusion: a=0.90 S1 rejection global 0.2733 fold-mean 0.2667 mixture 0.2460
+E194 done in 2s
