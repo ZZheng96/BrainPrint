@@ -1,0 +1,11 @@
+{
+  "experiment": "E150_s2_diagnosis",
+  "data": {"train_metadata": "BrainPrint_cache/train_metadata.csv", "test_metadata": "BrainPrint_cache/test_metadata.csv"},
+  "features": {"train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy", "test": "research/E121_pca_sweep/test_logspd.npy"},
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "pca_dim": 96,
+  "fit_fraction": 0.6,
+  "prototype_k": 12,
+  "baseline_W": {"set": "B_only", "k": 12, "acceptance_rate": 0.9, "W": 0.6958, "LOSO_rejection": 0.7936, "Test_S1_rejection": 0.7979, "Test_S2_acceptance": 0.596},
+  "protocol": "E143 clean protocol + E65 logSPD feature; no Test statistic is used for modeling"
+}

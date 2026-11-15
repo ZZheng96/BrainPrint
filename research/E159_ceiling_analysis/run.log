@@ -1,0 +1,16 @@
+﻿.\.venv\Scripts\python.exe : Traceback (most recent call last):
+所在位置 行:15 字符: 4281
++ ... M = 'dumb'; .\.venv\Scripts\python.exe "research/E159_ceiling_analysi ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "D:\WORK\BCIC2026\BrainPrint\research\E159_ceiling_analysis\run_e159.py", line 192, in <module>
+    main()
+  File "D:\WORK\BCIC2026\BrainPrint\research\E159_ceiling_analysis\run_e159.py", line 118, in main
+    te = neg_d1(b, protos, keys, test_tasks)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\WORK\BCIC2026\BrainPrint\research\E159_ceiling_analysis\run_e159.py", line 77, in neg_d1
+    q = torch.as_tensor(np.asarray(feat[ch], dtype=torch.float32), device=DEVICE)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Cannot interpret 'torch.float32' as a data type

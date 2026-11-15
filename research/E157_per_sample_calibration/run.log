@@ -1,0 +1,58 @@
+﻿space ready (11304, 96) -> (22251, 96) on cuda
+
+===== k=1 =====
+  Train OOF AUC=0.9697 F1=0.9757 (n=11304)
+  raw               AUC 0.7504 shift -0.93sd  bestW 0.6697 @a=0.85 (LOSO 0.6646 / S1 0.7524 / S2 0.6308)
+  z_profile         AUC 0.5821 shift -0.68sd  bestW 0.5343 @a=0.80 (LOSO 0.8124 / S1 0.8256 / S2 0.2497)
+  softmax_profile   AUC 0.6594 shift -1.36sd  bestW 0.5794 @a=0.96 (LOSO 0.6141 / S1 0.7692 / S2 0.4671)
+  rank_profile      AUC 0.5000 shift +0.00sd  bestW 0.5000 @a=0.80 (LOSO 0.0000 / S1 0.0000 / S2 1.0000)
+  ratio_d2_d1       AUC 0.6183 shift -1.34sd  bestW 0.5445 @a=0.88 (LOSO 0.8228 / S1 0.8889 / S2 0.2331)
+  gap               AUC 0.5903 shift -1.46sd  bestW 0.5312 @a=0.80 (LOSO 0.9247 / S1 0.9070 / S2 0.1465)
+  rank_ref_control  AUC 0.7461 shift -1.09sd  bestW 0.6673 @a=0.85 (LOSO 0.6714 / S1 0.7501 / S2 0.6239)
+
+===== k=3 =====
+  Train OOF AUC=0.9782 F1=0.9844 (n=11304)
+  raw               AUC 0.7566 shift -1.30sd  bestW 0.6771 @a=0.91 (LOSO 0.6993 / S1 0.7468 / S2 0.6312)
+  z_profile         AUC 0.5888 shift -0.74sd  bestW 0.5460 @a=0.80 (LOSO 0.8980 / S1 0.8757 / S2 0.2051)
+  softmax_profile   AUC 0.6683 shift -1.20sd  bestW 0.5575 @a=0.96 (LOSO 0.6926 / S1 0.8734 / S2 0.3320)
+  rank_profile      AUC 0.5000 shift +0.00sd  bestW 0.5000 @a=0.80 (LOSO 0.0000 / S1 0.0000 / S2 1.0000)
+  ratio_d2_d1       AUC 0.6152 shift -1.41sd  bestW 0.5476 @a=0.90 (LOSO 0.9043 / S1 0.9377 / S2 0.1742)
+  gap               AUC 0.5838 shift -1.52sd  bestW 0.5326 @a=0.88 (LOSO 0.9158 / S1 0.9166 / S2 0.1490)
+  rank_ref_control  AUC 0.7576 shift -1.31sd  bestW 0.6785 @a=0.91 (LOSO 0.7026 / S1 0.7448 / S2 0.6332)
+
+===== k=6 =====
+  Train OOF AUC=0.9799 F1=0.9898 (n=11304)
+  raw               AUC 0.7554 shift -1.34sd  bestW 0.6904 @a=0.92 (LOSO 0.7279 / S1 0.7296 / S2 0.6521)
+  z_profile         AUC 0.5815 shift -0.71sd  bestW 0.5696 @a=0.93 (LOSO 0.7583 / S1 0.7432 / S2 0.3884)
+  softmax_profile   AUC 0.6595 shift -1.21sd  bestW 0.5763 @a=0.96 (LOSO 0.8025 / S1 0.8714 / S2 0.3157)
+  rank_profile      AUC 0.5000 shift +0.00sd  bestW 0.5000 @a=0.80 (LOSO 0.0000 / S1 0.0000 / S2 1.0000)
+  ratio_d2_d1       AUC 0.6017 shift -1.46sd  bestW 0.5550 @a=0.96 (LOSO 0.7412 / S1 0.8246 / S2 0.3270)
+  gap               AUC 0.5696 shift -1.56sd  bestW 0.5417 @a=0.92 (LOSO 0.8835 / S1 0.8971 / S2 0.1930)
+  rank_ref_control  AUC 0.7560 shift -1.34sd  bestW 0.6899 @a=0.91 (LOSO 0.7486 / S1 0.7560 / S2 0.6275)
+
+===== k=12 =====
+  Train OOF AUC=0.9810 F1=0.9895 (n=11304)
+  raw               AUC 0.7578 shift -1.37sd  bestW 0.6958 @a=0.90 (LOSO 0.7936 / S1 0.7979 / S2 0.5960)
+  z_profile         AUC 0.5627 shift -0.73sd  bestW 0.5645 @a=0.94 (LOSO 0.7482 / S1 0.7079 / S2 0.4010)
+  softmax_profile   AUC 0.6560 shift -1.20sd  bestW 0.5761 @a=0.96 (LOSO 0.8198 / S1 0.8965 / S2 0.2942)
+  rank_profile      AUC 0.5000 shift +0.00sd  bestW 0.5000 @a=0.80 (LOSO 0.0000 / S1 0.0000 / S2 1.0000)
+  ratio_d2_d1       AUC 0.6213 shift -1.45sd  bestW 0.5669 @a=0.96 (LOSO 0.7888 / S1 0.8520 / S2 0.3134)
+  gap               AUC 0.5900 shift -1.55sd  bestW 0.5490 @a=0.96 (LOSO 0.7635 / S1 0.8312 / S2 0.3006)
+  rank_ref_control  AUC 0.7583 shift -1.34sd  bestW 0.7002 @a=0.90 (LOSO 0.8147 / S1 0.7969 / S2 0.5945)
+{
+  "score": "rank_ref_control",
+  "k": 12,
+  "acceptance_rate": 0.9,
+  "test_diagnostic_auc": 0.7582808621588103,
+  "median_shift_sd": -1.3407271177836926,
+  "s1_median_shift_sd": -1.6228475195899281,
+  "s2_median_shift_sd": -1.2793300230477171,
+  "LOSO_rejection": 0.8147190488698008,
+  "Test_S1_rejection": 0.7969007583250907,
+  "Test_S2_acceptance": 0.5945467790612967,
+  "W": 0.7001783413293712,
+  "Train_OOF_AUC": 0.9810215404992304,
+  "Train_OOF_F1": 0.9895487714436395,
+  "Test_AUC": "N/A",
+  "Test_F1": "N/A"
+}

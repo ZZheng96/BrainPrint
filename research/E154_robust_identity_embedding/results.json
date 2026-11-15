@@ -1,0 +1,228 @@
+{
+  "experiment": "E154_robust_identity_embedding",
+  "device": "cuda",
+  "protocol": {
+    "train_only": true,
+    "test_score_only": true,
+    "session_diagnostic_only": true,
+    "five_block_oof": true,
+    "loso_excludes_identity_and_block": true,
+    "feature_source": "E65 855-d correlation-logSPD"
+  },
+  "variants": [
+    {
+      "variant": "baseline_control",
+      "best": {
+        "acceptance_rate": 0.95,
+        "threshold": 0.7186564803123474,
+        "LOSO_rejection": 0.944806605823555,
+        "Test_S1_rejection": 0.5605011539729641,
+        "Test_S2_acceptance": 0.3550837756270163,
+        "W": 0.553868827762638,
+        "Train_OOF_AUC": 0.9858005442724216,
+        "Train_OOF_F1": 0.9919111726688599,
+        "Test_AUC": "N/A（无真实标签）",
+        "Test_F1": "N/A（无真实标签）"
+      },
+      "curve": [
+        {
+          "acceptance_rate": 0.8,
+          "threshold": 0.8536694645881653,
+          "LOSO_rejection": 0.9973924380704041,
+          "Test_S1_rejection": 0.6607319485657764,
+          "Test_S2_acceptance": 0.13341658861484026,
+          "W": 0.4812393909664653,
+          "Train_OOF_AUC": 0.9858005442724216,
+          "Train_OOF_F1": 0.9919111726688599,
+          "Test_AUC": "N/A（无真实标签）",
+          "Test_F1": "N/A（无真实标签）"
+        },
+        {
+          "acceptance_rate": 0.85,
+          "threshold": 0.8295440673828125,
+          "LOSO_rejection": 0.9926119078661452,
+          "Test_S1_rejection": 0.6172106824925816,
+          "Test_S2_acceptance": 0.16926839421375794,
+          "W": 0.48708984469656064,
+          "Train_OOF_AUC": 0.9858005442724216,
+          "Train_OOF_F1": 0.9919111726688599,
+          "Test_AUC": "N/A（无真实标签）",
+          "Test_F1": "N/A（无真实标签）"
+        },
+        {
+          "acceptance_rate": 0.9,
+          "threshold": 0.7884129285812378,
+          "LOSO_rejection": 0.9847892220773576,
+          "Test_S1_rejection": 0.58720738542697,
+          "Test_S2_acceptance": 0.23207409720054115,
+          "W": 0.5090362004763525,
+          "Train_OOF_AUC": 0.9858005442724216,
+          "Train_OOF_F1": 0.9919111726688599,
+          "Test_AUC": "N/A（无真实标签）",
+          "Test_F1": "N/A（无真实标签）"
+        },
+        {
+          "acceptance_rate": 0.95,
+          "threshold": 0.7186564803123474,
+          "LOSO_rejection": 0.944806605823555,
+          "Test_S1_rejection": 0.5605011539729641,
+          "Test_S2_acceptance": 0.3550837756270163,
+          "W": 0.553868827762638,
+          "Train_OOF_AUC": 0.9858005442724216,
+          "Train_OOF_F1": 0.9919111726688599,
+          "Test_AUC": "N/A（无真实标签）",
+          "Test_F1": "N/A（无真实标签）"
+        }
+      ],
+      "n_train_fit": 6695,
+      "n_oof": 11304,
+      "n_loso": 2301
+    },
+    {
+      "variant": "augmentation_consistency",
+      "best": {
+        "acceptance_rate": 0.95,
+        "threshold": 0.7233991026878357,
+        "LOSO_rejection": 0.9469795740982182,
+        "Test_S1_rejection": 0.5601714474118035,
+        "Test_S2_acceptance": 0.35612446664585284,
+        "W": 0.5548499887004319,
+        "Train_OOF_AUC": 0.986064975903581,
+        "Train_OOF_F1": 0.9920042386466246,
+        "Test_AUC": "N/A（无真实标签）",
+        "Test_F1": "N/A（无真实标签）"
+      },
+      "curve": [
+        {
+          "acceptance_rate": 0.8,
+          "threshold": 0.8574066758155823,
+          "LOSO_rejection": 0.9969578444154715,
+          "Test_S1_rejection": 0.6630398944939004,
+          "Test_S2_acceptance": 0.13378083047143302,
+          "W": 0.4818898499630595,
+          "Train_OOF_AUC": 0.986064975903581,
+          "Train_OOF_F1": 0.9920042386466246,
+          "Test_AUC": "N/A（无真实标签）",
+          "Test_F1": "N/A（无真实标签）"
+        },
+        {
+          "acceptance_rate": 0.85,
+          "threshold": 0.8332417607307434,
+          "LOSO_rejection": 0.9939156888309431,
+          "Test_S1_rejection": 0.6188592152983844,
+          "Test_S2_acceptance": 0.169840774274118,
+          "W": 0.48811411316939085,
+          "Train_OOF_AUC": 0.986064975903581,
+          "Train_OOF_F1": 0.9920042386466246,
+          "Test_AUC": "N/A（无真实标签）",
+          "Test_F1": "N/A（无真实标签）"
+        },
+        {
+          "acceptance_rate": 0.9,
+          "threshold": 0.7928454875946045,
+          "LOSO_rejection": 0.984354628422425,
+          "Test_S1_rejection": 0.5881965051104517,
+          "Test_S2_acceptance": 0.23394734103444687,
+          "W": 0.5101114539004427,
+          "Train_OOF_AUC": 0.986064975903581,
+          "Train_OOF_F1": 0.9920042386466246,
+          "Test_AUC": "N/A（无真实标签）",
+          "Test_F1": "N/A（无真实标签）"
+        },
+        {
+          "acceptance_rate": 0.95,
+          "threshold": 0.7233991026878357,
+          "LOSO_rejection": 0.9469795740982182,
+          "Test_S1_rejection": 0.5601714474118035,
+          "Test_S2_acceptance": 0.35612446664585284,
+          "W": 0.5548499887004319,
+          "Train_OOF_AUC": 0.986064975903581,
+          "Train_OOF_F1": 0.9920042386466246,
+          "Test_AUC": "N/A（无真实标签）",
+          "Test_F1": "N/A（无真实标签）"
+        }
+      ],
+      "n_train_fit": 6695,
+      "n_oof": 11304,
+      "n_loso": 2301
+    }
+  ],
+  "best": {
+    "variant": "augmentation_consistency",
+    "best": {
+      "acceptance_rate": 0.95,
+      "threshold": 0.7233991026878357,
+      "LOSO_rejection": 0.9469795740982182,
+      "Test_S1_rejection": 0.5601714474118035,
+      "Test_S2_acceptance": 0.35612446664585284,
+      "W": 0.5548499887004319,
+      "Train_OOF_AUC": 0.986064975903581,
+      "Train_OOF_F1": 0.9920042386466246,
+      "Test_AUC": "N/A（无真实标签）",
+      "Test_F1": "N/A（无真实标签）"
+    },
+    "curve": [
+      {
+        "acceptance_rate": 0.8,
+        "threshold": 0.8574066758155823,
+        "LOSO_rejection": 0.9969578444154715,
+        "Test_S1_rejection": 0.6630398944939004,
+        "Test_S2_acceptance": 0.13378083047143302,
+        "W": 0.4818898499630595,
+        "Train_OOF_AUC": 0.986064975903581,
+        "Train_OOF_F1": 0.9920042386466246,
+        "Test_AUC": "N/A（无真实标签）",
+        "Test_F1": "N/A（无真实标签）"
+      },
+      {
+        "acceptance_rate": 0.85,
+        "threshold": 0.8332417607307434,
+        "LOSO_rejection": 0.9939156888309431,
+        "Test_S1_rejection": 0.6188592152983844,
+        "Test_S2_acceptance": 0.169840774274118,
+        "W": 0.48811411316939085,
+        "Train_OOF_AUC": 0.986064975903581,
+        "Train_OOF_F1": 0.9920042386466246,
+        "Test_AUC": "N/A（无真实标签）",
+        "Test_F1": "N/A（无真实标签）"
+      },
+      {
+        "acceptance_rate": 0.9,
+        "threshold": 0.7928454875946045,
+        "LOSO_rejection": 0.984354628422425,
+        "Test_S1_rejection": 0.5881965051104517,
+        "Test_S2_acceptance": 0.23394734103444687,
+        "W": 0.5101114539004427,
+        "Train_OOF_AUC": 0.986064975903581,
+        "Train_OOF_F1": 0.9920042386466246,
+        "Test_AUC": "N/A（无真实标签）",
+        "Test_F1": "N/A（无真实标签）"
+      },
+      {
+        "acceptance_rate": 0.95,
+        "threshold": 0.7233991026878357,
+        "LOSO_rejection": 0.9469795740982182,
+        "Test_S1_rejection": 0.5601714474118035,
+        "Test_S2_acceptance": 0.35612446664585284,
+        "W": 0.5548499887004319,
+        "Train_OOF_AUC": 0.986064975903581,
+        "Train_OOF_F1": 0.9920042386466246,
+        "Test_AUC": "N/A（无真实标签）",
+        "Test_F1": "N/A（无真实标签）"
+      }
+    ],
+    "n_train_fit": 6695,
+    "n_oof": 11304,
+    "n_loso": 2301
+  },
+  "source_sha256": {
+    "config": "8f71855c8ecc5870f53ebfe0ed73af6d05705b742ef8586fcd073dbf6291c0b3",
+    "train_features": "bc9a1c32bac175498d95f2f2d7641be13b7fe880550fcc792fe675fdef4b43f6",
+    "test_features": "a8186561acadc9280cb4b0c9b3024b6586948aacab5e3b292e7ca0a5e4fc8bb5"
+  },
+  "test": {
+    "AUC": "N/A（无真实标签）",
+    "F1": "N/A（无真实标签）",
+    "session_diagnostic_only": true
+  }
+}

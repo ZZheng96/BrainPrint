@@ -1,0 +1,16 @@
+{
+  "experiment": "E159_ceiling_analysis",
+  "purpose": "Prove the achievable W upper bound of the frozen E143 score by sweeping every threshold, with no Test statistic used for modelling.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_features": "research/E121_pca_sweep/test_logspd.npy"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "pca_dim": 96,
+  "prototype_k": 12,
+  "fit_fraction": 0.6,
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "targets": {"weighted": 0.80}
+}

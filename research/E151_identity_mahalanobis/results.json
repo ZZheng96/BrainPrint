@@ -1,0 +1,386 @@
+{
+  "experiment": "E151_identity_mahalanobis",
+  "protocol": {
+    "train_only": true,
+    "test_used_only_for_scoring": true,
+    "oof_blocks": 5,
+    "loso_excludes_identity_and_block": true,
+    "prototype_pollution": false
+  },
+  "best": {
+    "shrinkage": 0.2,
+    "acceptance_rate": 0.8,
+    "threshold": -155.70103454589844,
+    "LOSO_rejection": 0.4428509343763581,
+    "Test_S1_rejection": 0.5509396636993076,
+    "Test_S2_acceptance": 0.6262358205848684,
+    "W": 0.5615655598113506,
+    "test_auc_diagnostic": 0.6290552079894601,
+    "Test_F1": "N/A（无真实标签）"
+  },
+  "curve": [
+    {
+      "shrinkage": 0.2,
+      "acceptance_rate": 0.8,
+      "threshold": -155.70103454589844,
+      "LOSO_rejection": 0.4428509343763581,
+      "Test_S1_rejection": 0.5509396636993076,
+      "Test_S2_acceptance": 0.6262358205848684,
+      "W": 0.5615655598113506,
+      "test_auc_diagnostic": 0.6290552079894601,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.1,
+      "acceptance_rate": 0.8,
+      "threshold": -318.05291748046875,
+      "LOSO_rejection": 0.30812690134724036,
+      "Test_S1_rejection": 0.45631388064622486,
+      "Test_S2_acceptance": 0.7309813716307628,
+      "W": 0.5566008813137477,
+      "test_auc_diagnostic": 0.6385951587383202,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.2,
+      "acceptance_rate": 0.85,
+      "threshold": -185.02059936523438,
+      "LOSO_rejection": 0.3237722729248153,
+      "Test_S1_rejection": 0.44642268381140787,
+      "Test_S2_acceptance": 0.7175564574877719,
+      "W": 0.5513269679279418,
+      "test_auc_diagnostic": 0.6290552079894601,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.2,
+      "acceptance_rate": 0.88,
+      "threshold": -209.3203125,
+      "LOSO_rejection": 0.26727509778357234,
+      "Test_S1_rejection": 0.4002637652489284,
+      "Test_S2_acceptance": 0.7575189926110938,
+      "W": 0.5456442120636721,
+      "test_auc_diagnostic": 0.6290552079894601,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.2,
+      "acceptance_rate": 0.9,
+      "threshold": -228.78260803222656,
+      "LOSO_rejection": 0.2333767926988266,
+      "Test_S1_rejection": 0.37388724035608306,
+      "Test_S2_acceptance": 0.7847330627536684,
+      "W": 0.5441825396405616,
+      "test_auc_diagnostic": 0.6290552079894601,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.2,
+      "acceptance_rate": 0.92,
+      "threshold": -251.29551696777344,
+      "LOSO_rejection": 0.21338548457192524,
+      "Test_S1_rejection": 0.31915595120342893,
+      "Test_S2_acceptance": 0.8099698199604537,
+      "W": 0.5381202689240654,
+      "test_auc_diagnostic": 0.6290552079894601,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.2,
+      "acceptance_rate": 0.94,
+      "threshold": -280.5879821777344,
+      "LOSO_rejection": 0.18252933507170796,
+      "Test_S1_rejection": 0.22881635344543355,
+      "Test_S2_acceptance": 0.8437402435216984,
+      "W": 0.5247065438901346,
+      "test_auc_diagnostic": 0.6290552079894601,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.1,
+      "acceptance_rate": 0.85,
+      "threshold": -390.0892639160156,
+      "LOSO_rejection": 0.2459800086918731,
+      "Test_S1_rejection": 0.3026706231454006,
+      "Test_S2_acceptance": 0.7740659798105942,
+      "W": 0.5241956478646155,
+      "test_auc_diagnostic": 0.6385951587383202,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.2,
+      "acceptance_rate": 0.95,
+      "threshold": -299.076416015625,
+      "LOSO_rejection": 0.16558018252933507,
+      "Test_S1_rejection": 0.17804154302670624,
+      "Test_S2_acceptance": 0.8622645436569882,
+      "W": 0.5170377032175044,
+      "test_auc_diagnostic": 0.6290552079894601,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.2,
+      "acceptance_rate": 0.96,
+      "threshold": -323.18023681640625,
+      "LOSO_rejection": 0.14124293785310735,
+      "Test_S1_rejection": 0.13814704912627762,
+      "Test_S2_acceptance": 0.889478613799563,
+      "W": 0.5145868036446277,
+      "test_auc_diagnostic": 0.6290552079894601,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.01,
+      "acceptance_rate": 0.96,
+      "threshold": -7695.31298828125,
+      "LOSO_rejection": 0.1316818774445893,
+      "Test_S1_rejection": 0.10979228486646884,
+      "Test_S2_acceptance": 0.9078988448329691,
+      "W": 0.5143179629942491,
+      "test_auc_diagnostic": 0.6199944966557035,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.01,
+      "acceptance_rate": 0.95,
+      "threshold": -7151.47314453125,
+      "LOSO_rejection": 0.15428074750108647,
+      "Test_S1_rejection": 0.1292449719749423,
+      "Test_S2_acceptance": 0.8853678842751587,
+      "W": 0.5135653720065865,
+      "test_auc_diagnostic": 0.6199944966557035,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.05,
+      "acceptance_rate": 0.96,
+      "threshold": -1459.2677001953125,
+      "LOSO_rejection": 0.13559322033898305,
+      "Test_S1_rejection": 0.11045169798878998,
+      "Test_S2_acceptance": 0.9032677697991466,
+      "W": 0.5131451144815166,
+      "test_auc_diagnostic": 0.6393491193087917,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.01,
+      "acceptance_rate": 0.94,
+      "threshold": -6707.71142578125,
+      "LOSO_rejection": 0.16688396349413298,
+      "Test_S1_rejection": 0.15265413781734258,
+      "Test_S2_acceptance": 0.8661671349776251,
+      "W": 0.5129680928166814,
+      "test_auc_diagnostic": 0.6199944966557035,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.1,
+      "acceptance_rate": 0.96,
+      "threshold": -695.6016845703125,
+      "LOSO_rejection": 0.1373315949587136,
+      "Test_S1_rejection": 0.11539729640619849,
+      "Test_S2_acceptance": 0.8994692475803934,
+      "W": 0.5129168466314247,
+      "test_auc_diagnostic": 0.6385951587383202,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.1,
+      "acceptance_rate": 0.95,
+      "threshold": -639.0458984375,
+      "LOSO_rejection": 0.16644936983920033,
+      "Test_S1_rejection": 0.13913616880975932,
+      "Test_S2_acceptance": 0.8725153501925278,
+      "W": 0.5126540597585039,
+      "test_auc_diagnostic": 0.6385951587383202,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.05,
+      "acceptance_rate": 0.95,
+      "threshold": -1353.794189453125,
+      "LOSO_rejection": 0.15949587136027815,
+      "Test_S1_rejection": 0.13287174414770853,
+      "Test_S2_acceptance": 0.8788635654074305,
+      "W": 0.5125236865807119,
+      "test_auc_diagnostic": 0.6393491193087917,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.1,
+      "acceptance_rate": 0.94,
+      "threshold": -602.9663696289062,
+      "LOSO_rejection": 0.17774880486744893,
+      "Test_S1_rejection": 0.1562809099901088,
+      "Test_S2_acceptance": 0.8577895722759913,
+      "W": 0.512402214852385,
+      "test_auc_diagnostic": 0.6385951587383202,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.05,
+      "acceptance_rate": 0.94,
+      "threshold": -1268.7991943359375,
+      "LOSO_rejection": 0.17209908735332463,
+      "Test_S1_rejection": 0.15166501813386085,
+      "Test_S2_acceptance": 0.8613279217400354,
+      "W": 0.511604987241814,
+      "test_auc_diagnostic": 0.6393491193087917,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.1,
+      "acceptance_rate": 0.92,
+      "threshold": -538.5787353515625,
+      "LOSO_rejection": 0.20121686223381138,
+      "Test_S1_rejection": 0.18166831519947246,
+      "Test_S2_acceptance": 0.8314600894994276,
+      "W": 0.5114513391080348,
+      "test_auc_diagnostic": 0.6385951587383202,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.05,
+      "acceptance_rate": 0.92,
+      "threshold": -1131.2789306640625,
+      "LOSO_rejection": 0.19643633202955238,
+      "Test_S1_rejection": 0.17804154302670624,
+      "Test_S2_acceptance": 0.8349984389634717,
+      "W": 0.5111186882458005,
+      "test_auc_diagnostic": 0.6393491193087917,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.1,
+      "acceptance_rate": 0.88,
+      "threshold": -445.47442626953125,
+      "LOSO_rejection": 0.22511951325510648,
+      "Test_S1_rejection": 0.22584899439498846,
+      "Test_S2_acceptance": 0.7955562493495681,
+      "W": 0.5105202515873078,
+      "test_auc_diagnostic": 0.6385951587383202,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.01,
+      "acceptance_rate": 0.92,
+      "threshold": -5917.5576171875,
+      "LOSO_rejection": 0.1877444589308996,
+      "Test_S1_rejection": 0.18001978239366964,
+      "Test_S2_acceptance": 0.836403371838901,
+      "W": 0.5101427462505929,
+      "test_auc_diagnostic": 0.6199944966557035,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.05,
+      "acceptance_rate": 0.9,
+      "threshold": -1028.41015625,
+      "LOSO_rejection": 0.20425901781833986,
+      "Test_S1_rejection": 0.1892515661061655,
+      "Test_S2_acceptance": 0.8223540430846081,
+      "W": 0.5095546675234304,
+      "test_auc_diagnostic": 0.6393491193087917,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.1,
+      "acceptance_rate": 0.9,
+      "threshold": -488.0270690917969,
+      "LOSO_rejection": 0.21121251629726207,
+      "Test_S1_rejection": 0.20178041543026706,
+      "Test_S2_acceptance": 0.812259340201894,
+      "W": 0.5093779030328294,
+      "test_auc_diagnostic": 0.6385951587383202,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.05,
+      "acceptance_rate": 0.8,
+      "threshold": -642.9867553710938,
+      "LOSO_rejection": 0.24033029117774882,
+      "Test_S1_rejection": 0.2304648862512364,
+      "Test_S2_acceptance": 0.7827557498178791,
+      "W": 0.5090766692661859,
+      "test_auc_diagnostic": 0.6393491193087917,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.05,
+      "acceptance_rate": 0.88,
+      "threshold": -932.23388671875,
+      "LOSO_rejection": 0.21034332898739677,
+      "Test_S1_rejection": 0.19485657764589515,
+      "Test_S2_acceptance": 0.812571547507545,
+      "W": 0.5075857504120955,
+      "test_auc_diagnostic": 0.6393491193087917,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.01,
+      "acceptance_rate": 0.9,
+      "threshold": -5397.35546875,
+      "LOSO_rejection": 0.19295958279009126,
+      "Test_S1_rejection": 0.18892185954500496,
+      "Test_S2_acceptance": 0.8231345613487355,
+      "W": 0.5070376412581419,
+      "test_auc_diagnostic": 0.6199944966557035,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.05,
+      "acceptance_rate": 0.85,
+      "threshold": -803.7528076171875,
+      "LOSO_rejection": 0.21555845284658845,
+      "Test_S1_rejection": 0.1994724695021431,
+      "Test_S2_acceptance": 0.8052346758247476,
+      "W": 0.5063750684995567,
+      "test_auc_diagnostic": 0.6393491193087917,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.01,
+      "acceptance_rate": 0.88,
+      "threshold": -4846.03076171875,
+      "LOSO_rejection": 0.19600173837461973,
+      "Test_S1_rejection": 0.19155951203428948,
+      "Test_S2_acceptance": 0.812883754813196,
+      "W": 0.5033321900088252,
+      "test_auc_diagnostic": 0.6199944966557035,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.01,
+      "acceptance_rate": 0.8,
+      "threshold": -3077.87548828125,
+      "LOSO_rejection": 0.20599739243807041,
+      "Test_S1_rejection": 0.19221892515661063,
+      "Test_S2_acceptance": 0.8073680924133625,
+      "W": 0.5032381256053515,
+      "test_auc_diagnostic": 0.6199944966557035,
+      "Test_F1": "N/A（无真实标签）"
+    },
+    {
+      "shrinkage": 0.01,
+      "acceptance_rate": 0.85,
+      "threshold": -4214.66748046875,
+      "LOSO_rejection": 0.19643633202955238,
+      "Test_S1_rejection": 0.19188921859545005,
+      "Test_S2_acceptance": 0.8092933707982101,
+      "W": 0.5017280730553556,
+      "test_auc_diagnostic": 0.6199944966557035,
+      "Test_F1": "N/A（无真实标签）"
+    }
+  ],
+  "device": "cuda",
+  "source_sha256": {
+    "config": "3e28e55e0f43853b67abb0fc34f689a649d466478b709a9d98a48cf01a9377d6",
+    "train_features": "bc9a1c32bac175498d95f2f2d7641be13b7fe880550fcc792fe675fdef4b43f6",
+    "test_features": "a8186561acadc9280cb4b0c9b3024b6586948aacab5e3b292e7ca0a5e4fc8bb5"
+  },
+  "test": {
+    "AUC": "N/A（无真实标签）",
+    "F1": "N/A（无真实标签）",
+    "session_diagnostic_only": true
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "experiment": "E154_robust_identity_embedding",
+  "seed": 20261115,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_features": "research/E121_pca_sweep/test_logspd.npy"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "pca_dim": 96,
+  "fit_fraction": 0.6,
+  "blocks": 5,
+  "hidden_dim": 128,
+  "embedding_dim": 64,
+  "epochs": 18,
+  "batch_size": 2048,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "temperature": 0.2,
+  "consistency_weight": 0.35,
+  "augmentation": {"scale": 0.08, "noise": 0.03, "mask": 0.08},
+  "acceptance_grid": [0.80, 0.85, 0.90, 0.95],
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.50}
+}

@@ -1,0 +1,32 @@
+﻿.\.venv\Scripts\python.exe : Traceback (most recent call last):
+所在位置 行:15 字符: 4281
++ ... M = 'dumb'; .\.venv\Scripts\python.exe "research/E155_task_conditiona ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "D:\WORK\BCIC2026\BrainPrint\research\E155_task_conditional_calibration\run_e155.py", line 111, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\WORK\BCIC2026\BrainPrint\research\E155_task_conditional_calibration\run_e155.py", line 108, in main
+    (OUT/'results.json').write_text(json.dumps(out,ensure_ascii=False,indent=2,default=lambda o:float(o)),encoding='utf
+-8')
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 406, in _iterencode_d
+ict
+    yield from chunks
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 406, in _iterencode_d
+ict
+    yield from chunks
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 377, in _iterencode_d
+ict
+    raise TypeError(f'keys must be str, int, float, bool or None, '
+TypeError: keys must be str, int, float, bool or None, not tuple

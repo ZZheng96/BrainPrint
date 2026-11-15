@@ -1,0 +1,65 @@
+{
+  "experiment": "E158_bandwise_prototype",
+  "purpose": "Do not concatenate all five bands into one PCA. Model each frequency band separately (own Task-wise standardisation, own PCA, own prototypes), calibrate each band score with the Train OOF reference distribution, and fuse with Train-only weights. Test whether band-wise modelling raises the Test S1-vs-S2 diagnostic AUC above the E143 joint PCA-96 value of 0.7578.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_train_trials": 11304,
+    "expected_test_rows": 22251
+  },
+  "features": {
+    "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test": "research/E121_pca_sweep/test_logspd.npy",
+    "width": 855,
+    "band_width": 171,
+    "bands": [
+      {"index": 0, "name": "b1_1-8", "hz": [1, 8]},
+      {"index": 1, "name": "b2_8-13", "hz": [8, 13]},
+      {"index": 2, "name": "b3_13-20", "hz": [13, 20]},
+      {"index": 3, "name": "b4_20-30", "hz": [20, 30]},
+      {"index": 4, "name": "b5_30-40", "hz": [30, 40]}
+    ],
+    "band_order_source": "research/E36_pure_eeg/config.json features.bands_hz (band-major concatenation, band b occupies columns [171*b, 171*(b+1)))"
+  },
+  "score": {
+    "form": "score = -d1, d1 = nearest same-task prototype distance (cosine-free Euclidean in PCA space, as in E143)",
+    "prototype_source": "k-means (20 iterations, seed=17*subject) on standardised+projected features"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "pca_dims": [16, 32, 48, 64],
+  "prototype_k": [1, 3, 6, 12],
+  "fit_fraction": 0.6,
+  "eval_fraction": {"low": 0.6, "high": 0.8},
+  "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96],
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "baseline": {
+    "name": "E143_joint_PCA96",
+    "pca_dim": 96,
+    "reference": {
+      "k": 12,
+      "acceptance_rate": 0.90,
+      "test_diagnostic_auc": 0.7578,
+      "LOSO_rejection": 0.7936,
+      "Test_S1_rejection": 0.7979,
+      "Test_S2_acceptance": 0.5960,
+      "W": 0.6958
+    }
+  },
+  "fusion": {
+    "methods": {
+      "mean_z": "equal-weight mean of per-band Train-OOF z scores",
+      "rank_mean": "per-band score -> percentile against that band's own Train OOF reference (ECDF), then equal-weight mean; monotone per band, no Test-batch statistic",
+      "loso_weighted": "weight simplex over the five bands (step 0.25) selected per acceptance rate by maximising mean Train LOSO rejection; Test is only scored",
+      "greedy_forward": "forward band selection with equal weights, criterion = mean Train LOSO rejection per acceptance rate, stop when no gain"
+    },
+    "weight_grid_step": 0.25,
+    "selection_data": "Train only (five-block Train OOF reference + LOSO folds); Test scores are never used to pick weights or bands"
+  },
+  "z_calibration": "per-band mean/std of the Train OOF score distribution (five sequential blocks, prototypes from all other blocks); the same mu/sd is applied to LOSO and to Test",
+  "targets": {
+    "weighted": 0.80,
+    "baseline_W": 0.6958,
+    "diagnostic_auc_to_beat": 0.7578
+  },
+  "protocol": "E143 clean protocol: Task-wise standardisation, PCA and prototypes fitted on Train fit_rows (frac<=0.6) only; LOSO removes the scored identity from the prototype set and uses fit_rows only; five sequential Train OOF blocks calibrate thresholds; Test is score-only; session labels are diagnostic only."
+}

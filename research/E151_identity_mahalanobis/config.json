@@ -1,0 +1,14 @@
+{
+  "experiment": "E151_identity_mahalanobis",
+  "data": {"train_metadata": "BrainPrint_cache/train_metadata.csv", "test_metadata": "BrainPrint_cache/test_metadata.csv", "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy", "test_features": "research/E121_pca_sweep/test_logspd.npy"},
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "pca_dim": 96,
+  "fit_fraction": 0.6,
+  "blocks": 5,
+  "shrinkage_grid": [0.01, 0.05, 0.10, 0.20],
+  "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.92, 0.94, 0.95, 0.96],
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "robust_clip": 4.0,
+  "ridge": 1e-5,
+  "seed": 20261115
+}
