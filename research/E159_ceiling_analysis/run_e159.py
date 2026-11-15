@@ -74,7 +74,7 @@ def neg_d1(feat, protos, keys, tasks):
         p = torch.as_tensor(protos[cols], dtype=torch.float32, device=DEVICE)
         for st in range(0, len(idx), 2048):
             ch = idx[st:st + 2048]
-            q = torch.as_tensor(np.asarray(feat[ch], dtype=torch.float32), device=DEVICE)
+            q = torch.as_tensor(np.asarray(feat[ch], dtype=np.float32), device=DEVICE)
             out[ch] = (-torch.cdist(q, p)).max(1).values.cpu().numpy()
     return out
 

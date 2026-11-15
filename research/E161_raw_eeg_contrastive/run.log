@@ -1,0 +1,223 @@
+Train 11304 | Test 22251 (S1=3033, S2=19218)
+loading Train raw ...
+  load train 2048/11304 | 0.7s
+  load train 4096/11304 | 1.3s
+  load train 6144/11304 | 1.9s
+  load train 8192/11304 | 2.5s
+  load train 10240/11304 | 3.1s
+  load train 11304/11304 | 3.4s
+Train raw on GPU: (11304, 18, 1200) (977 MB)
+training contrastive encoder ...
+encoder parameters = 144,064 (budget 1,000,000)
+epoch 1/40 loss=4.0959 valid_acc=0.4321 {'EC': 0.422, 'EO': 0.404, 'Imagery': 0.405, 'SSVEP': 0.484} | 2s
+epoch 2/40 loss=3.5709 valid_acc=0.5863 {'EC': 0.477, 'EO': 0.588, 'Imagery': 0.546, 'SSVEP': 0.678} | 3s
+epoch 3/40 loss=3.3126 valid_acc=0.6652 {'EC': 0.578, 'EO': 0.623, 'Imagery': 0.631, 'SSVEP': 0.754} | 5s
+epoch 4/40 loss=3.1037 valid_acc=0.7301 {'EC': 0.569, 'EO': 0.702, 'Imagery': 0.697, 'SSVEP': 0.835} | 6s
+epoch 5/40 loss=2.9578 valid_acc=0.7458 {'EC': 0.606, 'EO': 0.658, 'Imagery': 0.724, 'SSVEP': 0.846} | 8s
+epoch 6/40 loss=2.8707 valid_acc=0.7774 {'EC': 0.642, 'EO': 0.667, 'Imagery': 0.774, 'SSVEP': 0.857} | 9s
+epoch 7/40 loss=2.7658 valid_acc=0.7949 {'EC': 0.67, 'EO': 0.746, 'Imagery': 0.783, 'SSVEP': 0.865} | 11s
+epoch 8/40 loss=2.6643 valid_acc=0.8160 {'EC': 0.67, 'EO': 0.763, 'Imagery': 0.814, 'SSVEP': 0.878} | 13s
+epoch 9/40 loss=2.6121 valid_acc=0.8282 {'EC': 0.679, 'EO': 0.763, 'Imagery': 0.834, 'SSVEP': 0.884} | 14s
+epoch 10/40 loss=2.5553 valid_acc=0.8379 {'EC': 0.706, 'EO': 0.763, 'Imagery': 0.841, 'SSVEP': 0.895} | 16s
+epoch 11/40 loss=2.4898 valid_acc=0.8440 {'EC': 0.688, 'EO': 0.737, 'Imagery': 0.861, 'SSVEP': 0.897} | 17s
+epoch 12/40 loss=2.4848 valid_acc=0.8571 {'EC': 0.716, 'EO': 0.763, 'Imagery': 0.856, 'SSVEP': 0.93} | 19s
+epoch 13/40 loss=2.4399 valid_acc=0.8606 {'EC': 0.706, 'EO': 0.789, 'Imagery': 0.87, 'SSVEP': 0.914} | 21s
+epoch 14/40 loss=2.4046 valid_acc=0.8712 {'EC': 0.761, 'EO': 0.842, 'Imagery': 0.867, 'SSVEP': 0.919} | 22s
+epoch 15/40 loss=2.3798 valid_acc=0.8580 {'EC': 0.706, 'EO': 0.825, 'Imagery': 0.854, 'SSVEP': 0.919} | 24s
+epoch 16/40 loss=2.3440 valid_acc=0.8896 {'EC': 0.789, 'EO': 0.851, 'Imagery': 0.894, 'SSVEP': 0.924} | 25s
+epoch 17/40 loss=2.3085 valid_acc=0.8764 {'EC': 0.844, 'EO': 0.807, 'Imagery': 0.863, 'SSVEP': 0.927} | 27s
+epoch 18/40 loss=2.3012 valid_acc=0.9001 {'EC': 0.844, 'EO': 0.851, 'Imagery': 0.898, 'SSVEP': 0.935} | 29s
+epoch 19/40 loss=2.2684 valid_acc=0.8975 {'EC': 0.78, 'EO': 0.816, 'Imagery': 0.901, 'SSVEP': 0.951} | 30s
+epoch 20/40 loss=2.2616 valid_acc=0.9141 {'EC': 0.835, 'EO': 0.825, 'Imagery': 0.929, 'SSVEP': 0.943} | 32s
+epoch 21/40 loss=2.2111 valid_acc=0.9124 {'EC': 0.844, 'EO': 0.842, 'Imagery': 0.923, 'SSVEP': 0.938} | 33s
+epoch 22/40 loss=2.1974 valid_acc=0.9124 {'EC': 0.826, 'EO': 0.833, 'Imagery': 0.925, 'SSVEP': 0.943} | 35s
+epoch 23/40 loss=2.1794 valid_acc=0.9220 {'EC': 0.835, 'EO': 0.851, 'Imagery': 0.936, 'SSVEP': 0.949} | 37s
+epoch 24/40 loss=2.1401 valid_acc=0.9115 {'EC': 0.844, 'EO': 0.86, 'Imagery': 0.914, 'SSVEP': 0.943} | 38s
+epoch 25/40 loss=2.1314 valid_acc=0.9220 {'EC': 0.872, 'EO': 0.833, 'Imagery': 0.929, 'SSVEP': 0.954} | 40s
+epoch 26/40 loss=2.1407 valid_acc=0.9229 {'EC': 0.844, 'EO': 0.86, 'Imagery': 0.932, 'SSVEP': 0.951} | 42s
+epoch 27/40 loss=2.1159 valid_acc=0.9176 {'EC': 0.835, 'EO': 0.86, 'Imagery': 0.927, 'SSVEP': 0.946} | 43s
+epoch 28/40 loss=2.0985 valid_acc=0.9264 {'EC': 0.872, 'EO': 0.86, 'Imagery': 0.936, 'SSVEP': 0.949} | 45s
+epoch 29/40 loss=2.0851 valid_acc=0.9264 {'EC': 0.853, 'EO': 0.851, 'Imagery': 0.934, 'SSVEP': 0.959} | 46s
+epoch 30/40 loss=2.0777 valid_acc=0.9308 {'EC': 0.89, 'EO': 0.868, 'Imagery': 0.932, 'SSVEP': 0.959} | 48s
+epoch 31/40 loss=2.0665 valid_acc=0.9246 {'EC': 0.853, 'EO': 0.851, 'Imagery': 0.934, 'SSVEP': 0.954} | 50s
+epoch 32/40 loss=2.0751 valid_acc=0.9343 {'EC': 0.872, 'EO': 0.877, 'Imagery': 0.94, 'SSVEP': 0.962} | 51s
+epoch 33/40 loss=2.0540 valid_acc=0.9360 {'EC': 0.872, 'EO': 0.877, 'Imagery': 0.945, 'SSVEP': 0.959} | 52s
+epoch 34/40 loss=2.0519 valid_acc=0.9316 {'EC': 0.862, 'EO': 0.86, 'Imagery': 0.94, 'SSVEP': 0.962} | 54s
+epoch 35/40 loss=2.0537 valid_acc=0.9299 {'EC': 0.862, 'EO': 0.842, 'Imagery': 0.945, 'SSVEP': 0.954} | 55s
+epoch 36/40 loss=2.0521 valid_acc=0.9325 {'EC': 0.862, 'EO': 0.851, 'Imagery': 0.945, 'SSVEP': 0.959} | 57s
+epoch 37/40 loss=2.0279 valid_acc=0.9308 {'EC': 0.853, 'EO': 0.842, 'Imagery': 0.947, 'SSVEP': 0.957} | 58s
+epoch 38/40 loss=2.0361 valid_acc=0.9316 {'EC': 0.862, 'EO': 0.851, 'Imagery': 0.947, 'SSVEP': 0.954} | 60s
+epoch 39/40 loss=2.0395 valid_acc=0.9316 {'EC': 0.853, 'EO': 0.842, 'Imagery': 0.949, 'SSVEP': 0.957} | 61s
+epoch 40/40 loss=2.0285 valid_acc=0.9308 {'EC': 0.853, 'EO': 0.851, 'Imagery': 0.947, 'SSVEP': 0.954} | 63s
+extracting Train embeddings ...
+extracting Test embeddings ...
+  embed test 2048/22251 | 1s
+  embed test 4096/22251 | 2s
+  embed test 6144/22251 | 2s
+  embed test 8192/22251 | 3s
+  embed test 10240/22251 | 4s
+  embed test 12288/22251 | 5s
+  embed test 14336/22251 | 6s
+  embed test 16384/22251 | 7s
+  embed test 18432/22251 | 7s
+  embed test 20480/22251 | 9s
+  embed test 22251/22251 | 9s
+evaluating E143 protocol on E161 embeddings ...
+  [E161_raw_contrastive] pca 32 projected
+  [E161_raw_contrastive] pca=32 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4301 bestW=0.6583
+  [E161_raw_contrastive] pca=32 k=3 OOFauc=0.9797 OOFf1=0.9458 diagAUC=0.4311 bestW=0.6465
+  [E161_raw_contrastive] pca=32 k=6 OOFauc=0.9760 OOFf1=0.9428 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=32 k=12 OOFauc=0.9734 OOFf1=0.9423 diagAUC=0.4346 bestW=0.6397
+  [E161_raw_contrastive] pca 64 projected
+  [E161_raw_contrastive] pca=64 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4302 bestW=0.6583
+  [E161_raw_contrastive] pca=64 k=3 OOFauc=0.9797 OOFf1=0.9459 diagAUC=0.4312 bestW=0.6464
+  [E161_raw_contrastive] pca=64 k=6 OOFauc=0.9760 OOFf1=0.9429 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=64 k=12 OOFauc=0.9734 OOFf1=0.9424 diagAUC=0.4348 bestW=0.6399
+  [E161_raw_contrastive] pca 96 projected
+  [E161_raw_contrastive] pca=96 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4302 bestW=0.6583
+  [E161_raw_contrastive] pca=96 k=3 OOFauc=0.9797 OOFf1=0.9458 diagAUC=0.4312 bestW=0.6464
+  [E161_raw_contrastive] pca=96 k=6 OOFauc=0.9760 OOFf1=0.9429 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=96 k=12 OOFauc=0.9734 OOFf1=0.9424 diagAUC=0.4348 bestW=0.6400
+evaluating E143 protocol on E65 control features ...
+  [E65_control] pca 96 projected
+  [E65_control] pca=96 k=12 OOFauc=0.9302 OOFf1=0.9895 diagAUC=0.7578 bestW=0.6958
+
+E161 best: pca=32 k=1 a=0.96 diagAUC=0.4301 W=0.6583 (LOSO 0.8123 S1 0.2644 S2 0.7783)
+E65 control: pca=96 k=12 a=0.90 W=0.6958 diagAUC=0.7578
+results: D:\WORK\BCIC2026\BrainPrint\research\E161_raw_eeg_contrastive\results.json
+report: D:\WORK\BCIC2026\BrainPrint\research\E161_raw_eeg_contrastive\report.md
+Train 11304 | Test 22251 (S1=3033, S2=19218)
+loading Train raw ...
+  load train 2048/11304 | 0.7s
+  load train 4096/11304 | 1.3s
+  load train 6144/11304 | 1.9s
+  load train 8192/11304 | 2.5s
+  load train 10240/11304 | 3.1s
+  load train 11304/11304 | 3.4s
+extracting Train embeddings ...
+extracting Test embeddings ...
+  embed test 2048/22251 | 1s
+  embed test 4096/22251 | 1s
+  embed test 6144/22251 | 2s
+  embed test 8192/22251 | 3s
+  embed test 10240/22251 | 3s
+  embed test 12288/22251 | 4s
+  embed test 14336/22251 | 5s
+  embed test 16384/22251 | 5s
+  embed test 18432/22251 | 6s
+  embed test 20480/22251 | 7s
+  embed test 22251/22251 | 8s
+evaluating E143 protocol on E161 embeddings ...
+  [E161_raw_contrastive] pca 32 projected
+  [E161_raw_contrastive] pca=32 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4301 bestW=0.6583
+  [E161_raw_contrastive] pca=32 k=3 OOFauc=0.9797 OOFf1=0.9458 diagAUC=0.4311 bestW=0.6465
+  [E161_raw_contrastive] pca=32 k=6 OOFauc=0.9760 OOFf1=0.9428 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=32 k=12 OOFauc=0.9734 OOFf1=0.9423 diagAUC=0.4346 bestW=0.6397
+  [E161_raw_contrastive] pca 64 projected
+  [E161_raw_contrastive] pca=64 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4302 bestW=0.6583
+  [E161_raw_contrastive] pca=64 k=3 OOFauc=0.9797 OOFf1=0.9459 diagAUC=0.4312 bestW=0.6464
+  [E161_raw_contrastive] pca=64 k=6 OOFauc=0.9760 OOFf1=0.9429 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=64 k=12 OOFauc=0.9734 OOFf1=0.9424 diagAUC=0.4348 bestW=0.6399
+  [E161_raw_contrastive] pca 96 projected
+  [E161_raw_contrastive] pca=96 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4302 bestW=0.6583
+  [E161_raw_contrastive] pca=96 k=3 OOFauc=0.9797 OOFf1=0.9458 diagAUC=0.4312 bestW=0.6464
+  [E161_raw_contrastive] pca=96 k=6 OOFauc=0.9760 OOFf1=0.9429 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=96 k=12 OOFauc=0.9734 OOFf1=0.9424 diagAUC=0.4348 bestW=0.6400
+evaluating E143 protocol on E65 control features ...
+  [E65_control] pca 96 projected
+  [E65_control] pca=96 k=12 OOFauc=0.9302 OOFf1=0.9895 diagAUC=0.7578 bestW=0.6958
+
+E161 best: pca=32 k=1 a=0.96 diagAUC=0.4301 W=0.6583 (LOSO 0.8123 S1 0.2644 S2 0.7783)
+E65 control: pca=96 k=12 a=0.90 W=0.6958 diagAUC=0.7578
+results: D:\WORK\BCIC2026\BrainPrint\research\E161_raw_eeg_contrastive\results.json
+report: D:\WORK\BCIC2026\BrainPrint\research\E161_raw_eeg_contrastive\report.md
+Train 11304 | Test 22251 (S1=3033, S2=19218)
+loading Train raw ...
+  load train 2048/11304 | 0.7s
+  load train 4096/11304 | 1.3s
+  load train 6144/11304 | 1.9s
+  load train 8192/11304 | 2.5s
+  load train 10240/11304 | 3.1s
+  load train 11304/11304 | 3.4s
+extracting Train embeddings ...
+extracting Test embeddings ...
+  embed test 2048/22251 | 1s
+  embed test 4096/22251 | 1s
+  embed test 6144/22251 | 2s
+  embed test 8192/22251 | 3s
+  embed test 10240/22251 | 3s
+  embed test 12288/22251 | 4s
+  embed test 14336/22251 | 5s
+  embed test 16384/22251 | 5s
+  embed test 18432/22251 | 6s
+  embed test 20480/22251 | 7s
+  embed test 22251/22251 | 8s
+evaluating E143 protocol on E161 embeddings ...
+  [E161_raw_contrastive] pca 32 projected
+  [E161_raw_contrastive] pca=32 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4301 bestW=0.6583
+  [E161_raw_contrastive] pca=32 k=3 OOFauc=0.9797 OOFf1=0.9458 diagAUC=0.4311 bestW=0.6465
+  [E161_raw_contrastive] pca=32 k=6 OOFauc=0.9760 OOFf1=0.9428 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=32 k=12 OOFauc=0.9734 OOFf1=0.9423 diagAUC=0.4346 bestW=0.6397
+  [E161_raw_contrastive] pca 64 projected
+  [E161_raw_contrastive] pca=64 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4302 bestW=0.6583
+  [E161_raw_contrastive] pca=64 k=3 OOFauc=0.9797 OOFf1=0.9459 diagAUC=0.4312 bestW=0.6464
+  [E161_raw_contrastive] pca=64 k=6 OOFauc=0.9760 OOFf1=0.9429 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=64 k=12 OOFauc=0.9734 OOFf1=0.9424 diagAUC=0.4348 bestW=0.6399
+  [E161_raw_contrastive] pca 96 projected
+  [E161_raw_contrastive] pca=96 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4302 bestW=0.6583
+  [E161_raw_contrastive] pca=96 k=3 OOFauc=0.9797 OOFf1=0.9458 diagAUC=0.4312 bestW=0.6464
+  [E161_raw_contrastive] pca=96 k=6 OOFauc=0.9760 OOFf1=0.9429 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=96 k=12 OOFauc=0.9734 OOFf1=0.9424 diagAUC=0.4348 bestW=0.6400
+evaluating E143 protocol on E65 control features ...
+  [E65_control] pca 96 projected
+  [E65_control] pca=96 k=12 OOFauc=0.9302 OOFf1=0.9895 diagAUC=0.7578 bestW=0.6958
+
+E161 best: pca=32 k=1 a=0.96 diagAUC=0.4301 W=0.6583 (LOSO 0.8123 S1 0.2644 S2 0.7783)
+E65 control: pca=96 k=12 a=0.90 W=0.6958 diagAUC=0.7578
+results: D:\WORK\BCIC2026\BrainPrint\research\E161_raw_eeg_contrastive\results.json
+report: D:\WORK\BCIC2026\BrainPrint\research\E161_raw_eeg_contrastive\report.md
+Train 11304 | Test 22251 (S1=3033, S2=19218)
+loading Train raw ...
+  load train 2048/11304 | 0.7s
+  load train 4096/11304 | 1.3s
+  load train 6144/11304 | 1.9s
+  load train 8192/11304 | 2.5s
+  load train 10240/11304 | 3.1s
+  load train 11304/11304 | 3.4s
+extracting Train embeddings ...
+extracting Test embeddings ...
+  embed test 2048/22251 | 1s
+  embed test 4096/22251 | 1s
+  embed test 6144/22251 | 2s
+  embed test 8192/22251 | 3s
+  embed test 10240/22251 | 3s
+  embed test 12288/22251 | 4s
+  embed test 14336/22251 | 5s
+  embed test 16384/22251 | 5s
+  embed test 18432/22251 | 6s
+  embed test 20480/22251 | 7s
+  embed test 22251/22251 | 8s
+evaluating E143 protocol on E161 embeddings ...
+  [E161_raw_contrastive] pca 32 projected
+  [E161_raw_contrastive] pca=32 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4301 bestW=0.6583
+  [E161_raw_contrastive] pca=32 k=3 OOFauc=0.9797 OOFf1=0.9458 diagAUC=0.4311 bestW=0.6465
+  [E161_raw_contrastive] pca=32 k=6 OOFauc=0.9760 OOFf1=0.9428 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=32 k=12 OOFauc=0.9734 OOFf1=0.9423 diagAUC=0.4346 bestW=0.6397
+  [E161_raw_contrastive] pca 64 projected
+  [E161_raw_contrastive] pca=64 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4302 bestW=0.6583
+  [E161_raw_contrastive] pca=64 k=3 OOFauc=0.9797 OOFf1=0.9459 diagAUC=0.4312 bestW=0.6464
+  [E161_raw_contrastive] pca=64 k=6 OOFauc=0.9760 OOFf1=0.9429 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=64 k=12 OOFauc=0.9734 OOFf1=0.9424 diagAUC=0.4348 bestW=0.6399
+  [E161_raw_contrastive] pca 96 projected
+  [E161_raw_contrastive] pca=96 k=1 OOFauc=0.9814 OOFf1=0.9419 diagAUC=0.4302 bestW=0.6583
+  [E161_raw_contrastive] pca=96 k=3 OOFauc=0.9797 OOFf1=0.9458 diagAUC=0.4312 bestW=0.6464
+  [E161_raw_contrastive] pca=96 k=6 OOFauc=0.9760 OOFf1=0.9429 diagAUC=0.4288 bestW=0.6441
+  [E161_raw_contrastive] pca=96 k=12 OOFauc=0.9734 OOFf1=0.9424 diagAUC=0.4348 bestW=0.6400
+evaluating E143 protocol on E65 control features ...
+  [E65_control] pca 96 projected
+  [E65_control] pca=96 k=12 OOFauc=0.9302 OOFf1=0.9895 diagAUC=0.7578 bestW=0.6958
+
+E161 best: pca=32 k=1 a=0.96 diagAUC=0.4301 W=0.6583 (LOSO 0.8123 S1 0.2644 S2 0.7783)
+E65 control: pca=96 k=12 a=0.90 W=0.6958 diagAUC=0.7578
+results: D:\WORK\BCIC2026\BrainPrint\research\E161_raw_eeg_contrastive\results.json
+report: D:\WORK\BCIC2026\BrainPrint\research\E161_raw_eeg_contrastive\report.md

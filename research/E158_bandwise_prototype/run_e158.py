@@ -254,6 +254,9 @@ def combine(arrays, weights):
 
 
 def main():
+    if "--report-only" in sys.argv:
+        write_report(json.loads((OUT / "results.json").read_text(encoding="utf-8")))
+        return
     meta = pd.read_csv(ROOT / CFG["data"]["train_metadata"])
     subjects = meta.subject.to_numpy(int)
     tasks = meta.task.to_numpy()
@@ -440,6 +443,8 @@ def main():
                            key=lambda r: r["test_diagnostic_auc"]) for n in band_names}
     best_fusion = {m: best_of([r for r in rows if r["kind"] == "fusion" and r["variant"] == m])
                    for m in ("mean_z", "rank_mean", "loso_weighted", "greedy_forward")}
+    best_fusion_auc = max([r for r in rows if r["kind"] == "fusion"],
+                          key=lambda r: r["test_diagnostic_auc"])
     best_band_overall = best_of(band_rows)
     best_base = best_of([r for r in rows if r["kind"] == "baseline"])
     best_overall = best_of(rows)
@@ -457,6 +462,7 @@ def main():
         "best_per_band": best_per_band,
         "best_auc_per_band": auc_per_band,
         "best_fusion": best_fusion,
+        "best_fusion_auc": best_fusion_auc,
         "best_single_band": best_band_overall,
         "fusion_note": ("Train OOF AUC/F1 of a fused score is the mean of the member bands' OOF "
                         "identity AUC/F1 (a fused scalar score has no class map); baseline and "
@@ -466,8 +472,7 @@ def main():
         "Test_official_F1": "N/A (no true labels)",
     }
     (OUT / "results.json").write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
-    write_report(results, rows, band_names, best_per_band, auc_per_band, best_fusion,
-                 best_band_overall, best_base, best_overall, base_rows, repro, base_ok)
+    write_report(results)
     log("done")
 
 
@@ -478,8 +483,20 @@ def fmt_row(r):
             f"{r['Test_S2_acceptance']:.4f} | {r['W']:.4f} |")
 
 
-def write_report(results, rows, band_names, best_per_band, auc_per_band, best_fusion,
-                 best_band_overall, best_base, best_overall, base_rows, repro, base_ok):
+def write_report(results):
+    """Render report.md from results.json (also usable via --report-only)."""
+    rows = results["grid"]
+    band_names = [bd["name"] for bd in CFG["features"]["bands"]]
+    best_per_band = results["best_per_band"]
+    auc_per_band = results["best_auc_per_band"]
+    best_fusion = results["best_fusion"]
+    fusion_auc_row = results["best_fusion_auc"]
+    best_band_overall = results["best_single_band"]
+    best_base = results["best_baseline"]
+    best_overall = results["best_overall"]
+    base_rows = [r for r in rows if r["kind"] == "baseline"]
+    repro = results["baseline_reproduced"]["row"]
+    base_ok = results["baseline_reproduced"]["matches_reference_W"]
     ref = results["baseline_reference"]
     L = []
     L += ["# E158 分频带独立建模 + Train-only 融合", "",
@@ -541,21 +558,27 @@ def write_report(results, rows, band_names, best_per_band, auc_per_band, best_fu
         w = r.get("weights", {})
         L.append(f"- `{m}`（dim={r['pca_dim']}, k={r['k']}, 接受率 {r['acceptance_rate']:.2f}）："
                  f"频带 {sel}；权重 " + "、".join(f"{n}={w[n]:.2f}" for n in band_names) + "。")
+    L += ["", f"诊断 AUC 最高的融合行（与 W 无关）：`{fusion_auc_row['variant']}`"
+          f"（dim={fusion_auc_row['pca_dim']}, k={fusion_auc_row['k']}, 接受率 "
+          f"{fusion_auc_row['acceptance_rate']:.2f}）AUC {fusion_auc_row['test_diagnostic_auc']:.4f}，"
+          "权重 " + "、".join(f"{n}={fusion_auc_row.get('weights', {}).get(n, 0.0):.2f}"
+                            for n in band_names) + "。"]
     L += ["", "注：融合分数的 Train OOF AUC/F1 取成员频带 OOF 身份 AUC/F1 的平均（标量融合分数没有类别图，"
           "无法直接做身份分类）；基线与单频带为直接计算值。", ""]
 
     L += ["## 4. 结论", ""]
     best_single_auc = max(r["test_diagnostic_auc"] for r in auc_per_band.values())
     best_single_name = max(auc_per_band, key=lambda n: auc_per_band[n]["test_diagnostic_auc"])
-    best_fusion_auc = max(best_fusion[m]["test_diagnostic_auc"] for m in best_fusion)
-    best_fusion_auc_name = max(best_fusion, key=lambda m: best_fusion[m]["test_diagnostic_auc"])
+    best_fusion_auc = fusion_auc_row["test_diagnostic_auc"]
+    best_fusion_auc_name = fusion_auc_row["variant"]
     L.append(f"1. **单频带最强**：诊断 AUC 最高的是 `{best_single_name}` "
              f"（dim={auc_per_band[best_single_name]['pca_dim']}, k={auc_per_band[best_single_name]['k']}）"
              f"AUC = {best_single_auc:.4f}；按 W 最优的单频带是 `{best_band_overall['variant']}`"
              f"（dim={best_band_overall['pca_dim']}, k={best_band_overall['k']}, 接受率 "
              f"{best_band_overall['acceptance_rate']:.2f}）W = {best_band_overall['W']:.4f}。")
     L.append(f"2. **融合是否抬高诊断 AUC 超过 {ref['test_diagnostic_auc']:.4f}**：融合中诊断 AUC 最高的是 "
-             f"`{best_fusion_auc_name}` {best_fusion_auc:.4f}，"
+             f"`{best_fusion_auc_name}`（dim={fusion_auc_row['pca_dim']}, k={fusion_auc_row['k']}, "
+             f"接受率 {fusion_auc_row['acceptance_rate']:.2f}）{best_fusion_auc:.4f}，"
              f"{'高于' if best_fusion_auc > ref['test_diagnostic_auc'] else '不高于'} E143 的 "
              f"{ref['test_diagnostic_auc']:.4f}（Δ {best_fusion_auc - ref['test_diagnostic_auc']:+.4f}）。")
     L.append(f"3. **全局最佳 W**：`{best_overall['variant']}`"
@@ -565,8 +588,36 @@ def write_report(results, rows, band_names, best_per_band, auc_per_band, best_fu
              f"S2 {best_overall['Test_S2_acceptance']:.4f}，诊断 AUC "
              f"{best_overall['test_diagnostic_auc']:.4f}。E143 对照 W = {best_base['W']:.4f}。")
     L.append(f"4. **是否达到 0.80**：{'达到' if best_overall['W'] >= CFG['targets']['weighted'] else '未达到'}，"
-             f"距目标差 {CFG['targets']['weighted'] - best_overall['W']:+.4f}。")
-    L += ["", "## 5. 全网格前 25 行（按 W）", "",
+             f"距目标差 {CFG['targets']['weighted'] - best_overall['W']:.4f}。")
+
+    order = sorted(band_names, key=lambda n: -auc_per_band[n]["test_diagnostic_auc"])
+    L += ["", "## 5. 关键判断", ""]
+    L.append("- **频带身份信息量的排序**（诊断 AUC）：" + " > ".join(
+        f"`{n}` {auc_per_band[n]['test_diagnostic_auc']:.4f}" for n in order) +
+        "。20–40 Hz（beta/gamma）承载最多可跨会话迁移的身份结构，delta 带（1–8 Hz）几乎不携带身份信息。")
+    L.append(f"- **分频带建模没有超过联合 PCA，但已非常接近**：最佳融合 `{best_fusion_auc_name}`"
+             f"（dim={fusion_auc_row['pca_dim']}, k={fusion_auc_row['k']}）诊断 AUC {best_fusion_auc:.4f}，"
+             f"比联合 PCA-96 的 {ref['test_diagnostic_auc']:.4f} 低 "
+             f"{ref['test_diagnostic_auc'] - best_fusion_auc:.4f}。855 维上的联合 PCA 本就已经隐式完成频带融合，"
+             "显式分频带没有暴露新的跨会话稳定结构。")
+    mz = best_fusion["mean_z"]
+    L.append(f"- **融合改变的是分数分布形状，不是排序**：`mean_z`（dim={mz['pca_dim']}, k={mz['k']}，"
+             f"接受率 {mz['acceptance_rate']:.2f}）把 S2 接受从 {ref['Test_S2_acceptance']:.4f} 抬到 "
+             f"{mz['Test_S2_acceptance']:.4f}，同时把 S1 拒识从 {ref['Test_S1_rejection']:.4f} 压到 "
+             f"{mz['Test_S1_rejection']:.4f}，W 反而低 {ref['W'] - mz['W']:.4f}；"
+             "这正是 0.25/0.25/0.5 权重下 S1 与 S2 的零和取舍，与 E150/E157 的结论一致。")
+    L.append("- **LOSO 与 S1 的落差**：单频带 LOSO 拒识普遍明显低于自己的 S1 拒识（如 "
+             f"`b4_20-30` {auc_per_band['b4_20-30']['LOSO_rejection']:.4f} vs "
+             f"{auc_per_band['b4_20-30']['Test_S1_rejection']:.4f}），说明单频带对会话外推更脆弱；"
+             f"秩融合把 LOSO 提到 {best_fusion['rank_mean']['LOSO_rejection']:.4f}，但仍低于联合 PCA 的 "
+             f"{repro['LOSO_rejection']:.4f}。分频带没有带来更强的会话鲁棒性。")
+    greedy = best_fusion["greedy_forward"]
+    L.append(f"- **Train-only 选择器本身工作正常但受限于信号**：贪心前向在 LOSO 准则下把 5 个频带逐步全部选入"
+             f"（因此与 `mean_z` 完全一致，W {greedy['W']:.4f}）；单纯形 LOSO 加权（W 最优行）剔除 `b3_13-20`，"
+             f"诊断 AUC {best_fusion['loso_weighted']['test_diagnostic_auc']:.4f}。"
+             "两个选择器都只用 Train，未接触 Test，可排除“用 Test 调权重”的可能。")
+
+    L += ["", "## 6. 全网格前 25 行（按 W）", "",
           "| 变体 | PCA 维 | k | 接受率 | 诊断 AUC | OOF AUC | OOF F1 | LOSO 拒识 | S1 拒识 | S2 接受 | W |",
           "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
     for r in sorted(rows, key=lambda r: -r["W"])[:25]:

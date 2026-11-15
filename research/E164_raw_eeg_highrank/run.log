@@ -1,0 +1,349 @@
+
+===== E164 run 2026-11-15 11:16:57 stage=all variants=['A_attn4_gn512'] =====
+Train 11304 | Test 22251 (S1=3033, S2=19218)
+loading Train raw ...
+  load train 4096/11304 | 1.6s
+  load train 8192/11304 | 3.0s
+  load train 11304/11304 | 4.1s
+Train raw on GPU: (11304, 18, 1200) (977 MB)
+loading Test raw ...
+  load test 4096/22251 | 1.4s
+  load test 8192/22251 | 2.9s
+  load test 12288/22251 | 4.2s
+  load test 16384/22251 | 5.6s
+  load test 20480/22251 | 7.1s
+  load test 22251/22251 | 7.7s
+Test raw on GPU: (22251, 18, 1200) (1922 MB)
+training A_attn4_gn512 ...
+[A_attn4_gn512] parameters = 111,680 (budget 1,000,000), pool_dim = 512
+[A_attn4_gn512] epoch 1/40 loss=16.2863 sup=16.2817 inv=0.0046 dimstd=0.019 valid_acc=0.3067 {'EC': 0.22, 'EO': 0.281, 'Imagery': 0.314, 'SSVEP': 0.33} | 2s
+[A_attn4_gn512] epoch 2/40 loss=4.0855 sup=4.0852 inv=0.0004 dimstd=0.019 valid_acc=0.4750 {'EC': 0.431, 'EO': 0.43, 'Imagery': 0.469, 'SSVEP': 0.511} | 4s
+[A_attn4_gn512] epoch 3/40 loss=3.8044 sup=3.8041 inv=0.0003 dimstd=0.023 valid_acc=0.5881 {'EC': 0.587, 'EO': 0.535, 'Imagery': 0.56, 'SSVEP': 0.646} | 6s
+[A_attn4_gn512] epoch 4/40 loss=3.6377 sup=3.6374 inv=0.0004 dimstd=0.023 valid_acc=0.6678 {'EC': 0.651, 'EO': 0.596, 'Imagery': 0.644, 'SSVEP': 0.73} | 8s
+[A_attn4_gn512] epoch 5/40 loss=3.5059 sup=3.5055 inv=0.0004 dimstd=0.024 valid_acc=0.7423 {'EC': 0.688, 'EO': 0.658, 'Imagery': 0.726, 'SSVEP': 0.808} | 9s
+[A_attn4_gn512] epoch 6/40 loss=3.4054 sup=3.4051 inv=0.0004 dimstd=0.025 valid_acc=0.7721 {'EC': 0.706, 'EO': 0.693, 'Imagery': 0.761, 'SSVEP': 0.832} | 11s
+[A_attn4_gn512] epoch 7/40 loss=3.2714 sup=3.2711 inv=0.0004 dimstd=0.025 valid_acc=0.8335 {'EC': 0.826, 'EO': 0.763, 'Imagery': 0.825, 'SSVEP': 0.87} | 13s
+[A_attn4_gn512] epoch 8/40 loss=3.1990 sup=3.1986 inv=0.0004 dimstd=0.027 valid_acc=0.8536 {'EC': 0.881, 'EO': 0.781, 'Imagery': 0.836, 'SSVEP': 0.895} | 14s
+[A_attn4_gn512] epoch 9/40 loss=3.1061 sup=3.1058 inv=0.0004 dimstd=0.027 valid_acc=0.8484 {'EC': 0.881, 'EO': 0.807, 'Imagery': 0.825, 'SSVEP': 0.886} | 16s
+[A_attn4_gn512] epoch 10/40 loss=3.0482 sup=3.0479 inv=0.0004 dimstd=0.026 valid_acc=0.8668 {'EC': 0.89, 'EO': 0.789, 'Imagery': 0.865, 'SSVEP': 0.886} | 18s
+[A_attn4_gn512] epoch 11/40 loss=3.0023 sup=3.0019 inv=0.0004 dimstd=0.026 valid_acc=0.8650 {'EC': 0.899, 'EO': 0.833, 'Imagery': 0.849, 'SSVEP': 0.889} | 19s
+[A_attn4_gn512] epoch 12/40 loss=2.9547 sup=2.9544 inv=0.0004 dimstd=0.027 valid_acc=0.8834 {'EC': 0.917, 'EO': 0.833, 'Imagery': 0.878, 'SSVEP': 0.897} | 21s
+[A_attn4_gn512] epoch 13/40 loss=2.9105 sup=2.9102 inv=0.0004 dimstd=0.027 valid_acc=0.8966 {'EC': 0.945, 'EO': 0.851, 'Imagery': 0.887, 'SSVEP': 0.911} | 23s
+[A_attn4_gn512] epoch 14/40 loss=2.8836 sup=2.8833 inv=0.0004 dimstd=0.029 valid_acc=0.9062 {'EC': 0.936, 'EO': 0.86, 'Imagery': 0.901, 'SSVEP': 0.919} | 24s
+[A_attn4_gn512] epoch 15/40 loss=2.8359 sup=2.8355 inv=0.0004 dimstd=0.029 valid_acc=0.9132 {'EC': 0.963, 'EO': 0.886, 'Imagery': 0.907, 'SSVEP': 0.916} | 26s
+[A_attn4_gn512] epoch 16/40 loss=2.7955 sup=2.7952 inv=0.0004 dimstd=0.030 valid_acc=0.8975 {'EC': 0.954, 'EO': 0.86, 'Imagery': 0.887, 'SSVEP': 0.908} | 28s
+[A_attn4_gn512] epoch 17/40 loss=2.7824 sup=2.7821 inv=0.0004 dimstd=0.028 valid_acc=0.9132 {'EC': 0.954, 'EO': 0.895, 'Imagery': 0.914, 'SSVEP': 0.905} | 30s
+[A_attn4_gn512] epoch 18/40 loss=2.7684 sup=2.7680 inv=0.0004 dimstd=0.027 valid_acc=0.9211 {'EC': 0.954, 'EO': 0.895, 'Imagery': 0.922, 'SSVEP': 0.919} | 31s
+[A_attn4_gn512] epoch 19/40 loss=2.7291 sup=2.7287 inv=0.0004 dimstd=0.028 valid_acc=0.9246 {'EC': 0.972, 'EO': 0.895, 'Imagery': 0.923, 'SSVEP': 0.922} | 33s
+[A_attn4_gn512] epoch 20/40 loss=2.7170 sup=2.7167 inv=0.0004 dimstd=0.029 valid_acc=0.9325 {'EC': 0.972, 'EO': 0.921, 'Imagery': 0.929, 'SSVEP': 0.93} | 35s
+[A_attn4_gn512] epoch 21/40 loss=2.6833 sup=2.6829 inv=0.0004 dimstd=0.027 valid_acc=0.9281 {'EC': 0.945, 'EO': 0.921, 'Imagery': 0.927, 'SSVEP': 0.927} | 36s
+[A_attn4_gn512] epoch 22/40 loss=2.6728 sup=2.6725 inv=0.0004 dimstd=0.028 valid_acc=0.9299 {'EC': 0.982, 'EO': 0.921, 'Imagery': 0.922, 'SSVEP': 0.93} | 38s
+[A_attn4_gn512] epoch 23/40 loss=2.6446 sup=2.6442 inv=0.0004 dimstd=0.029 valid_acc=0.9325 {'EC': 0.972, 'EO': 0.904, 'Imagery': 0.927, 'SSVEP': 0.938} | 40s
+[A_attn4_gn512] epoch 24/40 loss=2.6370 sup=2.6366 inv=0.0004 dimstd=0.029 valid_acc=0.9343 {'EC': 0.982, 'EO': 0.912, 'Imagery': 0.932, 'SSVEP': 0.93} | 42s
+[A_attn4_gn512] epoch 25/40 loss=2.6141 sup=2.6138 inv=0.0004 dimstd=0.027 valid_acc=0.9343 {'EC': 0.972, 'EO': 0.912, 'Imagery': 0.934, 'SSVEP': 0.93} | 43s
+[A_attn4_gn512] epoch 26/40 loss=2.5949 sup=2.5946 inv=0.0004 dimstd=0.030 valid_acc=0.9422 {'EC': 0.972, 'EO': 0.93, 'Imagery': 0.947, 'SSVEP': 0.93} | 45s
+[A_attn4_gn512] epoch 27/40 loss=2.5939 sup=2.5935 inv=0.0004 dimstd=0.029 valid_acc=0.9430 {'EC': 0.982, 'EO': 0.921, 'Imagery': 0.947, 'SSVEP': 0.932} | 47s
+[A_attn4_gn512] epoch 28/40 loss=2.5758 sup=2.5755 inv=0.0004 dimstd=0.029 valid_acc=0.9395 {'EC': 0.982, 'EO': 0.921, 'Imagery': 0.938, 'SSVEP': 0.935} | 49s
+[A_attn4_gn512] epoch 29/40 loss=2.5643 sup=2.5640 inv=0.0004 dimstd=0.029 valid_acc=0.9387 {'EC': 0.982, 'EO': 0.912, 'Imagery': 0.936, 'SSVEP': 0.938} | 50s
+[A_attn4_gn512] epoch 30/40 loss=2.5593 sup=2.5590 inv=0.0004 dimstd=0.028 valid_acc=0.9387 {'EC': 0.982, 'EO': 0.921, 'Imagery': 0.942, 'SSVEP': 0.927} | 52s
+[A_attn4_gn512] epoch 31/40 loss=2.5316 sup=2.5313 inv=0.0004 dimstd=0.029 valid_acc=0.9483 {'EC': 0.982, 'EO': 0.93, 'Imagery': 0.953, 'SSVEP': 0.938} | 54s
+[A_attn4_gn512] epoch 32/40 loss=2.5427 sup=2.5424 inv=0.0004 dimstd=0.029 valid_acc=0.9422 {'EC': 0.982, 'EO': 0.921, 'Imagery': 0.945, 'SSVEP': 0.932} | 55s
+[A_attn4_gn512] epoch 33/40 loss=2.5286 sup=2.5283 inv=0.0004 dimstd=0.029 valid_acc=0.9457 {'EC': 0.982, 'EO': 0.921, 'Imagery': 0.951, 'SSVEP': 0.935} | 57s
+[A_attn4_gn512] epoch 34/40 loss=2.5268 sup=2.5265 inv=0.0004 dimstd=0.029 valid_acc=0.9387 {'EC': 0.982, 'EO': 0.921, 'Imagery': 0.94, 'SSVEP': 0.93} | 59s
+[A_attn4_gn512] epoch 35/40 loss=2.5236 sup=2.5232 inv=0.0004 dimstd=0.029 valid_acc=0.9457 {'EC': 0.982, 'EO': 0.921, 'Imagery': 0.945, 'SSVEP': 0.943} | 60s
+[A_attn4_gn512] epoch 36/40 loss=2.5189 sup=2.5185 inv=0.0004 dimstd=0.030 valid_acc=0.9422 {'EC': 0.982, 'EO': 0.921, 'Imagery': 0.942, 'SSVEP': 0.938} | 62s
+[A_attn4_gn512] epoch 37/40 loss=2.5178 sup=2.5174 inv=0.0004 dimstd=0.029 valid_acc=0.9465 {'EC': 0.982, 'EO': 0.921, 'Imagery': 0.953, 'SSVEP': 0.935} | 64s
+[A_attn4_gn512] epoch 38/40 loss=2.5097 sup=2.5094 inv=0.0004 dimstd=0.029 valid_acc=0.9483 {'EC': 0.982, 'EO': 0.93, 'Imagery': 0.953, 'SSVEP': 0.938} | 66s
+[A_attn4_gn512] epoch 39/40 loss=2.5084 sup=2.5081 inv=0.0004 dimstd=0.030 valid_acc=0.9474 {'EC': 0.982, 'EO': 0.93, 'Imagery': 0.953, 'SSVEP': 0.935} | 67s
+[A_attn4_gn512] early stop at epoch 39 (best 31)
+  [A_attn4_gn512] train embeddings (11304, 512) | 0s
+  [A_attn4_gn512] test embeddings (22251, 512) | 1s
+evaluating 1 variant(s): ['A_attn4_gn512']
+evaluating A_attn4_gn512 ...
+  [A_attn4_gn512] pca 32 projected
+  [A_attn4_gn512] pca=32 k=1 OOFauc=0.9730 OOFf1=0.9424 diagAUC=0.4481 bestW=0.6555
+  [A_attn4_gn512] pca=32 k=3 OOFauc=0.9766 OOFf1=0.9549 diagAUC=0.4372 bestW=0.6464
+  [A_attn4_gn512] pca=32 k=6 OOFauc=0.9757 OOFf1=0.9585 diagAUC=0.4520 bestW=0.6484
+  [A_attn4_gn512] pca=32 k=12 OOFauc=0.9739 OOFf1=0.9565 diagAUC=0.4528 bestW=0.6393
+  [A_attn4_gn512] pca 64 projected
+  [A_attn4_gn512] pca=64 k=1 OOFauc=0.9729 OOFf1=0.9427 diagAUC=0.4509 bestW=0.6562
+  [A_attn4_gn512] pca=64 k=3 OOFauc=0.9765 OOFf1=0.9547 diagAUC=0.4410 bestW=0.6477
+  [A_attn4_gn512] pca=64 k=6 OOFauc=0.9759 OOFf1=0.9589 diagAUC=0.4541 bestW=0.6482
+  [A_attn4_gn512] pca=64 k=12 OOFauc=0.9741 OOFf1=0.9586 diagAUC=0.4543 bestW=0.6402
+  [A_attn4_gn512] pca 128 projected
+  [A_attn4_gn512] pca=128 k=1 OOFauc=0.9728 OOFf1=0.9427 diagAUC=0.4530 bestW=0.6563
+  [A_attn4_gn512] pca=128 k=3 OOFauc=0.9764 OOFf1=0.9546 diagAUC=0.4423 bestW=0.6480
+  [A_attn4_gn512] pca=128 k=6 OOFauc=0.9757 OOFf1=0.9584 diagAUC=0.4563 bestW=0.6492
+  [A_attn4_gn512] pca=128 k=12 OOFauc=0.9738 OOFf1=0.9582 diagAUC=0.4553 bestW=0.6416
+  [A_attn4_gn512] pca 256 projected
+  [A_attn4_gn512] pca=256 k=1 OOFauc=0.9728 OOFf1=0.9427 diagAUC=0.4530 bestW=0.6563
+  [A_attn4_gn512] pca=256 k=3 OOFauc=0.9764 OOFf1=0.9546 diagAUC=0.4414 bestW=0.6479
+  [A_attn4_gn512] pca=256 k=6 OOFauc=0.9757 OOFf1=0.9586 diagAUC=0.4567 bestW=0.6492
+  [A_attn4_gn512] pca=256 k=12 OOFauc=0.9738 OOFf1=0.9583 diagAUC=0.4553 bestW=0.6417
+[A_attn4_gn512] effective_rank_95=10/512 rank99=26
+evaluating E143 protocol on E65 control features ...
+  [E65_control] pca 96 projected
+  [E65_control] pca=96 k=12 OOFauc=0.9302 OOFf1=0.9895 diagAUC=0.7578 bestW=0.6958
+
+======================================================================
+A_attn4_gn512: diagAUC=0.4567 W@0.90=0.6222 maxW=0.6563 rank95=10/512 | S1 0.2634 S2 0.7665 OOFauc 0.9728 OOFf1 0.9427
+best variant: A_attn4_gn512
+E65 control: pca=96 k=12 a=0.90 W=0.6958 diagAUC=0.7578
+results: D:\WORK\BCIC2026\BrainPrint\research\E164_raw_eeg_highrank\results.json
+report: D:\WORK\BCIC2026\BrainPrint\research\E164_raw_eeg_highrank\report.md
+
+===== E164 run 2026-11-15 11:20:32 stage=all variants=['B_stack256_nolinear_gn512', 'C_multiscale4_gn512', 'D_e162head_gn256'] =====
+Train 11304 | Test 22251 (S1=3033, S2=19218)
+loading Train raw ...
+  load train 4096/11304 | 1.4s
+  load train 8192/11304 | 2.7s
+  load train 11304/11304 | 3.7s
+Train raw on GPU: (11304, 18, 1200) (977 MB)
+loading Test raw ...
+  load test 4096/22251 | 1.3s
+  load test 8192/22251 | 2.7s
+  load test 12288/22251 | 4.0s
+  load test 16384/22251 | 5.3s
+  load test 20480/22251 | 6.7s
+  load test 22251/22251 | 7.3s
+Test raw on GPU: (22251, 18, 1200) (1922 MB)
+training B_stack256_nolinear_gn512 ...
+[B_stack256_nolinear_gn512] parameters = 224,128 (budget 1,000,000), pool_dim = 512
+[B_stack256_nolinear_gn512] epoch 1/40 loss=682.6110 sup=682.3842 inv=0.2268 dimstd=0.078 valid_acc=0.1621 {'EC': 0.083, 'EO': 0.158, 'Imagery': 0.164, 'SSVEP': 0.184} | 2s
+[B_stack256_nolinear_gn512] epoch 2/40 loss=20.2371 sup=20.2307 inv=0.0064 dimstd=0.026 valid_acc=0.2095 {'EC': 0.147, 'EO': 0.219, 'Imagery': 0.215, 'SSVEP': 0.216} | 4s
+[B_stack256_nolinear_gn512] epoch 3/40 loss=6.1375 sup=6.1360 inv=0.0016 dimstd=0.021 valid_acc=0.1902 {'EC': 0.11, 'EO': 0.228, 'Imagery': 0.208, 'SSVEP': 0.176} | 6s
+[B_stack256_nolinear_gn512] epoch 4/40 loss=4.5158 sup=4.5151 inv=0.0007 dimstd=0.019 valid_acc=0.2068 {'EC': 0.128, 'EO': 0.211, 'Imagery': 0.221, 'SSVEP': 0.208} | 7s
+[B_stack256_nolinear_gn512] epoch 5/40 loss=4.3195 sup=4.3190 inv=0.0005 dimstd=0.017 valid_acc=0.2428 {'EC': 0.147, 'EO': 0.246, 'Imagery': 0.259, 'SSVEP': 0.246} | 9s
+[B_stack256_nolinear_gn512] epoch 6/40 loss=4.2030 sup=4.2025 inv=0.0005 dimstd=0.019 valid_acc=0.3067 {'EC': 0.202, 'EO': 0.325, 'Imagery': 0.307, 'SSVEP': 0.332} | 11s
+[B_stack256_nolinear_gn512] epoch 7/40 loss=4.0641 sup=4.0636 inv=0.0004 dimstd=0.018 valid_acc=0.3883 {'EC': 0.257, 'EO': 0.395, 'Imagery': 0.372, 'SSVEP': 0.449} | 12s
+[B_stack256_nolinear_gn512] epoch 8/40 loss=3.9699 sup=3.9695 inv=0.0004 dimstd=0.019 valid_acc=0.4391 {'EC': 0.385, 'EO': 0.412, 'Imagery': 0.409, 'SSVEP': 0.508} | 14s
+[B_stack256_nolinear_gn512] epoch 9/40 loss=3.8377 sup=3.8373 inv=0.0004 dimstd=0.022 valid_acc=0.4899 {'EC': 0.459, 'EO': 0.43, 'Imagery': 0.458, 'SSVEP': 0.565} | 16s
+[B_stack256_nolinear_gn512] epoch 10/40 loss=3.7146 sup=3.7142 inv=0.0004 dimstd=0.023 valid_acc=0.5329 {'EC': 0.468, 'EO': 0.553, 'Imagery': 0.496, 'SSVEP': 0.6} | 18s
+[B_stack256_nolinear_gn512] epoch 11/40 loss=3.6362 sup=3.6358 inv=0.0004 dimstd=0.025 valid_acc=0.5925 {'EC': 0.523, 'EO': 0.588, 'Imagery': 0.571, 'SSVEP': 0.646} | 19s
+[B_stack256_nolinear_gn512] epoch 12/40 loss=3.5516 sup=3.5511 inv=0.0004 dimstd=0.024 valid_acc=0.6082 {'EC': 0.541, 'EO': 0.64, 'Imagery': 0.568, 'SSVEP': 0.678} | 21s
+[B_stack256_nolinear_gn512] epoch 13/40 loss=3.4506 sup=3.4502 inv=0.0004 dimstd=0.025 valid_acc=0.6258 {'EC': 0.587, 'EO': 0.667, 'Imagery': 0.575, 'SSVEP': 0.7} | 23s
+[B_stack256_nolinear_gn512] epoch 14/40 loss=3.4004 sup=3.4000 inv=0.0004 dimstd=0.024 valid_acc=0.6748 {'EC': 0.679, 'EO': 0.649, 'Imagery': 0.628, 'SSVEP': 0.751} | 24s
+[B_stack256_nolinear_gn512] epoch 15/40 loss=3.3282 sup=3.3278 inv=0.0004 dimstd=0.027 valid_acc=0.6985 {'EC': 0.615, 'EO': 0.658, 'Imagery': 0.681, 'SSVEP': 0.762} | 26s
+[B_stack256_nolinear_gn512] epoch 16/40 loss=3.2800 sup=3.2796 inv=0.0004 dimstd=0.028 valid_acc=0.7011 {'EC': 0.651, 'EO': 0.667, 'Imagery': 0.662, 'SSVEP': 0.784} | 28s
+[B_stack256_nolinear_gn512] epoch 17/40 loss=3.2295 sup=3.2291 inv=0.0004 dimstd=0.026 valid_acc=0.7257 {'EC': 0.688, 'EO': 0.658, 'Imagery': 0.717, 'SSVEP': 0.77} | 29s
+[B_stack256_nolinear_gn512] epoch 18/40 loss=3.1777 sup=3.1773 inv=0.0004 dimstd=0.027 valid_acc=0.7511 {'EC': 0.661, 'EO': 0.693, 'Imagery': 0.745, 'SSVEP': 0.805} | 31s
+[B_stack256_nolinear_gn512] epoch 19/40 loss=3.1299 sup=3.1294 inv=0.0004 dimstd=0.028 valid_acc=0.7590 {'EC': 0.67, 'EO': 0.728, 'Imagery': 0.748, 'SSVEP': 0.811} | 33s
+[B_stack256_nolinear_gn512] epoch 20/40 loss=3.0999 sup=3.0995 inv=0.0004 dimstd=0.027 valid_acc=0.7642 {'EC': 0.697, 'EO': 0.737, 'Imagery': 0.759, 'SSVEP': 0.8} | 34s
+[B_stack256_nolinear_gn512] epoch 21/40 loss=3.0530 sup=3.0526 inv=0.0004 dimstd=0.029 valid_acc=0.7695 {'EC': 0.716, 'EO': 0.719, 'Imagery': 0.761, 'SSVEP': 0.814} | 36s
+[B_stack256_nolinear_gn512] epoch 22/40 loss=3.0295 sup=3.0291 inv=0.0004 dimstd=0.028 valid_acc=0.7634 {'EC': 0.716, 'EO': 0.746, 'Imagery': 0.746, 'SSVEP': 0.808} | 38s
+[B_stack256_nolinear_gn512] epoch 23/40 loss=3.0025 sup=3.0021 inv=0.0004 dimstd=0.029 valid_acc=0.7651 {'EC': 0.706, 'EO': 0.711, 'Imagery': 0.761, 'SSVEP': 0.805} | 39s
+[B_stack256_nolinear_gn512] epoch 24/40 loss=2.9794 sup=2.9790 inv=0.0004 dimstd=0.029 valid_acc=0.7730 {'EC': 0.725, 'EO': 0.728, 'Imagery': 0.768, 'SSVEP': 0.808} | 41s
+[B_stack256_nolinear_gn512] epoch 25/40 loss=2.9443 sup=2.9439 inv=0.0004 dimstd=0.029 valid_acc=0.7739 {'EC': 0.716, 'EO': 0.719, 'Imagery': 0.777, 'SSVEP': 0.803} | 43s
+[B_stack256_nolinear_gn512] epoch 26/40 loss=2.9231 sup=2.9227 inv=0.0004 dimstd=0.029 valid_acc=0.7791 {'EC': 0.716, 'EO': 0.737, 'Imagery': 0.777, 'SSVEP': 0.814} | 44s
+[B_stack256_nolinear_gn512] epoch 27/40 loss=2.9154 sup=2.9150 inv=0.0004 dimstd=0.029 valid_acc=0.7774 {'EC': 0.752, 'EO': 0.754, 'Imagery': 0.765, 'SSVEP': 0.811} | 46s
+[B_stack256_nolinear_gn512] epoch 28/40 loss=2.8930 sup=2.8926 inv=0.0004 dimstd=0.030 valid_acc=0.7905 {'EC': 0.734, 'EO': 0.728, 'Imagery': 0.796, 'SSVEP': 0.819} | 48s
+[B_stack256_nolinear_gn512] epoch 29/40 loss=2.8831 sup=2.8827 inv=0.0004 dimstd=0.030 valid_acc=0.7800 {'EC': 0.734, 'EO': 0.728, 'Imagery': 0.777, 'SSVEP': 0.814} | 49s
+[B_stack256_nolinear_gn512] epoch 30/40 loss=2.8818 sup=2.8814 inv=0.0004 dimstd=0.030 valid_acc=0.7826 {'EC': 0.725, 'EO': 0.754, 'Imagery': 0.772, 'SSVEP': 0.824} | 51s
+[B_stack256_nolinear_gn512] epoch 31/40 loss=2.8432 sup=2.8428 inv=0.0004 dimstd=0.029 valid_acc=0.7835 {'EC': 0.734, 'EO': 0.754, 'Imagery': 0.777, 'SSVEP': 0.816} | 53s
+[B_stack256_nolinear_gn512] epoch 32/40 loss=2.8502 sup=2.8498 inv=0.0004 dimstd=0.031 valid_acc=0.7879 {'EC': 0.743, 'EO': 0.746, 'Imagery': 0.781, 'SSVEP': 0.824} | 54s
+[B_stack256_nolinear_gn512] epoch 33/40 loss=2.8443 sup=2.8439 inv=0.0004 dimstd=0.030 valid_acc=0.7870 {'EC': 0.734, 'EO': 0.754, 'Imagery': 0.779, 'SSVEP': 0.824} | 56s
+[B_stack256_nolinear_gn512] epoch 34/40 loss=2.8388 sup=2.8384 inv=0.0004 dimstd=0.030 valid_acc=0.7888 {'EC': 0.752, 'EO': 0.754, 'Imagery': 0.785, 'SSVEP': 0.816} | 58s
+[B_stack256_nolinear_gn512] epoch 35/40 loss=2.8332 sup=2.8328 inv=0.0004 dimstd=0.030 valid_acc=0.7870 {'EC': 0.761, 'EO': 0.746, 'Imagery': 0.781, 'SSVEP': 0.816} | 59s
+[B_stack256_nolinear_gn512] epoch 36/40 loss=2.8260 sup=2.8256 inv=0.0004 dimstd=0.031 valid_acc=0.7835 {'EC': 0.761, 'EO': 0.746, 'Imagery': 0.772, 'SSVEP': 0.819} | 61s
+[B_stack256_nolinear_gn512] early stop at epoch 36 (best 28)
+training C_multiscale4_gn512 ...
+[C_multiscale4_gn512] parameters = 111,168 (budget 1,000,000), pool_dim = 512
+[C_multiscale4_gn512] epoch 1/40 loss=49.5352 sup=49.5197 inv=0.0155 dimstd=0.024 valid_acc=0.1481 {'EC': 0.064, 'EO': 0.123, 'Imagery': 0.159, 'SSVEP': 0.165} | 2s
+[C_multiscale4_gn512] epoch 2/40 loss=4.5857 sup=4.5849 inv=0.0008 dimstd=0.019 valid_acc=0.1735 {'EC': 0.092, 'EO': 0.193, 'Imagery': 0.184, 'SSVEP': 0.176} | 3s
+[C_multiscale4_gn512] epoch 3/40 loss=4.3041 sup=4.3035 inv=0.0006 dimstd=0.018 valid_acc=0.2244 {'EC': 0.156, 'EO': 0.219, 'Imagery': 0.228, 'SSVEP': 0.241} | 5s
+[C_multiscale4_gn512] epoch 4/40 loss=4.1957 sup=4.1951 inv=0.0006 dimstd=0.020 valid_acc=0.2822 {'EC': 0.202, 'EO': 0.219, 'Imagery': 0.286, 'SSVEP': 0.319} | 7s
+[C_multiscale4_gn512] epoch 5/40 loss=4.1031 sup=4.1026 inv=0.0005 dimstd=0.020 valid_acc=0.3304 {'EC': 0.266, 'EO': 0.263, 'Imagery': 0.323, 'SSVEP': 0.381} | 8s
+[C_multiscale4_gn512] epoch 6/40 loss=4.0109 sup=4.0104 inv=0.0005 dimstd=0.019 valid_acc=0.4023 {'EC': 0.321, 'EO': 0.404, 'Imagery': 0.387, 'SSVEP': 0.449} | 10s
+[C_multiscale4_gn512] epoch 7/40 loss=3.9170 sup=3.9165 inv=0.0005 dimstd=0.021 valid_acc=0.4715 {'EC': 0.367, 'EO': 0.482, 'Imagery': 0.453, 'SSVEP': 0.527} | 11s
+[C_multiscale4_gn512] epoch 8/40 loss=3.8625 sup=3.8620 inv=0.0005 dimstd=0.021 valid_acc=0.5241 {'EC': 0.477, 'EO': 0.518, 'Imagery': 0.487, 'SSVEP': 0.595} | 13s
+[C_multiscale4_gn512] epoch 9/40 loss=3.7458 sup=3.7454 inv=0.0005 dimstd=0.021 valid_acc=0.5697 {'EC': 0.495, 'EO': 0.553, 'Imagery': 0.52, 'SSVEP': 0.67} | 15s
+[C_multiscale4_gn512] epoch 10/40 loss=3.6658 sup=3.6653 inv=0.0005 dimstd=0.020 valid_acc=0.6152 {'EC': 0.569, 'EO': 0.57, 'Imagery': 0.571, 'SSVEP': 0.708} | 16s
+[C_multiscale4_gn512] epoch 11/40 loss=3.5905 sup=3.5901 inv=0.0004 dimstd=0.023 valid_acc=0.6486 {'EC': 0.596, 'EO': 0.623, 'Imagery': 0.588, 'SSVEP': 0.762} | 18s
+[C_multiscale4_gn512] epoch 12/40 loss=3.5028 sup=3.5024 inv=0.0004 dimstd=0.023 valid_acc=0.6950 {'EC': 0.606, 'EO': 0.675, 'Imagery': 0.651, 'SSVEP': 0.792} | 19s
+[C_multiscale4_gn512] epoch 13/40 loss=3.4401 sup=3.4397 inv=0.0004 dimstd=0.024 valid_acc=0.7099 {'EC': 0.642, 'EO': 0.711, 'Imagery': 0.666, 'SSVEP': 0.795} | 21s
+[C_multiscale4_gn512] epoch 14/40 loss=3.3677 sup=3.3673 inv=0.0004 dimstd=0.024 valid_acc=0.7371 {'EC': 0.651, 'EO': 0.684, 'Imagery': 0.706, 'SSVEP': 0.824} | 23s
+[C_multiscale4_gn512] epoch 15/40 loss=3.2892 sup=3.2888 inv=0.0004 dimstd=0.026 valid_acc=0.7537 {'EC': 0.706, 'EO': 0.737, 'Imagery': 0.723, 'SSVEP': 0.819} | 24s
+[C_multiscale4_gn512] epoch 16/40 loss=3.2215 sup=3.2212 inv=0.0004 dimstd=0.029 valid_acc=0.7695 {'EC': 0.743, 'EO': 0.728, 'Imagery': 0.734, 'SSVEP': 0.843} | 26s
+[C_multiscale4_gn512] epoch 17/40 loss=3.1752 sup=3.1748 inv=0.0004 dimstd=0.024 valid_acc=0.8054 {'EC': 0.771, 'EO': 0.781, 'Imagery': 0.783, 'SSVEP': 0.857} | 27s
+[C_multiscale4_gn512] epoch 18/40 loss=3.1195 sup=3.1192 inv=0.0004 dimstd=0.025 valid_acc=0.8028 {'EC': 0.752, 'EO': 0.781, 'Imagery': 0.781, 'SSVEP': 0.857} | 29s
+[C_multiscale4_gn512] epoch 19/40 loss=3.0636 sup=3.0632 inv=0.0004 dimstd=0.026 valid_acc=0.8238 {'EC': 0.798, 'EO': 0.763, 'Imagery': 0.797, 'SSVEP': 0.889} | 31s
+[C_multiscale4_gn512] epoch 20/40 loss=3.0244 sup=3.0240 inv=0.0004 dimstd=0.026 valid_acc=0.8344 {'EC': 0.817, 'EO': 0.772, 'Imagery': 0.812, 'SSVEP': 0.892} | 32s
+[C_multiscale4_gn512] epoch 21/40 loss=2.9882 sup=2.9879 inv=0.0004 dimstd=0.026 valid_acc=0.8379 {'EC': 0.817, 'EO': 0.789, 'Imagery': 0.823, 'SSVEP': 0.881} | 34s
+[C_multiscale4_gn512] epoch 22/40 loss=2.9565 sup=2.9562 inv=0.0004 dimstd=0.026 valid_acc=0.8484 {'EC': 0.817, 'EO': 0.789, 'Imagery': 0.836, 'SSVEP': 0.895} | 35s
+[C_multiscale4_gn512] epoch 23/40 loss=2.9203 sup=2.9199 inv=0.0004 dimstd=0.027 valid_acc=0.8493 {'EC': 0.853, 'EO': 0.798, 'Imagery': 0.839, 'SSVEP': 0.878} | 37s
+[C_multiscale4_gn512] epoch 24/40 loss=2.8920 sup=2.8917 inv=0.0004 dimstd=0.027 valid_acc=0.8484 {'EC': 0.844, 'EO': 0.789, 'Imagery': 0.827, 'SSVEP': 0.9} | 39s
+[C_multiscale4_gn512] epoch 25/40 loss=2.8755 sup=2.8752 inv=0.0004 dimstd=0.026 valid_acc=0.8536 {'EC': 0.862, 'EO': 0.798, 'Imagery': 0.839, 'SSVEP': 0.889} | 40s
+[C_multiscale4_gn512] epoch 26/40 loss=2.8583 sup=2.8579 inv=0.0004 dimstd=0.027 valid_acc=0.8571 {'EC': 0.872, 'EO': 0.807, 'Imagery': 0.839, 'SSVEP': 0.895} | 42s
+[C_multiscale4_gn512] epoch 27/40 loss=2.8201 sup=2.8198 inv=0.0004 dimstd=0.028 valid_acc=0.8659 {'EC': 0.89, 'EO': 0.798, 'Imagery': 0.856, 'SSVEP': 0.895} | 43s
+[C_multiscale4_gn512] epoch 28/40 loss=2.8093 sup=2.8089 inv=0.0004 dimstd=0.027 valid_acc=0.8668 {'EC': 0.89, 'EO': 0.816, 'Imagery': 0.859, 'SSVEP': 0.886} | 45s
+[C_multiscale4_gn512] epoch 29/40 loss=2.7877 sup=2.7873 inv=0.0004 dimstd=0.029 valid_acc=0.8589 {'EC': 0.862, 'EO': 0.807, 'Imagery': 0.843, 'SSVEP': 0.897} | 47s
+[C_multiscale4_gn512] epoch 30/40 loss=2.7729 sup=2.7725 inv=0.0004 dimstd=0.028 valid_acc=0.8720 {'EC': 0.89, 'EO': 0.798, 'Imagery': 0.87, 'SSVEP': 0.892} | 48s
+[C_multiscale4_gn512] epoch 31/40 loss=2.7408 sup=2.7405 inv=0.0004 dimstd=0.026 valid_acc=0.8677 {'EC': 0.862, 'EO': 0.807, 'Imagery': 0.867, 'SSVEP': 0.889} | 50s
+[C_multiscale4_gn512] epoch 32/40 loss=2.7543 sup=2.7539 inv=0.0004 dimstd=0.028 valid_acc=0.8650 {'EC': 0.89, 'EO': 0.807, 'Imagery': 0.856, 'SSVEP': 0.889} | 51s
+[C_multiscale4_gn512] epoch 33/40 loss=2.7345 sup=2.7341 inv=0.0004 dimstd=0.029 valid_acc=0.8703 {'EC': 0.872, 'EO': 0.816, 'Imagery': 0.87, 'SSVEP': 0.886} | 53s
+[C_multiscale4_gn512] epoch 34/40 loss=2.7364 sup=2.7361 inv=0.0004 dimstd=0.029 valid_acc=0.8729 {'EC': 0.89, 'EO': 0.798, 'Imagery': 0.87, 'SSVEP': 0.895} | 55s
+[C_multiscale4_gn512] epoch 35/40 loss=2.7360 sup=2.7356 inv=0.0004 dimstd=0.028 valid_acc=0.8738 {'EC': 0.881, 'EO': 0.825, 'Imagery': 0.869, 'SSVEP': 0.895} | 56s
+[C_multiscale4_gn512] epoch 36/40 loss=2.7204 sup=2.7200 inv=0.0004 dimstd=0.030 valid_acc=0.8738 {'EC': 0.881, 'EO': 0.807, 'Imagery': 0.869, 'SSVEP': 0.9} | 58s
+[C_multiscale4_gn512] epoch 37/40 loss=2.7104 sup=2.7100 inv=0.0004 dimstd=0.028 valid_acc=0.8729 {'EC': 0.89, 'EO': 0.816, 'Imagery': 0.867, 'SSVEP': 0.895} | 59s
+[C_multiscale4_gn512] epoch 38/40 loss=2.7027 sup=2.7024 inv=0.0004 dimstd=0.028 valid_acc=0.8720 {'EC': 0.89, 'EO': 0.816, 'Imagery': 0.865, 'SSVEP': 0.895} | 61s
+[C_multiscale4_gn512] epoch 39/40 loss=2.7052 sup=2.7048 inv=0.0004 dimstd=0.029 valid_acc=0.8729 {'EC': 0.89, 'EO': 0.816, 'Imagery': 0.865, 'SSVEP': 0.897} | 63s
+[C_multiscale4_gn512] epoch 40/40 loss=2.6998 sup=2.6994 inv=0.0004 dimstd=0.029 valid_acc=0.8712 {'EC': 0.89, 'EO': 0.807, 'Imagery': 0.863, 'SSVEP': 0.897} | 64s
+training D_e162head_gn256 ...
+[D_e162head_gn256] parameters = 176,960 (budget 1,000,000), pool_dim = 256
+[D_e162head_gn256] epoch 1/40 loss=139.6183 sup=139.5419 inv=0.0764 dimstd=0.021 valid_acc=0.1613 {'EC': 0.138, 'EO': 0.123, 'Imagery': 0.17, 'SSVEP': 0.168} | 2s
+[D_e162head_gn256] epoch 2/40 loss=4.3286 sup=4.3279 inv=0.0007 dimstd=0.022 valid_acc=0.2007 {'EC': 0.165, 'EO': 0.14, 'Imagery': 0.224, 'SSVEP': 0.195} | 4s
+[D_e162head_gn256] epoch 3/40 loss=4.2373 sup=4.2369 inv=0.0004 dimstd=0.022 valid_acc=0.2051 {'EC': 0.165, 'EO': 0.175, 'Imagery': 0.217, 'SSVEP': 0.208} | 5s
+[D_e162head_gn256] epoch 4/40 loss=4.1767 sup=4.1763 inv=0.0004 dimstd=0.023 valid_acc=0.2524 {'EC': 0.211, 'EO': 0.193, 'Imagery': 0.261, 'SSVEP': 0.27} | 7s
+[D_e162head_gn256] epoch 5/40 loss=4.0556 sup=4.0551 inv=0.0005 dimstd=0.025 valid_acc=0.3988 {'EC': 0.385, 'EO': 0.36, 'Imagery': 0.381, 'SSVEP': 0.441} | 9s
+[D_e162head_gn256] epoch 6/40 loss=3.8965 sup=3.8961 inv=0.0004 dimstd=0.028 valid_acc=0.4365 {'EC': 0.422, 'EO': 0.465, 'Imagery': 0.42, 'SSVEP': 0.457} | 10s
+[D_e162head_gn256] epoch 7/40 loss=3.7420 sup=3.7415 inv=0.0004 dimstd=0.029 valid_acc=0.5171 {'EC': 0.514, 'EO': 0.518, 'Imagery': 0.491, 'SSVEP': 0.557} | 12s
+[D_e162head_gn256] epoch 8/40 loss=3.6311 sup=3.6307 inv=0.0004 dimstd=0.029 valid_acc=0.5846 {'EC': 0.633, 'EO': 0.561, 'Imagery': 0.544, 'SSVEP': 0.638} | 14s
+[D_e162head_gn256] epoch 9/40 loss=3.5073 sup=3.5069 inv=0.0005 dimstd=0.031 valid_acc=0.6170 {'EC': 0.661, 'EO': 0.579, 'Imagery': 0.568, 'SSVEP': 0.689} | 16s
+[D_e162head_gn256] epoch 10/40 loss=3.3904 sup=3.3900 inv=0.0004 dimstd=0.030 valid_acc=0.6328 {'EC': 0.624, 'EO': 0.614, 'Imagery': 0.597, 'SSVEP': 0.695} | 17s
+[D_e162head_gn256] epoch 11/40 loss=3.3063 sup=3.3059 inv=0.0004 dimstd=0.032 valid_acc=0.6968 {'EC': 0.734, 'EO': 0.667, 'Imagery': 0.659, 'SSVEP': 0.751} | 19s
+[D_e162head_gn256] epoch 12/40 loss=3.2125 sup=3.2120 inv=0.0004 dimstd=0.036 valid_acc=0.7642 {'EC': 0.752, 'EO': 0.728, 'Imagery': 0.73, 'SSVEP': 0.83} | 21s
+[D_e162head_gn256] epoch 13/40 loss=3.1223 sup=3.1219 inv=0.0004 dimstd=0.034 valid_acc=0.7756 {'EC': 0.78, 'EO': 0.719, 'Imagery': 0.752, 'SSVEP': 0.827} | 22s
+[D_e162head_gn256] epoch 14/40 loss=3.0556 sup=3.0552 inv=0.0004 dimstd=0.037 valid_acc=0.7905 {'EC': 0.743, 'EO': 0.737, 'Imagery': 0.757, 'SSVEP': 0.87} | 24s
+[D_e162head_gn256] epoch 15/40 loss=2.9632 sup=2.9628 inv=0.0004 dimstd=0.037 valid_acc=0.8142 {'EC': 0.78, 'EO': 0.746, 'Imagery': 0.792, 'SSVEP': 0.878} | 26s
+[D_e162head_gn256] epoch 16/40 loss=2.9202 sup=2.9198 inv=0.0004 dimstd=0.038 valid_acc=0.8361 {'EC': 0.771, 'EO': 0.763, 'Imagery': 0.83, 'SSVEP': 0.886} | 27s
+[D_e162head_gn256] epoch 17/40 loss=2.8672 sup=2.8668 inv=0.0004 dimstd=0.037 valid_acc=0.8440 {'EC': 0.817, 'EO': 0.833, 'Imagery': 0.818, 'SSVEP': 0.895} | 29s
+[D_e162head_gn256] epoch 18/40 loss=2.8232 sup=2.8228 inv=0.0004 dimstd=0.035 valid_acc=0.8449 {'EC': 0.835, 'EO': 0.781, 'Imagery': 0.834, 'SSVEP': 0.884} | 31s
+[D_e162head_gn256] epoch 19/40 loss=2.7669 sup=2.7665 inv=0.0004 dimstd=0.037 valid_acc=0.8510 {'EC': 0.752, 'EO': 0.798, 'Imagery': 0.845, 'SSVEP': 0.905} | 33s
+[D_e162head_gn256] epoch 20/40 loss=2.7450 sup=2.7446 inv=0.0004 dimstd=0.037 valid_acc=0.8650 {'EC': 0.826, 'EO': 0.833, 'Imagery': 0.847, 'SSVEP': 0.914} | 34s
+[D_e162head_gn256] epoch 21/40 loss=2.6897 sup=2.6893 inv=0.0004 dimstd=0.036 valid_acc=0.8668 {'EC': 0.835, 'EO': 0.825, 'Imagery': 0.861, 'SSVEP': 0.897} | 36s
+[D_e162head_gn256] epoch 22/40 loss=2.6768 sup=2.6764 inv=0.0004 dimstd=0.036 valid_acc=0.8659 {'EC': 0.835, 'EO': 0.825, 'Imagery': 0.854, 'SSVEP': 0.905} | 38s
+[D_e162head_gn256] epoch 23/40 loss=2.6360 sup=2.6356 inv=0.0004 dimstd=0.038 valid_acc=0.8791 {'EC': 0.872, 'EO': 0.868, 'Imagery': 0.865, 'SSVEP': 0.905} | 39s
+[D_e162head_gn256] epoch 24/40 loss=2.6133 sup=2.6129 inv=0.0004 dimstd=0.039 valid_acc=0.8668 {'EC': 0.853, 'EO': 0.842, 'Imagery': 0.852, 'SSVEP': 0.9} | 41s
+[D_e162head_gn256] epoch 25/40 loss=2.5682 sup=2.5678 inv=0.0004 dimstd=0.037 valid_acc=0.8861 {'EC': 0.89, 'EO': 0.825, 'Imagery': 0.88, 'SSVEP': 0.914} | 43s
+[D_e162head_gn256] epoch 26/40 loss=2.5484 sup=2.5480 inv=0.0004 dimstd=0.040 valid_acc=0.8782 {'EC': 0.881, 'EO': 0.842, 'Imagery': 0.861, 'SSVEP': 0.914} | 45s
+[D_e162head_gn256] epoch 27/40 loss=2.5151 sup=2.5147 inv=0.0004 dimstd=0.039 valid_acc=0.8782 {'EC': 0.872, 'EO': 0.851, 'Imagery': 0.859, 'SSVEP': 0.916} | 46s
+[D_e162head_gn256] epoch 28/40 loss=2.5105 sup=2.5101 inv=0.0004 dimstd=0.039 valid_acc=0.8896 {'EC': 0.862, 'EO': 0.851, 'Imagery': 0.876, 'SSVEP': 0.93} | 48s
+[D_e162head_gn256] epoch 29/40 loss=2.4932 sup=2.4928 inv=0.0004 dimstd=0.040 valid_acc=0.8904 {'EC': 0.872, 'EO': 0.877, 'Imagery': 0.876, 'SSVEP': 0.922} | 50s
+[D_e162head_gn256] epoch 30/40 loss=2.4869 sup=2.4865 inv=0.0004 dimstd=0.039 valid_acc=0.8975 {'EC': 0.899, 'EO': 0.886, 'Imagery': 0.88, 'SSVEP': 0.927} | 51s
+[D_e162head_gn256] epoch 31/40 loss=2.4551 sup=2.4547 inv=0.0004 dimstd=0.040 valid_acc=0.8957 {'EC': 0.908, 'EO': 0.868, 'Imagery': 0.88, 'SSVEP': 0.924} | 53s
+[D_e162head_gn256] epoch 32/40 loss=2.4603 sup=2.4599 inv=0.0004 dimstd=0.040 valid_acc=0.8966 {'EC': 0.899, 'EO': 0.86, 'Imagery': 0.883, 'SSVEP': 0.927} | 55s
+[D_e162head_gn256] epoch 33/40 loss=2.4425 sup=2.4421 inv=0.0004 dimstd=0.040 valid_acc=0.8992 {'EC': 0.917, 'EO': 0.868, 'Imagery': 0.881, 'SSVEP': 0.93} | 56s
+[D_e162head_gn256] epoch 34/40 loss=2.4470 sup=2.4466 inv=0.0004 dimstd=0.041 valid_acc=0.8983 {'EC': 0.899, 'EO': 0.86, 'Imagery': 0.885, 'SSVEP': 0.93} | 58s
+[D_e162head_gn256] epoch 35/40 loss=2.4283 sup=2.4279 inv=0.0004 dimstd=0.040 valid_acc=0.8992 {'EC': 0.917, 'EO': 0.877, 'Imagery': 0.883, 'SSVEP': 0.924} | 60s
+[D_e162head_gn256] epoch 36/40 loss=2.4242 sup=2.4238 inv=0.0004 dimstd=0.042 valid_acc=0.9010 {'EC': 0.917, 'EO': 0.877, 'Imagery': 0.883, 'SSVEP': 0.93} | 62s
+[D_e162head_gn256] epoch 37/40 loss=2.4185 sup=2.4181 inv=0.0004 dimstd=0.041 valid_acc=0.9001 {'EC': 0.927, 'EO': 0.868, 'Imagery': 0.881, 'SSVEP': 0.93} | 63s
+[D_e162head_gn256] epoch 38/40 loss=2.4032 sup=2.4028 inv=0.0004 dimstd=0.041 valid_acc=0.9045 {'EC': 0.927, 'EO': 0.877, 'Imagery': 0.887, 'SSVEP': 0.932} | 65s
+[D_e162head_gn256] epoch 39/40 loss=2.4132 sup=2.4129 inv=0.0004 dimstd=0.040 valid_acc=0.9053 {'EC': 0.927, 'EO': 0.877, 'Imagery': 0.889, 'SSVEP': 0.932} | 67s
+[D_e162head_gn256] epoch 40/40 loss=2.4104 sup=2.4100 inv=0.0004 dimstd=0.039 valid_acc=0.9045 {'EC': 0.927, 'EO': 0.877, 'Imagery': 0.887, 'SSVEP': 0.932} | 69s
+  [B_stack256_nolinear_gn512] train embeddings (11304, 512) | 0s
+  [B_stack256_nolinear_gn512] test embeddings (22251, 512) | 1s
+  [C_multiscale4_gn512] train embeddings (11304, 512) | 0s
+  [C_multiscale4_gn512] test embeddings (22251, 512) | 1s
+  [D_e162head_gn256] train embeddings (11304, 256) | 0s
+  [D_e162head_gn256] test embeddings (22251, 256) | 0s
+evaluating 4 variant(s): ['A_attn4_gn512', 'B_stack256_nolinear_gn512', 'C_multiscale4_gn512', 'D_e162head_gn256']
+evaluating A_attn4_gn512 ...
+  [A_attn4_gn512] pca 32 projected
+  [A_attn4_gn512] pca=32 k=1 OOFauc=0.9730 OOFf1=0.9424 diagAUC=0.4481 bestW=0.6555
+  [A_attn4_gn512] pca=32 k=3 OOFauc=0.9766 OOFf1=0.9549 diagAUC=0.4372 bestW=0.6464
+  [A_attn4_gn512] pca=32 k=6 OOFauc=0.9757 OOFf1=0.9585 diagAUC=0.4520 bestW=0.6484
+  [A_attn4_gn512] pca=32 k=12 OOFauc=0.9739 OOFf1=0.9565 diagAUC=0.4528 bestW=0.6393
+  [A_attn4_gn512] pca 64 projected
+  [A_attn4_gn512] pca=64 k=1 OOFauc=0.9729 OOFf1=0.9427 diagAUC=0.4509 bestW=0.6561
+  [A_attn4_gn512] pca=64 k=3 OOFauc=0.9765 OOFf1=0.9547 diagAUC=0.4410 bestW=0.6477
+  [A_attn4_gn512] pca=64 k=6 OOFauc=0.9759 OOFf1=0.9589 diagAUC=0.4541 bestW=0.6482
+  [A_attn4_gn512] pca=64 k=12 OOFauc=0.9741 OOFf1=0.9586 diagAUC=0.4543 bestW=0.6402
+  [A_attn4_gn512] pca 128 projected
+  [A_attn4_gn512] pca=128 k=1 OOFauc=0.9728 OOFf1=0.9427 diagAUC=0.4530 bestW=0.6563
+  [A_attn4_gn512] pca=128 k=3 OOFauc=0.9764 OOFf1=0.9546 diagAUC=0.4423 bestW=0.6480
+  [A_attn4_gn512] pca=128 k=6 OOFauc=0.9757 OOFf1=0.9584 diagAUC=0.4563 bestW=0.6492
+  [A_attn4_gn512] pca=128 k=12 OOFauc=0.9738 OOFf1=0.9582 diagAUC=0.4553 bestW=0.6416
+  [A_attn4_gn512] pca 256 projected
+  [A_attn4_gn512] pca=256 k=1 OOFauc=0.9728 OOFf1=0.9427 diagAUC=0.4530 bestW=0.6563
+  [A_attn4_gn512] pca=256 k=3 OOFauc=0.9764 OOFf1=0.9546 diagAUC=0.4414 bestW=0.6479
+  [A_attn4_gn512] pca=256 k=6 OOFauc=0.9757 OOFf1=0.9586 diagAUC=0.4567 bestW=0.6492
+  [A_attn4_gn512] pca=256 k=12 OOFauc=0.9738 OOFf1=0.9583 diagAUC=0.4553 bestW=0.6417
+[A_attn4_gn512] effective_rank_95=10/512 rank99=26
+evaluating B_stack256_nolinear_gn512 ...
+  [B_stack256_nolinear_gn512] pca 32 projected
+  [B_stack256_nolinear_gn512] pca=32 k=1 OOFauc=0.8555 OOFf1=0.7618 diagAUC=0.3521 bestW=0.5697
+  [B_stack256_nolinear_gn512] pca=32 k=3 OOFauc=0.8469 OOFf1=0.7908 diagAUC=0.3489 bestW=0.5663
+  [B_stack256_nolinear_gn512] pca=32 k=6 OOFauc=0.8475 OOFf1=0.7945 diagAUC=0.3545 bestW=0.5647
+  [B_stack256_nolinear_gn512] pca=32 k=12 OOFauc=0.8471 OOFf1=0.7972 diagAUC=0.3501 bestW=0.5594
+  [B_stack256_nolinear_gn512] pca 64 projected
+  [B_stack256_nolinear_gn512] pca=64 k=1 OOFauc=0.8554 OOFf1=0.7619 diagAUC=0.3525 bestW=0.5701
+  [B_stack256_nolinear_gn512] pca=64 k=3 OOFauc=0.8460 OOFf1=0.7930 diagAUC=0.3504 bestW=0.5663
+  [B_stack256_nolinear_gn512] pca=64 k=6 OOFauc=0.8470 OOFf1=0.7938 diagAUC=0.3520 bestW=0.5637
+  [B_stack256_nolinear_gn512] pca=64 k=12 OOFauc=0.8453 OOFf1=0.7964 diagAUC=0.3500 bestW=0.5598
+  [B_stack256_nolinear_gn512] pca 128 projected
+  [B_stack256_nolinear_gn512] pca=128 k=1 OOFauc=0.8553 OOFf1=0.7620 diagAUC=0.3531 bestW=0.5698
+  [B_stack256_nolinear_gn512] pca=128 k=3 OOFauc=0.8454 OOFf1=0.7914 diagAUC=0.3520 bestW=0.5652
+  [B_stack256_nolinear_gn512] pca=128 k=6 OOFauc=0.8470 OOFf1=0.7967 diagAUC=0.3544 bestW=0.5654
+  [B_stack256_nolinear_gn512] pca=128 k=12 OOFauc=0.8437 OOFf1=0.7969 diagAUC=0.3512 bestW=0.5607
+  [B_stack256_nolinear_gn512] pca 256 projected
+  [B_stack256_nolinear_gn512] pca=256 k=1 OOFauc=0.8554 OOFf1=0.7621 diagAUC=0.3537 bestW=0.5699
+  [B_stack256_nolinear_gn512] pca=256 k=3 OOFauc=0.8453 OOFf1=0.7915 diagAUC=0.3527 bestW=0.5639
+  [B_stack256_nolinear_gn512] pca=256 k=6 OOFauc=0.8462 OOFf1=0.7964 diagAUC=0.3548 bestW=0.5654
+  [B_stack256_nolinear_gn512] pca=256 k=12 OOFauc=0.8445 OOFf1=0.7983 diagAUC=0.3524 bestW=0.5599
+[B_stack256_nolinear_gn512] effective_rank_95=8/512 rank99=47
+evaluating C_multiscale4_gn512 ...
+  [C_multiscale4_gn512] pca 32 projected
+  [C_multiscale4_gn512] pca=32 k=1 OOFauc=0.9356 OOFf1=0.8815 diagAUC=0.5015 bestW=0.6528
+  [C_multiscale4_gn512] pca=32 k=3 OOFauc=0.9419 OOFf1=0.8958 diagAUC=0.4855 bestW=0.6381
+  [C_multiscale4_gn512] pca=32 k=6 OOFauc=0.9422 OOFf1=0.9019 diagAUC=0.4901 bestW=0.6441
+  [C_multiscale4_gn512] pca=32 k=12 OOFauc=0.9428 OOFf1=0.9001 diagAUC=0.4880 bestW=0.6439
+  [C_multiscale4_gn512] pca 64 projected
+  [C_multiscale4_gn512] pca=64 k=1 OOFauc=0.9353 OOFf1=0.8818 diagAUC=0.5031 bestW=0.6539
+  [C_multiscale4_gn512] pca=64 k=3 OOFauc=0.9412 OOFf1=0.8956 diagAUC=0.4892 bestW=0.6399
+  [C_multiscale4_gn512] pca=64 k=6 OOFauc=0.9418 OOFf1=0.9018 diagAUC=0.4930 bestW=0.6488
+  [C_multiscale4_gn512] pca=64 k=12 OOFauc=0.9425 OOFf1=0.8999 diagAUC=0.4890 bestW=0.6464
+  [C_multiscale4_gn512] pca 128 projected
+  [C_multiscale4_gn512] pca=128 k=1 OOFauc=0.9353 OOFf1=0.8818 diagAUC=0.5037 bestW=0.6540
+  [C_multiscale4_gn512] pca=128 k=3 OOFauc=0.9410 OOFf1=0.8946 diagAUC=0.4873 bestW=0.6406
+  [C_multiscale4_gn512] pca=128 k=6 OOFauc=0.9415 OOFf1=0.9018 diagAUC=0.4937 bestW=0.6492
+  [C_multiscale4_gn512] pca=128 k=12 OOFauc=0.9422 OOFf1=0.8991 diagAUC=0.4914 bestW=0.6465
+  [C_multiscale4_gn512] pca 256 projected
+  [C_multiscale4_gn512] pca=256 k=1 OOFauc=0.9353 OOFf1=0.8818 diagAUC=0.5044 bestW=0.6539
+  [C_multiscale4_gn512] pca=256 k=3 OOFauc=0.9411 OOFf1=0.8947 diagAUC=0.4886 bestW=0.6406
+  [C_multiscale4_gn512] pca=256 k=6 OOFauc=0.9404 OOFf1=0.9012 diagAUC=0.4953 bestW=0.6502
+  [C_multiscale4_gn512] pca=256 k=12 OOFauc=0.9424 OOFf1=0.8999 diagAUC=0.4933 bestW=0.6460
+[C_multiscale4_gn512] effective_rank_95=9/512 rank99=46
+evaluating D_e162head_gn256 ...
+  [D_e162head_gn256] pca 32 projected
+  [D_e162head_gn256] pca=32 k=1 OOFauc=0.9410 OOFf1=0.8929 diagAUC=0.3921 bestW=0.6128
+  [D_e162head_gn256] pca=32 k=3 OOFauc=0.9537 OOFf1=0.9114 diagAUC=0.4069 bestW=0.6164
+  [D_e162head_gn256] pca=32 k=6 OOFauc=0.9518 OOFf1=0.9119 diagAUC=0.4002 bestW=0.6140
+  [D_e162head_gn256] pca=32 k=12 OOFauc=0.9499 OOFf1=0.9098 diagAUC=0.4077 bestW=0.6143
+  [D_e162head_gn256] pca 64 projected
+  [D_e162head_gn256] pca=64 k=1 OOFauc=0.9410 OOFf1=0.8929 diagAUC=0.3922 bestW=0.6126
+  [D_e162head_gn256] pca=64 k=3 OOFauc=0.9536 OOFf1=0.9113 diagAUC=0.4069 bestW=0.6166
+  [D_e162head_gn256] pca=64 k=6 OOFauc=0.9519 OOFf1=0.9123 diagAUC=0.4003 bestW=0.6141
+  [D_e162head_gn256] pca=64 k=12 OOFauc=0.9499 OOFf1=0.9101 diagAUC=0.4079 bestW=0.6146
+  [D_e162head_gn256] pca 128 projected
+  [D_e162head_gn256] pca=128 k=1 OOFauc=0.9410 OOFf1=0.8929 diagAUC=0.3922 bestW=0.6126
+  [D_e162head_gn256] pca=128 k=3 OOFauc=0.9537 OOFf1=0.9113 diagAUC=0.4070 bestW=0.6165
+  [D_e162head_gn256] pca=128 k=6 OOFauc=0.9519 OOFf1=0.9123 diagAUC=0.4004 bestW=0.6141
+  [D_e162head_gn256] pca=128 k=12 OOFauc=0.9499 OOFf1=0.9103 diagAUC=0.4081 bestW=0.6146
+  [D_e162head_gn256] pca 256 projected
+  [D_e162head_gn256] pca=256 k=1 OOFauc=0.9410 OOFf1=0.8929 diagAUC=0.3922 bestW=0.6126
+  [D_e162head_gn256] pca=256 k=3 OOFauc=0.9537 OOFf1=0.9114 diagAUC=0.4070 bestW=0.6165
+  [D_e162head_gn256] pca=256 k=6 OOFauc=0.9519 OOFf1=0.9123 diagAUC=0.4004 bestW=0.6141
+  [D_e162head_gn256] pca=256 k=12 OOFauc=0.9499 OOFf1=0.9102 diagAUC=0.4081 bestW=0.6144
+[D_e162head_gn256] effective_rank_95=8/256 rank99=8
+evaluating E143 protocol on E65 control features ...
+  [E65_control] pca 96 projected
+  [E65_control] pca=96 k=12 OOFauc=0.9302 OOFf1=0.9895 diagAUC=0.7578 bestW=0.6958
+
+======================================================================
+C_multiscale4_gn512: diagAUC=0.5044 W@0.90=0.6488 maxW=0.6540 rank95=9/512 | S1 0.2463 S2 0.8487 OOFauc 0.9353 OOFf1 0.8818
+A_attn4_gn512: diagAUC=0.4567 W@0.90=0.6222 maxW=0.6563 rank95=10/512 | S1 0.2634 S2 0.7665 OOFauc 0.9728 OOFf1 0.9427
+D_e162head_gn256: diagAUC=0.4081 W@0.90=0.6044 maxW=0.6166 rank95=8/256 | S1 0.1813 S2 0.8092 OOFauc 0.9536 OOFf1 0.9113
+B_stack256_nolinear_gn512: diagAUC=0.3548 W@0.90=0.5637 maxW=0.5701 rank95=8/512 | S1 0.1170 S2 0.8805 OOFauc 0.8555 OOFf1 0.7618
+best variant: C_multiscale4_gn512
+E65 control: pca=96 k=12 a=0.90 W=0.6958 diagAUC=0.7578
+results: D:\WORK\BCIC2026\BrainPrint\research\E164_raw_eeg_highrank\results.json
+report: D:\WORK\BCIC2026\BrainPrint\research\E164_raw_eeg_highrank\report.md
+
+===== E164 run 2026-11-15 11:32:01 stage=report variants=['A_attn4_gn512', 'B_stack256_nolinear_gn512', 'C_multiscale4_gn512', 'D_e162head_gn256'] =====
+report regenerated: D:\WORK\BCIC2026\BrainPrint\research\E164_raw_eeg_highrank\report.md
+
+===== E164 run 2026-11-15 11:32:49 stage=report variants=['A_attn4_gn512', 'B_stack256_nolinear_gn512', 'C_multiscale4_gn512', 'D_e162head_gn256'] =====
+report regenerated: D:\WORK\BCIC2026\BrainPrint\research\E164_raw_eeg_highrank\report.md
+
+===== E164 run 2026-11-15 11:33:11 stage=report variants=['A_attn4_gn512', 'B_stack256_nolinear_gn512', 'C_multiscale4_gn512', 'D_e162head_gn256'] =====
+report regenerated: D:\WORK\BCIC2026\BrainPrint\research\E164_raw_eeg_highrank\report.md

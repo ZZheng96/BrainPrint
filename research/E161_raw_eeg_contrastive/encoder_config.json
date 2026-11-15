@@ -1,0 +1,38 @@
+{
+  "format": "E161 raw-EEG supervised-contrastive encoder",
+  "input": {
+    "channels": 18,
+    "samples": 1200,
+    "sampling_rate_hz": 300,
+    "normalisation": "per-trial per-channel mean removal, then division by the per-trial global RMS (fixed, no batch statistics)"
+  },
+  "widths": [
+    32,
+    64,
+    96,
+    128
+  ],
+  "kernels": [
+    7,
+    7,
+    5,
+    5
+  ],
+  "strides": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "embed_dim": 128,
+  "dropout": 0.1,
+  "pooling": "concat(global_mean, global_max)",
+  "output": "L2 normalised",
+  "normalisation": "per-trial per-channel mean removal, then division by the per-trial global RMS (fixed, no batch statistics)",
+  "param_budget": 1000000,
+  "best_epoch": 33,
+  "best_valid_accuracy": 0.9360210341805434,
+  "parameters": 144064,
+  "train_only": true,
+  "weights": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E161_raw_eeg_contrastive\\model_contrastive.pt"
+}

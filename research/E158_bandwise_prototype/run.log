@@ -1,51 +1,103 @@
 ﻿[    0.1s] loaded (11304, 855) (22251, 855) on cuda
-[    2.1s] baseline PCA-96 k= 1 AUC 0.7504 bestW 0.6697 @a=0.85 (LOSO 0.6646 / S1 0.7524 / S2 0.6308)
-[   10.1s] baseline PCA-96 k= 3 AUC 0.7566 bestW 0.6771 @a=0.91 (LOSO 0.6993 / S1 0.7468 / S2 0.6312)
-[   18.7s] baseline PCA-96 k= 6 AUC 0.7554 bestW 0.6904 @a=0.92 (LOSO 0.7279 / S1 0.7296 / S2 0.6521)
-[   26.2s] baseline PCA-96 k=12 AUC 0.7578 bestW 0.6958 @a=0.90 (LOSO 0.7936 / S1 0.7979 / S2 0.5960)
-[   26.2s] baseline reproduction @k=12 a=0.90: W 0.6958 (ref 0.6958), AUC 0.7578 (ref 0.7578) -> OK
-[   27.2s] b1_1-8 dim=16 k= 1 AUC 0.5928 bestW 0.5479
-[   36.6s] b1_1-8 dim=16 k= 3 AUC 0.6395 bestW 0.5761
-[   46.5s] b1_1-8 dim=16 k= 6 AUC 0.6413 bestW 0.5831
-[   55.2s] b1_1-8 dim=16 k=12 AUC 0.6451 bestW 0.5867
-[   56.1s] b1_1-8 dim=32 k= 1 AUC 0.5949 bestW 0.5458
-[   66.5s] b1_1-8 dim=32 k= 3 AUC 0.6296 bestW 0.5608
-[   76.0s] b1_1-8 dim=32 k= 6 AUC 0.6251 bestW 0.5612
-[   84.1s] b1_1-8 dim=32 k=12 AUC 0.6324 bestW 0.5718
-[   85.0s] b1_1-8 dim=48 k= 1 AUC 0.5986 bestW 0.5430
-[   94.7s] b1_1-8 dim=48 k= 3 AUC 0.6334 bestW 0.5610
-[  104.1s] b1_1-8 dim=48 k= 6 AUC 0.6346 bestW 0.5609
-[  112.0s] b1_1-8 dim=48 k=12 AUC 0.6386 bestW 0.5705
-[  112.9s] b1_1-8 dim=64 k= 1 AUC 0.5957 bestW 0.5353
-[  122.0s] b1_1-8 dim=64 k= 3 AUC 0.6281 bestW 0.5529
-[  130.6s] b1_1-8 dim=64 k= 6 AUC 0.6226 bestW 0.5517
-[  138.3s] b1_1-8 dim=64 k=12 AUC 0.6280 bestW 0.5550
-[  139.4s] b2_8-13 dim=16 k= 1 AUC 0.6691 bestW 0.6097
-[  149.5s] b2_8-13 dim=16 k= 3 AUC 0.6802 bestW 0.6211
-[  158.9s] b2_8-13 dim=16 k= 6 AUC 0.6906 bestW 0.6290
-[  167.2s] b2_8-13 dim=16 k=12 AUC 0.6891 bestW 0.6264
-[  168.2s] b2_8-13 dim=32 k= 1 AUC 0.6775 bestW 0.6151
-[  177.5s] b2_8-13 dim=32 k= 3 AUC 0.6889 bestW 0.6327
-[  186.9s] b2_8-13 dim=32 k= 6 AUC 0.6929 bestW 0.6384
-[  195.4s] b2_8-13 dim=32 k=12 AUC 0.6950 bestW 0.6334
-[  196.4s] b2_8-13 dim=48 k= 1 AUC 0.6781 bestW 0.6129
-[  205.7s] b2_8-13 dim=48 k= 3 AUC 0.6895 bestW 0.6215
-[  214.4s] b2_8-13 dim=48 k= 6 AUC 0.6872 bestW 0.6260
-[  222.2s] b2_8-13 dim=48 k=12 AUC 0.6927 bestW 0.6266
-[  223.2s] b2_8-13 dim=64 k= 1 AUC 0.6728 bestW 0.5994
-[  232.4s] b2_8-13 dim=64 k= 3 AUC 0.6835 bestW 0.6127
-[  240.9s] b2_8-13 dim=64 k= 6 AUC 0.6818 bestW 0.6106
-[  248.2s] b2_8-13 dim=64 k=12 AUC 0.6821 bestW 0.6078
-[  249.2s] b3_13-20 dim=16 k= 1 AUC 0.7084 bestW 0.6296
-[  260.4s] b3_13-20 dim=16 k= 3 AUC 0.7057 bestW 0.6334
-[  270.4s] b3_13-20 dim=16 k= 6 AUC 0.6968 bestW 0.6329
-[  279.0s] b3_13-20 dim=16 k=12 AUC 0.6946 bestW 0.6313
-[  280.0s] b3_13-20 dim=32 k= 1 AUC 0.7043 bestW 0.6309
-[  289.4s] b3_13-20 dim=32 k= 3 AUC 0.7030 bestW 0.6367
-[  298.7s] b3_13-20 dim=32 k= 6 AUC 0.6990 bestW 0.6366
-[  307.0s] b3_13-20 dim=32 k=12 AUC 0.7032 bestW 0.6364
-[  307.9s] b3_13-20 dim=48 k= 1 AUC 0.6861 bestW 0.6225
-[  317.5s] b3_13-20 dim=48 k= 3 AUC 0.6855 bestW 0.6234
-[  325.4s] b3_13-20 dim=48 k= 6 AUC 0.6831 bestW 0.6242
-[  331.8s] b3_13-20 dim=48 k=12 AUC 0.6829 bestW 0.6236
-[  332.8s] b3_13-20 dim=64 k= 1 AUC 0.6721 bestW 0.6073
+[    1.6s] baseline PCA-96 k= 1 AUC 0.7504 bestW 0.6697 @a=0.85 (LOSO 0.6646 / S1 0.7524 / S2 0.6308)
+[   10.2s] baseline PCA-96 k= 3 AUC 0.7566 bestW 0.6771 @a=0.91 (LOSO 0.6993 / S1 0.7468 / S2 0.6312)
+[   19.3s] baseline PCA-96 k= 6 AUC 0.7554 bestW 0.6904 @a=0.92 (LOSO 0.7279 / S1 0.7296 / S2 0.6521)
+[   27.4s] baseline PCA-96 k=12 AUC 0.7578 bestW 0.6958 @a=0.90 (LOSO 0.7936 / S1 0.7979 / S2 0.5960)
+[   27.4s] baseline reproduction @k=12 a=0.90: W 0.6958 (ref 0.6958), AUC 0.7578 (ref 0.7578) -> OK
+[   28.4s] b1_1-8 dim=16 k= 1 AUC 0.5928 bestW 0.5479
+[   38.4s] b1_1-8 dim=16 k= 3 AUC 0.6395 bestW 0.5761
+[   48.2s] b1_1-8 dim=16 k= 6 AUC 0.6413 bestW 0.5831
+[   56.9s] b1_1-8 dim=16 k=12 AUC 0.6451 bestW 0.5867
+[   57.8s] b1_1-8 dim=32 k= 1 AUC 0.5949 bestW 0.5458
+[   67.8s] b1_1-8 dim=32 k= 3 AUC 0.6296 bestW 0.5608
+[   77.4s] b1_1-8 dim=32 k= 6 AUC 0.6251 bestW 0.5612
+[   85.8s] b1_1-8 dim=32 k=12 AUC 0.6324 bestW 0.5718
+[   86.8s] b1_1-8 dim=48 k= 1 AUC 0.5986 bestW 0.5430
+[   96.6s] b1_1-8 dim=48 k= 3 AUC 0.6334 bestW 0.5610
+[  106.8s] b1_1-8 dim=48 k= 6 AUC 0.6346 bestW 0.5609
+[  114.8s] b1_1-8 dim=48 k=12 AUC 0.6386 bestW 0.5705
+[  115.8s] b1_1-8 dim=64 k= 1 AUC 0.5957 bestW 0.5353
+[  125.1s] b1_1-8 dim=64 k= 3 AUC 0.6281 bestW 0.5529
+[  133.9s] b1_1-8 dim=64 k= 6 AUC 0.6226 bestW 0.5517
+[  141.8s] b1_1-8 dim=64 k=12 AUC 0.6280 bestW 0.5550
+[  142.8s] b2_8-13 dim=16 k= 1 AUC 0.6691 bestW 0.6097
+[  153.0s] b2_8-13 dim=16 k= 3 AUC 0.6802 bestW 0.6211
+[  162.4s] b2_8-13 dim=16 k= 6 AUC 0.6906 bestW 0.6290
+[  170.9s] b2_8-13 dim=16 k=12 AUC 0.6891 bestW 0.6264
+[  171.8s] b2_8-13 dim=32 k= 1 AUC 0.6775 bestW 0.6151
+[  181.5s] b2_8-13 dim=32 k= 3 AUC 0.6889 bestW 0.6327
+[  190.6s] b2_8-13 dim=32 k= 6 AUC 0.6929 bestW 0.6384
+[  199.1s] b2_8-13 dim=32 k=12 AUC 0.6950 bestW 0.6334
+[  200.1s] b2_8-13 dim=48 k= 1 AUC 0.6781 bestW 0.6129
+[  209.6s] b2_8-13 dim=48 k= 3 AUC 0.6895 bestW 0.6215
+[  218.8s] b2_8-13 dim=48 k= 6 AUC 0.6872 bestW 0.6260
+[  226.3s] b2_8-13 dim=48 k=12 AUC 0.6927 bestW 0.6266
+[  227.4s] b2_8-13 dim=64 k= 1 AUC 0.6728 bestW 0.5994
+[  236.6s] b2_8-13 dim=64 k= 3 AUC 0.6835 bestW 0.6127
+[  245.4s] b2_8-13 dim=64 k= 6 AUC 0.6818 bestW 0.6106
+[  253.2s] b2_8-13 dim=64 k=12 AUC 0.6821 bestW 0.6078
+[  254.2s] b3_13-20 dim=16 k= 1 AUC 0.7084 bestW 0.6296
+[  265.1s] b3_13-20 dim=16 k= 3 AUC 0.7057 bestW 0.6334
+[  275.2s] b3_13-20 dim=16 k= 6 AUC 0.6968 bestW 0.6329
+[  283.6s] b3_13-20 dim=16 k=12 AUC 0.6946 bestW 0.6313
+[  284.6s] b3_13-20 dim=32 k= 1 AUC 0.7043 bestW 0.6309
+[  294.1s] b3_13-20 dim=32 k= 3 AUC 0.7030 bestW 0.6367
+[  303.4s] b3_13-20 dim=32 k= 6 AUC 0.6990 bestW 0.6366
+[  311.2s] b3_13-20 dim=32 k=12 AUC 0.7032 bestW 0.6364
+[  312.2s] b3_13-20 dim=48 k= 1 AUC 0.6861 bestW 0.6225
+[  321.8s] b3_13-20 dim=48 k= 3 AUC 0.6855 bestW 0.6234
+[  330.6s] b3_13-20 dim=48 k= 6 AUC 0.6831 bestW 0.6242
+[  338.1s] b3_13-20 dim=48 k=12 AUC 0.6829 bestW 0.6236
+[  339.1s] b3_13-20 dim=64 k= 1 AUC 0.6721 bestW 0.6073
+[  348.3s] b3_13-20 dim=64 k= 3 AUC 0.6751 bestW 0.6125
+[  357.0s] b3_13-20 dim=64 k= 6 AUC 0.6720 bestW 0.6161
+[  364.2s] b3_13-20 dim=64 k=12 AUC 0.6731 bestW 0.6115
+[  365.2s] b4_20-30 dim=16 k= 1 AUC 0.7433 bestW 0.6484
+[  375.4s] b4_20-30 dim=16 k= 3 AUC 0.7409 bestW 0.6437
+[  385.4s] b4_20-30 dim=16 k= 6 AUC 0.7289 bestW 0.6352
+[  393.8s] b4_20-30 dim=16 k=12 AUC 0.7266 bestW 0.6370
+[  394.8s] b4_20-30 dim=32 k= 1 AUC 0.7185 bestW 0.6354
+[  404.7s] b4_20-30 dim=32 k= 3 AUC 0.7280 bestW 0.6417
+[  414.1s] b4_20-30 dim=32 k= 6 AUC 0.7178 bestW 0.6305
+[  421.9s] b4_20-30 dim=32 k=12 AUC 0.7144 bestW 0.6301
+[  422.9s] b4_20-30 dim=48 k= 1 AUC 0.7068 bestW 0.6292
+[  432.0s] b4_20-30 dim=48 k= 3 AUC 0.7067 bestW 0.6235
+[  440.1s] b4_20-30 dim=48 k= 6 AUC 0.6985 bestW 0.6158
+[  447.5s] b4_20-30 dim=48 k=12 AUC 0.6927 bestW 0.6179
+[  448.5s] b4_20-30 dim=64 k= 1 AUC 0.6805 bestW 0.6119
+[  458.0s] b4_20-30 dim=64 k= 3 AUC 0.6781 bestW 0.6041
+[  466.4s] b4_20-30 dim=64 k= 6 AUC 0.6704 bestW 0.5994
+[  473.4s] b4_20-30 dim=64 k=12 AUC 0.6651 bestW 0.6004
+[  474.4s] b5_30-40 dim=16 k= 1 AUC 0.7174 bestW 0.6340
+[  484.7s] b5_30-40 dim=16 k= 3 AUC 0.7276 bestW 0.6356
+[  494.9s] b5_30-40 dim=16 k= 6 AUC 0.7237 bestW 0.6294
+[  503.5s] b5_30-40 dim=16 k=12 AUC 0.7055 bestW 0.6193
+[  504.5s] b5_30-40 dim=32 k= 1 AUC 0.7102 bestW 0.6220
+[  514.3s] b5_30-40 dim=32 k= 3 AUC 0.7063 bestW 0.6154
+[  523.5s] b5_30-40 dim=32 k= 6 AUC 0.7007 bestW 0.6145
+[  531.1s] b5_30-40 dim=32 k=12 AUC 0.6945 bestW 0.6085
+[  532.1s] b5_30-40 dim=48 k= 1 AUC 0.6730 bestW 0.6024
+[  541.6s] b5_30-40 dim=48 k= 3 AUC 0.6696 bestW 0.5971
+[  550.4s] b5_30-40 dim=48 k= 6 AUC 0.6567 bestW 0.5910
+[  557.9s] b5_30-40 dim=48 k=12 AUC 0.6519 bestW 0.5901
+[  559.0s] b5_30-40 dim=64 k= 1 AUC 0.6351 bestW 0.5768
+[  567.9s] b5_30-40 dim=64 k= 3 AUC 0.6303 bestW 0.5733
+[  576.3s] b5_30-40 dim=64 k= 6 AUC 0.6124 bestW 0.5703
+[  583.6s] b5_30-40 dim=64 k=12 AUC 0.6091 bestW 0.5685
+[  585.4s] fusion dim=16 k= 1: mean_z W 0.6654 AUC 0.7454 | rank_mean W 0.6588 AUC 0.7371
+[  587.2s] fusion dim=16 k= 3: mean_z W 0.6764 AUC 0.7568 | rank_mean W 0.6703 AUC 0.7491
+[  588.9s] fusion dim=16 k= 6: mean_z W 0.6714 AUC 0.7528 | rank_mean W 0.6720 AUC 0.7487
+[  590.8s] fusion dim=16 k=12: mean_z W 0.6703 AUC 0.7481 | rank_mean W 0.6677 AUC 0.7456
+[  592.5s] fusion dim=32 k= 1: mean_z W 0.6564 AUC 0.7322 | rank_mean W 0.6572 AUC 0.7284
+[  594.3s] fusion dim=32 k= 3: mean_z W 0.6606 AUC 0.7422 | rank_mean W 0.6639 AUC 0.7410
+[  596.0s] fusion dim=32 k= 6: mean_z W 0.6588 AUC 0.7370 | rank_mean W 0.6641 AUC 0.7383
+[  597.8s] fusion dim=32 k=12: mean_z W 0.6622 AUC 0.7369 | rank_mean W 0.6674 AUC 0.7390
+[  599.6s] fusion dim=48 k= 1: mean_z W 0.6481 AUC 0.7140 | rank_mean W 0.6529 AUC 0.7148
+[  601.4s] fusion dim=48 k= 3: mean_z W 0.6485 AUC 0.7212 | rank_mean W 0.6597 AUC 0.7271
+[  603.1s] fusion dim=48 k= 6: mean_z W 0.6448 AUC 0.7149 | rank_mean W 0.6566 AUC 0.7244
+[  604.9s] fusion dim=48 k=12: mean_z W 0.6446 AUC 0.7134 | rank_mean W 0.6565 AUC 0.7242
+[  606.6s] fusion dim=64 k= 1: mean_z W 0.6301 AUC 0.6902 | rank_mean W 0.6385 AUC 0.6976
+[  608.3s] fusion dim=64 k= 3: mean_z W 0.6271 AUC 0.6968 | rank_mean W 0.6399 AUC 0.7096
+[  610.0s] fusion dim=64 k= 6: mean_z W 0.6271 AUC 0.6882 | rank_mean W 0.6417 AUC 0.7028
+[  611.8s] fusion dim=64 k=12: mean_z W 0.6279 AUC 0.6864 | rank_mean W 0.6389 AUC 0.7025
+[  611.8s] done

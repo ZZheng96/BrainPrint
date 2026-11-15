@@ -1,0 +1,85 @@
+{
+  "experiment": "E163_dual_representation_fusion",
+  "purpose": "Test whether feature-level fusion of the E65 correlation-logSPD view (structured, 855-d) and the E162 raw-EEG end-to-end contrastive embedding (256-d, effective rank 8) raises the open-set diagnostic AUC above the E143 0.7578 baseline. E153 showed that a second score from the E143 view itself (E152 trial-centred invariant) was redundant; E162 is a genuinely different information source, so complementarity is re-tested under the verbatim E143 protocol.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "streams": {
+    "E65_logspd": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "pca_dims": [64, 96],
+      "note": "855-d correlation log-SPD vector, the E143 representation"
+    },
+    "E162_raw_eeg": {
+      "train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+      "test": "research/E162_raw_eeg_contrastive_v2/test_emb.npy",
+      "pca_dims": [32, 64, 128],
+      "effective_rank_95": 8,
+      "note": "256-d embedding of the best E162 config (lambda=0.0, t=0.1); task-standardised effective rank 95% = 8, so dims beyond 32 are deliberately included only to show the plateau"
+    }
+  },
+  "standardisation": {
+    "rule": "per stream, task-wise z-score with Train-session1 statistics only (all Train rows of that task), identical to E143/E162 so the controls reproduce exactly",
+    "sensitivity": "the E65 control is re-run with fit-rows-only statistics (frac <= 0.6) to show the conclusion does not depend on which Train rows supply the mean/std"
+  },
+  "fusion": {
+    "feature_concat": {
+      "variants": {
+        "raw": "concat(E65 PCA, E162 PCA) then joint PCA",
+        "block_norm": "each PCA block divided by its fit-row RMS std so both contribute equal total variance, then joint PCA"
+      },
+      "dim_pairs": [[64, 32], [64, 64], [64, 128], [96, 32], [96, 64], [96, 128]],
+      "joint_pca_dims": [64, 96, 128]
+    },
+    "score_fusion": {
+      "weights": [0.25, 0.5, 0.75],
+      "equal_weight": 0.5,
+      "train_selected_weight_grid": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+      "selection_metric": "Train LOSO AUC (pooled held-identity unknown proxy vs enrolled known block) of the fused z-score; Test is never consulted",
+      "z_normalisation": "each stream score z-scored with its own 5-block Train OOF mean/std before weighting"
+    }
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "prototype_k": [1, 3, 6, 12],
+  "fit_fraction": 0.6,
+  "blocks": 5,
+  "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96],
+  "reference_acceptance": 0.90,
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "baselines": {
+    "E143_k_sweep_nearest": {
+      "config": "E65 PCA-96, k=12, acceptance 0.90",
+      "diagnostic_auc": 0.7578,
+      "train_oof_auc": 0.9302,
+      "loso_rejection": 0.7936,
+      "test_s1_rejection": 0.7979,
+      "test_s2_acceptance": 0.5960,
+      "W": 0.6958
+    },
+    "E162_raw_eeg_contrastive_v2": {
+      "config": "raw EEG embedding, PCA-64, k=1, acceptance 0.88",
+      "diagnostic_auc": 0.6756,
+      "train_oof_auc": 0.8847,
+      "train_oof_macro_f1": 0.8509,
+      "loso_rejection": 0.6290,
+      "test_s1_rejection": 0.4474,
+      "test_s2_acceptance": 0.8141,
+      "W": 0.6761
+    },
+    "E159_ceiling": {"note": "single-score threshold tuning ceiling on E143 is W = 0.7352, so the diagnostic AUC has to move"}
+  },
+  "protocol": {
+    "loso_known_block": "0.6 < frac <= 0.8 of the 19 enrolled identities",
+    "loso_unknown_block": "0.6 < frac <= 0.8 of the held-out identity",
+    "prototypes": "k-means (E143 seeding, 20 iters) per (task, identity) on fit_rows only",
+    "train_oof": "5 contiguous frac blocks, prototypes rebuilt without the held block",
+    "threshold": "quantile of the 5-block Train OOF score at each acceptance rate; LOSO uses the per-fold known-block quantile",
+    "test": "scored only; session used only for the post-hoc diagnostic AUC"
+  },
+  "reporting": {
+    "test_official": "N/A: the Test split has no public labels; session labels are used only for the diagnostic AUC after scoring",
+    "headline_working_point": "W at the reference acceptance 0.90 (E143 working point) plus the acceptance-grid selected best W, clearly separated because the latter uses Test"
+  }
+}

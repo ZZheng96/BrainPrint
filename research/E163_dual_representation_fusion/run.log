@@ -1,0 +1,149 @@
+device cuda | train 11304 | test 22251 | fit_rows 6695 | window 2301
+loaded E65_logspd: (11304, 855) / (22251, 855)
+loaded E162_raw_eeg: (11304, 256) / (22251, 256)
+  [E65_logspd] dim=64 k=1 OOFauc=0.8943 OOFf1=0.9754 diagAUC=0.7526 W@.90=0.6563 bestW=0.6689@0.85 (4s)
+  [E65_logspd] dim=64 k=3 OOFauc=0.9365 OOFf1=0.9836 diagAUC=0.7612 W@.90=0.6772 bestW=0.6772@0.90 (12s)
+  [E65_logspd] dim=64 k=6 OOFauc=0.9439 OOFf1=0.9879 diagAUC=0.7587 W@.90=0.6816 bestW=0.6852@0.92 (20s)
+  [E65_logspd] dim=64 k=12 OOFauc=0.9468 OOFf1=0.9883 diagAUC=0.7622 W@.90=0.6908 bestW=0.6982@0.92 (27s)
+  [E65_logspd] dim=96 k=1 OOFauc=0.8774 OOFf1=0.9757 diagAUC=0.7504 W@.90=0.6495 bestW=0.6697@0.85 (31s)
+  [E65_logspd] dim=96 k=3 OOFauc=0.9209 OOFf1=0.9844 diagAUC=0.7566 W@.90=0.6764 bestW=0.6771@0.91 (39s)
+  [E65_logspd] dim=96 k=6 OOFauc=0.9286 OOFf1=0.9898 diagAUC=0.7554 W@.90=0.6882 bestW=0.6905@0.92 (47s)
+  [E65_logspd] dim=96 k=12 OOFauc=0.9302 OOFf1=0.9895 diagAUC=0.7578 W@.90=0.6958 bestW=0.6958@0.90 (53s)
+  [E162_raw_eeg] dim=32 k=1 OOFauc=0.8847 OOFf1=0.8509 diagAUC=0.6742 W@.90=0.6720 bestW=0.6760@0.88 (57s)
+  [E162_raw_eeg] dim=32 k=3 OOFauc=0.9100 OOFf1=0.8882 diagAUC=0.6240 W@.90=0.6502 bestW=0.6510@0.91 (66s)
+  [E162_raw_eeg] dim=32 k=6 OOFauc=0.9120 OOFf1=0.8888 diagAUC=0.6358 W@.90=0.6589 bestW=0.6589@0.90 (75s)
+  [E162_raw_eeg] dim=32 k=12 OOFauc=0.9188 OOFf1=0.8919 diagAUC=0.6264 W@.90=0.6512 bestW=0.6542@0.91 (82s)
+  [E162_raw_eeg] dim=64 k=1 OOFauc=0.8847 OOFf1=0.8509 diagAUC=0.6754 W@.90=0.6721 bestW=0.6761@0.85 (86s)
+  [E162_raw_eeg] dim=64 k=3 OOFauc=0.9096 OOFf1=0.8880 diagAUC=0.6259 W@.90=0.6513 bestW=0.6513@0.90 (95s)
+  [E162_raw_eeg] dim=64 k=6 OOFauc=0.9118 OOFf1=0.8889 diagAUC=0.6363 W@.90=0.6592 bestW=0.6592@0.90 (104s)
+  [E162_raw_eeg] dim=64 k=12 OOFauc=0.9187 OOFf1=0.8922 diagAUC=0.6279 W@.90=0.6530 bestW=0.6548@0.91 (112s)
+  [E162_raw_eeg] dim=128 k=1 OOFauc=0.8847 OOFf1=0.8509 diagAUC=0.6756 W@.90=0.6723 bestW=0.6761@0.85 (115s)
+  [E162_raw_eeg] dim=128 k=3 OOFauc=0.9097 OOFf1=0.8878 diagAUC=0.6264 W@.90=0.6514 bestW=0.6514@0.90 (125s)
+  [E162_raw_eeg] dim=128 k=6 OOFauc=0.9119 OOFf1=0.8888 diagAUC=0.6372 W@.90=0.6598 bestW=0.6598@0.90 (134s)
+  [E162_raw_eeg] dim=128 k=12 OOFauc=0.9188 OOFf1=0.8928 diagAUC=0.6282 W@.90=0.6527 bestW=0.6547@0.91 (141s)
+sensitivity: E65 control with fit-rows-only standardisation
+  [E65 fit-stat] k=1 diagAUC=0.7540 W@.90=0.6533 bestW=0.6699
+  [E65 fit-stat] k=3 diagAUC=0.7635 W@.90=0.6790 bestW=0.6790
+  [E65 fit-stat] k=6 diagAUC=0.7633 W@.90=0.6875 bestW=0.6891
+  [E65 fit-stat] k=12 diagAUC=0.7614 W@.90=0.6931 bestW=0.6931
+feature-level concat fusion
+  [concat_raw 96+32 -> 96] diagAUC=0.7478 W@.90=0.6960 bestW=0.7116 (194s)
+score-level fusion
+  [score 64+32] bestW=0.7162 selectedW=0.7110 (w=0.7, diagAUC=0.7554)
+  [score 64+64] bestW=0.7164 selectedW=0.7107 (w=0.7, diagAUC=0.7559)
+  [score 64+128] bestW=0.7164 selectedW=0.7104 (w=0.7, diagAUC=0.7559)
+  [score 96+32] bestW=0.7155 selectedW=0.7134 (w=0.7, diagAUC=0.7520)
+  [score 96+64] bestW=0.7157 selectedW=0.7131 (w=0.7, diagAUC=0.7525)
+  [score 96+128] bestW=0.7157 selectedW=0.7131 (w=0.7, diagAUC=0.7525)
+score correlation: Test r=+0.3676 | Train OOF r=+0.2969
+done in 212s
+{
+  "baseline_diagnostic_auc": 0.7578,
+  "baseline_W": 0.6958,
+  "best_feature_concat": {
+    "family": "feature_concat_raw",
+    "stream": "E65+E162",
+    "pca_dim_e65": 96,
+    "pca_dim_e162": 32,
+    "joint_pca_dim": 96,
+    "k": 6,
+    "config": "raw concat 96+32 -> PCA-96 k=6",
+    "diagnostic_auc": 0.7537113519077294,
+    "train_oof_auc": 0.9616005133925893,
+    "train_oof_f1": 0.9851303428186157,
+    "train_oof_identity_acc": 0.9853149327671621,
+    "loso_auc_train_only": 0.9606157788203293,
+    "best_W": 0.7115716051013362,
+    "best_acceptance": 0.95,
+    "loso_at_best": 0.7510881028867064,
+    "s1_at_best": 0.6505110451697989,
+    "s2_at_best": 0.7223436361744198,
+    "W_at_090": 0.6965986150896721,
+    "loso_at_090": 0.8874451465405249,
+    "s1_at_090": 0.815694032311243,
+    "s2_at_090": 0.5416276407534603,
+    "per_task_auc": {
+      "EC": 0.6964836105675147,
+      "EO": 0.749639098741564,
+      "Imagery": 0.7689430608144993,
+      "SSVEP": 0.752093245519259
+    }
+  },
+  "best_score_fusion": {
+    "family": "score_fusion",
+    "stream": "E65+E162",
+    "pca_dim_e65": 64,
+    "pca_dim_e162": 64,
+    "k": 1,
+    "weight_e65": 0.5,
+    "weight_e162": 0.5,
+    "config": "score 0.50*E65(64) + 0.50*E162(64) k=1",
+    "diagnostic_auc": 0.7510956592684961,
+    "train_oof_auc": 0.9288962067017232,
+    "train_oof_f1": 0.9532914887703627,
+    "train_oof_identity_acc": 0.9533793347487615,
+    "loso_auc_train_only": 0.9160533333365144,
+    "best_W": 0.7164192678346848,
+    "best_acceptance": 0.9,
+    "loso_at_best": 0.7231495468112166,
+    "s1_at_best": 0.6030333003626772,
+    "s2_at_best": 0.7697471120824227,
+    "W_at_090": 0.7164192678346848,
+    "loso_at_090": 0.7231495468112166,
+    "s1_at_090": 0.6030333003626772,
+    "s2_at_090": 0.7697471120824227,
+    "per_task_auc": {
+      "EC": 0.6959719504240052,
+      "EO": 0.7432219427965128,
+      "Imagery": 0.7718323549190105,
+      "SSVEP": 0.7450388563810295
+    }
+  },
+  "best_score_fusion_train_selected": {
+    "family": "score_fusion_train_selected",
+    "stream": "E65+E162",
+    "pca_dim_e65": 96,
+    "pca_dim_e162": 128,
+    "k": 1,
+    "weight_e65": 0.6,
+    "weight_e162": 0.4,
+    "train_loso_auc_by_weight": {
+      "0.1": 0.8767553171518248,
+      "0.2": 0.8898587944885545,
+      "0.3": 0.9006384746312428,
+      "0.4": 0.9083476137692955,
+      "0.5": 0.9123666781152706,
+      "0.6": 0.912406226843653,
+      "0.7": 0.9085599899933815,
+      "0.8": 0.901062531236512,
+      "0.9": 0.8898874582458225
+    },
+    "config": "score 0.60*E65(96) + 0.40*E162(128) k=1 [w by Train LOSO]",
+    "diagnostic_auc": 0.7568066699750553,
+    "train_oof_auc": 0.9191025287322383,
+    "train_oof_f1": 0.9641437937642104,
+    "train_oof_identity_acc": 0.9642604387827318,
+    "loso_auc_train_only": 0.912406226843653,
+    "best_W": 0.7159524166278071,
+    "best_acceptance": 0.88,
+    "loso_at_best": 0.7545186838467111,
+    "s1_at_best": 0.6689746125947906,
+    "s2_at_best": 0.7201581850348632,
+    "W_at_090": 0.7126105258959481,
+    "loso_at_090": 0.6997216335002625,
+    "s1_at_090": 0.6162215628090999,
+    "s2_at_090": 0.7672494536372151,
+    "per_task_auc": {
+      "EC": 0.7129178897586432,
+      "EO": 0.7499825713173194,
+      "Imagery": 0.7766579348590653,
+      "SSVEP": 0.7497150205550772
+    }
+  },
+  "max_diagnostic_auc_any_fusion": 0.7609348301304377,
+  "auc_gain_vs_baseline": 0.0031348301304376935,
+  "w_gain_vs_baseline_best": 0.020619267834684818,
+  "w_gain_vs_baseline_at_090": 0.020619267834684818,
+  "score_correlation_test": 0.36756401168633274,
+  "score_correlation_train_oof": 0.2969433845348619
+}
