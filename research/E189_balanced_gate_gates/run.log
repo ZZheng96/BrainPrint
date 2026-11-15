@@ -1,0 +1,124 @@
+
+===== E189 stage scores =====
+stage scores: 11304 Train rows, fit_rows 6695, window 2301, Test 22251
+Traceback (most recent call last):
+  File "D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\run_e189.py", line 1060, in <module>
+    main()
+  File "D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\run_e189.py", line 1048, in main
+    stage_scores()
+  File "D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\run_e189.py", line 231, in stage_scores
+    store = single_stream(name, P)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\run_e189.py", line 204, in single_stream
+    log(f"  {name}: dim {train.shape[1]} -> PCA-{dim} k={k} | OOF mean {oof_mu:.3f} "
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'train' where it is not associated with a value
+
+===== E189 stage scores =====
+stage scores: 11304 Train rows, fit_rows 6695, window 2301, Test 22251
+  e65_pca96_k12: dim 855 -> PCA-96 k=12 | OOF mean -13.675 sd 2.913 | LOSO AUC 0.9401
+  e65_pca64_k1: dim 855 -> PCA-64 k=1 | OOF mean -13.127 sd 3.395 | LOSO AUC 0.8834
+  subwin6_pca96_k1: dim 855 -> PCA-96 k=1 | OOF mean -15.592 sd 2.813 | LOSO AUC 0.8835
+  subwin12_pca48_k1: dim 855 -> PCA-48 k=1 | OOF mean -14.309 sd 3.230 | LOSO AUC 0.8511
+  logbp_pca16_k1: dim 90 -> PCA-16 k=1 | OOF mean -5.016 sd 2.186 | LOSO AUC 0.6900
+  e162_pca128_k1: dim 256 -> PCA-128 k=1 | OOF mean -8.112 sd 2.667 | LOSO AUC 0.8622
+stage scores done in 27s
+
+===== E189 stage candidates =====
+stage candidates done in 5s (14 candidates)
+
+===== E189 stage audit =====
+stage audit done in 0s; max Test mean over all candidates/a = 0.7120
+
+===== E189 stage attack =====
+stage attack: 1252 window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+Traceback (most recent call last):
+  File "D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\run_e189.py", line 1087, in <module>
+    main()
+  File "D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\run_e189.py", line 1081, in main
+    stage_attack()
+  File "D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\run_e189.py", line 711, in stage_attack
+    scorers, systems, summary = build_systems()
+                                ^^^^^^^^^^^^^^^
+  File "D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\run_e189.py", line 593, in build_systems
+    store = {key: data[f"{name}__{key}"] for key in
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\run_e189.py", line 593, in <dictcomp>
+    store = {key: data[f"{name}__{key}"] for key in
+                  ~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\WORK\BCIC2026\BrainPrint\.venv\Lib\site-packages\numpy\lib\_npyio_impl.py", line 243, in __getitem__
+    raise KeyError(f"{key} is not a file in the archive") from None
+KeyError: 'e65_pca96_k12__k is not a file in the archive'
+
+===== E189 stage attack =====
+stage attack: 1252 window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  feature rebuild max abs: e65_pca96_k12=0.00e+00, e65_pca64_k1=0.00e+00, subwin6_pca96_k1=0.00e+00, subwin12_pca48_k1=0.00e+00, logbp_pca16_k1=0.00e+00, e162_pca128_k1=8.05e-05
+  eps=0.005 goal A done (3s)
+  eps=0.005 goal B done (4s)
+  eps=0.005 goal C done (6s)
+  eps=0.010 goal A done (7s)
+  eps=0.010 goal B done (8s)
+  eps=0.010 goal C done (9s)
+  eps=0.020 goal A done (10s)
+  eps=0.020 goal B done (11s)
+  eps=0.020 goal C done (12s)
+  goal D [e65_pca96_k12] eps=0.02 done (15s)
+  goal D [e65_pca64_k1] eps=0.02 done (17s)
+  goal D [subwin6_pca96_k1] eps=0.02 done (20s)
+  goal D [subwin12_pca48_k1] eps=0.02 done (24s)
+  goal D [logbp_pca16_k1] eps=0.02 done (26s)
+  goal D [e162_pca128_k1] eps=0.02 done (27s)
+  goal D [fuse_e65v64k1__sw6v96k1__logbpv16k1] eps=0.02 done (33s)
+  goal D [fuse_e65v64k1__logbpv16k1__e162v128k1] eps=0.02 done (36s)
+  goal D [fuse_e65v64k1__sw6v96k1__logbpv16k1__e162v128k1] eps=0.02 done (42s)
+stage attack done in 42s
+
+===== E189 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\report.md
+
+===== E189 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\report.md
+
+===== E189 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\report.md
+
+===== E189 stage audit =====
+stage audit done in 0s; max Test mean over all candidates/a = 0.7120
+
+===== E189 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\report.md
+
+===== E189 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\report.md
+
+===== E189 stage all =====
+stage scores: cache present, reusing
+stage candidates done in 5s (14 candidates)
+stage audit done in 0s; max Test mean over all candidates/a = 0.7120
+stage attack: 1252 window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  feature rebuild max abs: e65_pca96_k12=0.00e+00, e65_pca64_k1=0.00e+00, subwin6_pca96_k1=0.00e+00, subwin12_pca48_k1=0.00e+00, logbp_pca16_k1=0.00e+00, e162_pca128_k1=8.05e-05
+  eps=0.005 goal A done (3s)
+  eps=0.005 goal B done (4s)
+  eps=0.005 goal C done (5s)
+  eps=0.010 goal A done (7s)
+  eps=0.010 goal B done (8s)
+  eps=0.010 goal C done (9s)
+  eps=0.020 goal A done (10s)
+  eps=0.020 goal B done (11s)
+  eps=0.020 goal C done (12s)
+  goal D [e65_pca96_k12] eps=0.02 done (15s)
+  goal D [e65_pca64_k1] eps=0.02 done (17s)
+  goal D [subwin6_pca96_k1] eps=0.02 done (20s)
+  goal D [subwin12_pca48_k1] eps=0.02 done (24s)
+  goal D [logbp_pca16_k1] eps=0.02 done (26s)
+  goal D [e162_pca128_k1] eps=0.02 done (27s)
+  goal D [fuse_e65v64k1__sw6v96k1__logbpv16k1] eps=0.02 done (32s)
+  goal D [fuse_e65v64k1__logbpv16k1__e162v128k1] eps=0.02 done (36s)
+  goal D [fuse_e65v64k1__sw6v96k1__logbpv16k1__e162v128k1] eps=0.02 done (42s)
+stage attack done in 42s
+report written: D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\report.md
+
+===== E189 stage report =====
+report written: D:\WORK\BCIC2026\BrainPrint\research\E189_balanced_gate_gates\report.md

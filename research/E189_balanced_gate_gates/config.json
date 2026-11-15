@@ -1,0 +1,125 @@
+{
+  "experiment": "E189_balanced_gate_gates",
+  "date": "2026-11-15",
+  "purpose": "New criterion: Test S1 rejection and Test S2 acceptance count as passed when their MEAN > 0.70 (no longer 0.75 each). Re-optimise the full system under that criterion with a single-work-point discipline. Gate candidates are built from frozen Train-only stream scores (E65 logSPD, E171 subwin_mean N=6/N=12, E146 log band power, E162 raw-EEG embedding) and their two/three/four-way weighted fusions. Identity side is the frozen E180 adversarially-trained branch A; decision = gate accepts -> branch A argmax else 0.",
+  "frozen_sources": {
+    "e180": "research/E180_dual_branch_adversarial_openset",
+    "e162": "research/E162_raw_eeg_contrastive_v2",
+    "e171": "research/E171_multiscale_fusion",
+    "e170": "research/E170_three_way_fusion_ceiling",
+    "note": "all read-only; nothing is written into another experiment directory and nothing is retrained"
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_root": "Brainprint_Competition",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "classes": [1, 20]
+  },
+  "protocol": {
+    "fit_fraction": 0.6,
+    "eval_window": "0.6 < frac <= 0.8",
+    "blocks": 5,
+    "seed": 20261115,
+    "standardisation": "per stream, per task z-score with all Train rows of that task (E143/E170 rule)",
+    "pca_fit_rows": "fit_rows (frac <= 0.6) only",
+    "prototype_rows": "fit_rows only, k-means per (task, identity)",
+    "train_oof": "5 contiguous frac blocks; prototypes for block b exclude block b",
+    "loso": "20 folds; prototypes from pm & fit_rows (19 enrolled identities); known = enrolled window rows, unknown = held-out identity window rows",
+    "test": "scored once with the full-Train (fit_rows) prototypes; Session never enters features/models/thresholds"
+  },
+  "streams": {
+    "e65_pca96_k12": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "pca": 96, "k": 12, "kind": "logspd", "dim": 855
+    },
+    "e65_pca64_k1": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "pca": 64, "k": 1, "kind": "logspd", "dim": 855
+    },
+    "subwin6_pca96_k1": {
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n6.npy",
+      "test": "research/E171_multiscale_fusion/test_subwin_mean_n6.npy",
+      "pca": 96, "k": 1, "kind": "subwin6", "dim": 855
+    },
+    "subwin12_pca48_k1": {
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n12.npy",
+      "test": "research/E171_multiscale_fusion/test_subwin_mean_n12.npy",
+      "pca": 48, "k": 1, "kind": "subwin12", "dim": 855
+    },
+    "logbp_pca16_k1": {
+      "train": "research/E146_phase_features/train_log_band_power.npy",
+      "test": "research/E146_phase_features/test_log_band_power.npy",
+      "pca": 16, "k": 1, "kind": "logbp", "dim": 90,
+      "bands_hz": [[1, 4], [4, 8], [8, 13], [13, 30], [30, 40]],
+      "band_note": "E146 band edges, NOT the E65 5-band split"
+    },
+    "e162_pca128_k1": {
+      "train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+      "test": "research/E162_raw_eeg_contrastive_v2/test_emb.npy",
+      "pca": 128, "k": 1, "kind": "e162", "dim": 256,
+      "encoder": "research/E162_raw_eeg_contrastive_v2/model_lam0.0_t0.1.pt"
+    }
+  },
+  "score": "negative nearest-euclidean-distance to same-task prototypes (E180/E171 convention); each stream z-scored by its own 5-block Train-OOF mean/std before fusion",
+  "candidates": {
+    "single": ["e65_pca96_k12", "e65_pca64_k1", "subwin6_pca96_k1", "subwin12_pca48_k1",
+               "logbp_pca16_k1", "e162_pca128_k1"],
+    "fusion": [
+      ["e65_pca64_k1", "logbp_pca16_k1"],
+      ["e65_pca96_k12", "subwin6_pca96_k1"],
+      ["subwin6_pca96_k1", "subwin12_pca48_k1"],
+      ["subwin6_pca96_k1", "logbp_pca16_k1"],
+      ["e65_pca64_k1", "subwin6_pca96_k1", "logbp_pca16_k1"],
+      ["e65_pca96_k12", "subwin6_pca96_k1", "subwin12_pca48_k1"],
+      ["e65_pca64_k1", "logbp_pca16_k1", "e162_pca128_k1"],
+      ["e65_pca64_k1", "subwin6_pca96_k1", "logbp_pca16_k1", "e162_pca128_k1"]
+    ],
+    "weight_rule": "0.1-step simplex grid, argmax pooled Train LOSO AUC of the fused score only; Test never consulted",
+    "forbidden": "Test S1/S2 is never used to pick a stream, a weight or a threshold"
+  },
+  "threshold": {
+    "grid": [0.80, 0.82, 0.84, 0.86, 0.88, 0.90, 0.92, 0.94, 0.95, 0.96],
+    "rule": "tau(a) = quantile(Train 5-block OOF score, 1 - a); LOSO known/unknown rejection measured at the same global tau",
+    "balance_point": "a maximising min(LOSO known acceptance, LOSO unknown rejection) - Train only",
+    "constrained_point": "largest a whose LOSO unknown rejection >= 0.70 (the stated constraint), tie-break by the balance value - Train only",
+    "frozen_point": "constrained_point used as the primary single work point; balance_point reported alongside"
+  },
+  "attack": {
+    "domain": "Train window 0.6 < frac <= 0.8, stratified cap 400 per task, same seed/subset as E180/E181/E183",
+    "eps_normalised": [0.005, 0.01, 0.02],
+    "eps_definition": "L-infinity bound = eps * per-trial global RMS; step = 2*eps/steps*RMS, sign gradient, random start",
+    "steps": 8,
+    "temperature": 10.0,
+    "goals": {
+      "A": "impersonation: maximise (best wrong branch-A logit - true logit)/T",
+      "B": "broad confusion: maximise (logsumexp over wrong branch-A logits - true logit)/T",
+      "C": "boundary impersonation: maximise (next-identity logit - true logit)/T",
+      "D": "gate evasion: maximise the candidate's fused gate score (fully differentiable raw-EEG path)"
+    },
+    "goal_D_eps": "0.02 only - D's RA/ASafeR improve monotonically with eps in E180/E183, so D@0.02 is the conservative (smallest) D reading; A/B/C are run at all three eps",
+    "note": "goals A/B/C perturb only branch A, so their adversarial inputs are gate-independent and shared by every candidate; goal D is per candidate"
+  },
+  "gates": {
+    "1": "Train in-sample accuracy = 1.00",
+    "2": "5-block OOF closed-set accuracy >= 0.95",
+    "3": "5-block OOF identity macro-F1 >= 0.92",
+    "4": "block-out accuracy (same 5-block OOF) >= 0.90",
+    "5": "pseudo-unknown AUROC (20-fold LOSO pooled) >= 0.98",
+    "6": "U@95% (per-fold 5% known quantile, mean over folds) >= 0.95",
+    "7": "RA under the self-built PGD, worst over eps x goals >= 0.95",
+    "8": "ASafeR under the same attack, worst >= 0.98",
+    "9": "Test S2 acceptance - NEW CRITERION: passes iff (S1 rejection + S2 acceptance)/2 > 0.70",
+    "10": "Test S1 rejection - NEW CRITERION: same joint mean > 0.70"
+  },
+  "reporting": {
+    "test_official": "N/A: Test has no public identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "Test predictions are written before the Session column is read; Session is used only for the #9/#10 audit",
+    "single_work_point": "every counted column is one candidate at one a; results from different a are never spliced into one column"
+  }
+}
