@@ -1,0 +1,91 @@
+{
+  "experiment": "E182_session_invariant_backbone",
+  "date": "2026-11-15",
+  "purpose": "Make branch A's confidence signals measure 'enrolment match' instead of 'session similarity'. Reuse the E180 EEGNet backbone / data pipeline, keep the adversarial objective, and add an explicit cross-session invariance constraint between two mutually exclusive strong perturbation families. Then freeze, recompute the five gate signals, check whether the four branch-A confidence signals flip from Test AUC ~0.40 to >0.5, and rerun the gate fusion + ten gates.",
+  "frozen_source": {
+    "experiment": "E180_dual_branch_adversarial_openset",
+    "reuse": "data pipeline (Train session1 only, 18x1200 @300Hz), Net, augment, PGD trainer, branch B (E65 PCA-96 / k=12 prototypes)",
+    "read_only": true,
+    "note": "E182 never writes into any existing experiment directory"
+  },
+  "branch_a_v2": {
+    "architecture": "identical to E180 branch A: Conv1d(18->32,k9,s2)-BN-ELU -> (32->64) -> (64->128) -> (128->128) -> global avg pool -> Linear(128,20)",
+    "loss": "0.5 * CE(clean augmented) + 0.3 * CE(adversarial) + lambda * L_consistency",
+    "loss_weights": {"clean": 0.5, "adversarial": 0.3, "consistency_sweep": [0.1, 0.3]},
+    "consistency": "L = mean(1 - cosine(embed(x_A), embed(x_B))) on the 128-d pooled pre-head embedding (no dropout in the embedding path)",
+    "consistency_weight_selection": "two selection models (lambda=0.1 / 0.3) trained on blocks != 3 (20 epochs); lambda = argmax best eval-window (0.6<frac<=0.8) clean accuracy, tie-break smaller lambda; Train-only",
+    "base_augmentation": "E180 augment applied once and shared by both views (time shift, channel dropout 0.1, amplitude 0.9-1.1, noise SNR 20-30 dB)",
+    "pgd_steps": 3,
+    "pgd_eps_linf": 0.02,
+    "fold_epochs": 24,
+    "full_epochs": 30,
+    "early_stop": "full model only: best eval-window (0.6<frac<=0.8) clean accuracy",
+    "batch_size": 64,
+    "learning_rate": 0.002,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "perturbation_A_electrode": {
+      "channel_gain_mean": 1.0,
+      "channel_gain_sd": 0.10,
+      "channel_bias_sd_rms": 0.15,
+      "channel_dropout": 0.15,
+      "note": "per-channel N(1, 0.10) gain + per-channel N(0, 0.15*RMS) bias + channel dropout 0.15"
+    },
+    "perturbation_B_spectral": {
+      "band_gain_mean": 1.0,
+      "band_gain_sd": 0.15,
+      "drift_freq_hz": [0.1, 1.0],
+      "drift_amp_rms": [0.10, 0.25],
+      "ramp_sd_rms": 0.10,
+      "additive_noise_snr_db": [15, 25],
+      "note": "per-sample per-band N(1, 0.15) gains over the five E65 bands (1-40 Hz) + 0.1-1 Hz drift + linear ramp + additive noise SNR 15-25 dB"
+    },
+    "time_budget": "selection 2x20 epochs + 5 folds x 24 epochs + full 30 epochs, target < 20 min on RTX 3080 Laptop"
+  },
+  "signals": {
+    "g_dist": "branch B score = -nearest-prototype euclidean distance (E180 gate), z-scored by Train OOF mean/std",
+    "g_conf": "branch A max softmax probability",
+    "g_margin": "branch A top1 - top2 softmax probability",
+    "g_energy": "branch A logsumexp(logits)",
+    "g_entropy": "branch A sum p log p (= -entropy)",
+    "orientation": "all five oriented so larger = more likely known; z-scored with Train OOF mean/std (population std, Train-only)",
+    "train_reference": "5-block OOF logits of branch A v2 + frozen E180 branch-B 5-block OOF scores",
+    "test": "frozen full v2 model logits + frozen E180 branch-B prototypes"
+  },
+  "fusion": {
+    "candidates": "5 singles + 10 pairs x w in {0.1..0.9} + 10 triple equal + 5 four-way + 1 five-way (111 total)",
+    "selection_rule": "argmax pooled Train LOSO gate AUC; ties broken by fold-mean AUC then fewer signals",
+    "forbidden": "no Test metric, threshold or Session field may influence weights / thresholds / PCA / prototypes / model choice"
+  },
+  "threshold": {
+    "rule": "tau(a) = quantile(Train OOF fused score, 1 - a)",
+    "grid": [0.80, 0.82, 0.84, 0.86, 0.88, 0.90, 0.92, 0.94, 0.96],
+    "primary_acceptance": 0.90
+  },
+  "loso_probe": {
+    "folds": 20,
+    "epochs": 12,
+    "train_rows": "pm & fit_rows (19 enrolled identities, frac <= 0.6)",
+    "eval_rows": "0.6 < frac <= 0.8: known = enrolled identities, unknown = held-out identity",
+    "why": "production model saw all 20 identities; a leave-identity-out probe is the only honest Train-side measurement of the confidence signals"
+  },
+  "attack": {
+    "domain": "Train window 0.6 < frac <= 0.8, stratified cap 400 per task, same subset as E180/E181",
+    "eps_normalised": [0.005, 0.01, 0.02],
+    "steps": 8,
+    "temperature": 10.0,
+    "seed": 20261115,
+    "cap_per_task": 400,
+    "goals": {
+      "A": "impersonation on the identity head",
+      "B": "broad confusion on the identity head",
+      "C": "boundary impersonation on the identity head",
+      "D": "gate evasion: maximise the fused gate score"
+    },
+    "status": "self-built white-box PGD surrogate, not the official attack suite"
+  },
+  "reporting": {
+    "test_official": "N/A: Test has no identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "Test predictions are written before the Session column is read; Session is only used for the #9/#10 audit and the signal-orientation diagnostic"
+  }
+}

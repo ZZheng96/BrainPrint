@@ -1,0 +1,523 @@
+stage train: 11304 Train trials, fit_rows 6695, eval window 2301, lambda sweep [0.1, 0.3]
+  raw 4096/11304 (2s)
+  raw 8192/11304 (3s)
+  raw 11304/11304 (4s)
+raw on GPU: (11304, 18, 1200) (0.91 GiB)
+  [select_lam0.1] epoch 1/20 loss 1.5214 cons 0.1065 2.6s eval_acc 0.6575
+  [select_lam0.1] epoch 2/20 loss 0.7733 cons 0.1059 2.3s eval_acc 0.8214
+  [select_lam0.1] epoch 3/20 loss 0.5297 cons 0.1018 2.3s eval_acc 0.8366
+  [select_lam0.1] epoch 4/20 loss 0.4290 cons 0.0979 2.3s eval_acc 0.8709
+  [select_lam0.1] epoch 5/20 loss 0.3639 cons 0.0975 2.3s eval_acc 0.8853
+  [select_lam0.1] epoch 6/20 loss 0.3063 cons 0.0954 2.3s eval_acc 0.9100
+  [select_lam0.1] epoch 7/20 loss 0.2668 cons 0.0946 2.3s eval_acc 0.9231
+  [select_lam0.1] epoch 8/20 loss 0.2580 cons 0.0913 2.3s eval_acc 0.9309
+  [select_lam0.1] epoch 9/20 loss 0.2231 cons 0.0923 2.3s eval_acc 0.9344
+  [select_lam0.1] epoch 10/20 loss 0.2067 cons 0.0929 2.3s eval_acc 0.9452
+  [select_lam0.1] epoch 11/20 loss 0.1812 cons 0.0929 2.3s eval_acc 0.9431
+  [select_lam0.1] epoch 12/20 loss 0.1643 cons 0.0892 2.4s eval_acc 0.9457
+  [select_lam0.1] epoch 13/20 loss 0.1482 cons 0.0917 2.3s eval_acc 0.9513
+  [select_lam0.1] epoch 14/20 loss 0.1410 cons 0.0900 2.3s eval_acc 0.9557
+  [select_lam0.1] epoch 15/20 loss 0.1247 cons 0.0886 2.3s eval_acc 0.9531
+  [select_lam0.1] epoch 16/20 loss 0.1243 cons 0.0882 2.3s eval_acc 0.9605
+  [select_lam0.1] epoch 17/20 loss 0.1194 cons 0.0889 2.3s eval_acc 0.9674
+  [select_lam0.1] epoch 18/20 loss 0.1145 cons 0.0892 2.3s eval_acc 0.9596
+  [select_lam0.1] epoch 19/20 loss 0.1066 cons 0.0897 2.4s eval_acc 0.9635
+  [select_lam0.1] epoch 20/20 loss 0.1134 cons 0.0892 2.4s eval_acc 0.9674
+  [select_lam0.1] restored best epoch 17 (eval_acc 0.9674)
+  [select_lam0.3] epoch 1/20 loss 1.5411 cons 0.0966 2.4s eval_acc 0.6393
+  [select_lam0.3] epoch 2/20 loss 0.7959 cons 0.0969 2.3s eval_acc 0.8149
+  [select_lam0.3] epoch 3/20 loss 0.5552 cons 0.0922 2.3s eval_acc 0.8157
+  [select_lam0.3] epoch 4/20 loss 0.4468 cons 0.0885 2.3s eval_acc 0.8640
+  [select_lam0.3] epoch 5/20 loss 0.3793 cons 0.0877 2.6s eval_acc 0.8866
+  [select_lam0.3] epoch 6/20 loss 0.3278 cons 0.0848 2.6s eval_acc 0.9013
+  [select_lam0.3] epoch 7/20 loss 0.2848 cons 0.0842 2.4s eval_acc 0.9144
+  [select_lam0.3] epoch 8/20 loss 0.2754 cons 0.0816 2.4s eval_acc 0.9283
+  [select_lam0.3] epoch 9/20 loss 0.2428 cons 0.0808 2.3s eval_acc 0.9322
+  [select_lam0.3] epoch 10/20 loss 0.2265 cons 0.0805 2.3s eval_acc 0.9352
+  [select_lam0.3] epoch 11/20 loss 0.1964 cons 0.0801 2.3s eval_acc 0.9392
+  [select_lam0.3] epoch 12/20 loss 0.1828 cons 0.0776 2.3s eval_acc 0.9448
+  [select_lam0.3] epoch 13/20 loss 0.1663 cons 0.0792 2.3s eval_acc 0.9505
+  [select_lam0.3] epoch 14/20 loss 0.1565 cons 0.0774 2.3s eval_acc 0.9535
+  [select_lam0.3] epoch 15/20 loss 0.1447 cons 0.0767 2.4s eval_acc 0.9518
+  [select_lam0.3] epoch 16/20 loss 0.1409 cons 0.0758 2.3s eval_acc 0.9587
+  [select_lam0.3] epoch 17/20 loss 0.1361 cons 0.0758 2.3s eval_acc 0.9648
+  [select_lam0.3] epoch 18/20 loss 0.1294 cons 0.0764 2.4s eval_acc 0.9591
+  [select_lam0.3] epoch 19/20 loss 0.1227 cons 0.0769 2.3s eval_acc 0.9609
+  [select_lam0.3] epoch 20/20 loss 0.1287 cons 0.0764 2.3s eval_acc 0.9639
+  [select_lam0.3] restored best epoch 17 (eval_acc 0.9648)
+  selected lambda = 0.10 (eval-block clean accuracy 0.9674)
+  [fold0] epoch 1/24 loss 1.3757 cons 0.1077 3.2s
+  [fold0] epoch 2/24 loss 0.6765 cons 0.1019 3.2s
+  [fold0] epoch 3/24 loss 0.4722 cons 0.0960 3.2s
+  [fold0] epoch 4/24 loss 0.3730 cons 0.0938 3.2s
+  [fold0] epoch 5/24 loss 0.3278 cons 0.0923 3.2s
+  [fold0] epoch 6/24 loss 0.2960 cons 0.0929 3.2s
+  [fold0] epoch 7/24 loss 0.2582 cons 0.0920 3.2s
+  [fold0] epoch 8/24 loss 0.2368 cons 0.0916 3.2s
+  [fold0] epoch 9/24 loss 0.2152 cons 0.0914 3.2s
+  [fold0] epoch 10/24 loss 0.1966 cons 0.0905 3.2s
+  [fold0] epoch 11/24 loss 0.1879 cons 0.0891 3.2s
+  [fold0] epoch 12/24 loss 0.1643 cons 0.0883 3.2s
+  [fold0] epoch 13/24 loss 0.1542 cons 0.0899 3.2s
+  [fold0] epoch 14/24 loss 0.1425 cons 0.0896 3.2s
+  [fold0] epoch 15/24 loss 0.1390 cons 0.0899 3.2s
+  [fold0] epoch 16/24 loss 0.1251 cons 0.0863 3.2s
+  [fold0] epoch 17/24 loss 0.1238 cons 0.0881 3.2s
+  [fold0] epoch 18/24 loss 0.1119 cons 0.0883 3.2s
+  [fold0] epoch 19/24 loss 0.1091 cons 0.0881 3.2s
+  [fold0] epoch 20/24 loss 0.1060 cons 0.0858 3.2s
+  [fold0] epoch 21/24 loss 0.1019 cons 0.0862 3.2s
+  [fold0] epoch 22/24 loss 0.0958 cons 0.0862 3.3s
+  [fold0] epoch 23/24 loss 0.0983 cons 0.0848 3.2s
+  [fold0] epoch 24/24 loss 0.0929 cons 0.0840 3.2s
+  fold0 OOF accuracy 0.9798
+  [fold1] epoch 1/24 loss 1.4352 cons 0.1075 3.2s
+  [fold1] epoch 2/24 loss 0.7392 cons 0.1036 3.2s
+  [fold1] epoch 3/24 loss 0.5158 cons 0.0989 3.2s
+  [fold1] epoch 4/24 loss 0.4177 cons 0.0974 3.5s
+  [fold1] epoch 5/24 loss 0.3554 cons 0.0956 3.4s
+  [fold1] epoch 6/24 loss 0.3103 cons 0.0944 3.5s
+  [fold1] epoch 7/24 loss 0.2770 cons 0.0951 3.3s
+  [fold1] epoch 8/24 loss 0.2427 cons 0.0923 3.2s
+  [fold1] epoch 9/24 loss 0.2337 cons 0.0915 3.2s
+  [fold1] epoch 10/24 loss 0.2124 cons 0.0918 3.2s
+  [fold1] epoch 11/24 loss 0.1881 cons 0.0919 3.2s
+  [fold1] epoch 12/24 loss 0.1785 cons 0.0922 3.2s
+  [fold1] epoch 13/24 loss 0.1642 cons 0.0911 3.2s
+  [fold1] epoch 14/24 loss 0.1554 cons 0.0916 3.2s
+  [fold1] epoch 15/24 loss 0.1413 cons 0.0901 3.2s
+  [fold1] epoch 16/24 loss 0.1348 cons 0.0911 3.2s
+  [fold1] epoch 17/24 loss 0.1256 cons 0.0882 3.3s
+  [fold1] epoch 18/24 loss 0.1178 cons 0.0892 3.2s
+  [fold1] epoch 19/24 loss 0.1164 cons 0.0892 3.2s
+  [fold1] epoch 20/24 loss 0.1139 cons 0.0899 3.2s
+  [fold1] epoch 21/24 loss 0.1026 cons 0.0879 3.3s
+  [fold1] epoch 22/24 loss 0.1025 cons 0.0877 3.2s
+  [fold1] epoch 23/24 loss 0.0988 cons 0.0883 3.2s
+  [fold1] epoch 24/24 loss 0.0973 cons 0.0878 3.2s
+  fold1 OOF accuracy 0.9927
+  [fold2] epoch 1/24 loss 1.4289 cons 0.1027 3.2s
+  [fold2] epoch 2/24 loss 0.7128 cons 0.1014 3.2s
+  [fold2] epoch 3/24 loss 0.4912 cons 0.1000 3.2s
+  [fold2] epoch 4/24 loss 0.4037 cons 0.0977 3.2s
+  [fold2] epoch 5/24 loss 0.3260 cons 0.0964 3.2s
+  [fold2] epoch 6/24 loss 0.2870 cons 0.0953 3.2s
+  [fold2] epoch 7/24 loss 0.2556 cons 0.0928 3.2s
+  [fold2] epoch 8/24 loss 0.2396 cons 0.0917 3.2s
+  [fold2] epoch 9/24 loss 0.2150 cons 0.0930 3.2s
+  [fold2] epoch 10/24 loss 0.2015 cons 0.0941 3.2s
+  [fold2] epoch 11/24 loss 0.1830 cons 0.0916 3.2s
+  [fold2] epoch 12/24 loss 0.1717 cons 0.0905 3.2s
+  [fold2] epoch 13/24 loss 0.1581 cons 0.0902 3.2s
+  [fold2] epoch 14/24 loss 0.1457 cons 0.0891 3.2s
+  [fold2] epoch 15/24 loss 0.1423 cons 0.0896 3.2s
+  [fold2] epoch 16/24 loss 0.1283 cons 0.0906 3.2s
+  [fold2] epoch 17/24 loss 0.1209 cons 0.0894 3.2s
+  [fold2] epoch 18/24 loss 0.1203 cons 0.0893 3.2s
+  [fold2] epoch 19/24 loss 0.1097 cons 0.0880 3.2s
+  [fold2] epoch 20/24 loss 0.1063 cons 0.0888 3.3s
+  [fold2] epoch 21/24 loss 0.1002 cons 0.0868 3.5s
+  [fold2] epoch 22/24 loss 0.1033 cons 0.0868 3.4s
+  [fold2] epoch 23/24 loss 0.0954 cons 0.0876 3.2s
+  [fold2] epoch 24/24 loss 0.0960 cons 0.0869 3.2s
+  fold2 OOF accuracy 0.9902
+  [fold3] epoch 1/24 loss 1.4015 cons 0.1050 3.2s
+  [fold3] epoch 2/24 loss 0.6964 cons 0.1028 3.2s
+  [fold3] epoch 3/24 loss 0.4888 cons 0.0963 3.2s
+  [fold3] epoch 4/24 loss 0.3921 cons 0.0951 3.2s
+  [fold3] epoch 5/24 loss 0.3314 cons 0.0930 3.2s
+  [fold3] epoch 6/24 loss 0.2834 cons 0.0932 3.3s
+  [fold3] epoch 7/24 loss 0.2575 cons 0.0912 3.2s
+  [fold3] epoch 8/24 loss 0.2373 cons 0.0913 3.2s
+  [fold3] epoch 9/24 loss 0.2128 cons 0.0888 3.2s
+  [fold3] epoch 10/24 loss 0.1990 cons 0.0900 3.2s
+  [fold3] epoch 11/24 loss 0.1762 cons 0.0886 3.2s
+  [fold3] epoch 12/24 loss 0.1617 cons 0.0896 3.2s
+  [fold3] epoch 13/24 loss 0.1552 cons 0.0887 3.2s
+  [fold3] epoch 14/24 loss 0.1448 cons 0.0879 3.2s
+  [fold3] epoch 15/24 loss 0.1324 cons 0.0909 3.2s
+  [fold3] epoch 16/24 loss 0.1240 cons 0.0873 3.2s
+  [fold3] epoch 17/24 loss 0.1155 cons 0.0877 3.2s
+  [fold3] epoch 18/24 loss 0.1096 cons 0.0860 3.2s
+  [fold3] epoch 19/24 loss 0.1033 cons 0.0863 3.2s
+  [fold3] epoch 20/24 loss 0.1017 cons 0.0870 3.2s
+  [fold3] epoch 21/24 loss 0.0965 cons 0.0843 3.2s
+  [fold3] epoch 22/24 loss 0.0950 cons 0.0841 3.2s
+  [fold3] epoch 23/24 loss 0.0938 cons 0.0864 3.2s
+  [fold3] epoch 24/24 loss 0.0930 cons 0.0869 3.2s
+  fold3 OOF accuracy 0.9896
+  [fold4] epoch 1/24 loss 1.4092 cons 0.1029 3.2s
+  [fold4] epoch 2/24 loss 0.7379 cons 0.1013 3.2s
+  [fold4] epoch 3/24 loss 0.5213 cons 0.0963 3.1s
+  [fold4] epoch 4/24 loss 0.3965 cons 0.0950 3.2s
+  [fold4] epoch 5/24 loss 0.3370 cons 0.0906 3.1s
+  [fold4] epoch 6/24 loss 0.2914 cons 0.0926 3.1s
+  [fold4] epoch 7/24 loss 0.2675 cons 0.0917 3.2s
+  [fold4] epoch 8/24 loss 0.2441 cons 0.0912 3.1s
+  [fold4] epoch 9/24 loss 0.2241 cons 0.0880 3.1s
+  [fold4] epoch 10/24 loss 0.2006 cons 0.0883 3.1s
+  [fold4] epoch 11/24 loss 0.1873 cons 0.0879 3.1s
+  [fold4] epoch 12/24 loss 0.1755 cons 0.0896 3.4s
+  [fold4] epoch 13/24 loss 0.1628 cons 0.0879 3.6s
+  [fold4] epoch 14/24 loss 0.1493 cons 0.0886 3.2s
+  [fold4] epoch 15/24 loss 0.1441 cons 0.0865 3.1s
+  [fold4] epoch 16/24 loss 0.1366 cons 0.0865 3.2s
+  [fold4] epoch 17/24 loss 0.1191 cons 0.0867 3.1s
+  [fold4] epoch 18/24 loss 0.1192 cons 0.0871 3.1s
+  [fold4] epoch 19/24 loss 0.1137 cons 0.0865 3.2s
+  [fold4] epoch 20/24 loss 0.1039 cons 0.0859 3.2s
+  [fold4] epoch 21/24 loss 0.1068 cons 0.0853 3.2s
+  [fold4] epoch 22/24 loss 0.1022 cons 0.0854 3.1s
+  [fold4] epoch 23/24 loss 0.1052 cons 0.0850 3.2s
+  [fold4] epoch 24/24 loss 0.0945 cons 0.0842 3.2s
+  fold4 OOF accuracy 0.9836
+  [full] epoch 1/30 loss 1.3214 cons 0.1065 4.0s eval_acc 0.8205
+  [full] epoch 2/30 loss 0.6470 cons 0.1020 4.0s eval_acc 0.9161
+  [full] epoch 3/30 loss 0.4542 cons 0.0940 4.0s eval_acc 0.9591
+  [full] epoch 4/30 loss 0.3668 cons 0.0932 4.0s eval_acc 0.9622
+  [full] epoch 5/30 loss 0.3107 cons 0.0936 4.0s eval_acc 0.9765
+  [full] epoch 6/30 loss 0.2713 cons 0.0919 4.0s eval_acc 0.9817
+  [full] epoch 7/30 loss 0.2459 cons 0.0910 4.0s eval_acc 0.9831
+  [full] epoch 8/30 loss 0.2308 cons 0.0899 4.0s eval_acc 0.9926
+  [full] epoch 9/30 loss 0.2141 cons 0.0902 4.0s eval_acc 0.9891
+  [full] epoch 10/30 loss 0.1861 cons 0.0893 4.0s eval_acc 0.9917
+  [full] epoch 11/30 loss 0.1821 cons 0.0866 4.0s eval_acc 0.9948
+  [full] epoch 12/30 loss 0.1713 cons 0.0876 4.0s eval_acc 0.9952
+  [full] epoch 13/30 loss 0.1641 cons 0.0883 4.0s eval_acc 0.9944
+  [full] epoch 14/30 loss 0.1496 cons 0.0890 4.0s eval_acc 0.9978
+  [full] epoch 15/30 loss 0.1470 cons 0.0873 4.0s eval_acc 0.9983
+  [full] epoch 16/30 loss 0.1363 cons 0.0876 4.0s eval_acc 0.9987
+  [full] epoch 17/30 loss 0.1315 cons 0.0883 4.0s eval_acc 0.9983
+  [full] epoch 18/30 loss 0.1214 cons 0.0870 4.0s eval_acc 0.9991
+  [full] epoch 19/30 loss 0.1147 cons 0.0856 4.0s eval_acc 0.9996
+  [full] epoch 20/30 loss 0.1074 cons 0.0864 4.0s eval_acc 0.9991
+  [full] epoch 21/30 loss 0.1065 cons 0.0860 4.1s eval_acc 0.9996
+  [full] epoch 22/30 loss 0.1002 cons 0.0849 4.3s eval_acc 0.9991
+  [full] epoch 23/30 loss 0.0939 cons 0.0845 4.3s eval_acc 1.0000
+  [full] epoch 24/30 loss 0.0917 cons 0.0840 4.0s eval_acc 1.0000
+  [full] epoch 25/30 loss 0.0922 cons 0.0856 4.0s eval_acc 1.0000
+  [full] epoch 26/30 loss 0.0872 cons 0.0850 4.1s eval_acc 1.0000
+  [full] epoch 27/30 loss 0.0830 cons 0.0833 4.1s eval_acc 1.0000
+  [full] epoch 28/30 loss 0.0809 cons 0.0835 4.0s eval_acc 1.0000
+  [full] epoch 29/30 loss 0.0807 cons 0.0851 4.0s eval_acc 0.9996
+  [full] epoch 30/30 loss 0.0799 cons 0.0845 4.0s eval_acc 1.0000
+  [full] restored best epoch 23 (eval_acc 1.0000)
+  full in-sample accuracy 0.9995 macro-F1 0.9995
+stage train done in 610s: lambda 0.10, OOF acc 0.9872, macro-F1 0.9868, in-sample 0.9995
+stage signals: Train OOF stats (Train-only)
+  g_dist    v2 mean -13.6747 sd 2.9127
+  g_conf    v2 mean +0.9768 sd 0.0779
+  g_margin  v2 mean +0.9620 sd 0.1279
+  g_energy  v2 mean +12.6842 sd 4.3215
+  g_entropy v2 mean -0.0846 sd 0.2237
+  Test v2 logits 512/22251 (0s)
+  Test v2 logits 4608/22251 (2s)
+  Test v2 logits 8704/22251 (3s)
+  Test v2 logits 12800/22251 (5s)
+  Test v2 logits 16896/22251 (6s)
+  Test v2 logits 20992/22251 (8s)
+stage signals done in 20s
+stage loso: probes on pm & fit_rows (6695 rows), eval window 2301 rows, 12 epochs, lambda 0.10
+  raw 4096/6695 (2s)
+  raw 6695/6695 (3s)
+  raw 2301/2301 (1s)
+  [loso1] epoch 1/12 loss 1.4902 cons 0.0993 2.7s
+  [loso1] epoch 2/12 loss 0.8112 cons 0.1001 2.4s
+  [loso1] epoch 3/12 loss 0.5798 cons 0.0959 2.3s
+  [loso1] epoch 4/12 loss 0.4386 cons 0.0917 2.4s
+  [loso1] epoch 5/12 loss 0.3305 cons 0.0931 2.3s
+  [loso1] epoch 6/12 loss 0.3015 cons 0.0922 2.4s
+  [loso1] epoch 7/12 loss 0.2409 cons 0.0911 2.3s
+  [loso1] epoch 8/12 loss 0.2197 cons 0.0945 2.4s
+  [loso1] epoch 9/12 loss 0.1874 cons 0.0890 2.4s
+  [loso1] epoch 10/12 loss 0.1821 cons 0.0931 2.4s
+  [loso1] epoch 11/12 loss 0.1589 cons 0.0907 2.3s
+  [loso1] epoch 12/12 loss 0.1560 cons 0.0916 2.3s
+  LOSO  1: known 2177 unknown 124 closed 0.9527
+  [loso2] epoch 1/12 loss 1.4632 cons 0.0950 2.4s
+  [loso2] epoch 2/12 loss 0.7445 cons 0.0995 2.4s
+  [loso2] epoch 3/12 loss 0.5200 cons 0.0962 2.4s
+  [loso2] epoch 4/12 loss 0.4049 cons 0.0925 2.4s
+  [loso2] epoch 5/12 loss 0.3375 cons 0.0926 2.3s
+  [loso2] epoch 6/12 loss 0.2751 cons 0.0903 2.4s
+  [loso2] epoch 7/12 loss 0.2458 cons 0.0915 2.4s
+  [loso2] epoch 8/12 loss 0.2185 cons 0.0886 2.4s
+  [loso2] epoch 9/12 loss 0.1846 cons 0.0879 2.3s
+  [loso2] epoch 10/12 loss 0.1689 cons 0.0878 2.3s
+  [loso2] epoch 11/12 loss 0.1616 cons 0.0886 2.3s
+  [loso2] epoch 12/12 loss 0.1495 cons 0.0874 2.4s
+  LOSO  2: known 2199 unknown 102 closed 0.9536
+  [loso3] epoch 1/12 loss 1.4661 cons 0.1025 2.3s
+  [loso3] epoch 2/12 loss 0.7719 cons 0.1057 2.3s
+  [loso3] epoch 3/12 loss 0.5326 cons 0.1008 2.3s
+  [loso3] epoch 4/12 loss 0.4111 cons 0.0984 2.3s
+  [loso3] epoch 5/12 loss 0.3489 cons 0.0963 2.4s
+  [loso3] epoch 6/12 loss 0.2900 cons 0.0939 2.3s
+  [loso3] epoch 7/12 loss 0.2548 cons 0.0959 2.4s
+  [loso3] epoch 8/12 loss 0.2246 cons 0.0933 2.3s
+  [loso3] epoch 9/12 loss 0.1944 cons 0.0932 2.3s
+  [loso3] epoch 10/12 loss 0.1863 cons 0.0917 2.4s
+  [loso3] epoch 11/12 loss 0.1602 cons 0.0920 2.3s
+  [loso3] epoch 12/12 loss 0.1517 cons 0.0909 2.3s
+  LOSO  3: known 2179 unknown 122 closed 0.9495
+  [loso4] epoch 1/12 loss 1.4565 cons 0.0991 2.4s
+  [loso4] epoch 2/12 loss 0.7689 cons 0.1020 2.4s
+  [loso4] epoch 3/12 loss 0.5289 cons 0.0965 2.3s
+  [loso4] epoch 4/12 loss 0.4020 cons 0.0902 2.3s
+  [loso4] epoch 5/12 loss 0.3439 cons 0.0897 2.4s
+  [loso4] epoch 6/12 loss 0.3021 cons 0.0885 2.4s
+  [loso4] epoch 7/12 loss 0.2540 cons 0.0868 2.4s
+  [loso4] epoch 8/12 loss 0.2166 cons 0.0873 2.4s
+  [loso4] epoch 9/12 loss 0.1977 cons 0.0868 2.3s
+  [loso4] epoch 10/12 loss 0.1783 cons 0.0863 2.5s
+  [loso4] epoch 11/12 loss 0.1671 cons 0.0847 2.3s
+  [loso4] epoch 12/12 loss 0.1570 cons 0.0854 2.5s
+  LOSO  4: known 2188 unknown 113 closed 0.9474
+  [loso5] epoch 1/12 loss 1.5150 cons 0.1090 2.6s
+  [loso5] epoch 2/12 loss 0.8284 cons 0.1103 2.7s
+  [loso5] epoch 3/12 loss 0.5759 cons 0.1019 2.6s
+  [loso5] epoch 4/12 loss 0.4479 cons 0.0983 2.5s
+  [loso5] epoch 5/12 loss 0.3605 cons 0.0981 2.3s
+  [loso5] epoch 6/12 loss 0.2920 cons 0.0982 2.4s
+  [loso5] epoch 7/12 loss 0.2680 cons 0.0963 2.3s
+  [loso5] epoch 8/12 loss 0.2343 cons 0.0916 2.4s
+  [loso5] epoch 9/12 loss 0.2035 cons 0.0928 2.4s
+  [loso5] epoch 10/12 loss 0.1796 cons 0.0934 2.4s
+  [loso5] epoch 11/12 loss 0.1723 cons 0.0936 2.4s
+  [loso5] epoch 12/12 loss 0.1654 cons 0.0928 2.4s
+  LOSO  5: known 2200 unknown 101 closed 0.9423
+  [loso6] epoch 1/12 loss 1.5040 cons 0.1012 2.4s
+  [loso6] epoch 2/12 loss 0.8361 cons 0.1026 2.3s
+  [loso6] epoch 3/12 loss 0.5965 cons 0.0982 2.3s
+  [loso6] epoch 4/12 loss 0.4702 cons 0.0962 2.4s
+  [loso6] epoch 5/12 loss 0.3708 cons 0.0944 2.4s
+  [loso6] epoch 6/12 loss 0.3138 cons 0.0959 2.4s
+  [loso6] epoch 7/12 loss 0.2677 cons 0.0921 2.3s
+  [loso6] epoch 8/12 loss 0.2377 cons 0.0936 2.4s
+  [loso6] epoch 9/12 loss 0.2131 cons 0.0920 2.3s
+  [loso6] epoch 10/12 loss 0.1943 cons 0.0893 2.3s
+  [loso6] epoch 11/12 loss 0.1729 cons 0.0913 2.3s
+  [loso6] epoch 12/12 loss 0.1722 cons 0.0884 2.4s
+  LOSO  6: known 2177 unknown 124 closed 0.9417
+  [loso7] epoch 1/12 loss 1.4950 cons 0.1002 2.3s
+  [loso7] epoch 2/12 loss 0.8079 cons 0.1003 2.4s
+  [loso7] epoch 3/12 loss 0.5326 cons 0.0979 2.3s
+  [loso7] epoch 4/12 loss 0.4349 cons 0.0950 2.4s
+  [loso7] epoch 5/12 loss 0.3617 cons 0.0927 2.3s
+  [loso7] epoch 6/12 loss 0.2860 cons 0.0940 2.4s
+  [loso7] epoch 7/12 loss 0.2426 cons 0.0925 2.4s
+  [loso7] epoch 8/12 loss 0.2168 cons 0.0897 2.4s
+  [loso7] epoch 9/12 loss 0.1948 cons 0.0893 2.3s
+  [loso7] epoch 10/12 loss 0.1780 cons 0.0868 2.3s
+  [loso7] epoch 11/12 loss 0.1661 cons 0.0884 2.3s
+  [loso7] epoch 12/12 loss 0.1577 cons 0.0896 2.4s
+  LOSO  7: known 2177 unknown 124 closed 0.9440
+  [loso8] epoch 1/12 loss 1.4760 cons 0.0976 2.4s
+  [loso8] epoch 2/12 loss 0.7617 cons 0.0983 2.4s
+  [loso8] epoch 3/12 loss 0.5493 cons 0.0948 2.4s
+  [loso8] epoch 4/12 loss 0.4581 cons 0.0944 2.4s
+  [loso8] epoch 5/12 loss 0.3523 cons 0.0885 2.4s
+  [loso8] epoch 6/12 loss 0.3036 cons 0.0897 2.4s
+  [loso8] epoch 7/12 loss 0.2451 cons 0.0902 2.4s
+  [loso8] epoch 8/12 loss 0.2255 cons 0.0889 2.4s
+  [loso8] epoch 9/12 loss 0.2024 cons 0.0884 2.4s
+  [loso8] epoch 10/12 loss 0.1781 cons 0.0896 2.4s
+  [loso8] epoch 11/12 loss 0.1652 cons 0.0874 2.4s
+  [loso8] epoch 12/12 loss 0.1574 cons 0.0891 2.4s
+  LOSO  8: known 2197 unknown 104 closed 0.9190
+  [loso9] epoch 1/12 loss 1.5137 cons 0.0999 2.4s
+  [loso9] epoch 2/12 loss 0.7944 cons 0.1012 2.4s
+  [loso9] epoch 3/12 loss 0.5592 cons 0.0991 2.3s
+  [loso9] epoch 4/12 loss 0.4226 cons 0.0955 2.4s
+  [loso9] epoch 5/12 loss 0.3465 cons 0.0946 2.4s
+  [loso9] epoch 6/12 loss 0.3130 cons 0.0906 2.6s
+  [loso9] epoch 7/12 loss 0.2550 cons 0.0935 2.4s
+  [loso9] epoch 8/12 loss 0.2277 cons 0.0929 2.6s
+  [loso9] epoch 9/12 loss 0.2059 cons 0.0916 2.4s
+  [loso9] epoch 10/12 loss 0.1840 cons 0.0904 2.5s
+  [loso9] epoch 11/12 loss 0.1711 cons 0.0933 2.4s
+  [loso9] epoch 12/12 loss 0.1608 cons 0.0877 2.4s
+  LOSO  9: known 2185 unknown 116 closed 0.9487
+  [loso10] epoch 1/12 loss 1.4544 cons 0.0998 2.4s
+  [loso10] epoch 2/12 loss 0.7625 cons 0.1011 2.4s
+  [loso10] epoch 3/12 loss 0.5125 cons 0.0949 2.4s
+  [loso10] epoch 4/12 loss 0.4061 cons 0.0942 2.4s
+  [loso10] epoch 5/12 loss 0.3300 cons 0.0916 2.5s
+  [loso10] epoch 6/12 loss 0.2802 cons 0.0906 2.3s
+  [loso10] epoch 7/12 loss 0.2322 cons 0.0908 2.4s
+  [loso10] epoch 8/12 loss 0.2064 cons 0.0899 2.4s
+  [loso10] epoch 9/12 loss 0.1784 cons 0.0903 2.4s
+  [loso10] epoch 10/12 loss 0.1613 cons 0.0912 2.3s
+  [loso10] epoch 11/12 loss 0.1544 cons 0.0900 2.3s
+  [loso10] epoch 12/12 loss 0.1406 cons 0.0908 2.4s
+  LOSO 10: known 2194 unknown 107 closed 0.9480
+  [loso11] epoch 1/12 loss 1.4664 cons 0.1004 2.4s
+  [loso11] epoch 2/12 loss 0.7982 cons 0.1008 2.3s
+  [loso11] epoch 3/12 loss 0.5537 cons 0.1009 2.3s
+  [loso11] epoch 4/12 loss 0.4354 cons 0.0944 2.4s
+  [loso11] epoch 5/12 loss 0.3516 cons 0.0954 2.4s
+  [loso11] epoch 6/12 loss 0.2990 cons 0.0931 2.3s
+  [loso11] epoch 7/12 loss 0.2595 cons 0.0944 2.4s
+  [loso11] epoch 8/12 loss 0.2246 cons 0.0923 2.4s
+  [loso11] epoch 9/12 loss 0.2090 cons 0.0921 2.4s
+  [loso11] epoch 10/12 loss 0.1870 cons 0.0912 2.3s
+  [loso11] epoch 11/12 loss 0.1715 cons 0.0919 2.3s
+  [loso11] epoch 12/12 loss 0.1656 cons 0.0914 2.4s
+  LOSO 11: known 2180 unknown 121 closed 0.9326
+  [loso12] epoch 1/12 loss 1.5072 cons 0.0967 2.5s
+  [loso12] epoch 2/12 loss 0.8324 cons 0.0974 2.5s
+  [loso12] epoch 3/12 loss 0.5682 cons 0.0964 2.4s
+  [loso12] epoch 4/12 loss 0.4472 cons 0.0915 2.4s
+  [loso12] epoch 5/12 loss 0.3797 cons 0.0908 2.3s
+  [loso12] epoch 6/12 loss 0.3072 cons 0.0924 2.4s
+  [loso12] epoch 7/12 loss 0.2756 cons 0.0919 2.4s
+  [loso12] epoch 8/12 loss 0.2402 cons 0.0914 2.4s
+  [loso12] epoch 9/12 loss 0.2130 cons 0.0912 2.4s
+  [loso12] epoch 10/12 loss 0.1914 cons 0.0893 2.4s
+  [loso12] epoch 11/12 loss 0.1794 cons 0.0908 2.4s
+  [loso12] epoch 12/12 loss 0.1696 cons 0.0885 2.4s
+  LOSO 12: known 2179 unknown 122 closed 0.9302
+  [loso13] epoch 1/12 loss 1.4976 cons 0.1036 2.4s
+  [loso13] epoch 2/12 loss 0.7782 cons 0.1035 2.4s
+  [loso13] epoch 3/12 loss 0.5544 cons 0.0973 2.4s
+  [loso13] epoch 4/12 loss 0.4302 cons 0.0974 2.5s
+  [loso13] epoch 5/12 loss 0.3411 cons 0.0939 2.5s
+  [loso13] epoch 6/12 loss 0.2866 cons 0.0916 2.4s
+  [loso13] epoch 7/12 loss 0.2647 cons 0.0920 2.4s
+  [loso13] epoch 8/12 loss 0.2292 cons 0.0918 2.3s
+  [loso13] epoch 9/12 loss 0.2010 cons 0.0888 2.3s
+  [loso13] epoch 10/12 loss 0.1796 cons 0.0902 2.5s
+  [loso13] epoch 11/12 loss 0.1666 cons 0.0892 2.5s
+  [loso13] epoch 12/12 loss 0.1584 cons 0.0903 2.5s
+  LOSO 13: known 2178 unknown 123 closed 0.9376
+  [loso14] epoch 1/12 loss 1.4920 cons 0.1090 2.3s
+  [loso14] epoch 2/12 loss 0.7949 cons 0.1041 2.4s
+  [loso14] epoch 3/12 loss 0.5675 cons 0.1012 2.4s
+  [loso14] epoch 4/12 loss 0.4339 cons 0.0953 2.4s
+  [loso14] epoch 5/12 loss 0.3707 cons 0.0932 2.4s
+  [loso14] epoch 6/12 loss 0.3107 cons 0.0963 2.4s
+  [loso14] epoch 7/12 loss 0.2665 cons 0.0911 2.4s
+  [loso14] epoch 8/12 loss 0.2312 cons 0.0910 2.4s
+  [loso14] epoch 9/12 loss 0.2036 cons 0.0898 2.4s
+  [loso14] epoch 10/12 loss 0.1837 cons 0.0878 2.4s
+  [loso14] epoch 11/12 loss 0.1747 cons 0.0884 2.3s
+  [loso14] epoch 12/12 loss 0.1647 cons 0.0882 2.4s
+  LOSO 14: known 2180 unknown 121 closed 0.9404
+  [loso15] epoch 1/12 loss 1.4487 cons 0.1016 2.4s
+  [loso15] epoch 2/12 loss 0.7280 cons 0.1034 2.3s
+  [loso15] epoch 3/12 loss 0.5119 cons 0.0956 2.3s
+  [loso15] epoch 4/12 loss 0.4092 cons 0.0928 2.4s
+  [loso15] epoch 5/12 loss 0.3271 cons 0.0900 2.4s
+  [loso15] epoch 6/12 loss 0.2751 cons 0.0903 2.4s
+  [loso15] epoch 7/12 loss 0.2401 cons 0.0900 2.4s
+  [loso15] epoch 8/12 loss 0.2149 cons 0.0906 2.3s
+  [loso15] epoch 9/12 loss 0.1811 cons 0.0887 2.5s
+  [loso15] epoch 10/12 loss 0.1695 cons 0.0888 2.5s
+  [loso15] epoch 11/12 loss 0.1522 cons 0.0880 2.5s
+  [loso15] epoch 12/12 loss 0.1559 cons 0.0867 2.4s
+  LOSO 15: known 2191 unknown 110 closed 0.9507
+  [loso16] epoch 1/12 loss 1.4891 cons 0.0932 2.5s
+  [loso16] epoch 2/12 loss 0.7840 cons 0.0997 2.6s
+  [loso16] epoch 3/12 loss 0.5231 cons 0.0931 2.8s
+  [loso16] epoch 4/12 loss 0.4122 cons 0.0905 2.7s
+  [loso16] epoch 5/12 loss 0.3408 cons 0.0879 2.7s
+  [loso16] epoch 6/12 loss 0.3082 cons 0.0906 2.7s
+  [loso16] epoch 7/12 loss 0.2585 cons 0.0882 2.7s
+  [loso16] epoch 8/12 loss 0.2166 cons 0.0860 2.7s
+  [loso16] epoch 9/12 loss 0.1980 cons 0.0877 2.6s
+  [loso16] epoch 10/12 loss 0.1802 cons 0.0896 2.7s
+  [loso16] epoch 11/12 loss 0.1651 cons 0.0883 2.7s
+  [loso16] epoch 12/12 loss 0.1551 cons 0.0879 2.8s
+  LOSO 16: known 2182 unknown 119 closed 0.9418
+  [loso17] epoch 1/12 loss 1.4191 cons 0.1009 2.7s
+  [loso17] epoch 2/12 loss 0.7476 cons 0.1014 2.6s
+  [loso17] epoch 3/12 loss 0.5462 cons 0.0965 2.6s
+  [loso17] epoch 4/12 loss 0.4187 cons 0.0940 2.7s
+  [loso17] epoch 5/12 loss 0.3487 cons 0.0900 2.6s
+  [loso17] epoch 6/12 loss 0.3011 cons 0.0907 2.7s
+  [loso17] epoch 7/12 loss 0.2547 cons 0.0925 2.6s
+  [loso17] epoch 8/12 loss 0.2204 cons 0.0899 2.6s
+  [loso17] epoch 9/12 loss 0.1973 cons 0.0903 2.6s
+  [loso17] epoch 10/12 loss 0.1779 cons 0.0893 2.6s
+  [loso17] epoch 11/12 loss 0.1631 cons 0.0877 2.7s
+  [loso17] epoch 12/12 loss 0.1530 cons 0.0859 2.8s
+  LOSO 17: known 2189 unknown 112 closed 0.9438
+  [loso18] epoch 1/12 loss 1.4628 cons 0.0967 2.8s
+  [loso18] epoch 2/12 loss 0.7482 cons 0.0994 2.8s
+  [loso18] epoch 3/12 loss 0.5106 cons 0.0958 2.7s
+  [loso18] epoch 4/12 loss 0.4024 cons 0.0935 2.7s
+  [loso18] epoch 5/12 loss 0.3291 cons 0.0930 2.7s
+  [loso18] epoch 6/12 loss 0.2793 cons 0.0907 2.7s
+  [loso18] epoch 7/12 loss 0.2343 cons 0.0915 2.6s
+  [loso18] epoch 8/12 loss 0.2096 cons 0.0907 2.6s
+  [loso18] epoch 9/12 loss 0.1826 cons 0.0887 2.6s
+  [loso18] epoch 10/12 loss 0.1621 cons 0.0894 2.7s
+  [loso18] epoch 11/12 loss 0.1539 cons 0.0871 2.7s
+  [loso18] epoch 12/12 loss 0.1469 cons 0.0889 2.7s
+  LOSO 18: known 2203 unknown 98 closed 0.9514
+  [loso19] epoch 1/12 loss 1.4256 cons 0.0951 2.7s
+  [loso19] epoch 2/12 loss 0.7062 cons 0.0998 2.7s
+  [loso19] epoch 3/12 loss 0.4788 cons 0.0916 2.7s
+  [loso19] epoch 4/12 loss 0.3787 cons 0.0938 2.6s
+  [loso19] epoch 5/12 loss 0.3118 cons 0.0886 2.7s
+  [loso19] epoch 6/12 loss 0.2629 cons 0.0902 2.7s
+  [loso19] epoch 7/12 loss 0.2344 cons 0.0866 2.7s
+  [loso19] epoch 8/12 loss 0.1900 cons 0.0865 2.6s
+  [loso19] epoch 9/12 loss 0.1763 cons 0.0870 2.7s
+  [loso19] epoch 10/12 loss 0.1686 cons 0.0868 2.6s
+  [loso19] epoch 11/12 loss 0.1449 cons 0.0843 2.7s
+  [loso19] epoch 12/12 loss 0.1459 cons 0.0851 2.7s
+  LOSO 19: known 2187 unknown 114 closed 0.9680
+  [loso20] epoch 1/12 loss 1.4392 cons 0.1059 2.6s
+  [loso20] epoch 2/12 loss 0.7529 cons 0.1007 2.7s
+  [loso20] epoch 3/12 loss 0.5259 cons 0.0942 2.7s
+  [loso20] epoch 4/12 loss 0.4118 cons 0.0906 2.6s
+  [loso20] epoch 5/12 loss 0.3503 cons 0.0877 2.6s
+  [loso20] epoch 6/12 loss 0.2885 cons 0.0872 2.6s
+  [loso20] epoch 7/12 loss 0.2427 cons 0.0878 2.6s
+  [loso20] epoch 8/12 loss 0.2147 cons 0.0870 2.6s
+  [loso20] epoch 9/12 loss 0.1901 cons 0.0852 2.6s
+  [loso20] epoch 10/12 loss 0.1699 cons 0.0864 2.7s
+  [loso20] epoch 11/12 loss 0.1564 cons 0.0848 2.6s
+  [loso20] epoch 12/12 loss 0.1553 cons 0.0853 2.6s
+  LOSO 20: known 2177 unknown 124 closed 0.9449
+  probe LOSO g_dist   : pooled AUC 0.9401 fold mean 0.9398
+  probe LOSO g_conf   : pooled AUC 0.9029 fold mean 0.9026
+  probe LOSO g_margin : pooled AUC 0.8951 fold mean 0.8950
+  probe LOSO g_energy : pooled AUC 0.8533 fold mean 0.8513
+  probe LOSO g_entropy: pooled AUC 0.9059 fold mean 0.9054
+stage loso done in 600s
+stage select: top-5 candidates by Train LOSO pooled AUC
+  0.9619  0.80*g_dist + 0.20*g_entropy
+  0.9597  0.70*g_dist + 0.30*g_entropy
+  0.9596  0.80*g_dist + 0.20*g_conf
+  0.9577  0.50*g_dist + 0.50*g_energy
+  0.9573  0.90*g_dist + 0.10*g_entropy
+  selected: 0.80*g_dist + 0.20*g_entropy (LOSO 0.9619), tau(a=0.90) -1.1383
+  wrote D:\WORK\BCIC2026\BrainPrint\research\E182_session_invariant_backbone\test_predictions_fused.csv (13698 rejects of 22251) before reading Session
+  Test signal orientation (z units, S1 vs S2, AUC with S2 as positive):
+    g_dist    v1 AUC 0.7563 -> v2 AUC 0.7563
+    g_conf    v1 AUC 0.4106 -> v2 AUC 0.4080
+    g_margin  v1 AUC 0.4084 -> v2 AUC 0.4053
+    g_energy  v1 AUC 0.4001 -> v2 AUC 0.3839
+    g_entropy v1 AUC 0.4123 -> v2 AUC 0.4109
+stage test: selected 0.80*g_dist + 0.20*g_entropy -> S1 rejection 0.9377, S2 acceptance 0.4352 (a=0.90)
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  clean: RA 0.9481 ASafeR 1.0000 closed 1.0000 accept 0.9481
+  eps=0.005 goal A: RA 0.9433 ASafeR 1.0000 closed 1.0000 accept 0.9433 wrong_id 0.0000
+  eps=0.005 goal B: RA 0.9425 ASafeR 1.0000 closed 1.0000 accept 0.9425 wrong_id 0.0000
+  eps=0.005 goal C: RA 0.9449 ASafeR 1.0000 closed 1.0000 accept 0.9449 wrong_id 0.0000
+  eps=0.005 goal D: RA 0.9752 ASafeR 1.0000 closed 1.0000 accept 0.9752 wrong_id 0.0000
+  eps=0.010 goal A: RA 0.9385 ASafeR 1.0000 closed 0.9992 accept 0.9385 wrong_id 0.0000
+  eps=0.010 goal B: RA 0.9361 ASafeR 1.0000 closed 0.9992 accept 0.9361 wrong_id 0.0000
+  eps=0.010 goal C: RA 0.9401 ASafeR 1.0000 closed 1.0000 accept 0.9401 wrong_id 0.0000
+  eps=0.010 goal D: RA 0.9928 ASafeR 1.0000 closed 1.0000 accept 0.9928 wrong_id 0.0000
+  eps=0.020 goal A: RA 0.9137 ASafeR 0.9904 closed 0.9824 accept 0.9233 wrong_id 0.0096
+  eps=0.020 goal B: RA 0.9097 ASafeR 0.9904 closed 0.9840 accept 0.9193 wrong_id 0.0096
+  eps=0.020 goal C: RA 0.9313 ASafeR 1.0000 closed 0.9984 accept 0.9313 wrong_id 0.0000
+  eps=0.020 goal D: RA 1.0000 ASafeR 1.0000 closed 1.0000 accept 1.0000 wrong_id 0.0000
+attack done in 14s: worst RA 0.9097, worst ASafeR 0.9904
+report written to D:\WORK\BCIC2026\BrainPrint\research\E182_session_invariant_backbone\report.md
+report written to D:\WORK\BCIC2026\BrainPrint\research\E182_session_invariant_backbone\report.md
+report written to D:\WORK\BCIC2026\BrainPrint\research\E182_session_invariant_backbone\report.md
