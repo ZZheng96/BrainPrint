@@ -1,0 +1,103 @@
+{
+  "experiment": "E178_gate_gap_measurement",
+  "purpose": "E177 audited the best-W方案 (E170 three-way score fusion) and found gates #2/#3/#4 pass while #9/#10 fail, with #1/#5/#6/#7/#8 left unmeasured (E177 wrongly reported #5/#6 from a coarse curve). E178 measures exactly those five gates on the same frozen score: #1 in-sample Train accuracy, #5 pseudo-unknown AUROC under the verbatim LOSO protocol, #6 U@95/90/98, and #7/#8 RA/ASafeR against a self-built end-to-end differentiable PGD surrogate. No existing experiment directory is modified; Test is only scored with frozen quantities and its official metrics stay N/A.",
+  "audited_scheme": {
+    "name": "E170 three-way score fusion, best-W point",
+    "score": "0.5*z(-d1,E65 PCA-64) + 0.1*z(-d1,logbp PCA-32) + 0.4*z(-d1,E162 PCA-64)",
+    "prototype": "k=1 (mean prototype) per (task, identity)",
+    "acceptance_rate": 0.88,
+    "published": {
+      "train_oof_auc": 0.9229,
+      "train_oof_macro_f1": 0.9590,
+      "train_oof_identity_acc": 0.9592,
+      "loso_rejection_088": 0.7530,
+      "loso_auc": 0.9094,
+      "test_s1_rejection": 0.6775,
+      "test_s2_acceptance": 0.7210,
+      "W": 0.7181,
+      "diagnostic_auc": 0.7669
+    }
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "train_trials": 11304,
+    "train_session": "session1"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "streams": {
+    "E65": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "raw_dim": 855,
+      "pca_dim": 64,
+      "source": "research/E65_correlation_spd/run_e65.py :: gpu_correlation_logspd"
+    },
+    "logbp": {
+      "train": "research/E146_phase_features/train_log_band_power.npy",
+      "raw_dim": 90,
+      "pca_dim": 32,
+      "source": "research/E146_phase_features/extract_e146.py :: features_chunk item 1"
+    },
+    "E162": {
+      "train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+      "raw_dim": 256,
+      "pca_dim": 64,
+      "source": "research/E162_raw_eeg_contrastive_v2/model_lam0.0_t0.1.pt"
+    }
+  },
+  "fusion": {
+    "weights": [0.5, 0.1, 0.4],
+    "stream_zscore": "each stream score z-scored with its own 5-block Train OOF mean/std, exactly as E170"
+  },
+  "features": {
+    "bands_hz": [[1, 8], [8, 13], [13, 20], [20, 30], [30, 40]],
+    "logbp_bands_hz": [[1, 4], [4, 8], [8, 13], [13, 30], [30, 40]],
+    "logbp_bands_note": "E146 uses its own 5 bands (delta/theta/alpha/beta/gamma), different from the E36/E65 logSPD bands; the cached train_log_band_power.npy equals E146 train_phase[:, :90] exactly",
+    "covariance_shrinkage": 0.05,
+    "eigenvalue_floor": 1e-12,
+    "off_diagonal_multiplier": 1.4142135623730951,
+    "channel_std_ddof": 1,
+    "channel_std_epsilon": 1e-12,
+    "zband_epsilon": 1e-6
+  },
+  "protocol": {
+    "fit_fraction": 0.6,
+    "eval_window": "0.6 < frac <= 0.8",
+    "blocks": 5,
+    "prototype_k": 1,
+    "loso_prototype_rows": "pm & fit_rows (19 enrolled identities, frac <= 0.6 only)",
+    "loso_known": "window rows of the 19 enrolled identities",
+    "loso_unknown": "window rows of the held-out identity",
+    "train_only": "task-wise standardisation, PCA basis and prototypes are Train-only; no Session field is read for any model/threshold/feature decision"
+  },
+  "gates": {
+    "gate1_insample": "prototypes from all 11304 Train rows, predict the same rows",
+    "gate5_auroc": "pooled 20-fold known-vs-unknown; AUROC reported with unknown as the positive class (equivalent to E170 loso_auc since the score is a similarity)",
+    "gate6_u": "per fold threshold = per-fold known quantile at the stated known acceptance; U = fraction of unknown below it; mean over 20 folds",
+    "gate7_8_proxy": {
+      "domain": "Train eval window 0.6 < frac <= 0.8 (identity labels available); stratified sample, cap 400 per task",
+      "why_train": "Test has no identity labels, so RA/ASafeR cannot be computed there; Test session labels are never used here",
+      "seed": 20261115,
+      "cap_per_task": 400,
+      "eps_normalised": [0.005, 0.01, 0.02],
+      "eps_definition": "L-infinity bound = eps * per-trial global RMS (the same RMS used by the E162 normalisation); signal RMS = 1, so eps = 0.01 is >= 40 dB SNR",
+      "steps": 8,
+      "step_size": "eps / 2",
+      "restarts": 1,
+      "random_start": true,
+      "goal_A": "maximise the fused score of the best wrong identity (targeted impersonation)",
+      "goal_B": "maximise logsumexp over identities (evade the reject class)",
+      "goal_C": "maximise z(target) - z(true), i.e. a margin/decision-boundary impersonation attack; added because goal A alone mostly produces a common-mode score shift that leaves the argmax intact, so it would give an optimistic RA",
+      "primary_gate_reading": "gate #7 uses the lowest RA and gate #8 the lowest ASafeR over all goals and eps",
+      "acceptance_threshold": "Train 5-block OOF quantile at acceptance 0.88"
+    }
+  },
+  "reporting": {
+    "test_official": "N/A: the Test split has no public identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "none: this experiment reads no Test file and no Session column",
+    "attack_status": "self-built white-box PGD surrogate, not the official attack suite; gates #7/#8 values are reference/upper-bound evidence only"
+  }
+}

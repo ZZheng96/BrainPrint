@@ -1,0 +1,27 @@
+[    0.2s] E178 start | stage=all | device=cuda | NVIDIA GeForce RTX 3080 Laptop GPU
+[    0.2s] train 11304 | fit 6695 | window 2301 | tasks {'Imagery': np.int64(5504), 'SSVEP': np.int64(3658), 'EC': np.int64(1072), 'EO': np.int64(1070)}
+[    0.5s] stream E65: raw (11304, 855) -> PCA-64 (basis from 6695 fit rows)
+[    0.6s] stream logbp: raw (11304, 90) -> PCA-32 (basis from 6695 fit rows)
+[    0.7s] stream E162: raw (11304, 256) -> PCA-64 (basis from 6695 fit rows)
+[    1.1s]   E65: oof mu=-12.9004 sd=3.2460
+[    1.5s]   logbp: oof mu=-5.5594 sd=2.2616
+[    1.8s]   E162: oof mu=-8.1403 sd=2.6856
+[    2.0s] reproduction: OOF AUC=0.9229 (pub 0.9229) | OOF acc=0.9592 (pub 0.9592) | OOF macro-F1=0.9590 (pub 0.9590)
+[    2.0s] gate1 in-sample accuracy=0.9730 macro-F1=0.9728
+[    2.1s] gate5 AUROC=0.9094 (folds 0.9083+-0.0594) | U@95=0.4882 U@90=0.6950 U@98=0.2411 | U@88=0.7530
+[    2.1s] acceptance threshold @0.88: -0.9812
+[    2.1s] attack subset 1252 rows | {'EC': 222, 'EO': 230, 'Imagery': 400, 'SSVEP': 400}
+[    2.5s] raw loaded (1252, 18, 1200)
+[    2.9s] feature parity (torch vs cached): {"E65": {"max_abs_diff": 4.76837158203125e-07, "rel_fro": 5.729102880991377e-08}, "logbp": {"max_abs_diff": 0.0, "rel_fro": 0.0}, "E162": {"max_abs_diff": 8.925795555114746e-05, "rel_fro": 0.00021027456386946142}}
+[    3.3s] clean score parity numpy vs torch: max|dz|=0.0016 argmax_agreement=1.0000
+[    3.6s] goal A target identity: [203, 72, 46, 42, 0, 7, 21, 11, 61, 26, 11, 25, 198, 2, 91, 68, 83, 182, 55, 48]
+[    6.7s] eps=0.005 goal=A: RA=0.7340 ASafeR=0.9129 accept=0.8211 wrong=0.0871 nan_grad=0
+[    9.5s] eps=0.005 goal=B: RA=0.7819 ASafeR=0.9337 accept=0.8482 wrong=0.0663 nan_grad=129600
+[   12.4s] eps=0.005 goal=C: RA=0.6733 ASafeR=0.9105 accept=0.7628 wrong=0.0895 nan_grad=0
+[   15.3s] eps=0.01 goal=A: RA=0.7141 ASafeR=0.8586 accept=0.8554 wrong=0.1414 nan_grad=0
+[   18.0s] eps=0.01 goal=B: RA=0.7987 ASafeR=0.9153 accept=0.8834 wrong=0.0847 nan_grad=0
+[   20.9s] eps=0.01 goal=C: RA=0.6006 ASafeR=0.8626 accept=0.7380 wrong=0.1374 nan_grad=0
+[   23.8s] eps=0.02 goal=A: RA=0.6326 ASafeR=0.7212 accept=0.9113 wrong=0.2788 nan_grad=0
+[   26.6s] eps=0.02 goal=B: RA=0.8187 ASafeR=0.8746 accept=0.9441 wrong=0.1254 nan_grad=0
+[   29.5s] eps=0.02 goal=C: RA=0.4417 ASafeR=0.6965 accept=0.7452 wrong=0.3035 nan_grad=0
+[   29.5s] results.json written
