@@ -1,0 +1,112 @@
+{
+  "experiment": "E172_partial_roc_rerank",
+  "purpose": "E170 showed that global diagnostic AUC is the wrong optimisation target: a higher AUC bought a LOWER Test-S2 acceptance at the fixed working point S1 rejection = 0.80. This run re-ranks every existing cached score by local ROC landmarks (S2_at_S1_080 and the partial AUC over S1 rejection in [0.75,0.95]) instead of by global AUC or by the sweep-max W.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "fit_fraction": 0.6,
+  "blocks": 5,
+  "prototype_k": [1, 3, 6, 12],
+  "reference_acceptance": 0.90,
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "local_metrics": {
+    "primary_S1_rejection": 0.80,
+    "robust_S1_rejection": [0.75, 0.85, 0.90],
+    "partial_auc_range": [0.75, 0.95]
+  },
+  "streams": {
+    "E65_logspd": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "pca_dims": [64, 96],
+      "family": "E65_correlation_logSPD"
+    },
+    "logbp": {
+      "train": "research/E146_phase_features/train_log_band_power.npy",
+      "test": "research/E146_phase_features/test_log_band_power.npy",
+      "pca_dims": [16, 32, 48],
+      "family": "log_band_power"
+    },
+    "spectral_entropy": {
+      "train": "research/E146_phase_features/train_spectral_entropy.npy",
+      "test": "research/E146_phase_features/test_spectral_entropy.npy",
+      "pca_dims": [16, 32],
+      "family": "spectral_entropy"
+    },
+    "pac": {
+      "train": "research/E146_phase_features/train_pac.npy",
+      "test": "research/E146_phase_features/test_pac.npy",
+      "pca_dims": [16, 32],
+      "family": "pac"
+    },
+    "wpli": {
+      "train": "research/E146_phase_features/train_wpli.npy",
+      "test": "research/E146_phase_features/test_wpli.npy",
+      "pca_dims": [16, 32],
+      "family": "wpli"
+    },
+    "hjorth": {
+      "train": "research/E146_phase_features/train_hjorth.npy",
+      "test": "research/E146_phase_features/test_hjorth.npy",
+      "pca_dims": [16, 32],
+      "family": "hjorth"
+    },
+    "relpower": {
+      "derive": "relpower_from_logbp",
+      "source": "logbp",
+      "pca_dims": [16],
+      "family": "relpower"
+    },
+    "subwin_n2": {
+      "train": "research/E168_subwindow_covariance/train_subwin_mean_n2.npy",
+      "test": "research/E168_subwindow_covariance/test_subwin_mean_n2.npy",
+      "pca_dims": [48, 64, 96],
+      "family": "subwin_mean_N2"
+    },
+    "subwin_n3": {
+      "train": "research/E168_subwindow_covariance/train_subwin_mean_n3.npy",
+      "test": "research/E168_subwindow_covariance/test_subwin_mean_n3.npy",
+      "pca_dims": [48, 64, 96],
+      "family": "subwin_mean_N3"
+    },
+    "subwin_n4": {
+      "train": "research/E168_subwindow_covariance/train_subwin_mean_n4.npy",
+      "test": "research/E168_subwindow_covariance/test_subwin_mean_n4.npy",
+      "pca_dims": [48, 64, 96],
+      "family": "subwin_mean_N4"
+    },
+    "E162_raw_eeg": {
+      "train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+      "test": "research/E162_raw_eeg_contrastive_v2/test_emb.npy",
+      "pca_dims": [32, 64, 128],
+      "family": "E162_raw_eeg_embedding"
+    },
+    "E166_tfmap": {
+      "train": "research/E166_tfmap_ssl/train_emb.npy",
+      "test": "research/E166_tfmap_ssl/test_emb.npy",
+      "pca_dims": [32, 64],
+      "family": "E166_tfmap_embedding"
+    }
+  },
+  "fusion": {
+    "base_k": 12,
+    "e65_base": {"stream": "E65_logspd", "pca_dim": 96},
+    "weight_step": 0.1,
+    "two_way": true,
+    "three_way": true
+  },
+  "control": {
+    "stream": "E65_logspd",
+    "pca_dim": 96,
+    "k": 12,
+    "expected": {
+      "diagnostic_auc": 0.7578,
+      "loso_at_090": 0.7936,
+      "s1_at_090": 0.7979,
+      "s2_at_090": 0.5960,
+      "S2_at_S1_080": 0.5929
+    }
+  }
+}
