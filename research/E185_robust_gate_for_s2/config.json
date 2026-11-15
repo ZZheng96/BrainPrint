@@ -1,0 +1,79 @@
+{
+  "experiment": "E185_robust_gate_for_s2",
+  "date": "2026-11-15",
+  "purpose": "Test the hypothesis that S2 acceptance is depressed by the gate rejecting adversarially perturbed registered trials, and if the premise holds on Train, train an adversarially trained open-set gate on the E65 PCA-96 space.",
+  "frozen_sources": {
+    "e180": "E180_dual_branch_adversarial_openset",
+    "e182": "E182_session_invariant_backbone",
+    "e183": "E183_gate_head_and_capacity",
+    "branch_a": "E182 branch A v2 (read only, never retrained here)",
+    "branch_b": "E180 branch B (E65 correlation-logSPD -> PCA-96 -> k=12 prototypes, read only)",
+    "e183_gate": "E183 deployed fused gate 0.85*g_head(conf) + 0.10*g_dist + 0.05*g_entropy and its Train LOSO thresholds",
+    "read_only": true,
+    "note": "E185 never writes into any existing experiment directory"
+  },
+  "hypothesis": {
+    "statement": "PGD perturbation of registered trials lowers the gate signal enough to reject a materially larger share of them (>= 0.03 absolute).",
+    "domain": "Train window 0.6 < frac <= 0.8, same stratified subset as E183 (cap 400 per task, seed 20261115)",
+    "signals": {
+      "g_dist": "E65 nearest-prototype distance z-scored with the frozen E180 Train OOF mean/std",
+      "g_conf": "E183 selected read-out: identity-head max softmax, z-scored per fold, max over the 3 inner views",
+      "g_open": "E183 BCE open-set head logit, z-scored per fold, max over the 3 inner views (secondary)",
+      "fused": "E183 deployed gate weights 0.85 / 0.10 / 0.05"
+    },
+    "thresholds": "tau(a) = quantile of the pooled Train LOSO known score at 1 - a, a in {0.90, 0.92, 0.95, 0.96}",
+    "statistic": "max over {signal, a, eps, goal in A/B/C} of (adv rejection rate - clean rejection rate)",
+    "stop_rule": "if the statistic is < 0.03 the hypothesis is rejected on Train and the AT gate is not trained"
+  },
+  "attack_step1": {
+    "domain": "Train window 0.6 < frac <= 0.8, stratified cap 400 per task, same subset and seed as E180/E181/E182/E183",
+    "eps_normalised": [0.005, 0.01, 0.02],
+    "steps": 8,
+    "temperature": 10.0,
+    "seed": 20261115,
+    "cap_per_task": 400,
+    "goals": {
+      "A": "impersonation on the branch-A identity head",
+      "B": "broad confusion on the branch-A identity head",
+      "C": "boundary impersonation on the branch-A identity head",
+      "D": "gate evasion (maximise the E183 fused gate)",
+      "E": "diagnostic only: gate rejection (minimise the E183 fused gate); not part of the primary statistic"
+    },
+    "status": "self-built white-box PGD surrogate, not the official attack suite"
+  },
+  "robust_gate": {
+    "input": "per-fold E65 correlation-logSPD -> per-task z -> PCA-96 -> standardised PCA scores (all statistics from pm & fit_rows)",
+    "architecture": "Linear(96,128)-BN-ReLU-Dropout0.2-Linear(128,64)-BN-ReLU-Linear(64,1)",
+    "hidden": [128, 64],
+    "dropout": 0.2,
+    "training_rows": "fit_rows (frac <= 0.6) of the fold's 19 enrolled identities only",
+    "pseudo_unknown": "4 of the 19 enrolled identities drawn per fold as pseudo-unknown (never the held-out identity)",
+    "repeats_per_fold": 1,
+    "eps_feature_sweep": [0.5, 1.0, 2.0],
+    "eps_feature_definition": "L-infinity bound = eps * scalar feature RMS of the standardised PCA-96 training rows",
+    "lambda_sweep": [0.5, 1.0],
+    "baseline_eps0": true,
+    "pgd_steps": 3,
+    "loss": "BCE(clean) + BCE(adv positives) + lambda * |sigmoid(clean) - sigmoid(adv)|",
+    "epochs": 40,
+    "batch_size": 512,
+    "learning_rate": 0.002,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "early_stop": "per-config inner validation loss on a 15% per-identity holdout of the fold's own training rows, evaluated every 5 epochs",
+    "selection": "argmax pooled Train LOSO gate AUC over all (eps, lambda) configs; fusion weight with g_dist chosen on the same pooled AUC; Test never used",
+    "fusion": "g = w * z(gate) + (1 - w) * z(g_dist), w on a 0.1 grid; w chosen on pooled Train LOSO AUC",
+    "time_budget_seconds": 1500
+  },
+  "threshold": {
+    "rule": "tau(a) = quantile(pooled Train LOSO known fused score, 1 - a)",
+    "grid": [0.88, 0.90, 0.92, 0.94, 0.96]
+  },
+  "test": {
+    "aggregation": "median over the 20 fold models (same view count as the LOSO gate); max / mean reported as sensitivity",
+    "session_usage": "Test predictions are written before the Session column is read; Session is only used for the #9/#10 audit"
+  },
+  "reporting": {
+    "test_official": "N/A: Test has no identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable"
+  }
+}

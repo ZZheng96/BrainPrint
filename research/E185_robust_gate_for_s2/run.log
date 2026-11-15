@@ -1,0 +1,106 @@
+=== E185 start (all) ===
+stage hypothesis: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  Train-LOSO thresholds (known = 19 enrolled identities):
+    g_dist  a=0.88:-0.700 a=0.90:-0.831 a=0.92:-0.990 a=0.94:-1.210 a=0.96:-1.495
+    g_conf  a=0.88:+0.485 a=0.90:+0.476 a=0.92:+0.464 a=0.94:+0.438 a=0.96:+0.378
+    g_open  a=0.88:+0.314 a=0.90:+0.285 a=0.92:+0.250 a=0.94:+0.196 a=0.96:+0.120
+    fused   a=0.88:+0.186 a=0.90:+0.145 a=0.92:+0.095 a=0.94:+0.033 a=0.96:-0.054
+  raw 1252/1252 (0s)
+  clean rejection @a=0.88: g_dist 0.1374 g_conf 0.1294 g_open 0.1054 fused 0.0184
+  clean rejection @a=0.90: g_dist 0.1222 g_conf 0.1046 g_open 0.0871 fused 0.0104
+  clean rejection @a=0.92: g_dist 0.0982 g_conf 0.0831 g_open 0.0711 fused 0.0080
+  clean rejection @a=0.94: g_dist 0.0695 g_conf 0.0599 g_open 0.0495 fused 0.0056
+  clean rejection @a=0.96: g_dist 0.0471 g_conf 0.0280 g_open 0.0312 fused 0.0056
+  eps=0.005 goal A: g_dist@a=0.90 0.1238(+0.0016) g_conf@a=0.90 0.1166(+0.0120) g_open@a=0.90 0.0927(+0.0056) fused@a=0.90 0.0120(+0.0016)
+  eps=0.005 goal B: g_dist@a=0.90 0.1230(+0.0008) g_conf@a=0.90 0.1166(+0.0120) g_open@a=0.90 0.0927(+0.0056) fused@a=0.90 0.0120(+0.0016)
+  eps=0.005 goal C: g_dist@a=0.90 0.1230(+0.0008) g_conf@a=0.90 0.1150(+0.0104) g_open@a=0.90 0.0911(+0.0040) fused@a=0.90 0.0128(+0.0024)
+  eps=0.005 goal D: g_dist@a=0.90 0.0607(-0.0615) g_conf@a=0.90 0.0120(-0.0927) g_open@a=0.90 0.0551(-0.0319) fused@a=0.90 0.0008(-0.0096)
+  eps=0.005 goal E: g_dist@a=0.90 0.2013(+0.0791) g_conf@a=0.90 0.2724(+0.1677) g_open@a=0.90 0.1430(+0.0559) fused@a=0.90 0.1350(+0.1246)
+  eps=0.010 goal A: g_dist@a=0.90 0.1262(+0.0040) g_conf@a=0.90 0.1270(+0.0224) g_open@a=0.90 0.0990(+0.0120) fused@a=0.90 0.0144(+0.0040)
+  eps=0.010 goal B: g_dist@a=0.90 0.1262(+0.0040) g_conf@a=0.90 0.1294(+0.0248) g_open@a=0.90 0.1022(+0.0152) fused@a=0.90 0.0152(+0.0048)
+  eps=0.010 goal C: g_dist@a=0.90 0.1238(+0.0016) g_conf@a=0.90 0.1254(+0.0208) g_open@a=0.90 0.0950(+0.0080) fused@a=0.90 0.0144(+0.0040)
+  eps=0.010 goal D: g_dist@a=0.90 0.0343(-0.0879) g_conf@a=0.90 0.0032(-0.1014) g_open@a=0.90 0.0487(-0.0383) fused@a=0.90 0.0000(-0.0104)
+  eps=0.010 goal E: g_dist@a=0.90 0.3291(+0.2069) g_conf@a=0.90 0.4473(+0.3427) g_open@a=0.90 0.1909(+0.1038) fused@a=0.90 0.3163(+0.3059)
+  eps=0.020 goal A: g_dist@a=0.90 0.1270(+0.0048) g_conf@a=0.90 0.1494(+0.0447) g_open@a=0.90 0.1198(+0.0327) fused@a=0.90 0.0208(+0.0104)
+  eps=0.020 goal B: g_dist@a=0.90 0.1286(+0.0064) g_conf@a=0.90 0.1565(+0.0519) g_open@a=0.90 0.1262(+0.0391) fused@a=0.90 0.0208(+0.0104)
+  eps=0.020 goal C: g_dist@a=0.90 0.1262(+0.0040) g_conf@a=0.90 0.1510(+0.0463) g_open@a=0.90 0.1182(+0.0312) fused@a=0.90 0.0256(+0.0152)
+  eps=0.020 goal D: g_dist@a=0.90 0.0088(-0.1134) g_conf@a=0.90 0.0016(-0.1030) g_open@a=0.90 0.0439(-0.0431) fused@a=0.90 0.0000(-0.0104)
+  eps=0.020 goal E: g_dist@a=0.90 0.6094(+0.4872) g_conf@a=0.90 0.6542(+0.5495) g_open@a=0.90 0.2580(+0.1709) fused@a=0.90 0.5966(+0.5863)
+  feature-space diagnostic eps=0.50xRMS: a=0.88:+0.7867 a=0.90:+0.7796 a=0.92:+0.7819 a=0.94:+0.7492 a=0.96:+0.7053
+  feature-space diagnostic eps=1.00xRMS: a=0.88:+0.6893 a=0.90:+0.6725 a=0.92:+0.6717 a=0.94:+0.6486 a=0.96:+0.6054
+  feature-space diagnostic eps=2.00xRMS: a=0.88:+0.5024 a=0.90:+0.4816 a=0.92:+0.4728 a=0.94:+0.4409 a=0.96:+0.3890
+stage hypothesis done in 24s: max rejection increment +0.0623 (g_conf @ a=0.88, eps=0.02, goal B) -> hypothesis accepted
+stage gate: 7 configs x 20 folds, window rows 2301
+  fold  1: trained 7 models so far, 25s
+  fold  2: trained 14 models so far, 47s
+  fold  3: trained 21 models so far, 68s
+  fold  4: trained 28 models so far, 90s
+  fold  5: trained 35 models so far, 112s
+  fold  6: trained 42 models so far, 134s
+  fold  7: trained 49 models so far, 157s
+  fold  8: trained 56 models so far, 179s
+  fold  9: trained 63 models so far, 201s
+  fold 10: trained 70 models so far, 222s
+  fold 11: trained 77 models so far, 244s
+  fold 12: trained 84 models so far, 266s
+  fold 13: trained 91 models so far, 288s
+  fold 14: trained 98 models so far, 310s
+  fold 15: trained 105 models so far, 332s
+  fold 16: trained 112 models so far, 354s
+  fold 17: trained 119 models so far, 376s
+  fold 18: trained 126 models so far, 398s
+  fold 19: trained 133 models so far, 420s
+  fold 20: trained 140 models so far, 442s
+stage gate done in 442s (140 models)
+  clean            pooled AUC 0.6192 U@95 0.0027
+  eps0.5_lam0.5    pooled AUC 0.6250 U@95 0.0000
+  eps0.5_lam1.0    pooled AUC 0.6213 U@95 0.0004
+  eps1.0_lam0.5    pooled AUC 0.5253 U@95 0.0004
+  eps1.0_lam1.0    pooled AUC 0.5164 U@95 0.0004
+  eps2.0_lam0.5    pooled AUC 0.5648 U@95 0.0058
+  eps2.0_lam1.0    pooled AUC 0.5676 U@95 0.0050
+  selected eps0.5_lam0.5 + 0.0*g_dist: LOSO AUC 0.9062, U@95 0.3942
+=== E185 start (test) ===
+=== E185 start (test) ===
+stage test: predictions written to test_predictions_robust_gate.csv
+  a=0.88: S1 0.9067 S2 0.4183 sum 1.3249 a=0.90: S1 0.8757 S2 0.4710 sum 1.3467 a=0.92: S1 0.8262 S2 0.5370 sum 1.3632 a=0.94: S1 0.7540 S2 0.6145 sum 1.3685 a=0.96: S1 0.6789 S2 0.6919 sum 1.3707
+total 1s
+=== E185 start (evaluate) ===
+  clean            pooled AUC 0.6192 U@95 0.0027
+  eps0.5_lam0.5    pooled AUC 0.6250 U@95 0.0000
+  eps0.5_lam1.0    pooled AUC 0.6213 U@95 0.0004
+  eps1.0_lam0.5    pooled AUC 0.5253 U@95 0.0004
+  eps1.0_lam1.0    pooled AUC 0.5164 U@95 0.0004
+  eps2.0_lam0.5    pooled AUC 0.5648 U@95 0.0058
+  eps2.0_lam1.0    pooled AUC 0.5676 U@95 0.0050
+  pseudo-unknown transfer: train K/U AUC 1.0000, window K/pseudoU 0.9998, window K/held-out 0.8006
+  selected eps0.5_lam0.5 + 0.0*g_dist: LOSO AUC 0.9062, U@95 0.3942
+total 9s
+=== E185 start (attack) ===
+  raw 1252/1252 (0s)
+  eps=0.005 goal A: RA@a=0.92 0.8994 ASafeR 1.0000
+  eps=0.005 goal B: RA@a=0.92 0.8986 ASafeR 1.0000
+  eps=0.005 goal C: RA@a=0.92 0.9010 ASafeR 1.0000
+  eps=0.005 goal D: RA@a=0.92 0.9545 ASafeR 1.0000
+  eps=0.010 goal A: RA@a=0.92 0.8986 ASafeR 1.0000
+  eps=0.010 goal B: RA@a=0.92 0.8986 ASafeR 1.0000
+  eps=0.010 goal C: RA@a=0.92 0.8994 ASafeR 1.0000
+  eps=0.010 goal D: RA@a=0.92 0.9792 ASafeR 1.0000
+  eps=0.020 goal A: RA@a=0.92 0.8810 ASafeR 0.9864
+  eps=0.020 goal B: RA@a=0.92 0.8802 ASafeR 0.9872
+  eps=0.020 goal C: RA@a=0.92 0.8954 ASafeR 0.9992
+  eps=0.020 goal D: RA@a=0.92 0.9976 ASafeR 1.0000
+attack done in 23s
+total 23s
+=== E185 start (report) ===
+report written to report.md
+total 0s
+=== E185 start (report) ===
+report written to report.md
+total 0s
+=== E185 start (report) ===
+report written to report.md
+total 0s
+=== E185 start (report) ===
+report written to report.md
+total 0s
