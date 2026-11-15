@@ -1,0 +1,294 @@
+=== stage head ===
+stage head: 11304 Train rows, window 2301, PCA-96, 3 repeats x 4 pseudo-unknown identities per fold
+=== stage head ===
+stage head: 11304 Train rows, window 2301, PCA-96, 3 repeats x 4 pseudo-unknown identities per fold
+  fold  1 rep 0: |K| 15 |U| 4 best epoch 39 val 0.0154
+  fold  1 rep 1: |K| 15 |U| 4 best epoch 47 val 0.0143
+=== stage head ===
+stage head: 11304 Train rows, window 2301, PCA-96, 3 repeats x 4 pseudo-unknown identities per fold
+  fold  1 rep 0: |K| 15 |U| 4 best epoch 59 val 0.0071
+  fold  1 rep 1: |K| 15 |U| 4 best epoch 52 val 0.0083
+  fold  1 rep 2: |K| 15 |U| 4 best epoch 59 val 0.0069
+  fold  1: rows 2301, known 2177, unknown 124
+  fold  2 rep 0: |K| 15 |U| 4 best epoch 59 val 0.0033
+  fold  2 rep 1: |K| 15 |U| 4 best epoch 56 val 0.0061
+  fold  2 rep 2: |K| 15 |U| 4 best epoch 58 val 0.0073
+  fold  2: rows 2301, known 2199, unknown 102
+  fold  3 rep 0: |K| 15 |U| 4 best epoch 46 val 0.0095
+  fold  3 rep 1: |K| 15 |U| 4 best epoch 59 val 0.0070
+  fold  3 rep 2: |K| 15 |U| 4 best epoch 49 val 0.0073
+  fold  3: rows 2301, known 2179, unknown 122
+  fold  4 rep 0: |K| 15 |U| 4 best epoch 55 val 0.0071
+  fold  4 rep 1: |K| 15 |U| 4 best epoch 36 val 0.0321
+  fold  4 rep 2: |K| 15 |U| 4 best epoch 53 val 0.0110
+  fold  4: rows 2301, known 2188, unknown 113
+  fold  5 rep 0: |K| 15 |U| 4 best epoch 51 val 0.0111
+  fold  5 rep 1: |K| 15 |U| 4 best epoch 57 val 0.0154
+  fold  5 rep 2: |K| 15 |U| 4 best epoch 56 val 0.0048
+  fold  5: rows 2301, known 2200, unknown 101
+  fold  6 rep 0: |K| 15 |U| 4 best epoch 59 val 0.0111
+  fold  6 rep 1: |K| 15 |U| 4 best epoch 49 val 0.0164
+  fold  6 rep 2: |K| 15 |U| 4 best epoch 50 val 0.0291
+  fold  6: rows 2301, known 2177, unknown 124
+  fold  7 rep 0: |K| 15 |U| 4 best epoch 38 val 0.0151
+  fold  7 rep 1: |K| 15 |U| 4 best epoch 58 val 0.0086
+  fold  7 rep 2: |K| 15 |U| 4 best epoch 52 val 0.0193
+  fold  7: rows 2301, known 2177, unknown 124
+  fold  8 rep 0: |K| 15 |U| 4 best epoch 48 val 0.0164
+  fold  8 rep 1: |K| 15 |U| 4 best epoch 59 val 0.0178
+  fold  8 rep 2: |K| 15 |U| 4 best epoch 52 val 0.0094
+  fold  8: rows 2301, known 2197, unknown 104
+  fold  9 rep 0: |K| 15 |U| 4 best epoch 54 val 0.0241
+  fold  9 rep 1: |K| 15 |U| 4 best epoch 53 val 0.0055
+  fold  9 rep 2: |K| 15 |U| 4 best epoch 41 val 0.0161
+  fold  9: rows 2301, known 2185, unknown 116
+  fold 10 rep 0: |K| 15 |U| 4 best epoch 57 val 0.0131
+  fold 10 rep 1: |K| 15 |U| 4 best epoch 48 val 0.0094
+  fold 10 rep 2: |K| 15 |U| 4 best epoch 38 val 0.0108
+  fold 10: rows 2301, known 2194, unknown 107
+  fold 11 rep 0: |K| 15 |U| 4 best epoch 52 val 0.0119
+  fold 11 rep 1: |K| 15 |U| 4 best epoch 39 val 0.0161
+  fold 11 rep 2: |K| 15 |U| 4 best epoch 36 val 0.0153
+  fold 11: rows 2301, known 2180, unknown 121
+  fold 12 rep 0: |K| 15 |U| 4 best epoch 52 val 0.0135
+  fold 12 rep 1: |K| 15 |U| 4 best epoch 41 val 0.0112
+  fold 12 rep 2: |K| 15 |U| 4 best epoch 53 val 0.0169
+  fold 12: rows 2301, known 2179, unknown 122
+  fold 13 rep 0: |K| 15 |U| 4 best epoch 56 val 0.0151
+  fold 13 rep 1: |K| 15 |U| 4 best epoch 51 val 0.0052
+  fold 13 rep 2: |K| 15 |U| 4 best epoch 54 val 0.0056
+  fold 13: rows 2301, known 2178, unknown 123
+  fold 14 rep 0: |K| 15 |U| 4 best epoch 51 val 0.0091
+  fold 14 rep 1: |K| 15 |U| 4 best epoch 59 val 0.0126
+  fold 14 rep 2: |K| 15 |U| 4 best epoch 59 val 0.0105
+  fold 14: rows 2301, known 2180, unknown 121
+  fold 15 rep 0: |K| 15 |U| 4 best epoch 56 val 0.0233
+  fold 15 rep 1: |K| 15 |U| 4 best epoch 52 val 0.0135
+  fold 15 rep 2: |K| 15 |U| 4 best epoch 43 val 0.0109
+  fold 15: rows 2301, known 2191, unknown 110
+  fold 16 rep 0: |K| 15 |U| 4 best epoch 55 val 0.0078
+  fold 16 rep 1: |K| 15 |U| 4 best epoch 50 val 0.0043
+  fold 16 rep 2: |K| 15 |U| 4 best epoch 59 val 0.0069
+  fold 16: rows 2301, known 2182, unknown 119
+  fold 17 rep 0: |K| 15 |U| 4 best epoch 57 val 0.0037
+  fold 17 rep 1: |K| 15 |U| 4 best epoch 58 val 0.0055
+  fold 17 rep 2: |K| 15 |U| 4 best epoch 55 val 0.0086
+  fold 17: rows 2301, known 2189, unknown 112
+  fold 18 rep 0: |K| 15 |U| 4 best epoch 35 val 0.0132
+  fold 18 rep 1: |K| 15 |U| 4 best epoch 54 val 0.0102
+  fold 18 rep 2: |K| 15 |U| 4 best epoch 57 val 0.0115
+  fold 18: rows 2301, known 2203, unknown 98
+  fold 19 rep 0: |K| 15 |U| 4 best epoch 54 val 0.0099
+  fold 19 rep 1: |K| 15 |U| 4 best epoch 40 val 0.0099
+  fold 19 rep 2: |K| 15 |U| 4 best epoch 57 val 0.0073
+  fold 19: rows 2301, known 2187, unknown 114
+  fold 20 rep 0: |K| 15 |U| 4 best epoch 59 val 0.0057
+  fold 20 rep 1: |K| 15 |U| 4 best epoch 59 val 0.0153
+  fold 20 rep 2: |K| 15 |U| 4 best epoch 57 val 0.0095
+  fold 20: rows 2301, known 2177, unknown 124
+  LOSO g_head   : pooled AUC 0.6359 (strict 0.8356) U@95 0.0084+-0.0198
+  LOSO g_dist   : pooled AUC 0.9062 (strict 0.5888) U@95 0.3942+-0.3046
+  LOSO g_entropy: pooled AUC 0.9059 (strict 0.5960) U@95 0.5236+-0.1818
+stage head done in 340s
+total 340s
+=== stage head ===
+stage head: 11304 Train rows, window 2301, PCA-96, 3 views x 4 pseudo-unknown identities per fold
+  fold  1: rows 2301, known 2177, unknown 124
+  fold  2: rows 2301, known 2199, unknown 102
+  fold  3: rows 2301, known 2179, unknown 122
+  fold  4: rows 2301, known 2188, unknown 113
+  fold  5: rows 2301, known 2200, unknown 101
+  fold  6: rows 2301, known 2177, unknown 124
+  fold  7: rows 2301, known 2177, unknown 124
+  fold  8: rows 2301, known 2197, unknown 104
+  fold  9: rows 2301, known 2185, unknown 116
+  fold 10: rows 2301, known 2194, unknown 107
+  fold 11: rows 2301, known 2180, unknown 121
+  fold 12: rows 2301, known 2179, unknown 122
+  fold 13: rows 2301, known 2178, unknown 123
+  fold 14: rows 2301, known 2180, unknown 121
+  fold 15: rows 2301, known 2191, unknown 110
+  fold 16: rows 2301, known 2182, unknown 119
+  fold 17: rows 2301, known 2189, unknown 112
+  fold 18: rows 2301, known 2203, unknown 98
+  fold 19: rows 2301, known 2187, unknown 114
+  fold 20: rows 2301, known 2177, unknown 124
+  LOSO open  max_over_views  : pooled AUC 0.8207 U@95 0.3801
+  LOSO open  mean_over_views : pooled AUC 0.6364 U@95 0.0071
+  LOSO trunk max_over_views  : pooled AUC 0.9808 U@95 0.8193
+  LOSO trunk mean_over_views : pooled AUC 0.8668 U@95 0.1330
+  LOSO conf  max_over_views  : pooled AUC 0.9839 U@95 0.8965
+  LOSO conf  mean_over_views : pooled AUC 0.9057 U@95 0.5302
+stage head done in 14s
+total 14s
+=== stage head ===
+stage head: 11304 Train rows, window 2301, PCA-96, 3 views x 4 pseudo-unknown identities per fold
+  fold  1: rows 2301, known 2177, unknown 124
+  fold  2: rows 2301, known 2199, unknown 102
+  fold  3: rows 2301, known 2179, unknown 122
+  fold  4: rows 2301, known 2188, unknown 113
+  fold  5: rows 2301, known 2200, unknown 101
+  fold  6: rows 2301, known 2177, unknown 124
+  fold  7: rows 2301, known 2177, unknown 124
+  fold  8: rows 2301, known 2197, unknown 104
+  fold  9: rows 2301, known 2185, unknown 116
+  fold 10: rows 2301, known 2194, unknown 107
+  fold 11: rows 2301, known 2180, unknown 121
+  fold 12: rows 2301, known 2179, unknown 122
+  fold 13: rows 2301, known 2178, unknown 123
+  fold 14: rows 2301, known 2180, unknown 121
+  fold 15: rows 2301, known 2191, unknown 110
+  fold 16: rows 2301, known 2182, unknown 119
+  fold 17: rows 2301, known 2189, unknown 112
+  fold 18: rows 2301, known 2203, unknown 98
+  fold 19: rows 2301, known 2187, unknown 114
+  fold 20: rows 2301, known 2177, unknown 124
+  LOSO open  max_over_views  : pooled AUC 0.8036 U@95 0.3684
+  LOSO open  mean_over_views : pooled AUC 0.6359 U@95 0.0084
+  LOSO trunk max_over_views  : pooled AUC 0.9808 U@95 0.8193
+  LOSO trunk mean_over_views : pooled AUC 0.8668 U@95 0.1330
+  LOSO conf  max_over_views  : pooled AUC 0.9839 U@95 0.8965
+  LOSO conf  mean_over_views : pooled AUC 0.9057 U@95 0.5302
+stage head done in 15s
+total 15s
+=== stage fusion ===
+stage fusion: read-out selected on Train LOSO AUC: conf_max_over_views (0.9839)
+  0.9860  0.85*g_head + 0.10*g_dist + 0.05*g_entropy  U@95 0.9090
+  0.9859  0.80*g_head + 0.15*g_dist + 0.05*g_entropy  U@95 0.9121
+  0.9858  0.95*g_head + 0.05*g_dist  U@95 0.9059
+  0.9856  0.90*g_head + 0.05*g_dist + 0.05*g_entropy  U@95 0.9051
+  0.9854  0.75*g_head + 0.20*g_dist + 0.05*g_entropy  U@95 0.9091
+  0.9852  0.90*g_head + 0.10*g_dist  U@95 0.9019
+  selected 0.85*g_head + 0.10*g_dist + 0.05*g_entropy: LOSO AUC 0.9860, U@95 0.9090 (pooled-threshold 0.9544)
+total 22s
+=== stage capacity ===
+stage capacity: frozen branch A v2 in-sample argmax 0.9995
+  in-sample logits 0.9995; alpha 1.0 -> in-sample 0.9991, OOF 0.9950; prototype-only 0.9847
+total 2s
+=== stage capacity ===
+stage capacity: frozen branch A v2 in-sample argmax 0.9995
+  in-sample logits 0.9995; alpha 1.0 -> in-sample 0.9991, OOF 0.9950; prototype-only 0.9847
+total 2s
+=== stage test ===
+stage test: predictions written to test_predictions_fused.csv (22050/22251 accepted at a=0.95)
+  audit a=0.95: S1 rejection nan S2 acceptance nan
+total 1s
+=== stage test ===
+stage test: predictions written to test_predictions_fused.csv (22050/22251 accepted at a=0.95)
+  audit a=0.95: S1 rejection 0.0181 S2 acceptance 0.9924
+total 2s
+=== stage test ===
+stage test: predictions written to test_predictions_fused.csv (20543/22251 accepted at a=0.95)
+  audit a=0.95: S1 rejection 0.1118 S2 acceptance 0.9288
+total 2s
+=== stage attack ===
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+=== stage attack ===
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+=== stage attack ===
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (1s)
+=== stage attack ===
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  clean: closed-set 1.0000, accept(a=0.97) 0.5575, RA 0.5575
+  eps=0.005 goal A: RA 0.5559 ASafeR 1.0000 closed 1.0000 accept 0.5559
+  eps=0.005 goal B: RA 0.5543 ASafeR 1.0000 closed 1.0000 accept 0.5543
+  eps=0.005 goal C: RA 0.5583 ASafeR 1.0000 closed 1.0000 accept 0.5583
+  eps=0.005 goal D: RA 0.9529 ASafeR 1.0000 closed 1.0000 accept 0.9529
+  eps=0.010 goal A: RA 0.5519 ASafeR 0.9992 closed 0.9992 accept 0.5527
+  eps=0.010 goal B: RA 0.5503 ASafeR 0.9992 closed 0.9992 accept 0.5511
+  eps=0.010 goal C: RA 0.5503 ASafeR 1.0000 closed 1.0000 accept 0.5503
+  eps=0.010 goal D: RA 0.9952 ASafeR 1.0000 closed 1.0000 accept 0.9952
+  eps=0.020 goal A: RA 0.5391 ASafeR 0.9920 closed 0.9824 accept 0.5471
+  eps=0.020 goal B: RA 0.5375 ASafeR 0.9920 closed 0.9840 accept 0.5455
+  eps=0.020 goal C: RA 0.5335 ASafeR 0.9984 closed 0.9984 accept 0.5351
+  eps=0.020 goal D: RA 1.0000 ASafeR 1.0000 closed 1.0000 accept 1.0000
+attack done in 19s: worst RA 0.5335 at a=0.97, worst ASafeR 0.9920
+total 19s
+=== stage attack ===
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  clean: closed-set 1.0000, accept(a=0.97) 0.9960, RA 0.9960
+  eps=0.005 goal A: RA 0.9944 ASafeR 1.0000 closed 1.0000 accept 0.9944
+  eps=0.005 goal B: RA 0.9944 ASafeR 1.0000 closed 1.0000 accept 0.9944
+  eps=0.005 goal C: RA 0.9944 ASafeR 1.0000 closed 1.0000 accept 0.9944
+  eps=0.005 goal D: RA 1.0000 ASafeR 1.0000 closed 1.0000 accept 1.0000
+  eps=0.010 goal A: RA 0.9944 ASafeR 1.0000 closed 0.9992 accept 0.9944
+  eps=0.010 goal B: RA 0.9944 ASafeR 1.0000 closed 0.9992 accept 0.9944
+  eps=0.010 goal C: RA 0.9936 ASafeR 1.0000 closed 1.0000 accept 0.9936
+  eps=0.010 goal D: RA 1.0000 ASafeR 1.0000 closed 1.0000 accept 1.0000
+  eps=0.020 goal A: RA 0.9736 ASafeR 0.9832 closed 0.9824 accept 0.9904
+  eps=0.020 goal B: RA 0.9736 ASafeR 0.9848 closed 0.9840 accept 0.9888
+  eps=0.020 goal C: RA 0.9888 ASafeR 0.9992 closed 0.9984 accept 0.9896
+  eps=0.020 goal D: RA 1.0000 ASafeR 1.0000 closed 1.0000 accept 1.0000
+attack done in 19s: worst RA 0.9736 at a=0.97, worst ASafeR 0.9832
+total 19s
+=== stage capacity ===
+stage capacity: frozen branch A v2 in-sample argmax 0.9995
+  in-sample logits 0.9995; alpha 1.0 -> in-sample 0.9991, OOF 0.9950; prototype-only 0.9847
+total 2s
+=== stage head ===
+stage head: 11304 Train rows, window 2301, PCA-96, 3 views x 4 pseudo-unknown identities per fold
+  fold  1: rows 2301, known 2177, unknown 124
+  fold  2: rows 2301, known 2199, unknown 102
+  fold  3: rows 2301, known 2179, unknown 122
+  fold  4: rows 2301, known 2188, unknown 113
+  fold  5: rows 2301, known 2200, unknown 101
+  fold  6: rows 2301, known 2177, unknown 124
+  fold  7: rows 2301, known 2177, unknown 124
+  fold  8: rows 2301, known 2197, unknown 104
+  fold  9: rows 2301, known 2185, unknown 116
+  fold 10: rows 2301, known 2194, unknown 107
+  fold 11: rows 2301, known 2180, unknown 121
+  fold 12: rows 2301, known 2179, unknown 122
+  fold 13: rows 2301, known 2178, unknown 123
+  fold 14: rows 2301, known 2180, unknown 121
+  fold 15: rows 2301, known 2191, unknown 110
+  fold 16: rows 2301, known 2182, unknown 119
+  fold 17: rows 2301, known 2189, unknown 112
+  fold 18: rows 2301, known 2203, unknown 98
+  fold 19: rows 2301, known 2187, unknown 114
+  fold 20: rows 2301, known 2177, unknown 124
+  LOSO open  max_over_views  : pooled AUC 0.8036 U@95 0.3684
+  LOSO open  mean_over_views : pooled AUC 0.6359 U@95 0.0084
+  LOSO trunk max_over_views  : pooled AUC 0.9808 U@95 0.8193
+  LOSO trunk mean_over_views : pooled AUC 0.8668 U@95 0.1330
+  LOSO conf  max_over_views  : pooled AUC 0.9839 U@95 0.8965
+  LOSO conf  mean_over_views : pooled AUC 0.9057 U@95 0.5302
+stage head done in 15s
+=== stage fusion ===
+stage fusion: read-out selected on Train LOSO AUC: conf_max_over_views (0.9839)
+  0.9860  0.85*g_head + 0.10*g_dist + 0.05*g_entropy  U@95 0.9090
+  0.9859  0.80*g_head + 0.15*g_dist + 0.05*g_entropy  U@95 0.9121
+  0.9858  0.95*g_head + 0.05*g_dist  U@95 0.9059
+  0.9856  0.90*g_head + 0.05*g_dist + 0.05*g_entropy  U@95 0.9051
+  0.9854  0.75*g_head + 0.20*g_dist + 0.05*g_entropy  U@95 0.9091
+  0.9852  0.90*g_head + 0.10*g_dist  U@95 0.9019
+  selected 0.85*g_head + 0.10*g_dist + 0.05*g_entropy: LOSO AUC 0.9860, U@95 0.9090 (pooled-threshold 0.9544)
+=== stage capacity ===
+stage capacity: frozen branch A v2 in-sample argmax 0.9995
+  in-sample logits 0.9995; alpha 1.0 -> in-sample 0.9991, OOF 0.9950; prototype-only 0.9847
+=== stage test ===
+stage test: predictions written to test_predictions_fused.csv (20543/22251 accepted at a=0.95)
+  audit a=0.95: S1 rejection 0.1118 S2 acceptance 0.9288
+=== stage attack ===
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (1s)
+  clean: closed-set 1.0000, accept(a=0.97) 0.9960, RA 0.9960
+  eps=0.005 goal A: RA 0.9944 ASafeR 1.0000 closed 1.0000 accept 0.9944
+  eps=0.005 goal B: RA 0.9944 ASafeR 1.0000 closed 1.0000 accept 0.9944
+  eps=0.005 goal C: RA 0.9944 ASafeR 1.0000 closed 1.0000 accept 0.9944
+  eps=0.005 goal D: RA 1.0000 ASafeR 1.0000 closed 1.0000 accept 1.0000
+  eps=0.010 goal A: RA 0.9944 ASafeR 1.0000 closed 0.9992 accept 0.9944
+  eps=0.010 goal B: RA 0.9944 ASafeR 1.0000 closed 0.9992 accept 0.9944
+  eps=0.010 goal C: RA 0.9936 ASafeR 1.0000 closed 1.0000 accept 0.9936
+  eps=0.010 goal D: RA 1.0000 ASafeR 1.0000 closed 1.0000 accept 1.0000
+  eps=0.020 goal A: RA 0.9736 ASafeR 0.9832 closed 0.9824 accept 0.9904
+  eps=0.020 goal B: RA 0.9736 ASafeR 0.9848 closed 0.9840 accept 0.9888
+  eps=0.020 goal C: RA 0.9888 ASafeR 0.9992 closed 0.9984 accept 0.9896
+  eps=0.020 goal D: RA 1.0000 ASafeR 1.0000 closed 1.0000 accept 1.0000
+attack done in 19s: worst RA 0.9736 at a=0.97, worst ASafeR 0.9832
+total 59s

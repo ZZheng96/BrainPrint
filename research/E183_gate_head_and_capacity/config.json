@@ -1,0 +1,88 @@
+{
+  "experiment": "E183_gate_head_and_capacity",
+  "date": "2026-11-15",
+  "purpose": "Attack gates #1/#5/#6/#7 only. Train a dedicated open-set head (2-layer MLP, identity + registered/unregistered heads) on E65 correlation-logSPD PCA-96 features with strictly nested leave-identity-out pseudo-unknowns, fuse it with the E65 distance gate and branch A entropy gate, and re-measure the ten gates. #9/#10 are audited but not targeted.",
+  "frozen_sources": {
+    "e180": "E180_dual_branch_adversarial_openset",
+    "e182": "E182_session_invariant_backbone",
+    "branch_a": "E182 branch A v2 (session-invariant adversarial EEGNet, 248084 params) - read only, never retrained here",
+    "branch_b": "E180 branch B (E65 correlation-logSPD -> per-task z -> PCA-96 -> k=12 prototypes) - read only",
+    "g_entropy_loso": "E182 cache/loso_v2.npz (20-fold leave-identity-out probe signals) - read only",
+    "g_entropy_test": "E182 cache/signals_v2.npz test_z row 4 - read only",
+    "read_only": true,
+    "note": "E183 never writes into any existing experiment directory"
+  },
+  "head": {
+    "features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "feature_dim": 855,
+    "per_task_standardisation": "z-score per task, statistics from that fold's pm & fit_rows rows (Train-only, held-out identity excluded)",
+    "pca_dim": 96,
+    "pca_fit_rows": "pm & fit_rows (19 enrolled identities, held-out identity excluded)",
+    "feature_standardisation": "PCA scores z-scored with the mean/std of the fold's own training rows (K union U)",
+    "hidden": [128, 64],
+    "dropout": 0.2,
+    "identity_head": "Linear(64, |K|) softmax over the identities trained as registered (K)",
+    "open_head": "Linear(64, 1), target 1 = registered (K), 0 = pseudo-unknown (U)",
+    "pseudo_unknown_per_repeat": 4,
+    "repeats_per_fold": 3,
+    "repeat_aggregation": "mean of per-repeat z-scored open-set logits (per-repeat z uses that repeat's training-row mean/std)",
+    "loss": "CE(identity, K rows) + 1.0 * 0.5*(mean BCE known + mean BCE pseudo-unknown)",
+    "loss_open_weight": 1.0,
+    "epochs": 60,
+    "early_stop": "inner validation loss on a 15% per-identity holdout of the fold's own training rows (never the eval window, never the held-out identity)",
+    "batch_size": 256,
+    "learning_rate": 0.002,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "nesting": "outer fold = held-out identity (never in any head, PCA, standardisation, prototype or threshold); inner fold = 4 of the 19 enrolled identities used as pseudo-unknown only"
+  },
+  "gate": {
+    "signals": {
+      "g_head": "mean over 3 inner repeats of z(open-set logit), larger = more likely registered",
+      "g_dist": "branch B -nearest-prototype distance, z-scored with the frozen E180 Train OOF mean/std",
+      "g_entropy": "branch A sum p log p, z-scored with the frozen E182 Train OOF mean/std"
+    },
+    "weight_grid": "simplex of (g_head, g_dist, g_entropy) with step 0.05",
+    "selection_rule": "argmax pooled Train LOSO gate AUC (known = 19 enrolled identities), ties by fold-mean AUC then fewer signals",
+    "forbidden": "no Test metric, threshold or Session field influences head training, weights or thresholds"
+  },
+  "threshold": {
+    "rule": "tau(a) = quantile(pooled Train LOSO known fused score, 1 - a)",
+    "grid": [0.90, 0.92, 0.95, 0.97],
+    "gate6_working_point": 0.95,
+    "gate7_working_point": 0.97
+  },
+  "loso": {
+    "folds": 20,
+    "known_primary": "window rows (0.6 < frac <= 0.8) of the 19 enrolled identities",
+    "known_strict": "window rows of the |K| = 15 identities the head trained as registered",
+    "unknown": "window rows of the held-out identity (never used for training or calibration)",
+    "u_at_95": "per fold: threshold = 5% quantile of that fold's known scores; fraction of unknown scores below it"
+  },
+  "attack": {
+    "domain": "Train window 0.6 < frac <= 0.8, stratified cap 400 per task, same subset and seed as E180/E181/E182",
+    "eps_normalised": [0.005, 0.01, 0.02],
+    "steps": 8,
+    "temperature": 10.0,
+    "seed": 20261115,
+    "cap_per_task": 400,
+    "goals": {
+      "A": "impersonation on the identity head",
+      "B": "broad confusion on the identity head",
+      "C": "boundary impersonation on the identity head",
+      "D": "gate evasion: maximise the fused gate (g_head + g_dist + g_entropy, all differentiable)"
+    },
+    "head_assignment": "each attacked trial uses the earliest outer fold in which its identity is trained as registered in all three inner repeats",
+    "status": "self-built white-box PGD surrogate, not the official attack suite"
+  },
+  "capacity": {
+    "gate1_baseline": "E182 branch A v2 in-sample argmax (frozen)",
+    "auxiliary": "nearest-prototype score added to the identity logits: argmax_c (logit_c + alpha * (-d_c)), d_c = min euclidean distance to identity c prototypes",
+    "alpha_selection": "alpha chosen on the 5-block OOF accuracy (Train-only), then applied unchanged to the in-sample reading",
+    "honesty": "prototype-assisted in-sample accuracy is a capacity/memorisation probe, not a generalisation gain"
+  },
+  "reporting": {
+    "test_official": "N/A: Test has no identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "Test predictions are written to CSV before the Session column is read; Session is only used for the #9/#10 audit"
+  }
+}

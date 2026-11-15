@@ -1,0 +1,718 @@
+{
+  "experiment": "E183_gate_head_and_capacity",
+  "note": "single-working-point gate matrix rebuilt from the frozen E183 results; adversarial metrics were stored per a, only the threshold changes; no retraining, no Test re-scoring",
+  "working_points": [
+    "0.90",
+    "0.92",
+    "0.95",
+    "0.97"
+  ],
+  "gates": {
+    "#1": {
+      "name": "Train 准确率（拟合容量）",
+      "target": "= 1.00",
+      "kind": "eq",
+      "target_value": 1.0,
+      "source": "capacity.in_sample_logits_argmax",
+      "values": {
+        "0.90": 0.9994692144373672,
+        "0.92": 0.9994692144373672,
+        "0.95": 0.9994692144373672,
+        "0.97": 0.9994692144373672
+      },
+      "margins": {
+        "0.90": -0.0005307855626327518,
+        "0.92": -0.0005307855626327518,
+        "0.95": -0.0005307855626327518,
+        "0.97": -0.0005307855626327518
+      },
+      "pass": {
+        "0.90": false,
+        "0.92": false,
+        "0.95": false,
+        "0.97": false
+      },
+      "details": {
+        "0.90": {
+          "prototype_assisted_technical_max": 0.9997346072186837
+        },
+        "0.92": {
+          "prototype_assisted_technical_max": 0.9997346072186837
+        },
+        "0.95": {
+          "prototype_assisted_technical_max": 0.9997346072186837
+        },
+        "0.97": {
+          "prototype_assisted_technical_max": 0.9997346072186837
+        }
+      },
+      "a_independent": true,
+      "structural_fail": true
+    },
+    "#2": {
+      "name": "C（5 块 OOF 闭集准确率）",
+      "target": "≥ 0.95",
+      "kind": "ge",
+      "target_value": 0.95,
+      "source": "capacity.oof_accuracy_C",
+      "values": {
+        "0.90": 0.9871726822363766,
+        "0.92": 0.9871726822363766,
+        "0.95": 0.9871726822363766,
+        "0.97": 0.9871726822363766
+      },
+      "margins": {
+        "0.90": 0.0371726822363766,
+        "0.92": 0.0371726822363766,
+        "0.95": 0.0371726822363766,
+        "0.97": 0.0371726822363766
+      },
+      "pass": {
+        "0.90": true,
+        "0.92": true,
+        "0.95": true,
+        "0.97": true
+      },
+      "details": {
+        "0.90": {},
+        "0.92": {},
+        "0.95": {},
+        "0.97": {}
+      },
+      "a_independent": true,
+      "structural_fail": false
+    },
+    "#3": {
+      "name": "身份 macro-F1（5 块 OOF）",
+      "target": "≥ 0.92",
+      "kind": "ge",
+      "target_value": 0.92,
+      "source": "capacity.oof_macro_f1",
+      "values": {
+        "0.90": 0.9867738706881116,
+        "0.92": 0.9867738706881116,
+        "0.95": 0.9867738706881116,
+        "0.97": 0.9867738706881116
+      },
+      "margins": {
+        "0.90": 0.06677387068811158,
+        "0.92": 0.06677387068811158,
+        "0.95": 0.06677387068811158,
+        "0.97": 0.06677387068811158
+      },
+      "pass": {
+        "0.90": true,
+        "0.92": true,
+        "0.95": true,
+        "0.97": true
+      },
+      "details": {
+        "0.90": {},
+        "0.92": {},
+        "0.95": {},
+        "0.97": {}
+      },
+      "a_independent": true,
+      "structural_fail": false
+    },
+    "#4": {
+      "name": "块外准确率（frac>0.6）",
+      "target": "≥ 0.90",
+      "kind": "ge",
+      "target_value": 0.9,
+      "source": "capacity.oof_accuracy_forward_blocks",
+      "values": {
+        "0.90": 0.9863310913430245,
+        "0.92": 0.9863310913430245,
+        "0.95": 0.9863310913430245,
+        "0.97": 0.9863310913430245
+      },
+      "margins": {
+        "0.90": 0.08633109134302452,
+        "0.92": 0.08633109134302452,
+        "0.95": 0.08633109134302452,
+        "0.97": 0.08633109134302452
+      },
+      "pass": {
+        "0.90": true,
+        "0.92": true,
+        "0.95": true,
+        "0.97": true
+      },
+      "details": {
+        "0.90": {},
+        "0.92": {},
+        "0.95": {},
+        "0.97": {}
+      },
+      "a_independent": true,
+      "structural_fail": false
+    },
+    "#5": {
+      "name": "pseudo-unknown AUROC（20 折 LOSO）",
+      "target": "≥ 0.98",
+      "kind": "ge",
+      "target_value": 0.98,
+      "source": "fusion.selected.pooled_auc",
+      "values": {
+        "0.90": 0.9860099094590091,
+        "0.92": 0.9860099094590091,
+        "0.95": 0.9860099094590091,
+        "0.97": 0.9860099094590091
+      },
+      "margins": {
+        "0.90": 0.006009909459009144,
+        "0.92": 0.006009909459009144,
+        "0.95": 0.006009909459009144,
+        "0.97": 0.006009909459009144
+      },
+      "pass": {
+        "0.90": true,
+        "0.92": true,
+        "0.95": true,
+        "0.97": true
+      },
+      "details": {
+        "0.90": {
+          "strict_known_pooled_auc": 0.992376711992006,
+          "fold_auc_mean": 0.986694433092764,
+          "fold_auc_std": 0.013551333258172859
+        },
+        "0.92": {
+          "strict_known_pooled_auc": 0.992376711992006,
+          "fold_auc_mean": 0.986694433092764,
+          "fold_auc_std": 0.013551333258172859
+        },
+        "0.95": {
+          "strict_known_pooled_auc": 0.992376711992006,
+          "fold_auc_mean": 0.986694433092764,
+          "fold_auc_std": 0.013551333258172859
+        },
+        "0.97": {
+          "strict_known_pooled_auc": 0.992376711992006,
+          "fold_auc_mean": 0.986694433092764,
+          "fold_auc_std": 0.013551333258172859
+        }
+      },
+      "a_independent": true,
+      "structural_fail": false
+    },
+    "#6": {
+      "name": "U@95%（known 接受率 95%）",
+      "target": "≥ 0.95",
+      "kind": "ge",
+      "target_value": 0.95,
+      "source": "fusion.selected.u95_*",
+      "values": {
+        "0.90": 0.9090129591034117,
+        "0.92": 0.9090129591034117,
+        "0.95": 0.9090129591034117,
+        "0.97": 0.9090129591034117
+      },
+      "margins": {
+        "0.90": -0.04098704089658822,
+        "0.92": -0.04098704089658822,
+        "0.95": -0.04098704089658822,
+        "0.97": -0.04098704089658822
+      },
+      "pass": {
+        "0.90": false,
+        "0.92": false,
+        "0.95": false,
+        "0.97": false
+      },
+      "details": {
+        "0.90": {
+          "global_threshold": 0.954367666232073,
+          "per_fold_threshold": 0.9090129591034117,
+          "strict_known_per_fold": 0.9655608640983221,
+          "judged_on": "worst of the two threshold readings"
+        },
+        "0.92": {
+          "global_threshold": 0.954367666232073,
+          "per_fold_threshold": 0.9090129591034117,
+          "strict_known_per_fold": 0.9655608640983221,
+          "judged_on": "worst of the two threshold readings"
+        },
+        "0.95": {
+          "global_threshold": 0.954367666232073,
+          "per_fold_threshold": 0.9090129591034117,
+          "strict_known_per_fold": 0.9655608640983221,
+          "judged_on": "worst of the two threshold readings"
+        },
+        "0.97": {
+          "global_threshold": 0.954367666232073,
+          "per_fold_threshold": 0.9090129591034117,
+          "strict_known_per_fold": 0.9655608640983221,
+          "judged_on": "worst of the two threshold readings"
+        }
+      },
+      "a_independent": true,
+      "structural_fail": true
+    },
+    "#7": {
+      "name": "RA（自建 PGD，ε×目标取最差）",
+      "target": "≥ 0.95",
+      "kind": "ge",
+      "target_value": 0.95,
+      "source": "attack.conditions[].at_acceptance",
+      "values": {
+        "0.90": 0.963258785942492,
+        "0.92": 0.9696485623003195,
+        "0.95": 0.9720447284345048,
+        "0.97": 0.9736421725239617
+      },
+      "margins": {
+        "0.90": 0.01325878594249208,
+        "0.92": 0.019648562300319528,
+        "0.95": 0.02204472843450489,
+        "0.97": 0.023642172523961724
+      },
+      "pass": {
+        "0.90": true,
+        "0.92": true,
+        "0.95": true,
+        "0.97": true
+      },
+      "details": {
+        "0.90": {
+          "eps": 0.02,
+          "goal": "A",
+          "clean_accept_rate": 0.9896166134185304
+        },
+        "0.92": {
+          "eps": 0.02,
+          "goal": "A",
+          "clean_accept_rate": 0.9920127795527156
+        },
+        "0.95": {
+          "eps": 0.02,
+          "goal": "A",
+          "clean_accept_rate": 0.994408945686901
+        },
+        "0.97": {
+          "eps": 0.02,
+          "goal": "A",
+          "clean_accept_rate": 0.9960063897763578
+        }
+      },
+      "a_independent": false,
+      "structural_fail": false
+    },
+    "#8": {
+      "name": "ASafeR（同一攻击取最差）",
+      "target": "≥ 0.98",
+      "kind": "ge",
+      "target_value": 0.98,
+      "source": "attack.conditions[].at_acceptance",
+      "values": {
+        "0.90": 0.9840255591054313,
+        "0.92": 0.9840255591054313,
+        "0.95": 0.9840255591054313,
+        "0.97": 0.9832268370607029
+      },
+      "margins": {
+        "0.90": 0.004025559105431342,
+        "0.92": 0.004025559105431342,
+        "0.95": 0.004025559105431342,
+        "0.97": 0.003226837060702925
+      },
+      "pass": {
+        "0.90": true,
+        "0.92": true,
+        "0.95": true,
+        "0.97": true
+      },
+      "details": {
+        "0.90": {
+          "eps": 0.02,
+          "goal": "A",
+          "clean_accept_rate": 0.9896166134185304
+        },
+        "0.92": {
+          "eps": 0.02,
+          "goal": "A",
+          "clean_accept_rate": 0.9920127795527156
+        },
+        "0.95": {
+          "eps": 0.02,
+          "goal": "A",
+          "clean_accept_rate": 0.994408945686901
+        },
+        "0.97": {
+          "eps": 0.02,
+          "goal": "A",
+          "clean_accept_rate": 0.9960063897763578
+        }
+      },
+      "a_independent": false,
+      "structural_fail": false
+    },
+    "#9": {
+      "name": "Test S2 接受率",
+      "target": "≥ 0.75",
+      "kind": "ge",
+      "target_value": 0.75,
+      "source": "test.grid[a].S2_acceptance",
+      "values": {
+        "0.90": 0.8173066916432511,
+        "0.92": 0.8600270579664897,
+        "0.95": 0.928764699760641,
+        "0.97": 0.9763763138724113
+      },
+      "margins": {
+        "0.90": 0.0673066916432511,
+        "0.92": 0.1100270579664897,
+        "0.95": 0.17876469976064102,
+        "0.97": 0.2263763138724113
+      },
+      "pass": {
+        "0.90": true,
+        "0.92": true,
+        "0.95": true,
+        "0.97": true
+      },
+      "details": {
+        "0.90": {
+          "S1_rejection_same_point": 0.27332673920211015
+        },
+        "0.92": {
+          "S1_rejection_same_point": 0.21068249258160238
+        },
+        "0.95": {
+          "S1_rejection_same_point": 0.11177052423343224
+        },
+        "0.97": {
+          "S1_rejection_same_point": 0.043521266073194856
+        }
+      },
+      "a_independent": false,
+      "structural_fail": false
+    },
+    "#10": {
+      "name": "Test S1 拒识率",
+      "target": "≥ 0.75",
+      "kind": "ge",
+      "target_value": 0.75,
+      "source": "test.grid[a].S1_rejection",
+      "values": {
+        "0.90": 0.27332673920211015,
+        "0.92": 0.21068249258160238,
+        "0.95": 0.11177052423343224,
+        "0.97": 0.043521266073194856
+      },
+      "margins": {
+        "0.90": -0.47667326079788985,
+        "0.92": -0.5393175074183976,
+        "0.95": -0.6382294757665677,
+        "0.97": -0.7064787339268052
+      },
+      "pass": {
+        "0.90": false,
+        "0.92": false,
+        "0.95": false,
+        "0.97": false
+      },
+      "details": {
+        "0.90": {
+          "S2_acceptance_same_point": 0.8173066916432511
+        },
+        "0.92": {
+          "S2_acceptance_same_point": 0.8600270579664897
+        },
+        "0.95": {
+          "S2_acceptance_same_point": 0.928764699760641
+        },
+        "0.97": {
+          "S2_acceptance_same_point": 0.9763763138724113
+        }
+      },
+      "a_independent": false,
+      "structural_fail": true
+    }
+  },
+  "per_working_point": {
+    "0.90": {
+      "n_pass": 7,
+      "passed": [
+        "#2",
+        "#3",
+        "#4",
+        "#5",
+        "#7",
+        "#8",
+        "#9"
+      ],
+      "failed": [
+        "#1",
+        "#6",
+        "#10"
+      ],
+      "shortfalls": {
+        "#1": {
+          "value": 0.9994692144373672,
+          "target": 1.0,
+          "gap": 0.0005307855626327518
+        },
+        "#6": {
+          "value": 0.9090129591034117,
+          "target": 0.95,
+          "gap": 0.04098704089658822
+        },
+        "#10": {
+          "value": 0.27332673920211015,
+          "target": 0.75,
+          "gap": 0.47667326079788985
+        }
+      },
+      "test_pair": {
+        "S1_rejection": 0.27332673920211015,
+        "S2_acceptance": 0.8173066916432511,
+        "S1_plus_S2": 1.0906334308453611
+      },
+      "attack_working_point": {
+        "tau": 0.14522714210444596,
+        "clean_accept_rate": 0.9896166134185304,
+        "clean_RA": 0.9896166134185304,
+        "clean_ASafeR": 1.0
+      }
+    },
+    "0.92": {
+      "n_pass": 7,
+      "passed": [
+        "#2",
+        "#3",
+        "#4",
+        "#5",
+        "#7",
+        "#8",
+        "#9"
+      ],
+      "failed": [
+        "#1",
+        "#6",
+        "#10"
+      ],
+      "shortfalls": {
+        "#1": {
+          "value": 0.9994692144373672,
+          "target": 1.0,
+          "gap": 0.0005307855626327518
+        },
+        "#6": {
+          "value": 0.9090129591034117,
+          "target": 0.95,
+          "gap": 0.04098704089658822
+        },
+        "#10": {
+          "value": 0.21068249258160238,
+          "target": 0.75,
+          "gap": 0.5393175074183976
+        }
+      },
+      "test_pair": {
+        "S1_rejection": 0.21068249258160238,
+        "S2_acceptance": 0.8600270579664897,
+        "S1_plus_S2": 1.0707095505480921
+      },
+      "attack_working_point": {
+        "tau": 0.09538896500330366,
+        "clean_accept_rate": 0.9920127795527156,
+        "clean_RA": 0.9920127795527156,
+        "clean_ASafeR": 1.0
+      }
+    },
+    "0.95": {
+      "n_pass": 7,
+      "passed": [
+        "#2",
+        "#3",
+        "#4",
+        "#5",
+        "#7",
+        "#8",
+        "#9"
+      ],
+      "failed": [
+        "#1",
+        "#6",
+        "#10"
+      ],
+      "shortfalls": {
+        "#1": {
+          "value": 0.9994692144373672,
+          "target": 1.0,
+          "gap": 0.0005307855626327518
+        },
+        "#6": {
+          "value": 0.9090129591034117,
+          "target": 0.95,
+          "gap": 0.04098704089658822
+        },
+        "#10": {
+          "value": 0.11177052423343224,
+          "target": 0.75,
+          "gap": 0.6382294757665677
+        }
+      },
+      "test_pair": {
+        "S1_rejection": 0.11177052423343224,
+        "S2_acceptance": 0.928764699760641,
+        "S1_plus_S2": 1.0405352239940733
+      },
+      "attack_working_point": {
+        "tau": -0.006778378262939146,
+        "clean_accept_rate": 0.994408945686901,
+        "clean_RA": 0.994408945686901,
+        "clean_ASafeR": 1.0
+      }
+    },
+    "0.97": {
+      "n_pass": 7,
+      "passed": [
+        "#2",
+        "#3",
+        "#4",
+        "#5",
+        "#7",
+        "#8",
+        "#9"
+      ],
+      "failed": [
+        "#1",
+        "#6",
+        "#10"
+      ],
+      "shortfalls": {
+        "#1": {
+          "value": 0.9994692144373672,
+          "target": 1.0,
+          "gap": 0.0005307855626327518
+        },
+        "#6": {
+          "value": 0.9090129591034117,
+          "target": 0.95,
+          "gap": 0.04098704089658822
+        },
+        "#10": {
+          "value": 0.043521266073194856,
+          "target": 0.75,
+          "gap": 0.7064787339268052
+        }
+      },
+      "test_pair": {
+        "S1_rejection": 0.043521266073194856,
+        "S2_acceptance": 0.9763763138724113,
+        "S1_plus_S2": 1.0198975799456063
+      },
+      "attack_working_point": {
+        "tau": -0.12086634197518586,
+        "clean_accept_rate": 0.9960063897763578,
+        "clean_RA": 0.9960063897763578,
+        "clean_ASafeR": 1.0
+      }
+    }
+  },
+  "overall": {
+    "max_pass_single_working_point": 7,
+    "working_points_reaching_max": [
+      "0.90",
+      "0.92",
+      "0.95",
+      "0.97"
+    ],
+    "tie_break_rule": "larger S1_rejection + S2_acceptance (the pair #9/#10 needs 1.50 simultaneously); then smaller #10 shortfall",
+    "recommended_single_working_point": "0.90",
+    "recommended_evidence": {
+      "S1_plus_S2": 1.0906334308453611,
+      "S1_plus_S2_by_point": {
+        "0.90": 1.0906334308453611,
+        "0.92": 1.0707095505480921,
+        "0.95": 1.0405352239940733,
+        "0.97": 1.0198975799456063
+      },
+      "gap10_by_point": {
+        "0.90": 0.47667326079788985,
+        "0.92": 0.5393175074183976,
+        "0.95": 0.6382294757665677,
+        "0.97": 0.7064787339268052
+      }
+    },
+    "structural_failures": [
+      "#1",
+      "#6",
+      "#10"
+    ],
+    "no_stitching": "every column is one full system at one threshold; the gate table of report §4 mixes working points and is superseded by this matrix for pass counting"
+  },
+  "attack_per_working_point": {
+    "0.90": {
+      "worst_RA": {
+        "value": 0.963258785942492,
+        "eps": 0.02,
+        "goal": "A"
+      },
+      "worst_ASafeR": {
+        "value": 0.9840255591054313,
+        "eps": 0.02,
+        "goal": "A"
+      },
+      "min_accept_rate": 0.9744408945686901,
+      "clean_accept_rate": 0.9896166134185304,
+      "clean_RA": 0.9896166134185304,
+      "clean_ASafeR": 1.0,
+      "tau": 0.14522714210444596
+    },
+    "0.92": {
+      "worst_RA": {
+        "value": 0.9696485623003195,
+        "eps": 0.02,
+        "goal": "A"
+      },
+      "worst_ASafeR": {
+        "value": 0.9840255591054313,
+        "eps": 0.02,
+        "goal": "A"
+      },
+      "min_accept_rate": 0.9840255591054313,
+      "clean_accept_rate": 0.9920127795527156,
+      "clean_RA": 0.9920127795527156,
+      "clean_ASafeR": 1.0,
+      "tau": 0.09538896500330366
+    },
+    "0.95": {
+      "worst_RA": {
+        "value": 0.9720447284345048,
+        "eps": 0.02,
+        "goal": "A"
+      },
+      "worst_ASafeR": {
+        "value": 0.9840255591054313,
+        "eps": 0.02,
+        "goal": "A"
+      },
+      "min_accept_rate": 0.987220447284345,
+      "clean_accept_rate": 0.994408945686901,
+      "clean_RA": 0.994408945686901,
+      "clean_ASafeR": 1.0,
+      "tau": -0.006778378262939146
+    },
+    "0.97": {
+      "worst_RA": {
+        "value": 0.9736421725239617,
+        "eps": 0.02,
+        "goal": "A"
+      },
+      "worst_ASafeR": {
+        "value": 0.9832268370607029,
+        "eps": 0.02,
+        "goal": "A"
+      },
+      "min_accept_rate": 0.9888178913738019,
+      "clean_accept_rate": 0.9960063897763578,
+      "clean_RA": 0.9960063897763578,
+      "clean_ASafeR": 1.0,
+      "tau": -0.12086634197518586
+    }
+  }
+}
