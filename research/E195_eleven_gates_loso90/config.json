@@ -1,0 +1,145 @@
+{
+  "experiment": "E195_eleven_gates_loso90",
+  "date": "2026-11-15",
+  "purpose": "Under the new 11th gate (#11 strict LOSO unknown rejection > 0.90), re-search the open-set gate system: implement loso_std (E143 protocol, the held-out identity participates in the task-wise z statistics and the PCA basis) and loso_strict (the held-out identity is excluded from those statistics as well as from the prototypes), score every reusable gate candidate on both readings and on the Test S1 / S2 audit, locate the loso_strict vs Test-min Pareto frontier, and answer whether #11 can coexist with Test S1 >= 0.70 AND Test S2 >= 0.70 in one work point.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "classes": [1, 20]
+  },
+  "protocol": {
+    "fit_fraction": 0.6,
+    "eval_window": "0.6 < frac <= 0.8",
+    "blocks": 5,
+    "blocks_rule": "block = clip(int(frac * 5), 0, 4) per (subject, task) trial order",
+    "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.92, 0.95, 0.97],
+    "primary_acceptance": 0.90,
+    "seed": 20261115
+  },
+  "loso_definitions": {
+    "loso_std": "E143 protocol: task-wise mean/std from every Train row of the task (all 20 identities, the held-out identity included), PCA basis fitted on fit_rows of all 20 identities, prototypes from pm & fit_rows only (19 enrolled identities).",
+    "loso_strict": "For held identity h: task-wise mean/std from the other 19 identities' Train rows only, PCA basis from (keep & fit_rows) only, prototypes from (keep & fit_rows) only. No row of h enters any fitted statistic.",
+    "evaluation": "known = 19 enrolled identities' 0.6 < frac <= 0.8 rows; unknown = h's same window; per-fold threshold = quantile(fold known, 1 - a); 20 folds."
+  },
+  "streams": {
+    "e65_dist": {
+      "path": "e65 correlation-logSPD distance",
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "pca": 96, "k": 12, "dim": 855, "source": "E65 / E143 / E194"
+    },
+    "subwin6_dist": {
+      "path": "subwin_mean N=6 distance",
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n6.npy",
+      "test": "research/E171_multiscale_fusion/test_subwin_mean_n6.npy",
+      "pca": 96, "k": 1, "dim": 855, "source": "E168 / E171"
+    },
+    "subwin12_dist": {
+      "path": "subwin_mean N=12 distance",
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n12.npy",
+      "test": "research/E171_multiscale_fusion/test_subwin_mean_n12.npy",
+      "pca": 48, "k": 1, "dim": 855, "source": "E168 / E171"
+    },
+    "logbp_dist": {
+      "path": "log band power distance",
+      "train": "research/E146_phase_features/train_log_band_power.npy",
+      "test": "research/E146_phase_features/test_log_band_power.npy",
+      "pca": 16, "k": 1, "dim": 90, "source": "E146"
+    },
+    "e162_dist": {
+      "path": "E162 raw-EEG embedding distance",
+      "train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+      "test": "research/E162_raw_eeg_contrastive_v2/test_emb.npy",
+      "pca": 128, "k": 1, "dim": 256, "source": "E162"
+    },
+    "wccn_dr": {
+      "path": "E192 WCCN distance-ratio gate on E65 correlation-logSPD",
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "dim": 855, "shrinkage": 0.05, "eigenvalue_floor": 1e-06,
+      "source": "E192 (reimplemented exactly, cross-checked against cache/gate_arrays.npz)"
+    },
+    "e183_fuse": {
+      "path": "E183 three-view gate 0.85*g_head + 0.10*g_dist + 0.05*g_entropy",
+      "loso_source": "research/E183_gate_head_and_capacity/cache/loso_head.npz",
+      "contam_source": "research/E194_loso_vs_s1_gap/cache/contam_heads.npz",
+      "test_source": "research/E183_gate_head_and_capacity/test_predictions_fused.csv",
+      "source": "E183 / E194"
+    }
+  },
+  "deployment": {
+    "distance_streams": "E143 / E194 convention: per-task z statistics from all Train rows, PCA basis from all Train fit_rows, Test and 5-block OOF prototypes from every Train row (~block for OOF), LOSO folds from pm & fit_rows only.",
+    "wccn_dr": "E192 convention: WCCN fitted on fit_rows, prototypes from every class, 5-block OOF fitted on fit_rows & ~block; strict folds fitted on the other 19 identities' fit_rows.",
+    "e183_fuse": "published E183 cache; no 5-block OOF stream, threshold = pooled strict LOSO known quantile (E194 convention)."
+  },
+  "candidates": {
+    "singles": ["e65_dist", "subwin6_dist", "subwin12_dist", "logbp_dist", "e162_dist", "wccn_dr", "e183_fuse"],
+    "pairs": [
+      ["e65_dist", "subwin6_dist"],
+      ["e65_dist", "logbp_dist"],
+      ["e65_dist", "subwin12_dist"],
+      ["e65_dist", "e162_dist"],
+      ["e65_dist", "wccn_dr"],
+      ["e65_dist", "e183_fuse"],
+      ["e183_fuse", "subwin6_dist"],
+      ["e183_fuse", "wccn_dr"],
+      ["wccn_dr", "subwin6_dist"],
+      ["subwin6_dist", "subwin12_dist"]
+    ],
+    "triples": [
+      ["e183_fuse", "e65_dist", "subwin6_dist"],
+      ["e183_fuse", "e65_dist", "wccn_dr"]
+    ],
+    "weight_rule": "Fusion weights are selected on LOSO strict only (max strict rejection at a=0.90, tie-break strict pooled AUC). Test is never used for weight selection. The Pareto audit additionally reports every weight on the grid so the frontier can be seen; that audit is not a deployable selector."
+  },
+  "e191_backbone": {
+    "directory": "research/E191_fix_gate1_gate7",
+    "model": "model_branch_a_v3.pt",
+    "results": "results.json",
+    "in_sample_accuracy": 1.0,
+    "oof_accuracy_5block": 0.9884111818825194,
+    "oof_macro_f1": 0.9881630532961442,
+    "oof_accuracy_forward_blocks": 0.9900195270123671
+  },
+  "attack": {
+    "type": "self-built white-box PGD on the E191 branch-A v3 identity model",
+    "subset": "Train window 0.6 < frac <= 0.8, stratified cap 400 per task, seed 20261115 (E180/E189/E191 subset)",
+    "snr_db": [30, 20],
+    "steps": 20,
+    "goals": {
+      "A": "untargeted max wrong-class logit",
+      "B": "untargeted logsumexp over wrong classes",
+      "C": "targeted next-class logit",
+      "D": "gate evasion"
+    },
+    "radius": "per-trial L2 norm of the channel-demeaned waveform divided by 10^(SNR/20)",
+    "reading": "#7 = min RA over SNR x goal; #8 = min ASafeR over the same conditions"
+  },
+  "gates": {
+    "1": "Train in-sample accuracy = 1.00",
+    "2": "5-block OOF closed-set accuracy C >= 0.95",
+    "3": "5-block OOF identity macro-F1 >= 0.92",
+    "4": "block-out accuracy on forward blocks >= 0.90",
+    "5": "pseudo-unknown LOSO AUROC >= 0.98 (strict reading reported; std alongside)",
+    "6": "U@95% >= 0.95 (strict reading reported; std alongside)",
+    "7": "RA worst over SNR x goal >= 0.95",
+    "8": "ASafeR worst over the same conditions >= 0.98",
+    "9": "Test S2 acceptance >= 0.70",
+    "10": "Test S1 rejection >= 0.70",
+    "11": "loso_strict unknown rejection at a=0.90 > 0.90 (loso_std reported alongside)",
+    "criterion_note": "user criterion: S1 >= 0.70 AND S2 >= 0.70 in the same work point; #11 uses the strict reading"
+  },
+  "reporting": {
+    "test_official": "N/A - Test has no identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "all Test scores are computed before the Session column is read; Session only splits S1 / S2 for the #9/#10 audit",
+    "single_work_point": "every counted column is one candidate at a=0.90; nothing is spliced across work points",
+    "threshold_rules": {
+      "paired_loso": "tau = quantile of the concatenated paired per-fold known scores (same rows for every fused component); available for every candidate, used for the uniform Pareto comparison",
+      "oof": "tau = quantile of the 5-block OOF score (project convention, E189/E191); available for distance / WCCN streams only, reported alongside",
+      "e183": "E183 has no 5-block OOF stream in its published cache; its published threshold is the pooled strict LOSO known quantile (E194 used the same)"
+    }
+  }
+}

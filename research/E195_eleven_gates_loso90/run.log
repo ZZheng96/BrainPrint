@@ -1,0 +1,200 @@
+E195 start 2026-11-15 23:47:48 device cuda
+stage scores: Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033, device cuda
+  e65_dist: 20s (test mean -17.377)
+  subwin6_dist: 17s (test mean -18.653)
+  subwin12_dist: 17s (test mean -17.319)
+  logbp_dist: 6s (test mean -6.720)
+  e162_dist: 8s (test mean -9.967)
+  wccn_dr: 2s (test mean 1.065)
+  E192 cross-check: known corr 1.000000, unknown corr 1.000000, AUC ours 0.9873 vs E192 0.9873
+  e183_fuse: 0s
+stage scores done in 70s
+E195 done
+E195 start 2026-11-15 23:49:06 device cuda
+  pair e65_dist+subwin6_dist                selected {'e65_dist': 1.0, 'subwin6_dist': 0.0} strict 0.6448
+  pair e65_dist+logbp_dist                  selected {'e65_dist': 1.0, 'logbp_dist': 0.0} strict 0.6448
+  pair e65_dist+subwin12_dist               selected {'e65_dist': 1.0, 'subwin12_dist': 0.0} strict 0.6448
+  pair e65_dist+e162_dist                   selected {'e65_dist': 0.65, 'e162_dist': 0.35} strict 0.7808
+  pair e65_dist+wccn_dr                     selected {'e65_dist': 0.1, 'wccn_dr': 0.9} strict 0.9954
+  pair e65_dist+e183_fuse                   selected {'e65_dist': 0.0, 'e183_fuse': 1.0} strict 0.9848
+  pair e183_fuse+subwin6_dist               selected {'e183_fuse': 1.0, 'subwin6_dist': 0.0} strict 0.9848
+  pair e183_fuse+wccn_dr                    selected {'e183_fuse': 0.25, 'wccn_dr': 0.75} strict 0.9955
+  pair wccn_dr+subwin6_dist                 selected {'wccn_dr': 0.9, 'subwin6_dist': 0.09999999999999998} strict 0.9918
+  pair subwin6_dist+subwin12_dist           selected {'subwin6_dist': 1.0, 'subwin12_dist': 0.0} strict 0.3982
+  triple e183_fuse+e65_dist+subwin6_dist            selected {'e183_fuse': 1.0, 'e65_dist': 0.0, 'subwin6_dist': 0.0} strict 0.9848
+  triple e183_fuse+e65_dist+wccn_dr                 selected {'e183_fuse': 0.1, 'e65_dist': 0.1, 'wccn_dr': 0.8} strict 0.9964
+stage search done in 39s (349 points)
+  Pareto: 11 points, feasible (#11 + dual 0.70) 5
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.1, 'e65_dist': 0.1, 'wccn_dr': 0.8} strict 0.9964 std 0.9991 S1 0.5869 S2 0.3166 min 0.3166
+    e183_fuse+wccn_dr                        {'e183_fuse': 0.25, 'wccn_dr': 0.75}               strict 0.9955 std 0.9991 S1 0.4962 S2 0.5565 min 0.4962
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.2, 'wccn_dr': 0.5} strict 0.9899 std 0.9973 S1 0.5209 S2 0.5849 min 0.5209
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.30000000000000004, 'wccn_dr': 0.4} strict 0.9851 std 0.9948 S1 0.5994 S2 0.5821 min 0.5821
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.4, 'e65_dist': 0.4, 'wccn_dr': 0.2} strict 0.9773 std 0.9919 S1 0.6482 S2 0.6254 min 0.6254
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.5, 'e65_dist': 0.4, 'subwin6_dist': 0.1} strict 0.9746 std 0.9902 S1 0.6907 S2 0.6709 min 0.6709
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004} strict 0.9661 std 0.9847 S1 0.7639 S2 0.6784 min 0.6784
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.2, 'subwin6_dist': 0.4} strict 0.9614 std 0.9799 S1 0.7399 S2 0.7040 min 0.7040
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.1, 'subwin6_dist': 0.6000000000000001} strict 0.9191 std 0.9615 S1 0.7369 S2 0.7181 min 0.7181
+    e183_fuse+subwin6_dist                   {'e183_fuse': 0.2, 'subwin6_dist': 0.8}            strict 0.8452 std 0.9241 S1 0.7230 S2 0.7226 min 0.7226
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.2, 'e65_dist': 0.0, 'subwin6_dist': 0.8} strict 0.8452 std 0.9241 S1 0.7230 S2 0.7226 min 0.7226
+E195 done
+E195 start 2026-11-15 23:50:39 device cuda
+stage scores: Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033, device cuda
+  e65_dist: 20s (test mean -16.890)
+  subwin6_dist: 17s (test mean -18.330)
+  subwin12_dist: 18s (test mean -17.059)
+  logbp_dist: 6s (test mean -6.590)
+  e162_dist: 8s (test mean -9.724)
+  wccn_dr: 2s (test mean 1.065)
+  E192 cross-check: known corr 1.000000, unknown corr 1.000000, AUC ours 0.9873 vs E192 0.9873
+  e183_fuse: 0s
+stage scores done in 71s
+E195 done
+E195 start 2026-11-15 23:51:58 device cuda
+  pair e65_dist+subwin6_dist                selected {'e65_dist': 1.0, 'subwin6_dist': 0.0} strict 0.6448
+  pair e65_dist+logbp_dist                  selected {'e65_dist': 1.0, 'logbp_dist': 0.0} strict 0.6448
+  pair e65_dist+subwin12_dist               selected {'e65_dist': 1.0, 'subwin12_dist': 0.0} strict 0.6448
+  pair e65_dist+e162_dist                   selected {'e65_dist': 0.65, 'e162_dist': 0.35} strict 0.7795
+  pair e65_dist+wccn_dr                     selected {'e65_dist': 0.1, 'wccn_dr': 0.9} strict 0.9954
+  pair e65_dist+e183_fuse                   selected {'e65_dist': 0.0, 'e183_fuse': 1.0} strict 0.9848
+  pair e183_fuse+subwin6_dist               selected {'e183_fuse': 1.0, 'subwin6_dist': 0.0} strict 0.9848
+  pair e183_fuse+wccn_dr                    selected {'e183_fuse': 0.25, 'wccn_dr': 0.75} strict 0.9955
+  pair wccn_dr+subwin6_dist                 selected {'wccn_dr': 0.9, 'subwin6_dist': 0.09999999999999998} strict 0.9918
+  pair subwin6_dist+subwin12_dist           selected {'subwin6_dist': 1.0, 'subwin12_dist': 0.0} strict 0.3982
+  triple e183_fuse+e65_dist+subwin6_dist            selected {'e183_fuse': 1.0, 'e65_dist': 0.0, 'subwin6_dist': 0.0} strict 0.9848
+  triple e183_fuse+e65_dist+wccn_dr                 selected {'e183_fuse': 0.1, 'e65_dist': 0.1, 'wccn_dr': 0.8} strict 0.9964
+stage search done in 39s (349 points)
+  Pareto: 13 points, feasible (#11 + dual 0.70) 3
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.1, 'e65_dist': 0.1, 'wccn_dr': 0.8} strict 0.9964 std 0.9991 S1 0.5839 S2 0.3295 min 0.3295
+    e183_fuse+wccn_dr                        {'e183_fuse': 0.25, 'wccn_dr': 0.75}               strict 0.9955 std 0.9991 S1 0.4962 S2 0.5565 min 0.4962
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.2, 'e65_dist': 0.1, 'wccn_dr': 0.7000000000000001} strict 0.9955 std 0.9991 S1 0.5374 S2 0.4990 min 0.4990
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.2, 'e65_dist': 0.2, 'wccn_dr': 0.6000000000000001} strict 0.9906 std 0.9973 S1 0.5602 S2 0.5171 min 0.5171
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.2, 'e65_dist': 0.30000000000000004, 'wccn_dr': 0.5} strict 0.9850 std 0.9956 S1 0.6301 S2 0.5338 min 0.5338
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.30000000000000004, 'wccn_dr': 0.4} strict 0.9846 std 0.9944 S1 0.5539 S2 0.6127 min 0.5539
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.4, 'wccn_dr': 0.30000000000000004} strict 0.9768 std 0.9914 S1 0.6406 S2 0.6120 min 0.6120
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.4, 'e65_dist': 0.5, 'wccn_dr': 0.1} strict 0.9716 std 0.9889 S1 0.6686 S2 0.6569 min 0.6569
+    e65_dist+e183_fuse                       {'e65_dist': 0.55, 'e183_fuse': 0.44999999999999996} strict 0.9695 std 0.9868 S1 0.6640 S2 0.6773 min 0.6640
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.5, 'subwin6_dist': 0.1} strict 0.9660 std 0.9846 S1 0.7230 S2 0.6756 min 0.6756
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.4, 'subwin6_dist': 0.2} strict 0.9652 std 0.9847 S1 0.7214 S2 0.6907 min 0.6907
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004} strict 0.9640 std 0.9830 S1 0.7052 S2 0.7087 min 0.7052
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.2, 'subwin6_dist': 0.5} strict 0.9278 std 0.9666 S1 0.7227 S2 0.7221 min 0.7221
+E195 done
+E195 start 2026-11-15 23:54:27 device cuda
+stage attack: candidate e183_fuse+e65_dist+subwin6_dist weights {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004} (strict 0.9640, Test min 0.7052)
+  attack subset 1252 trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+E195 start 2026-11-15 23:54:39 device cuda
+stage attack: candidate e183_fuse+e65_dist+subwin6_dist weights {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004} (strict 0.9640, Test min 0.7052)
+  attack subset 1252 trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (1s)
+  tau(a=0.90, paired) -1.0684
+  clean: closed 1.0000 accept 0.9888 RA 0.9888 ASafeR 1.0000
+  SNR30 goal A: RA 0.9481 ASafeR 0.9625 accept 0.9856 closed 0.9601
+  SNR30 goal B: RA 0.9473 ASafeR 0.9617 accept 0.9856 closed 0.9601
+  SNR30 goal C: RA 0.9808 ASafeR 0.9992 accept 0.9816 closed 0.9992
+  SNR30 goal D: RA 0.9992 ASafeR 1.0000 accept 0.9992 closed 1.0000
+  SNR20 goal A: RA 0.0807 ASafeR 0.2364 accept 0.8442 closed 0.0815
+  SNR20 goal B: RA 0.0807 ASafeR 0.2484 accept 0.8323 closed 0.0807
+  SNR20 goal C: RA 0.4073 ASafeR 0.5711 accept 0.8363 closed 0.4257
+  SNR20 goal D: RA 0.9992 ASafeR 1.0000 accept 0.9992 closed 1.0000
+stage attack done: worst RA 0.0807 (SNR20 A), worst ASafeR 0.2364 (SNR20 A)
+E195 done
+E195 start 2026-11-15 23:57:13 device cuda
+stage report done: 9/11, candidate e183_fuse+e65_dist+subwin6_dist {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004}
+E195 done
+E195 start 2026-11-15 23:58:17 device cuda
+  pair e65_dist+subwin6_dist                selected {'e65_dist': 1.0, 'subwin6_dist': 0.0} strict 0.6448
+  pair e65_dist+logbp_dist                  selected {'e65_dist': 1.0, 'logbp_dist': 0.0} strict 0.6448
+  pair e65_dist+subwin12_dist               selected {'e65_dist': 1.0, 'subwin12_dist': 0.0} strict 0.6448
+  pair e65_dist+e162_dist                   selected {'e65_dist': 0.65, 'e162_dist': 0.35} strict 0.7795
+  pair e65_dist+wccn_dr                     selected {'e65_dist': 0.1, 'wccn_dr': 0.9} strict 0.9954
+  pair e65_dist+e183_fuse                   selected {'e65_dist': 0.0, 'e183_fuse': 1.0} strict 0.9848
+  pair e183_fuse+subwin6_dist               selected {'e183_fuse': 1.0, 'subwin6_dist': 0.0} strict 0.9848
+  pair e183_fuse+wccn_dr                    selected {'e183_fuse': 0.25, 'wccn_dr': 0.75} strict 0.9955
+  pair wccn_dr+subwin6_dist                 selected {'wccn_dr': 0.9, 'subwin6_dist': 0.09999999999999998} strict 0.9918
+  pair subwin6_dist+subwin12_dist           selected {'subwin6_dist': 1.0, 'subwin12_dist': 0.0} strict 0.3982
+  triple e183_fuse+e65_dist+subwin6_dist            selected {'e183_fuse': 1.0, 'e65_dist': 0.0, 'subwin6_dist': 0.0} strict 0.9848
+  triple e183_fuse+e65_dist+wccn_dr                 selected {'e183_fuse': 0.1, 'e65_dist': 0.1, 'wccn_dr': 0.8} strict 0.9964
+stage search done in 39s (349 points)
+  Pareto: 13 points, feasible (#11 + dual 0.70) 3
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.1, 'e65_dist': 0.1, 'wccn_dr': 0.8} strict 0.9964 std 0.9991 S1 0.5839 S2 0.3295 min 0.3295
+    e183_fuse+wccn_dr                        {'e183_fuse': 0.25, 'wccn_dr': 0.75}               strict 0.9955 std 0.9991 S1 0.4962 S2 0.5565 min 0.4962
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.2, 'e65_dist': 0.1, 'wccn_dr': 0.7000000000000001} strict 0.9955 std 0.9991 S1 0.5374 S2 0.4990 min 0.4990
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.2, 'e65_dist': 0.2, 'wccn_dr': 0.6000000000000001} strict 0.9906 std 0.9973 S1 0.5602 S2 0.5171 min 0.5171
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.2, 'e65_dist': 0.30000000000000004, 'wccn_dr': 0.5} strict 0.9850 std 0.9956 S1 0.6301 S2 0.5338 min 0.5338
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.30000000000000004, 'wccn_dr': 0.4} strict 0.9846 std 0.9944 S1 0.5539 S2 0.6127 min 0.5539
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.4, 'wccn_dr': 0.30000000000000004} strict 0.9768 std 0.9914 S1 0.6406 S2 0.6120 min 0.6120
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.4, 'e65_dist': 0.5, 'wccn_dr': 0.1} strict 0.9716 std 0.9889 S1 0.6686 S2 0.6569 min 0.6569
+    e65_dist+e183_fuse                       {'e65_dist': 0.55, 'e183_fuse': 0.44999999999999996} strict 0.9695 std 0.9868 S1 0.6640 S2 0.6773 min 0.6640
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.5, 'subwin6_dist': 0.1} strict 0.9660 std 0.9846 S1 0.7230 S2 0.6756 min 0.6756
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.4, 'subwin6_dist': 0.2} strict 0.9652 std 0.9847 S1 0.7214 S2 0.6907 min 0.6907
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004} strict 0.9640 std 0.9830 S1 0.7052 S2 0.7087 min 0.7052
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.2, 'subwin6_dist': 0.5} strict 0.9278 std 0.9666 S1 0.7227 S2 0.7221 min 0.7221
+E195 done
+E195 start 2026-11-15 23:59:06 device cuda
+stage attack: candidate e183_fuse+e65_dist+subwin6_dist weights {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004} (strict 0.9640, Test min 0.7052)
+  attack subset 1252 trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  tau(a=0.90, paired) -1.0684
+  clean: closed 1.0000 accept 0.9888 RA 0.9888 ASafeR 1.0000
+  SNR30 goal A: RA 0.9481 ASafeR 0.9625 accept 0.9856 closed 0.9601
+  SNR30 goal B: RA 0.9473 ASafeR 0.9617 accept 0.9856 closed 0.9601
+  SNR30 goal C: RA 0.9808 ASafeR 0.9992 accept 0.9816 closed 0.9992
+  SNR30 goal D: RA 0.9992 ASafeR 1.0000 accept 0.9992 closed 1.0000
+  SNR20 goal A: RA 0.0807 ASafeR 0.2364 accept 0.8442 closed 0.0815
+  SNR20 goal B: RA 0.0807 ASafeR 0.2484 accept 0.8323 closed 0.0807
+  SNR20 goal C: RA 0.4073 ASafeR 0.5711 accept 0.8363 closed 0.4257
+  SNR20 goal D: RA 0.9992 ASafeR 1.0000 accept 0.9992 closed 1.0000
+stage attack done: worst RA 0.0807 (SNR20 A), worst ASafeR 0.2364 (SNR20 A)
+E195 done
+E195 start 2026-11-16 00:00:29 device cuda
+stage report done: 9/11, candidate e183_fuse+e65_dist+subwin6_dist {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004}
+E195 done
+E195 start 2026-11-16 00:01:22 device cuda
+stage report done: 9/11, candidate e183_fuse+e65_dist+subwin6_dist {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004}
+E195 done
+E195 start 2026-11-16 00:01:49 device cuda
+stage report done: 9/11, candidate e183_fuse+e65_dist+subwin6_dist {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004}
+E195 done
+E195 start 2026-11-16 00:02:15 device cuda
+  pair e65_dist+subwin6_dist                selected {'e65_dist': 1.0, 'subwin6_dist': 0.0} strict 0.6448
+  pair e65_dist+logbp_dist                  selected {'e65_dist': 1.0, 'logbp_dist': 0.0} strict 0.6448
+  pair e65_dist+subwin12_dist               selected {'e65_dist': 1.0, 'subwin12_dist': 0.0} strict 0.6448
+  pair e65_dist+e162_dist                   selected {'e65_dist': 0.65, 'e162_dist': 0.35} strict 0.7795
+  pair e65_dist+wccn_dr                     selected {'e65_dist': 0.1, 'wccn_dr': 0.9} strict 0.9954
+  pair e65_dist+e183_fuse                   selected {'e65_dist': 0.0, 'e183_fuse': 1.0} strict 0.9848
+  pair e183_fuse+subwin6_dist               selected {'e183_fuse': 1.0, 'subwin6_dist': 0.0} strict 0.9848
+  pair e183_fuse+wccn_dr                    selected {'e183_fuse': 0.25, 'wccn_dr': 0.75} strict 0.9955
+  pair wccn_dr+subwin6_dist                 selected {'wccn_dr': 0.9, 'subwin6_dist': 0.09999999999999998} strict 0.9918
+  pair subwin6_dist+subwin12_dist           selected {'subwin6_dist': 1.0, 'subwin12_dist': 0.0} strict 0.3982
+  triple e183_fuse+e65_dist+subwin6_dist            selected {'e183_fuse': 1.0, 'e65_dist': 0.0, 'subwin6_dist': 0.0} strict 0.9848
+  triple e183_fuse+e65_dist+wccn_dr                 selected {'e183_fuse': 0.1, 'e65_dist': 0.1, 'wccn_dr': 0.8} strict 0.9964
+stage search done in 39s (349 points)
+  Pareto: 13 points, feasible (#11 + dual 0.70) 3
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.1, 'e65_dist': 0.1, 'wccn_dr': 0.8} strict 0.9964 std 0.9991 S1 0.5839 S2 0.3295 min 0.3295
+    e183_fuse+wccn_dr                        {'e183_fuse': 0.25, 'wccn_dr': 0.75}               strict 0.9955 std 0.9991 S1 0.4962 S2 0.5565 min 0.4962
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.2, 'e65_dist': 0.1, 'wccn_dr': 0.7000000000000001} strict 0.9955 std 0.9991 S1 0.5374 S2 0.4990 min 0.4990
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.2, 'e65_dist': 0.2, 'wccn_dr': 0.6000000000000001} strict 0.9906 std 0.9973 S1 0.5602 S2 0.5171 min 0.5171
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.2, 'e65_dist': 0.30000000000000004, 'wccn_dr': 0.5} strict 0.9850 std 0.9956 S1 0.6301 S2 0.5338 min 0.5338
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.30000000000000004, 'wccn_dr': 0.4} strict 0.9846 std 0.9944 S1 0.5539 S2 0.6127 min 0.5539
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.4, 'wccn_dr': 0.30000000000000004} strict 0.9768 std 0.9914 S1 0.6406 S2 0.6120 min 0.6120
+    e183_fuse+e65_dist+wccn_dr               {'e183_fuse': 0.4, 'e65_dist': 0.5, 'wccn_dr': 0.1} strict 0.9716 std 0.9889 S1 0.6686 S2 0.6569 min 0.6569
+    e65_dist+e183_fuse                       {'e65_dist': 0.55, 'e183_fuse': 0.44999999999999996} strict 0.9695 std 0.9868 S1 0.6640 S2 0.6773 min 0.6640
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.5, 'subwin6_dist': 0.1} strict 0.9660 std 0.9846 S1 0.7230 S2 0.6756 min 0.6756
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.4, 'subwin6_dist': 0.2} strict 0.9652 std 0.9847 S1 0.7214 S2 0.6907 min 0.6907
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004} strict 0.9640 std 0.9830 S1 0.7052 S2 0.7087 min 0.7052
+    e183_fuse+e65_dist+subwin6_dist          {'e183_fuse': 0.30000000000000004, 'e65_dist': 0.2, 'subwin6_dist': 0.5} strict 0.9278 std 0.9666 S1 0.7227 S2 0.7221 min 0.7221
+E195 done
+E195 start 2026-11-16 00:03:00 device cuda
+stage report done: 8/11, candidate e183_fuse+e65_dist+subwin6_dist {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004}
+E195 done
+E195 start 2026-11-16 00:03:53 device cuda
+stage report done: 8/11, candidate e183_fuse+e65_dist+subwin6_dist {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004}
+E195 done
+E195 start 2026-11-16 00:04:21 device cuda
+stage report done: 8/11, candidate e183_fuse+e65_dist+subwin6_dist {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004}
+E195 done
+E195 start 2026-11-16 00:05:01 device cuda
+stage report done: 8/11, candidate e183_fuse+e65_dist+subwin6_dist {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004}
+E195 done
+E195 start 2026-11-16 00:05:37 device cuda
+stage report done: 8/11, candidate e183_fuse+e65_dist+subwin6_dist {'e183_fuse': 0.4, 'e65_dist': 0.30000000000000004, 'subwin6_dist': 0.30000000000000004}
+E195 done
