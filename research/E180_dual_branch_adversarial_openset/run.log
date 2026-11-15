@@ -1,0 +1,388 @@
+
+===== E180 stage=b 2026-11-15 17:23:00 =====
+stage B: E65 features -> PCA-96 (basis from 6695 fit rows)
+  block 0: 2173 scored, prototypes 960
+  block 1: 2203 scored, prototypes 960
+  block 2: 2246 scored, prototypes 960
+  block 3: 2303 scored, prototypes 960
+  block 4: 2379 scored, prototypes 960
+  tau(a=0.90) = -10.6228; OOF mean -13.6747 sd 2.9127
+  LOSO  1: AUROC 0.8883 U@95 0.1290 (known 2177, unknown 124)
+  LOSO  2: AUROC 0.9587 U@95 0.7647 (known 2199, unknown 102)
+  LOSO  3: AUROC 0.9490 U@95 0.5820 (known 2179, unknown 122)
+  LOSO  4: AUROC 0.9641 U@95 0.7522 (known 2188, unknown 113)
+  LOSO  5: AUROC 1.0000 U@95 1.0000 (known 2200, unknown 101)
+  LOSO  6: AUROC 0.9624 U@95 0.7339 (known 2177, unknown 124)
+  LOSO  7: AUROC 0.9471 U@95 0.6210 (known 2177, unknown 124)
+  LOSO  8: AUROC 0.9917 U@95 1.0000 (known 2197, unknown 104)
+  LOSO  9: AUROC 0.9789 U@95 0.9310 (known 2185, unknown 116)
+  LOSO 10: AUROC 0.9518 U@95 0.7103 (known 2194, unknown 107)
+  LOSO 11: AUROC 0.9109 U@95 0.2893 (known 2180, unknown 121)
+  LOSO 12: AUROC 0.8984 U@95 0.1885 (known 2179, unknown 122)
+  LOSO 13: AUROC 0.9599 U@95 0.7886 (known 2178, unknown 123)
+  LOSO 14: AUROC 0.9954 U@95 1.0000 (known 2180, unknown 121)
+  LOSO 15: AUROC 0.9137 U@95 0.4273 (known 2191, unknown 110)
+  LOSO 16: AUROC 0.8479 U@95 0.0504 (known 2182, unknown 119)
+  LOSO 17: AUROC 0.8698 U@95 0.1607 (known 2189, unknown 112)
+  LOSO 18: AUROC 0.8962 U@95 0.2143 (known 2203, unknown 98)
+  LOSO 19: AUROC 0.9730 U@95 0.8421 (known 2187, unknown 114)
+  LOSO 20: AUROC 0.9391 U@95 0.5081 (known 2177, unknown 124)
+  branch B in-sample identity accuracy (fit-row prototypes) 0.9847
+stage B done in 6s: pooled AUROC 0.9401, U@95 0.5847±0.3106
+  stage A artifact missing: skipped the fused OOF view
+done in 6s -> D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\results.json / D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\report.md
+
+===== E180 stage=a 2026-11-15 17:23:17 =====
+stage A: 11304 Train trials, fit_rows 6695, window 2301
+  raw 4096/11304 (2s)
+  raw 8192/11304 (3s)
+  raw 11304/11304 (4s)
+raw on GPU: (11304, 18, 1200) (0.91 GiB)
+  [fold0] epoch 1/30 loss 1.7268 2.5s
+  [fold0] epoch 2/30 loss 0.8778 2.0s
+  [fold0] epoch 3/30 loss 0.6297 2.0s
+  [fold0] epoch 4/30 loss 0.5135 2.0s
+  [fold0] epoch 5/30 loss 0.4466 2.0s
+  [fold0] epoch 6/30 loss 0.3837 2.0s
+  [fold0] epoch 7/30 loss 0.3556 2.0s
+  [fold0] epoch 8/30 loss 0.3297 2.1s
+  [fold0] epoch 9/30 loss 0.3009 2.1s
+  [fold0] epoch 10/30 loss 0.2697 2.0s
+  [fold0] epoch 11/30 loss 0.2590 2.1s
+  [fold0] epoch 12/30 loss 0.2350 2.1s
+  [fold0] epoch 13/30 loss 0.2229 2.1s
+  [fold0] epoch 14/30 loss 0.1998 2.0s
+  [fold0] epoch 15/30 loss 0.2045 2.0s
+  [fold0] epoch 16/30 loss 0.1885 2.0s
+  [fold0] epoch 17/30 loss 0.1743 2.1s
+  [fold0] epoch 18/30 loss 0.1689 2.0s
+  [fold0] epoch 19/30 loss 0.1555 2.1s
+  [fold0] epoch 20/30 loss 0.1525 2.1s
+  [fold0] epoch 21/30 loss 0.1432 2.1s
+  [fold0] epoch 22/30 loss 0.1308 2.1s
+  [fold0] epoch 23/30 loss 0.1310 2.1s
+  [fold0] epoch 24/30 loss 0.1289 2.1s
+  [fold0] epoch 25/30 loss 0.1211 2.1s
+  [fold0] epoch 26/30 loss 0.1182 2.1s
+  [fold0] epoch 27/30 loss 0.1115 2.1s
+  [fold0] epoch 28/30 loss 0.1118 2.1s
+  [fold0] epoch 29/30 loss 0.1068 2.1s
+  [fold0] epoch 30/30 loss 0.1172 2.1s
+  fold0 OOF accuracy 0.9816
+  [fold1] epoch 1/30 loss 1.8512 2.1s
+  [fold1] epoch 2/30 loss 0.9651 2.1s
+  [fold1] epoch 3/30 loss 0.6878 2.1s
+  [fold1] epoch 4/30 loss 0.5548 2.1s
+  [fold1] epoch 5/30 loss 0.4916 2.1s
+  [fold1] epoch 6/30 loss 0.4191 2.1s
+  [fold1] epoch 7/30 loss 0.3660 2.1s
+  [fold1] epoch 8/30 loss 0.3353 2.1s
+  [fold1] epoch 9/30 loss 0.3100 2.1s
+  [fold1] epoch 10/30 loss 0.2938 2.1s
+  [fold1] epoch 11/30 loss 0.2663 2.1s
+  [fold1] epoch 12/30 loss 0.2492 2.1s
+  [fold1] epoch 13/30 loss 0.2519 2.1s
+  [fold1] epoch 14/30 loss 0.2240 2.1s
+  [fold1] epoch 15/30 loss 0.1977 2.3s
+  [fold1] epoch 16/30 loss 0.1986 2.1s
+  [fold1] epoch 17/30 loss 0.1857 2.1s
+  [fold1] epoch 18/30 loss 0.1793 2.1s
+  [fold1] epoch 19/30 loss 0.1658 2.1s
+  [fold1] epoch 20/30 loss 0.1677 2.1s
+  [fold1] epoch 21/30 loss 0.1449 2.1s
+  [fold1] epoch 22/30 loss 0.1515 2.1s
+  [fold1] epoch 23/30 loss 0.1421 2.1s
+  [fold1] epoch 24/30 loss 0.1344 2.1s
+  [fold1] epoch 25/30 loss 0.1369 2.1s
+  [fold1] epoch 26/30 loss 0.1276 2.1s
+  [fold1] epoch 27/30 loss 0.1249 2.1s
+  [fold1] epoch 28/30 loss 0.1229 2.1s
+  [fold1] epoch 29/30 loss 0.1179 2.1s
+  [fold1] epoch 30/30 loss 0.1187 2.1s
+  fold1 OOF accuracy 0.9909
+  [fold2] epoch 1/30 loss 1.8024 2.2s
+  [fold2] epoch 2/30 loss 0.9456 2.1s
+  [fold2] epoch 3/30 loss 0.6749 2.1s
+  [fold2] epoch 4/30 loss 0.5480 2.1s
+  [fold2] epoch 5/30 loss 0.4773 2.1s
+  [fold2] epoch 6/30 loss 0.4118 2.1s
+  [fold2] epoch 7/30 loss 0.3652 2.1s
+  [fold2] epoch 8/30 loss 0.3409 2.1s
+  [fold2] epoch 9/30 loss 0.3052 2.1s
+  [fold2] epoch 10/30 loss 0.2804 2.1s
+  [fold2] epoch 11/30 loss 0.2749 2.1s
+  [fold2] epoch 12/30 loss 0.2442 2.1s
+  [fold2] epoch 13/30 loss 0.2316 2.1s
+  [fold2] epoch 14/30 loss 0.2243 2.1s
+  [fold2] epoch 15/30 loss 0.2039 2.1s
+  [fold2] epoch 16/30 loss 0.2064 2.1s
+  [fold2] epoch 17/30 loss 0.1866 2.1s
+  [fold2] epoch 18/30 loss 0.1783 2.1s
+  [fold2] epoch 19/30 loss 0.1677 2.1s
+  [fold2] epoch 20/30 loss 0.1513 2.1s
+  [fold2] epoch 21/30 loss 0.1415 2.1s
+  [fold2] epoch 22/30 loss 0.1471 2.1s
+  [fold2] epoch 23/30 loss 0.1408 2.1s
+  [fold2] epoch 24/30 loss 0.1360 2.1s
+  [fold2] epoch 25/30 loss 0.1234 2.1s
+  [fold2] epoch 26/30 loss 0.1254 2.1s
+  [fold2] epoch 27/30 loss 0.1241 2.1s
+  [fold2] epoch 28/30 loss 0.1258 2.1s
+  [fold2] epoch 29/30 loss 0.1194 2.1s
+  [fold2] epoch 30/30 loss 0.1087 2.1s
+  fold2 OOF accuracy 0.9907
+  [fold3] epoch 1/30 loss 1.7976 2.2s
+  [fold3] epoch 2/30 loss 0.9178 2.0s
+  [fold3] epoch 3/30 loss 0.6486 2.0s
+  [fold3] epoch 4/30 loss 0.5222 2.0s
+  [fold3] epoch 5/30 loss 0.4449 2.1s
+  [fold3] epoch 6/30 loss 0.3733 2.1s
+  [fold3] epoch 7/30 loss 0.3612 2.1s
+  [fold3] epoch 8/30 loss 0.3204 2.1s
+  [fold3] epoch 9/30 loss 0.2991 2.1s
+  [fold3] epoch 10/30 loss 0.2739 2.0s
+  [fold3] epoch 11/30 loss 0.2631 2.0s
+  [fold3] epoch 12/30 loss 0.2284 2.1s
+  [fold3] epoch 13/30 loss 0.2281 2.1s
+  [fold3] epoch 14/30 loss 0.2103 2.0s
+  [fold3] epoch 15/30 loss 0.1913 2.1s
+  [fold3] epoch 16/30 loss 0.1801 2.1s
+  [fold3] epoch 17/30 loss 0.1807 2.0s
+  [fold3] epoch 18/30 loss 0.1703 2.0s
+  [fold3] epoch 19/30 loss 0.1508 2.0s
+  [fold3] epoch 20/30 loss 0.1535 2.1s
+  [fold3] epoch 21/30 loss 0.1427 2.1s
+  [fold3] epoch 22/30 loss 0.1354 2.1s
+  [fold3] epoch 23/30 loss 0.1283 2.1s
+  [fold3] epoch 24/30 loss 0.1271 2.1s
+  [fold3] epoch 25/30 loss 0.1231 2.0s
+  [fold3] epoch 26/30 loss 0.1104 2.0s
+  [fold3] epoch 27/30 loss 0.1129 2.1s
+  [fold3] epoch 28/30 loss 0.1076 2.1s
+  [fold3] epoch 29/30 loss 0.1140 2.1s
+  [fold3] epoch 30/30 loss 0.1093 2.0s
+  fold3 OOF accuracy 0.9887
+  [fold4] epoch 1/30 loss 1.8129 2.1s
+  [fold4] epoch 2/30 loss 0.9868 2.0s
+  [fold4] epoch 3/30 loss 0.7080 2.0s
+  [fold4] epoch 4/30 loss 0.5540 2.0s
+  [fold4] epoch 5/30 loss 0.4656 2.1s
+  [fold4] epoch 6/30 loss 0.4182 2.0s
+  [fold4] epoch 7/30 loss 0.3598 2.0s
+  [fold4] epoch 8/30 loss 0.3422 2.0s
+  [fold4] epoch 9/30 loss 0.3115 2.1s
+  [fold4] epoch 10/30 loss 0.2754 2.0s
+  [fold4] epoch 11/30 loss 0.2614 2.0s
+  [fold4] epoch 12/30 loss 0.2490 2.0s
+  [fold4] epoch 13/30 loss 0.2381 2.1s
+  [fold4] epoch 14/30 loss 0.2159 2.0s
+  [fold4] epoch 15/30 loss 0.2014 2.1s
+  [fold4] epoch 16/30 loss 0.1908 2.1s
+  [fold4] epoch 17/30 loss 0.1828 2.0s
+  [fold4] epoch 18/30 loss 0.1715 2.0s
+  [fold4] epoch 19/30 loss 0.1588 2.0s
+  [fold4] epoch 20/30 loss 0.1602 2.0s
+  [fold4] epoch 21/30 loss 0.1508 2.1s
+  [fold4] epoch 22/30 loss 0.1380 2.1s
+  [fold4] epoch 23/30 loss 0.1281 2.0s
+  [fold4] epoch 24/30 loss 0.1306 2.0s
+  [fold4] epoch 25/30 loss 0.1258 2.1s
+  [fold4] epoch 26/30 loss 0.1189 2.0s
+  [fold4] epoch 27/30 loss 0.1157 2.0s
+  [fold4] epoch 28/30 loss 0.1175 2.0s
+  [fold4] epoch 29/30 loss 0.1187 2.0s
+  [fold4] epoch 30/30 loss 0.1104 2.0s
+  fold4 OOF accuracy 0.9887
+  [full] epoch 1/40 loss 1.6853 2.7s eval_acc 0.8296
+  [full] epoch 2/40 loss 0.8409 2.6s eval_acc 0.9222
+  [full] epoch 3/40 loss 0.6116 2.7s eval_acc 0.9526
+  [full] epoch 4/40 loss 0.5006 2.6s eval_acc 0.9583
+  [full] epoch 5/40 loss 0.4242 2.6s eval_acc 0.9757
+  [full] epoch 6/40 loss 0.3683 2.6s eval_acc 0.9870
+  [full] epoch 7/40 loss 0.3460 2.6s eval_acc 0.9874
+  [full] epoch 8/40 loss 0.3083 2.6s eval_acc 0.9839
+  [full] epoch 9/40 loss 0.2929 2.6s eval_acc 0.9896
+  [full] epoch 10/40 loss 0.2742 2.6s eval_acc 0.9909
+  [full] epoch 11/40 loss 0.2555 2.6s eval_acc 0.9926
+  [full] epoch 12/40 loss 0.2431 2.6s eval_acc 0.9922
+  [full] epoch 13/40 loss 0.2278 2.6s eval_acc 0.9926
+  [full] epoch 14/40 loss 0.2177 2.6s eval_acc 0.9965
+  [full] epoch 15/40 loss 0.1990 2.6s eval_acc 0.9961
+  [full] epoch 16/40 loss 0.2055 2.6s eval_acc 0.9957
+  [full] epoch 17/40 loss 0.1885 2.6s eval_acc 0.9991
+  [full] epoch 18/40 loss 0.1830 2.6s eval_acc 0.9970
+  [full] epoch 19/40 loss 0.1768 2.6s eval_acc 0.9978
+  [full] epoch 20/40 loss 0.1604 2.6s eval_acc 0.9926
+  [full] epoch 21/40 loss 0.1604 2.6s eval_acc 0.9991
+  [full] epoch 22/40 loss 0.1474 2.6s eval_acc 1.0000
+  [full] epoch 23/40 loss 0.1475 2.6s eval_acc 0.9991
+  [full] epoch 24/40 loss 0.1324 2.6s eval_acc 0.9991
+  [full] epoch 25/40 loss 0.1352 2.6s eval_acc 1.0000
+  [full] epoch 26/40 loss 0.1256 2.6s eval_acc 1.0000
+  [full] epoch 27/40 loss 0.1208 2.6s eval_acc 1.0000
+  [full] epoch 28/40 loss 0.1208 2.6s eval_acc 0.9996
+  [full] epoch 29/40 loss 0.1109 2.6s eval_acc 0.9996
+  [full] epoch 30/40 loss 0.1104 2.6s eval_acc 1.0000
+  [full] epoch 31/40 loss 0.1094 2.6s eval_acc 1.0000
+  [full] epoch 32/40 loss 0.1036 2.6s eval_acc 1.0000
+  [full] epoch 33/40 loss 0.1043 2.8s eval_acc 1.0000
+  [full] epoch 34/40 loss 0.1015 2.9s eval_acc 1.0000
+  [full] epoch 35/40 loss 0.0965 2.6s eval_acc 1.0000
+  [full] epoch 36/40 loss 0.0882 2.6s eval_acc 1.0000
+  [full] epoch 37/40 loss 0.0930 2.6s eval_acc 1.0000
+  [full] epoch 38/40 loss 0.0956 2.6s eval_acc 1.0000
+  [full] epoch 39/40 loss 0.0891 2.6s eval_acc 1.0000
+  [full] epoch 40/40 loss 0.0927 2.6s eval_acc 1.0000
+  [full] restored best epoch 22 (eval_acc 1.0000)
+  full in-sample accuracy 0.9988 macro-F1 0.9987
+stage A done in 423s: OOF acc 0.9881, macro-F1 0.9878, in-sample 0.9988
+done in 423s -> D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\results.json / D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\report.md
+
+===== E180 stage=attack 2026-11-15 17:31:15 =====
+
+===== E180 stage=b 2026-11-15 17:32:08 =====
+stage B: E65 features -> PCA-96 (basis from 6695 fit rows)
+  block 0: 2173 scored, prototypes 960
+  block 1: 2203 scored, prototypes 960
+  block 2: 2246 scored, prototypes 960
+  block 3: 2303 scored, prototypes 960
+  block 4: 2379 scored, prototypes 960
+  tau(a=0.90) = -10.6228; OOF mean -13.6747 sd 2.9127
+  LOSO  1: AUROC 0.8883 U@95 0.1290 (known 2177, unknown 124)
+  LOSO  2: AUROC 0.9587 U@95 0.7647 (known 2199, unknown 102)
+  LOSO  3: AUROC 0.9490 U@95 0.5820 (known 2179, unknown 122)
+  LOSO  4: AUROC 0.9641 U@95 0.7522 (known 2188, unknown 113)
+  LOSO  5: AUROC 1.0000 U@95 1.0000 (known 2200, unknown 101)
+  LOSO  6: AUROC 0.9624 U@95 0.7339 (known 2177, unknown 124)
+  LOSO  7: AUROC 0.9471 U@95 0.6210 (known 2177, unknown 124)
+  LOSO  8: AUROC 0.9917 U@95 1.0000 (known 2197, unknown 104)
+  LOSO  9: AUROC 0.9789 U@95 0.9310 (known 2185, unknown 116)
+  LOSO 10: AUROC 0.9518 U@95 0.7103 (known 2194, unknown 107)
+  LOSO 11: AUROC 0.9109 U@95 0.2893 (known 2180, unknown 121)
+  LOSO 12: AUROC 0.8984 U@95 0.1885 (known 2179, unknown 122)
+  LOSO 13: AUROC 0.9599 U@95 0.7886 (known 2178, unknown 123)
+  LOSO 14: AUROC 0.9954 U@95 1.0000 (known 2180, unknown 121)
+  LOSO 15: AUROC 0.9137 U@95 0.4273 (known 2191, unknown 110)
+  LOSO 16: AUROC 0.8479 U@95 0.0504 (known 2182, unknown 119)
+  LOSO 17: AUROC 0.8698 U@95 0.1607 (known 2189, unknown 112)
+  LOSO 18: AUROC 0.8962 U@95 0.2143 (known 2203, unknown 98)
+  LOSO 19: AUROC 0.9730 U@95 0.8421 (known 2187, unknown 114)
+  LOSO 20: AUROC 0.9391 U@95 0.5081 (known 2177, unknown 124)
+  branch B in-sample identity accuracy (fit-row prototypes) 0.9847
+stage B done in 5s: pooled AUROC 0.9401, U@95 0.5847±0.3106
+done in 6s -> D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\results.json / D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\report.md
+
+===== E180 stage=attack 2026-11-15 17:32:22 =====
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  clean: RA 0.1310 ASafeR 1.0000 closed 1.0000 accept 0.1310
+  eps=0.005 goal A: RA 0.0232 ASafeR 1.0000 closed 1.0000 accept 0.0232 wrong_id 0.0000
+  eps=0.005 goal B: RA 0.0232 ASafeR 1.0000 closed 1.0000 accept 0.0232 wrong_id 0.0000
+  eps=0.005 goal C: RA 0.0232 ASafeR 1.0000 closed 1.0000 accept 0.0232 wrong_id 0.0000
+  eps=0.010 goal A: RA 0.0040 ASafeR 1.0000 closed 1.0000 accept 0.0040 wrong_id 0.0000
+  eps=0.010 goal B: RA 0.0040 ASafeR 1.0000 closed 1.0000 accept 0.0040 wrong_id 0.0000
+  eps=0.010 goal C: RA 0.0040 ASafeR 1.0000 closed 1.0000 accept 0.0040 wrong_id 0.0000
+  eps=0.020 goal A: RA 0.0000 ASafeR 1.0000 closed 1.0000 accept 0.0000 wrong_id 0.0000
+  eps=0.020 goal B: RA 0.0000 ASafeR 1.0000 closed 1.0000 accept 0.0000 wrong_id 0.0000
+  eps=0.020 goal C: RA 0.0000 ASafeR 1.0000 closed 1.0000 accept 0.0000 wrong_id 0.0000
+attack stage done in 16s: worst RA 0.0000, worst ASafeR 1.0000, feature rebuild max abs 0.00e+00
+done in 16s -> D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\results.json / D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\report.md
+
+===== E180 stage=b 2026-11-15 17:33:56 =====
+stage B: E65 features -> PCA-96 (basis from 6695 fit rows)
+  block 0: 2173 scored, prototypes 960
+  block 1: 2203 scored, prototypes 960
+  block 2: 2246 scored, prototypes 960
+  block 3: 2303 scored, prototypes 960
+  block 4: 2379 scored, prototypes 960
+  tau(a=0.90) = -17.3860; OOF mean -13.6747 sd 2.9127
+  LOSO  1: AUROC 0.8883 U@95 0.1290 (known 2177, unknown 124)
+  LOSO  2: AUROC 0.9587 U@95 0.7647 (known 2199, unknown 102)
+  LOSO  3: AUROC 0.9490 U@95 0.5820 (known 2179, unknown 122)
+  LOSO  4: AUROC 0.9641 U@95 0.7522 (known 2188, unknown 113)
+  LOSO  5: AUROC 1.0000 U@95 1.0000 (known 2200, unknown 101)
+  LOSO  6: AUROC 0.9624 U@95 0.7339 (known 2177, unknown 124)
+  LOSO  7: AUROC 0.9471 U@95 0.6210 (known 2177, unknown 124)
+  LOSO  8: AUROC 0.9917 U@95 1.0000 (known 2197, unknown 104)
+  LOSO  9: AUROC 0.9789 U@95 0.9310 (known 2185, unknown 116)
+  LOSO 10: AUROC 0.9518 U@95 0.7103 (known 2194, unknown 107)
+  LOSO 11: AUROC 0.9109 U@95 0.2893 (known 2180, unknown 121)
+  LOSO 12: AUROC 0.8984 U@95 0.1885 (known 2179, unknown 122)
+  LOSO 13: AUROC 0.9599 U@95 0.7886 (known 2178, unknown 123)
+  LOSO 14: AUROC 0.9954 U@95 1.0000 (known 2180, unknown 121)
+  LOSO 15: AUROC 0.9137 U@95 0.4273 (known 2191, unknown 110)
+  LOSO 16: AUROC 0.8479 U@95 0.0504 (known 2182, unknown 119)
+  LOSO 17: AUROC 0.8698 U@95 0.1607 (known 2189, unknown 112)
+  LOSO 18: AUROC 0.8962 U@95 0.2143 (known 2203, unknown 98)
+  LOSO 19: AUROC 0.9730 U@95 0.8421 (known 2187, unknown 114)
+  LOSO 20: AUROC 0.9391 U@95 0.5081 (known 2177, unknown 124)
+  branch B in-sample identity accuracy (fit-row prototypes) 0.9847
+stage B done in 6s: pooled AUROC 0.9401, U@95 0.5847±0.3106
+done in 6s -> D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\results.json / D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\report.md
+
+===== E180 stage=attack 2026-11-15 17:34:07 =====
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  clean: RA 0.9369 ASafeR 1.0000 closed 1.0000 accept 0.9369
+  eps=0.005 goal A: RA 0.8618 ASafeR 1.0000 closed 1.0000 accept 0.8618 wrong_id 0.0000
+  eps=0.005 goal B: RA 0.8618 ASafeR 1.0000 closed 1.0000 accept 0.8618 wrong_id 0.0000
+  eps=0.005 goal C: RA 0.8626 ASafeR 1.0000 closed 1.0000 accept 0.8626 wrong_id 0.0000
+  eps=0.010 goal A: RA 0.7173 ASafeR 1.0000 closed 1.0000 accept 0.7173 wrong_id 0.0000
+  eps=0.010 goal B: RA 0.7173 ASafeR 1.0000 closed 1.0000 accept 0.7173 wrong_id 0.0000
+  eps=0.010 goal C: RA 0.7173 ASafeR 1.0000 closed 1.0000 accept 0.7173 wrong_id 0.0000
+  eps=0.020 goal A: RA 0.3227 ASafeR 1.0000 closed 1.0000 accept 0.3227 wrong_id 0.0000
+  eps=0.020 goal B: RA 0.3211 ASafeR 1.0000 closed 1.0000 accept 0.3211 wrong_id 0.0000
+  eps=0.020 goal C: RA 0.3243 ASafeR 1.0000 closed 1.0000 accept 0.3243 wrong_id 0.0000
+attack stage done in 16s: worst RA 0.3211, worst ASafeR 1.0000, feature rebuild max abs 0.00e+00
+done in 16s -> D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\results.json / D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\report.md
+
+===== E180 stage=attack 2026-11-15 17:34:40 =====
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  clean: RA 0.9369 ASafeR 1.0000 closed 1.0000 accept 0.9369
+  eps=0.005 goal A: RA 0.9704 ASafeR 0.9992 closed 0.9992 accept 0.9712 wrong_id 0.0008
+  eps=0.005 goal B: RA 0.9704 ASafeR 0.9992 closed 0.9992 accept 0.9712 wrong_id 0.0008
+  eps=0.005 goal C: RA 0.9712 ASafeR 1.0000 closed 1.0000 accept 0.9712 wrong_id 0.0000
+  eps=0.010 goal A: RA 0.9888 ASafeR 0.9992 closed 0.9992 accept 0.9896 wrong_id 0.0008
+  eps=0.010 goal B: RA 0.9888 ASafeR 0.9992 closed 0.9992 accept 0.9896 wrong_id 0.0008
+  eps=0.010 goal C: RA 0.9888 ASafeR 0.9992 closed 0.9992 accept 0.9896 wrong_id 0.0008
+  eps=0.020 goal A: RA 0.9968 ASafeR 0.9984 closed 0.9984 accept 0.9984 wrong_id 0.0016
+  eps=0.020 goal B: RA 0.9968 ASafeR 0.9984 closed 0.9984 accept 0.9984 wrong_id 0.0016
+  eps=0.020 goal C: RA 0.9976 ASafeR 0.9992 closed 0.9992 accept 0.9984 wrong_id 0.0008
+attack stage done in 16s: worst RA 0.9704, worst ASafeR 0.9984, feature rebuild max abs 0.00e+00
+done in 16s -> D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\results.json / D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\report.md
+
+===== E180 stage=attack 2026-11-15 17:35:20 =====
+attack stage: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  clean: RA 0.9369 ASafeR 1.0000 closed 1.0000 accept 0.9369
+  eps=0.005 goal A: RA 0.9337 ASafeR 0.9984 closed 0.9984 accept 0.9353 wrong_id 0.0016
+  eps=0.005 goal B: RA 0.9337 ASafeR 0.9984 closed 0.9984 accept 0.9353 wrong_id 0.0016
+  eps=0.005 goal C: RA 0.9361 ASafeR 0.9992 closed 0.9992 accept 0.9369 wrong_id 0.0008
+  eps=0.005 goal D: RA 0.9712 ASafeR 1.0000 closed 1.0000 accept 0.9712 wrong_id 0.0000
+  eps=0.010 goal A: RA 0.9313 ASafeR 0.9960 closed 0.9960 accept 0.9353 wrong_id 0.0040
+  eps=0.010 goal B: RA 0.9313 ASafeR 0.9968 closed 0.9968 accept 0.9345 wrong_id 0.0032
+  eps=0.010 goal C: RA 0.9345 ASafeR 0.9984 closed 0.9984 accept 0.9361 wrong_id 0.0016
+  eps=0.010 goal D: RA 0.9896 ASafeR 1.0000 closed 1.0000 accept 0.9896 wrong_id 0.0000
+  eps=0.020 goal A: RA 0.9177 ASafeR 0.9840 closed 0.9776 accept 0.9337 wrong_id 0.0160
+  eps=0.020 goal B: RA 0.9161 ASafeR 0.9840 closed 0.9784 accept 0.9321 wrong_id 0.0160
+  eps=0.020 goal C: RA 0.9321 ASafeR 0.9976 closed 0.9976 accept 0.9345 wrong_id 0.0024
+  eps=0.020 goal D: RA 0.9984 ASafeR 1.0000 closed 1.0000 accept 0.9984 wrong_id 0.0000
+attack stage done in 14s: worst RA 0.9161, worst ASafeR 0.9840, feature rebuild max abs 0.00e+00
+done in 14s -> D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\results.json / D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\report.md
+
+===== E180 stage=test 2026-11-15 17:35:45 =====
+  Test branch A 2048/22251 (2s)
+  Test branch A 4096/22251 (2s)
+  Test branch A 6144/22251 (3s)
+  Test branch A 8192/22251 (4s)
+  Test branch A 10240/22251 (5s)
+  Test branch A 12288/22251 (6s)
+  Test branch A 14336/22251 (6s)
+  Test branch A 16384/22251 (7s)
+  Test branch A 18432/22251 (8s)
+  Test branch A 20480/22251 (9s)
+  Test branch A 22251/22251 (10s)
+Test audit primary: S1 rejection 0.7359, S2 acceptance 0.6335
+Test audit dual gate: S1 rejection 0.9901, S2 acceptance 0.2438
+done in 10s -> D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\results.json / D:\WORK\BCIC2026\BrainPrint\research\E180_dual_branch_adversarial_openset\report.md

@@ -1,0 +1,101 @@
+{
+  "experiment": "E180_dual_branch_adversarial_openset",
+  "date": "2026-11-15",
+  "purpose": "Dual-branch system on the project's native 18-channel data: branch A = adversarially trained EEGNet 1D CNN (closed-set identity, #1-#4 + #7), branch B = E65 correlation-logSPD PCA-96 / k=12 prototype gate (#5/#6 + unknown rejection). Fusion = 0 if gate rejects, else branch A argmax. Measure all ten gates honestly.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_root": "Brainprint_Competition",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "train_session": "session1",
+    "mat_layout": "loadmat 'data' is (1200, 18); transposed to (18, 1200)"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "protocol": {
+    "fit_fraction": 0.6,
+    "eval_interval": "0.6 < frac <= 0.8",
+    "blocks": 5,
+    "blocks_rule": "block = clip(int(frac * 5), 0, 4) per (subject, task) trial order",
+    "seed": 20261115
+  },
+  "branch_a": {
+    "architecture": "Conv1d(18->32,k9,s2)-BN-ELU -> (32->64) -> (64->128) -> (128->128) -> global avg pool -> Linear(128,20)",
+    "widths": [32, 64, 128, 128],
+    "kernel": 9,
+    "stride": 2,
+    "dropout": 0.3,
+    "input_normalisation": "per-trial channel mean removal, then divide by per-trial global RMS (differentiable, inside forward)",
+    "batch_size": 64,
+    "learning_rate": 0.002,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "fold_epochs": 30,
+    "full_epochs": 40,
+    "early_stop": "full model only: best eval-block (0.6<frac<=0.8) clean accuracy",
+    "loss": "0.5 * CE(clean augmented) + 0.5 * CE(adversarial)",
+    "pgd_steps": 3,
+    "pgd_eps_linf": 0.02,
+    "pgd_eps_definition": "L-infinity bound = eps * per-trial global RMS (~34 dB); step = 2*eps/steps * RMS, sign gradient, random start",
+    "at_every_batch": true,
+    "augment": {
+      "time_shift_samples": 50,
+      "channel_dropout": 0.1,
+      "amplitude_scale": [0.9, 1.1],
+      "gaussian_noise_snr_db": [20, 30]
+    }
+  },
+  "branch_b": {
+    "train_features": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_features": "research/E121_pca_sweep/test_logspd.npy",
+    "feature_dim": 855,
+    "bands_hz": [[1, 8], [8, 13], [13, 20], [20, 30], [30, 40]],
+    "covariance_shrinkage": 0.05,
+    "eigenvalue_floor": 1e-12,
+    "off_diagonal_multiplier": 1.4142135623730951,
+    "channel_std_ddof": 1,
+    "channel_std_epsilon": 1e-12,
+    "zband_epsilon": 1e-6,
+    "standardisation": "per-task z-score, statistics from all Train rows of that task (Train-only, E170 rule)",
+    "pca_dim": 96,
+    "pca_fit_rows": "fit_rows (frac <= 0.6)",
+    "prototype_k": 12,
+    "prototype_rows": "fit_rows only, k-means per (task, identity)",
+    "score": "-nearest-euclidean-distance to same-task prototypes",
+    "threshold_acceptance": 0.90,
+    "threshold_rule": "work point at 90% known acceptance: tau = 0.10 quantile of the 5-block Train OOF scores (E170/E178 convention `quantile(ref, 1 - a)`); prototypes for block b exclude block b",
+    "loso": "20 folds; prototypes from pm & fit_rows (19 enrolled identities); known = enrolled window rows, unknown = held-out identity window rows"
+  },
+  "fusion": {
+    "primary": "if branch-B score < tau -> label 0 else branch-A argmax",
+    "dual_gate_variant": "additionally require branch-A max softmax >= its Train OOF 0.90 quantile"
+  },
+  "attack": {
+    "domain": "Train window block 0.6 < frac <= 0.8 (identity labels available); stratified cap 400 per task",
+    "why_train": "Test has no identity labels, so RA/ASafeR cannot be computed there",
+    "seed": 20261115,
+    "cap_per_task": 400,
+    "eps_normalised": [0.005, 0.01, 0.02],
+    "eps_definition": "L-infinity bound = eps * per-trial global RMS",
+    "steps": 8,
+    "step_size": "2*eps/steps*RMS, sign gradient",
+    "random_start": true,
+    "goals": {
+      "A": "impersonation: maximise (best wrong branch-A logit - true logit)/T",
+      "B": "broad confusion: maximise (logsumexp over wrong branch-A logits - true logit)/T",
+      "C": "boundary impersonation: maximise (next-identity logit - true logit)/T",
+      "D": "gate evasion: maximise z(branch-B score), i.e. push the trial into the accept region"
+    },
+    "goal_note": "A/B/C attack the identity head only (E178 style, no gate term); D attacks the gate only. The worst case over all four is reported for #7/#8, so neither branch can be 'won' by ignoring it.",
+    "temperature": 10.0,
+    "primary_gate_reading": "gate #7 = lowest RA over all eps x goals, gate #8 = lowest ASafeR"
+  },
+  "reporting": {
+    "test_official": "N/A: Test has no public identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "Test predictions and thresholds are frozen Train-only; the Session column is read only after all predictions are written, for the #9/#10 audit"
+  }
+}
