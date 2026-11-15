@@ -1,0 +1,51 @@
+E176 开始：修正 E119/E133/E136–E142 的 LOSO 污染
+数据：Train 11304 行 / Test 22251 行（session1 3033）
+fit 块 6695 行；评分块 2301 行；设备 cuda
+[E142_cdf_fusion] 重算 LOSO（fit-only 原型），6 个视图 ...
+[E142_cdf_fusion]   B_E65logspd done
+[E142_cdf_fusion]   A_E62corr8 done
+[E142_cdf_fusion]   A_E62cov4 done
+[E142_cdf_fusion]   A_E62cov8 done
+[E142_cdf_fusion]   A_DINOcov5 done
+[E142_cdf_fusion]   A_DINOcovHR done
+[E142_cdf_fusion] rawz:B_plus_cleanA (k=32, 6 views, Train-only z)
+  记录 a=0.95: S1 0.5987 / S2 0.8022 / LOSO(污染) 0.9475 / W 0.7877
+  重建 a=0.95: S1 0.5987 / S2 0.8022 / LOSO(污染) 0.9475 -> corrected
+  修正后最好 a=0.88: LOSO 0.5378 / W_after 0.6271（W_before 0.7425，虚高 0.1155）
+[E139_feature_fusion] 重建 C_plus_cov（PCA96, k=32），5 视图拼特征 + PCA96
+[E139_feature_fusion] C_plus_cov（PCA96, k=32）
+  记录 a=0.96: S1 0.5997 / S2 0.7888 / LOSO(污染) 0.9724 / W 0.7875
+  重建 a=0.96: S1 0.5997 / S2 0.7888 / LOSO(污染) 0.9724 -> corrected
+  修正后最好 a=0.92: LOSO 0.6313 / W_after 0.6498（W_before 0.7414，虚高 0.0916）
+[E139_feature_fusion] 重建 A_E65（PCA96, k=12），1 视图拼特征 + PCA96
+[E139_feature_fusion] A_E65（PCA96, k=12）
+  记录 a=0.90: S1 0.7979 / S2 0.5960 / LOSO(污染) 0.9963 / W 0.7465
+  重建 a=0.90: S1 0.7979 / S2 0.5960 / LOSO(污染) 0.9963 -> corrected
+  修正后最好 a=0.90: LOSO 0.7936 / W_after 0.6958（W_before 0.7465，虚高 0.0507）
+[E141_weighted_image_route] score:B_E65logspd (k=32, 单视图, per-task z)
+  记录 a=0.97: S1 0.5124 / S2 0.8290 / LOSO(污染) 0.9481 / W 0.7796
+  重建 a=0.97: S1 0.5124 / S2 0.8290 / LOSO(污染) 0.9481 -> corrected
+  修正后最好 a=0.93: LOSO 0.7084 / W_after 0.6964（W_before 0.7677，虚高 0.0713）
+[E138_scale_free_score] form=d1 (k=3, PCA96)
+  记录 a=0.95: S1 0.6159 / S2 0.7597 / LOSO(污染) 0.8244 / W 0.7399
+  重建 a=0.95: S1 0.6159 / S2 0.7597 / LOSO(污染) 0.8244 -> corrected
+  修正后最好 a=0.91: LOSO 0.6993 / W_after 0.6771（W_before 0.7360，虚高 0.0588）
+[E137_multi_view] 重建视图 E21_covdz k=3
+[E137_multi_view] 重建视图 E65_logspd k=3
+[E137_multi_view] greedy=E21_covdz_k3+E65_logspd_k3
+  记录 a=0.90: S1 0.5740 / S2 0.6133 / LOSO(污染) 0.9902 / W 0.6977
+  重建 a=0.90: S1 0.5740 / S2 0.6133 / LOSO(污染) 0.9902 -> corrected
+  修正后最好 a=0.88: LOSO 0.8831 / W_after 0.6622（W_before 0.6902，虚高 0.0281）
+[E140_metric_learning] PCA128_raw_control (k=3, fit 原型)
+  记录 a=0.90: S1 0.8190 / S2 0.5458 / LOSO(污染) 0.7138 / W 0.6561
+  重建 a=0.90: S1 0.3379 / S2 0.9085 / LOSO(污染) 0.4255 -> pipeline_mismatch
+  修正后最好 a=0.80: LOSO 0.6237 / W_after 0.6973（W_before 0.6973，虚高 0.0000）
+[E136_clean_three_way] P96_k3
+  记录 a=0.95: S1 0.7043 / S2 0.6930 / LOSO(污染) 0.4819 / W 0.6431
+  重建 a=0.95: S1 0.7043 / S2 0.6930 / LOSO(污染) 0.4819 -> corrected
+  修正后最好 a=0.93: LOSO 0.5888 / W_after 0.6483（W_before 0.6483，虚高 0.0000）
+[E133_mean_objective] G_global（k=1 均值原型）
+  记录 a=0.85: S1 nan / S2 0.5872 / LOSO(污染) 0.6261 / W nan
+  重建 a=0.85: S1 0.7933 / S2 0.5872 / LOSO(污染) 0.6261 -> corrected
+  修正后最好 a=0.88: LOSO 0.5512 / W_after 0.6505（W_before 0.6505，虚高 0.0000）
+输出：results.json / report.md；总耗时 638.3s

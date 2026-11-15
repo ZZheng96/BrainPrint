@@ -1,0 +1,51 @@
+{
+  "experiment": "E176_fix_contaminated_loso",
+  "purpose": "E119/E133/E136/E137/E138/E139/E140/E141/E142 的 LOSO 实现把 19 个注册身份的评估块（0.6<frac<=0.8）也拿去建了原型，导致被测 trial 出现在自己的原型里、known 距离趋近 0、阈值被抬高、LOSO 拒识虚高到 0.95-1.00。本实验按各实验原始配置重建分数管线，复现 Test S1/S2 与污染 LOSO 后，只用 fit 块（frac<=0.6）重建原型重算 LOSO，并给出修正后的 W。",
+  "bug": {
+    "wrong": "p2, k2 = build_prototypes(a, subjects, tasks, pm, enrolled, k)",
+    "correct": "p2, k2 = build_prototypes(a, subjects, tasks, pm & fit_rows, enrolled, k)",
+    "scope": "只影响 LOSO（Train 侧）；Test S1/S2 从未进入原型集合"
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "fit_block": "frac <= 0.6",
+    "known_block": "0.6 < frac <= 0.8，19 个注册身份",
+    "unknown_block": "0.6 < frac <= 0.8，留出身份",
+    "reused_caches": [
+      "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "research/E121_pca_sweep/test_logspd.npy",
+      "BrainPrint_cache/e62_multiwindow/*_dinov2.npy",
+      "BrainPrint_cache/eeg_image_dinov2/*_dinov2.npy",
+      "BrainPrint_cache/e21_scale_invariant/*.npy",
+      "research/E142_cdf_fusion/raw_scores.pkl",
+      "research/E137_multi_view/view_scores.pkl"
+    ]
+  },
+  "protocol": {
+    "loso": "leave-one-identity-out，20 折；原型只用 pm & (frac<=0.6)",
+    "threshold_rule": "阈值 = 该折 known 块分数的 1-a 分位",
+    "test_threshold": "各实验原始 Train-only 参考分布（Train OOF / 参考块）的 1-a 分位",
+    "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96],
+    "weights": {"LOSO": 0.25, "Test_S1": 0.25, "Test_S2": 0.5},
+    "checks": {
+      "test_reproduction_tolerance": 0.005,
+      "loso_reproduction_tolerance": 0.005,
+      "rule": "Test S1/S2 或污染 LOSO 复现失败 -> pipeline_mismatch，停止该配置"
+    }
+  },
+  "experiments": [
+    {"name": "E142_cdf_fusion", "config": "rawz:B_plus_cleanA，k=32，PCA96/视图，Train OOF z 全局标准化", "recorded_a": 0.95, "recorded_W": 0.7877},
+    {"name": "E139_feature_fusion", "config": "C_plus_cov / PCA96 / k=32", "recorded_a": 0.96, "recorded_W": 0.7875},
+    {"name": "E139_feature_fusion", "config": "A_E65 / PCA96 / k=12", "recorded_a": 0.90, "recorded_W": 0.7465},
+    {"name": "E141_weighted_image_route", "config": "score:B_E65logspd，k=32，per-task z", "recorded_a": 0.97, "recorded_W": 0.7796},
+    {"name": "E138_scale_free_score", "config": "form=d1，k=3，PCA96", "recorded_a": 0.95, "recorded_W": 0.7399},
+    {"name": "E137_multi_view", "config": "greedy=E21_covdz_k3+E65_logspd_k3", "recorded_a": 0.90, "recorded_W": 0.6977},
+    {"name": "E140_metric_learning", "config": "PCA128_raw_control，k=3，fit 原型", "recorded_a": 0.90, "recorded_W": 0.6561},
+    {"name": "E136_clean_three_way", "config": "P96_k3", "recorded_a": 0.95, "recorded_W": 0.6431},
+    {"name": "E133_mean_objective", "config": "G_global（k=1 均值原型）", "recorded_a": 0.85, "recorded_W": "N/A（原实验无 S1）"},
+    {"name": "E119_score_battery", "config": "纯 Test 诊断分数电池", "recorded_a": "N/A", "recorded_W": "N/A"}
+  ],
+  "outputs": ["run_e176.py", "config.json", "results.json", "report.md", "run.log"],
+  "note": "只读访问已有实验目录；不修改、不提交 git。项目 Test 官方 AUC/F1 = N/A（无真实标签）。"
+}
