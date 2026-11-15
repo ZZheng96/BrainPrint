@@ -1,0 +1,986 @@
+[
+ {
+  "experiment": "E00_cov_ridge_baseline",
+  "n_csv": 5,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E01_brainprint_project_report",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E02_open_set_improvement",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E03_open_set_calibration",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E04_pure_eeg_brainprint",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E05_asnorm_openset",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E06_ea_riemannian_openset",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E07_raw_eeg_defense",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E08_raw_eeg_anchor",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E09_raw_eeg_robust",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E100_relaxed_gate_feasibility",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E101_unknown_proxy_sensitivity",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E105_loso_candidate_comparison",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E107_proxy_test_gap",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": true,
+  "reason": "只有 Test 审计，无 LOSO"
+ },
+ {
+  "experiment": "E108_loso_s1_boost",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E10_second_submission",
+  "n_csv": 2,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E110_loso_rejection_boost",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E111_external_joint_embedding",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E112_open_set_classifier",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E113_loso_finetune",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E114_finetune_ablation",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E116_test_separability",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E117_dual_target_loso",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E119_score_battery",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E11_session_blind_candidate",
+  "n_csv": 23,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E120_domain_adaptation",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E121_pca_sweep",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E124_cluster_structure",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E12_unified_full_none_vs_raw_pgd",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E130_per_identity_thresholds",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": true,
+  "has_audit": true,
+  "reason": "LOSO 与 Test S1/S2 未在同一工作点对齐"
+ },
+ {
+  "experiment": "E131_fusion_thresholds",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": true,
+  "has_audit": true,
+  "reason": "LOSO 与 Test S1/S2 未在同一工作点对齐"
+ },
+ {
+  "experiment": "E133_mean_objective",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E13_session_blind_shift_calibration",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E144_retrospective",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E146_phase_features",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E14_session_blind_effective_solution",
+  "n_csv": 2,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E15_session_blind_calibrated_v2",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E160_principle_review",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E16_session_blind_threshold_sweep_v3",
+  "n_csv": 6,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E173_first_submission_audit",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E174_recompute_all_w",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ },
+ {
+  "experiment": "E17_enrollment_template_session_robust_v1",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E18_enrollment_template_session_robust_v1_scaled",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E19_ridge_session_robust_v1",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E20_eeg_image_dinov2",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E21_scale_invariant",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E22_cross_session_viability",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E23_spatial_reference",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E24_norm_gate_robustness",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E25_robust_recognition",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E26_final_candidates",
+  "n_csv": 8,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E27_unknown_rejection",
+  "n_csv": 8,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E28_dino_openset",
+  "n_csv": 12,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E28_plan_aggregation_whitening",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E29_dino_calibration",
+  "n_csv": 8,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E30_dino_multiview",
+  "n_csv": 48,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E31_task_conditional",
+  "n_csv": 20,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E32_distance_ratio",
+  "n_csv": 35,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E33_arcface_head",
+  "n_csv": 5,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E34_covariance_hr",
+  "n_csv": 5,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E35_per_task_analysis",
+  "n_csv": 10,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E36_pure_eeg",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E37_spd_adversarial",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E38_image_pure_fusion",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E39_ecdf_transfer",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E40_attack_rejection",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E41_supervised_detector",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E42_submission_candidates",
+  "n_csv": 2,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": true,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E43_noise_robust_features",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E44_transfer_robustness",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E45_raw_cnn_at",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E46_embedding_rejection",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E47_dual_model_system",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E48_cnn_clean_tuning",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E49_three_region",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E50_ensemble_at",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E51_tta",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E52_frozen_submission",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": true,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E53_raw_eeg_open_robust",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E54_outlier_exposure",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E55_online_adversarial",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E56_cross_session_calibration",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E57_self_normalized_score",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E58_oe_three_region",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E59_online_three_region",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E60_test_audit_diagnosis",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E61_feature_screen",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E62_multiwindow_image",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E63_adaptive_fusion",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E64_e58_test_audit",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": true,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E65_correlation_spd",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": true,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E66_neuroshield_frozen",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E67_test_root_cause",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E68_acquisition_invariance",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E69_image_adversarial",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E70_image_adversarial_training",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E71_covmix_geometry",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E72_pair_protocol",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E73_external_multisession",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E74_multiscale_native22",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E75_image_template",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E76_open_set_head",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E77_score_fusion",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E78_identity_calibration",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E79_pair_open_set",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E80_robust_open_set",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E81_evt_open_set",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E82_unknown_calibration",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E83_gate_feasibility",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E84_hard_negative_pair",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E85_test_csv_audit",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E86_external_outer_csv",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E87_channel_mask_hard_unknown",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E88_spatial_channel_projection",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E89_hard_unknown_calibration",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E90_project18_identity_template",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E91_hybrid_identity_unknown",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E92_frozen_project_candidate",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E93_frozen_audit_only",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": true,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E94_raw_identity_spd_gate",
+  "n_csv": 1,
+  "has_loso": false,
+  "has_s1s2": true,
+  "has_audit": true,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E94_robust_raw_template",
+  "n_csv": 0,
+  "has_loso": false,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "无 LOSO、无 Test S1/S2、无可用逐样本预测 CSV"
+ },
+ {
+  "experiment": "E96_domain_robust_open_set",
+  "n_csv": 1,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "有 Test 预测 CSV，但缺同一工作点的 LOSO（已算 S1/S2）"
+ },
+ {
+  "experiment": "E99_joint_gate_feasibility",
+  "n_csv": 0,
+  "has_loso": true,
+  "has_s1s2": false,
+  "has_audit": false,
+  "reason": "只有 Train 侧 LOSO/伪未知拒识，无 Test S1/S2 记录"
+ }
+]
