@@ -1,0 +1,89 @@
+{
+  "experiment": "E197_enrollment_leave_k",
+  "date": "2026-11-16",
+  "purpose": "User's three-stage flow: (1) train the brainprint extractor using all 20 identities (task-wise standardisation, PCA basis, pre-trained E162 encoder, WCCN whitening); (2) register only the 20-k enrolled identities' prototypes from their fit rows (frac <= 0.6); (3) deploy - identify the enrolled identities and reject the k unregistered identities. Differs from E196, whose strict protocol excluded the held-out identities from the standardisation and PCA as well, i.e. conflated training and registration.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "classes": [1, 20]
+  },
+  "protocol": {
+    "stage1_training": "all 20 identities, fit rows only (frac <= 0.6): per-task mean/sd, PCA basis, WCCN whitening. Fold-invariant, computed once.",
+    "stage2_enrollment": "prototypes from the 20-k enrolled identities' fit rows only (frac <= 0.6); k_proto centres per identity",
+    "stage3_deployment": "identification (argmax over enrolled prototypes) and rejection (best-match score below the fold threshold) on the 0.6 < frac <= 0.8 block",
+    "fit_fraction": 0.6,
+    "eval_window": "0.6 < frac <= 0.8",
+    "primary_acceptance": 0.90,
+    "acceptance_workpoints": [0.85, 0.90, 0.95],
+    "threshold_rule": "tau = quantile(enrolled identities' known best-match scores in the eval window, 1 - a); only enrolled identities calibrate it",
+    "seed": 20261116
+  },
+  "leave_k": {
+    "1": {"mode": "enumerate", "note": "C(20,1) = 20, all folds"},
+    "2": {"mode": "enumerate", "note": "C(20,2) = 190 < the requested 200, so the full enumeration is used; identical fold plan to E196"},
+    "5": {"mode": "sample", "limit": 200, "note": "C(20,5) = 15504, 200 distinct folds, seed 20261116+5; identical fold plan to E196"},
+    "10": {"mode": "sample", "limit": 100, "note": "C(20,10) = 184756, 100 distinct folds, seed 20261116+10; identical fold plan to E196"}
+  },
+  "families": {
+    "e65": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "dim": 855,
+      "source": "E65 / E143 / E194 / E195"
+    },
+    "subwin6": {
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n6.npy",
+      "test": "research/E171_multiscale_fusion/test_subwin_mean_n6.npy",
+      "dim": 855,
+      "source": "E168 / E171"
+    },
+    "subwin12": {
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n12.npy",
+      "test": "research/E171_multiscale_fusion/test_subwin_mean_n12.npy",
+      "dim": 855,
+      "source": "E168 / E171"
+    },
+    "logbp": {
+      "train": "research/E146_phase_features/train_log_band_power.npy",
+      "test": "research/E146_phase_features/test_log_band_power.npy",
+      "dim": 90,
+      "source": "E146"
+    },
+    "e162": {
+      "train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+      "test": "research/E162_raw_eeg_contrastive_v2/test_emb.npy",
+      "dim": 256,
+      "source": "E162 contrastive encoder (pre-trained, frozen)"
+    }
+  },
+  "gates": [
+    {"name": "e65_pca96", "family": "e65", "pca": 96, "prototypes": 12},
+    {"name": "e65_pca64", "family": "e65", "pca": 64, "prototypes": 12},
+    {"name": "subwin6_dist", "family": "subwin6", "pca": 96, "prototypes": 1},
+    {"name": "subwin12_dist", "family": "subwin12", "pca": 48, "prototypes": 1},
+    {"name": "logbp_dist", "family": "logbp", "pca": 16, "prototypes": 1},
+    {"name": "e162_dist", "family": "e162", "pca": 128, "prototypes": 1},
+    {"name": "wccn_dr", "family": "wccn", "pca": 0, "prototypes": 1}
+  ],
+  "fusions": {
+    "e65+subwin6": {"e65_pca96": 0.5, "subwin6_dist": 0.5},
+    "e65+logbp": {"e65_pca96": 0.5, "logbp_dist": 0.5},
+    "all5_mean": {"e65_pca96": 0.2, "subwin6_dist": 0.2, "subwin12_dist": 0.2, "logbp_dist": 0.2, "e162_dist": 0.2}
+  },
+  "fusion_normalisation": "Each stream's identity-score matrix is standardised with the mean/sd of that fold's enrolled known best-match scores before the weighted sum; single-gate readings are invariant to this step.",
+  "reporting": {
+    "identification_accuracy": "share of enrolled eval-window samples whose argmax over the enrolled prototypes is their own identity (unconditional)",
+    "rejection_rate": "share of the k unregistered identities' eval-window samples whose best-match score is below the threshold",
+    "auc": "enrolled known best-match scores versus unregistered identities' best-match scores",
+    "closed_set_f1": "macro-F1 of the argmax assignment over the enrolled identities on the eval window",
+    "test_official": "N/A - Test has no identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "Test scores are computed before the Session column is read; Session only splits S1 / S2 for the audit and never enters any fit"
+  },
+  "comparison": {
+    "e196": "research/E196_leave_k_out/results.json",
+    "note": "E196 keeps the strict protocol (standardisation, PCA and prototypes all exclude the held-out identities); the k = 5 difference isolates the effect of training-set size / encoder exposure."
+  }
+}

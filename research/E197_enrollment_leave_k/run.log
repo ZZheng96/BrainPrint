@@ -1,0 +1,91 @@
+
+E197 start 2026-11-16 00:59:22 device cuda
+Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033, device cuda
+stage 1: training on all 20 identities (fold-invariant)
+  stage1 e65: dim 855 -> 96 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 subwin6: dim 855 -> 96 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 subwin12: dim 855 -> 48 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 logbp: dim 90 -> 16 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 e162: dim 256 -> 128 PCA (fitted on 6695 rows of all 20 identities)
+
+E197 start 2026-11-16 00:59:34 device cuda
+Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033, device cuda
+stage 1: training on all 20 identities (fold-invariant)
+  stage1 e65: dim 855 -> 96 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 subwin6: dim 855 -> 96 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 subwin12: dim 855 -> 48 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 logbp: dim 90 -> 16 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 e162: dim 256 -> 128 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 wccn: whitening on 6695 rows of all 20 identities
+stage 2 support: per-identity prototypes on fit rows (selected per fold)
+stage 1 + prototype build done in 1s
+  fold plan k=1: 20 folds (pool 20)
+  fold plan k=2: 190 folds (pool 190)
+  fold plan k=5: 200 folds (pool 15504)
+  fold plan k=10: 100 folds (pool 184756)
+  k= 1 fold   1/1 0.17s/fold elapsed 1s
+  k=1 done: e65_pca96 acc 0.9816 rej 0.4839, e65_pca64 acc 0.9761 rej 0.4677, subwin6_dist acc 0.9297 rej 0.1290, subwin12_dist acc 0.8778 rej 0.1129, logbp_dist acc 0.6114 rej 0.0242, e162_dist acc 0.7745 rej 0.5726, wccn_dr acc 0.9972 rej 0.1694, e65+subwin6 acc 0.9734 rej 0.4113, e65+logbp acc 0.9398 rej 0.1694, all5_mean acc 0.9417 rej 0.5081
+  k= 2 fold   1/1 0.34s/fold elapsed 2s
+  k=2 done: e65_pca96 acc 0.9822 rej 0.6858, e65_pca64 acc 0.9769 rej 0.6770, subwin6_dist acc 0.9272 rej 0.3584, subwin12_dist acc 0.8761 rej 0.2655, logbp_dist acc 0.6173 rej 0.0177, e162_dist acc 0.7749 rej 0.5664, wccn_dr acc 0.9971 rej 0.3628, e65+subwin6 acc 0.9730 rej 0.6195, e65+logbp acc 0.9388 rej 0.3496, all5_mean acc 0.9393 rej 0.6416
+  k= 5 fold   1/1 0.51s/fold elapsed 2s
+  k=5 done: e65_pca96 acc 0.9821 rej 0.7243, e65_pca64 acc 0.9751 rej 0.7818, subwin6_dist acc 0.9346 rej 0.4311, subwin12_dist acc 0.8837 rej 0.3839, logbp_dist acc 0.6094 rej 0.2007, e162_dist acc 0.7697 rej 0.6422, wccn_dr acc 0.9971 rej 0.2932, e65+subwin6 acc 0.9705 rej 0.6754, e65+logbp acc 0.9323 rej 0.5218, all5_mean acc 0.9306 rej 0.7923
+  k=10 fold   1/1 0.66s/fold elapsed 2s
+  k=10 done: e65_pca96 acc 0.9855 rej 0.8780, e65_pca64 acc 0.9829 rej 0.9036, subwin6_dist acc 0.9829 rej 0.8073, subwin12_dist acc 0.9521 rej 0.6295, logbp_dist acc 0.7094 rej 0.3148, e162_dist acc 0.8803 rej 0.5632, wccn_dr acc 0.9991 rej 0.2803, e65+subwin6 acc 0.9897 rej 0.9213, e65+logbp acc 0.9769 rej 0.7966, all5_mean acc 0.9897 rej 0.9248
+stage folds done in 2s (4 folds)
+E197 done
+
+E197 start 2026-11-16 01:00:34 device cuda
+Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033, device cuda
+stage 1: training on all 20 identities (fold-invariant)
+  stage1 e65: dim 855 -> 96 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 subwin6: dim 855 -> 96 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 subwin12: dim 855 -> 48 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 logbp: dim 90 -> 16 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 e162: dim 256 -> 128 PCA (fitted on 6695 rows of all 20 identities)
+  stage1 wccn: whitening on 6695 rows of all 20 identities
+stage 2 support: per-identity prototypes on fit rows (selected per fold)
+stage 1 + prototype build done in 1s
+  k= 1 fold  20/20 0.15s/fold elapsed 4s
+  k=1 done: e65_pca96 acc 0.9785 rej 0.7938, e65_pca64 acc 0.9754 rej 0.8304, subwin6_dist acc 0.9279 rej 0.5710, subwin12_dist acc 0.8760 rej 0.5090, logbp_dist acc 0.6080 rej 0.1781, e162_dist acc 0.7754 rej 0.5852, wccn_dr acc 0.9971 rej 0.3435, e65+subwin6 acc 0.9724 rej 0.7590, e65+logbp acc 0.9411 rej 0.6063, all5_mean acc 0.9429 rej 0.7788
+  k= 2 fold  25/190 0.27s/fold elapsed 8s
+  k= 2 fold  50/190 0.23s/fold elapsed 12s
+  k= 2 fold  75/190 0.21s/fold elapsed 17s
+  k= 2 fold 100/190 0.21s/fold elapsed 22s
+  k= 2 fold 125/190 0.20s/fold elapsed 27s
+  k= 2 fold 150/190 0.20s/fold elapsed 31s
+  k= 2 fold 175/190 0.20s/fold elapsed 36s
+  k= 2 fold 190/190 0.20s/fold elapsed 39s
+  k=2 done: e65_pca96 acc 0.9791 rej 0.7947, e65_pca64 acc 0.9761 rej 0.8303, subwin6_dist acc 0.9297 rej 0.5726, subwin12_dist acc 0.8791 rej 0.5134, logbp_dist acc 0.6158 rej 0.1809, e162_dist acc 0.7805 rej 0.5934, wccn_dr acc 0.9972 rej 0.3399, e65+subwin6 acc 0.9731 rej 0.7651, e65+logbp acc 0.9421 rej 0.6073, all5_mean acc 0.9445 rej 0.7855
+  k= 5 fold  25/200 1.73s/fold elapsed 45s
+  k= 5 fold  50/200 0.96s/fold elapsed 49s
+  k= 5 fold  75/200 0.70s/fold elapsed 53s
+  k= 5 fold 100/200 0.57s/fold elapsed 58s
+  k= 5 fold 125/200 0.49s/fold elapsed 62s
+  k= 5 fold 150/200 0.44s/fold elapsed 67s
+  k= 5 fold 175/200 0.40s/fold elapsed 71s
+  k= 5 fold 200/200 0.37s/fold elapsed 76s
+  k=5 done: e65_pca96 acc 0.9812 rej 0.8096, e65_pca64 acc 0.9782 rej 0.8419, subwin6_dist acc 0.9360 rej 0.5960, subwin12_dist acc 0.8897 rej 0.5362, logbp_dist acc 0.6430 rej 0.1982, e162_dist acc 0.7979 rej 0.6171, wccn_dr acc 0.9977 rej 0.3298, e65+subwin6 acc 0.9758 rej 0.7849, e65+logbp acc 0.9466 rej 0.6256, all5_mean acc 0.9501 rej 0.8044
+  k=10 fold  25/100 3.18s/fold elapsed 81s
+  k=10 fold  50/100 1.67s/fold elapsed 85s
+  k=10 fold  75/100 1.17s/fold elapsed 89s
+  k=10 fold 100/100 0.92s/fold elapsed 93s
+  k=10 done: e65_pca96 acc 0.9871 rej 0.8454, e65_pca64 acc 0.9846 rej 0.8744, subwin6_dist acc 0.9525 rej 0.6501, subwin12_dist acc 0.9166 rej 0.5853, logbp_dist acc 0.7148 rej 0.1960, e162_dist acc 0.8409 rej 0.6654, wccn_dr acc 0.9985 rej 0.3460, e65+subwin6 acc 0.9834 rej 0.8339, e65+logbp acc 0.9584 rej 0.6725, all5_mean acc 0.9634 rej 0.8510
+stage folds done in 93s (510 folds)
+stage report done
+E197 done
+
+E197 start 2026-11-16 01:03:16 device cuda
+stage report done
+E197 done
+
+E197 start 2026-11-16 01:03:46 device cuda
+stage report done
+E197 done
+
+E197 start 2026-11-16 01:04:08 device cuda
+stage report done
+E197 done
+
+E197 start 2026-11-16 01:04:24 device cuda
+stage report done
+E197 done
