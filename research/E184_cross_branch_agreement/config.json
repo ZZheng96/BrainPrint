@@ -1,0 +1,64 @@
+{
+  "experiment": "E184_cross_branch_agreement",
+  "date": "2026-11-15",
+  "purpose": "Test whether CROSS-BRANCH IDENTITY AGREEMENT (branch A closed-set argmax vs branch B E65 prototype nearest identity) is a gate signal whose information is orthogonal to the distance magnitude, so that Test S1-rejection + S2-acceptance can exceed the 1.4479 historical ceiling (1.50 needed for both gates #9/#10 at 0.75). Branches are frozen; nothing is retrained.",
+  "frozen_source": {
+    "experiment": "E180_dual_branch_adversarial_openset",
+    "branch_a_model": "model_branch_a.pt",
+    "branch_a_oof_logits": "cache/stage_a.pt",
+    "branch_b_store": "cache/stage_b.npz",
+    "test_logits_reuse": "research/E181_gate_fusion_tuning/cache/test_logits.npy (same frozen branch A full model, copied read-only into cache/)",
+    "note": "read-only; E184 never writes into E180/E181/E183 and never retrains the identity model"
+  },
+  "signals": {
+    "agree": "1 if branch A closed-set argmax == branch B nearest-prototype identity else 0",
+    "soft_agree": "branch A softmax probability mass on the identity chosen by branch B",
+    "margin_agree": "branch A top1 probability - probability on branch B's identity (smaller = more agreement)",
+    "rank_agree": "rank of branch B's identity in branch A's output (1 = branch A's top1)",
+    "g_dist": "branch B score = -nearest-prototype euclidean distance, z-scored with Train OOF mean/std (E180 gate)"
+  },
+  "hypothesis": {
+    "H1": "For a registered identity S2 both branches should pick the same identity more often than for an unregistered S1 identity",
+    "falsification": "if the S1 and S2 agree proportions are statistically indistinguishable (chi-square p > 0.05) the hypothesis is rejected and no combination tuning is performed"
+  },
+  "gates": {
+    "additive": "score = z(g_dist) + lambda * agree, lambda in {0.5, 1, 2, 4}; truth-table for lambda=10 is reported as the AND/OR 2D rule family",
+    "and_rule": "accept iff z(g_dist) >= tau1 AND agree == 1",
+    "or_rule": "accept iff z(g_dist) >= tau1 OR agree == 1",
+    "lab_rule": "2D LAB cells = (tercile of Train OOF z(g_dist)) x agree; cell score = known-rate estimated on Train LOSO (known vs pseudo-unknown), threshold = Train OOF quantile of the cell score",
+    "equivalence_note": "AND and OR are two operating points on the same 2D score (z(g_dist) + B*agree, B large), so their ROC/AUC coincide; only the threshold differs",
+    "selection_rule": "argmax pooled Train LOSO gate AUC; ties broken by fewer components",
+    "forbidden": "Test metrics never select weights, lambdas, cell values or thresholds"
+  },
+  "threshold": {
+    "rule": "tau(a) = quantile(Train OOF gate score, 1 - a)  (E170/E180/E181 convention)",
+    "grid": [0.80, 0.82, 0.84, 0.86, 0.88, 0.90, 0.92, 0.94, 0.96],
+    "primary_acceptance": 0.90,
+    "decision": "gate >= tau -> branch A argmax, else label 0"
+  },
+  "loso": {
+    "folds": 20,
+    "train_rows": "pm & fit_rows (19 enrolled identities, frac <= 0.6)",
+    "eval_rows": "window 0.6 < frac <= 0.8: known = 19 enrolled identities, unknown = held-out identity",
+    "branch_a_masking": "the frozen branch A is a 20-class closed set, so for a leave-identity-out fold its logit for the held identity is masked to -1e9 before the softmax; otherwise 'agree' would be 0 for every pseudo-unknown by construction and the calibration would be meaningless. This is the only way the Train agreement statistic has the same form as at Test (both branches choosing among the registered identities).",
+    "disclosure": "the production branch A is NOT masked; the mask is a Train-only calibration device"
+  },
+  "attack": {
+    "domain": "Train window 0.6 < frac <= 0.8, stratified cap 400 per task, identical subset to E180/E181",
+    "eps_normalised": [0.005, 0.01, 0.02],
+    "steps": 8,
+    "goals": {
+      "A": "impersonation on the identity head",
+      "B": "broad confusion on the identity head",
+      "C": "boundary impersonation on the identity head",
+      "D": "gate evasion: maximise z(branch-B distance score)",
+      "E": "agreement inflation: maximise branch A probability on branch B's identity (smooth surrogate for agree=1)"
+    },
+    "reading": "#7 = lowest RA over eps x goals, #8 = lowest ASafeR; decisions are re-evaluated with the exact binary agree rule after the perturbation",
+    "status": "self-built white-box PGD surrogate, not the official suite"
+  },
+  "reporting": {
+    "test_official": "N/A: Test has no identity labels; AUC/F1/C/RA/ASafeR/U/Score are not computable",
+    "session_usage": "Test gate decisions are written to CSV before the Session column is read; Session is used only for the #9/#10 audit and for the S1 vs S2 diagnostic table"
+  }
+}

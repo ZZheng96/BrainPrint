@@ -1,0 +1,250 @@
+
+===== E184 run 2026-11-15 19:33:06 stage=signals =====
+  block 0: 2173 rows scored, 960 prototypes
+  block 1: 2203 rows scored, 960 prototypes
+  block 2: 2246 rows scored, 960 prototypes
+  block 3: 2303 rows scored, 960 prototypes
+  block 4: 2379 rows scored, 960 prototypes
+  copied frozen branch A Test logits from E181 ((22251, 20))
+stage signals done in 2s: Train OOF agree 0.9662; branch A OOF acc 0.9881; branch B OOF score diff vs E180 9.54e-06
+
+===== E184 run 2026-11-15 19:33:17 stage=loso =====
+  LOSO  1: dist AUC 0.8883 | agree AUC 0.9215 (known 0.972 vs unknown 0.129); soft 0.960 vs 0.126
+  LOSO  2: dist AUC 0.9587 | agree AUC 0.9469 (known 0.972 vs unknown 0.078); soft 0.960 vs 0.071
+  LOSO  3: dist AUC 0.9490 | agree AUC 0.9439 (known 0.970 vs unknown 0.082); soft 0.957 vs 0.073
+  LOSO  4: dist AUC 0.9641 | agree AUC 0.8615 (known 0.971 vs unknown 0.248); soft 0.959 vs 0.213
+  LOSO  5: dist AUC 1.0000 | agree AUC 0.9598 (known 0.969 vs unknown 0.050); soft 0.956 vs 0.041
+  LOSO  6: dist AUC 0.9624 | agree AUC 0.9282 (known 0.969 vs unknown 0.113); soft 0.956 vs 0.125
+  LOSO  7: dist AUC 0.9471 | agree AUC 0.9765 (known 0.969 vs unknown 0.016); soft 0.957 vs 0.026
+  LOSO  8: dist AUC 0.9917 | agree AUC 0.8996 (known 0.972 vs unknown 0.173); soft 0.960 vs 0.178
+  LOSO  9: dist AUC 0.9789 | agree AUC 0.9073 (known 0.970 vs unknown 0.155); soft 0.958 vs 0.122
+  LOSO 10: dist AUC 0.9518 | agree AUC 0.8422 (known 0.974 vs unknown 0.290); soft 0.963 vs 0.277
+  LOSO 11: dist AUC 0.9109 | agree AUC 0.9350 (known 0.969 vs unknown 0.099); soft 0.957 vs 0.103
+  LOSO 12: dist AUC 0.8984 | agree AUC 0.8778 (known 0.969 vs unknown 0.213); soft 0.957 vs 0.183
+  LOSO 13: dist AUC 0.9599 | agree AUC 0.7328 (known 0.970 vs unknown 0.504); soft 0.957 vs 0.397
+  LOSO 14: dist AUC 0.9954 | agree AUC 0.9105 (known 0.970 vs unknown 0.149); soft 0.957 vs 0.151
+  LOSO 15: dist AUC 0.9137 | agree AUC 0.7443 (known 0.970 vs unknown 0.482); soft 0.959 vs 0.378
+  LOSO 16: dist AUC 0.8479 | agree AUC 0.8892 (known 0.972 vs unknown 0.193); soft 0.960 vs 0.141
+  LOSO 17: dist AUC 0.8698 | agree AUC 0.9642 (known 0.973 vs unknown 0.045); soft 0.961 vs 0.060
+  LOSO 18: dist AUC 0.8962 | agree AUC 0.9087 (known 0.970 vs unknown 0.153); soft 0.960 vs 0.121
+  LOSO 19: dist AUC 0.9730 | agree AUC 0.9163 (known 0.982 vs unknown 0.149); soft 0.972 vs 0.128
+  LOSO 20: dist AUC 0.9391 | agree AUC 0.8843 (known 0.970 vs unknown 0.202); soft 0.959 vs 0.152
+stage loso done in 5s: pooled AUC g_dist 0.9401, agree 0.8974, soft_agree 0.9784, margin_agree 0.1072, rank_agree 0.0980
+
+===== E184 run 2026-11-15 19:33:32 stage=diag =====
+
+===== E184 run 2026-11-15 19:33:45 stage=signals =====
+  block 0: 2173 rows scored, 960 prototypes
+  block 1: 2203 rows scored, 960 prototypes
+  block 2: 2246 rows scored, 960 prototypes
+  block 3: 2303 rows scored, 960 prototypes
+  block 4: 2379 rows scored, 960 prototypes
+stage signals done in 2s: Train OOF agree 0.9662; branch A OOF acc 0.9881; branch B OOF score diff vs E180 1.24e-05
+
+===== E184 run 2026-11-15 19:33:53 stage=loso =====
+  LOSO  1: dist AUC 0.8883 | agree AUC 0.9215 (known 0.972 vs unknown 0.129); soft 0.960 vs 0.126
+  LOSO  2: dist AUC 0.9587 | agree AUC 0.9469 (known 0.972 vs unknown 0.078); soft 0.960 vs 0.071
+  LOSO  3: dist AUC 0.9490 | agree AUC 0.9439 (known 0.970 vs unknown 0.082); soft 0.957 vs 0.073
+  LOSO  4: dist AUC 0.9641 | agree AUC 0.8615 (known 0.971 vs unknown 0.248); soft 0.959 vs 0.213
+  LOSO  5: dist AUC 1.0000 | agree AUC 0.9598 (known 0.969 vs unknown 0.050); soft 0.956 vs 0.041
+  LOSO  6: dist AUC 0.9624 | agree AUC 0.9282 (known 0.969 vs unknown 0.113); soft 0.956 vs 0.125
+  LOSO  7: dist AUC 0.9471 | agree AUC 0.9765 (known 0.969 vs unknown 0.016); soft 0.957 vs 0.026
+  LOSO  8: dist AUC 0.9917 | agree AUC 0.8996 (known 0.972 vs unknown 0.173); soft 0.960 vs 0.178
+  LOSO  9: dist AUC 0.9789 | agree AUC 0.9073 (known 0.970 vs unknown 0.155); soft 0.958 vs 0.122
+  LOSO 10: dist AUC 0.9518 | agree AUC 0.8422 (known 0.974 vs unknown 0.290); soft 0.963 vs 0.277
+  LOSO 11: dist AUC 0.9109 | agree AUC 0.9350 (known 0.969 vs unknown 0.099); soft 0.957 vs 0.103
+  LOSO 12: dist AUC 0.8984 | agree AUC 0.8778 (known 0.969 vs unknown 0.213); soft 0.957 vs 0.183
+  LOSO 13: dist AUC 0.9599 | agree AUC 0.7328 (known 0.970 vs unknown 0.504); soft 0.957 vs 0.397
+  LOSO 14: dist AUC 0.9954 | agree AUC 0.9105 (known 0.970 vs unknown 0.149); soft 0.957 vs 0.151
+  LOSO 15: dist AUC 0.9137 | agree AUC 0.7443 (known 0.970 vs unknown 0.482); soft 0.959 vs 0.378
+  LOSO 16: dist AUC 0.8479 | agree AUC 0.8892 (known 0.972 vs unknown 0.193); soft 0.960 vs 0.141
+  LOSO 17: dist AUC 0.8698 | agree AUC 0.9642 (known 0.973 vs unknown 0.045); soft 0.961 vs 0.060
+  LOSO 18: dist AUC 0.8962 | agree AUC 0.9087 (known 0.970 vs unknown 0.153); soft 0.960 vs 0.121
+  LOSO 19: dist AUC 0.9730 | agree AUC 0.9163 (known 0.982 vs unknown 0.149); soft 0.972 vs 0.128
+  LOSO 20: dist AUC 0.9391 | agree AUC 0.8843 (known 0.970 vs unknown 0.202); soft 0.959 vs 0.152
+stage loso done in 5s: pooled AUC g_dist 0.9401, agree 0.8974, soft_agree 0.9784, margin_agree 0.1072, rank_agree 0.0980
+
+===== E184 run 2026-11-15 19:34:03 stage=diag =====
+stage diag: Test agreement diagnostic (audit only)
+  S1 n=3033 agree 0.2186 | S2 n=19218 agree 0.4365 | diff +0.2179 CI95 [+0.2016, +0.2342] chi2 p=6.265e-114
+  agree         S1 +0.2186 S2 +0.4365 AUC 0.6090
+  soft_agree    S1 +0.2036 S2 +0.4114 AUC 0.6718
+  margin_agree  S1 +0.5769 S2 +0.3608 AUC 0.6713
+  rank_agree    S1 +6.9802 S2 +4.5038 AUC 0.6521
+  hypothesis PASSED
+
+===== E184 run 2026-11-15 19:34:12 stage=gates =====
+stage gates: Train LOSO pooled AUC by candidate
+  0.9758  fold 0.9757±0.0163  U@95 1.0000  g_dist + 4*agree
+  0.9758  fold 0.9757±0.0162  U@95 1.0000  2D rule family (agree offset +10 == AND/OR)
+  0.9753  fold 0.9752±0.0169  U@95 1.0000  g_dist + 2*agree
+  0.9696  fold 0.9694±0.0210  U@95 1.0000  g_dist + 1*agree
+  0.9641  fold 0.9639±0.0174  U@95 0.9995  LAB(3x2) cell known-rate
+  0.9600  fold 0.9597±0.0280  U@95 1.0000  g_dist + 0.5*agree
+  0.9401  fold 0.9398±0.0420  U@95 1.0000  g_dist
+  selected: g_dist + 4*agree (LOSO 0.9758)
+
+===== E184 run 2026-11-15 19:34:27 stage=gates =====
+stage gates: Train LOSO pooled AUC by candidate
+  0.9758  fold 0.9757±0.0163  U@95 0.8985  g_dist + 4*agree
+  0.9758  fold 0.9757±0.0162  U@95 0.8985  2D rule family (agree offset +10 == AND/OR)
+  0.9753  fold 0.9752±0.0169  U@95 0.9005  g_dist + 2*agree
+  0.9696  fold 0.9694±0.0210  U@95 0.8409  g_dist + 1*agree
+  0.9641  fold 0.9639±0.0174  U@95 0.8239  LAB(3x2) cell known-rate
+  0.9600  fold 0.9597±0.0280  U@95 0.7281  g_dist + 0.5*agree
+  0.9401  fold 0.9398±0.0420  U@95 0.5847  g_dist
+  selected: g_dist + 4*agree (LOSO 0.9758)
+
+===== E184 run 2026-11-15 19:34:33 stage=test =====
+  wrote test_predictions_fused.csv (15342 rejects of 22251) BEFORE reading Session
+stage test done in 0s: Test diag AUC 0.7306
+  a=0.90: S1 reject 0.9261 S2 accept 0.3479 sum 1.2740
+  best Train-calibrated point a=0.94: sum 1.2905 (S1 0.8961 / S2 0.3944); forbidden Test-optimal bound 1.3376
+  rule AND best a=0.96: sum 1.2895
+  rule OR best a=0.88: sum 1.3314
+
+===== E184 run 2026-11-15 19:35:23 stage=test =====
+  wrote test_predictions_fused.csv (15342 rejects of 22251) BEFORE reading Session
+stage test done in 0s: Test diag AUC 0.7306
+  a=0.90: S1 reject 0.9261 S2 accept 0.3479 sum 1.2740
+  best Train-calibrated point a=0.94: sum 1.2905 (S1 0.8961 / S2 0.3944); forbidden Test-optimal bound 1.3376
+  rule AND best a=0.96: sum 1.2895
+  rule OR best a=0.88: sum 1.3314
+
+===== E184 run 2026-11-15 19:36:39 stage=test =====
+  wrote test_predictions_fused.csv (15342 rejects of 22251) BEFORE reading Session
+stage test done in 0s: Test diag AUC 0.7306
+  a=0.90: S1 reject 0.9261 S2 accept 0.3479 sum 1.2740
+  best Train-calibrated point a=0.94: sum 1.2905 (S1 0.8961 / S2 0.3944); forbidden Test-optimal bound 1.3376
+  rule AND best a=0.96: sum 1.2895
+  rule OR best a=0.88: sum 1.3314
+  best candidate under Train calibration: g_dist + 1*agree sum 1.4038; best forbidden Test-optimal bound: g_dist + 1*agree 1.4058
+
+===== E184 run 2026-11-15 19:36:49 stage=attack =====
+attack: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  differentiable vs numpy: max |dg_dist| 2.37e+00, agree identical fraction 0.9880
+  clean: RA 0.9401 ASafeR 1.0000 closed 1.0000 accept 0.9401 agree 0.9808
+  eps=0.005 goal A: RA 0.9361 ASafeR 1.0000 closed 0.9984 accept 0.9361 agree 0.9768
+  eps=0.005 goal B: RA 0.9361 ASafeR 1.0000 closed 0.9984 accept 0.9361 agree 0.9768
+  eps=0.005 goal C: RA 0.9345 ASafeR 1.0000 closed 0.9992 accept 0.9345 agree 0.9768
+  eps=0.005 goal D: RA 0.9641 ASafeR 1.0000 closed 1.0000 accept 0.9641 agree 0.9800
+  eps=0.005 goal E: RA 0.9385 ASafeR 1.0000 closed 1.0000 accept 0.9385 agree 0.9800
+  eps=0.010 goal A: RA 0.9321 ASafeR 1.0000 closed 0.9960 accept 0.9321 agree 0.9720
+  eps=0.010 goal B: RA 0.9321 ASafeR 1.0000 closed 0.9968 accept 0.9321 agree 0.9728
+  eps=0.010 goal C: RA 0.9329 ASafeR 1.0000 closed 0.9984 accept 0.9329 agree 0.9752
+  eps=0.010 goal D: RA 0.9768 ASafeR 1.0000 closed 1.0000 accept 0.9768 agree 0.9808
+  eps=0.010 goal E: RA 0.9393 ASafeR 1.0000 closed 1.0000 accept 0.9393 agree 0.9808
+  eps=0.020 goal A: RA 0.9137 ASafeR 1.0000 closed 0.9776 accept 0.9137 agree 0.9545
+  eps=0.020 goal B: RA 0.9137 ASafeR 1.0000 closed 0.9784 accept 0.9137 agree 0.9553
+  eps=0.020 goal C: RA 0.9273 ASafeR 1.0000 closed 0.9976 accept 0.9273 agree 0.9688
+  eps=0.020 goal D: RA 0.9816 ASafeR 1.0000 closed 1.0000 accept 0.9816 agree 0.9808
+  eps=0.020 goal E: RA 0.9393 ASafeR 1.0000 closed 1.0000 accept 0.9393 agree 0.9808
+attack done in 20s: worst RA 0.9137 (eps 0.02, goal A), worst ASafeR 1.0000
+
+===== E184 run 2026-11-15 19:37:30 stage=attack =====
+attack: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  differentiable (full-model prototypes) vs numpy OOF (block-excluded prototypes): max |dg_dist| 2.37e+00, mean shift +0.0457, agree identical fraction 0.9880
+  clean: RA 0.9401 ASafeR 1.0000 closed 1.0000 accept 0.9401 agree 0.9808
+  eps=0.005 goal A: RA 0.9361 ASafeR 1.0000 closed 0.9984 accept 0.9361 agree 0.9768
+  eps=0.005 goal B: RA 0.9361 ASafeR 1.0000 closed 0.9984 accept 0.9361 agree 0.9768
+  eps=0.005 goal C: RA 0.9345 ASafeR 1.0000 closed 0.9992 accept 0.9345 agree 0.9768
+  eps=0.005 goal D: RA 0.9641 ASafeR 1.0000 closed 1.0000 accept 0.9641 agree 0.9800
+  eps=0.005 goal E: RA 0.9385 ASafeR 1.0000 closed 1.0000 accept 0.9385 agree 0.9800
+  eps=0.010 goal A: RA 0.9321 ASafeR 1.0000 closed 0.9960 accept 0.9321 agree 0.9720
+  eps=0.010 goal B: RA 0.9321 ASafeR 1.0000 closed 0.9968 accept 0.9321 agree 0.9728
+  eps=0.010 goal C: RA 0.9329 ASafeR 1.0000 closed 0.9984 accept 0.9329 agree 0.9752
+  eps=0.010 goal D: RA 0.9768 ASafeR 1.0000 closed 1.0000 accept 0.9768 agree 0.9808
+  eps=0.010 goal E: RA 0.9393 ASafeR 1.0000 closed 1.0000 accept 0.9393 agree 0.9808
+  eps=0.020 goal A: RA 0.9137 ASafeR 1.0000 closed 0.9776 accept 0.9137 agree 0.9545
+  eps=0.020 goal B: RA 0.9137 ASafeR 1.0000 closed 0.9784 accept 0.9137 agree 0.9553
+  eps=0.020 goal C: RA 0.9273 ASafeR 1.0000 closed 0.9976 accept 0.9273 agree 0.9688
+  eps=0.020 goal D: RA 0.9816 ASafeR 1.0000 closed 1.0000 accept 0.9816 agree 0.9808
+  eps=0.020 goal E: RA 0.9393 ASafeR 1.0000 closed 1.0000 accept 0.9393 agree 0.9808
+attack done in 21s: worst RA 0.9137 (eps 0.02, goal A), worst ASafeR 1.0000
+
+===== E184 run 2026-11-15 19:37:55 stage=report =====
+report written to D:\WORK\BCIC2026\BrainPrint\research\E184_cross_branch_agreement\report.md
+
+===== E184 run 2026-11-15 19:38:34 stage=report =====
+report written to D:\WORK\BCIC2026\BrainPrint\research\E184_cross_branch_agreement\report.md
+
+===== E184 run 2026-11-15 19:39:04 stage=report =====
+report written to D:\WORK\BCIC2026\BrainPrint\research\E184_cross_branch_agreement\report.md
+
+===== E184 run 2026-11-15 19:39:17 stage=report =====
+report written to D:\WORK\BCIC2026\BrainPrint\research\E184_cross_branch_agreement\report.md
+
+===== E184 run 2026-11-15 19:39:27 stage=all =====
+  block 0: 2173 rows scored, 960 prototypes
+  block 1: 2203 rows scored, 960 prototypes
+  block 2: 2246 rows scored, 960 prototypes
+  block 3: 2303 rows scored, 960 prototypes
+  block 4: 2379 rows scored, 960 prototypes
+stage signals done in 3s: Train OOF agree 0.9662; branch A OOF acc 0.9881; branch B OOF score diff vs E180 1.53e-05
+  LOSO  1: dist AUC 0.8883 | agree AUC 0.9215 (known 0.972 vs unknown 0.129); soft 0.960 vs 0.126
+  LOSO  2: dist AUC 0.9587 | agree AUC 0.9469 (known 0.972 vs unknown 0.078); soft 0.960 vs 0.071
+  LOSO  3: dist AUC 0.9490 | agree AUC 0.9439 (known 0.970 vs unknown 0.082); soft 0.957 vs 0.073
+  LOSO  4: dist AUC 0.9641 | agree AUC 0.8615 (known 0.971 vs unknown 0.248); soft 0.959 vs 0.213
+  LOSO  5: dist AUC 1.0000 | agree AUC 0.9598 (known 0.969 vs unknown 0.050); soft 0.956 vs 0.041
+  LOSO  6: dist AUC 0.9624 | agree AUC 0.9282 (known 0.969 vs unknown 0.113); soft 0.956 vs 0.125
+  LOSO  7: dist AUC 0.9471 | agree AUC 0.9765 (known 0.969 vs unknown 0.016); soft 0.957 vs 0.026
+  LOSO  8: dist AUC 0.9917 | agree AUC 0.8996 (known 0.972 vs unknown 0.173); soft 0.960 vs 0.178
+  LOSO  9: dist AUC 0.9789 | agree AUC 0.9073 (known 0.970 vs unknown 0.155); soft 0.958 vs 0.122
+  LOSO 10: dist AUC 0.9518 | agree AUC 0.8422 (known 0.974 vs unknown 0.290); soft 0.963 vs 0.277
+  LOSO 11: dist AUC 0.9109 | agree AUC 0.9350 (known 0.969 vs unknown 0.099); soft 0.957 vs 0.103
+  LOSO 12: dist AUC 0.8984 | agree AUC 0.8778 (known 0.969 vs unknown 0.213); soft 0.957 vs 0.183
+  LOSO 13: dist AUC 0.9599 | agree AUC 0.7328 (known 0.970 vs unknown 0.504); soft 0.957 vs 0.397
+  LOSO 14: dist AUC 0.9954 | agree AUC 0.9105 (known 0.970 vs unknown 0.149); soft 0.957 vs 0.151
+  LOSO 15: dist AUC 0.9137 | agree AUC 0.7443 (known 0.970 vs unknown 0.482); soft 0.959 vs 0.378
+  LOSO 16: dist AUC 0.8479 | agree AUC 0.8892 (known 0.972 vs unknown 0.193); soft 0.960 vs 0.141
+  LOSO 17: dist AUC 0.8698 | agree AUC 0.9642 (known 0.973 vs unknown 0.045); soft 0.961 vs 0.060
+  LOSO 18: dist AUC 0.8962 | agree AUC 0.9087 (known 0.970 vs unknown 0.153); soft 0.960 vs 0.121
+  LOSO 19: dist AUC 0.9730 | agree AUC 0.9163 (known 0.982 vs unknown 0.149); soft 0.972 vs 0.128
+  LOSO 20: dist AUC 0.9391 | agree AUC 0.8843 (known 0.970 vs unknown 0.202); soft 0.959 vs 0.152
+stage loso done in 6s: pooled AUC g_dist 0.9401, agree 0.8974, soft_agree 0.9784, margin_agree 0.1072, rank_agree 0.0980
+stage diag: Test agreement diagnostic (audit only)
+  S1 n=3033 agree 0.2186 | S2 n=19218 agree 0.4365 | diff +0.2179 CI95 [+0.2016, +0.2342] chi2 p=6.265e-114
+  agree         S1 +0.2186 S2 +0.4365 AUC 0.6090
+  soft_agree    S1 +0.2036 S2 +0.4114 AUC 0.6718
+  margin_agree  S1 +0.5769 S2 +0.3608 AUC 0.6713
+  rank_agree    S1 +6.9802 S2 +4.5038 AUC 0.6521
+  hypothesis PASSED
+stage gates: Train LOSO pooled AUC by candidate
+  0.9758  fold 0.9757±0.0163  U@95 0.8985  g_dist + 4*agree
+  0.9758  fold 0.9757±0.0162  U@95 0.8985  2D rule family (agree offset +10 == AND/OR)
+  0.9753  fold 0.9752±0.0169  U@95 0.9005  g_dist + 2*agree
+  0.9696  fold 0.9694±0.0210  U@95 0.8409  g_dist + 1*agree
+  0.9641  fold 0.9639±0.0174  U@95 0.8239  LAB(3x2) cell known-rate
+  0.9600  fold 0.9597±0.0280  U@95 0.7281  g_dist + 0.5*agree
+  0.9401  fold 0.9398±0.0420  U@95 0.5847  g_dist
+  selected: g_dist + 4*agree (LOSO 0.9758)
+  wrote test_predictions_fused.csv (15342 rejects of 22251) BEFORE reading Session
+stage test done in 0s: Test diag AUC 0.7306
+  a=0.90: S1 reject 0.9261 S2 accept 0.3479 sum 1.2740
+  best Train-calibrated point a=0.94: sum 1.2905 (S1 0.8961 / S2 0.3944); forbidden Test-optimal bound 1.3376
+  rule AND best a=0.96: sum 1.2895
+  rule OR best a=0.88: sum 1.3314
+  best candidate under Train calibration: g_dist + 1*agree sum 1.4038; best forbidden Test-optimal bound: g_dist + 1*agree 1.4058
+attack: 1252 eval-window trials (EC=222, EO=230, Imagery=400, SSVEP=400)
+  raw 1252/1252 (0s)
+  differentiable (full-model prototypes) vs numpy OOF (block-excluded prototypes): max |dg_dist| 2.37e+00, mean shift +0.0457, agree identical fraction 0.9880
+  clean: RA 0.9401 ASafeR 1.0000 closed 1.0000 accept 0.9401 agree 0.9808
+  eps=0.005 goal A: RA 0.9361 ASafeR 1.0000 closed 0.9984 accept 0.9361 agree 0.9768
+  eps=0.005 goal B: RA 0.9361 ASafeR 1.0000 closed 0.9984 accept 0.9361 agree 0.9768
+  eps=0.005 goal C: RA 0.9345 ASafeR 1.0000 closed 0.9992 accept 0.9345 agree 0.9768
+  eps=0.005 goal D: RA 0.9641 ASafeR 1.0000 closed 1.0000 accept 0.9641 agree 0.9800
+  eps=0.005 goal E: RA 0.9385 ASafeR 1.0000 closed 1.0000 accept 0.9385 agree 0.9800
+  eps=0.010 goal A: RA 0.9321 ASafeR 1.0000 closed 0.9960 accept 0.9321 agree 0.9720
+  eps=0.010 goal B: RA 0.9321 ASafeR 1.0000 closed 0.9968 accept 0.9321 agree 0.9728
+  eps=0.010 goal C: RA 0.9329 ASafeR 1.0000 closed 0.9984 accept 0.9329 agree 0.9752
+  eps=0.010 goal D: RA 0.9768 ASafeR 1.0000 closed 1.0000 accept 0.9768 agree 0.9808
+  eps=0.010 goal E: RA 0.9393 ASafeR 1.0000 closed 1.0000 accept 0.9393 agree 0.9808
+  eps=0.020 goal A: RA 0.9137 ASafeR 1.0000 closed 0.9776 accept 0.9137 agree 0.9545
+  eps=0.020 goal B: RA 0.9137 ASafeR 1.0000 closed 0.9784 accept 0.9137 agree 0.9553
+  eps=0.020 goal C: RA 0.9273 ASafeR 1.0000 closed 0.9976 accept 0.9273 agree 0.9688
+  eps=0.020 goal D: RA 0.9816 ASafeR 1.0000 closed 1.0000 accept 0.9816 agree 0.9808
+  eps=0.020 goal E: RA 0.9393 ASafeR 1.0000 closed 1.0000 accept 0.9393 agree 0.9808
+attack done in 20s: worst RA 0.9137 (eps 0.02, goal A), worst ASafeR 1.0000
+report written to D:\WORK\BCIC2026\BrainPrint\research\E184_cross_branch_agreement\report.md
