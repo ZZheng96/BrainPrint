@@ -1,0 +1,86 @@
+{
+  "experiment": "E193_oe_gate_plus_e191_identity",
+  "date": "2026-11-15",
+  "purpose": "Assemble a split system: identity = E191 branch A v3 (frozen), gate = E192's frozen gate artifact (E65 correlation-logSPD WCCN distance_ratio). Measure the E192 gate's Test S1/S2 curve, fuse it with E191's subwin6 gate, and report the full ten-gate matrix at a single work point. No model is retrained and nothing is written into another experiment directory.",
+  "frozen_sources": {
+    "e191": "research/E191_fix_gate1_gate7",
+    "e192": "research/E192_oe_three_region_18ch",
+    "e189": "research/E189_balanced_gate_gates",
+    "e180": "research/E180_dual_branch_adversarial_openset",
+    "note": "E191 provides model_branch_a_v3.pt and cache/stage_a_v3.pt; E192 provides gate.json + cache/gate_arrays.npz + model_final20.pt; E189 provides subwin6 gate arrays, the attack subset and the frozen gate scorer definitions; E180 provides data/model utilities."
+  },
+  "gate_identity_clarification": {
+    "finding": "E192's gate artifact is NOT trained with the external BCIC IV-2a unknowns. In E192 the gate is the E65 correlation-logSPD WCCN distance_ratio; the external OE data only enters the identity branch (ARPL + outlier exposure).",
+    "consequence": "This experiment measures the gate artifact that E192 actually produced, and additionally probes an OE-informed gate built from the frozen E192 model_final20.pt embeddings (supplementary, cannot enter #5/#6 because no LOSO OE models exist)."
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_root": "Brainprint_Competition",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "classes": [1, 20],
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"]
+  },
+  "protocol": {
+    "fit_fraction": 0.6,
+    "window": "0.6 < frac <= 0.8",
+    "blocks": 5,
+    "seed": 20261115,
+    "note": "identical to E191/E192; the window rows never enter any gate fitting or threshold calibration"
+  },
+  "identity": {
+    "model": "E191 model_branch_a_v3.pt (frozen, not retrained)",
+    "stage_cache": "E191 cache/stage_a_v3.pt (OOF / in-sample logits)",
+    "in_sample": "read from stage cache (#1)",
+    "oof": "#2/#3 from the 5-block OOF logits; #4 on frac > 0.6 rows exactly as E191",
+    "ra_asafe": "identity logits recomputed on the attacked waveforms of the E189 attack subset"
+  },
+  "gate": {
+    "oe_stream": "E192 gate.json / cache/gate_arrays.npz: E65 correlation-logSPD (855 dim) WCCN distance_ratio, 20-class global prototypes",
+    "oe_wccn": {"shrinkage": 0.05, "eigenvalue_floor": 1e-6},
+    "subwin_stream": "E189 subwin6_pca96_k1: subwin_mean N=6, PCA-96, k=1 nearest prototype, task conditional",
+    "threshold_rule": "tau(a) = quantile(Train 5-block OOF score, 1 - a); a = Train known acceptance",
+    "grid": [0.80, 0.82, 0.84, 0.86, 0.88, 0.90, 0.92, 0.94, 0.96],
+    "primary_a": 0.90,
+    "fusion_rule": "z-score each stream by its own Train OOF mean/std, then 0.1-step simplex weight search maximising pooled Train LOSO AUROC; Test never consulted",
+    "schemes": ["oe", "subwin6", "fusion"],
+    "probe": "supplementary OE-embedding gate from the frozen E192 model_final20.pt (distance_ratio and max-cosine); threshold calibrated on the Train window (the E192 identity model is trained on fit rows only, so the window is held out). Not eligible for #5/#6."
+  },
+  "attack": {
+    "subset": "E189.attack_subset: Train window rows, stratified cap 400 per task, same seed",
+    "radius": "per-trial L2 norm after channel demeaning / 10^(SNR/20)",
+    "snr_db": [30, 20],
+    "steps": 10,
+    "batch": 256,
+    "goals": {
+      "A": "impersonation: maximise (best wrong E191 logit - true logit)/10",
+      "B": "broad confusion: maximise (logsumexp over wrong E191 logits - true logit)/10",
+      "C": "boundary impersonation: maximise (next-identity logit - true logit)/10",
+      "D": "gate acceptance: maximise the selected gate score (scheme specific)"
+    },
+    "reading": "#7 = min RA over clean + A/B/C/D at both SNR levels; #8 = min ASafeR over the same; SNR30-only worst is reported alongside (E192's primary SNR)"
+  },
+  "gates": {
+    "1": "Train in-sample accuracy = 1.00",
+    "2": "5-block OOF closed-set accuracy C >= 0.95",
+    "3": "5-block OOF identity macro-F1 >= 0.92",
+    "4": "block-out accuracy on frac > 0.6 rows >= 0.90",
+    "5": "pseudo-unknown LOSO AUROC (20-fold pooled) >= 0.98",
+    "6": "U@95% (per-fold 5% known quantile, mean) >= 0.95",
+    "7": "RA under the self-built PGD, worst over eps x goals >= 0.95",
+    "8": "ASafeR under the same attack >= 0.98",
+    "9": "Test S2 acceptance >= 0.70",
+    "10": "Test S1 rejection >= 0.70",
+    "criterion_note": "user criterion: S1 >= 0.70 AND S2 >= 0.70 at the same work point, plus the other eight gates"
+  },
+  "reporting": {
+    "test_official": "N/A: Test has no public identity labels",
+    "session_usage": "Test scores are computed before the Session column is read; Session is used only for the #9/#10 audit",
+    "single_work_point": "every counted column is one scheme at one a; nothing is spliced across work points"
+  }
+}

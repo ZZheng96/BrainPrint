@@ -1,0 +1,94 @@
+E192 启动 2026-11-15 22:08:57 stage=gate gpu=NVIDIA GeForce RTX 3080 Laptop GPU
+Train 11304 行 / 20 被试；fit 6695 / window 2301 / forward 2308
+Train raw GPU loaded (11304, 18, 1200) in 3.7s
+外部 BCIC IV-2a：(5184, 18, 1200)（22→18 IDW k=4），只作 OE 异常样本
+  LOSO held= 1 AUC=0.9902 U@95=0.9758 unknown_rej@q02=0.8548
+  LOSO held= 2 AUC=0.9889 U@95=0.9804 unknown_rej@q02=0.8824
+  LOSO held= 3 AUC=0.9835 U@95=0.9344 unknown_rej@q02=0.7377
+  LOSO held= 4 AUC=0.9893 U@95=0.9823 unknown_rej@q02=0.8230
+  LOSO held= 5 AUC=0.9903 U@95=0.9901 unknown_rej@q02=0.8713
+  LOSO held= 6 AUC=0.9914 U@95=0.9919 unknown_rej@q02=0.8871
+  LOSO held= 7 AUC=0.9798 U@95=0.9274 unknown_rej@q02=0.6935
+  LOSO held= 8 AUC=0.9817 U@95=0.9231 unknown_rej@q02=0.7212
+  LOSO held= 9 AUC=0.9917 U@95=1.0000 unknown_rej@q02=0.9138
+  LOSO held=10 AUC=0.9788 U@95=0.8879 unknown_rej@q02=0.7290
+  LOSO held=11 AUC=0.9871 U@95=0.9587 unknown_rej@q02=0.8182
+  LOSO held=12 AUC=0.9901 U@95=0.9836 unknown_rej@q02=0.8934
+  LOSO held=13 AUC=0.9936 U@95=1.0000 unknown_rej@q02=0.9187
+  LOSO held=14 AUC=0.9937 U@95=1.0000 unknown_rej@q02=0.9504
+  LOSO held=15 AUC=0.9718 U@95=0.8273 unknown_rej@q02=0.6818
+  LOSO held=16 AUC=0.9874 U@95=0.9664 unknown_rej@q02=0.8151
+  LOSO held=17 AUC=0.9907 U@95=0.9732 unknown_rej@q02=0.8839
+  LOSO held=18 AUC=0.9775 U@95=0.8673 unknown_rej@q02=0.6837
+  LOSO held=19 AUC=0.9948 U@95=0.9912 unknown_rej@q02=0.9649
+  LOSO held=20 AUC=0.9941 U@95=1.0000 unknown_rej@q02=0.9435
+stage gate：#5 LOSO AUROC mean=0.9873 pooled=0.9873 | #6 U@95 mean=0.9581
+stage gate：Test S1 拒识=0.4639 S2 接受=0.4160（主工作点 tau=1.0326）；全曲线最优 min=0.4160
+E192 启动 2026-11-15 22:09:18 stage=gate gpu=NVIDIA GeForce RTX 3080 Laptop GPU
+Train 11304 行 / 20 被试；fit 6695 / window 2301 / forward 2308
+Train raw GPU loaded (11304, 18, 1200) in 3.8s
+外部 BCIC IV-2a：(5184, 18, 1200)（22→18 IDW k=4），只作 OE 异常样本
+  LOSO held= 1 AUC=0.9902 U@95=0.9758 unknown_rej@q02=0.8548
+  LOSO held= 2 AUC=0.9889 U@95=0.9804 unknown_rej@q02=0.8824
+  LOSO held= 3 AUC=0.9835 U@95=0.9344 unknown_rej@q02=0.7377
+  LOSO held= 4 AUC=0.9893 U@95=0.9823 unknown_rej@q02=0.8230
+  LOSO held= 5 AUC=0.9903 U@95=0.9901 unknown_rej@q02=0.8713
+  LOSO held= 6 AUC=0.9914 U@95=0.9919 unknown_rej@q02=0.8871
+  LOSO held= 7 AUC=0.9798 U@95=0.9274 unknown_rej@q02=0.6935
+  LOSO held= 8 AUC=0.9817 U@95=0.9231 unknown_rej@q02=0.7212
+  LOSO held= 9 AUC=0.9917 U@95=1.0000 unknown_rej@q02=0.9138
+  LOSO held=10 AUC=0.9788 U@95=0.8879 unknown_rej@q02=0.7290
+  LOSO held=11 AUC=0.9871 U@95=0.9587 unknown_rej@q02=0.8182
+  LOSO held=12 AUC=0.9901 U@95=0.9836 unknown_rej@q02=0.8934
+  LOSO held=13 AUC=0.9936 U@95=1.0000 unknown_rej@q02=0.9187
+  LOSO held=14 AUC=0.9937 U@95=1.0000 unknown_rej@q02=0.9504
+  LOSO held=15 AUC=0.9718 U@95=0.8273 unknown_rej@q02=0.6818
+  LOSO held=16 AUC=0.9874 U@95=0.9664 unknown_rej@q02=0.8151
+  LOSO held=17 AUC=0.9907 U@95=0.9732 unknown_rej@q02=0.8839
+  LOSO held=18 AUC=0.9775 U@95=0.8673 unknown_rej@q02=0.6837
+  LOSO held=19 AUC=0.9948 U@95=0.9912 unknown_rej@q02=0.9649
+  LOSO held=20 AUC=0.9941 U@95=1.0000 unknown_rej@q02=0.9435
+stage gate：#5 LOSO AUROC mean=0.9873 pooled=0.9873 | #6 U@95 mean=0.9581
+stage gate：Test S1 拒识=0.4639 S2 接受=0.4160（主工作点 tau=1.0326）；全曲线最优 min=0.4160
+stage gate 完成 0.7s
+E192 启动 2026-11-15 22:09:33 stage=identity gpu=NVIDIA GeForce RTX 3080 Laptop GPU
+Train 11304 行 / 20 被试；fit 6695 / window 2301 / forward 2308
+Train raw GPU loaded (11304, 18, 1200) in 3.7s
+外部 BCIC IV-2a：(5184, 18, 1200)（22→18 IDW k=4），只作 OE 异常样本
+stage gate：复用 cache
+stage identity：最终 20 类模型 fit=6695（OE+AT）
+    final20 epoch=1 loss=2.8687 sec=6.7
+    final20 epoch=6 loss=0.7128 sec=3.8
+    final20 epoch=12 loss=0.4950 sec=3.8
+    final20 epoch=18 loss=0.3906 sec=3.9
+    final20 epoch=24 loss=0.3431 sec=3.9
+    final20 epoch=30 loss=0.3251 sec=3.9
+    final20 epoch=32 loss=0.3219 sec=3.9
+  #1 in-sample=0.9270 | #4 块外=0.8531
+    oof0 epoch=1 loss=1.2993 sec=0.7
+    oof0 epoch=6 loss=0.3559 sec=0.7
+    oof0 epoch=12 loss=0.2062 sec=0.7
+    oof0 epoch=16 loss=0.1786 sec=0.7
+  OOF block=0 train=4522 held=2173 acc=0.9061
+    oof1 epoch=1 loss=1.2649 sec=0.7
+    oof1 epoch=6 loss=0.4542 sec=0.7
+    oof1 epoch=12 loss=0.2684 sec=0.7
+    oof1 epoch=16 loss=0.2177 sec=0.7
+  OOF block=1 train=4492 held=2203 acc=0.9047
+    oof2 epoch=1 loss=1.3115 sec=0.7
+    oof2 epoch=6 loss=0.3354 sec=0.7
+    oof2 epoch=12 loss=0.1912 sec=0.7
+    oof2 epoch=16 loss=0.1563 sec=0.7
+  OOF block=2 train=4449 held=2246 acc=0.8865
+    oof3 epoch=1 loss=1.2247 sec=1.0
+    oof3 epoch=6 loss=0.3740 sec=1.0
+    oof3 epoch=12 loss=0.2341 sec=1.0
+    oof3 epoch=16 loss=0.1790 sec=1.0
+  OOF block=3 train=6622 held=2303 acc=0.8515
+    oof4 epoch=1 loss=1.1837 sec=1.0
+    oof4 epoch=6 loss=0.3064 sec=1.0
+    oof4 epoch=12 loss=0.2012 sec=1.0
+    oof4 epoch=16 loss=0.1641 sec=1.0
+  OOF block=4 train=6695 held=2379 acc=0.8386
+  #2 OOF C=0.8766 | #3 macro-F1=0.8748
+stage identity 完成 211.1s

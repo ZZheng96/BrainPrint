@@ -1,0 +1,22 @@
+{
+  "in_sample_accuracy": 0.9269604182225541,
+  "in_sample_n_wrong": 6690,
+  "forward_accuracy": 0.8531195840554593,
+  "forward_macro_f1": 0.8405165762748469,
+  "oof_accuracy": 0.8765923566878981,
+  "oof_macro_f1": 0.8747756349379957,
+  "n_oof": 11304,
+  "n_forward": 2308,
+  "final_training": {
+    "tag": "final20",
+    "seed": 20261122,
+    "epochs": 32,
+    "use_oe": true,
+    "use_at": true,
+    "n_fit": 6695,
+    "n_oe": 5184,
+    "elapsed_seconds": 140.28474283218384,
+    "parameters": 3772
+  },
+  "elapsed_seconds": 211.06235480308533
+}

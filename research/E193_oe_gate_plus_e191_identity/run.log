@@ -1,0 +1,60 @@
+
+===== E193 stage all 2026-11-15 23:04:57 =====
+Train 11304 rows / 20 subjects; fit 6695 / window 2301; Test 22251 (S1 3033 / S2 19218)
+stage gate: E65 correlation-logSPD Train features (11304, 855)
+  OE OOF: mean 1.2358 sd 0.2421 q10 1.0845
+  Test dr recomputed; max |delta| vs E192 cache = 5.96e-08
+  OE gate #5 LOSO AUROC 0.9873 | #6 U@95 0.9581
+  window dr quantiles reproduced, max |delta| vs E192 gate.json = 5.42e-08
+  subwin6 #5 LOSO AUROC 0.8835 | #6 U@95 0.3292
+  fusion weight search (Train LOSO AUC): w=0.0:0.8835, w=0.1:0.8950, w=0.2:0.9074, w=0.3:0.9205, w=0.4:0.9334, w=0.5:0.9447, w=0.6:0.9560, w=0.7:0.9671, w=0.8:0.9778, w=0.9:0.9865, w=1.0:0.9873
+  selected w_oe = 1.0
+  weight sweep (audit only, never selected on Test): w=0.0:min=0.707, w=0.1:min=0.684, w=0.2:min=0.707, w=0.3:min=0.677, w=0.4:min=0.702, w=0.5:min=0.665, w=0.6:min=0.610, w=0.7:min=0.524, w=0.8:min=0.528, w=0.9:min=0.348, w=1.0:min=0.282
+  Test S1/S2 曲线（OOF 分位标定）:
+    a=0.80 tau=-0.4963 S1=0.6034 S2=0.1243 min=0.1243
+    a=0.82 tau=-0.5174 S1=0.6024 S2=0.1317 min=0.1317
+    a=0.84 tau=-0.5422 S1=0.6007 S2=0.1402 min=0.1402
+    a=0.86 tau=-0.5682 S1=0.6001 S2=0.1512 min=0.1512
+    a=0.88 tau=-0.5963 S1=0.5961 S2=0.1637 min=0.1637
+    a=0.90 tau=-0.6250 S1=0.5928 S2=0.1779 min=0.1779
+    a=0.92 tau=-0.6592 S1=0.5875 S2=0.1978 min=0.1978
+    a=0.94 tau=-0.7025 S1=0.5770 S2=0.2286 min=0.2286
+    a=0.96 tau=-0.7591 S1=0.5437 S2=0.2819 min=0.2819
+  Test 诊断 AUC（S2 为正）= 0.3888
+stage gate done in 1.3s
+  identity E191: #1 1.0000 | #2 0.9884 | #3 0.9882 | #4 0.9900
+  loading Test raw (22251 trials) for E191 identity predictions
+  raw 4096/22251 (1s)
+  raw 8192/22251 (3s)
+  raw 12288/22251 (5s)
+  raw 16384/22251 (6s)
+  raw 20480/22251 (8s)
+  raw 22251/22251 (8s)
+  raw 2301/2301 (1s)
+  OE-embedding probe [distance_ratio]: window mean 1.7292 | Test diag AUC 0.4553 | best min 0.4369
+  OE-embedding probe [max_cosine]: window mean 0.6068 | Test diag AUC 0.5772 | best min 0.5357
+stage identity done in 13.0s
+stage attack: 1252 window trials (EC=222, EO=230, Imagery=400, SSVEP=400), SNR [30, 20], 10 L2-PGD steps
+  raw 1252/1252 (0s)
+  raw-logSPD gate scoring vs frozen features on the subset: max |delta| = 1.91e-06
+  attack controls (closed-set accuracy on the subset): {'clean': 1.0, 'random_noise_snr30': 1.0, 'random_noise_snr20': 1.0}
+  goal A @ SNR30 done (3s)
+  goal B @ SNR30 done (4s)
+  goal C @ SNR30 done (6s)
+  goal D [oe] @ SNR30 done (9s)
+  goal D [subwin6] @ SNR30 done (17s)
+  goal D [fusion] @ SNR30 done (28s)
+  goal A @ SNR20 done (29s)
+  goal B @ SNR20 done (31s)
+  goal C @ SNR20 done (32s)
+  goal D [oe] @ SNR20 done (35s)
+  goal D [subwin6] @ SNR20 done (43s)
+  goal D [fusion] @ SNR20 done (54s)
+stage attack done in 54.2s
+report written: D:\WORK\BCIC2026\BrainPrint\research\E193_oe_gate_plus_e191_identity\report.md
+E193 done in 69s
+
+===== E193 stage report 2026-11-15 23:06:46 =====
+Train 11304 rows / 20 subjects; fit 6695 / window 2301; Test 22251 (S1 3033 / S2 19218)
+report written: D:\WORK\BCIC2026\BrainPrint\research\E193_oe_gate_plus_e191_identity\report.md
+E193 done in 1s

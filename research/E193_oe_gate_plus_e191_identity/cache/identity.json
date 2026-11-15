@@ -1,0 +1,141 @@
+{
+  "in_sample_accuracy": 1.0,
+  "oof_accuracy_5block": 0.9884111818825194,
+  "oof_macro_f1": 0.9881630532961442,
+  "oof_accuracy_forward_blocks": 0.9900195270123671,
+  "n_oof": 11304,
+  "n_forward": 4609,
+  "blocks": {
+    "0": 0.9829728485964105,
+    "1": 0.9904675442578302,
+    "2": 0.9888691006233303,
+    "3": 0.9913156752062527,
+    "4": 0.9882303488860866
+  },
+  "test_pred_distribution": {
+    "n_s1": 3033,
+    "n_s2": 19218,
+    "nonzero_s1": 3033,
+    "nonzero_s2": 19218,
+    "note": "identity argmax only; the gate decision is applied in the report"
+  },
+  "probe": {
+    "distance_ratio": {
+      "calibration": "Train window quantile (the E192 identity model is trained on fit rows only)",
+      "window_mean": 1.7291736602783203,
+      "test_mean": 1.3171390295028687,
+      "test_diagnostic_auc": 0.45529447181019195,
+      "curve": {
+        "0.80": {
+          "tau": 1.1850659847259521,
+          "test_s1_rejection": 0.4368611935377514,
+          "test_s2_acceptance": 0.5147257779165366
+        },
+        "0.82": {
+          "tau": 1.1627689599990845,
+          "test_s1_rejection": 0.40158259149357073,
+          "test_s2_acceptance": 0.5566656259756478
+        },
+        "0.84": {
+          "tau": 1.1452860832214355,
+          "test_s1_rejection": 0.3798219584569733,
+          "test_s2_acceptance": 0.5901758767821834
+        },
+        "0.86": {
+          "tau": 1.1237750053405762,
+          "test_s1_rejection": 0.34190570392350805,
+          "test_s2_acceptance": 0.6364345925694661
+        },
+        "0.88": {
+          "tau": 1.099493145942688,
+          "test_s1_rejection": 0.2891526541378173,
+          "test_s2_acceptance": 0.692788011239463
+        },
+        "0.90": {
+          "tau": 1.0818402767181396,
+          "test_s1_rejection": 0.24629080118694363,
+          "test_s2_acceptance": 0.737485690498491
+        },
+        "0.92": {
+          "tau": 1.0662524700164795,
+          "test_s1_rejection": 0.21463897131552917,
+          "test_s2_acceptance": 0.780986575085857
+        },
+        "0.94": {
+          "tau": 1.044310212135315,
+          "test_s1_rejection": 0.152324431256182,
+          "test_s2_acceptance": 0.8446768654386513
+        },
+        "0.96": {
+          "tau": 1.0288797616958618,
+          "test_s1_rejection": 0.10286844708209693,
+          "test_s2_acceptance": 0.8928088250598397
+        }
+      },
+      "best_balanced": {
+        "tau": 1.1850659847259521,
+        "test_s1_rejection": 0.4368611935377514,
+        "test_s2_acceptance": 0.5147257779165366
+      }
+    },
+    "max_cosine": {
+      "calibration": "Train window quantile (the E192 identity model is trained on fit rows only)",
+      "window_mean": 0.6068322062492371,
+      "test_mean": 0.49278393387794495,
+      "test_diagnostic_auc": 0.5772077275202591,
+      "curve": {
+        "0.80": {
+          "tau": 0.51298987865448,
+          "test_s1_rejection": 0.6267721727662381,
+          "test_s2_acceptance": 0.4632115724841295
+        },
+        "0.82": {
+          "tau": 0.5034270882606506,
+          "test_s1_rejection": 0.599406528189911,
+          "test_s2_acceptance": 0.4936517847850973
+        },
+        "0.84": {
+          "tau": 0.49015599489212036,
+          "test_s1_rejection": 0.5568743818001978,
+          "test_s2_acceptance": 0.535747736497034
+        },
+        "0.86": {
+          "tau": 0.4780471622943878,
+          "test_s1_rejection": 0.5242334322453017,
+          "test_s2_acceptance": 0.573576855031741
+        },
+        "0.88": {
+          "tau": 0.46150097250938416,
+          "test_s1_rejection": 0.47576656775469833,
+          "test_s2_acceptance": 0.6225934020189405
+        },
+        "0.90": {
+          "tau": 0.44477343559265137,
+          "test_s1_rejection": 0.4329047148038246,
+          "test_s2_acceptance": 0.6714538453533146
+        },
+        "0.92": {
+          "tau": 0.42910265922546387,
+          "test_s1_rejection": 0.3926805143422354,
+          "test_s2_acceptance": 0.7180768029971901
+        },
+        "0.94": {
+          "tau": 0.4109915792942047,
+          "test_s1_rejection": 0.3435542367293109,
+          "test_s2_acceptance": 0.766364866271204
+        },
+        "0.96": {
+          "tau": 0.3818482756614685,
+          "test_s1_rejection": 0.272667326079789,
+          "test_s2_acceptance": 0.8338536788427516
+        }
+      },
+      "best_balanced": {
+        "tau": 0.49015599489212036,
+        "test_s1_rejection": 0.5568743818001978,
+        "test_s2_acceptance": 0.535747736497034
+      }
+    }
+  },
+  "elapsed_seconds": 12.958779335021973
+}

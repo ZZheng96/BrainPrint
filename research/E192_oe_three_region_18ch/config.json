@@ -1,0 +1,116 @@
+{
+  "experiment": "E192 18通道 OE-EEGNet(ARPL+真实外部OE+SNR30 PGD) + correlation-logSPD 三区域决策",
+  "date": "2026-11-15",
+  "seed_base": 20261115,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "expected_trials": 11304,
+    "expected_subjects": 20,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "session": "session1",
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "io_batch_size": 128,
+    "io_workers": 8,
+    "test_access": "score_only",
+    "external": {
+      "derived_root": "research/E73_external_multisession/cache/bciciv2a/derived",
+      "subjects": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "sessions": ["T", "E"],
+      "feature_key": "data",
+      "channels": 22,
+      "trials_per_session": 288,
+      "role": "OE 异常样本（训练损失）与独立验证；绝不替代项目 Train，不进入任何阈值/候选选择，也不进入项目 Test 评分"
+    }
+  },
+  "channel_projection": {
+    "method": "idw",
+    "power": 2.0,
+    "k": 4,
+    "source_channels_22": ["Fz", "FC3", "FC1", "FCz", "FC2", "FC4", "C5", "C3", "C1", "Cz", "C2", "C4", "C6", "CP3", "CP1", "CPz", "CP2", "CP4", "P1", "Pz", "P2", "POz"],
+    "target_channels_18": ["P3", "C3", "F3", "Fz", "F4", "C4", "P4", "Cz", "Fp1", "Fp2", "T3", "T5", "O1", "O2", "F7", "F8", "T6", "T4"],
+    "source_xy": {"Fz": [0, 0.75], "FC3": [-0.35, 0.38], "FC1": [-0.18, 0.40], "FCz": [0, 0.40], "FC2": [0.18, 0.40], "FC4": [0.35, 0.38], "C5": [-0.70, 0], "C3": [-0.38, 0], "C1": [-0.18, 0], "Cz": [0, 0], "C2": [0.18, 0], "C4": [0.38, 0], "C6": [0.70, 0], "CP3": [-0.35, -0.38], "CP1": [-0.18, -0.40], "CPz": [0, -0.42], "CP2": [0.18, -0.40], "CP4": [0.35, -0.38], "P1": [-0.18, -0.72], "Pz": [0, -0.75], "P2": [0.18, -0.72], "POz": [0, -0.98]},
+    "target_xy": {"P3": [-0.38, -0.72], "C3": [-0.38, 0], "F3": [-0.38, 0.75], "Fz": [0, 0.75], "F4": [0.38, 0.75], "C4": [0.38, 0], "P4": [0.38, -0.72], "Cz": [0, 0], "Fp1": [-0.38, 1.12], "Fp2": [0.38, 1.12], "T3": [-0.98, 0], "T5": [-0.98, -0.65], "O1": [-0.38, -1.08], "O2": [0.38, -1.08], "F7": [-0.72, 0.82], "F8": [0.72, 0.82], "T6": [0.98, -0.65], "T4": [0.98, 0]}
+  },
+  "model": {
+    "type": "E54 EEGNetEmbedding（18通道原生输入，64维L2 embedding + 可训练原型）",
+    "mad_floor": 1e-8,
+    "temporal_filters": 8,
+    "temporal_kernel": 65,
+    "depthwise_multiplier": 2,
+    "separable_filters": 16,
+    "separable_kernel": 15,
+    "pool": [4, 4],
+    "dropout": 0.25,
+    "embedding_dim": 64,
+    "embedding_normalization": "L2",
+    "cosine_temperature": 0.05,
+    "arpl_weight": 0.1,
+    "arpl_margin": 0.2,
+    "arpl_radius_initial": 1.0
+  },
+  "outlier_exposure": {
+    "lambda_u": 0.1,
+    "margin": 0.2,
+    "temperature": 0.05,
+    "unknown_source": "BCIC IV-2a 外部被试（22→18 通道 IDW 投影），真实异分布样本",
+    "formula": "lambda_u * mean(softplus((r_u - r_y + m)/T)); r_u 分支对注册原型 detach"
+  },
+  "training": {
+    "epochs": 32,
+    "epochs_oof": 16,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "clean_ce_weight": 0.5,
+    "adversarial_ce_weight": 0.5,
+    "attack_training_mode": "pgd3_waveform_cache_refresh6",
+    "cache_pgd_steps": 3,
+    "cache_refresh_epochs": 6,
+    "snr_db": [30],
+    "targeted_fraction": 0.5,
+    "early_stopping": "none（固定 epoch，不回滚；E191 已证回滚会压低 in-sample）"
+  },
+  "protocol": {
+    "outer_seed": 42,
+    "outer_folds": 5,
+    "outer_unknown_subjects": 4,
+    "inner_folds_per_group": 2,
+    "inner_seed": "100 + 外层折号",
+    "enrolled_subjects": 8,
+    "pseudo_unknown_subjects": 8,
+    "fit": "trial <= 0.6 * max(trial | subject, task)",
+    "window": "0.6 < trial/max <= 0.8",
+    "forward": "trial/max > 0.8（从不参与任何训练，仅 #4 读一次）",
+    "eval_subset": "每个 (subject, task) 按 trial/path 排序后取前 8 条",
+    "roles": "outer 4 / enrolled 8 / pseudo-unknown 8，三者互斥且并集为 20；外部数据取代 E54 的 OE-only 角色"
+  },
+  "gate": {
+    "representation": "E65 correlation-logSPD（855 维，逐 trial/频带 18×18 相关矩阵 logSPD + detrend + zband）",
+    "wccn_shrinkage": 0.05,
+    "wccn_eigenvalue_floor": 1e-6,
+    "score": "distance_ratio = (1 - second)/(1 - max) 余弦；dr 越大越像注册者",
+    "tau_low": "clean known dr 的 q0.02（method=higher）",
+    "tau_high": "clean known dr 的 q0.05（method=higher）",
+    "decision": "dr >= tau_high -> logSPD 原型身份；tau_low <= dr < tau_high -> OE-EEGNet 身份；dr < tau_low -> 0"
+  },
+  "attacks": {
+    "order": ["untargeted_fgsm_snr30", "untargeted_pgd_snr30", "targeted_pgd_snr30", "untargeted_fgsm_snr20", "untargeted_pgd_snr20", "targeted_pgd_snr20"],
+    "primary_snr_db": 30,
+    "reference_snr_db": 20,
+    "pgd_steps": 20,
+    "batch_size": 64,
+    "temperature": 0.05,
+    "white_box_target": "OE-EEGNet 身份头（E58/E65 同口径）；logSPD 只接收冻结后的对抗波形",
+    "radius": "per-trial L2 norm after channel demean / 10^(SNR/20)"
+  },
+  "targets": {
+    "in_sample": 1.00, "C": 0.95, "macro_f1": 0.92, "forward_accuracy": 0.90,
+    "loso_auroc": 0.98, "u_at_95": 0.95, "RA": 0.95, "ASafeR": 0.98,
+    "test_s2_acceptance": 0.70, "test_s1_rejection": 0.70
+  },
+  "reporting": {"test_official": "N/A（Test 无真实身份标签）", "test_access": "只算分再读 Session"}
+}

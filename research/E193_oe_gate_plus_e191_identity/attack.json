@@ -1,0 +1,101 @@
+{
+  "n_trials": 1252,
+  "steps": 10,
+  "snr_db": [
+    30,
+    20
+  ],
+  "per_task": {
+    "EC": 222,
+    "EO": 230,
+    "Imagery": 400,
+    "SSVEP": 400
+  },
+  "controls": {
+    "clean": 1.0,
+    "random_noise_snr30": 1.0,
+    "random_noise_snr20": 1.0
+  },
+  "conditions": [
+    {
+      "index": 0,
+      "snr": 0,
+      "goal": "clean",
+      "scheme": null
+    },
+    {
+      "index": 1,
+      "snr": 30,
+      "goal": "A",
+      "scheme": null
+    },
+    {
+      "index": 2,
+      "snr": 30,
+      "goal": "B",
+      "scheme": null
+    },
+    {
+      "index": 3,
+      "snr": 30,
+      "goal": "C",
+      "scheme": null
+    },
+    {
+      "index": 4,
+      "snr": 30,
+      "goal": "D",
+      "scheme": "oe"
+    },
+    {
+      "index": 5,
+      "snr": 30,
+      "goal": "D",
+      "scheme": "subwin6"
+    },
+    {
+      "index": 6,
+      "snr": 30,
+      "goal": "D",
+      "scheme": "fusion"
+    },
+    {
+      "index": 7,
+      "snr": 20,
+      "goal": "A",
+      "scheme": null
+    },
+    {
+      "index": 8,
+      "snr": 20,
+      "goal": "B",
+      "scheme": null
+    },
+    {
+      "index": 9,
+      "snr": 20,
+      "goal": "C",
+      "scheme": null
+    },
+    {
+      "index": 10,
+      "snr": 20,
+      "goal": "D",
+      "scheme": "oe"
+    },
+    {
+      "index": 11,
+      "snr": 20,
+      "goal": "D",
+      "scheme": "subwin6"
+    },
+    {
+      "index": 12,
+      "snr": 20,
+      "goal": "D",
+      "scheme": "fusion"
+    }
+  ],
+  "raw_vs_frozen_max_abs_delta": 1.9073486328125e-06,
+  "elapsed_seconds": 54.21974968910217
+}
