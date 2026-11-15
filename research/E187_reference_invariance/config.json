@@ -1,0 +1,82 @@
+{
+  "experiment": "E187_reference_invariance",
+  "purpose": "Test whether the cross-session (Train session1 -> Test session1/session2) offset of the E65 correlation-logSPD representation is dominated by a common-mode / reference-electrode component. Apply purely per-trial re-referencing transforms to the raw 18x1200 trials, recompute the identical E65 correlation-logSPD, and evaluate with the E143 protocol (target: S1_rejection + S2_acceptance at one threshold).",
+  "date_preregistered": "2026-11-15",
+  "seed": 20261115,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "root": "Brainprint_Competition",
+    "expected_train_trials": 11304,
+    "expected_test_rows": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "train_session": "session1"
+  },
+  "channel_order": ["P3", "C3", "F3", "Fz", "F4", "C4", "P4", "Cz", "Fp1", "Fp2", "T3", "T5", "O1", "O2", "F7", "F8", "T6", "T4"],
+  "transforms": {
+    "order": ["raw", "car", "car_rank", "laplacian", "bipolar", "car_plus_slope"],
+    "raw": "identity (cached E65 correlation-logSPD, Train BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy, Test research/E121_pca_sweep/test_logspd.npy)",
+    "car": "common average reference: x - mean(x over the 18 channels), per trial",
+    "car_rank": "CAR, then per-channel rank transform to normal quantiles over the 1200 time samples of the same trial: sqrt(2)*erfinv(2*(rank+0.5)/1200 - 1)",
+    "laplacian": "x_i - mean(x_j for j in the fixed 10-20 nearest-neighbour set of channel i); fixed adjacency, no data-driven neighbour search",
+    "bipolar": "18 fixed bipolar derivations (anterior-posterior / temporal chains + midline + O1-O2), see bipolar_pairs",
+    "car_plus_slope": "CAR E65 correlation-logSPD (855) concatenated with the cached E186 aperiodic 1/f slope features (18, layout 72:90), each block RMS-normalised on Train fit rows",
+    "laplacian_adjacency_10_20": [
+      ["Fp1", "F3"], ["Fp1", "F7"], ["Fp1", "Fz"],
+      ["Fp2", "F4"], ["Fp2", "F8"], ["Fp2", "Fz"],
+      ["F7", "F3"], ["F3", "Fz"], ["Fz", "F4"], ["F4", "F8"],
+      ["F7", "T3"], ["F3", "C3"], ["Fz", "Cz"], ["C3", "Cz"], ["C4", "Cz"],
+      ["F8", "T4"], ["T3", "C3"], ["T4", "C4"],
+      ["T3", "T5"], ["C3", "P3"], ["C4", "P4"], ["T5", "P3"], ["P4", "T6"],
+      ["P3", "O1"], ["P4", "O2"], ["T5", "O1"], ["T6", "O2"]
+    ],
+    "bipolar_pairs": [
+      ["Fp1", "F3"], ["F3", "C3"], ["C3", "P3"], ["P3", "O1"],
+      ["Fp2", "F4"], ["F4", "C4"], ["C4", "P4"], ["P4", "O2"],
+      ["Fp1", "F7"], ["F7", "T3"], ["T3", "T5"], ["T5", "O1"],
+      ["Fp2", "F8"], ["F8", "T4"], ["T4", "T6"], ["T6", "O2"],
+      ["Fz", "Cz"], ["O1", "O2"]
+    ]
+  },
+  "streams": {
+    "train_raw_logspd": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "test_raw_logspd": "research/E121_pca_sweep/test_logspd.npy",
+    "spectral_traits_train": "research/E186_spectral_trait_markers/train_spectral_traits.npy",
+    "spectral_traits_test": "research/E186_spectral_trait_markers/test_spectral_traits.npy",
+    "slope_slice": [72, 90]
+  },
+  "extraction": {
+    "io_batch_size": 64,
+    "io_workers": 12,
+    "cache_subdir": "cache",
+    "invariance_sample_trials": 8
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "protocol": {
+    "source": "E143/E186 verbatim",
+    "task_standardisation": "per-task z-score with Train-session1 statistics computed over all Train rows of that task, applied to Train and Test",
+    "pca_dim": 96,
+    "pca_fit": "Train rows with frac <= 0.6",
+    "prototype_k": [1, 3, 6, 12],
+    "fit_fraction": 0.6,
+    "eval_window": [0.6, 0.8],
+    "blocks": 5,
+    "threshold": "quantile 1-a of the 5-block Train OOF score distribution",
+    "acceptance_grid": [0.88, 0.90, 0.92, 0.94, 0.96],
+    "loso": "for each held identity: enrolled = other 19, prototypes only from pm & fit_rows, scored block 0.6<frac<=0.8",
+    "test": "scored once, never used for fitting or threshold selection",
+    "session": "used only for the descriptive diagnostic AUC / S1 / S2 audit"
+  },
+  "ceiling": {
+    "method": "E159-style: freeze the score, sweep every threshold in its range, report the S1+S2 maximum",
+    "grid_points": 2000
+  },
+  "targets": {
+    "raw_reference": {"test_auc": 0.7578, "s1_at_090": 0.7979, "s2_at_090": 0.5960, "s1_plus_s2_at_090": 1.3938},
+    "historical_best_s1_plus_s2": 1.4479,
+    "goal_s1_plus_s2": 1.50,
+    "car_auc_question": 0.78
+  }
+}

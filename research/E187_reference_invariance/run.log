@@ -1,0 +1,48 @@
+device cuda | train 11304 | test 22251 | fit_rows 6695 | window 2301
+tasks {'Imagery': np.int64(5504), 'SSVEP': np.int64(3658), 'EC': np.int64(1072), 'EO': np.int64(1070)}
+transforms ['raw', 'car', 'car_rank', 'laplacian', 'bipolar', 'car_plus_slope']
+特征提取（CAR / CAR-rank / Laplacian / bipolar）
+  复用 train/car 缓存 11304x855
+  复用 train/car_rank 缓存 11304x855
+  复用 train/laplacian 缓存 11304x855
+  复用 train/bipolar 缓存 11304x855
+  复用 test/car 缓存 22251x855
+  复用 test/car_rank 缓存 22251x855
+  复用 test/laplacian 缓存 22251x855
+  复用 test/bipolar 缓存 22251x855
+逐样本不变性 {"car": {"single_vs_batch_max_abs": 4.76837158203125e-07, "permutation_max_abs": 4.76837158203125e-07, "passed": true}, "car_rank": {"single_vs_batch_max_abs": 4.76837158203125e-07, "permutation_max_abs": 4.76837158203125e-07, "passed": true}, "laplacian": {"single_vs_batch_max_abs": 4.76837158203125e-07, "permutation_max_abs": 4.76837158203125e-07, "passed": true}, "bipolar": {"single_vs_batch_max_abs": 7.152557373046875e-07, "permutation_max_abs": 9.5367431640625e-07, "passed": true}}
+载入特征
+E186 1/f 斜率 (11304, 18) / (22251, 18)
+[raw] projected (11304, 96) / (22251, 96)
+    raw k=1: diagAUC 0.7504 OOF AUC 0.8774 F1 0.9757 bestS1+S2 1.3733@a=0.88 ceil 1.3848 (7s)
+    raw k=3: diagAUC 0.7566 OOF AUC 0.9209 F1 0.9844 bestS1+S2 1.3797@a=0.94 ceil 1.3806 (17s)
+    raw k=6: diagAUC 0.7554 OOF AUC 0.9286 F1 0.9898 bestS1+S2 1.3857@a=0.90 ceil 1.3869 (28s)
+    raw k=12: diagAUC 0.7578 OOF AUC 0.9302 F1 0.9895 bestS1+S2 1.3938@a=0.90 ceil 1.3970 (37s)
+[car] projected (11304, 96) / (22251, 96)
+    car k=1: diagAUC 0.7435 OOF AUC 0.8474 F1 0.9518 bestS1+S2 1.3607@a=0.90 ceil 1.3707 (44s)
+    car k=3: diagAUC 0.6663 OOF AUC 0.9052 F1 0.9757 bestS1+S2 1.2510@a=0.88 ceil 1.2545 (55s)
+    car k=6: diagAUC 0.6655 OOF AUC 0.9154 F1 0.9798 bestS1+S2 1.2489@a=0.88 ceil 1.2495 (65s)
+    car k=12: diagAUC 0.6745 OOF AUC 0.9232 F1 0.9827 bestS1+S2 1.2682@a=0.88 ceil 1.2700 (74s)
+[car_rank] projected (11304, 96) / (22251, 96)
+    car_rank k=1: diagAUC 0.7563 OOF AUC 0.8637 F1 0.9626 bestS1+S2 1.3967@a=0.90 ceil 1.3973 (81s)
+    car_rank k=3: diagAUC 0.6950 OOF AUC 0.9202 F1 0.9827 bestS1+S2 1.2923@a=0.88 ceil 1.2958 (91s)
+    car_rank k=6: diagAUC 0.6967 OOF AUC 0.9280 F1 0.9872 bestS1+S2 1.3127@a=0.88 ceil 1.3158 (101s)
+    car_rank k=12: diagAUC 0.6973 OOF AUC 0.9320 F1 0.9896 bestS1+S2 1.3083@a=0.88 ceil 1.3136 (110s)
+[laplacian] projected (11304, 96) / (22251, 96)
+    laplacian k=1: diagAUC 0.7408 OOF AUC 0.8923 F1 0.9614 bestS1+S2 1.3399@a=0.88 ceil 1.3462 (117s)
+    laplacian k=3: diagAUC 0.7689 OOF AUC 0.9342 F1 0.9748 bestS1+S2 1.4074@a=0.94 ceil 1.4110 (128s)
+    laplacian k=6: diagAUC 0.7673 OOF AUC 0.9431 F1 0.9813 bestS1+S2 1.4104@a=0.94 ceil 1.4112 (138s)
+    laplacian k=12: diagAUC 0.7608 OOF AUC 0.9505 F1 0.9817 bestS1+S2 1.3880@a=0.94 ceil 1.3913 (147s)
+[bipolar] projected (11304, 96) / (22251, 96)
+    bipolar k=1: diagAUC 0.7736 OOF AUC 0.9036 F1 0.9652 bestS1+S2 1.4165@a=0.90 ceil 1.4189 (154s)
+    bipolar k=3: diagAUC 0.7726 OOF AUC 0.9446 F1 0.9801 bestS1+S2 1.3987@a=0.96 ceil 1.4017 (165s)
+    bipolar k=6: diagAUC 0.7778 OOF AUC 0.9523 F1 0.9868 bestS1+S2 1.4014@a=0.96 ceil 1.4065 (175s)
+    bipolar k=12: diagAUC 0.7743 OOF AUC 0.9600 F1 0.9886 bestS1+S2 1.3876@a=0.96 ceil 1.4018 (184s)
+[car_plus_slope] projected (11304, 96) / (22251, 96)
+    car_plus_slope k=1: diagAUC 0.7424 OOF AUC 0.8495 F1 0.9525 bestS1+S2 1.3519@a=0.90 ceil 1.3634 (191s)
+    car_plus_slope k=3: diagAUC 0.6672 OOF AUC 0.9051 F1 0.9769 bestS1+S2 1.2510@a=0.88 ceil 1.2528 (201s)
+    car_plus_slope k=6: diagAUC 0.6652 OOF AUC 0.9172 F1 0.9818 bestS1+S2 1.2539@a=0.88 ceil 1.2554 (212s)
+    car_plus_slope k=12: diagAUC 0.6720 OOF AUC 0.9246 F1 0.9830 bestS1+S2 1.2729@a=0.88 ceil 1.2744 (221s)
+raw 对照复现 {'auc': 0.7578, 's1_at_090': 0.7979, 's2_at_090': 0.596, 's1_plus_s2_at_090': 1.3938, 'expected': {'test_auc': 0.7578, 's1_at_090': 0.7979, 's2_at_090': 0.596, 's1_plus_s2_at_090': 1.3938}, 'reproduced': True}
+judgement {"raw_diagnostic_auc": 0.7578208461905681, "car_diagnostic_auc": 0.7434751538193138, "car_minus_raw_auc": -0.01434569237125427, "car_k12_diagnostic_auc": 0.6745350010329708, "car_minus_raw_auc_k12": -0.0832858451575973, "car_minus_raw_sum_k12": -0.1256020901934276, "laplacian_gain_auc": 0.009508486401208605, "bipolar_gain_auc": 0.015762059809230067, "car_above_078": false, "common_mode_main_cause": false, "best_variant": "bipolar", "best_k": 1, "best_s1_plus_s2": 1.4164887146786533, "best_a": 0.9, "beats_14479": false, "reaches_150": false, "best_ceiling_s1_plus_s2": 1.4189237875512148, "raw_ceiling_s1_plus_s2": 1.3970022643007263, "best_auc_variant": "bipolar", "best_diagnostic_auc": 0.777842679428359}
+done in 222s
