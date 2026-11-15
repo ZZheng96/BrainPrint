@@ -1,0 +1,95 @@
+{
+  "experiment": "E170_three_way_fusion_ceiling",
+  "purpose": "E167 raised the open-set diagnostic AUC to 0.7999 with E65+logbp feature concat but W stalled at 0.6997 because the fused Train-OOF quantile threshold drifts. E170 asks two questions: (1) does adding the E162 raw-EEG embedding as a third stream push the diagnostic AUC past 0.7999, and (2) with the scores frozen, how much W is reachable at all if the threshold is swept over 2000 quantiles (E159 style), and what diagnostic AUC would be required for W = 0.80.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "streams": {
+    "E65_logspd": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "pca_dims": [64, 96],
+      "note": "855-d correlation log-SPD vector (E143 representation)"
+    },
+    "logbp": {
+      "train": "research/E146_phase_features/train_log_band_power.npy",
+      "test": "research/E146_phase_features/test_log_band_power.npy",
+      "pca_dims": [16, 32, 48],
+      "note": "90-d log band power (5 bands x 18 channels)"
+    },
+    "E162_raw_eeg": {
+      "train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+      "test": "research/E162_raw_eeg_contrastive_v2/test_emb.npy",
+      "pca_dims": [32, 64, 128],
+      "note": "256-d raw-EEG end-to-end contrastive embedding (effective rank ~8)"
+    }
+  },
+  "standardisation": {
+    "rule": "per stream, task-wise z-score with Train-session1 statistics only (all Train rows of that task), identical to E143/E163/E167 so the E65 control reproduces 0.7578 / 0.6958 exactly"
+  },
+  "fusion": {
+    "two_way_concat": {
+      "streams": ["E65_logspd", "logbp"],
+      "dim_pairs": [[64, 32], [64, 48], [96, 32], [96, 48]],
+      "variants": ["raw", "block_norm"],
+      "joint_pca_dims": [96, 128],
+      "note": "control for E167; block_norm concat 64+32 -> PCA-96 k=6 should reproduce diagnostic AUC 0.7999"
+    },
+    "three_way_concat": {
+      "streams": ["E65_logspd", "logbp", "E162_raw_eeg"],
+      "dim_grid": {"E65_logspd": [64, 96], "logbp": [16, 32, 48], "E162_raw_eeg": [32, 64, 128]},
+      "variants": ["raw", "block_norm"],
+      "joint_pca_dims": [96, 128]
+    },
+    "three_way_score": {
+      "weight_step": 0.1,
+      "simplex_rule": "all (w65, wlogbp, w162) on a 0.1 grid with sum = 1 (66 points, includes the three single-stream corners)",
+      "train_selected_rule": "weight chosen by Train LOSO AUC of the fused score only; Test never consulted",
+      "z_normalisation": "each stream score z-scored with its own 5-block Train OOF mean/std before weighting"
+    }
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "prototype_k": [1, 3, 6, 12],
+  "fit_fraction": 0.6,
+  "blocks": 5,
+  "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96],
+  "reference_acceptance": 0.90,
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "ceiling": {
+    "n_thresholds": 2000,
+    "quantile_range": [0.001, 0.999],
+    "loso_reference_at_090": 0.7936,
+    "e159_published_optimistic_W": 0.7352,
+    "target_W": 0.80,
+    "note": "E159 method: sweep 2000 quantiles of the frozen score, for each threshold take Test S1 rejection / S2 acceptance directly and derive LOSO rejection from the Train-OOF acceptance rate implied by the same threshold (per-fold known-block quantile)"
+  },
+  "baselines": {
+    "E143_k_sweep_nearest": {
+      "config": "E65 PCA-96, k=12, acceptance 0.90",
+      "diagnostic_auc": 0.7578,
+      "loso_rejection": 0.7936,
+      "test_s1_rejection": 0.7979,
+      "test_s2_acceptance": 0.5960,
+      "W": 0.6958
+    },
+    "E167_best_auc": {
+      "config": "block_norm concat 64+32 -> PCA-96 k=6",
+      "diagnostic_auc": 0.7999,
+      "best_W": 0.6742
+    },
+    "E167_best_W": {"value": 0.6997},
+    "E163_best_W": {"value": 0.7164}
+  },
+  "protocol": {
+    "loso_known_block": "0.6 < frac <= 0.8 of the 19 enrolled identities",
+    "loso_unknown_block": "0.6 < frac <= 0.8 of the held-out identity",
+    "prototypes": "k-means (E143 seeding, 20 iters) per (task, identity) on fit_rows only",
+    "train_oof": "5 contiguous frac blocks, prototypes rebuilt without the held block",
+    "threshold": "quantile of the 5-block Train OOF score at each acceptance rate; LOSO uses the per-fold known-block quantile",
+    "test": "scored only; session used only for the post-hoc diagnostic AUC"
+  },
+  "reporting": {
+    "test_official": "N/A: the Test split has no public labels; session labels are used only for the diagnostic AUC after scoring"
+  }
+}

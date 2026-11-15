@@ -1,0 +1,93 @@
+device cuda | train 11304 | test 22251 | fit_rows 6695 | window 2301
+tasks {'Imagery': np.int64(5504), 'SSVEP': np.int64(3658), 'EC': np.int64(1072), 'EO': np.int64(1070)}
+loaded E65_logspd: (11304, 855) / (22251, 855)
+loaded logbp: (11304, 90) / (22251, 90)
+loaded hjorth: (11304, 36) / (22251, 36)
+  [E65_logspd] dim=64 k=1 OOFauc=0.8943 OOFf1=0.9754 diagAUC=0.7526 W@.90=0.6563 bestW=0.6689@0.85 (5s)
+  [E65_logspd] dim=64 k=3 OOFauc=0.9365 OOFf1=0.9836 diagAUC=0.7612 W@.90=0.6772 bestW=0.6772@0.90 (12s)
+  [E65_logspd] dim=64 k=6 OOFauc=0.9439 OOFf1=0.9879 diagAUC=0.7587 W@.90=0.6816 bestW=0.6852@0.92 (20s)
+  [E65_logspd] dim=64 k=12 OOFauc=0.9468 OOFf1=0.9883 diagAUC=0.7622 W@.90=0.6908 bestW=0.6982@0.92 (27s)
+  [E65_logspd] dim=96 k=1 OOFauc=0.8774 OOFf1=0.9757 diagAUC=0.7504 W@.90=0.6495 bestW=0.6697@0.85 (30s)
+  [E65_logspd] dim=96 k=3 OOFauc=0.9209 OOFf1=0.9844 diagAUC=0.7566 W@.90=0.6764 bestW=0.6771@0.91 (38s)
+  [E65_logspd] dim=96 k=6 OOFauc=0.9286 OOFf1=0.9898 diagAUC=0.7554 W@.90=0.6883 bestW=0.6904@0.92 (46s)
+  [E65_logspd] dim=96 k=12 OOFauc=0.9302 OOFf1=0.9895 diagAUC=0.7578 W@.90=0.6958 bestW=0.6958@0.90 (52s)
+  [logbp] dim=16 k=1 OOFauc=0.7278 OOFf1=0.6928 diagAUC=0.7394 W@.90=0.5977 bestW=0.6010@0.93 (55s)
+  [logbp] dim=16 k=3 OOFauc=0.8139 OOFf1=0.8064 diagAUC=0.7664 W@.90=0.6244 bestW=0.6244@0.90 (63s)
+  [logbp] dim=16 k=6 OOFauc=0.8399 OOFf1=0.8473 diagAUC=0.7767 W@.90=0.6250 bestW=0.6262@0.88 (72s)
+  [logbp] dim=16 k=12 OOFauc=0.8537 OOFf1=0.8672 diagAUC=0.7809 W@.90=0.6249 bestW=0.6268@0.85 (80s)
+  [logbp] dim=32 k=1 OOFauc=0.7305 OOFf1=0.7230 diagAUC=0.7444 W@.90=0.6009 bestW=0.6009@0.90 (83s)
+  [logbp] dim=32 k=3 OOFauc=0.8164 OOFf1=0.8424 diagAUC=0.7679 W@.90=0.6213 bestW=0.6213@0.90 (92s)
+  [logbp] dim=32 k=6 OOFauc=0.8407 OOFf1=0.8794 diagAUC=0.7761 W@.90=0.6265 bestW=0.6265@0.90 (100s)
+  [logbp] dim=32 k=12 OOFauc=0.8523 OOFf1=0.9015 diagAUC=0.7800 W@.90=0.6184 bestW=0.6206@0.85 (107s)
+  [logbp] dim=48 k=1 OOFauc=0.7304 OOFf1=0.7272 diagAUC=0.7448 W@.90=0.6005 bestW=0.6010@0.91 (110s)
+  [logbp] dim=48 k=3 OOFauc=0.8155 OOFf1=0.8472 diagAUC=0.7668 W@.90=0.6180 bestW=0.6183@0.91 (119s)
+  [logbp] dim=48 k=6 OOFauc=0.8393 OOFf1=0.8865 diagAUC=0.7754 W@.90=0.6186 bestW=0.6195@0.92 (127s)
+  [logbp] dim=48 k=12 OOFauc=0.8510 OOFf1=0.9074 diagAUC=0.7818 W@.90=0.6146 bestW=0.6175@0.88 (134s)
+  [hjorth] dim=16 k=1 OOFauc=0.5759 OOFf1=0.4563 diagAUC=0.6336 W@.90=0.5209 bestW=0.5266@0.88 (137s)
+  [hjorth] dim=16 k=3 OOFauc=0.6100 OOFf1=0.6156 diagAUC=0.6163 W@.90=0.5052 bestW=0.5065@0.88 (148s)
+  [hjorth] dim=16 k=6 OOFauc=0.6262 OOFf1=0.6699 diagAUC=0.6284 W@.90=0.5124 bestW=0.5161@0.80 (157s)
+  [hjorth] dim=16 k=12 OOFauc=0.6346 OOFf1=0.7034 diagAUC=0.6245 W@.90=0.5099 bestW=0.5162@0.80 (165s)
+  [hjorth] dim=32 k=1 OOFauc=0.5808 OOFf1=0.4785 diagAUC=0.6321 W@.90=0.5205 bestW=0.5259@0.88 (168s)
+  [hjorth] dim=32 k=3 OOFauc=0.6223 OOFf1=0.6526 diagAUC=0.6162 W@.90=0.5058 bestW=0.5079@0.88 (177s)
+  [hjorth] dim=32 k=6 OOFauc=0.6396 OOFf1=0.7017 diagAUC=0.6212 W@.90=0.5080 bestW=0.5153@0.80 (187s)
+  [hjorth] dim=32 k=12 OOFauc=0.6481 OOFf1=0.7382 diagAUC=0.6183 W@.90=0.5077 bestW=0.5113@0.85 (195s)
+  [logbp ref] dim=90 k=1 diagAUC=0.7449 W@.90=0.5990 bestW=0.5997
+  [logbp ref] dim=90 k=3 diagAUC=0.7662 W@.90=0.6130 bestW=0.6131
+  [logbp ref] dim=90 k=6 diagAUC=0.7746 W@.90=0.6158 bestW=0.6161
+  [logbp ref] dim=90 k=12 diagAUC=0.7772 W@.90=0.6111 bestW=0.6135
+feature-level concat fusion E65 + logbp
+  [concat_raw 64+16 -> 64] diagAUC=0.7795 W@.90=0.6938 bestW=0.6962 (256s)
+  [concat_block_norm 64+16 -> 64] diagAUC=0.7796 W@.90=0.6939 bestW=0.6943 (286s)
+  [concat_raw 64+32 -> 64] diagAUC=0.7761 W@.90=0.6927 bestW=0.6941 (316s)
+  [concat_raw 64+32 -> 96] diagAUC=0.7970 W@.90=0.6894 bestW=0.6897 (345s)
+  [concat_block_norm 64+32 -> 64] diagAUC=0.7877 W@.90=0.6868 bestW=0.6868 (375s)
+  [concat_block_norm 64+32 -> 96] diagAUC=0.7975 W@.90=0.6770 bestW=0.6778 (405s)
+  [concat_raw 64+48 -> 64] diagAUC=0.7768 W@.90=0.6925 bestW=0.6948 (434s)
+  [concat_raw 64+48 -> 96] diagAUC=0.7893 W@.90=0.6853 bestW=0.6853 (462s)
+  [concat_block_norm 64+48 -> 64] diagAUC=0.7889 W@.90=0.6795 bestW=0.6802 (492s)
+  [concat_block_norm 64+48 -> 96] diagAUC=0.7927 W@.90=0.6675 bestW=0.6721 (522s)
+  [concat_raw 96+16 -> 64] diagAUC=0.7847 W@.90=0.6980 bestW=0.6991 (551s)
+  [concat_raw 96+16 -> 96] diagAUC=0.7795 W@.90=0.6995 bestW=0.6995 (579s)
+  [concat_block_norm 96+16 -> 64] diagAUC=0.7778 W@.90=0.6961 bestW=0.6966 (608s)
+  [concat_block_norm 96+16 -> 96] diagAUC=0.7770 W@.90=0.6980 bestW=0.6980 (637s)
+  [concat_raw 96+32 -> 64] diagAUC=0.7772 W@.90=0.6932 bestW=0.6932 (667s)
+  [concat_raw 96+32 -> 96] diagAUC=0.7806 W@.90=0.6997 bestW=0.6997 (696s)
+  [concat_raw 96+32 -> 128] diagAUC=0.7887 W@.90=0.6909 bestW=0.6909 (725s)
+  [concat_block_norm 96+32 -> 64] diagAUC=0.7845 W@.90=0.6916 bestW=0.6924 (755s)
+  [concat_block_norm 96+32 -> 96] diagAUC=0.7809 W@.90=0.6910 bestW=0.6910 (784s)
+  [concat_block_norm 96+32 -> 128] diagAUC=0.7944 W@.90=0.6833 bestW=0.6874 (813s)
+  [concat_raw 96+48 -> 64] diagAUC=0.7826 W@.90=0.6962 bestW=0.6974 (845s)
+  [concat_raw 96+48 -> 96] diagAUC=0.7809 W@.90=0.6986 bestW=0.6986 (873s)
+  [concat_raw 96+48 -> 128] diagAUC=0.7902 W@.90=0.6930 bestW=0.6930 (902s)
+  [concat_block_norm 96+48 -> 64] diagAUC=0.7913 W@.90=0.6899 bestW=0.6899 (932s)
+  [concat_block_norm 96+48 -> 96] diagAUC=0.7900 W@.90=0.6887 bestW=0.6887 (960s)
+  [concat_block_norm 96+48 -> 128] diagAUC=0.7899 W@.90=0.6763 bestW=0.6787 (988s)
+score-level fusion E65 + logbp
+  [score 64+16] bestW=0.6848 selectedW=0.6932 (w=0.9, diagAUC=0.7779, 991s)
+  [score 64+32] bestW=0.6826 selectedW=0.6949 (w=0.9, diagAUC=0.7771, 994s)
+  [score 64+48] bestW=0.6838 selectedW=0.6953 (w=0.9, diagAUC=0.7772, 997s)
+  [score 96+16] bestW=0.6846 selectedW=0.6937 (w=0.9, diagAUC=0.7742, 1000s)
+  [score 96+32] bestW=0.6828 selectedW=0.6923 (w=0.9, diagAUC=0.7732, 1003s)
+  [score 96+48] bestW=0.6823 selectedW=0.6914 (w=0.9, diagAUC=0.7734, 1006s)
+three-way score fusion E65 + logbp + hjorth
+  [3way logbp(32) hjorth(32)] bestW=0.6595 selW=0.6595 (1010s)
+  [3way logbp(48) hjorth(32)] bestW=0.6595 selW=0.6591 (1014s)
+score correlation E65 vs logbp: Test r=+0.6300 | Train OOF r=+0.6202
+done in 1014s
+{
+  "baseline_diagnostic_auc": 0.7578,
+  "baseline_W": 0.6958,
+  "prior_best_diagnostic_auc": 0.7609,
+  "prior_best_W": 0.7164,
+  "max_diagnostic_auc_any_fusion": 0.7998645145876367,
+  "max_best_W_any_fusion": 0.6997311378384521,
+  "max_W_at_090_any_fusion": 0.6997311378384521,
+  "auc_gain_vs_E143": 0.042064514587636714,
+  "auc_gain_vs_E163": 0.03896451458763672,
+  "w_gain_vs_E143": 0.0039311378384521145,
+  "w_gain_vs_E163": -0.016668862161547948,
+  "score_correlation_test": 0.6299554216125806,
+  "score_correlation_train_oof": 0.6202116648819421,
+  "question1_auc_above_07609": true,
+  "question2_W_above_07164": false
+}

@@ -1,0 +1,88 @@
+{
+  "config_sha256": "36d5857ee21ea7aa22b75d40186b73fa6e610d709ba64c469361fd0d83ce3714",
+  "ns": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    8,
+    12
+  ],
+  "variant": "subwin_mean",
+  "shapes": {
+    "n1": [
+      11304,
+      855
+    ],
+    "n2": [
+      11304,
+      855
+    ],
+    "n3": [
+      11304,
+      855
+    ],
+    "n4": [
+      11304,
+      855
+    ],
+    "n6": [
+      11304,
+      855
+    ],
+    "n8": [
+      11304,
+      855
+    ],
+    "n12": [
+      11304,
+      855
+    ]
+  },
+  "test_shapes": {
+    "n1": [
+      22251,
+      855
+    ],
+    "n2": [
+      22251,
+      855
+    ],
+    "n3": [
+      22251,
+      855
+    ],
+    "n4": [
+      22251,
+      855
+    ],
+    "n6": [
+      22251,
+      855
+    ],
+    "n8": [
+      22251,
+      855
+    ],
+    "n12": [
+      22251,
+      855
+    ]
+  },
+  "checks": {
+    "finite": true,
+    "test_accessed": false,
+    "train_n1_vs_E65_cache_max_abs": 0.0,
+    "train_recomputed_vs_E65_cache_max_abs": 4.76837158203125e-07,
+    "train_single_vs_batch_max_abs": 4.76837158203125e-07,
+    "train_n1_vs_recomputed_max_abs": 4.76837158203125e-07,
+    "test_n1_vs_E65_cache_max_abs": 0.0,
+    "test_recomputed_vs_E65_cache_max_abs": 4.76837158203125e-07,
+    "test_single_vs_batch_max_abs": 7.152557373046875e-07,
+    "test_n1_vs_recomputed_max_abs": 4.76837158203125e-07
+  },
+  "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+  "elapsed_seconds": 50.4,
+  "convention": "每个子窗口独立 detrend_zband；N 个 855 维特征取算术平均"
+}

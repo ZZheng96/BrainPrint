@@ -1,0 +1,101 @@
+Train 11304 | Test 22251 (S1=3033, S2=19218)
+building Train TF maps ...
+  STFT layout: 65 freq bins x 34 frames (n_fft=128, hop=32, center=False)
+  tfmap train 4096/11304 | 2.0s
+  tfmap train 8192/11304 | 3.7s
+  tfmap train 11304/11304 | 5.0s
+  saved train_tfmap.npy (11304, 3, 64, 64) float16 (278 MB)
+building Test TF maps ...
+  STFT layout: 65 freq bins x 34 frames (n_fft=128, hop=32, center=False)
+  tfmap test 4096/22251 | 1.6s
+  tfmap test 8192/22251 | 3.3s
+  tfmap test 12288/22251 | 4.9s
+  tfmap test 16384/22251 | 6.4s
+  tfmap test 20480/22251 | 8.3s
+  tfmap test 22251/22251 | 9.0s
+  saved test_tfmap.npy (22251, 3, 64, 64) float16 (547 MB)
+loading cached Train TF maps ...
+Train TF maps on GPU: (11304, 3, 64, 64) (556 MB)
+training supervised-contrastive encoder ...
+encoder parameters = 159,264 (budget 1,000,000)
+epoch 1/40 loss=378.0234 norm=10.93 valid_acc=0.4137 {'EC': 0.33, 'EO': 0.36, 'Imagery': 0.363, 'SSVEP': 0.53} | 2s
+epoch 2/40 loss=22.6656 norm=1.93 valid_acc=0.3935 {'EC': 0.376, 'EO': 0.342, 'Imagery': 0.363, 'SSVEP': 0.459} | 3s
+epoch 3/40 loss=4.3452 norm=0.90 valid_acc=0.4566 {'EC': 0.376, 'EO': 0.439, 'Imagery': 0.432, 'SSVEP': 0.522} | 3s
+epoch 4/40 loss=4.1345 norm=0.91 valid_acc=0.4689 {'EC': 0.404, 'EO': 0.439, 'Imagery': 0.453, 'SSVEP': 0.522} | 4s
+epoch 5/40 loss=4.0406 norm=0.91 valid_acc=0.4671 {'EC': 0.376, 'EO': 0.43, 'Imagery': 0.431, 'SSVEP': 0.559} | 5s
+epoch 6/40 loss=3.9751 norm=0.89 valid_acc=0.4908 {'EC': 0.367, 'EO': 0.465, 'Imagery': 0.467, 'SSVEP': 0.57} | 6s
+epoch 7/40 loss=3.8639 norm=0.90 valid_acc=0.5171 {'EC': 0.431, 'EO': 0.482, 'Imagery': 0.48, 'SSVEP': 0.608} | 7s
+epoch 8/40 loss=3.8129 norm=0.90 valid_acc=0.5355 {'EC': 0.44, 'EO': 0.482, 'Imagery': 0.498, 'SSVEP': 0.635} | 7s
+epoch 9/40 loss=3.7713 norm=0.87 valid_acc=0.5478 {'EC': 0.468, 'EO': 0.491, 'Imagery': 0.511, 'SSVEP': 0.643} | 8s
+epoch 10/40 loss=3.7272 norm=0.88 valid_acc=0.5784 {'EC': 0.486, 'EO': 0.535, 'Imagery': 0.533, 'SSVEP': 0.686} | 9s
+epoch 11/40 loss=3.7057 norm=0.87 valid_acc=0.5837 {'EC': 0.495, 'EO': 0.535, 'Imagery': 0.531, 'SSVEP': 0.703} | 10s
+epoch 12/40 loss=3.6603 norm=0.84 valid_acc=0.6021 {'EC': 0.486, 'EO': 0.544, 'Imagery': 0.557, 'SSVEP': 0.722} | 11s
+epoch 13/40 loss=3.6218 norm=0.89 valid_acc=0.6275 {'EC': 0.486, 'EO': 0.623, 'Imagery': 0.568, 'SSVEP': 0.759} | 12s
+epoch 14/40 loss=3.5599 norm=0.88 valid_acc=0.6459 {'EC': 0.505, 'EO': 0.64, 'Imagery': 0.591, 'SSVEP': 0.77} | 12s
+epoch 15/40 loss=3.5112 norm=0.89 valid_acc=0.6564 {'EC': 0.523, 'EO': 0.623, 'Imagery': 0.597, 'SSVEP': 0.795} | 13s
+epoch 16/40 loss=3.4605 norm=0.87 valid_acc=0.6862 {'EC': 0.55, 'EO': 0.693, 'Imagery': 0.62, 'SSVEP': 0.822} | 14s
+epoch 17/40 loss=3.4259 norm=0.86 valid_acc=0.6968 {'EC': 0.578, 'EO': 0.711, 'Imagery': 0.63, 'SSVEP': 0.827} | 15s
+epoch 18/40 loss=3.4223 norm=0.86 valid_acc=0.7108 {'EC': 0.569, 'EO': 0.702, 'Imagery': 0.646, 'SSVEP': 0.851} | 16s
+epoch 19/40 loss=3.3841 norm=0.83 valid_acc=0.7301 {'EC': 0.633, 'EO': 0.711, 'Imagery': 0.666, 'SSVEP': 0.859} | 16s
+epoch 20/40 loss=3.2840 norm=0.86 valid_acc=0.7257 {'EC': 0.624, 'EO': 0.675, 'Imagery': 0.673, 'SSVEP': 0.849} | 17s
+epoch 21/40 loss=3.3069 norm=0.84 valid_acc=0.7318 {'EC': 0.606, 'EO': 0.719, 'Imagery': 0.681, 'SSVEP': 0.849} | 18s
+epoch 22/40 loss=3.2556 norm=0.85 valid_acc=0.7458 {'EC': 0.651, 'EO': 0.684, 'Imagery': 0.688, 'SSVEP': 0.878} | 19s
+epoch 23/40 loss=3.2191 norm=0.84 valid_acc=0.7458 {'EC': 0.651, 'EO': 0.728, 'Imagery': 0.69, 'SSVEP': 0.862} | 20s
+epoch 24/40 loss=3.1841 norm=0.84 valid_acc=0.7564 {'EC': 0.697, 'EO': 0.711, 'Imagery': 0.701, 'SSVEP': 0.87} | 21s
+epoch 25/40 loss=3.1316 norm=0.86 valid_acc=0.7634 {'EC': 0.651, 'EO': 0.719, 'Imagery': 0.73, 'SSVEP': 0.859} | 21s
+epoch 26/40 loss=3.1136 norm=0.84 valid_acc=0.7730 {'EC': 0.706, 'EO': 0.728, 'Imagery': 0.734, 'SSVEP': 0.865} | 22s
+epoch 27/40 loss=3.0686 norm=0.86 valid_acc=0.7783 {'EC': 0.679, 'EO': 0.728, 'Imagery': 0.741, 'SSVEP': 0.878} | 23s
+epoch 28/40 loss=3.0323 norm=0.85 valid_acc=0.7791 {'EC': 0.67, 'EO': 0.719, 'Imagery': 0.743, 'SSVEP': 0.884} | 24s
+epoch 29/40 loss=3.0477 norm=0.85 valid_acc=0.7897 {'EC': 0.697, 'EO': 0.728, 'Imagery': 0.759, 'SSVEP': 0.881} | 25s
+epoch 30/40 loss=3.0089 norm=0.85 valid_acc=0.7932 {'EC': 0.706, 'EO': 0.746, 'Imagery': 0.759, 'SSVEP': 0.884} | 26s
+epoch 31/40 loss=2.9773 norm=0.85 valid_acc=0.7940 {'EC': 0.697, 'EO': 0.763, 'Imagery': 0.755, 'SSVEP': 0.889} | 27s
+epoch 32/40 loss=2.9768 norm=0.85 valid_acc=0.7932 {'EC': 0.706, 'EO': 0.763, 'Imagery': 0.757, 'SSVEP': 0.881} | 28s
+epoch 33/40 loss=2.9504 norm=0.84 valid_acc=0.7958 {'EC': 0.706, 'EO': 0.763, 'Imagery': 0.761, 'SSVEP': 0.884} | 29s
+epoch 34/40 loss=2.9326 norm=0.85 valid_acc=0.7984 {'EC': 0.706, 'EO': 0.763, 'Imagery': 0.763, 'SSVEP': 0.889} | 30s
+epoch 35/40 loss=2.9626 norm=0.84 valid_acc=0.8019 {'EC': 0.706, 'EO': 0.772, 'Imagery': 0.763, 'SSVEP': 0.897} | 30s
+epoch 36/40 loss=2.9445 norm=0.86 valid_acc=0.7993 {'EC': 0.697, 'EO': 0.763, 'Imagery': 0.766, 'SSVEP': 0.889} | 31s
+epoch 37/40 loss=2.9237 norm=0.84 valid_acc=0.8011 {'EC': 0.697, 'EO': 0.763, 'Imagery': 0.766, 'SSVEP': 0.895} | 32s
+epoch 38/40 loss=2.9135 norm=0.84 valid_acc=0.8002 {'EC': 0.706, 'EO': 0.763, 'Imagery': 0.766, 'SSVEP': 0.889} | 33s
+epoch 39/40 loss=2.9201 norm=0.86 valid_acc=0.8046 {'EC': 0.706, 'EO': 0.763, 'Imagery': 0.772, 'SSVEP': 0.895} | 34s
+epoch 40/40 loss=2.9448 norm=0.86 valid_acc=0.8011 {'EC': 0.706, 'EO': 0.772, 'Imagery': 0.768, 'SSVEP': 0.886} | 35s
+extracting Train embeddings ...
+  embed train 4096/11304 | 0s
+  embed train 8192/11304 | 1s
+  embed train 11304/11304 | 1s
+extracting Test embeddings ...
+  embed test 4096/22251 | 0s
+  embed test 8192/22251 | 1s
+  embed test 12288/22251 | 1s
+  embed test 16384/22251 | 1s
+  embed test 20480/22251 | 2s
+  embed test 22251/22251 | 2s
+evaluating E143 protocol on E166 embeddings ...
+  [E166_tfmap_ssl] pca 32 projected
+  [E166_tfmap_ssl] pca=32 k=1 OOFauc=0.7715 OOFf1=0.7001 diagAUC=0.7330 bestW=0.6496
+  [E166_tfmap_ssl] pca=32 k=3 OOFauc=0.8090 OOFf1=0.7541 diagAUC=0.7272 bestW=0.6512
+  [E166_tfmap_ssl] pca=32 k=6 OOFauc=0.8204 OOFf1=0.7662 diagAUC=0.7358 bestW=0.6534
+  [E166_tfmap_ssl] pca=32 k=12 OOFauc=0.8205 OOFf1=0.7724 diagAUC=0.7346 bestW=0.6502
+  [E166_tfmap_ssl] pca 64 projected
+  [E166_tfmap_ssl] pca=64 k=1 OOFauc=0.7715 OOFf1=0.7001 diagAUC=0.7332 bestW=0.6497
+  [E166_tfmap_ssl] pca=64 k=3 OOFauc=0.8091 OOFf1=0.7542 diagAUC=0.7275 bestW=0.6515
+  [E166_tfmap_ssl] pca=64 k=6 OOFauc=0.8203 OOFf1=0.7663 diagAUC=0.7361 bestW=0.6528
+  [E166_tfmap_ssl] pca=64 k=12 OOFauc=0.8205 OOFf1=0.7733 diagAUC=0.7348 bestW=0.6496
+  [E166_tfmap_ssl] pca 128 projected
+  [E166_tfmap_ssl] pca=128 k=1 OOFauc=0.7715 OOFf1=0.7001 diagAUC=0.7333 bestW=0.6499
+  [E166_tfmap_ssl] pca=128 k=3 OOFauc=0.8091 OOFf1=0.7544 diagAUC=0.7277 bestW=0.6515
+  [E166_tfmap_ssl] pca=128 k=6 OOFauc=0.8204 OOFf1=0.7662 diagAUC=0.7362 bestW=0.6527
+  [E166_tfmap_ssl] pca=128 k=12 OOFauc=0.8201 OOFf1=0.7735 diagAUC=0.7352 bestW=0.6496
+  [E166_tfmap_ssl] pca 256 projected
+  [E166_tfmap_ssl] pca=256 k=1 OOFauc=0.7715 OOFf1=0.7001 diagAUC=0.7333 bestW=0.6499
+  [E166_tfmap_ssl] pca=256 k=3 OOFauc=0.8091 OOFf1=0.7544 diagAUC=0.7277 bestW=0.6515
+  [E166_tfmap_ssl] pca=256 k=6 OOFauc=0.8204 OOFf1=0.7662 diagAUC=0.7362 bestW=0.6527
+  [E166_tfmap_ssl] pca=256 k=12 OOFauc=0.8201 OOFf1=0.7736 diagAUC=0.7352 bestW=0.6496
+evaluating E143 protocol on E65 control features ...
+  [E65_control] pca 96 projected
+  [E65_control] pca=96 k=12 OOFauc=0.9302 OOFf1=0.9895 diagAUC=0.7578 bestW=0.6958
+
+E166 best: pca=32 k=6 a=0.90 diagAUC=0.7358 W=0.6534 (LOSO 0.4759 S1 0.5912 S2 0.7733)
+E65 control: pca=96 k=12 a=0.90 W=0.6958 diagAUC=0.7578
+effective rank (95%): 8 / 256
+results: D:\WORK\BCIC2026\BrainPrint\research\E166_tfmap_ssl\results.json
+report: D:\WORK\BCIC2026\BrainPrint\research\E166_tfmap_ssl\report.md

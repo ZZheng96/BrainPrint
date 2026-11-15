@@ -1,0 +1,377 @@
+  train features 2048/11304 (2s)
+  train features 4096/11304 (4s)
+  train features 6144/11304 (5s)
+  train features 8192/11304 (7s)
+  train features 10240/11304 (8s)
+  train features 11304/11304 (9s)
+train 特征完成：{'subwin_mean_n2': (11304, 855), 'subwin_std_n2': (11304, 855), 'subwin_concat_n2': (11304, 1710), 'subwin_concat_plus_std_n2': (11304, 2565), 'subwin_mean_n3': (11304, 855), 'subwin_std_n3': (11304, 855), 'subwin_concat_n3': (11304, 2565), 'subwin_concat_plus_std_n3': (11304, 3420), 'subwin_mean_n4': (11304, 855), 'subwin_std_n4': (11304, 855), 'subwin_concat_n4': (11304, 3420), 'subwin_concat_plus_std_n4': (11304, 4275)}（14s）
+  test features 2048/22251 (2s)
+  test features 4096/22251 (3s)
+  test features 6144/22251 (5s)
+  test features 8192/22251 (6s)
+  test features 10240/22251 (8s)
+  test features 12288/22251 (9s)
+  test features 14336/22251 (11s)
+  test features 16384/22251 (13s)
+  test features 18432/22251 (14s)
+  test features 20480/22251 (16s)
+  test features 22251/22251 (17s)
+test 特征完成：{'subwin_mean_n2': (22251, 855), 'subwin_std_n2': (22251, 855), 'subwin_concat_n2': (22251, 1710), 'subwin_concat_plus_std_n2': (22251, 2565), 'subwin_mean_n3': (22251, 855), 'subwin_std_n3': (22251, 855), 'subwin_concat_n3': (22251, 2565), 'subwin_concat_plus_std_n3': (22251, 3420), 'subwin_mean_n4': (22251, 855), 'subwin_std_n4': (22251, 855), 'subwin_concat_n4': (22251, 3420), 'subwin_concat_plus_std_n4': (22251, 4275)}（27s）
+特征检查 {'fullwindow_vs_E65_cache_max_abs': 4.76837158203125e-07, 'single_vs_batch_max_abs': 4.76837158203125e-07, 'subwin_single_vs_batch_max_abs': 4.76837158203125e-07, 'finite': True, 'test_accessed': False}
+{
+  "config_sha256": "7fd7c04175bf764238404e310f20500bef82a82a200b82366fb2f553a7d1e4c2",
+  "ns": [
+    2,
+    3,
+    4
+  ],
+  "variants": [
+    "subwin_mean_n2",
+    "subwin_std_n2",
+    "subwin_concat_n2",
+    "subwin_concat_plus_std_n2",
+    "subwin_mean_n3",
+    "subwin_std_n3",
+    "subwin_concat_n3",
+    "subwin_concat_plus_std_n3",
+    "subwin_mean_n4",
+    "subwin_std_n4",
+    "subwin_concat_n4",
+    "subwin_concat_plus_std_n4"
+  ],
+  "shapes": {
+    "subwin_mean_n2": [
+      11304,
+      855
+    ],
+    "subwin_std_n2": [
+      11304,
+      855
+    ],
+    "subwin_concat_n2": [
+      11304,
+      1710
+    ],
+    "subwin_concat_plus_std_n2": [
+      11304,
+      2565
+    ],
+    "subwin_mean_n3": [
+      11304,
+      855
+    ],
+    "subwin_std_n3": [
+      11304,
+      855
+    ],
+    "subwin_concat_n3": [
+      11304,
+      2565
+    ],
+    "subwin_concat_plus_std_n3": [
+      11304,
+      3420
+    ],
+    "subwin_mean_n4": [
+      11304,
+      855
+    ],
+    "subwin_std_n4": [
+      11304,
+      855
+    ],
+    "subwin_concat_n4": [
+      11304,
+      3420
+    ],
+    "subwin_concat_plus_std_n4": [
+      11304,
+      4275
+    ]
+  },
+  "test_shapes": {
+    "subwin_mean_n2": [
+      22251,
+      855
+    ],
+    "subwin_std_n2": [
+      22251,
+      855
+    ],
+    "subwin_concat_n2": [
+      22251,
+      1710
+    ],
+    "subwin_concat_plus_std_n2": [
+      22251,
+      2565
+    ],
+    "subwin_mean_n3": [
+      22251,
+      855
+    ],
+    "subwin_std_n3": [
+      22251,
+      855
+    ],
+    "subwin_concat_n3": [
+      22251,
+      2565
+    ],
+    "subwin_concat_plus_std_n3": [
+      22251,
+      3420
+    ],
+    "subwin_mean_n4": [
+      22251,
+      855
+    ],
+    "subwin_std_n4": [
+      22251,
+      855
+    ],
+    "subwin_concat_n4": [
+      22251,
+      3420
+    ],
+    "subwin_concat_plus_std_n4": [
+      22251,
+      4275
+    ]
+  },
+  "checks": {
+    "fullwindow_vs_E65_cache_max_abs": 4.76837158203125e-07,
+    "single_vs_batch_max_abs": 4.76837158203125e-07,
+    "subwin_single_vs_batch_max_abs": 4.76837158203125e-07,
+    "finite": true,
+    "test_accessed": false
+  },
+  "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+  "elapsed_seconds": 41.77468252182007,
+  "convention": "concat 窗口主序(w*855 + band*171 + pair)；std ddof=0；每子窗口独立 detrend_zband"
+}
+评估变体：['subwin_mean_n2', 'subwin_std_n2', 'subwin_concat_n2', 'subwin_concat_plus_std_n2', 'subwin_mean_n3', 'subwin_std_n3', 'subwin_concat_n3', 'subwin_concat_plus_std_n3', 'subwin_mean_n4', 'subwin_std_n4', 'subwin_concat_n4', 'subwin_concat_plus_std_n4']
+device cuda | train 11304 | test 22251 | fit_rows 6695 | blocks 5
+  [E65] dim=64 k=1 OOFauc=0.8943 OOFf1=0.9754 diagAUC=0.7526 W@.90=0.6563 bestW=0.6689@0.85 (6s)
+  [E65] dim=64 k=3 OOFauc=0.9365 OOFf1=0.9836 diagAUC=0.7612 W@.90=0.6772 bestW=0.6772@0.90 (16s)
+  [E65] dim=64 k=6 OOFauc=0.9439 OOFf1=0.9879 diagAUC=0.7587 W@.90=0.6816 bestW=0.6852@0.92 (25s)
+  [E65] dim=64 k=12 OOFauc=0.9468 OOFf1=0.9883 diagAUC=0.7622 W@.90=0.6908 bestW=0.6982@0.92 (33s)
+  [E65] dim=96 k=1 OOFauc=0.8774 OOFf1=0.9757 diagAUC=0.7504 W@.90=0.6495 bestW=0.6697@0.85 (38s)
+  [E65] dim=96 k=3 OOFauc=0.9209 OOFf1=0.9844 diagAUC=0.7566 W@.90=0.6764 bestW=0.6771@0.91 (46s)
+  [E65] dim=96 k=6 OOFauc=0.9286 OOFf1=0.9898 diagAUC=0.7554 W@.90=0.6883 bestW=0.6904@0.92 (55s)
+  [E65] dim=96 k=12 OOFauc=0.9302 OOFf1=0.9895 diagAUC=0.7578 W@.90=0.6958 bestW=0.6958@0.90 (62s)
+  [E65] dim=128 k=1 OOFauc=0.8596 OOFf1=0.9758 diagAUC=0.7466 W@.90=0.6463 bestW=0.6723@0.80 (66s)
+  [E65] dim=128 k=3 OOFauc=0.9041 OOFf1=0.9843 diagAUC=0.7531 W@.90=0.6820 bestW=0.6820@0.90 (75s)
+  [E65] dim=128 k=6 OOFauc=0.9124 OOFf1=0.9885 diagAUC=0.7537 W@.90=0.6890 bestW=0.6902@0.91 (84s)
+  [E65] dim=128 k=12 OOFauc=0.9137 OOFf1=0.9894 diagAUC=0.7483 W@.90=0.6964 bestW=0.6966@0.88 (90s)
+  [E65] dim=256 k=1 OOFauc=0.8041 OOFf1=0.9766 diagAUC=0.7156 W@.90=0.6172 bestW=0.6594@0.80 (94s)
+  [E65] dim=256 k=3 OOFauc=0.8462 OOFf1=0.9839 diagAUC=0.7189 W@.90=0.6599 bestW=0.6670@0.88 (102s)
+  [E65] dim=256 k=6 OOFauc=0.8536 OOFf1=0.9883 diagAUC=0.7196 W@.90=0.6652 bestW=0.6727@0.88 (110s)
+  [E65] dim=256 k=12 OOFauc=0.8591 OOFf1=0.9890 diagAUC=0.7201 W@.90=0.6739 bestW=0.6819@0.85 (116s)
+E65 复现：diagAUC 0.7578（公布 0.7578） / W@0.90 0.6958（公布 0.6958）
+  [subwin_mean_n2] dim=64 k=1 OOFauc=0.9077 OOFf1=0.9768 diagAUC=0.7625 W@.90=0.6722 bestW=0.6738@0.88 (122s)
+  [subwin_mean_n2] dim=64 k=3 OOFauc=0.9506 OOFf1=0.9872 diagAUC=0.7691 W@.90=0.6675 bestW=0.6744@0.91 (131s)
+  [subwin_mean_n2] dim=64 k=6 OOFauc=0.9559 OOFf1=0.9908 diagAUC=0.7671 W@.90=0.6651 bestW=0.6808@0.94 (140s)
+  [subwin_mean_n2] dim=64 k=12 OOFauc=0.9583 OOFf1=0.9906 diagAUC=0.7688 W@.90=0.6744 bestW=0.6904@0.96 (147s)
+  [subwin_mean_n2] dim=96 k=1 OOFauc=0.8926 OOFf1=0.9769 diagAUC=0.7566 W@.90=0.6625 bestW=0.6735@0.85 (164s)
+  [subwin_mean_n2] dim=96 k=3 OOFauc=0.9383 OOFf1=0.9871 diagAUC=0.7596 W@.90=0.6658 bestW=0.6688@0.92 (173s)
+  [subwin_mean_n2] dim=96 k=6 OOFauc=0.9444 OOFf1=0.9913 diagAUC=0.7576 W@.90=0.6828 bestW=0.6828@0.90 (182s)
+  [subwin_mean_n2] dim=96 k=12 OOFauc=0.9476 OOFf1=0.9916 diagAUC=0.7570 W@.90=0.6852 bestW=0.6872@0.91 (189s)
+  [subwin_mean_n2] dim=128 k=1 OOFauc=0.8781 OOFf1=0.9779 diagAUC=0.7569 W@.90=0.6608 bestW=0.6748@0.85 (205s)
+  [subwin_mean_n2] dim=128 k=3 OOFauc=0.9249 OOFf1=0.9867 diagAUC=0.7600 W@.90=0.6740 bestW=0.6740@0.90 (214s)
+  [subwin_mean_n2] dim=128 k=6 OOFauc=0.9328 OOFf1=0.9911 diagAUC=0.7554 W@.90=0.6802 bestW=0.6838@0.91 (221s)
+  [subwin_mean_n2] dim=128 k=12 OOFauc=0.9351 OOFf1=0.9922 diagAUC=0.7565 W@.90=0.6894 bestW=0.6894@0.90 (228s)
+  [subwin_mean_n2] dim=256 k=1 OOFauc=0.8299 OOFf1=0.9786 diagAUC=0.7296 W@.90=0.6447 bestW=0.6701@0.80 (244s)
+  [subwin_mean_n2] dim=256 k=3 OOFauc=0.8760 OOFf1=0.9886 diagAUC=0.7341 W@.90=0.6722 bestW=0.6778@0.88 (252s)
+  [subwin_mean_n2] dim=256 k=6 OOFauc=0.8832 OOFf1=0.9913 diagAUC=0.7296 W@.90=0.6752 bestW=0.6781@0.88 (260s)
+  [subwin_mean_n2] dim=256 k=12 OOFauc=0.8882 OOFf1=0.9924 diagAUC=0.7309 W@.90=0.6848 bestW=0.6894@0.88 (266s)
+  subwin_mean_n2: 最优诊断 AUC 0.7691 / 最优 W 0.6904
+  [subwin_std_n2] dim=64 k=1 OOFauc=0.3807 OOFf1=0.4864 diagAUC=0.5152 W@.90=0.5283 bestW=0.5506@0.80 (283s)
+  [subwin_std_n2] dim=64 k=3 OOFauc=0.3942 OOFf1=0.5241 diagAUC=0.5129 W@.90=0.5288 bestW=0.5526@0.80 (292s)
+  [subwin_std_n2] dim=64 k=6 OOFauc=0.4031 OOFf1=0.5181 diagAUC=0.5048 W@.90=0.5328 bestW=0.5527@0.80 (300s)
+  [subwin_std_n2] dim=64 k=12 OOFauc=0.4113 OOFf1=0.5002 diagAUC=0.5053 W@.90=0.5297 bestW=0.5499@0.80 (307s)
+  [subwin_std_n2] dim=96 k=1 OOFauc=0.3529 OOFf1=0.4925 diagAUC=0.4809 W@.90=0.5306 bestW=0.5510@0.80 (324s)
+  [subwin_std_n2] dim=96 k=3 OOFauc=0.3653 OOFf1=0.5212 diagAUC=0.4780 W@.90=0.5319 bestW=0.5501@0.80 (332s)
+  [subwin_std_n2] dim=96 k=6 OOFauc=0.3731 OOFf1=0.5156 diagAUC=0.4726 W@.90=0.5322 bestW=0.5534@0.80 (340s)
+  [subwin_std_n2] dim=96 k=12 OOFauc=0.3834 OOFf1=0.5059 diagAUC=0.4741 W@.90=0.5295 bestW=0.5489@0.80 (347s)
+  [subwin_std_n2] dim=128 k=1 OOFauc=0.3400 OOFf1=0.4967 diagAUC=0.4581 W@.90=0.5300 bestW=0.5499@0.80 (363s)
+  [subwin_std_n2] dim=128 k=3 OOFauc=0.3522 OOFf1=0.5293 diagAUC=0.4568 W@.90=0.5319 bestW=0.5514@0.80 (371s)
+  [subwin_std_n2] dim=128 k=6 OOFauc=0.3612 OOFf1=0.5218 diagAUC=0.4527 W@.90=0.5305 bestW=0.5511@0.80 (378s)
+  [subwin_std_n2] dim=128 k=12 OOFauc=0.3696 OOFf1=0.5104 diagAUC=0.4551 W@.90=0.5290 bestW=0.5494@0.80 (384s)
+  [subwin_std_n2] dim=256 k=1 OOFauc=0.3302 OOFf1=0.5035 diagAUC=0.4138 W@.90=0.5288 bestW=0.5476@0.80 (400s)
+  [subwin_std_n2] dim=256 k=3 OOFauc=0.3402 OOFf1=0.5253 diagAUC=0.4159 W@.90=0.5288 bestW=0.5476@0.80 (407s)
+  [subwin_std_n2] dim=256 k=6 OOFauc=0.3454 OOFf1=0.5251 diagAUC=0.4178 W@.90=0.5295 bestW=0.5482@0.80 (414s)
+  [subwin_std_n2] dim=256 k=12 OOFauc=0.3518 OOFf1=0.5131 diagAUC=0.4176 W@.90=0.5277 bestW=0.5469@0.80 (419s)
+  subwin_std_n2: 最优诊断 AUC 0.5152 / 最优 W 0.5534
+  [subwin_concat_n2] dim=64 k=1 OOFauc=0.8980 OOFf1=0.9739 diagAUC=0.7601 W@.90=0.6679 bestW=0.6746@0.85 (441s)
+  [subwin_concat_n2] dim=64 k=3 OOFauc=0.9398 OOFf1=0.9856 diagAUC=0.7688 W@.90=0.6770 bestW=0.6806@0.93 (450s)
+  [subwin_concat_n2] dim=64 k=6 OOFauc=0.9470 OOFf1=0.9895 diagAUC=0.7673 W@.90=0.6822 bestW=0.6877@0.93 (459s)
+  [subwin_concat_n2] dim=64 k=12 OOFauc=0.9507 OOFf1=0.9885 diagAUC=0.7717 W@.90=0.6909 bestW=0.6980@0.91 (467s)
+  [subwin_concat_n2] dim=96 k=1 OOFauc=0.8792 OOFf1=0.9753 diagAUC=0.7571 W@.90=0.6661 bestW=0.6843@0.85 (483s)
+  [subwin_concat_n2] dim=96 k=3 OOFauc=0.9233 OOFf1=0.9857 diagAUC=0.7673 W@.90=0.6890 bestW=0.6890@0.90 (493s)
+  [subwin_concat_n2] dim=96 k=6 OOFauc=0.9309 OOFf1=0.9885 diagAUC=0.7661 W@.90=0.6977 bestW=0.6977@0.90 (500s)
+  [subwin_concat_n2] dim=96 k=12 OOFauc=0.9333 OOFf1=0.9900 diagAUC=0.7670 W@.90=0.6990 bestW=0.7030@0.91 (507s)
+  [subwin_concat_n2] dim=128 k=1 OOFauc=0.8574 OOFf1=0.9753 diagAUC=0.7526 W@.90=0.6644 bestW=0.6904@0.80 (524s)
+  [subwin_concat_n2] dim=128 k=3 OOFauc=0.9041 OOFf1=0.9857 diagAUC=0.7605 W@.90=0.6915 bestW=0.6920@0.88 (532s)
+  [subwin_concat_n2] dim=128 k=6 OOFauc=0.9113 OOFf1=0.9893 diagAUC=0.7595 W@.90=0.6982 bestW=0.6994@0.88 (540s)
+  [subwin_concat_n2] dim=128 k=12 OOFauc=0.9156 OOFf1=0.9903 diagAUC=0.7607 W@.90=0.7052 bestW=0.7063@0.88 (547s)
+  [subwin_concat_n2] dim=256 k=1 OOFauc=0.7745 OOFf1=0.9769 diagAUC=0.7372 W@.90=0.6486 bestW=0.7062@0.80 (564s)
+  [subwin_concat_n2] dim=256 k=3 OOFauc=0.8168 OOFf1=0.9859 diagAUC=0.7453 W@.90=0.6917 bestW=0.7135@0.85 (571s)
+  [subwin_concat_n2] dim=256 k=6 OOFauc=0.8267 OOFf1=0.9897 diagAUC=0.7405 W@.90=0.6997 bestW=0.7175@0.80 (579s)
+  [subwin_concat_n2] dim=256 k=12 OOFauc=0.8325 OOFf1=0.9877 diagAUC=0.7433 W@.90=0.6968 bestW=0.7248@0.80 (585s)
+  subwin_concat_n2: 最优诊断 AUC 0.7717 / 最优 W 0.7248
+  [subwin_concat_plus_std_n2] dim=64 k=1 OOFauc=0.8820 OOFf1=0.9699 diagAUC=0.7472 W@.90=0.6652 bestW=0.6792@0.85 (616s)
+  [subwin_concat_plus_std_n2] dim=64 k=3 OOFauc=0.9261 OOFf1=0.9846 diagAUC=0.7642 W@.90=0.6895 bestW=0.6896@0.91 (625s)
+  [subwin_concat_plus_std_n2] dim=64 k=6 OOFauc=0.9337 OOFf1=0.9871 diagAUC=0.7615 W@.90=0.6925 bestW=0.6956@0.92 (633s)
+  [subwin_concat_plus_std_n2] dim=64 k=12 OOFauc=0.9373 OOFf1=0.9868 diagAUC=0.7621 W@.90=0.7010 bestW=0.7010@0.90 (641s)
+  [subwin_concat_plus_std_n2] dim=96 k=1 OOFauc=0.8546 OOFf1=0.9714 diagAUC=0.7431 W@.90=0.6659 bestW=0.6887@0.80 (658s)
+  [subwin_concat_plus_std_n2] dim=96 k=3 OOFauc=0.8995 OOFf1=0.9845 diagAUC=0.7599 W@.90=0.6947 bestW=0.7030@0.85 (667s)
+  [subwin_concat_plus_std_n2] dim=96 k=6 OOFauc=0.9089 OOFf1=0.9875 diagAUC=0.7598 W@.90=0.7046 bestW=0.7046@0.90 (676s)
+  [subwin_concat_plus_std_n2] dim=96 k=12 OOFauc=0.9126 OOFf1=0.9876 diagAUC=0.7535 W@.90=0.7045 bestW=0.7103@0.88 (683s)
+  [subwin_concat_plus_std_n2] dim=128 k=1 OOFauc=0.8231 OOFf1=0.9713 diagAUC=0.7421 W@.90=0.6685 bestW=0.6993@0.80 (700s)
+  [subwin_concat_plus_std_n2] dim=128 k=3 OOFauc=0.8675 OOFf1=0.9837 diagAUC=0.7554 W@.90=0.7042 bestW=0.7206@0.85 (708s)
+  [subwin_concat_plus_std_n2] dim=128 k=6 OOFauc=0.8770 OOFf1=0.9883 diagAUC=0.7560 W@.90=0.7102 bestW=0.7178@0.85 (716s)
+  [subwin_concat_plus_std_n2] dim=128 k=12 OOFauc=0.8812 OOFf1=0.9878 diagAUC=0.7489 W@.90=0.7141 bestW=0.7244@0.85 (723s)
+  [subwin_concat_plus_std_n2] dim=256 k=1 OOFauc=0.7045 OOFf1=0.9717 diagAUC=0.7252 W@.90=0.6272 bestW=0.7192@0.80 (741s)
+  [subwin_concat_plus_std_n2] dim=256 k=3 OOFauc=0.7423 OOFf1=0.9840 diagAUC=0.7342 W@.90=0.6759 bestW=0.7449@0.80 (749s)
+  [subwin_concat_plus_std_n2] dim=256 k=6 OOFauc=0.7506 OOFf1=0.9883 diagAUC=0.7279 W@.90=0.6733 bestW=0.7403@0.80 (756s)
+  [subwin_concat_plus_std_n2] dim=256 k=12 OOFauc=0.7589 OOFf1=0.9862 diagAUC=0.7306 W@.90=0.6709 bestW=0.7388@0.80 (763s)
+  subwin_concat_plus_std_n2: 最优诊断 AUC 0.7642 / 最优 W 0.7449
+  [subwin_mean_n3] dim=64 k=1 OOFauc=0.9092 OOFf1=0.9747 diagAUC=0.7708 W@.90=0.6731 bestW=0.6779@0.88 (779s)
+  [subwin_mean_n3] dim=64 k=3 OOFauc=0.9521 OOFf1=0.9866 diagAUC=0.7733 W@.90=0.6689 bestW=0.6770@0.92 (787s)
+  [subwin_mean_n3] dim=64 k=6 OOFauc=0.9580 OOFf1=0.9900 diagAUC=0.7682 W@.90=0.6618 bestW=0.6746@0.94 (794s)
+  [subwin_mean_n3] dim=64 k=12 OOFauc=0.9614 OOFf1=0.9907 diagAUC=0.7735 W@.90=0.6708 bestW=0.6891@0.95 (800s)
+  [subwin_mean_n3] dim=96 k=1 OOFauc=0.8959 OOFf1=0.9755 diagAUC=0.7677 W@.90=0.6664 bestW=0.6709@0.88 (814s)
+  [subwin_mean_n3] dim=96 k=3 OOFauc=0.9415 OOFf1=0.9874 diagAUC=0.7693 W@.90=0.6696 bestW=0.6696@0.90 (822s)
+  [subwin_mean_n3] dim=96 k=6 OOFauc=0.9484 OOFf1=0.9912 diagAUC=0.7654 W@.90=0.6655 bestW=0.6735@0.94 (829s)
+  [subwin_mean_n3] dim=96 k=12 OOFauc=0.9518 OOFf1=0.9904 diagAUC=0.7644 W@.90=0.6706 bestW=0.6871@0.93 (835s)
+  [subwin_mean_n3] dim=128 k=1 OOFauc=0.8840 OOFf1=0.9757 diagAUC=0.7665 W@.90=0.6616 bestW=0.6719@0.85 (849s)
+  [subwin_mean_n3] dim=128 k=3 OOFauc=0.9314 OOFf1=0.9866 diagAUC=0.7684 W@.90=0.6665 bestW=0.6692@0.88 (856s)
+  [subwin_mean_n3] dim=128 k=6 OOFauc=0.9377 OOFf1=0.9910 diagAUC=0.7623 W@.90=0.6768 bestW=0.6768@0.90 (863s)
+  [subwin_mean_n3] dim=128 k=12 OOFauc=0.9422 OOFf1=0.9908 diagAUC=0.7640 W@.90=0.6844 bestW=0.6883@0.91 (868s)
+  [subwin_mean_n3] dim=256 k=1 OOFauc=0.8414 OOFf1=0.9762 diagAUC=0.7445 W@.90=0.6485 bestW=0.6645@0.80 (882s)
+  [subwin_mean_n3] dim=256 k=3 OOFauc=0.8876 OOFf1=0.9868 diagAUC=0.7436 W@.90=0.6676 bestW=0.6735@0.88 (889s)
+  [subwin_mean_n3] dim=256 k=6 OOFauc=0.8945 OOFf1=0.9912 diagAUC=0.7417 W@.90=0.6768 bestW=0.6777@0.88 (895s)
+  [subwin_mean_n3] dim=256 k=12 OOFauc=0.8991 OOFf1=0.9915 diagAUC=0.7393 W@.90=0.6743 bestW=0.6775@0.88 (901s)
+  subwin_mean_n3: 最优诊断 AUC 0.7735 / 最优 W 0.6891
+  [subwin_std_n3] dim=64 k=1 OOFauc=0.4408 OOFf1=0.6380 diagAUC=0.5893 W@.90=0.5370 bestW=0.5652@0.80 (915s)
+  [subwin_std_n3] dim=64 k=3 OOFauc=0.4593 OOFf1=0.7043 diagAUC=0.5845 W@.90=0.5453 bestW=0.5725@0.80 (924s)
+  [subwin_std_n3] dim=64 k=6 OOFauc=0.4652 OOFf1=0.7054 diagAUC=0.5775 W@.90=0.5430 bestW=0.5704@0.80 (931s)
+  [subwin_std_n3] dim=64 k=12 OOFauc=0.4741 OOFf1=0.6928 diagAUC=0.5690 W@.90=0.5403 bestW=0.5698@0.80 (937s)
+  [subwin_std_n3] dim=96 k=1 OOFauc=0.3946 OOFf1=0.6426 diagAUC=0.5606 W@.90=0.5385 bestW=0.5669@0.80 (952s)
+  [subwin_std_n3] dim=96 k=3 OOFauc=0.4120 OOFf1=0.7039 diagAUC=0.5470 W@.90=0.5434 bestW=0.5755@0.80 (959s)
+  [subwin_std_n3] dim=96 k=6 OOFauc=0.4184 OOFf1=0.7129 diagAUC=0.5431 W@.90=0.5426 bestW=0.5735@0.80 (965s)
+  [subwin_std_n3] dim=96 k=12 OOFauc=0.4306 OOFf1=0.6957 diagAUC=0.5382 W@.90=0.5412 bestW=0.5705@0.80 (971s)
+  [subwin_std_n3] dim=128 k=1 OOFauc=0.3685 OOFf1=0.6459 diagAUC=0.5359 W@.90=0.5374 bestW=0.5645@0.80 (985s)
+  [subwin_std_n3] dim=128 k=3 OOFauc=0.3855 OOFf1=0.7046 diagAUC=0.5182 W@.90=0.5400 bestW=0.5707@0.80 (992s)
+  [subwin_std_n3] dim=128 k=6 OOFauc=0.3928 OOFf1=0.7042 diagAUC=0.5152 W@.90=0.5393 bestW=0.5713@0.80 (998s)
+  [subwin_std_n3] dim=128 k=12 OOFauc=0.4023 OOFf1=0.6893 diagAUC=0.5123 W@.90=0.5382 bestW=0.5667@0.80 (1003s)
+  [subwin_std_n3] dim=256 k=1 OOFauc=0.3397 OOFf1=0.6547 diagAUC=0.4588 W@.90=0.5341 bestW=0.5584@0.80 (1018s)
+  [subwin_std_n3] dim=256 k=3 OOFauc=0.3545 OOFf1=0.6961 diagAUC=0.4487 W@.90=0.5353 bestW=0.5588@0.80 (1024s)
+  [subwin_std_n3] dim=256 k=6 OOFauc=0.3614 OOFf1=0.6933 diagAUC=0.4450 W@.90=0.5341 bestW=0.5571@0.80 (1030s)
+  [subwin_std_n3] dim=256 k=12 OOFauc=0.3696 OOFf1=0.6831 diagAUC=0.4440 W@.90=0.5332 bestW=0.5562@0.80 (1035s)
+  subwin_std_n3: 最优诊断 AUC 0.5893 / 最优 W 0.5755
+  [subwin_concat_n3] dim=64 k=1 OOFauc=0.8937 OOFf1=0.9690 diagAUC=0.7618 W@.90=0.6776 bestW=0.6837@0.85 (1064s)
+  [subwin_concat_n3] dim=64 k=3 OOFauc=0.9353 OOFf1=0.9850 diagAUC=0.7685 W@.90=0.6843 bestW=0.6909@0.92 (1073s)
+  [subwin_concat_n3] dim=64 k=6 OOFauc=0.9431 OOFf1=0.9871 diagAUC=0.7659 W@.90=0.6816 bestW=0.6920@0.93 (1080s)
+  [subwin_concat_n3] dim=64 k=12 OOFauc=0.9479 OOFf1=0.9884 diagAUC=0.7722 W@.90=0.6866 bestW=0.6952@0.94 (1087s)
+  [subwin_concat_n3] dim=96 k=1 OOFauc=0.8697 OOFf1=0.9715 diagAUC=0.7602 W@.90=0.6735 bestW=0.6919@0.85 (1103s)
+  [subwin_concat_n3] dim=96 k=3 OOFauc=0.9138 OOFf1=0.9849 diagAUC=0.7658 W@.90=0.6945 bestW=0.6955@0.92 (1111s)
+  [subwin_concat_n3] dim=96 k=6 OOFauc=0.9247 OOFf1=0.9877 diagAUC=0.7668 W@.90=0.6966 bestW=0.6971@0.91 (1118s)
+  [subwin_concat_n3] dim=96 k=12 OOFauc=0.9300 OOFf1=0.9888 diagAUC=0.7659 W@.90=0.7034 bestW=0.7053@0.91 (1125s)
+  [subwin_concat_n3] dim=128 k=1 OOFauc=0.8433 OOFf1=0.9713 diagAUC=0.7569 W@.90=0.6738 bestW=0.7019@0.80 (1140s)
+  [subwin_concat_n3] dim=128 k=3 OOFauc=0.8891 OOFf1=0.9854 diagAUC=0.7653 W@.90=0.7109 bestW=0.7130@0.88 (1147s)
+  [subwin_concat_n3] dim=128 k=6 OOFauc=0.8972 OOFf1=0.9882 diagAUC=0.7642 W@.90=0.7016 bestW=0.7102@0.85 (1155s)
+  [subwin_concat_n3] dim=128 k=12 OOFauc=0.9039 OOFf1=0.9880 diagAUC=0.7622 W@.90=0.7116 bestW=0.7116@0.90 (1160s)
+  [subwin_concat_n3] dim=256 k=1 OOFauc=0.7304 OOFf1=0.9720 diagAUC=0.7457 W@.90=0.6596 bestW=0.7264@0.80 (1175s)
+  [subwin_concat_n3] dim=256 k=3 OOFauc=0.7705 OOFf1=0.9849 diagAUC=0.7508 W@.90=0.7051 bestW=0.7441@0.80 (1182s)
+  [subwin_concat_n3] dim=256 k=6 OOFauc=0.7812 OOFf1=0.9870 diagAUC=0.7463 W@.90=0.7073 bestW=0.7412@0.80 (1189s)
+  [subwin_concat_n3] dim=256 k=12 OOFauc=0.7939 OOFf1=0.9859 diagAUC=0.7477 W@.90=0.7056 bestW=0.7412@0.80 (1194s)
+  subwin_concat_n3: 最优诊断 AUC 0.7722 / 最优 W 0.7441
+  [subwin_concat_plus_std_n3] dim=64 k=1 OOFauc=0.8821 OOFf1=0.9651 diagAUC=0.7553 W@.90=0.6798 bestW=0.6821@0.85 (1235s)
+  [subwin_concat_plus_std_n3] dim=64 k=3 OOFauc=0.9274 OOFf1=0.9821 diagAUC=0.7642 W@.90=0.6879 bestW=0.6901@0.91 (1245s)
+  [subwin_concat_plus_std_n3] dim=64 k=6 OOFauc=0.9364 OOFf1=0.9862 diagAUC=0.7630 W@.90=0.6856 bestW=0.6907@0.92 (1255s)
+  [subwin_concat_plus_std_n3] dim=64 k=12 OOFauc=0.9414 OOFf1=0.9863 diagAUC=0.7684 W@.90=0.6982 bestW=0.7004@0.93 (1262s)
+  [subwin_concat_plus_std_n3] dim=96 k=1 OOFauc=0.8542 OOFf1=0.9660 diagAUC=0.7528 W@.90=0.6729 bestW=0.6940@0.80 (1281s)
+  [subwin_concat_plus_std_n3] dim=96 k=3 OOFauc=0.9028 OOFf1=0.9824 diagAUC=0.7614 W@.90=0.6916 bestW=0.6921@0.88 (1291s)
+  [subwin_concat_plus_std_n3] dim=96 k=6 OOFauc=0.9126 OOFf1=0.9871 diagAUC=0.7620 W@.90=0.6999 bestW=0.7039@0.88 (1302s)
+  [subwin_concat_plus_std_n3] dim=96 k=12 OOFauc=0.9161 OOFf1=0.9865 diagAUC=0.7646 W@.90=0.7081 bestW=0.7081@0.90 (1309s)
+  [subwin_concat_plus_std_n3] dim=128 k=1 OOFauc=0.8228 OOFf1=0.9666 diagAUC=0.7491 W@.90=0.6756 bestW=0.7059@0.80 (1331s)
+  [subwin_concat_plus_std_n3] dim=128 k=3 OOFauc=0.8700 OOFf1=0.9818 diagAUC=0.7610 W@.90=0.7064 bestW=0.7158@0.85 (1343s)
+  [subwin_concat_plus_std_n3] dim=128 k=6 OOFauc=0.8825 OOFf1=0.9866 diagAUC=0.7585 W@.90=0.7101 bestW=0.7149@0.88 (1354s)
+  [subwin_concat_plus_std_n3] dim=128 k=12 OOFauc=0.8863 OOFf1=0.9859 diagAUC=0.7576 W@.90=0.7122 bestW=0.7220@0.85 (1361s)
+  [subwin_concat_plus_std_n3] dim=256 k=1 OOFauc=0.6875 OOFf1=0.9680 diagAUC=0.7388 W@.90=0.6432 bestW=0.7350@0.80 (1379s)
+  [subwin_concat_plus_std_n3] dim=256 k=3 OOFauc=0.7260 OOFf1=0.9811 diagAUC=0.7471 W@.90=0.6950 bestW=0.7573@0.80 (1387s)
+  [subwin_concat_plus_std_n3] dim=256 k=6 OOFauc=0.7364 OOFf1=0.9864 diagAUC=0.7420 W@.90=0.6958 bestW=0.7551@0.80 (1396s)
+  [subwin_concat_plus_std_n3] dim=256 k=12 OOFauc=0.7496 OOFf1=0.9840 diagAUC=0.7439 W@.90=0.6892 bestW=0.7522@0.80 (1403s)
+  subwin_concat_plus_std_n3: 最优诊断 AUC 0.7684 / 最优 W 0.7573
+  [subwin_mean_n4] dim=64 k=1 OOFauc=0.9092 OOFf1=0.9724 diagAUC=0.7782 W@.90=0.6769 bestW=0.6807@0.88 (1422s)
+  [subwin_mean_n4] dim=64 k=3 OOFauc=0.9522 OOFf1=0.9862 diagAUC=0.7758 W@.90=0.6668 bestW=0.6776@0.94 (1432s)
+  [subwin_mean_n4] dim=64 k=6 OOFauc=0.9596 OOFf1=0.9895 diagAUC=0.7735 W@.90=0.6624 bestW=0.6813@0.93 (1443s)
+  [subwin_mean_n4] dim=64 k=12 OOFauc=0.9630 OOFf1=0.9893 diagAUC=0.7822 W@.90=0.6694 bestW=0.6978@0.96 (1452s)
+  [subwin_mean_n4] dim=96 k=1 OOFauc=0.8976 OOFf1=0.9737 diagAUC=0.7757 W@.90=0.6689 bestW=0.6749@0.85 (1473s)
+  [subwin_mean_n4] dim=96 k=3 OOFauc=0.9450 OOFf1=0.9872 diagAUC=0.7745 W@.90=0.6673 bestW=0.6716@0.93 (1484s)
+  [subwin_mean_n4] dim=96 k=6 OOFauc=0.9510 OOFf1=0.9900 diagAUC=0.7706 W@.90=0.6725 bestW=0.6796@0.93 (1495s)
+  [subwin_mean_n4] dim=96 k=12 OOFauc=0.9559 OOFf1=0.9902 diagAUC=0.7736 W@.90=0.6722 bestW=0.6878@0.94 (1504s)
+  [subwin_mean_n4] dim=128 k=1 OOFauc=0.8868 OOFf1=0.9733 diagAUC=0.7773 W@.90=0.6647 bestW=0.6752@0.85 (1524s)
+  [subwin_mean_n4] dim=128 k=3 OOFauc=0.9352 OOFf1=0.9873 diagAUC=0.7754 W@.90=0.6693 bestW=0.6721@0.91 (1535s)
+  [subwin_mean_n4] dim=128 k=6 OOFauc=0.9420 OOFf1=0.9903 diagAUC=0.7707 W@.90=0.6757 bestW=0.6757@0.90 (1546s)
+  [subwin_mean_n4] dim=128 k=12 OOFauc=0.9458 OOFf1=0.9908 diagAUC=0.7736 W@.90=0.6807 bestW=0.6815@0.91 (1554s)
+  [subwin_mean_n4] dim=256 k=1 OOFauc=0.8514 OOFf1=0.9746 diagAUC=0.7552 W@.90=0.6480 bestW=0.6670@0.80 (1575s)
+  [subwin_mean_n4] dim=256 k=3 OOFauc=0.8991 OOFf1=0.9871 diagAUC=0.7531 W@.90=0.6658 bestW=0.6712@0.88 (1585s)
+  [subwin_mean_n4] dim=256 k=6 OOFauc=0.9070 OOFf1=0.9906 diagAUC=0.7511 W@.90=0.6694 bestW=0.6748@0.88 (1595s)
+  [subwin_mean_n4] dim=256 k=12 OOFauc=0.9103 OOFf1=0.9897 diagAUC=0.7504 W@.90=0.6776 bestW=0.6829@0.88 (1603s)
+  subwin_mean_n4: 最优诊断 AUC 0.7822 / 最优 W 0.6978
+  [subwin_std_n4] dim=64 k=1 OOFauc=0.5167 OOFf1=0.7127 diagAUC=0.6278 W@.90=0.5427 bestW=0.5793@0.80 (1627s)
+  [subwin_std_n4] dim=64 k=3 OOFauc=0.5469 OOFf1=0.7878 diagAUC=0.6384 W@.90=0.5592 bestW=0.5973@0.80 (1638s)
+  [subwin_std_n4] dim=64 k=6 OOFauc=0.5549 OOFf1=0.7991 diagAUC=0.6334 W@.90=0.5578 bestW=0.5993@0.80 (1649s)
+  [subwin_std_n4] dim=64 k=12 OOFauc=0.5600 OOFf1=0.7958 diagAUC=0.6265 W@.90=0.5542 bestW=0.5982@0.80 (1658s)
+  [subwin_std_n4] dim=96 k=1 OOFauc=0.4560 OOFf1=0.7174 diagAUC=0.6065 W@.90=0.5443 bestW=0.5745@0.80 (1679s)
+  [subwin_std_n4] dim=96 k=3 OOFauc=0.4803 OOFf1=0.7882 diagAUC=0.6110 W@.90=0.5508 bestW=0.5905@0.80 (1691s)
+  [subwin_std_n4] dim=96 k=6 OOFauc=0.4887 OOFf1=0.7962 diagAUC=0.6068 W@.90=0.5499 bestW=0.5888@0.80 (1701s)
+  [subwin_std_n4] dim=96 k=12 OOFauc=0.4960 OOFf1=0.7912 diagAUC=0.5949 W@.90=0.5495 bestW=0.5845@0.80 (1709s)
+  [subwin_std_n4] dim=128 k=1 OOFauc=0.4201 OOFf1=0.7199 diagAUC=0.5862 W@.90=0.5426 bestW=0.5726@0.80 (1730s)
+  [subwin_std_n4] dim=128 k=3 OOFauc=0.4421 OOFf1=0.7892 diagAUC=0.5829 W@.90=0.5500 bestW=0.5862@0.80 (1741s)
+  [subwin_std_n4] dim=128 k=6 OOFauc=0.4539 OOFf1=0.7937 diagAUC=0.5766 W@.90=0.5492 bestW=0.5843@0.80 (1750s)
+  [subwin_std_n4] dim=128 k=12 OOFauc=0.4608 OOFf1=0.7829 diagAUC=0.5720 W@.90=0.5505 bestW=0.5808@0.80 (1758s)
+  [subwin_std_n4] dim=256 k=1 OOFauc=0.3678 OOFf1=0.7212 diagAUC=0.5140 W@.90=0.5428 bestW=0.5704@0.80 (1779s)
+  [subwin_std_n4] dim=256 k=3 OOFauc=0.3855 OOFf1=0.7753 diagAUC=0.5011 W@.90=0.5463 bestW=0.5748@0.80 (1789s)
+  [subwin_std_n4] dim=256 k=6 OOFauc=0.3958 OOFf1=0.7837 diagAUC=0.5015 W@.90=0.5447 bestW=0.5734@0.80 (1797s)
+  [subwin_std_n4] dim=256 k=12 OOFauc=0.4022 OOFf1=0.7702 diagAUC=0.5001 W@.90=0.5433 bestW=0.5707@0.80 (1805s)
+  subwin_std_n4: 最优诊断 AUC 0.6384 / 最优 W 0.5993
+  [subwin_concat_n4] dim=64 k=1 OOFauc=0.8894 OOFf1=0.9685 diagAUC=0.7614 W@.90=0.6824 bestW=0.6884@0.88 (1860s)
+  [subwin_concat_n4] dim=64 k=3 OOFauc=0.9301 OOFf1=0.9847 diagAUC=0.7671 W@.90=0.6801 bestW=0.6870@0.92 (1872s)
+  [subwin_concat_n4] dim=64 k=6 OOFauc=0.9391 OOFf1=0.9858 diagAUC=0.7611 W@.90=0.6869 bestW=0.6892@0.93 (1883s)
+  [subwin_concat_n4] dim=64 k=12 OOFauc=0.9448 OOFf1=0.9853 diagAUC=0.7677 W@.90=0.6883 bestW=0.6901@0.94 (1892s)
+  [subwin_concat_n4] dim=96 k=1 OOFauc=0.8624 OOFf1=0.9696 diagAUC=0.7608 W@.90=0.6811 bestW=0.6955@0.85 (1915s)
+  [subwin_concat_n4] dim=96 k=3 OOFauc=0.9064 OOFf1=0.9842 diagAUC=0.7681 W@.90=0.7013 bestW=0.7013@0.90 (1926s)
+  [subwin_concat_n4] dim=96 k=6 OOFauc=0.9172 OOFf1=0.9876 diagAUC=0.7627 W@.90=0.7013 bestW=0.7036@0.91 (1937s)
+  [subwin_concat_n4] dim=96 k=12 OOFauc=0.9239 OOFf1=0.9869 diagAUC=0.7665 W@.90=0.7056 bestW=0.7074@0.91 (1946s)
+  [subwin_concat_n4] dim=128 k=1 OOFauc=0.8312 OOFf1=0.9695 diagAUC=0.7603 W@.90=0.6823 bestW=0.7072@0.80 (1967s)
+  [subwin_concat_n4] dim=128 k=3 OOFauc=0.8770 OOFf1=0.9845 diagAUC=0.7706 W@.90=0.7119 bestW=0.7160@0.85 (1978s)
+  [subwin_concat_n4] dim=128 k=6 OOFauc=0.8882 OOFf1=0.9870 diagAUC=0.7594 W@.90=0.7092 bestW=0.7141@0.85 (1989s)
+  [subwin_concat_n4] dim=128 k=12 OOFauc=0.8940 OOFf1=0.9858 diagAUC=0.7657 W@.90=0.7125 bestW=0.7199@0.85 (1998s)
+  [subwin_concat_n4] dim=256 k=1 OOFauc=0.6953 OOFf1=0.9693 diagAUC=0.7515 W@.90=0.6575 bestW=0.7344@0.80 (2019s)
+  [subwin_concat_n4] dim=256 k=3 OOFauc=0.7350 OOFf1=0.9828 diagAUC=0.7591 W@.90=0.7015 bestW=0.7617@0.80 (2029s)
+  [subwin_concat_n4] dim=256 k=6 OOFauc=0.7479 OOFf1=0.9839 diagAUC=0.7498 W@.90=0.6993 bestW=0.7536@0.80 (2039s)
+  [subwin_concat_n4] dim=256 k=12 OOFauc=0.7608 OOFf1=0.9847 diagAUC=0.7611 W@.90=0.6894 bestW=0.7589@0.80 (2046s)
+  subwin_concat_n4: 最优诊断 AUC 0.7706 / 最优 W 0.7617
+  [subwin_concat_plus_std_n4] dim=64 k=1 OOFauc=0.8800 OOFf1=0.9619 diagAUC=0.7514 W@.90=0.6725 bestW=0.6835@0.85 (2126s)
+  [subwin_concat_plus_std_n4] dim=64 k=3 OOFauc=0.9279 OOFf1=0.9832 diagAUC=0.7609 W@.90=0.6854 bestW=0.6867@0.91 (2138s)
+  [subwin_concat_plus_std_n4] dim=64 k=6 OOFauc=0.9353 OOFf1=0.9851 diagAUC=0.7593 W@.90=0.6848 bestW=0.6880@0.92 (2150s)
+  [subwin_concat_plus_std_n4] dim=64 k=12 OOFauc=0.9391 OOFf1=0.9857 diagAUC=0.7640 W@.90=0.6885 bestW=0.6885@0.90 (2159s)
+  [subwin_concat_plus_std_n4] dim=96 k=1 OOFauc=0.8530 OOFf1=0.9636 diagAUC=0.7505 W@.90=0.6722 bestW=0.6931@0.80 (2182s)
+  [subwin_concat_plus_std_n4] dim=96 k=3 OOFauc=0.9017 OOFf1=0.9837 diagAUC=0.7628 W@.90=0.6981 bestW=0.6997@0.85 (2194s)
+  [subwin_concat_plus_std_n4] dim=96 k=6 OOFauc=0.9102 OOFf1=0.9871 diagAUC=0.7572 W@.90=0.6954 bestW=0.6995@0.88 (2205s)
+  [subwin_concat_plus_std_n4] dim=96 k=12 OOFauc=0.9166 OOFf1=0.9863 diagAUC=0.7625 W@.90=0.7016 bestW=0.7028@0.85 (2213s)
+  [subwin_concat_plus_std_n4] dim=128 k=1 OOFauc=0.8210 OOFf1=0.9641 diagAUC=0.7505 W@.90=0.6764 bestW=0.7043@0.80 (2235s)
+  [subwin_concat_plus_std_n4] dim=128 k=3 OOFauc=0.8729 OOFf1=0.9828 diagAUC=0.7616 W@.90=0.7147 bestW=0.7192@0.85 (2246s)
+  [subwin_concat_plus_std_n4] dim=128 k=6 OOFauc=0.8815 OOFf1=0.9861 diagAUC=0.7554 W@.90=0.7140 bestW=0.7209@0.85 (2256s)
+  [subwin_concat_plus_std_n4] dim=128 k=12 OOFauc=0.8875 OOFf1=0.9853 diagAUC=0.7592 W@.90=0.7156 bestW=0.7208@0.85 (2265s)
+  [subwin_concat_plus_std_n4] dim=256 k=1 OOFauc=0.6741 OOFf1=0.9652 diagAUC=0.7441 W@.90=0.6439 bestW=0.7374@0.80 (2286s)
+  [subwin_concat_plus_std_n4] dim=256 k=3 OOFauc=0.7150 OOFf1=0.9804 diagAUC=0.7548 W@.90=0.6851 bestW=0.7603@0.80 (2296s)
+  [subwin_concat_plus_std_n4] dim=256 k=6 OOFauc=0.7251 OOFf1=0.9848 diagAUC=0.7509 W@.90=0.6910 bestW=0.7613@0.80 (2306s)
+  [subwin_concat_plus_std_n4] dim=256 k=12 OOFauc=0.7383 OOFf1=0.9850 diagAUC=0.7515 W@.90=0.6798 bestW=0.7564@0.80 (2314s)
+  subwin_concat_plus_std_n4: 最优诊断 AUC 0.7640 / 最优 W 0.7613
+子窗口平均 vs E65 特征差异 {"subwin_mean_n2_vs_E65": {"comparable": true, "max_abs_diff": 4.725581169128418, "mean_abs_diff": 0.1721690595149994, "relative_mean_abs_diff": 0.2214319258928299, "mean_row_correlation": 0.9764573915514276}, "subwin_mean_n3_vs_E65": {"comparable": true, "max_abs_diff": 3.3346314430236816, "mean_abs_diff": 0.23438800871372223, "relative_mean_abs_diff": 0.3014536201953888, "mean_row_correlation": 0.9603336210833546}, "subwin_mean_n4_vs_E65": {"comparable": true, "max_abs_diff": 4.911478519439697, "mean_abs_diff": 0.27195999026298523, "relative_mean_abs_diff": 0.34977611899375916, "mean_row_correlation": 0.9500589817629546}}
+done in 2372s

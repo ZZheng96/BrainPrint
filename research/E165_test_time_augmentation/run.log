@@ -1,0 +1,14 @@
+﻿复用train特征缓存 {'identity': (11304, 855), 'shift': (11304, 855), 'channel_gain': (11304, 855), 'band_emphasis': (11304, 855)}
+复用test特征缓存 {'identity': (22251, 855), 'shift': (22251, 855), 'channel_gain': (22251, 855), 'band_emphasis': (22251, 855)}
+E165 特征诊断 {"train_identity_vs_e65_cache_max_abs": 0.0, "test_identity_vs_e121_cache_max_abs": 0.0, "view_divergence": {"shift": {"train_max_abs_vs_identity": 0.0005091428756713867, "train_mean_abs_vs_identity": 5.4713668760086875e-06, "rows_identical_at_1e-3": 11304}, "channel_gain": {"train_max_abs_vs_identity": 0.0005098581314086914, "train_mean_abs_vs_identity": 2.9646896564372582e-06, "rows_identical_at_1e-3": 11304}, "band_emphasis": {"train_max_abs_vs_identity": 0.0005224943161010742, "train_mean_abs_vs_identity": 3.1453573683393188e-06, "rows_identical_at_1e-3": 11304}}}
+E165 view identity pipeline done 10.3s
+E165 view shift pipeline done 10.1s
+E165 view channel_gain pipeline done 9.9s
+E165 view band_emphasis pipeline done 9.9s
+E165 view feature_mean pipeline done 9.6s
+E165 feature_mean  OOF_AUC 0.9417 OOF_F1 0.9934 TestAUC 0.7578 W 0.6958 @a=0.90
+E165 score_mean    OOF_AUC 0.9417 OOF_F1 0.9934 TestAUC 0.7578 W 0.6958 @a=0.90
+E165 score_max     OOF_AUC 0.9417 OOF_F1 0.9934 TestAUC 0.7578 W 0.6958 @a=0.90
+E165 score_min     OOF_AUC 0.9417 OOF_F1 0.9934 TestAUC 0.7578 W 0.6958 @a=0.90
+E165 identity      OOF_AUC 0.9417 OOF_F1 0.9934 TestAUC 0.7578 W 0.6958 @a=0.90
+E165 VERDICT {"ttfa_improves_diagnostic_AUC": false, "best_aggregation_by_AUC": "score_max", "best_AUC": 0.7578212579377567, "baseline_AUC": 0.7578208461905683, "AUC_delta": 4.1174718834469104e-07, "statement": "TTA 在此表征上无效"}

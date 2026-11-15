@@ -1,0 +1,112 @@
+{
+  "experiment": "E169_spectral_shape",
+  "purpose": "E167 fused E65 correlation-logSPD with raw log band power and reached diagnostic AUC 0.7999, but W never exceeded 0.6997 because raw logbp has poor Train LOSO separability (0.4103 at acceptance 0.90 vs E65 0.8412): its absolute log power mixes in a session-level amplitude offset. E165 showed E65 discards amplitude (channel gain / band gain / shift invariant). This run builds amplitude-scale-free spectral SHAPE features from the cached log band power (per-channel band profile, slope over band centres, band ratios, channel-relative power) and asks whether the shape family keeps logbp's ranking gain while restoring LOSO rejection, so W can pass 0.6997 / 0.7164.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "logbp_layout": {
+    "source": "research/E146_phase_features/{train,test}_log_band_power.npy",
+    "stored_order": "E146 writes log band power as power.permute(0,2,1).reshape(B, C*NB), i.e. column index = channel*5 + band (CHANNEL-major, not band-major). Verified empirically: columns c*5 .. c*5+4 are the 5 bands of one channel and decrease monotonically delta>theta>alpha>beta>gamma.",
+    "code_transform": "x.reshape(n, 18, 5) -> transpose(0,2,1) -> (n, 5 bands, 18 channels)"
+  },
+  "bands_hz": [[1, 4], [4, 8], [8, 13], [13, 30], [30, 40]],
+  "band_names": ["delta", "theta", "alpha", "beta", "gamma"],
+  "streams": {
+    "E65_logspd": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "pca_dims": [64, 96],
+      "note": "855-d correlation log-SPD vector, the E143 representation"
+    },
+    "logbp": {
+      "train": "research/E146_phase_features/train_log_band_power.npy",
+      "test": "research/E146_phase_features/test_log_band_power.npy",
+      "pca_dims": [16, 32, 48, 90],
+      "note": "90-d raw log band power control (E148 / E167 reference)"
+    }
+  },
+  "feature_families": {
+    "profile": {
+      "dim": 90,
+      "definition": "per channel softmax over the 5 bands of log power (subtract max, exp, normalise) -> 5-d spectral profile, 18 channels x 5 = 90",
+      "invariance": "invariant to any per-channel multiplicative gain (additive offset in log power), hence session amplitude offsets cancel"
+    },
+    "slope": {
+      "dim": 18,
+      "definition": "per channel OLS slope of the 5 log band powers against the band geometric centre frequency sqrt(lo*hi) Hz -> 18",
+      "invariance": "invariant to per-channel additive offset (gain)"
+    },
+    "ratios": {
+      "dim": 72,
+      "definition": "per channel log-band ratios theta/alpha, beta/alpha, gamma/alpha, low/high where low/high = mean(delta,theta) - mean(alpha,beta,gamma) -> 18 x 4 = 72",
+      "invariance": "differences of log powers, invariant to per-channel additive offset (gain)"
+    },
+    "relpower": {
+      "dim": 18,
+      "definition": "per channel total log power (logsumexp over the 5 bands) minus the trial mean over the 18 channels -> 18",
+      "invariance": "invariant to a trial-global amplitude offset, keeps only the channel-relative power pattern"
+    },
+    "shape_all": {
+      "dim": 198,
+      "definition": "concat(profile 90, slope 18, ratios 72, relpower 18)"
+    }
+  },
+  "evaluation": {
+    "grid": "per family: task-wise z-score (Train statistics) -> PCA over {16, 32, 48, native dim} -> prototype k in {1, 3, 6, 12}",
+    "pca_dims_requested": [16, 32, 48, 96],
+    "pca_dim_rule": "dims above a family's native dimensionality are clipped to that native dim (slope/relpower native 18 -> {16,18}; ratios native 72 -> {16,32,48,72}; profile native 90 -> {16,32,48,90}); 96 > 90 is therefore the native 90 for profile/logbp",
+    "train_oof": "5 contiguous frac blocks (prototypes rebuilt without the held block)",
+    "loso": "per fold: prototypes from fit_rows (frac<=0.6) of the 19 enrolled identities only, evaluation block 0.6<frac<=0.8",
+    "threshold": "quantile of the 5-block Train OOF score at each acceptance rate; LOSO uses the per-fold known-block quantile",
+    "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96],
+    "reference_acceptance": 0.90,
+    "test": "scored once; session labels used only for the post-hoc diagnostic AUC"
+  },
+  "fusion": {
+    "type": "feature concat then joint PCA",
+    "partners": ["E65_logspd"],
+    "families": ["shape_all", "profile", "ratios"],
+    "e65_pca_dim": 96,
+    "family_pca_dims": [16, 32],
+    "variants": ["raw", "block_norm"],
+    "block_norm": "each PCA block divided by its Train fit_rows RMS so both blocks carry equal total variance",
+    "joint_pca_dims": [96, 128],
+    "k": [1, 3, 6, 12]
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "prototype_k": [1, 3, 6, 12],
+  "fit_fraction": 0.6,
+  "blocks": 5,
+  "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+  "baselines": {
+    "E143_k_sweep_nearest": {
+      "config": "E65 PCA-96, k=12, acceptance 0.90",
+      "diagnostic_auc": 0.7578,
+      "loso_rejection": 0.7936,
+      "test_s1_rejection": 0.7979,
+      "test_s2_acceptance": 0.5960,
+      "W": 0.6958
+    },
+    "E148_logbp_P": {
+      "config": "logbp, all 90 dims, k=12",
+      "diagnostic_auc": 0.7772,
+      "note": "E167 reproduced 0.7772 with the same probe"
+    },
+    "E167_best_auc": {
+      "config": "block_norm concat E65(64)+logbp(32) -> PCA-96 k=6",
+      "diagnostic_auc": 0.7999,
+      "best_W": 0.6997
+    },
+    "E163_best_W": {"W": 0.7164}
+  },
+  "ceiling_analysis": {
+    "method": "E159: freeze the configuration's OOF/Test score, sweep the threshold over 2000 quantiles of the pooled Train-OOF + Test score distribution, and record (acceptance, LOSO rejection, S1 rejection, S2 acceptance, W) at every point.",
+    "oracle_max_W": "max W along the full threshold sweep, taking the LOSO rejection achieved exactly at each threshold",
+    "optimistic_bound": "LOSO fixed at the configuration's own maximum LOSO rejection over the protocol acceptance grid [0.80, 0.96]; the Test operating point is free",
+    "also_reported": "the full-sweep LOSO maximum variant and the point where S1 rejection is closest to 0.80"
+  },
+  "reporting": {
+    "test_official": "N/A: the Test split has no public labels; session labels are used only for the diagnostic AUC after scoring"
+  }
+}

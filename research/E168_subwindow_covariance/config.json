@@ -1,0 +1,64 @@
+{
+  "experiment": "E168_subwindow_covariance",
+  "preregistered": "2026-11-15",
+  "purpose": "把 trial 内非重叠子窗口的 correlation-logSPD 直接当作特征向量（而不是 E149/E62 的图像），验证子段结构与非平稳性（子窗口标准差）能否抬高 E143 协议的开放集诊断 AUC / W。",
+  "seed": 20261115,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "expected_train_rows": 11304,
+    "expected_test_rows": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "train_session": "session1"
+  },
+  "reference_views": {
+    "E65": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "published": {"diagnostic_auc": 0.7578208805028339,
+                    "LOSO_rejection": 0.7935548348177022,
+                    "Test_S1_rejection": 0.7978898780085724,
+                    "Test_S2_acceptance": 0.595951711936726,
+                    "W": 0.6958370341749316}
+    }
+  },
+  "subwindow": {
+    "ns": [2, 3, 4],
+    "variants": ["subwin_mean", "subwin_std", "subwin_concat", "subwin_concat_plus_std"],
+    "rules": "trial 18x1200 沿时间切成 N 个不重叠子窗口（窗长 1200/N）；每个子窗口独立执行 E65 的全部处理（5 频带 FFT 滤波 -> 去均值 -> 通道标准化 -> 相关矩阵 -> 收缩 -> logSPD -> 上三角 171 维 -> detrend_zband），不引入任何跨样本统计量。",
+    "subwin_mean": "N 个子窗口 855 维特征求平均（N*5*171 平均后 855）",
+    "subwin_std": "每个 (band, pair) 维度跨 N 个子窗口的标准差（ddof=0），855 维",
+    "subwin_concat": "N*855 维直接拼接，窗口主序（window-major, 然后 band, 然后 171 对）",
+    "subwin_concat_plus_std": "N*855 拼接 + 855 标准差",
+    "std_ddof": 0,
+    "io_batch_size": 128,
+    "io_workers": 8,
+    "min_free_gb_for_n4": 6
+  },
+  "evaluation": {
+    "protocol": "E143 逐字沿用：task-wise Train 标准化 -> PCA -> k 原型 -> 5 块 Train OOF 阈值 -> LOSO（排除被评分身份，原型只用 fit_rows）-> Test 只评分，session 只诊断",
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "pca_dims": [64, 96, 128, 256],
+    "prototype_k": [1, 3, 6, 12],
+    "fit_fraction": 0.6,
+    "blocks": 5,
+    "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96],
+    "reference_acceptance": 0.90,
+    "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+    "train_oof_definition": "Train OOF 已知分数 vs LOSO unknown 分数的 AUROC；OOF F1 为 5 块 OOF 身份预测的 20 类 macro F1（E150/E163 口径）"
+  },
+  "fusion": {
+    "with": "E65",
+    "weights": [0.5],
+    "pca_dims": [64, 96, 128, 256],
+    "note": "分数级融合：各自用 Train OOF 均值/方差 z 标准化后按权重相加（E163 口径），融合权重固定 0.5，不按 Test 选权。"
+  },
+  "targets": {
+    "diagnostic_auc": 0.7609,
+    "W": 0.7164,
+    "note": "超过 E143 基线 0.7578 / 0.6958，并与历史最好 0.7609 / 0.7164 比较"
+  }
+}

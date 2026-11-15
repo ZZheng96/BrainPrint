@@ -1,0 +1,34 @@
+{
+  "format": "E166 multi-band TF-map supervised-contrastive encoder",
+  "input": {
+    "channels": 3,
+    "image": [
+      64,
+      64
+    ],
+    "tfmap": {
+      "n_fft": 128,
+      "hop_length": 32,
+      "window": "hann",
+      "center": false,
+      "onesided": true
+    }
+  },
+  "widths": [
+    32,
+    64,
+    128
+  ],
+  "kernel": 3,
+  "pool": 2,
+  "embed_dim": 256,
+  "dropout": 0.1,
+  "pooling": "concat(global_mean, global_max)",
+  "output": "raw linear projection, no L2 normalisation (E161 lesson: L2 normalisation collapses the representation under SupCon)",
+  "param_budget": 1000000,
+  "best_epoch": 39,
+  "best_valid_accuracy": 0.8045574057843996,
+  "parameters": 159264,
+  "train_only": true,
+  "weights": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E166_tfmap_ssl\\model_tfmap_ssl.pt"
+}

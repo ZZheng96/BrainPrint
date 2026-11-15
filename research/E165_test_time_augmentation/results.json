@@ -1,0 +1,648 @@
+{
+  "experiment": "E165_test_time_augmentation",
+  "date": "2026-11-15",
+  "purpose": "E159 证明 E143 单分数阈值上的上界只有 0.7352，必须抬高诊断 AUC。本实验检验 TTA（原始信号层确定性扰动 -> 重新走 E65 编码 -> 多视图聚合）能否把 Test S1-vs-S2 诊断 AUC 抬过 0.7578。",
+  "baseline_reference": {
+    "experiment": "E143_k_sweep_nearest / B_only / k=12 / acceptance=0.900",
+    "LOSO_rejection": 0.7936,
+    "Test_S1_rejection": 0.7979,
+    "Test_S2_acceptance": 0.596,
+    "test_diagnostic_AUC": 0.7578,
+    "W": 0.6958,
+    "W_formula": "0.25*LOSO_rejection + 0.25*Test_S1_rejection + 0.5*Test_S2_acceptance"
+  },
+  "identity_control": {
+    "baseline_W": 0.6958,
+    "reproduced_W": 0.6958370341749316,
+    "baseline_AUC": 0.7578,
+    "reproduced_AUC": 0.7578208461905683,
+    "baseline_LOSO": 0.7936,
+    "reproduced_LOSO": 0.7935548348177022,
+    "baseline_S1": 0.7979,
+    "reproduced_S1": 0.7978898780085724,
+    "baseline_S2": 0.596,
+    "reproduced_S2": 0.595951711936726,
+    "baseline_acceptance_rate": 0.9,
+    "reproduced_acceptance_rate": 0.9,
+    "W_abs_error": 3.703417493161609e-05,
+    "AUC_abs_error": 2.084619056830217e-05,
+    "passed": true
+  },
+  "feature_reports": {
+    "train": {
+      "kind": "train",
+      "views": [
+        "identity",
+        "shift",
+        "channel_gain",
+        "band_emphasis"
+      ],
+      "rows": 11304,
+      "features": 855,
+      "batch_size": 64,
+      "shift": 100,
+      "gains": [
+        0.9,
+        1.1
+      ],
+      "bands": [
+        1.1,
+        0.9
+      ],
+      "dtype": "float32",
+      "elapsed_seconds": 8.204612016677856,
+      "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+      "test_accessed": false
+    },
+    "test": {
+      "kind": "test",
+      "views": [
+        "identity",
+        "shift",
+        "channel_gain",
+        "band_emphasis"
+      ],
+      "rows": 22251,
+      "features": 855,
+      "batch_size": 64,
+      "shift": 100,
+      "gains": [
+        0.9,
+        1.1
+      ],
+      "bands": [
+        1.1,
+        0.9
+      ],
+      "dtype": "float32",
+      "elapsed_seconds": 16.563257455825806,
+      "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+      "test_accessed": true
+    }
+  },
+  "feature_diagnostics": {
+    "train_identity_vs_e65_cache_max_abs": 0.0,
+    "test_identity_vs_e121_cache_max_abs": 0.0,
+    "view_divergence": {
+      "shift": {
+        "train_max_abs_vs_identity": 0.0005091428756713867,
+        "train_mean_abs_vs_identity": 5.4713668760086875e-06,
+        "rows_identical_at_1e-3": 11304
+      },
+      "channel_gain": {
+        "train_max_abs_vs_identity": 0.0005098581314086914,
+        "train_mean_abs_vs_identity": 2.9646896564372582e-06,
+        "rows_identical_at_1e-3": 11304
+      },
+      "band_emphasis": {
+        "train_max_abs_vs_identity": 0.0005224943161010742,
+        "train_mean_abs_vs_identity": 3.1453573683393188e-06,
+        "rows_identical_at_1e-3": 11304
+      }
+    }
+  },
+  "aggregations": {
+    "feature_mean": {
+      "train_oof_auc": 0.9416603587058748,
+      "train_oof_auc_pooled": 0.9419418951494173,
+      "train_oof_f1": 0.993368229768104,
+      "train_oof_accuracy": 0.9934810951760105,
+      "test_diagnostic_AUC": 0.757821043486096,
+      "best": {
+        "acceptance_rate": 0.9,
+        "threshold": -1.2896058559417725,
+        "LOSO_rejection": 0.7935548348177022,
+        "Test_S1_rejection": 0.7978898780085724,
+        "Test_S2_acceptance": 0.595951711936726,
+        "W": 0.6958370341749316
+      },
+      "curve": [
+        {
+          "acceptance_rate": 0.8,
+          "threshold": -0.6591021418571472,
+          "LOSO_rejection": 0.9639626560423553,
+          "Test_S1_rejection": 0.945928123969667,
+          "Test_S2_acceptance": 0.3431158289103965,
+          "W": 0.6490306094582039
+        },
+        {
+          "acceptance_rate": 0.85,
+          "threshold": -0.910722017288208,
+          "LOSO_rejection": 0.9149945274481979,
+          "Test_S1_rejection": 0.8968018463567425,
+          "Test_S2_acceptance": 0.4504110729524404,
+          "W": 0.6781546299274553
+        },
+        {
+          "acceptance_rate": 0.88,
+          "threshold": -1.1092743873596191,
+          "LOSO_rejection": 0.852303759409377,
+          "Test_S1_rejection": 0.845367622815694,
+          "Test_S2_acceptance": 0.5325736288895827,
+          "W": 0.6907046600010591
+        },
+        {
+          "acceptance_rate": 0.9,
+          "threshold": -1.2896058559417725,
+          "LOSO_rejection": 0.7935548348177022,
+          "Test_S1_rejection": 0.7978898780085724,
+          "Test_S2_acceptance": 0.595951711936726,
+          "W": 0.6958370341749316
+        },
+        {
+          "acceptance_rate": 0.91,
+          "threshold": -1.376707911491394,
+          "LOSO_rejection": 0.7631969898776101,
+          "Test_S1_rejection": 0.7731618859215298,
+          "Test_S2_acceptance": 0.6228015402227078,
+          "W": 0.6954904890611389
+        },
+        {
+          "acceptance_rate": 0.92,
+          "threshold": -1.4891244173049927,
+          "LOSO_rejection": 0.7270322808628384,
+          "Test_S1_rejection": 0.7352456313880646,
+          "Test_S2_acceptance": 0.6576126548027891,
+          "W": 0.6943758054641203
+        },
+        {
+          "acceptance_rate": 0.93,
+          "threshold": -1.6154499053955078,
+          "LOSO_rejection": 0.6858860922424606,
+          "Test_S1_rejection": 0.7055720408836136,
+          "Test_S2_acceptance": 0.6875845561452805,
+          "W": 0.6916568113541588
+        },
+        {
+          "acceptance_rate": 0.94,
+          "threshold": -1.7669219970703125,
+          "LOSO_rejection": 0.6519578940233479,
+          "Test_S1_rejection": 0.6640290141773821,
+          "Test_S2_acceptance": 0.7188573212613175,
+          "W": 0.6884253876808413
+        },
+        {
+          "acceptance_rate": 0.95,
+          "threshold": -1.943283200263977,
+          "LOSO_rejection": 0.6002387034838278,
+          "Test_S1_rejection": 0.6129244971974942,
+          "Test_S2_acceptance": 0.7542928504527006,
+          "W": 0.6804372253966808
+        },
+        {
+          "acceptance_rate": 0.96,
+          "threshold": -2.1500439643859863,
+          "LOSO_rejection": 0.533983660250232,
+          "Test_S1_rejection": 0.5572040883613584,
+          "Test_S2_acceptance": 0.7909251743157456,
+          "W": 0.6682595243107704
+        }
+      ],
+      "N_S1": 3033,
+      "N_S2": 19218
+    },
+    "score_mean": {
+      "train_oof_auc": 0.9416603587058748,
+      "train_oof_auc_pooled": 0.9419410352864024,
+      "train_oof_f1": 0.993368229768104,
+      "train_oof_accuracy": 0.9934810951760105,
+      "test_diagnostic_AUC": 0.7578211206886938,
+      "best": {
+        "acceptance_rate": 0.9,
+        "threshold": -1.289605736732483,
+        "LOSO_rejection": 0.7935548348177022,
+        "Test_S1_rejection": 0.7978898780085724,
+        "Test_S2_acceptance": 0.595951711936726,
+        "W": 0.6958370341749316
+      },
+      "curve": [
+        {
+          "acceptance_rate": 0.8,
+          "threshold": -0.6590999960899353,
+          "LOSO_rejection": 0.9639626560423553,
+          "Test_S1_rejection": 0.945928123969667,
+          "Test_S2_acceptance": 0.3431158289103965,
+          "W": 0.6490306094582039
+        },
+        {
+          "acceptance_rate": 0.85,
+          "threshold": -0.9107196927070618,
+          "LOSO_rejection": 0.9149945274481979,
+          "Test_S1_rejection": 0.8968018463567425,
+          "Test_S2_acceptance": 0.4504110729524404,
+          "W": 0.6781546299274553
+        },
+        {
+          "acceptance_rate": 0.88,
+          "threshold": -1.109274983406067,
+          "LOSO_rejection": 0.852303759409377,
+          "Test_S1_rejection": 0.845367622815694,
+          "Test_S2_acceptance": 0.5325736288895827,
+          "W": 0.6907046600010591
+        },
+        {
+          "acceptance_rate": 0.9,
+          "threshold": -1.289605736732483,
+          "LOSO_rejection": 0.7935548348177022,
+          "Test_S1_rejection": 0.7978898780085724,
+          "Test_S2_acceptance": 0.595951711936726,
+          "W": 0.6958370341749316
+        },
+        {
+          "acceptance_rate": 0.91,
+          "threshold": -1.3767064809799194,
+          "LOSO_rejection": 0.7631969898776101,
+          "Test_S1_rejection": 0.7731618859215298,
+          "Test_S2_acceptance": 0.6228015402227078,
+          "W": 0.6954904890611389
+        },
+        {
+          "acceptance_rate": 0.92,
+          "threshold": -1.489121675491333,
+          "LOSO_rejection": 0.7270322808628384,
+          "Test_S1_rejection": 0.7352456313880646,
+          "Test_S2_acceptance": 0.6576126548027891,
+          "W": 0.6943758054641203
+        },
+        {
+          "acceptance_rate": 0.93,
+          "threshold": -1.6154489517211914,
+          "LOSO_rejection": 0.6858860922424606,
+          "Test_S1_rejection": 0.7055720408836136,
+          "Test_S2_acceptance": 0.6875845561452805,
+          "W": 0.6916568113541588
+        },
+        {
+          "acceptance_rate": 0.94,
+          "threshold": -1.7669204473495483,
+          "LOSO_rejection": 0.6519578940233479,
+          "Test_S1_rejection": 0.6640290141773821,
+          "Test_S2_acceptance": 0.7188573212613175,
+          "W": 0.6884253876808413
+        },
+        {
+          "acceptance_rate": 0.95,
+          "threshold": -1.9432836771011353,
+          "LOSO_rejection": 0.6002387034838278,
+          "Test_S1_rejection": 0.6129244971974942,
+          "Test_S2_acceptance": 0.7542928504527006,
+          "W": 0.6804372253966808
+        },
+        {
+          "acceptance_rate": 0.96,
+          "threshold": -2.150043487548828,
+          "LOSO_rejection": 0.533983660250232,
+          "Test_S1_rejection": 0.5572040883613584,
+          "Test_S2_acceptance": 0.7909251743157456,
+          "W": 0.6682595243107704
+        }
+      ],
+      "N_S1": 3033,
+      "N_S2": 19218
+    },
+    "score_max": {
+      "train_oof_auc": 0.9416601661448908,
+      "train_oof_auc_pooled": 0.9419416267528693,
+      "train_oof_f1": 0.993368229768104,
+      "train_oof_accuracy": 0.9934810951760105,
+      "test_diagnostic_AUC": 0.7578212579377567,
+      "best": {
+        "acceptance_rate": 0.9,
+        "threshold": -1.2895896434783936,
+        "LOSO_rejection": 0.7935548348177022,
+        "Test_S1_rejection": 0.7978898780085724,
+        "Test_S2_acceptance": 0.595951711936726,
+        "W": 0.6958370341749316
+      },
+      "curve": [
+        {
+          "acceptance_rate": 0.8,
+          "threshold": -0.659092366695404,
+          "LOSO_rejection": 0.9639626560423553,
+          "Test_S1_rejection": 0.945928123969667,
+          "Test_S2_acceptance": 0.3431158289103965,
+          "W": 0.6490306094582039
+        },
+        {
+          "acceptance_rate": 0.85,
+          "threshold": -0.9107081890106201,
+          "LOSO_rejection": 0.9149945274481979,
+          "Test_S1_rejection": 0.8968018463567425,
+          "Test_S2_acceptance": 0.4504110729524404,
+          "W": 0.6781546299274553
+        },
+        {
+          "acceptance_rate": 0.88,
+          "threshold": -1.1092699766159058,
+          "LOSO_rejection": 0.852303759409377,
+          "Test_S1_rejection": 0.845367622815694,
+          "Test_S2_acceptance": 0.5325736288895827,
+          "W": 0.6907046600010591
+        },
+        {
+          "acceptance_rate": 0.9,
+          "threshold": -1.2895896434783936,
+          "LOSO_rejection": 0.7935548348177022,
+          "Test_S1_rejection": 0.7978898780085724,
+          "Test_S2_acceptance": 0.595951711936726,
+          "W": 0.6958370341749316
+        },
+        {
+          "acceptance_rate": 0.91,
+          "threshold": -1.3767009973526,
+          "LOSO_rejection": 0.7631969898776101,
+          "Test_S1_rejection": 0.7731618859215298,
+          "Test_S2_acceptance": 0.6228015402227078,
+          "W": 0.6954904890611389
+        },
+        {
+          "acceptance_rate": 0.92,
+          "threshold": -1.489112377166748,
+          "LOSO_rejection": 0.7270322808628384,
+          "Test_S1_rejection": 0.7352456313880646,
+          "Test_S2_acceptance": 0.6576126548027891,
+          "W": 0.6943758054641203
+        },
+        {
+          "acceptance_rate": 0.93,
+          "threshold": -1.6154451370239258,
+          "LOSO_rejection": 0.6858860922424606,
+          "Test_S1_rejection": 0.7055720408836136,
+          "Test_S2_acceptance": 0.6875845561452805,
+          "W": 0.6916568113541588
+        },
+        {
+          "acceptance_rate": 0.94,
+          "threshold": -1.7669169902801514,
+          "LOSO_rejection": 0.6519578940233479,
+          "Test_S1_rejection": 0.6640290141773821,
+          "Test_S2_acceptance": 0.7188573212613175,
+          "W": 0.6884253876808413
+        },
+        {
+          "acceptance_rate": 0.95,
+          "threshold": -1.943280816078186,
+          "LOSO_rejection": 0.6002387034838278,
+          "Test_S1_rejection": 0.6129244971974942,
+          "Test_S2_acceptance": 0.7542928504527006,
+          "W": 0.6804372253966808
+        },
+        {
+          "acceptance_rate": 0.96,
+          "threshold": -2.150040864944458,
+          "LOSO_rejection": 0.533983660250232,
+          "Test_S1_rejection": 0.5572040883613584,
+          "Test_S2_acceptance": 0.7909251743157456,
+          "W": 0.6682595243107704
+        }
+      ],
+      "N_S1": 3033,
+      "N_S2": 19218
+    },
+    "score_min": {
+      "train_oof_auc": 0.9416603466569461,
+      "train_oof_auc_pooled": 0.9419414329109179,
+      "train_oof_f1": 0.993368229768104,
+      "train_oof_accuracy": 0.9934810951760105,
+      "test_diagnostic_AUC": 0.7578210606422288,
+      "best": {
+        "acceptance_rate": 0.9,
+        "threshold": -1.2896144390106201,
+        "LOSO_rejection": 0.7935548348177022,
+        "Test_S1_rejection": 0.7978898780085724,
+        "Test_S2_acceptance": 0.595951711936726,
+        "W": 0.6958370341749316
+      },
+      "curve": [
+        {
+          "acceptance_rate": 0.8,
+          "threshold": -0.6591058969497681,
+          "LOSO_rejection": 0.9639626560423553,
+          "Test_S1_rejection": 0.945928123969667,
+          "Test_S2_acceptance": 0.3431158289103965,
+          "W": 0.6490306094582039
+        },
+        {
+          "acceptance_rate": 0.85,
+          "threshold": -0.9107274413108826,
+          "LOSO_rejection": 0.9149945274481979,
+          "Test_S1_rejection": 0.8968018463567425,
+          "Test_S2_acceptance": 0.4504110729524404,
+          "W": 0.6781546299274553
+        },
+        {
+          "acceptance_rate": 0.88,
+          "threshold": -1.1092790365219116,
+          "LOSO_rejection": 0.852303759409377,
+          "Test_S1_rejection": 0.845367622815694,
+          "Test_S2_acceptance": 0.5325736288895827,
+          "W": 0.6907046600010591
+        },
+        {
+          "acceptance_rate": 0.9,
+          "threshold": -1.2896144390106201,
+          "LOSO_rejection": 0.7935548348177022,
+          "Test_S1_rejection": 0.7978898780085724,
+          "Test_S2_acceptance": 0.595951711936726,
+          "W": 0.6958370341749316
+        },
+        {
+          "acceptance_rate": 0.91,
+          "threshold": -1.3767091035842896,
+          "LOSO_rejection": 0.7631969898776101,
+          "Test_S1_rejection": 0.7731618859215298,
+          "Test_S2_acceptance": 0.6228015402227078,
+          "W": 0.6954904890611389
+        },
+        {
+          "acceptance_rate": 0.92,
+          "threshold": -1.489129900932312,
+          "LOSO_rejection": 0.7270322808628384,
+          "Test_S1_rejection": 0.7352456313880646,
+          "Test_S2_acceptance": 0.6576126548027891,
+          "W": 0.6943758054641203
+        },
+        {
+          "acceptance_rate": 0.93,
+          "threshold": -1.6154534816741943,
+          "LOSO_rejection": 0.6858860922424606,
+          "Test_S1_rejection": 0.7055720408836136,
+          "Test_S2_acceptance": 0.6875845561452805,
+          "W": 0.6916568113541588
+        },
+        {
+          "acceptance_rate": 0.94,
+          "threshold": -1.7669249773025513,
+          "LOSO_rejection": 0.6519578940233479,
+          "Test_S1_rejection": 0.6640290141773821,
+          "Test_S2_acceptance": 0.7188573212613175,
+          "W": 0.6884253876808413
+        },
+        {
+          "acceptance_rate": 0.95,
+          "threshold": -1.9432873725891113,
+          "LOSO_rejection": 0.6002387034838278,
+          "Test_S1_rejection": 0.6129244971974942,
+          "Test_S2_acceptance": 0.7542928504527006,
+          "W": 0.6804372253966808
+        },
+        {
+          "acceptance_rate": 0.96,
+          "threshold": -2.150045871734619,
+          "LOSO_rejection": 0.533983660250232,
+          "Test_S1_rejection": 0.5572040883613584,
+          "Test_S2_acceptance": 0.7909251743157456,
+          "W": 0.6682595243107704
+        }
+      ],
+      "N_S1": 3033,
+      "N_S2": 19218
+    },
+    "identity": {
+      "train_oof_auc": 0.9416601734850175,
+      "train_oof_auc_pooled": 0.9419416317231758,
+      "train_oof_f1": 0.993368229768104,
+      "train_oof_accuracy": 0.9934810951760105,
+      "test_diagnostic_AUC": 0.7578208461905683,
+      "best": {
+        "acceptance_rate": 0.9,
+        "threshold": -1.2896144390106201,
+        "LOSO_rejection": 0.7935548348177022,
+        "Test_S1_rejection": 0.7978898780085724,
+        "Test_S2_acceptance": 0.595951711936726,
+        "W": 0.6958370341749316
+      },
+      "curve": [
+        {
+          "acceptance_rate": 0.8,
+          "threshold": -0.6591026782989502,
+          "LOSO_rejection": 0.9639626560423553,
+          "Test_S1_rejection": 0.945928123969667,
+          "Test_S2_acceptance": 0.3431158289103965,
+          "W": 0.6490306094582039
+        },
+        {
+          "acceptance_rate": 0.85,
+          "threshold": -0.9107246994972229,
+          "LOSO_rejection": 0.9149945274481979,
+          "Test_S1_rejection": 0.8968018463567425,
+          "Test_S2_acceptance": 0.4504110729524404,
+          "W": 0.6781546299274553
+        },
+        {
+          "acceptance_rate": 0.88,
+          "threshold": -1.109275460243225,
+          "LOSO_rejection": 0.852303759409377,
+          "Test_S1_rejection": 0.845367622815694,
+          "Test_S2_acceptance": 0.5325736288895827,
+          "W": 0.6907046600010591
+        },
+        {
+          "acceptance_rate": 0.9,
+          "threshold": -1.2896144390106201,
+          "LOSO_rejection": 0.7935548348177022,
+          "Test_S1_rejection": 0.7978898780085724,
+          "Test_S2_acceptance": 0.595951711936726,
+          "W": 0.6958370341749316
+        },
+        {
+          "acceptance_rate": 0.91,
+          "threshold": -1.3767091035842896,
+          "LOSO_rejection": 0.7631969898776101,
+          "Test_S1_rejection": 0.7731618859215298,
+          "Test_S2_acceptance": 0.6228015402227078,
+          "W": 0.6954904890611389
+        },
+        {
+          "acceptance_rate": 0.92,
+          "threshold": -1.4891283512115479,
+          "LOSO_rejection": 0.7270322808628384,
+          "Test_S1_rejection": 0.7352456313880646,
+          "Test_S2_acceptance": 0.6576126548027891,
+          "W": 0.6943758054641203
+        },
+        {
+          "acceptance_rate": 0.93,
+          "threshold": -1.6154534816741943,
+          "LOSO_rejection": 0.6858860922424606,
+          "Test_S1_rejection": 0.7055720408836136,
+          "Test_S2_acceptance": 0.6875845561452805,
+          "W": 0.6916568113541588
+        },
+        {
+          "acceptance_rate": 0.94,
+          "threshold": -1.766924500465393,
+          "LOSO_rejection": 0.6519578940233479,
+          "Test_S1_rejection": 0.6640290141773821,
+          "Test_S2_acceptance": 0.7188573212613175,
+          "W": 0.6884253876808413
+        },
+        {
+          "acceptance_rate": 0.95,
+          "threshold": -1.943282127380371,
+          "LOSO_rejection": 0.6002387034838278,
+          "Test_S1_rejection": 0.6129244971974942,
+          "Test_S2_acceptance": 0.7542928504527006,
+          "W": 0.6804372253966808
+        },
+        {
+          "acceptance_rate": 0.96,
+          "threshold": -2.150043487548828,
+          "LOSO_rejection": 0.533983660250232,
+          "Test_S1_rejection": 0.5572040883613584,
+          "Test_S2_acceptance": 0.7909251743157456,
+          "W": 0.6682595243107704
+        }
+      ],
+      "N_S1": 3033,
+      "N_S2": 19218
+    }
+  },
+  "deltas_vs_identity_control": {
+    "feature_mean": {
+      "AUC_delta": 1.9729552769298664e-07,
+      "W_delta": 0.0
+    },
+    "score_mean": {
+      "AUC_delta": 2.7449812545210506e-07,
+      "W_delta": 0.0
+    },
+    "score_max": {
+      "AUC_delta": 4.1174718834469104e-07,
+      "W_delta": 0.0
+    },
+    "score_min": {
+      "AUC_delta": 2.144516604296598e-07,
+      "W_delta": 0.0
+    },
+    "identity": {
+      "AUC_delta": 0.0,
+      "W_delta": 0.0
+    }
+  },
+  "verdict": {
+    "ttfa_improves_diagnostic_AUC": false,
+    "best_aggregation_by_AUC": "score_max",
+    "best_AUC": 0.7578212579377567,
+    "baseline_AUC": 0.7578208461905683,
+    "AUC_delta": 4.1174718834469104e-07,
+    "statement": "TTA 在此表征上无效"
+  },
+  "targets": {
+    "diagnostic_AUC_baseline": 0.7578208461905683,
+    "weighted_W_baseline": 0.6958
+  },
+  "official_test_metrics": {
+    "AUC": "N/A（无真实标签）",
+    "F1": "N/A（无真实标签）"
+  },
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.7.1+cu118",
+    "numpy": "2.4.6",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU"
+  },
+  "script_sha256": "6f1d1298b9e855900f0c1c3d5b32b7d89eee99cccaf02489a88f8a954957670b",
+  "config_sha256": "5bb737c8a454936ad3cd25a0108e9c23e9666cb35ccd5de51d06023515ab3277",
+  "no_test_statistics_used": true
+}

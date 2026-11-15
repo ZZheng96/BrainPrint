@@ -1,0 +1,59 @@
+﻿device cuda | train 11304 | test 22251 | fit_rows 6695 | window 2301
+tasks {'Imagery': np.int64(5504), 'SSVEP': np.int64(3658), 'EC': np.int64(1072), 'EO': np.int64(1070)} | band centres [2.0, 5.66, 10.2, 19.75, 34.64]
+loaded logbp (11304, 90) / (22251, 90) (channel-major -> band x channel)
+  family profile: 90 dims
+  family slope: 18 dims
+  family ratios: 72 dims
+  family relpower: 18 dims
+  family shape_all: 198 dims
+loaded E65 (11304, 855) / (22251, 855)
+  [profile] dim=16 bestAUC=0.7512 W@.90=0.6132 bestW=0.6185 (35s)
+  [profile] dim=32 bestAUC=0.7477 W@.90=0.6110 bestW=0.6120 (70s)
+  [profile] dim=48 bestAUC=0.7479 W@.90=0.6109 bestW=0.6111 (113s)
+  [profile] dim=90 bestAUC=0.7449 W@.90=0.6107 bestW=0.6107 (146s)
+  [slope] dim=16 bestAUC=0.7385 W@.90=0.5868 bestW=0.5902 (183s)
+  [slope] dim=18 bestAUC=0.7353 W@.90=0.5856 bestW=0.5882 (224s)
+  [ratios] dim=16 bestAUC=0.7324 W@.90=0.5960 bestW=0.5987 (264s)
+  [ratios] dim=32 bestAUC=0.7329 W@.90=0.5929 bestW=0.5950 (305s)
+  [ratios] dim=48 bestAUC=0.7314 W@.90=0.5919 bestW=0.5955 (345s)
+  [ratios] dim=72 bestAUC=0.7306 W@.90=0.5898 bestW=0.5936 (384s)
+  [relpower] dim=16 bestAUC=0.7178 W@.90=0.5753 bestW=0.5755 (426s)
+  [relpower] dim=18 bestAUC=0.7172 W@.90=0.5745 bestW=0.5750 (468s)
+  [shape_all] dim=16 bestAUC=0.7601 W@.90=0.6131 bestW=0.6226 (510s)
+  [shape_all] dim=32 bestAUC=0.7588 W@.90=0.6080 bestW=0.6127 (551s)
+  [shape_all] dim=48 bestAUC=0.7672 W@.90=0.6077 bestW=0.6092 (594s)
+  [shape_all] dim=96 bestAUC=0.7694 W@.90=0.6086 bestW=0.6086 (637s)
+  [logbp] dim=16 bestAUC=0.7809 W@.90=0.6249 bestW=0.6268 (679s)
+  [logbp] dim=32 bestAUC=0.7800 W@.90=0.6184 bestW=0.6206 (720s)
+  [logbp] dim=48 bestAUC=0.7818 W@.90=0.6146 bestW=0.6175 (762s)
+  [logbp] dim=90 bestAUC=0.7772 W@.90=0.6111 bestW=0.6135 (802s)
+  [E65] dim=64 done (848s)
+  [E65] dim=96 done (895s)
+  [E65+logbp control] best AUC 0.7999 best W 0.6897 (973s)
+  [fuse shape_all raw 96+16 -> 96] bestAUC=0.7808 bestW=0.6919 (1012s)
+  [fuse shape_all block_norm 96+16 -> 96] bestAUC=0.7706 bestW=0.6948 (1049s)
+  [fuse shape_all raw 96+32 -> 96] bestAUC=0.7792 bestW=0.6882 (1086s)
+  [fuse shape_all raw 96+32 -> 128] bestAUC=0.7880 bestW=0.6809 (1115s)
+  [fuse shape_all block_norm 96+32 -> 96] bestAUC=0.7775 bestW=0.6928 (1142s)
+  [fuse shape_all block_norm 96+32 -> 128] bestAUC=0.7870 bestW=0.6844 (1168s)
+  [fuse profile raw 96+16 -> 96] bestAUC=0.7782 bestW=0.7008 (1195s)
+  [fuse profile block_norm 96+16 -> 96] bestAUC=0.7760 bestW=0.6999 (1222s)
+  [fuse profile raw 96+32 -> 96] bestAUC=0.7790 bestW=0.7010 (1250s)
+  [fuse profile raw 96+32 -> 128] bestAUC=0.7848 bestW=0.6960 (1277s)
+  [fuse profile block_norm 96+32 -> 96] bestAUC=0.7885 bestW=0.6992 (1304s)
+  [fuse profile block_norm 96+32 -> 128] bestAUC=0.7919 bestW=0.6924 (1330s)
+  [fuse ratios raw 96+16 -> 96] bestAUC=0.7679 bestW=0.6938 (1356s)
+  [fuse ratios block_norm 96+16 -> 96] bestAUC=0.7672 bestW=0.6941 (1383s)
+  [fuse ratios raw 96+32 -> 96] bestAUC=0.7686 bestW=0.6948 (1410s)
+  [fuse ratios raw 96+32 -> 128] bestAUC=0.7736 bestW=0.6903 (1438s)
+  [fuse ratios block_norm 96+32 -> 96] bestAUC=0.7746 bestW=0.6877 (1466s)
+  [fuse ratios block_norm 96+32 -> 128] bestAUC=0.7795 bestW=0.6802 (1494s)
+  [ceiling] 单族最佳 AUC | logbp PCA-48 k=12 AUC=0.7818 oracleW=0.6191 optW=0.7506 (LOSO fix 0.6560)
+  [ceiling] 单族最佳 AUC | logbp PCA-48 k=12 AUC=0.7818 oracleW=0.6191 optW_maxLOSO=0.7506 optW@090LOSO=0.6814
+  [ceiling] 单族最佳 AUC | logbp PCA-48 k=12 AUC=0.7818 oracleW=0.6191 optW_maxLOSO=0.7506 optW@090LOSO=0.6814
+  [ceiling] 单族最佳 W | logbp PCA-16 k=12 AUC=0.7809 oracleW=0.6279 optW_maxLOSO=0.7397 optW@090LOSO=0.6824
+  [ceiling] 融合最佳 AUC | block_norm concat 96+32 -> PCA-128 k=12 AUC=0.7919 oracleW=0.6946 optW_maxLOSO=0.7930 optW@090LOSO=0.7419
+  [ceiling] 融合最佳 W | raw concat 96+32 -> PCA-96 k=12 AUC=0.7790 oracleW=0.7022 optW_maxLOSO=0.7902 optW@090LOSO=0.7458
+  [ceiling] E65 对照 (PCA-96 k=12) | E65_logspd PCA-96 k=12 AUC=0.7578 oracleW=0.6972 optW_maxLOSO=0.7781 optW@090LOSO=0.7355
+  [ceiling] E65+logbp 对照最佳 AUC | block_norm concat 64+32 -> PCA-96 k=6 AUC=0.7999 oracleW=0.6745 optW_maxLOSO=0.8225 optW@090LOSO=0.7704
+ceiling recompute done in 43s

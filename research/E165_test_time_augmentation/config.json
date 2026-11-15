@@ -1,0 +1,76 @@
+{
+  "experiment": "E165_test_time_augmentation",
+  "purpose": "E159 证明 E143 单分数阈值上的上界只有 0.7352，必须抬高诊断 AUC。本实验检验 TTA（原始信号层确定性扰动 -> 重新走 E65 编码 -> 多视图聚合）能否把 Test S1-vs-S2 诊断 AUC 抬过 0.7578。",
+  "baseline_reference": {
+    "experiment": "E143_k_sweep_nearest / B_only / k=12 / acceptance=0.900",
+    "LOSO_rejection": 0.7936,
+    "Test_S1_rejection": 0.7979,
+    "Test_S2_acceptance": 0.5960,
+    "test_diagnostic_AUC": 0.7578,
+    "W": 0.6958,
+    "W_formula": "0.25*LOSO_rejection + 0.25*Test_S1_rejection + 0.5*Test_S2_acceptance"
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "expected_train_trials": 11304,
+    "expected_test_rows": 22251,
+    "e65_feature_config": "research/E65_correlation_spd/config.json",
+    "e65_train_feature_cache": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "e121_test_feature_cache": "research/E121_pca_sweep/test_logspd.npy"
+  },
+  "views": {
+    "identity": {
+      "rule": "raw signal unchanged",
+      "kind": "no_op"
+    },
+    "shift": {
+      "rule": "circular time shift by +100 samples along the 1200-sample axis (torch.roll, energy preserved)",
+      "kind": "raw_domain"
+    },
+    "channel_gain": {
+      "rule": "per-channel gain: even channel index *0.9, odd channel index *1.1",
+      "kind": "raw_domain"
+    },
+    "band_emphasis": {
+      "rule": "1-8 Hz component *1.1 and 30-40 Hz component *0.9 in the rFFT domain",
+      "kind": "raw_domain"
+    }
+  },
+  "view_determinism": "no random numbers anywhere; identical rule for Train and Test; no Test-side statistics of any kind",
+  "aggregation": ["feature_mean", "score_mean", "score_max", "score_min"],
+  "aggregation_note": {
+    "feature_mean": "平均 4 个视图的 E65 855 维特征，再走 task 标准化 / PCA-96 / k=12 原型",
+    "score_mean": "每个视图各自 -d1 分数，用该视图自己的 Train OOF 参考分布 z 标准化后逐元素取平均",
+    "score_max": "同上 z 标准化后逐元素取最大",
+    "score_min": "同上 z 标准化后逐元素取最小（保守）"
+  },
+  "protocol": {
+    "source": "E143_k_sweep_nearest 逐字沿用（除视图聚合外唯一变量）",
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "task_standardization": "Train 全部该 task 行的 mean/std，Test 用同一 mu/sd",
+    "pca_dim": 96,
+    "pca_fit_rows": "each (subject,task) frac<=0.6 pooled",
+    "prototype_k": 12,
+    "prototype_kmeans_seed": "int(class)*17, 20 iterations, E143 kmeans_t",
+    "prototype_rows_main_and_test": "E143 原样：所有 Train 行（np.ones mask）",
+    "prototype_rows_loso": "排除被评分身份后只用 fit_rows(frac<=0.6)",
+    "oof_blocks": "blocks5 = clip(floor(frac*5),0,4)，每块留出后用其余全部行重建原型",
+    "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96],
+    "threshold": "quantile(Train OOF z-score, 1-acceptance)",
+    "loso": "每次留出一个身份；known = 其余身份 frac in (0.6,0.8]；unknown = 留出身份 frac in (0.6,0.8]",
+    "test": "只评分，不调参；session 只用于事后诊断 AUC / S1 拒识 / S2 接受"
+  },
+  "reporting": {
+    "official_test_metrics": "Test AUC/F1 = N/A（无真实标签）",
+    "primary_question": "TTA 后 Test 诊断 AUC 是否 > 0.7578",
+    "required_control": "identity 单视图必须精确复现 E143: 诊断 AUC 0.7578 / W 0.6958"
+  },
+  "feature_io": {
+    "batch_size": 64,
+    "io_workers": 4,
+    "dtype": "float32",
+    "cache": "BrainPrint_cache/e165_test_time_augmentation"
+  }
+}

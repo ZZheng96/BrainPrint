@@ -1,0 +1,106 @@
+{
+  "experiment": "E171_multiscale_fusion",
+  "preregistered": "2026-11-15",
+  "purpose": "E168 showed that subwin_mean (N non-overlapping sub-windows, each run through the full E65 pipeline, then averaged over the 855-d features) is a genuinely new information source: N=4 diagnostic AUC 0.7822 vs E65 0.7578, and the AUC rose monotonically with N (2/3/4). This run extends the sub-window count to N=1/2/3/4/6/8/12, tests multi-scale concatenation (N=2/3/4/6 blocks), fuses the amplitude stream (logbp) with the sub-window stream at feature level and score level, and finally runs the E159/E169-style frozen-score ceiling analysis on the best configuration to ask whether the new ranking power pushes the W upper bound past 0.80.",
+  "seed": 20261115,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "expected_train_rows": 11304,
+    "expected_test_rows": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "train_session": "session1"
+  },
+  "reference_views": {
+    "E65": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "published": {
+        "diagnostic_auc": 0.7578208805028339,
+        "LOSO_rejection": 0.7935548348177022,
+        "Test_S1_rejection": 0.7978898780085724,
+        "Test_S2_acceptance": 0.595951711936726,
+        "W": 0.6958370341749316
+      }
+    },
+    "logbp": {
+      "train": "research/E146_phase_features/train_log_band_power.npy",
+      "test": "research/E146_phase_features/test_log_band_power.npy",
+      "note": "90-d log band power, channel-major column order (channel*5 + band), E146 cache"
+    },
+    "E167_best": {
+      "config": "block_norm concat E65(64)+logbp(32) -> PCA-96 k=6",
+      "diagnostic_auc": 0.7999
+    },
+    "E169_ceiling_E65_logbp": {
+      "E159_convention_W": 0.7704,
+      "loose_convention_W": 0.8225,
+      "note": "E169 table 1 / table 2 for the same E65+logbp control"
+    },
+    "E168_subwin_mean": {
+      "n2": 0.7690,
+      "n3": 0.7735,
+      "n4": 0.7822,
+      "note": "E168 best diagnostic AUC per N (PCA-64 k=12)"
+    }
+  },
+  "subwindow": {
+    "ns": [1, 2, 3, 4, 6, 8, 12],
+    "variants": ["subwin_mean"],
+    "rules": "trial 18x1200 is cut along time into N non-overlapping windows (length 1200/N); every window independently runs the full E65 pipeline (5-band ideal FFT band isolation -> mean removal -> per-channel standardisation -> 18x18 correlation -> 0.05 shrinkage -> logSPD -> upper triangle 171 -> E36 detrend_zband). The N window vectors (855 each) are averaged; no cross-sample statistic is introduced.",
+    "note": "N=1 must reproduce the E65 cache bit-for-bit and the E143 protocol numbers exactly; the sub-window mean is NOT equivalent to the full trial because detrend_zband is non-linear.",
+    "io_batch_size": 128,
+    "io_workers": 8
+  },
+  "evaluation": {
+    "protocol": "E143/E168 verbatim: task-wise z-score using all Train rows of that task -> PCA fitted on fit_rows (frac<=0.6) -> k-means prototypes -> 5-block Train OOF thresholds (acceptance grid 0.80-0.96) -> LOSO excluding the scored identity with fit_rows-only prototypes and evaluation block 0.6<frac<=0.8 -> Test scored once, session used only for the diagnostic AUC",
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "blocks": 5,
+    "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96],
+    "reference_acceptance": 0.90,
+    "weights": {"LOSO": 0.25, "S1": 0.25, "S2": 0.5},
+    "train_oof_definition": "Train OOF known-vs-LOSO-unknown AUROC; OOF F1 is the 20-class macro F1 of the 5-block OOF identity predictions"
+  },
+  "grids": {
+    "e65_control": {"dims": [64, 96, 128], "k": [1, 3, 6, 12]},
+    "subwindow": {"dims": [48, 64, 96, 128], "k": [1, 3, 6, 12]},
+    "multiscale": {"ns": [2, 3, 4, 6], "block_dims": [48, 64],
+                   "joint_dims": [96, 128, 192], "k": [1, 3, 6, 12],
+                   "norm": "block_norm"},
+    "control_e65_logbp": {"e65_dim": 64, "logbp_dim": 32, "joint_dims": [96],
+                          "k": [1, 3, 6, 12], "variants": ["block_norm", "raw"]},
+    "three_way": {"e65_dim": 96, "logbp_dim": 32, "subwin_dim": 64,
+                  "joint_dims": [96, 128, 192], "k": [1, 3, 6, 12],
+                  "variants": ["block_norm", "raw"]},
+    "two_way": {"e65_dim": 96, "subwin_dim": 64,
+                "joint_dims": [96, 128, 192], "k": [1, 3, 6, 12],
+                "variants": ["block_norm", "raw"]},
+    "score_fusion": {
+      "bases": [
+        {"name": "A", "e65_dim": 96, "e65_k": 12, "logbp_dim": 32, "logbp_k": 12,
+         "subwin_dim": 64, "subwin_k": 12},
+        {"name": "B", "e65_dim": 64, "e65_k": 12, "logbp_dim": 16, "logbp_k": 12,
+         "subwin_dim": 64, "subwin_k": 12}
+      ],
+      "simplex_step": 0.1,
+      "note": "z-score every stream with its own 5-block Train OOF mean/std, then take a convex combination. The full 0.1 simplex is reported as a Test-selected sweep; the defensible number is the weight vector chosen by the fused Train LOSO AUC (Test never consulted)."
+    }
+  },
+  "ceiling_analysis": {
+    "method": "E159/E169: freeze one configuration's Train-OOF and Test scores, sweep a single frozen threshold over 2000 quantiles of the pooled distribution, and record acceptance / LOSO rejection / S1 rejection / S2 acceptance / W at every point.",
+    "oracle_max_W": "maximum W along the sweep with the LOSO rejection taken at the same threshold (optimistic: LOSO -> 1 as acceptance -> 0)",
+    "E159_convention": "LOSO fixed at the configuration's own @0.90 value, Test operating point free; this is the convention that produced 0.7704 for E65+logbp in E169",
+    "loose_convention": "LOSO fixed at the configuration's maximum over the protocol acceptance grid 0.80-0.96, Test operating point free (strictest optimistic bound)",
+    "target": 0.80
+  },
+  "targets": {
+    "diagnostic_auc_prior_best": 0.7999,
+    "diagnostic_auc_target": 0.835,
+    "W_ceiling_target": 0.80,
+    "note": "E169 slope: +0.042 diagnostic AUC buys +0.035 W upper bound, so AUC ~0.835 is needed for the upper bound to cross 0.80"
+  }
+}

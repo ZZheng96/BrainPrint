@@ -1,0 +1,132 @@
+{
+  "config_sha256": "7fd7c04175bf764238404e310f20500bef82a82a200b82366fb2f553a7d1e4c2",
+  "ns": [
+    2,
+    3,
+    4
+  ],
+  "variants": [
+    "subwin_mean_n2",
+    "subwin_std_n2",
+    "subwin_concat_n2",
+    "subwin_concat_plus_std_n2",
+    "subwin_mean_n3",
+    "subwin_std_n3",
+    "subwin_concat_n3",
+    "subwin_concat_plus_std_n3",
+    "subwin_mean_n4",
+    "subwin_std_n4",
+    "subwin_concat_n4",
+    "subwin_concat_plus_std_n4"
+  ],
+  "shapes": {
+    "subwin_mean_n2": [
+      11304,
+      855
+    ],
+    "subwin_std_n2": [
+      11304,
+      855
+    ],
+    "subwin_concat_n2": [
+      11304,
+      1710
+    ],
+    "subwin_concat_plus_std_n2": [
+      11304,
+      2565
+    ],
+    "subwin_mean_n3": [
+      11304,
+      855
+    ],
+    "subwin_std_n3": [
+      11304,
+      855
+    ],
+    "subwin_concat_n3": [
+      11304,
+      2565
+    ],
+    "subwin_concat_plus_std_n3": [
+      11304,
+      3420
+    ],
+    "subwin_mean_n4": [
+      11304,
+      855
+    ],
+    "subwin_std_n4": [
+      11304,
+      855
+    ],
+    "subwin_concat_n4": [
+      11304,
+      3420
+    ],
+    "subwin_concat_plus_std_n4": [
+      11304,
+      4275
+    ]
+  },
+  "test_shapes": {
+    "subwin_mean_n2": [
+      22251,
+      855
+    ],
+    "subwin_std_n2": [
+      22251,
+      855
+    ],
+    "subwin_concat_n2": [
+      22251,
+      1710
+    ],
+    "subwin_concat_plus_std_n2": [
+      22251,
+      2565
+    ],
+    "subwin_mean_n3": [
+      22251,
+      855
+    ],
+    "subwin_std_n3": [
+      22251,
+      855
+    ],
+    "subwin_concat_n3": [
+      22251,
+      2565
+    ],
+    "subwin_concat_plus_std_n3": [
+      22251,
+      3420
+    ],
+    "subwin_mean_n4": [
+      22251,
+      855
+    ],
+    "subwin_std_n4": [
+      22251,
+      855
+    ],
+    "subwin_concat_n4": [
+      22251,
+      3420
+    ],
+    "subwin_concat_plus_std_n4": [
+      22251,
+      4275
+    ]
+  },
+  "checks": {
+    "fullwindow_vs_E65_cache_max_abs": 4.76837158203125e-07,
+    "single_vs_batch_max_abs": 4.76837158203125e-07,
+    "subwin_single_vs_batch_max_abs": 4.76837158203125e-07,
+    "finite": true,
+    "test_accessed": false
+  },
+  "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+  "elapsed_seconds": 41.77468252182007,
+  "convention": "concat 窗口主序(w*855 + band*171 + pair)；std ddof=0；每子窗口独立 detrend_zband"
+}
