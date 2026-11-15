@@ -1,0 +1,190 @@
+
+E198 start 2026-11-16 01:11:32 device cuda
+Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033
+
+E198 start 2026-11-16 01:11:54 device cuda
+Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033
+  stage1 e65_dist: pca 96 k=12 window best -12.712±2.261 (0s)
+  stage1 subwin6_dist: pca 96 k=1 window best -15.622±2.480 (1s)
+  stage1 subwin12_dist: pca 48 k=1 window best -14.608±2.827 (1s)
+  stage1 logbp_dist: pca 16 k=1 window best -5.603±2.496 (1s)
+  stage1 e162_dist: pca 128 k=1 window best -8.420±2.484 (1s)
+stage instrument done in 1s
+E198 done in 1s
+
+E198 start 2026-11-16 01:12:02 device cuda
+
+E198 start 2026-11-16 01:12:14 device cuda
+Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033
+  stage1 e65_dist: pca 96 k=12 window best -12.712±2.261 (0s)
+  stage1 subwin6_dist: pca 96 k=1 window best -15.622±2.480 (1s)
+  stage1 subwin12_dist: pca 48 k=1 window best -14.608±2.827 (1s)
+  stage1 logbp_dist: pca 16 k=1 window best -5.603±2.496 (1s)
+  stage1 e162_dist: pca 128 k=1 window best -8.420±2.484 (1s)
+stage instrument done in 1s
+E198 done in 1s
+
+E198 start 2026-11-16 01:12:17 device cuda
+  strict std 5/20 1s
+  strict std 10/20 3s
+  strict std 15/20 4s
+  strict std 20/20 5s
+  strict strict 5/20 6s
+  strict strict 10/20 8s
+  strict strict 15/20 10s
+  strict strict 20/20 12s
+stage strict done in 12s
+E198 done in 12s
+
+E198 start 2026-11-16 01:12:37 device cuda
+  fold plan: 200 folds, identical to E197: True
+  candidates 455 (5 single, 90 pair, 360 triple)
+  leave-5 50/200
+  leave-5 100/200
+  leave-5 150/200
+  leave-5 200/200
+  leave-5 done 2s
+  loso strict done 2s
+  loso std done 2s
+  feasible 0 (acc5>=0.95, loso_strict>0.9), acc5 candidates 128, max loso_strict 0.8336
+    # 38 e65_dist 0.7 + e162_dist 0.3                         rej5 0.9123 acc5 0.9778 auc5 0.9652 strict 0.8270 auroc5 0.9442
+    #197 e65_dist 0.6 + subwin6_dist 0.1 + e162_dist 0.3      rej5 0.9089 acc5 0.9755 auc5 0.9648 strict 0.8336 auroc5 0.9438
+    #269 e65_dist 0.6 + subwin12_dist 0.1 + e162_dist 0.3     rej5 0.9087 acc5 0.9730 auc5 0.9639 strict 0.8291 auroc5 0.9429
+    # 37 e65_dist 0.6 + e162_dist 0.4                         rej5 0.9075 acc5 0.9638 auc5 0.9631 strict 0.8334 auroc5 0.9437
+    #200 e65_dist 0.7 + subwin6_dist 0.1 + e162_dist 0.2      rej5 0.9057 acc5 0.9817 auc5 0.9641 strict 0.8019 auroc5 0.9404
+E198 done in 2s
+
+E198 start 2026-11-16 01:13:03 device cuda
+  fold plan: 200 folds, identical to E197: True
+stage test: one-shot scoring of 5 selected candidates
+  test stream e65_dist scored
+  test stream subwin6_dist scored
+  test stream subwin12_dist scored
+  test stream logbp_dist scored
+  test stream e162_dist scored
+
+E198 start 2026-11-16 01:13:14 device cuda
+  fold plan: 200 folds, identical to E197: True
+stage test: one-shot scoring of 5 selected candidates
+  test stream e65_dist scored
+  test stream subwin6_dist scored
+  test stream subwin12_dist scored
+  test stream logbp_dist scored
+  test stream e162_dist scored
+
+E198 start 2026-11-16 01:13:26 device cuda
+  fold plan: 200 folds, identical to E197: True
+stage test: one-shot scoring of 5 selected candidates
+  test stream e65_dist scored
+  test stream subwin6_dist scored
+  test stream subwin12_dist scored
+  test stream logbp_dist scored
+  test stream e162_dist scored
+  e65_dist 0.7 + e162_dist 0.3                         deploy S1 0.8414 S2 0.5282 | fold S1 0.8867 S2 0.4095
+  e65_dist 0.6 + subwin6_dist 0.1 + e162_dist 0.3      deploy S1 0.8464 S2 0.5337 | fold S1 0.8860 S2 0.4207
+  e65_dist 0.6 + subwin12_dist 0.1 + e162_dist 0.3     deploy S1 0.8424 S2 0.5393 | fold S1 0.8856 S2 0.4205
+  e65_dist 0.6 + e162_dist 0.4                         deploy S1 0.8229 S2 0.5531 | fold S1 0.8695 S2 0.4301
+  e65_dist 0.7 + subwin6_dist 0.1 + e162_dist 0.2      deploy S1 0.8533 S2 0.5181 | fold S1 0.8956 S2 0.4079
+stage test done in 2s
+E198 done in 2s
+
+E198 start 2026-11-16 01:13:56 device cuda
+  fold plan: 200 folds, identical to E197: True
+stage test: one-shot scoring of 5 selected candidates
+  test stream e65_dist scored
+  test stream subwin6_dist scored
+  test stream subwin12_dist scored
+  test stream logbp_dist scored
+  test stream e162_dist scored
+  e65_dist 0.7 + e162_dist 0.3                         deploy S1 0.8414 S2 0.5282 | g20 S1 0.8612 S2 0.5019 | fold S1 0.8867 S2 0.4095
+  e65_dist 0.6 + subwin6_dist 0.1 + e162_dist 0.3      deploy S1 0.8464 S2 0.5337 | g20 S1 0.8628 S2 0.5115 | fold S1 0.8860 S2 0.4207
+  e65_dist 0.6 + subwin12_dist 0.1 + e162_dist 0.3     deploy S1 0.8424 S2 0.5393 | g20 S1 0.8562 S2 0.5171 | fold S1 0.8856 S2 0.4205
+  e65_dist 0.6 + e162_dist 0.4                         deploy S1 0.8229 S2 0.5531 | g20 S1 0.8464 S2 0.5181 | fold S1 0.8695 S2 0.4301
+  e65_dist 0.7 + subwin6_dist 0.1 + e162_dist 0.2      deploy S1 0.8533 S2 0.5181 | g20 S1 0.8787 S2 0.4886 | fold S1 0.8956 S2 0.4079
+stage test done in 2s
+E198 done in 2s
+
+E198 start 2026-11-16 01:14:08 device cuda
+stage attack: #1 e65_dist 0.7 + e162_dist 0.3 (tau -1.3734)
+  raw 1252/1252 (0s)
+  attack subset 1252 trials, tau -1.3734
+  clean: closed 1.0000 RA 0.9337 ASafeR 1.0000
+  SNR30 goal A: RA 0.8890 ASafeR 0.9673 accept 0.9217 closed 0.9601
+  SNR30 goal B: RA 0.8906 ASafeR 0.9657 accept 0.9249 closed 0.9593
+  SNR30 goal C: RA 0.9257 ASafeR 0.9984 accept 0.9273 closed 0.9984
+  SNR30 goal D: RA 1.0000 ASafeR 1.0000 accept 1.0000 closed 1.0000
+  SNR20 goal A: RA 0.0679 ASafeR 0.2165 accept 0.8514 closed 0.0751
+  SNR20 goal B: RA 0.0663 ASafeR 0.2117 accept 0.8546 closed 0.0727
+  SNR20 goal C: RA 0.3906 ASafeR 0.5367 accept 0.8538 closed 0.4201
+  SNR20 goal D: RA 1.0000 ASafeR 1.0000 accept 1.0000 closed 1.0000
+stage attack done in 30s: worst RA 0.8890 ASafeR 0.9657 (SNR30)
+E198 done in 30s
+
+E198 start 2026-11-16 01:16:10 device cuda
+Train 11304 rows, fit 6695, window 2301, Test 22251, S1 3033
+  stage1 e65_dist: pca 96 k=12 window best -12.712±2.261 (0s)
+  stage1 subwin6_dist: pca 96 k=1 window best -15.622±2.480 (1s)
+  stage1 subwin12_dist: pca 48 k=1 window best -14.608±2.827 (1s)
+  stage1 logbp_dist: pca 16 k=1 window best -5.603±2.496 (1s)
+  stage1 e162_dist: pca 128 k=1 window best -8.420±2.484 (1s)
+stage instrument done in 1s
+  strict std 5/20 1s
+  strict std 10/20 2s
+  strict std 15/20 3s
+  strict std 20/20 5s
+  strict strict 5/20 6s
+  strict strict 10/20 8s
+  strict strict 15/20 11s
+  strict strict 20/20 13s
+stage strict done in 13s
+  fold plan: 200 folds, identical to E197: True
+  candidates 455 (5 single, 90 pair, 360 triple)
+  leave-5 50/200
+  leave-5 100/200
+  leave-5 150/200
+  leave-5 200/200
+  leave-5 done 2s
+  loso strict done 2s
+  loso std done 2s
+  feasible 0 (acc5>=0.95, loso_strict>0.9), acc5 candidates 128, max loso_strict 0.8336
+    # 38 e65_dist 0.7 + e162_dist 0.3                         rej5 0.9123 acc5 0.9778 auc5 0.9652 strict 0.8270 auroc5 0.9442
+    #197 e65_dist 0.6 + subwin6_dist 0.1 + e162_dist 0.3      rej5 0.9089 acc5 0.9755 auc5 0.9648 strict 0.8336 auroc5 0.9438
+    #269 e65_dist 0.6 + subwin12_dist 0.1 + e162_dist 0.3     rej5 0.9087 acc5 0.9730 auc5 0.9639 strict 0.8291 auroc5 0.9429
+    # 37 e65_dist 0.6 + e162_dist 0.4                         rej5 0.9075 acc5 0.9638 auc5 0.9631 strict 0.8334 auroc5 0.9437
+    #200 e65_dist 0.7 + subwin6_dist 0.1 + e162_dist 0.2      rej5 0.9057 acc5 0.9817 auc5 0.9641 strict 0.8019 auroc5 0.9404
+  fold plan: 200 folds, identical to E197: True
+stage test: one-shot scoring of 5 selected candidates
+  test stream e65_dist scored
+  test stream subwin6_dist scored
+  test stream subwin12_dist scored
+  test stream logbp_dist scored
+  test stream e162_dist scored
+  e65_dist 0.7 + e162_dist 0.3                         deploy S1 0.8414 S2 0.5282 | g20 S1 0.8612 S2 0.5019 | fold S1 0.8867 S2 0.4095
+  e65_dist 0.6 + subwin6_dist 0.1 + e162_dist 0.3      deploy S1 0.8464 S2 0.5337 | g20 S1 0.8628 S2 0.5115 | fold S1 0.8860 S2 0.4207
+  e65_dist 0.6 + subwin12_dist 0.1 + e162_dist 0.3     deploy S1 0.8424 S2 0.5393 | g20 S1 0.8562 S2 0.5171 | fold S1 0.8856 S2 0.4205
+  e65_dist 0.6 + e162_dist 0.4                         deploy S1 0.8229 S2 0.5531 | g20 S1 0.8464 S2 0.5181 | fold S1 0.8695 S2 0.4301
+  e65_dist 0.7 + subwin6_dist 0.1 + e162_dist 0.2      deploy S1 0.8533 S2 0.5181 | g20 S1 0.8787 S2 0.4886 | fold S1 0.8956 S2 0.4079
+stage test done in 2s
+stage attack: #1 e65_dist 0.7 + e162_dist 0.3 (tau -1.3734)
+  raw 1252/1252 (1s)
+  attack subset 1252 trials, tau -1.3734
+  clean: closed 1.0000 RA 0.9337 ASafeR 1.0000
+  SNR30 goal A: RA 0.8890 ASafeR 0.9673 accept 0.9217 closed 0.9601
+  SNR30 goal B: RA 0.8906 ASafeR 0.9657 accept 0.9249 closed 0.9593
+  SNR30 goal C: RA 0.9257 ASafeR 0.9984 accept 0.9273 closed 0.9984
+  SNR30 goal D: RA 1.0000 ASafeR 1.0000 accept 1.0000 closed 1.0000
+  SNR20 goal A: RA 0.0679 ASafeR 0.2165 accept 0.8514 closed 0.0751
+  SNR20 goal B: RA 0.0663 ASafeR 0.2117 accept 0.8546 closed 0.0727
+  SNR20 goal C: RA 0.3906 ASafeR 0.5367 accept 0.8538 closed 0.4201
+  SNR20 goal D: RA 1.0000 ASafeR 1.0000 accept 1.0000 closed 1.0000
+stage attack done in 32s: worst RA 0.8890 ASafeR 0.9657 (SNR30)
+stage report done
+E198 done in 50s
+
+E198 start 2026-11-16 01:17:44 device cuda
+stage report done
+E198 done in 0s
+
+E198 start 2026-11-16 01:18:35 device cuda
+stage report done
+E198 done in 0s

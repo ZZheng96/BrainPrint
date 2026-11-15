@@ -1,0 +1,123 @@
+{
+  "experiment": "E198_select_by_leave5",
+  "date": "2026-11-16",
+  "purpose": "Use the leave-5 three-stage protocol of E197 (Train rejection vs Test S1 Spearman 0.85, bias -0.095) as the Train-only selector for the gate / fusion weights, then score Test exactly once. Candidate pool: E65 (PCA-96, k=12), subwin6, subwin12, logbp, E162 embedding; wccn_dr is excluded because E197 showed it collapses (0.9925 -> 0.3298) once the enrolment set shrinks; E183 is not part of the requested pool. All pairs and triples on the 0.1 simplex grid are enumerated.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "classes": [1, 20],
+    "registered": 20,
+    "unregistered": 5
+  },
+  "protocol": {
+    "fit_fraction": 0.6,
+    "eval_window": "0.6 < frac <= 0.8",
+    "primary_acceptance": 0.90,
+    "leave_k": 5,
+    "folds": 200,
+    "seed": 20261116,
+    "stage1_training": "all 20 identities, fit rows (frac <= 0.6): task-wise mean/sd, PCA basis, E162 encoder frozen. Fold-invariant, computed once.",
+    "stage2_enrolment": "prototypes of the 15 enrolled identities only, from their own fit rows; k_proto = 12 for e65_dist, 1 for the other four streams",
+    "stage3_deployment": "argmax identification over the enrolled prototypes + threshold rejection; tau = quantile(enrolled known best-match scores, 1 - a)",
+    "score_normalisation": "each stream is divided by the mean/sd of its all-20 best-match score on the evaluation window (queries are disjoint from the prototype rows, so no self-inclusion); the same constants are used for the leave-5 folds, the strict LOSO folds and Test, so the fusion weights are fixed standardised units",
+    "test_threshold": "tau = quantile(concatenated loso_strict known best-match scores, 1 - a) - Train only, E195 'paired' rule",
+    "test_readings": {
+      "deployment": "gallery = all 20 registered identities, tau = paired loso_strict quantile; this is the reading behind #9 / #10 and the PGD chain",
+      "fold_matched": "gallery = the fold's 15 enrolled identities, tau = that fold's enrolled known quantile, averaged over the 200 leave-5 folds; this is the reading comparable with E197's rej5"
+    }
+  },
+  "families": {
+    "e65": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "test": "research/E121_pca_sweep/test_logspd.npy",
+      "dim": 855
+    },
+    "subwin6": {
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n6.npy",
+      "test": "research/E171_multiscale_fusion/test_subwin_mean_n6.npy",
+      "dim": 855
+    },
+    "subwin12": {
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n12.npy",
+      "test": "research/E171_multiscale_fusion/test_subwin_mean_n12.npy",
+      "dim": 855
+    },
+    "logbp": {
+      "train": "research/E146_phase_features/train_log_band_power.npy",
+      "test": "research/E146_phase_features/test_log_band_power.npy",
+      "dim": 90
+    },
+    "e162": {
+      "train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+      "test": "research/E162_raw_eeg_contrastive_v2/test_emb.npy",
+      "dim": 256
+    }
+  },
+  "streams": [
+    {"name": "e65_dist", "family": "e65", "pca": 96, "prototypes": 12, "kind": "logspd"},
+    {"name": "subwin6_dist", "family": "subwin6", "pca": 96, "prototypes": 1, "kind": "subwin6"},
+    {"name": "subwin12_dist", "family": "subwin12", "pca": 48, "prototypes": 1, "kind": "subwin12"},
+    {"name": "logbp_dist", "family": "logbp", "pca": 16, "prototypes": 1, "kind": "logbp"},
+    {"name": "e162_dist", "family": "e162", "pca": 128, "prototypes": 1, "kind": "e162"}
+  ],
+  "fusion_grid": {
+    "pairs": [["e65_dist", "subwin6_dist"], ["e65_dist", "subwin12_dist"], ["e65_dist", "logbp_dist"], ["e65_dist", "e162_dist"], ["subwin6_dist", "subwin12_dist"], ["subwin6_dist", "logbp_dist"], ["subwin6_dist", "e162_dist"], ["subwin12_dist", "logbp_dist"], ["subwin12_dist", "e162_dist"], ["logbp_dist", "e162_dist"]],
+    "triples": [["e65_dist", "subwin6_dist", "subwin12_dist"], ["e65_dist", "subwin6_dist", "logbp_dist"], ["e65_dist", "subwin6_dist", "e162_dist"], ["e65_dist", "subwin12_dist", "logbp_dist"], ["e65_dist", "subwin12_dist", "e162_dist"], ["e65_dist", "logbp_dist", "e162_dist"], ["subwin6_dist", "subwin12_dist", "logbp_dist"], ["subwin6_dist", "subwin12_dist", "e162_dist"], ["subwin6_dist", "logbp_dist", "e162_dist"], ["subwin12_dist", "logbp_dist", "e162_dist"]],
+    "step": 0.1,
+    "note": "pairs use 0.0-1.0 in 0.1 steps, triples walk the simplex with 0.1 steps; every component stream is z-standardised before the weighted sum"
+  },
+  "selection": {
+    "rule": "R1: acc5 >= 0.95 AND loso_strict > 0.90; then maximise rej5; tie-break higher auc5",
+    "fallback": "R1': if the R1 set is empty on Train (verified before any Test scoring), drop #11 and keep acc5 >= 0.95, then maximise rej5, tie-break auc5; the #11 failure is reported explicitly",
+    "acc5_min": 0.95,
+    "loso_strict_min": 0.90,
+    "metrics": {
+      "rej5": "mean over the 200 leave-5 folds of the unregistered rejection rate at a=0.90",
+      "acc5": "mean over the same folds of the enrolled argmax identification accuracy",
+      "auc5": "mean over the same folds of known-vs-unregistered AUROC (pooled AUROC reported for the top five)",
+      "loso_strict": "mean over the 20 strict leave-1 LOSO folds of the unknown rejection rate at a=0.90",
+      "auroc5": "pooled strict LOSO AUROC, the #5 reading"
+    }
+  },
+  "gates": {
+    "1": "Train in-sample accuracy = 1.00 (E191 branch-A v3 identity backbone)",
+    "2": "5-block OOF closed-set accuracy C >= 0.95",
+    "3": "5-block OOF identity macro-F1 >= 0.92",
+    "4": "block-out accuracy on forward blocks >= 0.90",
+    "5": "pseudo-unknown LOSO AUROC >= 0.98 (strict reading; std alongside)",
+    "6": "U@95% >= 0.95 (strict reading; std alongside)",
+    "7": "RA over the self-built PGD grid >= 0.95 (SNR30 primary, SNR20 reported)",
+    "8": "ASafeR over the same grid >= 0.98 (SNR30 primary, SNR20 reported)",
+    "9": "Test S2 acceptance >= 0.70 (deployment reading)",
+    "10": "Test S1 rejection >= 0.70 (deployment reading)",
+    "11": "loso_strict unknown rejection at a=0.90 > 0.90 (loso_std alongside)"
+  },
+  "attack": {
+    "type": "self-built white-box PGD on the E191 branch-A v3 identity model",
+    "subset": "Train window 0.6 < frac <= 0.8, stratified cap 400 per task, seed 20261116",
+    "snr_db": [30, 20],
+    "steps": 20,
+    "goals": {"A": "untargeted max wrong-class logit", "B": "untargeted logsumexp over wrong classes", "C": "targeted next-class logit", "D": "gate evasion"},
+    "radius": "per-trial L2 norm of the channel-demeaned waveform divided by 10^(SNR/20)",
+    "primary_snr_db": 30
+  },
+  "e191_backbone": {
+    "directory": "research/E191_fix_gate1_gate7",
+    "model": "model_branch_a_v3.pt",
+    "results": "results.json"
+  },
+  "references": {
+    "e195": "research/E195_eleven_gates_loso90/results.json",
+    "e196": "research/E196_leave_k_out/results.json",
+    "e197": "research/E197_enrollment_leave_k/results.json",
+    "e197_fold_plan": "research/E197_enrollment_leave_k/cache/fold_plan.json"
+  },
+  "reporting": {
+    "test_official": "N/A - Test has no identity labels; official AUC / F1 / C / RA / ASafeR / U / Score are not computable",
+    "session_usage": "all Test scores are computed before the Session column is read; Session only splits S1 / S2 for the #9 / #10 audit",
+    "compliance": "selection uses Train only (leave-5 three-stage + strict LOSO); Test is scored once, after the top five are frozen"
+  }
+}
