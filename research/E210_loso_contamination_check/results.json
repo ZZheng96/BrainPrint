@@ -1,0 +1,55 @@
+{
+  "experiment": "E210_loso_contamination_check",
+  "feature": "E65 logSPD 855 -> PCA96 (E139 best configuration)",
+  "note": "E137/E139/E141 build the LOSO known threshold from rows that are inside the prototype, which inflates LOSO rejection",
+  "rows": [
+    {
+      "k": 1,
+      "acceptance": 0.9,
+      "test_s1_rejection": 0.6211671612265084,
+      "test_s2_acceptance": 0.7378499323550838,
+      "loso_rejection_E139_rule": 0.6843349351170493,
+      "loso_rejection_clean": 0.37375255333916574
+    },
+    {
+      "k": 1,
+      "acceptance": 0.96,
+      "test_s1_rejection": 0.3158588855918233,
+      "test_s2_acceptance": 0.90108231865959,
+      "loso_rejection_E139_rule": 0.36902752348114914,
+      "loso_rejection_clean": 0.1916512111693611
+    },
+    {
+      "k": 12,
+      "acceptance": 0.9,
+      "test_s1_rejection": 0.7909660402242005,
+      "test_s2_acceptance": 0.5926215006764491,
+      "loso_rejection_E139_rule": 0.986163132437144,
+      "loso_rejection_clean": 0.6885411294354921
+    },
+    {
+      "k": 12,
+      "acceptance": 0.96,
+      "test_s1_rejection": 0.5667655786350149,
+      "test_s2_acceptance": 0.7837964408367156,
+      "loso_rejection_E139_rule": 0.8796706950615949,
+      "loso_rejection_clean": 0.41279547520655624
+    },
+    {
+      "k": 32,
+      "acceptance": 0.9,
+      "test_s1_rejection": 0.7781074843389384,
+      "test_s2_acceptance": 0.6001665105630138,
+      "loso_rejection_E139_rule": 0.997093007126385,
+      "loso_rejection_clean": 0.6653166732080369
+    },
+    {
+      "k": 32,
+      "acceptance": 0.96,
+      "test_s1_rejection": 0.559841740850643,
+      "test_s2_acceptance": 0.7891559995837236,
+      "loso_rejection_E139_rule": 0.9547573959321307,
+      "loso_rejection_clean": 0.4141854618474882
+    }
+  ]
+}
