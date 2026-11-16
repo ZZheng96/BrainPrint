@@ -1,0 +1,13 @@
+{
+  "experiment": "E202 frozen Test audit",
+  "n_rows": 22251,
+  "unknown_rate_overall": 0.7817626174104535,
+  "S1_rejection_rate": 0.7777777777777778,
+  "S2_accept_rate": 0.2176084920387137,
+  "S1_rows": 3033,
+  "S2_rows": 19218,
+  "known_accept_train": 0.8935245545415037,
+  "unknown_rejection_train_inner": 1.0,
+  "gate_tau": 0.9362011273208692,
+  "test_auc_f1_C_RA_ASafeR_U_score": "N/A (no Test labels)"
+}

@@ -1,0 +1,151 @@
+{
+  "experiment": "E202 strict leave-one-subject-out (20 folds)",
+  "protocol": "held-out subject excluded from SVD/prototypes/gate; gate unknown from inner split",
+  "mean_loso_rejection": 0.9846769831044414,
+  "min_loso_rejection": 0.9158878504672897,
+  "std_loso_rejection": 0.021596390014104946,
+  "mean_registration_id_accuracy": 0.9954013542765099,
+  "mean_known_accept": 0.8941577377008787,
+  "folds": [
+    {
+      "held_out": 1,
+      "loso_rejection": 1.0,
+      "known_accept": 0.8980248047772164,
+      "registration_id_accuracy": 0.9940284795590262,
+      "tau_b": 0.9330456923208574
+    },
+    {
+      "held_out": 2,
+      "loso_rejection": 1.0,
+      "known_accept": 0.897680763983629,
+      "registration_id_accuracy": 0.9945429740791268,
+      "tau_b": 0.9344009869555157
+    },
+    {
+      "held_out": 3,
+      "loso_rejection": 0.9836065573770492,
+      "known_accept": 0.8967416245984396,
+      "registration_id_accuracy": 0.9949518127581459,
+      "tau_b": 0.9309492499735892
+    },
+    {
+      "held_out": 4,
+      "loso_rejection": 0.9823008849557522,
+      "known_accept": 0.8980804387568556,
+      "registration_id_accuracy": 0.9949725776965265,
+      "tau_b": 0.9282685426164312
+    },
+    {
+      "held_out": 5,
+      "loso_rejection": 1.0,
+      "known_accept": 0.899090909090909,
+      "registration_id_accuracy": 0.995,
+      "tau_b": 0.9367221256576663
+    },
+    {
+      "held_out": 6,
+      "loso_rejection": 0.9919354838709677,
+      "known_accept": 0.8929719797887,
+      "registration_id_accuracy": 0.9958658704639411,
+      "tau_b": 0.93529565290932
+    },
+    {
+      "held_out": 7,
+      "loso_rejection": 0.9516129032258065,
+      "known_accept": 0.8929719797887,
+      "registration_id_accuracy": 0.9967845659163987,
+      "tau_b": 0.934883387129952
+    },
+    {
+      "held_out": 8,
+      "loso_rejection": 0.9807692307692307,
+      "known_accept": 0.9025944469731452,
+      "registration_id_accuracy": 0.9968138370505234,
+      "tau_b": 0.9299075818660274
+    },
+    {
+      "held_out": 9,
+      "loso_rejection": 1.0,
+      "known_accept": 0.8860411899313501,
+      "registration_id_accuracy": 0.9958810068649886,
+      "tau_b": 0.9336940226472632
+    },
+    {
+      "held_out": 10,
+      "loso_rejection": 0.9158878504672897,
+      "known_accept": 0.8874202370100274,
+      "registration_id_accuracy": 0.9954421148587056,
+      "tau_b": 0.9364671744861821
+    },
+    {
+      "held_out": 11,
+      "loso_rejection": 0.9917355371900827,
+      "known_accept": 0.8871559633027523,
+      "registration_id_accuracy": 0.9954128440366973,
+      "tau_b": 0.9355327275449439
+    },
+    {
+      "held_out": 12,
+      "loso_rejection": 0.9836065573770492,
+      "known_accept": 0.8903166590178981,
+      "registration_id_accuracy": 0.9949518127581459,
+      "tau_b": 0.9331197052910722
+    },
+    {
+      "held_out": 13,
+      "loso_rejection": 0.991869918699187,
+      "known_accept": 0.8888888888888888,
+      "registration_id_accuracy": 0.9944903581267218,
+      "tau_b": 0.9342134129383369
+    },
+    {
+      "held_out": 14,
+      "loso_rejection": 1.0,
+      "known_accept": 0.8944954128440367,
+      "registration_id_accuracy": 0.9940366972477064,
+      "tau_b": 0.9279453548030329
+    },
+    {
+      "held_out": 15,
+      "loso_rejection": 0.9454545454545454,
+      "known_accept": 0.9005020538566865,
+      "registration_id_accuracy": 0.9945230488361478,
+      "tau_b": 0.9302815325525551
+    },
+    {
+      "held_out": 16,
+      "loso_rejection": 0.9915966386554622,
+      "known_accept": 0.8991750687442713,
+      "registration_id_accuracy": 0.9958753437213566,
+      "tau_b": 0.9317014245742301
+    },
+    {
+      "held_out": 17,
+      "loso_rejection": 1.0,
+      "known_accept": 0.89584285061672,
+      "registration_id_accuracy": 0.9940612151667428,
+      "tau_b": 0.9346269755290322
+    },
+    {
+      "held_out": 18,
+      "loso_rejection": 1.0,
+      "known_accept": 0.896958692691784,
+      "registration_id_accuracy": 0.9972764412165229,
+      "tau_b": 0.9340393727169459
+    },
+    {
+      "held_out": 19,
+      "loso_rejection": 0.9912280701754386,
+      "known_accept": 0.8856881572930956,
+      "registration_id_accuracy": 0.9986282578875172,
+      "tau_b": 0.9391225639969345
+    },
+    {
+      "held_out": 20,
+      "loso_rejection": 0.9919354838709677,
+      "known_accept": 0.8925126320624713,
+      "registration_id_accuracy": 0.994487827285255,
+      "tau_b": 0.9316471332987545
+    }
+  ]
+}

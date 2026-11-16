@@ -1,0 +1,26 @@
+{
+  "experiment": "E202_dual_model_cross_session",
+  "seed": 20261116,
+  "data": {
+    "metadata": "BrainPrint_cache/train_metadata.csv",
+    "e65": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "e162": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+    "train_only": true,
+    "test_access": false
+  },
+  "protocol": {
+    "fit_fraction": 0.6,
+    "eval_low": 0.6,
+    "eval_high": 0.8,
+    "pca_dim": 96,
+    "embedding_dim": 128,
+    "epochs": 30,
+    "batch_size": 256,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "temperature": 0.15,
+    "acceptance": 0.9,
+    "leave_k": [2, 5, 10],
+    "folds_per_k": 20
+  }
+}
