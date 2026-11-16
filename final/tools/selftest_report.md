@@ -1,6 +1,6 @@
 # E201 决赛提交包自测
 
-方案：E200 冻结方案 `subwin6_pca96_k1 @ a=0.90`，tau = 19.263826。参数从 `research/E200_final_freeze/bundle/frozen_bundle.pt` 原样复制，未重新拟合。提交包为 `final/team_hymn.zip`（371,036 B，sha256 `96328fe8bde210b5ac3c6f82adc12e6cc0628951e9703e3deb0ad5de5ea91b64`），zip 内仅 model.py / weights.pt / team.json / requirements.txt / README.md，顶层即 `team_hymn/`。
+方案：E200 冻结方案 `subwin6_pca96_k1 @ a=0.90`，tau = 19.263826。参数从 `research/E200_final_freeze/bundle/frozen_bundle.pt` 原样复制，未重新拟合。提交包为 `final/team_hymn.zip`（371,069 B，sha256 `bb2b8e57bd33547cc93e9485f2b1fa2b15ca305794aea1ed032ec326f5034060`），zip 内仅 model.py / weights.pt / team.json / requirements.txt / README.md，顶层即 `team_hymn/`。
 
 **当前 AUC / F1**：决赛测试集不公开，所以 N/A。初赛对应值见 E200：S1 0.7135，S2 0.7069，身份头 OOF macro-F1 0.9882。
 
