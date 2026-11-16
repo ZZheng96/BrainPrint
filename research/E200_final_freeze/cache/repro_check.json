@@ -1,0 +1,87 @@
+{
+  "bundle_sha256": "7f6f4f6a6e5741551f3f13331e19e8d78335f5fcfb49cbe390494b39d5f051d0",
+  "tau_dist": 19.26382579803467,
+  "tau_norm": -1.3052289546016027,
+  "train_known_acceptance": 0.8999469214437368,
+  "smoke_256": {
+    "rows": 256,
+    "feature_max_abs_vs_cache": 0.0,
+    "feature_tolerance_1e-3": true,
+    "labels_identical": 256,
+    "agreement": 1.0,
+    "bitwise_identical": true
+  },
+  "full": {
+    "rows": 22251,
+    "feature_max_abs_vs_cache": 0.0,
+    "agreement_with_feature_cache_path": 1.0,
+    "disagreements": 0,
+    "agreement_with_e189_stored_scores": 1.0,
+    "distance_max_abs_vs_e189": 1.9073486328125e-05,
+    "rejected": 7797,
+    "rejected_rate": 0.350411217473372,
+    "accepted": 14454,
+    "s1_rejection": 0.7134849983514672,
+    "s2_acceptance": 0.7068893745446977,
+    "e191_s1_rejection": 0.7134849983514672,
+    "e191_s2_acceptance": 0.7068893745446977,
+    "s1_delta": 0.0,
+    "s2_delta": 0.0,
+    "label_counts": {
+      "0": 7797,
+      "1": 1466,
+      "2": 572,
+      "3": 1032,
+      "4": 343,
+      "5": 106,
+      "6": 1387,
+      "7": 735,
+      "8": 5,
+      "9": 29,
+      "10": 562,
+      "11": 345,
+      "12": 134,
+      "13": 1295,
+      "14": 278,
+      "15": 1354,
+      "16": 1109,
+      "17": 1152,
+      "18": 2037,
+      "19": 79,
+      "20": 434
+    },
+    "per_session": {
+      "session1": {
+        "n": 3033,
+        "rejected": 2164,
+        "rejection_rate": 0.7134849983514672
+      },
+      "session2": {
+        "n": 19218,
+        "rejected": 5633,
+        "rejection_rate": 0.2931106254553023
+      }
+    },
+    "window_tau_variant": {
+      "tau_dist": 19.187788009643555,
+      "s1_rejection": 0.7200791295746786,
+      "s2_acceptance": 0.6992402955562493,
+      "rejected": 7964
+    }
+  },
+  "compliance": {
+    "rows": 22251,
+    "rows_expected": 22251,
+    "rows_ok": true,
+    "columns": [
+      "Sample",
+      "Label"
+    ],
+    "columns_ok": true,
+    "sample_order_ok": true,
+    "label_min": 0,
+    "label_max": 20,
+    "labels_in_range": true,
+    "nan_free": true
+  }
+}

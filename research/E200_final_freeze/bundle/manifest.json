@@ -1,0 +1,170 @@
+{
+  "experiment": "E200_final_freeze",
+  "system": "subwin6_pca96_k1 @ a=0.90",
+  "format": "E200-frozen-gate-v1",
+  "built_at": "2026-11-16 09:52:16",
+  "git_commit": "c8e3fba5eb3eff3b663b2dad5753294e19d2a664",
+  "files": [
+    {
+      "path": "bundle/frozen_bundle.pt",
+      "bytes": 589841,
+      "sha256": "7f6f4f6a6e5741551f3f13331e19e8d78335f5fcfb49cbe390494b39d5f051d0",
+      "content": "stage1 + stage2 + stage3 + meta (torch.save dict)"
+    },
+    {
+      "path": "bundle/prototypes.npz",
+      "bytes": 363352,
+      "sha256": "224a6f97f8007f9537f7dd061ca064de652d28ae7866e946fb7cc1a8c646de14",
+      "content": "prototypes (4,20,1,96) + pca basis/mean + task stats, npz"
+    }
+  ],
+  "sizes": {
+    "pca_basis_bytes": 328320,
+    "prototypes_bytes": 30720,
+    "total_inline_bytes": 389820
+  },
+  "stage1": {
+    "feature": {
+      "variant": "subwin_mean_n6",
+      "n_subwindows": 6,
+      "samples_per_trial": 1200,
+      "subwindow_length": 200,
+      "channels": 18,
+      "sampling_rate_hz": 300,
+      "bands_hz": [
+        [
+          1,
+          8
+        ],
+        [
+          8,
+          13
+        ],
+        [
+          13,
+          20
+        ],
+        [
+          20,
+          30
+        ],
+        [
+          30,
+          40
+        ]
+      ],
+      "band_edges": "lower-inclusive, upper-exclusive except the last band (<= 40 Hz)",
+      "channel_std_ddof": 1,
+      "channel_std_epsilon": 1e-12,
+      "covariance_shrinkage": 0.05,
+      "eigenvalue_floor": 1e-12,
+      "off_diagonal_multiplier": 1.4142135623730951,
+      "zband_epsilon": 1e-06,
+      "dim": 855,
+      "aggregation": "each sub-window runs the full E65 pipeline independently (band isolation -> channel standardisation -> correlation -> shrinkage -> logSPD -> upper triangle -> detrend_zband); the 6 855-d vectors are averaged",
+      "detrend_rule": "subtract each band's mean diagonal log-variance from the diagonal entries only, then z-score the 171 entries per band (population std)"
+    },
+    "task_stats": "4 x 855 mean + 4 x 855 sd",
+    "pca_mean": 855,
+    "pca_basis": [
+      855,
+      96
+    ],
+    "pca_fit_rows": "frac<=0.6"
+  },
+  "stage2": {
+    "k_proto": 1,
+    "prototypes": [
+      4,
+      20,
+      1,
+      96
+    ],
+    "rows": "fit rows (frac<=0.6) of all 20 identities"
+  },
+  "stage3": {
+    "a": 0.9,
+    "tau_dist": 19.26382579803467,
+    "tau_norm": -1.3052289546016027,
+    "decision": "nearest distance > tau_dist -> 0 (reject), else the nearest identity",
+    "threshold_source": "90% quantile of the 5-block Train-OOF nearest distance (a = 0.90 known acceptance); Test never read",
+    "train_known_acceptance": 0.8999469214437368,
+    "sensitivity_window_tau_dist": 19.187788009643555
+  },
+  "identity_backbone": [
+    {
+      "path": "research/E191_fix_gate1_gate7/model_branch_a_v3.pt",
+      "sha256": "d7204c9a32c56d926c8786e1c7759f5bda4e6e2fed0f363099cc5a1fcfeb6387",
+      "bytes": 5275487,
+      "exists": true
+    },
+    {
+      "path": "research/E191_fix_gate1_gate7/cache/stage_a_v3.pt",
+      "sha256": "83d5ac7d233754b68c0d224bb82a12750ed09a51749d74fe6e3cb13c87a5f91d",
+      "bytes": 10673658,
+      "exists": true
+    },
+    {
+      "path": "research/E191_fix_gate1_gate7/cache/fold_model_v3_0.pt",
+      "sha256": "f69e5733ce7ee7be4789298d9afa758c4222e7fe55c22430d52a15c22515ae25",
+      "bytes": 2639539,
+      "exists": true
+    },
+    {
+      "path": "research/E191_fix_gate1_gate7/cache/fold_model_v3_1.pt",
+      "sha256": "7acc91b2882afab78c84b0a513d4f8fc3af2b0348a4ad74adcff5447a079fe3e",
+      "bytes": 2639539,
+      "exists": true
+    },
+    {
+      "path": "research/E191_fix_gate1_gate7/cache/fold_model_v3_2.pt",
+      "sha256": "241a5b9585eecb2ee4cee42f2ee15d5527301238b61d2bc26ef2a8c34288d8f3",
+      "bytes": 2639539,
+      "exists": true
+    },
+    {
+      "path": "research/E191_fix_gate1_gate7/cache/fold_model_v3_3.pt",
+      "sha256": "c80b12bb3bd4172d96974ace509a2aef59d0fc8d7c7c0a86dbd06dd0faf57e2c",
+      "bytes": 2639539,
+      "exists": true
+    },
+    {
+      "path": "research/E191_fix_gate1_gate7/cache/fold_model_v3_4.pt",
+      "sha256": "5d73bb07e4bee52ae5666e6065e43c359178be24ba99d912e602334f89dab9d9",
+      "bytes": 2639539,
+      "exists": true
+    }
+  ],
+  "source_checksums": {
+    "train_features": "c93a7aa8a6f423d53e026b8782f76671c0834899ce2bfc2b049ba3ebd1a9b610",
+    "test_features": "5a45e4cd7013f88001d4bf018cb994035b0270e8209950e5ee4d60cbee479daf",
+    "e189_frozen_state": "ec43962633bbc1e749f4935d30d5098e2653362912998c9378b00831c4c38514",
+    "train_metadata": "f3be516e93082b78a9f483f9edb92f6330b1be39d32dff999a0a60b9bb92b545",
+    "test_metadata": "6af2d22abbfdf32b274f641b57b30b1ea6c4e4477d4eae78f85e3e186ed0310e"
+  },
+  "state_checks_vs_e189": {
+    "stats_mu_max_abs": 0.0,
+    "stats_sd_max_abs": 0.0,
+    "pca_mu_max_abs": 0.0,
+    "basis_max_abs": 0.0,
+    "prototypes_max_abs": 3.814697265625e-06,
+    "oof_max_abs": 7.62939453125e-06,
+    "oof_mu_delta": -3.214348076596707e-08,
+    "oof_sd_delta": 1.393165582896927e-09
+  },
+  "test_reproduction": {
+    "tau_dist": 19.26382579803467,
+    "rejected": 7797,
+    "s1_rejection": 0.7134849983514672,
+    "s2_acceptance": 0.7068893745446977,
+    "window_tau": {
+      "tau_dist": 19.187788009643555,
+      "s1_rejection": 0.7200791295746786,
+      "s2_acceptance": 0.6992402955562493
+    },
+    "agreement_with_e189_stored_scores": 1.0
+  },
+  "class_rule": "0 = unregistered, 1..20 = registered identity",
+  "session_used_for_decision": false,
+  "test_official_metrics": "N/A (Test has no identity labels)"
+}
