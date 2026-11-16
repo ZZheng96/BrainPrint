@@ -1,0 +1,75 @@
+{
+  "experiment": "E199_enroll15_test20",
+  "date": "2026-11-16",
+  "purpose": "Deployment simulation asked by the user: enrol 15 of the 20 Train identities, then present the evaluation blocks of ALL 20 identities (15 enrolled + 5 unregistered) at once. Enrolled rows should be identified correctly, unregistered rows should be rejected (label 0). Reports overall correctness, identification accuracy, rejection rate, unregistered false-accept rate and a per-identity breakdown. Train-only simulation: no Test data are read, no Session field is used for any decision, no model is trained.",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "train_trials": 11304,
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "classes": [1, 20],
+    "train_only": true,
+    "test_read": false
+  },
+  "protocol": {
+    "stage1_training": "per-task mean/sd and the PCA basis are fitted on the fit rows (frac <= 0.6) of ALL 20 identities. Fold-invariant, computed once. This is the user-defined training stage; it is deliberately NOT restricted to the enrolled identities.",
+    "stage2_enrolment": "prototypes of the 15 enrolled identities only, from their own prototype rows: variant 'fit' = fit rows (frac <= 0.6), variant 'fit_eval' = fit + eval rows (frac <= 0.8, upper-bound reference). k_proto = 12 for e65, 1 for subwin6 and e162.",
+    "stage3_deployment": "every evaluation-block row (0.6 < frac <= 0.8) of ALL 20 identities is scored against the 15 enrolled prototypes: argmax over the enrolled identities = identification, best-match score < tau = rejection (label 0).",
+    "fit_fraction": 0.6,
+    "eval_window": "0.6 < frac <= 0.8",
+    "upper_bound_prototype_fraction": 0.8,
+    "primary_acceptance": 0.90,
+    "acceptance_workpoints": [0.85, 0.90, 0.95],
+    "threshold_rule": "tau = quantile(the 15 enrolled identities' best-match scores in the evaluation window, 1 - a); calibrated on enrolled identities only, the 5 unregistered never enter the threshold",
+    "folds": 500,
+    "fold_rule": "k = 5: 500 distinct random 5-subsets of the 20 identities drawn from C(20,5) with numpy default_rng(20261116 + 5), i.e. the same generator and seed rule as E197 (E197 drew 200)",
+    "seed": 20261116
+  },
+  "families": {
+    "e65": {
+      "train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "dim": 855,
+      "pca": 96,
+      "prototypes": 12,
+      "source": "E65 correlation-logSPD, E143 / E197"
+    },
+    "subwin6": {
+      "train": "research/E171_multiscale_fusion/train_subwin_mean_n6.npy",
+      "dim": 855,
+      "pca": 96,
+      "prototypes": 1,
+      "source": "E168 / E171 sub-window mean, n = 6"
+    },
+    "e162": {
+      "train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy",
+      "dim": 256,
+      "pca": 128,
+      "prototypes": 1,
+      "source": "E162 contrastive encoder (pre-trained, frozen)"
+    }
+  },
+  "gates": [
+    {"name": "e65_pca96_k12", "weights": {"e65": 1.0}, "note": "E143 baseline gate"},
+    {"name": "subwin6_pca96_k1", "weights": {"subwin6": 1.0}, "note": "gate used by the E191 7/11 scheme"},
+    {"name": "e65+subwin6", "weights": {"e65": 0.5, "subwin6": 0.5}, "note": "equal-weight fusion (E197)"},
+    {"name": "e65_0.7+e162_0.3", "weights": {"e65": 0.7, "e162": 0.3}, "note": "top-1 of E198's leave-5 selection"}
+  ],
+  "fusion_normalisation": "Each stream's (rows x 20) identity-score matrix is standardised with the mean/sd of that fold's enrolled-known best-match scores (the max over the 15 enrolled columns), then the weighted sum is taken and the argmax is restricted to the enrolled columns. Single-stream gates are invariant to this step.",
+  "reporting": {
+    "identification_accuracy": "share of the enrolled 15 identities' evaluation rows whose argmax over the enrolled prototypes is their own identity (threshold-free)",
+    "rejection_rate": "share of the 5 unregistered identities' evaluation rows whose best-match score is below tau (label 0)",
+    "false_accept_rate": "share of the 5 unregistered identities' evaluation rows whose best-match score is >= tau and is therefore assigned to some enrolled identity",
+    "false_reject_rate": "share of the enrolled identities' evaluation rows whose best-match score is below tau (an enrolled person is locked out)",
+    "overall_accuracy": "(enrolled rows correctly identified + unregistered rows correctly rejected) / all 2301 evaluation rows - the task's definition; acceptance is not required for an enrolled row to count as identified",
+    "overall_end_to_end": "(enrolled rows correctly identified AND accepted + unregistered rows rejected) / all rows - the stricter deployment reading that also pays the false-reject cost",
+    "closed_set_f1": "macro-F1 of the argmax assignment over the 15 enrolled identities",
+    "auc": "enrolled-known vs unregistered best-match scores, pooled over the 500 folds",
+    "test_official": "N/A - this experiment is Train-only and does not read Test; AUC / F1 / C / RA / ASafeR / U / Score are not computed"
+  },
+  "references": {
+    "e197": "research/E197_enrollment_leave_k/results.json",
+    "e197_fold_plan": "research/E197_enrollment_leave_k/cache/fold_plan.json",
+    "e198": "research/E198_select_by_leave5/results.json",
+    "test_s1_rejection_reference": 0.7415,
+    "test_s1_note": "the task's 0.7415 equals E197's k=5 fold-matched Test S1 rejection averaged over its 9 unsupervised gates (results.json analysis.test_s1_match['5'].test_mean). It is a cross-batch reading and is quoted, not re-computed here"
+  }
+}

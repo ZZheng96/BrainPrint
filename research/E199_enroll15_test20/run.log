@@ -1,0 +1,32 @@
+
+E199 start 2026-11-16 09:25:35 device cuda
+Train 11304 rows, fit 6695, eval window 2301, 20 identities, device cuda
+stage 1: training on all 20 identities (fit rows, fold-invariant)
+  stage1 e65: 855 -> 96 PCA on 6695 fit rows of all 20 identities
+  stage1 subwin6: 855 -> 96 PCA on 6695 fit rows of all 20 identities
+  stage1 e162: 256 -> 128 PCA on 6695 fit rows of all 20 identities
+  stage2 fit      e65     : 12 prototype(s)/identity x 20 identities from 6695 rows
+  stage2 fit      subwin6 : 1 prototype(s)/identity x 20 identities from 6695 rows
+  stage2 fit      e162    : 1 prototype(s)/identity x 20 identities from 6695 rows
+  stage2 fit_eval e65     : 12 prototype(s)/identity x 20 identities from 8996 rows
+  stage2 fit_eval subwin6 : 1 prototype(s)/identity x 20 identities from 8996 rows
+  stage2 fit_eval e162    : 1 prototype(s)/identity x 20 identities from 8996 rows
+stage 1 + 2 done in 1s
+500 leave-5 folds, 15 enrolled / 5 unregistered, eval rows 2301
+  fit fold 100/500 0.019s/fold
+  fit fold 200/500 0.019s/fold
+  fit fold 300/500 0.019s/fold
+  fit fold 400/500 0.019s/fold
+  fit fold 500/500 0.019s/fold
+  fit 500 folds in 11s
+  fit_eval fold 100/500 0.019s/fold
+  fit_eval fold 200/500 0.019s/fold
+  fit_eval fold 300/500 0.019s/fold
+  fit_eval fold 400/500 0.019s/fold
+  fit_eval fold 500/500 0.019s/fold
+  fit_eval 500 folds in 11s
+representative fold 23 (held (1, 2, 11, 19, 20)) overall 0.8735 median 0.8735
+  e197_check fold 100/200 0.019s/fold
+  e197_check fold 200/200 0.019s/fold
+  e197_check 200 folds in 4s
+E199 done
