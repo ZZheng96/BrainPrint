@@ -1,0 +1,46 @@
+{
+  "experiment": "E211_clean_two_family_fusion",
+  "protocol": "5-block cross-fitted registration, LOSO identity exclusion, per-fold stats/PCA on enrolled only; weight chosen on Train only; Test audited once",
+  "rows": [
+    {
+      "weight_subwin6": 0.0,
+      "loso_auc": 0.7739535161879415,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.5575110813126234,
+      "test_s1_rejection": 0.9871414441147379,
+      "test_s2_acceptance": 0.16167134977625144
+    },
+    {
+      "weight_subwin6": 0.25,
+      "loso_auc": 0.7890538589427136,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.5837756546355273,
+      "test_s1_rejection": 0.9897790966040224,
+      "test_s2_acceptance": 0.16453325007805183
+    },
+    {
+      "weight_subwin6": 0.5,
+      "loso_auc": 0.7987722930463526,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.6018130517376243,
+      "test_s1_rejection": 0.9927464556544675,
+      "test_s2_acceptance": 0.17098553439483818
+    },
+    {
+      "weight_subwin6": 0.75,
+      "loso_auc": 0.8032859064214792,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.6008678809550415,
+      "test_s1_rejection": 0.9930761622156281,
+      "test_s2_acceptance": 0.16718701217608492
+    },
+    {
+      "weight_subwin6": 1.0,
+      "loso_auc": 0.8031669822178632,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.5873049130256639,
+      "test_s1_rejection": 0.9917573359709858,
+      "test_s2_acceptance": 0.16250390259132064
+    }
+  ]
+}
