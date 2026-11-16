@@ -1,0 +1,62 @@
+{
+  "experiment": "E212_fusion_of_nearest_clean_points",
+  "inputs": {
+    "E170": "Train-selected 3-way score fusion (clean LOSO)",
+    "E209": "subwin6 full-data registration (clean 5-block LOSO)"
+  },
+  "protocol": "family scores normalised by their own known pools; weight and threshold selected on Train only; Test audited once",
+  "rows": [
+    {
+      "weight_E170": 0.0,
+      "threshold": -0.006769724707940238,
+      "loso_unknown_rejection": 0.9000434593654932,
+      "train_known_acceptance": 0.5870488322717622,
+      "test_s1_rejection": 0.9914276294098252,
+      "test_s2_acceptance": 0.1669268394213758
+    },
+    {
+      "weight_E170": 0.25,
+      "threshold": -0.43164989251679664,
+      "loso_unknown_rejection": 0.9000434593654932,
+      "train_known_acceptance": 0.7569886765746638,
+      "test_s1_rejection": 0.973293768545994,
+      "test_s2_acceptance": 0.30913726714538453
+    },
+    {
+      "weight_E170": 0.5,
+      "threshold": -0.6957026423574029,
+      "loso_unknown_rejection": 0.9000434593654932,
+      "train_known_acceptance": 0.8415605095541401,
+      "test_s1_rejection": 0.9465875370919882,
+      "test_s2_acceptance": 0.4112810906441877
+    },
+    {
+      "weight_E170": 0.75,
+      "threshold": -0.8448165809475221,
+      "loso_unknown_rejection": 0.9000434593654932,
+      "train_known_acceptance": 0.8704883227176221,
+      "test_s1_rejection": 0.9195515990768216,
+      "test_s2_acceptance": 0.452024144031637
+    },
+    {
+      "weight_E170": 1.0,
+      "threshold": -0.8548049926757812,
+      "loso_unknown_rejection": 0.9000434593654932,
+      "train_known_acceptance": 0.8386411889596603,
+      "test_s1_rejection": 0.9175733597098582,
+      "test_s2_acceptance": 0.42689145592673533
+    }
+  ],
+  "E170_reference": {
+    "acceptance_0.90": {
+      "loso": 0.8615152517647682,
+      "s1": 0.7484338938344873,
+      "s2": 0.6128629409928192
+    },
+    "acceptance_0.91": {
+      "loso": 0.8390221000235284,
+      "s1": 0.7246950214309265,
+      "s2": 0.6387241128109065
+    }
+  }
+}
