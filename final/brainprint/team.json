@@ -1,0 +1,10 @@
+{
+  "team_id": "brainprint",
+  "team_name": "TODO_队伍名称",
+  "institution": "TODO_单位",
+  "contact": "TODO_邮箱",
+  "architecture": "Training-free geometric template matcher: 6 sub-window x 5-band FFT filter bank, channel correlation logSPD (855-d), per-task z-score, PCA-96, euclidean nearest prototype with a frozen distance threshold for unknown rejection",
+  "description": "Each 4 s trial is cut into six 200-sample sub-windows; each sub-window is split into 5 frequency bands, the 18x18 channel correlation of each band is shrunk and mapped to the log-SPD tangent space, z-scored per band and the six vectors are averaged. Task-wise standardisation and PCA (96-d) are fitted on Train session1 only. Identities 1-20 use prototypes from Train; new users 21-23 get prototypes from the 20 provided enrollment samples. A sample is rejected (-1) when its nearest prototype distance exceeds tau = 19.2638 (90% quantile of Train out-of-fold genuine distances).",
+  "weights": "weights.pt",
+  "new_user_support": true
+}
