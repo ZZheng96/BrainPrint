@@ -1,0 +1,87 @@
+{
+  "experiment": "E207_registration_aggregation",
+  "protocol": "strict 20-fold LOSO; operation point Train-only (LOSO UR>=0.90, max known acceptance); Test audited once",
+  "candidates": {
+    "mean_dist": {
+      "threshold": -29.500341415405273,
+      "train_known_acceptance": 0.09071570712962328,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.4446856971807681,
+      "test_s1_rejection": 0.9858226178700956,
+      "test_s2_acceptance": 0.011395566656259756,
+      "frontier_max_s2_at_s1_070": 0.30455822666250393,
+      "frontier_max_s1_at_s2_070": 0.3066271018793274
+    },
+    "median_dist": {
+      "threshold": -28.53587532043457,
+      "train_known_acceptance": 0.10126032159930465,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.4527592016792827,
+      "test_s1_rejection": 0.9709858226178701,
+      "test_s2_acceptance": 0.03621604745551046,
+      "frontier_max_s2_at_s1_070": 0.30263294827765636,
+      "frontier_max_s1_at_s2_070": 0.31025387405209365
+    },
+    "max_dist": {
+      "threshold": -31.49396324157715,
+      "train_known_acceptance": 0.08271003453875889,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.43338618424876996,
+      "test_s1_rejection": 0.9907682162875041,
+      "test_s2_acceptance": 0.008793839109168488,
+      "frontier_max_s2_at_s1_070": 0.30627536684358414,
+      "frontier_max_s1_at_s2_070": 0.30003297065611606
+    },
+    "min_dist": {
+      "threshold": -25.262659072875977,
+      "train_known_acceptance": 0.11896429470024475,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.473569740577843,
+      "test_s1_rejection": 0.8898780085723705,
+      "test_s2_acceptance": 0.11473618482672494,
+      "frontier_max_s2_at_s1_070": 0.30710791965865336,
+      "frontier_max_s1_at_s2_070": 0.29409825255522587
+    },
+    "mean_feature": {
+      "threshold": -15.504520416259766,
+      "train_known_acceptance": 0.5544728836432672,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.7920379711131116,
+      "test_s1_rejection": 0.9930761622156281,
+      "test_s2_acceptance": 0.14132584035799772,
+      "frontier_max_s2_at_s1_070": 0.7177645956915392,
+      "frontier_max_s1_at_s2_070": 0.7164523574019123
+    },
+    "k2": {
+      "threshold": -15.411425590515137,
+      "train_known_acceptance": 0.6835014524577415,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.8484601239317939,
+      "test_s1_rejection": 0.9917573359709858,
+      "test_s2_acceptance": 0.16198355708190237,
+      "frontier_max_s2_at_s1_070": 0.704703923405141,
+      "frontier_max_s1_at_s2_070": 0.7026046818331685
+    },
+    "k3": {
+      "threshold": -15.370977401733398,
+      "train_known_acceptance": 0.7327477755666872,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.8743273618267936,
+      "test_s1_rejection": 0.9914276294098252,
+      "test_s2_acceptance": 0.1809241336247268,
+      "frontier_max_s2_at_s1_070": 0.700228952024144,
+      "frontier_max_s1_at_s2_070": 0.7019452687108474
+    },
+    "k4": {
+      "threshold": -15.366146087646484,
+      "train_known_acceptance": 0.755140785470848,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.8863905814034936,
+      "test_s1_rejection": 0.9917573359709858,
+      "test_s2_acceptance": 0.18055989176813403,
+      "frontier_max_s2_at_s1_070": 0.6961702570506817,
+      "frontier_max_s1_at_s2_070": 0.69765908341576
+    }
+  },
+  "test_supervised_metrics": "N/A: no Test identity labels"
+}

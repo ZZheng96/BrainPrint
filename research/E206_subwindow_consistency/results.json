@@ -1,0 +1,36 @@
+{
+  "experiment": "E206_subwindow_consistency_gate",
+  "feature": "subwin6 per-subwindow features, 6 votes per trial",
+  "mean_feature_rebuild_max_abs": 0.00014504045248031616,
+  "protocol": "strict 20-fold LOSO (stats/PCA/prototypes exclude the held-out identity); operating point from Train only; Test audited once after freezing",
+  "train_rows": 11304,
+  "test_rows": 22251,
+  "consistency_known": {
+    "mean": 0.8015241275722989,
+    "share_ge_4of6": 0.8034721745694092,
+    "share_ge_5of6": 0.643152862599785
+  },
+  "consistency_unknown": {
+    "mean": 0.5334542344892663,
+    "share_ge_4of6": 0.34058740268931353,
+    "share_ge_5of6": 0.12906935598018401
+  },
+  "distance_tau_known90": 28.707060623168946,
+  "operating_point": {
+    "gamma": 1.0,
+    "tau": 28.707060623168946,
+    "train_known_acceptance": 0.3920492234497587,
+    "loso_unknown_rejection": 0.9684182590233545
+  },
+  "pure_consistency_point": {
+    "gamma": 1.0,
+    "train_known_acceptance": 0.42224204579244723,
+    "loso_unknown_rejection": 0.9684182590233545
+  },
+  "test_s1_rejection": 0.9162545334652159,
+  "test_s2_acceptance": 0.0951711936725986,
+  "test_s1_rows": 3033,
+  "test_s2_rows": 19218,
+  "test_identity_accuracy": "N/A: no Test identity labels",
+  "test_supervised_metrics": "N/A: no Test identity labels"
+}

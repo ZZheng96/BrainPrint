@@ -1,0 +1,84 @@
+{
+  "experiment": "E204_per_sample_relative_distance",
+  "protocol": "strict 20-fold LOSO (stats/PCA/prototypes exclude held-out identity); threshold from Train known window and LOSO unknown at rejection>=0.90; Test audited once after freezing",
+  "device": "cuda",
+  "n_train": 11304,
+  "n_test": 22251,
+  "test_s1_rows": 3033,
+  "test_s2_rows": 19218,
+  "candidates": {
+    "raw": {
+      "threshold": -15.504199981689453,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.554427136942748,
+      "loso_auc": 0.7920393956388178,
+      "test_s1_rejection": 0.9930761622156281,
+      "test_s2_acceptance": 0.14132584035799772,
+      "test_s1_s2_mean": 0.567201001286813
+    },
+    "rel_mean": {
+      "threshold": 6.075928688049316,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.7943685811660834,
+      "loso_auc": 0.9140472481910831,
+      "test_s1_rejection": 0.8661391361688098,
+      "test_s2_acceptance": 0.3025288791757727,
+      "test_s1_s2_mean": 0.5843340076722913
+    },
+    "z": {
+      "threshold": 1.989493489265442,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.6241679818843066,
+      "loso_auc": 0.8288487564384313,
+      "test_s1_rejection": 0.7830530827563469,
+      "test_s2_acceptance": 0.22775522947236965,
+      "test_s1_s2_mean": 0.5054041561143583
+    },
+    "ratio": {
+      "threshold": -0.7282000780105591,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.7721585580639997,
+      "loso_auc": 0.8992529214553595,
+      "test_s1_rejection": 0.9301022090339598,
+      "test_s2_acceptance": 0.2623582058486835,
+      "test_s1_s2_mean": 0.5962302074413217
+    },
+    "margin": {
+      "threshold": -0.00787877757102251,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.025503785539467964,
+      "loso_auc": 0.15768957681177775,
+      "test_s1_rejection": 0.8486646884272997,
+      "test_s2_acceptance": 0.08512852534082631,
+      "test_s1_s2_mean": 0.466896606884063
+    },
+    "z_plus_rel_w0.25": {
+      "threshold": -0.5022151470184326,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.6936114732724902,
+      "loso_auc": 0.8641218563085129,
+      "test_s1_rejection": 0.8664688427299704,
+      "test_s2_acceptance": 0.2245811218649183,
+      "test_s1_s2_mean": 0.5455249822974444
+    },
+    "z_plus_rel_w0.5": {
+      "threshold": -0.39147883653640747,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.6822434181934628,
+      "loso_auc": 0.8605714384506068,
+      "test_s1_rejection": 0.9502143092647544,
+      "test_s2_acceptance": 0.19695077531480903,
+      "test_s1_s2_mean": 0.5735825422897817
+    },
+    "z_plus_rel_w0.75": {
+      "threshold": -0.20257450640201569,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "train_known_acceptance": 0.6384638257965645,
+      "loso_auc": 0.8313516936323717,
+      "test_s1_rejection": 0.9914276294098252,
+      "test_s2_acceptance": 0.16645852846289935,
+      "test_s1_s2_mean": 0.5789430789363623
+    }
+  },
+  "test_supervised_metrics": "N/A: no Test identity labels"
+}

@@ -1,0 +1,18 @@
+{
+  "experiment": "E208_learned_embedding_subwin6",
+  "protocol": "strict 20-fold LOSO (stats/PCA/network/prototypes/threshold exclude the held-out identity); Test audited once after freezing",
+  "epochs": 15,
+  "batch": 256,
+  "lr": 0.003,
+  "loso_auc": 0.9819011894498266,
+  "operating_point": {
+    "threshold": -0.5264314413070679,
+    "train_known_acceptance": 0.9551911068414191,
+    "loso_unknown_rejection": 0.9000353857041755
+  },
+  "test_s1_rejection": 0.6445763270689087,
+  "test_s2_acceptance": 0.3302112602768238,
+  "frontier_max_s2_at_s1_070": 0.27375377250494326,
+  "frontier_max_s1_at_s2_070": 0.33597098582261786,
+  "test_supervised_metrics": "N/A: no Test identity labels"
+}

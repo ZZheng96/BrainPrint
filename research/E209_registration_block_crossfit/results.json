@@ -1,0 +1,21 @@
+{
+  "experiment": "E209_registration_block_crossfit",
+  "protocol": "5-block cross-fitted registration on Train; LOSO identity exclusion; Train-only threshold at LOSO UR>=0.90; Test audited once",
+  "registration_rows": "all Train rows (deployment); 4/5 blocks (calibration)",
+  "loso_auc": 0.8031669838654264,
+  "operating_point": {
+    "threshold": -15.597799301147461,
+    "train_known_acceptance": 0.5873049130256639,
+    "loso_unknown_rejection": 0.9000353857041755
+  },
+  "test_s1_rejection": 0.9917573359709858,
+  "test_s2_acceptance": 0.16250390259132064,
+  "frontier_max_s2_at_s1_070": 0.727963367676137,
+  "frontier_max_s1_at_s2_070": 0.7293109132871745,
+  "frontier_balanced": {
+    "s1": 0.7167820639630729,
+    "s2": 0.7160474555104589,
+    "loso_ur": 0.31077494692144375
+  },
+  "test_supervised_metrics": "N/A: no Test identity labels"
+}

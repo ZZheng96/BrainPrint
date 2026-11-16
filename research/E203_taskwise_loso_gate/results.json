@@ -1,0 +1,43 @@
+{
+  "experiment": "E203_taskwise_loso_gate",
+  "protocol": "thresholds selected from Train OOF known and strict LOSO unknown, target LOSO rejection 0.90; Test only audited after decisions",
+  "thresholds": {
+    "EC": -16.388504028320312,
+    "EO": -16.55327796936035,
+    "Imagery": -16.99997329711914,
+    "SSVEP": -17.15771484375
+  },
+  "loso_by_task": {
+    "EC": {
+      "known_acceptance": 0.5180180180180181,
+      "unknown_rejection": 0.9054054054054054,
+      "known_rows": 222,
+      "unknown_rows": 222
+    },
+    "EO": {
+      "known_acceptance": 0.5,
+      "unknown_rejection": 0.9043478260869565,
+      "known_rows": 230,
+      "unknown_rows": 230
+    },
+    "Imagery": {
+      "known_acceptance": 0.8157894736842105,
+      "unknown_rejection": 0.9010889292196007,
+      "known_rows": 1102,
+      "unknown_rows": 1102
+    },
+    "SSVEP": {
+      "known_acceptance": 0.7456492637215528,
+      "unknown_rejection": 0.9009370816599732,
+      "known_rows": 747,
+      "unknown_rows": 747
+    }
+  },
+  "loso_rejection_mean": 0.9029448105929839,
+  "test_s1_rejection": 0.9330695680844049,
+  "test_s2_acceptance": 0.36455406389842854,
+  "test_rows": 22251,
+  "s1_rows": 3033,
+  "s2_rows": 19218,
+  "test_supervised_metrics": "N/A: Test identities unavailable"
+}

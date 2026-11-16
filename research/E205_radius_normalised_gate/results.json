@@ -1,0 +1,59 @@
+{
+  "experiment": "E205_radius_normalised_gate",
+  "protocol": "strict 20-fold LOSO; task stats/PCA/prototypes/radii exclude held-out identity; Train-only threshold at LOSO rejection >= 0.90; Test audited once",
+  "known_rows": 43719,
+  "unknown_rows": 11304,
+  "test_s1_rows": 3033,
+  "test_s2_rows": 19218,
+  "candidates": {
+    "raw": {
+      "threshold": -15.504199981689453,
+      "train_known_acceptance": 0.554427136942748,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.7920393956388178,
+      "test_s1_rejection": 0.9930761622156281,
+      "test_s2_acceptance": 0.14132584035799772,
+      "frontier_max_s2_at_s1_070": 0.7178686647934228,
+      "frontier_max_s1_at_s2_070": 0.7164523574019123,
+      "frontier_balanced": {
+        "s1": 0.7131552917903067,
+        "s2": 0.7082422728691852,
+        "loso_ur": 0.28910120311394194,
+        "train_ka": 0.9160776778974816
+      }
+    },
+    "radius": {
+      "threshold": -1.0614100694656372,
+      "train_known_acceptance": 0.5450719366865665,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.803235472626144,
+      "test_s1_rejection": 0.9535113748763601,
+      "test_s2_acceptance": 0.1729108127796857,
+      "frontier_max_s2_at_s1_070": 0.6044333437402435,
+      "frontier_max_s1_at_s2_070": 0.6060006594131223,
+      "frontier_balanced": {
+        "s1": 0.6577645895153313,
+        "s2": 0.6555833073160579,
+        "loso_ur": 0.4185244161358811,
+        "train_ka": 0.8865939294128411
+      }
+    },
+    "raw_z_plus_radius": {
+      "threshold": -0.0016551613807678223,
+      "train_known_acceptance": 0.5560053981106613,
+      "loso_unknown_rejection": 0.9000353857041755,
+      "loso_auc": 0.8064101151717702,
+      "test_s1_rejection": 0.990108803165183,
+      "test_s2_acceptance": 0.14002497658445207,
+      "frontier_max_s2_at_s1_070": 0.6916432511187428,
+      "frontier_max_s1_at_s2_070": 0.6900758325090669,
+      "frontier_balanced": {
+        "s1": 0.6973293768545994,
+        "s2": 0.6949214278280779,
+        "loso_ur": 0.35376857749469215,
+        "train_ka": 0.9107710606372516
+      }
+    }
+  },
+  "test_supervised_metrics": "N/A: no Test identity labels"
+}
