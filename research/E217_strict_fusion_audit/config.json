@@ -1,0 +1,22 @@
+{
+  "experiment": "E217_strict_fusion_audit",
+  "acceptance_grid": [0.85, 0.88, 0.90, 0.92, 0.94, 0.96, 0.50, 0.60, 0.70, 0.75, 0.80],
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "fit_fraction": 0.6,
+  "score_fraction": [0.6, 0.8],
+  "blocks": 5,
+  "seed": 20261117,
+  "data": {"train_metadata": "BrainPrint_cache/train_metadata.csv", "test_metadata": "BrainPrint_cache/test_metadata.csv"},
+  "streams": {
+    "e65": {"train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy", "test": "research/E121_pca_sweep/test_logspd.npy", "pca": 96, "k": 12},
+    "logbp": {"train": "research/E146_phase_features/train_log_band_power.npy", "test": "research/E146_phase_features/test_log_band_power.npy", "pca": 32, "k": 6},
+    "subwin": {"train": "research/E171_multiscale_fusion/train_subwin_mean_n6.npy", "test": "research/E171_multiscale_fusion/test_subwin_mean_n6.npy", "pca": 96, "k": 1},
+    "e162": {"train": "research/E162_raw_eeg_contrastive_v2/train_emb.npy", "test": "research/E162_raw_eeg_contrastive_v2/test_emb.npy", "pca": 128, "k": 1}
+  },
+  "candidates": {
+    "E65_PCA96_k12": ["e65"],
+    "E65_logbp": ["e65", "logbp"],
+    "E189_e65_subwin_logbp_e162": ["e65", "subwin", "logbp", "e162"]
+  },
+  "protocol": "Strict outer LOSO: held identity excluded from every outer-train standardization/PCA/prototype fit and threshold; each inner OOF block refits all transforms on outer_train fit rows excluding query block; Test only frozen audit; candidate score is equal-weight z-normalized stream fusion with z parameters from inner OOF known scores."
+}

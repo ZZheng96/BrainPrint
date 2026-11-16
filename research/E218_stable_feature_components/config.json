@@ -1,0 +1,17 @@
+{
+  "experiment": "E218_stable_feature_components",
+  "seed": 20261117,
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "data": {
+    "root": "Brainprint_Competition",
+    "metadata": "BrainPrint_cache/train_metadata.csv",
+    "channels": 18,
+    "samples": 1200,
+    "fs": 300
+  },
+  "sampling": {"rows_per_subject_task": 2, "unknown_subjects": [21,22,23,24,25]},
+  "perturbation": {"eps": [0.005,0.01,0.02], "steps": 4, "random_seed": 20261117, "random_match": "same RMS and Linf"},
+  "feature": {"bands": [[1,8],[8,13],[13,20],[20,30],[30,40]], "shrinkage": 0.05, "offdiag_multiplier": 1.4142135623730951, "logbp_dim": 90},
+  "selection": {"same_dim": 128, "low_dim": 64, "min_stability": 0.25},
+  "protocol": {"fit_fraction": 0.6, "eval_fraction": [0.6,0.8], "acceptance": 0.9, "outer": "subject LOSO", "diagnostic_subset": true}
+}

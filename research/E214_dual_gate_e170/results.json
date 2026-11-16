@@ -1,0 +1,834 @@
+{
+  "experiment": "E214_dual_gate_e170",
+  "device": "cuda",
+  "selected": {
+    "reg": 1.0,
+    "auc": 0.943024035238916,
+    "rejection": 0.6184267709691439,
+    "known_acceptance": 0.9500217296827467,
+    "acceptance": 0.94,
+    "threshold": 0.4475999361276627
+  },
+  "selection_rule": "nested subject exclusion; maximize inner LOSO unknown rejection subject to inner known acceptance >=0.95; ties AUC then larger regularization; thresholds from inner cross-fitted Train OOF known",
+  "train_oof_auc": 0.9245993464794069,
+  "train_oof_f1": 0.9319477330527054,
+  "loso_auc": 0.9306192289088451,
+  "strict_end_to_end_loso": false,
+  "strict_score_level_subject_crossfit": true,
+  "frozen_point": {
+    "acceptance": 0.94,
+    "threshold": 0.4475999361276627,
+    "LOSO_rejection_nested_macro": 0.6240763987366342,
+    "LOSO_known_acceptance_nested": 0.9465449804432855,
+    "Test_S1_rejection": 0.6538081107814046,
+    "Test_S2_acceptance": 0.7293162660006244
+  },
+  "curve": [
+    {
+      "acceptance": 0.8,
+      "threshold": 0.5344317078590393,
+      "LOSO_rejection_nested_macro": 0.9571808124911527,
+      "LOSO_known_acceptance_nested_macro": 0.8032842915291603,
+      "Test_S1_rejection": 0.9521925486317178,
+      "Test_S2_acceptance": 0.34306379435945467
+    },
+    {
+      "acceptance": 0.805,
+      "threshold": 0.5325375318527221,
+      "LOSO_rejection_nested_macro": 0.9536855781100277,
+      "LOSO_known_acceptance_nested_macro": 0.806232379886983,
+      "Test_S1_rejection": 0.9485657764589516,
+      "Test_S2_acceptance": 0.35513581017795814
+    },
+    {
+      "acceptance": 0.81,
+      "threshold": 0.5305474352836609,
+      "LOSO_rejection_nested_macro": 0.9507187938578513,
+      "LOSO_known_acceptance_nested_macro": 0.8128110849280649,
+      "Test_S1_rejection": 0.9442795911638642,
+      "Test_S2_acceptance": 0.36653137683421794
+    },
+    {
+      "acceptance": 0.815,
+      "threshold": 0.5288076600432396,
+      "LOSO_rejection_nested_macro": 0.9460806451450996,
+      "LOSO_known_acceptance_nested_macro": 0.8184450845671567,
+      "Test_S1_rejection": 0.9416419386745796,
+      "Test_S2_acceptance": 0.37667811426787384
+    },
+    {
+      "acceptance": 0.82,
+      "threshold": 0.5266618180274963,
+      "LOSO_rejection_nested_macro": 0.9385658435524926,
+      "LOSO_known_acceptance_nested_macro": 0.8258606153985186,
+      "Test_S1_rejection": 0.9350478074513683,
+      "Test_S2_acceptance": 0.3894786137995629
+    },
+    {
+      "acceptance": 0.825,
+      "threshold": 0.5245977222919465,
+      "LOSO_rejection_nested_macro": 0.9343763585076081,
+      "LOSO_known_acceptance_nested_macro": 0.831888192282681,
+      "Test_S1_rejection": 0.9294427959116386,
+      "Test_S2_acceptance": 0.4017587678218337
+    },
+    {
+      "acceptance": 0.83,
+      "threshold": 0.52271399974823,
+      "LOSO_rejection_nested_macro": 0.9295773877559018,
+      "LOSO_known_acceptance_nested_macro": 0.8350240739106993,
+      "Test_S1_rejection": 0.9218595450049456,
+      "Test_S2_acceptance": 0.4125819544177334
+    },
+    {
+      "acceptance": 0.835,
+      "threshold": 0.5204817092418671,
+      "LOSO_rejection_nested_macro": 0.9258092227567278,
+      "LOSO_known_acceptance_nested_macro": 0.8376806652036173,
+      "Test_S1_rejection": 0.9169139465875371,
+      "Test_S2_acceptance": 0.4253304193984806
+    },
+    {
+      "acceptance": 0.84,
+      "threshold": 0.518350989818573,
+      "LOSO_rejection_nested_macro": 0.9189655554958653,
+      "LOSO_known_acceptance_nested_macro": 0.8433429825040772,
+      "Test_S1_rejection": 0.9103198153643257,
+      "Test_S2_acceptance": 0.43656988240191485
+    },
+    {
+      "acceptance": 0.845,
+      "threshold": 0.5161038926243783,
+      "LOSO_rejection_nested_macro": 0.915026034298724,
+      "LOSO_known_acceptance_nested_macro": 0.8472696698079043,
+      "Test_S1_rejection": 0.9024068578964721,
+      "Test_S2_acceptance": 0.44947445103548755
+    },
+    {
+      "acceptance": 0.85,
+      "threshold": 0.5140286237001419,
+      "LOSO_rejection_nested_macro": 0.9072970022180987,
+      "LOSO_known_acceptance_nested_macro": 0.8493665375437593,
+      "Test_S1_rejection": 0.8935047807451368,
+      "Test_S2_acceptance": 0.46066187948798004
+    },
+    {
+      "acceptance": 0.855,
+      "threshold": 0.511335680782795,
+      "LOSO_rejection_nested_macro": 0.9004475030352503,
+      "LOSO_known_acceptance_nested_macro": 0.8550674384411895,
+      "Test_S1_rejection": 0.884272997032641,
+      "Test_S2_acceptance": 0.47543969195545843
+    },
+    {
+      "acceptance": 0.86,
+      "threshold": 0.5089690816402436,
+      "LOSO_rejection_nested_macro": 0.892306118898788,
+      "LOSO_known_acceptance_nested_macro": 0.8624511963528138,
+      "Test_S1_rejection": 0.8786679854929114,
+      "Test_S2_acceptance": 0.48907274430221664
+    },
+    {
+      "acceptance": 0.865,
+      "threshold": 0.5063385397195816,
+      "LOSO_rejection_nested_macro": 0.8829906093056671,
+      "LOSO_known_acceptance_nested_macro": 0.8674066946457459,
+      "Test_S1_rejection": 0.8700956149027366,
+      "Test_S2_acceptance": 0.5033302112602768
+    },
+    {
+      "acceptance": 0.87,
+      "threshold": 0.5027219420671463,
+      "LOSO_rejection_nested_macro": 0.8752154995900542,
+      "LOSO_known_acceptance_nested_macro": 0.8735878262283622,
+      "Test_S1_rejection": 0.8582261787009562,
+      "Test_S2_acceptance": 0.5207617858257884
+    },
+    {
+      "acceptance": 0.875,
+      "threshold": 0.4995967298746109,
+      "LOSO_rejection_nested_macro": 0.8610623250592973,
+      "LOSO_known_acceptance_nested_macro": 0.8775405220366419,
+      "Test_S1_rejection": 0.847675568743818,
+      "Test_S2_acceptance": 0.5368404620668124
+    },
+    {
+      "acceptance": 0.88,
+      "threshold": 0.4969497537612915,
+      "LOSO_rejection_nested_macro": 0.8479077997526041,
+      "LOSO_known_acceptance_nested_macro": 0.8841040313754907,
+      "Test_S1_rejection": 0.8381140784701615,
+      "Test_S2_acceptance": 0.549745030700385
+    },
+    {
+      "acceptance": 0.885,
+      "threshold": 0.49369143903255464,
+      "LOSO_rejection_nested_macro": 0.832677536779485,
+      "LOSO_known_acceptance_nested_macro": 0.8899578404572847,
+      "Test_S1_rejection": 0.8295417078799868,
+      "Test_S2_acceptance": 0.5661879487980018
+    },
+    {
+      "acceptance": 0.89,
+      "threshold": 0.4909012600779533,
+      "LOSO_rejection_nested_macro": 0.8181965792459215,
+      "LOSO_known_acceptance_nested_macro": 0.892580085489025,
+      "Test_S1_rejection": 0.8170128585558852,
+      "Test_S2_acceptance": 0.5791445519825164
+    },
+    {
+      "acceptance": 0.895,
+      "threshold": 0.48777971759438515,
+      "LOSO_rejection_nested_macro": 0.8046751696007615,
+      "LOSO_known_acceptance_nested_macro": 0.8966009737829618,
+      "Test_S1_rejection": 0.80811078140455,
+      "Test_S2_acceptance": 0.5932979498386929
+    },
+    {
+      "acceptance": 0.9,
+      "threshold": 0.4846172124147415,
+      "LOSO_rejection_nested_macro": 0.7884942382715565,
+      "LOSO_known_acceptance_nested_macro": 0.9007703081971332,
+      "Test_S1_rejection": 0.7965710517639301,
+      "Test_S2_acceptance": 0.6076074513476949
+    },
+    {
+      "acceptance": 0.905,
+      "threshold": 0.48145733192563056,
+      "LOSO_rejection_nested_macro": 0.766822632821782,
+      "LOSO_known_acceptance_nested_macro": 0.9063520851562814,
+      "Test_S1_rejection": 0.786020441806792,
+      "Test_S2_acceptance": 0.6206160890831512
+    },
+    {
+      "acceptance": 0.91,
+      "threshold": 0.4766849321126938,
+      "LOSO_rejection_nested_macro": 0.7471295943330635,
+      "LOSO_known_acceptance_nested_macro": 0.9111668835797875,
+      "Test_S1_rejection": 0.7596439169139466,
+      "Test_S2_acceptance": 0.6390363201165574
+    },
+    {
+      "acceptance": 0.915,
+      "threshold": 0.4726227498054504,
+      "LOSO_rejection_nested_macro": 0.7257739259412933,
+      "LOSO_known_acceptance_nested_macro": 0.9162826282160719,
+      "Test_S1_rejection": 0.7464556544675239,
+      "Test_S2_acceptance": 0.6526693724633157
+    },
+    {
+      "acceptance": 0.92,
+      "threshold": 0.46815152406692506,
+      "LOSO_rejection_nested_macro": 0.7109948132384833,
+      "LOSO_known_acceptance_nested_macro": 0.9249259679770734,
+      "Test_S1_rejection": 0.7309594460929772,
+      "Test_S2_acceptance": 0.6673431158289104
+    },
+    {
+      "acceptance": 0.925,
+      "threshold": 0.4640031203627586,
+      "LOSO_rejection_nested_macro": 0.6917782107250183,
+      "LOSO_known_acceptance_nested_macro": 0.9304281011109324,
+      "Test_S1_rejection": 0.7161226508407518,
+      "Test_S2_acceptance": 0.679675304402123
+    },
+    {
+      "acceptance": 0.93,
+      "threshold": 0.4592087119817733,
+      "LOSO_rejection_nested_macro": 0.6721691734572445,
+      "LOSO_known_acceptance_nested_macro": 0.9352588655594495,
+      "Test_S1_rejection": 0.6986482030992417,
+      "Test_S2_acceptance": 0.6957539806431471
+    },
+    {
+      "acceptance": 0.935,
+      "threshold": 0.45385187610983846,
+      "LOSO_rejection_nested_macro": 0.6491936340459368,
+      "LOSO_known_acceptance_nested_macro": 0.9392674834909369,
+      "Test_S1_rejection": 0.6782063963072865,
+      "Test_S2_acceptance": 0.7124050369445312
+    },
+    {
+      "acceptance": 0.94,
+      "threshold": 0.4475999361276627,
+      "LOSO_rejection_nested_macro": 0.6261907954883117,
+      "LOSO_known_acceptance_nested_macro": 0.945138061495537,
+      "Test_S1_rejection": 0.6538081107814046,
+      "Test_S2_acceptance": 0.7293162660006244
+    },
+    {
+      "acceptance": 0.945,
+      "threshold": 0.4418610851466656,
+      "LOSO_rejection_nested_macro": 0.6003489326402552,
+      "LOSO_known_acceptance_nested_macro": 0.9518778962803177,
+      "Test_S1_rejection": 0.6320474777448071,
+      "Test_S2_acceptance": 0.7452908731397648
+    },
+    {
+      "acceptance": 0.95,
+      "threshold": 0.43433337062597305,
+      "LOSO_rejection_nested_macro": 0.5588161602182609,
+      "LOSO_known_acceptance_nested_macro": 0.9585697198364352,
+      "Test_S1_rejection": 0.6063303659742829,
+      "Test_S2_acceptance": 0.7655323134561349
+    },
+    {
+      "acceptance": 0.955,
+      "threshold": 0.42739856570959095,
+      "LOSO_rejection_nested_macro": 0.526736414635651,
+      "LOSO_known_acceptance_nested_macro": 0.9640507909086763,
+      "Test_S1_rejection": 0.5812726673260797,
+      "Test_S2_acceptance": 0.7817150587990426
+    },
+    {
+      "acceptance": 0.96,
+      "threshold": 0.4200653684139254,
+      "LOSO_rejection_nested_macro": 0.4900994075113224,
+      "LOSO_known_acceptance_nested_macro": 0.9680652957830944,
+      "Test_S1_rejection": 0.552917903066271,
+      "Test_S2_acceptance": 0.7988864606098449
+    },
+    {
+      "acceptance": 0.965,
+      "threshold": 0.4107706041634084,
+      "LOSO_rejection_nested_macro": 0.4532422888744133,
+      "LOSO_known_acceptance_nested_macro": 0.97217026595125,
+      "Test_S1_rejection": 0.5117045829212001,
+      "Test_S2_acceptance": 0.8184514517639713
+    },
+    {
+      "acceptance": 0.97,
+      "threshold": 0.40099097192287453,
+      "LOSO_rejection_nested_macro": 0.4017680608394132,
+      "LOSO_known_acceptance_nested_macro": 0.9760676494511469,
+      "Test_S1_rejection": 0.4698318496538081,
+      "Test_S2_acceptance": 0.8377042356124467
+    },
+    {
+      "acceptance": 0.975,
+      "threshold": 0.38781417310237887,
+      "LOSO_rejection_nested_macro": 0.3417789940374711,
+      "LOSO_known_acceptance_nested_macro": 0.9810903271122505,
+      "Test_S1_rejection": 0.40586877678865807,
+      "Test_S2_acceptance": 0.8618482672494536
+    },
+    {
+      "acceptance": 0.98,
+      "threshold": 0.3723162358999253,
+      "LOSO_rejection_nested_macro": 0.27619642597007193,
+      "LOSO_known_acceptance_nested_macro": 0.985600196231846,
+      "Test_S1_rejection": 0.3280580283547643,
+      "Test_S2_acceptance": 0.889166406493912
+    },
+    {
+      "acceptance": 0.985,
+      "threshold": 0.34864563673734666,
+      "LOSO_rejection_nested_macro": 0.2042774680630302,
+      "LOSO_known_acceptance_nested_macro": 0.9919943524693716,
+      "Test_S1_rejection": 0.22617870095614903,
+      "Test_S2_acceptance": 0.9230408991570402
+    },
+    {
+      "acceptance": 0.99,
+      "threshold": 0.3195963332057,
+      "LOSO_rejection_nested_macro": 0.13307147395729163,
+      "LOSO_known_acceptance_nested_macro": 0.995945469564807,
+      "Test_S1_rejection": 0.11803494889548302,
+      "Test_S2_acceptance": 0.9561348735560412
+    },
+    {
+      "acceptance": 0.995,
+      "threshold": 0.28325815409421934,
+      "LOSO_rejection_nested_macro": 0.08463116141479235,
+      "LOSO_known_acceptance_nested_macro": 0.998131774564569,
+      "Test_S1_rejection": 0.04582921200131883,
+      "Test_S2_acceptance": 0.9815797689665938
+    },
+    {
+      "acceptance": 1.0,
+      "threshold": 0.09794066101312637,
+      "LOSO_rejection_nested_macro": 0.008415841584158416,
+      "LOSO_known_acceptance_nested_macro": 1.0,
+      "Test_S1_rejection": 0.0,
+      "Test_S2_acceptance": 1.0
+    }
+  ],
+  "regularization_candidates": [
+    {
+      "reg": 0.001,
+      "auc": 0.9459151879433407,
+      "rejection": 0.5975662755323772,
+      "known_acceptance": 0.9539330725771403,
+      "acceptance": 0.945,
+      "threshold": 0.17124957546591774
+    },
+    {
+      "reg": 0.01,
+      "auc": 0.9459319975197376,
+      "rejection": 0.5975662755323772,
+      "known_acceptance": 0.9539330725771403,
+      "acceptance": 0.945,
+      "threshold": 0.19769861549139037
+    },
+    {
+      "reg": 0.1,
+      "auc": 0.9452171183437619,
+      "rejection": 0.5993046501521078,
+      "known_acceptance": 0.9569752281616688,
+      "acceptance": 0.945,
+      "threshold": 0.3083764503896243
+    },
+    {
+      "reg": 1.0,
+      "auc": 0.943024035238916,
+      "rejection": 0.6184267709691439,
+      "known_acceptance": 0.9500217296827467,
+      "acceptance": 0.94,
+      "threshold": 0.4475999361276627
+    }
+  ],
+  "outer_folds": [
+    {
+      "subject": 1,
+      "reg": 0.1,
+      "auc": 0.9471388249264822,
+      "rejection": 0.6389526871841984,
+      "known_acceptance": 0.9503904455672945,
+      "acceptance": 0.94,
+      "threshold": 0.32786747217178364,
+      "outer_rejection": 0.1532258064516129,
+      "outer_known_acceptance": 0.9596774193548387
+    },
+    {
+      "subject": 2,
+      "reg": 1.0,
+      "auc": 0.9414849364122474,
+      "rejection": 0.6093678944974988,
+      "known_acceptance": 0.9504320145520692,
+      "acceptance": 0.94,
+      "threshold": 0.4472752177715302,
+      "outer_rejection": 0.803921568627451,
+      "outer_known_acceptance": 0.9509803921568627
+    },
+    {
+      "subject": 3,
+      "reg": 0.1,
+      "auc": 0.9425604159694493,
+      "rejection": 0.6089949518127582,
+      "known_acceptance": 0.9518127581459385,
+      "acceptance": 0.94,
+      "threshold": 0.32130661368370056,
+      "outer_rejection": 0.639344262295082,
+      "outer_known_acceptance": 0.9754098360655737
+    },
+    {
+      "subject": 4,
+      "reg": 0.1,
+      "auc": 0.9443332252706302,
+      "rejection": 0.6051188299817185,
+      "known_acceptance": 0.9510968921389397,
+      "acceptance": 0.945,
+      "threshold": 0.3145138812065125,
+      "outer_rejection": 0.7699115044247787,
+      "outer_known_acceptance": 0.9469026548672567
+    },
+    {
+      "subject": 5,
+      "reg": 0.1,
+      "auc": 0.9440120867768595,
+      "rejection": 0.605909090909091,
+      "known_acceptance": 0.9513636363636364,
+      "acceptance": 0.945,
+      "threshold": 0.29372210502624524,
+      "outer_rejection": 1.0,
+      "outer_known_acceptance": 0.9306930693069307
+    },
+    {
+      "subject": 6,
+      "reg": 0.1,
+      "auc": 0.9407711513591903,
+      "rejection": 0.5939366100137804,
+      "known_acceptance": 0.951309141019752,
+      "acceptance": 0.94,
+      "threshold": 0.31878101348876975,
+      "outer_rejection": 0.8306451612903226,
+      "outer_known_acceptance": 1.0
+    },
+    {
+      "subject": 7,
+      "reg": 1.0,
+      "auc": 0.9405714395434459,
+      "rejection": 0.6017455213596693,
+      "known_acceptance": 0.9517684887459807,
+      "acceptance": 0.94,
+      "threshold": 0.4472609400749207,
+      "outer_rejection": 0.6935483870967742,
+      "outer_known_acceptance": 0.9838709677419355
+    },
+    {
+      "subject": 8,
+      "reg": 0.1,
+      "auc": 0.9441090376685715,
+      "rejection": 0.6035502958579881,
+      "known_acceptance": 0.9508420573509331,
+      "acceptance": 0.94,
+      "threshold": 0.31567176222801213,
+      "outer_rejection": 1.0,
+      "outer_known_acceptance": 0.9423076923076923
+    },
+    {
+      "subject": 9,
+      "reg": 0.001,
+      "auc": 0.9442939953605035,
+      "rejection": 0.5967963386727689,
+      "known_acceptance": 0.951487414187643,
+      "acceptance": 0.94,
+      "threshold": 0.1846681094169618,
+      "outer_rejection": 0.9396551724137931,
+      "outer_known_acceptance": 0.9310344827586207
+    },
+    {
+      "subject": 10,
+      "reg": 0.001,
+      "auc": 0.9515412050267199,
+      "rejection": 0.6426618049225159,
+      "known_acceptance": 0.9503190519598906,
+      "acceptance": 0.945,
+      "threshold": 0.1875328497588636,
+      "outer_rejection": 0.7383177570093458,
+      "outer_known_acceptance": 0.8317757009345794
+    },
+    {
+      "subject": 11,
+      "reg": 0.1,
+      "auc": 0.9435929214712566,
+      "rejection": 0.6220183486238532,
+      "known_acceptance": 0.9504587155963303,
+      "acceptance": 0.94,
+      "threshold": 0.3239933133125305,
+      "outer_rejection": 0.4628099173553719,
+      "outer_known_acceptance": 0.9917355371900827
+    },
+    {
+      "subject": 12,
+      "reg": 0.001,
+      "auc": 0.9453293474087524,
+      "rejection": 0.6204681046351538,
+      "known_acceptance": 0.9508949059201468,
+      "acceptance": 0.945,
+      "threshold": 0.17701101429760518,
+      "outer_rejection": 0.20491803278688525,
+      "outer_known_acceptance": 1.0
+    },
+    {
+      "subject": 13,
+      "reg": 1.0,
+      "auc": 0.9386353517645779,
+      "rejection": 0.5895316804407713,
+      "known_acceptance": 0.9522497704315886,
+      "acceptance": 0.94,
+      "threshold": 0.44630255103111277,
+      "outer_rejection": 0.8211382113821138,
+      "outer_known_acceptance": 1.0
+    },
+    {
+      "subject": 14,
+      "reg": 0.01,
+      "auc": 0.9419913096540695,
+      "rejection": 0.5743119266055046,
+      "known_acceptance": 0.9513761467889909,
+      "acceptance": 0.945,
+      "threshold": 0.1846787007153035,
+      "outer_rejection": 1.0,
+      "outer_known_acceptance": 1.0
+    },
+    {
+      "subject": 15,
+      "reg": 1.0,
+      "auc": 0.9440730001847731,
+      "rejection": 0.6239160200821543,
+      "known_acceptance": 0.9502510269283432,
+      "acceptance": 0.94,
+      "threshold": 0.4485682302713395,
+      "outer_rejection": 0.5272727272727272,
+      "outer_known_acceptance": 0.9545454545454546
+    },
+    {
+      "subject": 16,
+      "reg": 1.0,
+      "auc": 0.9460735532197859,
+      "rejection": 0.6347387717690193,
+      "known_acceptance": 0.9505041246562786,
+      "acceptance": 0.94,
+      "threshold": 0.4491627478599549,
+      "outer_rejection": 0.08403361344537816,
+      "outer_known_acceptance": 0.9831932773109243
+    },
+    {
+      "subject": 17,
+      "reg": 0.1,
+      "auc": 0.9482013873512252,
+      "rejection": 0.6363636363636364,
+      "known_acceptance": 0.951576062128826,
+      "acceptance": 0.94,
+      "threshold": 0.328412533402443,
+      "outer_rejection": 0.20535714285714285,
+      "outer_known_acceptance": 0.9375
+    },
+    {
+      "subject": 18,
+      "reg": 0.1,
+      "auc": 0.9461533595606536,
+      "rejection": 0.6364049024058103,
+      "known_acceptance": 0.9500680889695869,
+      "acceptance": 0.94,
+      "threshold": 0.32826541721820834,
+      "outer_rejection": 0.2755102040816326,
+      "outer_known_acceptance": 0.9693877551020408
+    },
+    {
+      "subject": 19,
+      "reg": 0.1,
+      "auc": 0.9558190738848611,
+      "rejection": 0.6909007773205305,
+      "known_acceptance": 0.9529035208047554,
+      "acceptance": 0.935,
+      "threshold": 0.36804939061403213,
+      "outer_rejection": 0.8157894736842105,
+      "outer_known_acceptance": 0.6228070175438597
+    },
+    {
+      "subject": 20,
+      "reg": 1.0,
+      "auc": 0.9409221220978751,
+      "rejection": 0.6067983463481855,
+      "known_acceptance": 0.9536058796508957,
+      "acceptance": 0.94,
+      "threshold": 0.4460488045215608,
+      "outer_rejection": 0.5161290322580645,
+      "outer_known_acceptance": 0.9838709677419355
+    }
+  ],
+  "baseline_e213_curve": [
+    {
+      "acceptance": 0.8,
+      "Test_S1_rejection": 0.9736234751071546,
+      "Test_S2_acceptance": 0.2469039442189614
+    },
+    {
+      "acceptance": 0.805,
+      "Test_S1_rejection": 0.9719749423013518,
+      "Test_S2_acceptance": 0.2561140597356645
+    },
+    {
+      "acceptance": 0.81,
+      "Test_S1_rejection": 0.9696669963732278,
+      "Test_S2_acceptance": 0.26381517327505466
+    },
+    {
+      "acceptance": 0.815,
+      "Test_S1_rejection": 0.968018463567425,
+      "Test_S2_acceptance": 0.27286918513893227
+    },
+    {
+      "acceptance": 0.82,
+      "Test_S1_rejection": 0.9637322782723377,
+      "Test_S2_acceptance": 0.28202726610469353
+    },
+    {
+      "acceptance": 0.825,
+      "Test_S1_rejection": 0.9614243323442137,
+      "Test_S2_acceptance": 0.2916016234779894
+    },
+    {
+      "acceptance": 0.83,
+      "Test_S1_rejection": 0.958127266732608,
+      "Test_S2_acceptance": 0.30320532833801644
+    },
+    {
+      "acceptance": 0.835,
+      "Test_S1_rejection": 0.9551599076821629,
+      "Test_S2_acceptance": 0.31361223852638154
+    },
+    {
+      "acceptance": 0.84,
+      "Test_S1_rejection": 0.9525222551928784,
+      "Test_S2_acceptance": 0.3213653866167135
+    },
+    {
+      "acceptance": 0.845,
+      "Test_S1_rejection": 0.948236069897791,
+      "Test_S2_acceptance": 0.332552815069206
+    },
+    {
+      "acceptance": 0.85,
+      "Test_S1_rejection": 0.9432904714803825,
+      "Test_S2_acceptance": 0.34634197106878967
+    },
+    {
+      "acceptance": 0.855,
+      "Test_S1_rejection": 0.9386745796241345,
+      "Test_S2_acceptance": 0.3566448121552711
+    },
+    {
+      "acceptance": 0.86,
+      "Test_S1_rejection": 0.9301022090339598,
+      "Test_S2_acceptance": 0.37423249037360806
+    },
+    {
+      "acceptance": 0.865,
+      "Test_S1_rejection": 0.9241674909330696,
+      "Test_S2_acceptance": 0.3888021646373192
+    },
+    {
+      "acceptance": 0.87,
+      "Test_S1_rejection": 0.9169139465875371,
+      "Test_S2_acceptance": 0.40389218441044855
+    },
+    {
+      "acceptance": 0.875,
+      "Test_S1_rejection": 0.9080118694362018,
+      "Test_S2_acceptance": 0.42007492975335625
+    },
+    {
+      "acceptance": 0.88,
+      "Test_S1_rejection": 0.8977909660402242,
+      "Test_S2_acceptance": 0.43750650431886773
+    },
+    {
+      "acceptance": 0.885,
+      "Test_S1_rejection": 0.8902077151335311,
+      "Test_S2_acceptance": 0.4511915912165678
+    },
+    {
+      "acceptance": 0.89,
+      "Test_S1_rejection": 0.8796571051763931,
+      "Test_S2_acceptance": 0.47080861692163595
+    },
+    {
+      "acceptance": 0.895,
+      "Test_S1_rejection": 0.8694362017804155,
+      "Test_S2_acceptance": 0.48969715891351856
+    },
+    {
+      "acceptance": 0.9,
+      "Test_S1_rejection": 0.8565776458951533,
+      "Test_S2_acceptance": 0.5076490789884484
+    },
+    {
+      "acceptance": 0.905,
+      "Test_S1_rejection": 0.8450379162545335,
+      "Test_S2_acceptance": 0.5251326881049017
+    },
+    {
+      "acceptance": 0.91,
+      "Test_S1_rejection": 0.8298714144411474,
+      "Test_S2_acceptance": 0.5443334374024352
+    },
+    {
+      "acceptance": 0.915,
+      "Test_S1_rejection": 0.815694032311243,
+      "Test_S2_acceptance": 0.5617650119679467
+    },
+    {
+      "acceptance": 0.92,
+      "Test_S1_rejection": 0.7945928123969667,
+      "Test_S2_acceptance": 0.5836715579144552
+    },
+    {
+      "acceptance": 0.925,
+      "Test_S1_rejection": 0.7744807121661721,
+      "Test_S2_acceptance": 0.6038609636798834
+    },
+    {
+      "acceptance": 0.93,
+      "Test_S1_rejection": 0.7537091988130564,
+      "Test_S2_acceptance": 0.6248829222603809
+    },
+    {
+      "acceptance": 0.935,
+      "Test_S1_rejection": 0.734256511704583,
+      "Test_S2_acceptance": 0.6461130190446457
+    },
+    {
+      "acceptance": 0.94,
+      "Test_S1_rejection": 0.7200791295746786,
+      "Test_S2_acceptance": 0.6621396607347279
+    },
+    {
+      "acceptance": 0.945,
+      "Test_S1_rejection": 0.6874381800197824,
+      "Test_S2_acceptance": 0.6865958996773858
+    },
+    {
+      "acceptance": 0.95,
+      "Test_S1_rejection": 0.655786350148368,
+      "Test_S2_acceptance": 0.7090748256842544
+    },
+    {
+      "acceptance": 0.955,
+      "Test_S1_rejection": 0.6152324431256182,
+      "Test_S2_acceptance": 0.7332188573212614
+    },
+    {
+      "acceptance": 0.96,
+      "Test_S1_rejection": 0.5835806132542037,
+      "Test_S2_acceptance": 0.7520553647622021
+    },
+    {
+      "acceptance": 0.965,
+      "Test_S1_rejection": 0.5506099571381471,
+      "Test_S2_acceptance": 0.7726610469351649
+    },
+    {
+      "acceptance": 0.97,
+      "Test_S1_rejection": 0.5028025057698648,
+      "Test_S2_acceptance": 0.7987303569570194
+    },
+    {
+      "acceptance": 0.975,
+      "Test_S1_rejection": 0.4427959116386416,
+      "Test_S2_acceptance": 0.8296909147674055
+    },
+    {
+      "acceptance": 0.98,
+      "Test_S1_rejection": 0.3877349159248269,
+      "Test_S2_acceptance": 0.8521698407742742
+    },
+    {
+      "acceptance": 0.985,
+      "Test_S1_rejection": 0.3056379821958457,
+      "Test_S2_acceptance": 0.8840670205016131
+    },
+    {
+      "acceptance": 0.99,
+      "Test_S1_rejection": 0.18595450049455983,
+      "Test_S2_acceptance": 0.9265272140701426
+    },
+    {
+      "acceptance": 0.995,
+      "Test_S1_rejection": 0.09165842400263766,
+      "Test_S2_acceptance": 0.9593089811634926
+    },
+    {
+      "acceptance": 1.0,
+      "Test_S1_rejection": 0.0006594131223211342,
+      "Test_S2_acceptance": 0.9999479654490582
+    }
+  ],
+  "baseline_e213_regularization": 0.0001,
+  "test_official": {
+    "AUC": "N/A",
+    "F1": "N/A"
+  },
+  "identity_f1": "N/A",
+  "limitations": [
+    "严格性仅限新增 gate 的按样本身份排除及嵌套选参；冻结 E170 的 PCA/标准化和其他身份原型可能包含外层身份，缓存不足以实现端到端 strict LOSO。",
+    "E213 将 LOSO unknown 用于拟合又用于评估；其正则选择及 AUC/拒识不是独立留出估计，不直接比较为公平提升。",
+    "E170 c 流按 Test 诊断 AUC 选择；b 流也有历史选型风险。新增 gate 只用预定 a/d 两个 E65 流，不输入 E213 概率或其模型。E213 缓存与模型仅作冻结对照。",
+    "Gate B 是独立的两流平均最近原型相似度可靠性分数，接受后输出，不改变 Gate A 决策；不是身份概率，缓存无类别分数/预测，身份 F1=N/A。",
+    "Train F1 是 known/unknown 二分类 F1，不是 E170 的多身份 macro F1。S2>=0.70 仅事后目标核验，不能作为选点约束。",
+    "Train session1 的身份留出不能模拟跨会话偏移；提高 Train known 接受率不能保证 Test S2。"
+  ],
+  "runtime_seconds": 3.8268933296203613
+}

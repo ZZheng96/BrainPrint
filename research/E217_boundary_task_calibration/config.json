@@ -1,0 +1,14 @@
+{
+  "experiment": "E217_boundary_task_calibration",
+  "purpose": "Train/LOSO-only task/stream boundary calibration around the E189 four-stream candidate; Test is frozen audit only",
+  "source_cache": "../E189_balanced_gate_gates/cache/stream_scores.npz",
+  "source_results": "../E189_balanced_gate_gates/results.json",
+  "train_metadata": "../../BrainPrint_cache/train_metadata.csv",
+  "acceptance_grid": [0.80, 0.82, 0.84, 0.86, 0.88, 0.90, 0.92, 0.94, 0.96],
+  "weights": [[0.2,0.3,0.0,0.5],[0.2,0.4,0.0,0.4],[0.3,0.2,0.0,0.5],[0.3,0.3,0.0,0.4],[0.3,0.4,0.0,0.3],[0.4,0.2,0.0,0.4],[0.4,0.3,0.0,0.3],[0.2,0.3,0.1,0.4],[0.3,0.3,0.1,0.3]],
+  "streams": ["e65_pca64_k1", "subwin6_pca96_k1", "logbp_pca16_k1", "e162_pca128_k1"],
+  "threshold_rules": ["global_oof_quantile", "task_oof_quantile", "task_loso_known_quantile"],
+  "loso_rejection_floor": 0.70,
+  "test_official": {"AUC": "N/A", "F1": "N/A"},
+  "test_usage": "Test scores/session are read only after all Train/LOSO selections are frozen"
+}

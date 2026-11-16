@@ -1,0 +1,9 @@
+{
+  "experiment":"E219_stable_projection",
+  "seed":20261117,
+  "data":{"root":"Brainprint_Competition","metadata":"BrainPrint_cache/train_metadata.csv","test_metadata":"BrainPrint_cache/test_metadata.csv","channels":18,"samples":1200,"fs":300},
+  "tasks":["EC","EO","Imagery","SSVEP"],
+  "feature":{"bands":[[1,8],[8,13],[13,20],[20,30],[30,40]],"shrinkage":0.05,"offdiag_multiplier":1.4142135623730951},
+  "projection":{"dims":[32,64],"lambda_grid":[0.1,1.0,10.0,100.0],"strategies":["fisher","pca_whiten"],"stability":"E218 clean-to-PGD/random paired feature change; random fallback is explicitly recorded"},
+  "protocol":{"fit_fraction":0.6,"calibration_fraction":[0.6,0.8],"threshold_quantile":0.1,"outer":"strict subject LOSO","targets":{"loso_unknown_rejection":0.9,"test_s2_acceptance":0.7,"test_s1_rejection":0.7}}
+}

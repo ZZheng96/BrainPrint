@@ -1,0 +1,1805 @@
+{
+  "experiment": "E219_stable_projection",
+  "device": "cuda",
+  "n_rows": 11304,
+  "feature_dim": 855,
+  "fold_count": 20,
+  "candidate_summary": {
+    "fisher_l0.1_d32": {
+      "auc": 0.8939148681092421,
+      "rejection_f1": 0.9231270149932203,
+      "known_acceptance": 0.8713924553133428,
+      "unknown_rejection": 0.6902397290927061,
+      "identity_correct_but_rejected": 0.08194597906646407,
+      "threshold": -75.39239256948188
+    },
+    "fisher_l0.1_d64": {
+      "auc": 0.8876811688809916,
+      "rejection_f1": 0.9225163172123692,
+      "known_acceptance": 0.871134608063271,
+      "unknown_rejection": 0.6722684594658198,
+      "identity_correct_but_rejected": 0.08483362545443648,
+      "threshold": -91.43625410079628
+    },
+    "fisher_l1.0_d32": {
+      "auc": 0.8978930255221893,
+      "rejection_f1": 0.9220084894045545,
+      "known_acceptance": 0.868279782377871,
+      "unknown_rejection": 0.7152536972455252,
+      "identity_correct_but_rejected": 0.08615685488011775,
+      "threshold": -74.53027866655506
+    },
+    "fisher_l1.0_d64": {
+      "auc": 0.8922807463010336,
+      "rejection_f1": 0.9212561075415003,
+      "known_acceptance": 0.8677062265778528,
+      "unknown_rejection": 0.69907665502749,
+      "identity_correct_but_rejected": 0.08885890535365884,
+      "threshold": -89.97065219770877
+    },
+    "fisher_l10.0_d32": {
+      "auc": 0.9079626522278881,
+      "rejection_f1": 0.9203583054291942,
+      "known_acceptance": 0.8624467029338436,
+      "unknown_rejection": 0.7798192253183288,
+      "identity_correct_but_rejected": 0.09603627374203125,
+      "threshold": -74.3751488243626
+    },
+    "fisher_l10.0_d64": {
+      "auc": 0.9038430877794446,
+      "rejection_f1": 0.9178754736653492,
+      "known_acceptance": 0.8584425521147955,
+      "unknown_rejection": 0.7732072097893002,
+      "identity_correct_but_rejected": 0.10079630627725636,
+      "threshold": -87.37053695830647
+    },
+    "fisher_l100.0_d32": {
+      "auc": 0.9092601276125011,
+      "rejection_f1": 0.9211151596939657,
+      "known_acceptance": 0.8635896578028049,
+      "unknown_rejection": 0.7834685442885863,
+      "identity_correct_but_rejected": 0.09477923663978034,
+      "threshold": -84.86995443857072
+    },
+    "fisher_l100.0_d64": {
+      "auc": 0.9042208894097055,
+      "rejection_f1": 0.916878637174755,
+      "known_acceptance": 0.8562216199269305,
+      "unknown_rejection": 0.784644427689582,
+      "identity_correct_but_rejected": 0.10313158592154847,
+      "threshold": -98.6299156244743
+    },
+    "pca_whiten_l0_d32": {
+      "auc": 0.7837476810628902,
+      "rejection_f1": 0.9316573674228149,
+      "known_acceptance": 0.9089927449025887,
+      "unknown_rejection": 0.1991584513345497,
+      "identity_correct_but_rejected": 0.05741036376643188,
+      "threshold": -280.46616855039565
+    },
+    "pca_whiten_l0_d64": {
+      "auc": 0.7929363757803691,
+      "rejection_f1": 0.933328045818115,
+      "known_acceptance": 0.9120280775305092,
+      "unknown_rejection": 0.19923937410873888,
+      "identity_correct_but_rejected": 0.05505990494967594,
+      "threshold": -361.66584746138653
+    }
+  },
+  "selected_candidate": "fisher_l100.0_d64",
+  "folds": [
+    {
+      "held_subject": 1,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.875916843243884,
+          "rejection_f1": 0.9241545893719807,
+          "known_acceptance": 0.8787322002756086,
+          "unknown_rejection": 0.5967741935483871,
+          "identity_correct_but_rejected": 0.07762976573265962,
+          "threshold": -74.59948721282008
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8675819046631204,
+          "rejection_f1": 0.9180169286577993,
+          "known_acceptance": 0.8718419843821773,
+          "unknown_rejection": 0.5161290322580645,
+          "identity_correct_but_rejected": 0.08497932935231971,
+          "threshold": -90.71139147658235
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.8835331248981285,
+          "rejection_f1": 0.9237864077669903,
+          "known_acceptance": 0.8741387230133211,
+          "unknown_rejection": 0.6774193548387096,
+          "identity_correct_but_rejected": 0.08268259072117592,
+          "threshold": -73.66661529746428
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8739646154074118,
+          "rejection_f1": 0.9178814382896016,
+          "known_acceptance": 0.8677078548461186,
+          "unknown_rejection": 0.5967741935483871,
+          "identity_correct_but_rejected": 0.09049150206706477,
+          "threshold": -89.04856242082656
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.8982804095603598,
+          "rejection_f1": 0.9221351616062684,
+          "known_acceptance": 0.864951768488746,
+          "unknown_rejection": 0.8064516129032258,
+          "identity_correct_but_rejected": 0.09186954524575103,
+          "threshold": -73.4144919442645
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8884562952864996,
+          "rejection_f1": 0.9210847788907891,
+          "known_acceptance": 0.8658704639412035,
+          "unknown_rejection": 0.75,
+          "identity_correct_but_rejected": 0.09416628387689481,
+          "threshold": -87.03667234448146
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.8956465689688384,
+          "rejection_f1": 0.9245789602147914,
+          "known_acceptance": 0.8700045934772623,
+          "unknown_rejection": 0.7903225806451613,
+          "identity_correct_but_rejected": 0.08773541570969223,
+          "threshold": -83.9514489882751
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.883773912012684,
+          "rejection_f1": 0.9216499877959482,
+          "known_acceptance": 0.8672485071198898,
+          "unknown_rejection": 0.7419354838709677,
+          "identity_correct_but_rejected": 0.09278824069820854,
+          "threshold": -98.67368783486043
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.7227132632951532,
+          "rejection_f1": 0.929255194956806,
+          "known_acceptance": 0.9141019751952227,
+          "unknown_rejection": 0.06451612903225806,
+          "identity_correct_but_rejected": 0.05558107487367937,
+          "threshold": -281.57082016410004
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.7139189769881606,
+          "rejection_f1": 0.9300373134328358,
+          "known_acceptance": 0.9159393661001378,
+          "unknown_rejection": 0.056451612903225805,
+          "identity_correct_but_rejected": 0.0532843362425356,
+          "threshold": -362.5081175322415
+        }
+      }
+    },
+    {
+      "held_subject": 2,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8963343409214527,
+          "rejection_f1": 0.9213592233009709,
+          "known_acceptance": 0.8631195998180992,
+          "unknown_rejection": 0.7745098039215687,
+          "identity_correct_but_rejected": 0.08640291041382446,
+          "threshold": -74.8603426965816
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8847738276756815,
+          "rejection_f1": 0.9230769230769231,
+          "known_acceptance": 0.8676671214188267,
+          "unknown_rejection": 0.7352941176470589,
+          "identity_correct_but_rejected": 0.08685766257389722,
+          "threshold": -91.59065181427673
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.9013232396187215,
+          "rejection_f1": 0.9194843103867673,
+          "known_acceptance": 0.859481582537517,
+          "unknown_rejection": 0.7843137254901961,
+          "identity_correct_but_rejected": 0.09231468849477036,
+          "threshold": -73.86836592227961
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8906008970209275,
+          "rejection_f1": 0.9190765492102065,
+          "known_acceptance": 0.8599363346975898,
+          "unknown_rejection": 0.7549019607843137,
+          "identity_correct_but_rejected": 0.09458844929513416,
+          "threshold": -89.90386042167833
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.9121793328518311,
+          "rejection_f1": 0.9175434303890384,
+          "known_acceptance": 0.8526603001364257,
+          "unknown_rejection": 0.8725490196078431,
+          "identity_correct_but_rejected": 0.10459299681673488,
+          "threshold": -73.56827894557567
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.9047517142373093,
+          "rejection_f1": 0.9155860044042085,
+          "known_acceptance": 0.8508412914961346,
+          "unknown_rejection": 0.8333333333333334,
+          "identity_correct_but_rejected": 0.10686675761709868,
+          "threshold": -87.26886834184477
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.9114303292940642,
+          "rejection_f1": 0.9201855015865267,
+          "known_acceptance": 0.8572078217371533,
+          "unknown_rejection": 0.8725490196078431,
+          "identity_correct_but_rejected": 0.09913597089586175,
+          "threshold": -84.69058279510708
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.9056790519754969,
+          "rejection_f1": 0.9172380019588638,
+          "known_acceptance": 0.8517507958162801,
+          "unknown_rejection": 0.8823529411764706,
+          "identity_correct_but_rejected": 0.10504774897680765,
+          "threshold": -98.32292997405656
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.7200197950940267,
+          "rejection_f1": 0.9291705498602051,
+          "known_acceptance": 0.9067758071850841,
+          "unknown_rejection": 0.029411764705882353,
+          "identity_correct_but_rejected": 0.058663028649386086,
+          "threshold": -277.4738297193507
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.7253207786070317,
+          "rejection_f1": 0.9313474517104957,
+          "known_acceptance": 0.9099590723055935,
+          "unknown_rejection": 0.049019607843137254,
+          "identity_correct_but_rejected": 0.05593451568894952,
+          "threshold": -359.75239420204247
+        }
+      }
+    },
+    {
+      "held_subject": 3,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.962416960705392,
+          "rejection_f1": 0.9327792715717429,
+          "known_acceptance": 0.8756310234052318,
+          "unknown_rejection": 0.9672131147540983,
+          "identity_correct_but_rejected": 0.07893529141808169,
+          "threshold": -77.71359164408607
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.962747989376989,
+          "rejection_f1": 0.9374239103968833,
+          "known_acceptance": 0.8834327673244607,
+          "unknown_rejection": 0.9754098360655737,
+          "identity_correct_but_rejected": 0.07342817806333181,
+          "threshold": -94.1766146402534
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.9629360738494873,
+          "rejection_f1": 0.9308823529411765,
+          "known_acceptance": 0.8715006883891694,
+          "unknown_rejection": 0.9836065573770492,
+          "identity_correct_but_rejected": 0.0830656264341441,
+          "threshold": -76.62997073698041
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.9633949999623831,
+          "rejection_f1": 0.93505859375,
+          "known_acceptance": 0.8788435061955026,
+          "unknown_rejection": 0.9836065573770492,
+          "identity_correct_but_rejected": 0.07847636530518587,
+          "threshold": -92.3257141789207
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.9660319442668092,
+          "rejection_f1": 0.9274292742927429,
+          "known_acceptance": 0.8650757228086278,
+          "unknown_rejection": 0.9918032786885246,
+          "identity_correct_but_rejected": 0.0927030748049564,
+          "threshold": -76.52077320905613
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.9647228763382211,
+          "rejection_f1": 0.9292730844793713,
+          "known_acceptance": 0.8682882055988986,
+          "unknown_rejection": 0.9918032786885246,
+          "identity_correct_but_rejected": 0.09040844424047728,
+          "threshold": -89.47864003309431
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.9660695611613088,
+          "rejection_f1": 0.9297987236131566,
+          "known_acceptance": 0.8692060578246902,
+          "unknown_rejection": 0.9918032786885246,
+          "identity_correct_but_rejected": 0.0890316659017898,
+          "threshold": -87.85035715520536
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.9651441855566172,
+          "rejection_f1": 0.9260719566288812,
+          "known_acceptance": 0.8623221661312529,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.09729233593391463,
+          "threshold": -101.09325236563546
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.9105282164325642,
+          "rejection_f1": 0.9436286120322123,
+          "known_acceptance": 0.914180816888481,
+          "unknown_rejection": 0.5819672131147541,
+          "identity_correct_but_rejected": 0.0559889857732905,
+          "threshold": -293.07251801398735
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.9083652449988339,
+          "rejection_f1": 0.9415107743310442,
+          "known_acceptance": 0.9123451124368976,
+          "unknown_rejection": 0.5409836065573771,
+          "identity_correct_but_rejected": 0.056906837999082145,
+          "threshold": -372.99613030018236
+        }
+      }
+    },
+    {
+      "held_subject": 4,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8766764815324133,
+          "rejection_f1": 0.9217391304347826,
+          "known_acceptance": 0.8720292504570384,
+          "unknown_rejection": 0.6106194690265486,
+          "identity_correct_but_rejected": 0.08043875685557587,
+          "threshold": -74.48211379646143
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8674710003073887,
+          "rejection_f1": 0.9190499272903538,
+          "known_acceptance": 0.8665447897623401,
+          "unknown_rejection": 0.6283185840707964,
+          "identity_correct_but_rejected": 0.0872943327239488,
+          "threshold": -89.10938595232608
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.8810527252430798,
+          "rejection_f1": 0.9199806013579049,
+          "known_acceptance": 0.8670018281535649,
+          "unknown_rejection": 0.6548672566371682,
+          "identity_correct_but_rejected": 0.0850091407678245,
+          "threshold": -73.58841750827884
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8716935496918025,
+          "rejection_f1": 0.9184466019417475,
+          "known_acceptance": 0.8647166361974405,
+          "unknown_rejection": 0.6460176991150443,
+          "identity_correct_but_rejected": 0.0886654478976234,
+          "threshold": -88.09208258786599
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.8916859458672405,
+          "rejection_f1": 0.9184716476028231,
+          "known_acceptance": 0.8624314442413162,
+          "unknown_rejection": 0.6991150442477876,
+          "identity_correct_but_rejected": 0.09323583180987204,
+          "threshold": -73.81053161673704
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8834794777628577,
+          "rejection_f1": 0.9140758873929009,
+          "known_acceptance": 0.853290676416819,
+          "unknown_rejection": 0.7345132743362832,
+          "identity_correct_but_rejected": 0.10329067641681901,
+          "threshold": -86.55641781021515
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.8928103412014042,
+          "rejection_f1": 0.9174579985390796,
+          "known_acceptance": 0.8610603290676416,
+          "unknown_rejection": 0.6902654867256637,
+          "identity_correct_but_rejected": 0.09460694698354662,
+          "threshold": -84.46961906689002
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.8864158483117892,
+          "rejection_f1": 0.9111001964636543,
+          "known_acceptance": 0.8478062157221207,
+          "unknown_rejection": 0.7433628318584071,
+          "identity_correct_but_rejected": 0.10831809872029251,
+          "threshold": -98.00573001585364
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.8251524809499927,
+          "rejection_f1": 0.9241573033707865,
+          "known_acceptance": 0.9021937842778793,
+          "unknown_rejection": 0.02654867256637168,
+          "identity_correct_but_rejected": 0.06352833638025594,
+          "threshold": -274.1376489908332
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.8408899710407532,
+          "rejection_f1": 0.9266012155212716,
+          "known_acceptance": 0.9058500914076782,
+          "unknown_rejection": 0.04424778761061947,
+          "identity_correct_but_rejected": 0.058043875685557585,
+          "threshold": -357.33319232824476
+        }
+      }
+    },
+    {
+      "held_subject": 5,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.9871602160216022,
+          "rejection_f1": 0.9249938920107501,
+          "known_acceptance": 0.8604545454545455,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.09045454545454545,
+          "threshold": -78.30070092385799
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.9934698469846984,
+          "rejection_f1": 0.9278752436647173,
+          "known_acceptance": 0.8654545454545455,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.08863636363636364,
+          "threshold": -95.28583180629943
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.9875292529252925,
+          "rejection_f1": 0.9247311827956989,
+          "known_acceptance": 0.86,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.09136363636363637,
+          "threshold": -77.61202135011905
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.9938973897389739,
+          "rejection_f1": 0.9270909534259937,
+          "known_acceptance": 0.8640909090909091,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.09090909090909091,
+          "threshold": -94.10292380292996
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.9895049504950495,
+          "rejection_f1": 0.9223610090619643,
+          "known_acceptance": 0.855909090909091,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.1,
+          "threshold": -77.68383538127482
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.9959135913591359,
+          "rejection_f1": 0.921832884097035,
+          "known_acceptance": 0.855,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.10136363636363636,
+          "threshold": -91.08770360290305
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.9941314131413141,
+          "rejection_f1": 0.9234157083435283,
+          "known_acceptance": 0.8577272727272728,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.09909090909090909,
+          "threshold": -87.71547646980954
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.9967461746174617,
+          "rejection_f1": 0.9231522271169849,
+          "known_acceptance": 0.8572727272727273,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.1009090909090909,
+          "threshold": -101.02699279620977
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.9662376237623762,
+          "rejection_f1": 0.9508430301591071,
+          "known_acceptance": 0.91,
+          "unknown_rejection": 0.9108910891089109,
+          "identity_correct_but_rejected": 0.045909090909090906,
+          "threshold": -277.9010752793936
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.9772907290729073,
+          "rejection_f1": 0.9579593764761455,
+          "known_acceptance": 0.9218181818181819,
+          "unknown_rejection": 0.9405940594059405,
+          "identity_correct_but_rejected": 0.038636363636363635,
+          "threshold": -358.3790708860072
+        }
+      }
+    },
+    {
+      "held_subject": 6,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8703602175233749,
+          "rejection_f1": 0.9199417758369723,
+          "known_acceptance": 0.8709232889297198,
+          "unknown_rejection": 0.6048387096774194,
+          "identity_correct_but_rejected": 0.0799265043638034,
+          "threshold": -75.61524435854358
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8713418880673315,
+          "rejection_f1": 0.9210973537266327,
+          "known_acceptance": 0.8713826366559485,
+          "unknown_rejection": 0.6370967741935484,
+          "identity_correct_but_rejected": 0.08360128617363344,
+          "threshold": -91.88812859978914
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.8770244639708388,
+          "rejection_f1": 0.9202334630350194,
+          "known_acceptance": 0.8690858980248047,
+          "unknown_rejection": 0.6532258064516129,
+          "identity_correct_but_rejected": 0.08314193844740468,
+          "threshold": -74.82265154789184
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8768614696163706,
+          "rejection_f1": 0.9198538367844092,
+          "known_acceptance": 0.8672485071198898,
+          "unknown_rejection": 0.6774193548387096,
+          "identity_correct_but_rejected": 0.08819476343592099,
+          "threshold": -90.13657352771307
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.8939277194126276,
+          "rejection_f1": 0.9196472317491425,
+          "known_acceptance": 0.8621956821313734,
+          "unknown_rejection": 0.7741935483870968,
+          "identity_correct_but_rejected": 0.09416628387689481,
+          "threshold": -74.90232908641323
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8917606353816291,
+          "rejection_f1": 0.9165439371624938,
+          "known_acceptance": 0.8576022048690859,
+          "unknown_rejection": 0.7580645161290323,
+          "identity_correct_but_rejected": 0.10059715204409739,
+          "threshold": -88.07257863404011
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.9054558655741106,
+          "rejection_f1": 0.9205103042198234,
+          "known_acceptance": 0.8617363344051447,
+          "unknown_rejection": 0.8145161290322581,
+          "identity_correct_but_rejected": 0.09600367478180984,
+          "threshold": -85.39037417909506
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.9015477054840192,
+          "rejection_f1": 0.9162973904480551,
+          "known_acceptance": 0.8548461185117133,
+          "unknown_rejection": 0.8064516129032258,
+          "identity_correct_but_rejected": 0.10427193385392743,
+          "threshold": -99.20829774497723
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.7194904203772579,
+          "rejection_f1": 0.9251637043966323,
+          "known_acceptance": 0.9085898024804777,
+          "unknown_rejection": 0.024193548387096774,
+          "identity_correct_but_rejected": 0.059715204409738175,
+          "threshold": -280.67348148678
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.7784314016032717,
+          "rejection_f1": 0.9270687237026648,
+          "known_acceptance": 0.9108865411116215,
+          "unknown_rejection": 0.04838709677419355,
+          "identity_correct_but_rejected": 0.0574184657785944,
+          "threshold": -361.82092503033357
+        }
+      }
+    },
+    {
+      "held_subject": 7,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8761650391927334,
+          "rejection_f1": 0.9212503028834504,
+          "known_acceptance": 0.8732200275608636,
+          "unknown_rejection": 0.6048387096774194,
+          "identity_correct_but_rejected": 0.0799265043638034,
+          "threshold": -76.51346825046123
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8596137033799102,
+          "rejection_f1": 0.9192846785886902,
+          "known_acceptance": 0.8736793752870923,
+          "unknown_rejection": 0.5241935483870968,
+          "identity_correct_but_rejected": 0.08130454754248967,
+          "threshold": -91.8716192084422
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.882588498525642,
+          "rejection_f1": 0.9197860962566845,
+          "known_acceptance": 0.8690858980248047,
+          "unknown_rejection": 0.6370967741935484,
+          "identity_correct_but_rejected": 0.08451998162609095,
+          "threshold": -75.30486971809054
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8671929408626846,
+          "rejection_f1": 0.9194956353055286,
+          "known_acceptance": 0.8709232889297198,
+          "unknown_rejection": 0.5887096774193549,
+          "identity_correct_but_rejected": 0.08451998162609095,
+          "threshold": -90.26441866136105
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.8960614636893032,
+          "rejection_f1": 0.9204795693662834,
+          "known_acceptance": 0.8640330730362885,
+          "unknown_rejection": 0.7661290322580645,
+          "identity_correct_but_rejected": 0.09232889297197978,
+          "threshold": -75.13912182557479
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8863632995984412,
+          "rejection_f1": 0.9162367968558094,
+          "known_acceptance": 0.8566835094166284,
+          "unknown_rejection": 0.7661290322580645,
+          "identity_correct_but_rejected": 0.10013780431786863,
+          "threshold": -87.16843482204291
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.8957873368204247,
+          "rejection_f1": 0.9211233211233211,
+          "known_acceptance": 0.8663298116674323,
+          "unknown_rejection": 0.7419354838709677,
+          "identity_correct_but_rejected": 0.08957280661460726,
+          "threshold": -85.9111026541431
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.8883414583549424,
+          "rejection_f1": 0.9152125829442124,
+          "known_acceptance": 0.8553054662379421,
+          "unknown_rejection": 0.7580645161290323,
+          "identity_correct_but_rejected": 0.10197519522278364,
+          "threshold": -99.11544622407315
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.7065101426941485,
+          "rejection_f1": 0.929472209248015,
+          "known_acceptance": 0.9141019751952227,
+          "unknown_rejection": 0.07258064516129033,
+          "identity_correct_but_rejected": 0.05144694533762058,
+          "threshold": -280.27753194279126
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.7428134307348082,
+          "rejection_f1": 0.9291890628651555,
+          "known_acceptance": 0.9131832797427653,
+          "unknown_rejection": 0.08064516129032258,
+          "identity_correct_but_rejected": 0.05282498851630684,
+          "threshold": -361.36686930453686
+        }
+      }
+    },
+    {
+      "held_subject": 8,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.9274754035222856,
+          "rejection_f1": 0.9293860713419073,
+          "known_acceptance": 0.8716431497496586,
+          "unknown_rejection": 0.9134615384615384,
+          "identity_correct_but_rejected": 0.07737824305871643,
+          "threshold": -75.83498631447965
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.9361498196841848,
+          "rejection_f1": 0.9318457433907349,
+          "known_acceptance": 0.8743741465634957,
+          "unknown_rejection": 0.9519230769230769,
+          "identity_correct_but_rejected": 0.07828857532999545,
+          "threshold": -92.54083687145479
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.9274097545604145,
+          "rejection_f1": 0.9275291828793775,
+          "known_acceptance": 0.8680018206645426,
+          "unknown_rejection": 0.9230769230769231,
+          "identity_correct_but_rejected": 0.08192990441511151,
+          "threshold": -75.29858225685787
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.9382418332691432,
+          "rejection_f1": 0.9294747081712063,
+          "known_acceptance": 0.8698224852071006,
+          "unknown_rejection": 0.9615384615384616,
+          "identity_correct_but_rejected": 0.08192990441511151,
+          "threshold": -90.93598014503323
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.9327623332516368,
+          "rejection_f1": 0.9253658536585366,
+          "known_acceptance": 0.8634501593081475,
+          "unknown_rejection": 0.9423076923076923,
+          "identity_correct_but_rejected": 0.0923987255348202,
+          "threshold": -75.3749878391384
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.9427934946255383,
+          "rejection_f1": 0.9244683451478856,
+          "known_acceptance": 0.8607191624943105,
+          "unknown_rejection": 0.9711538461538461,
+          "identity_correct_but_rejected": 0.09558488848429676,
+          "threshold": -88.22330701217258
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.9309460453065369,
+          "rejection_f1": 0.9261515963928832,
+          "known_acceptance": 0.864815657715066,
+          "unknown_rejection": 0.9423076923076923,
+          "identity_correct_but_rejected": 0.09103322712790168,
+          "threshold": -86.46275928171619
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.935379538531564,
+          "rejection_f1": 0.9216070553650172,
+          "known_acceptance": 0.8561675011379153,
+          "unknown_rejection": 0.9615384615384616,
+          "identity_correct_but_rejected": 0.10059171597633136,
+          "threshold": -99.6533912703402
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.7933633276145793,
+          "rejection_f1": 0.9335827876520112,
+          "known_acceptance": 0.9085116067364588,
+          "unknown_rejection": 0.20192307692307693,
+          "identity_correct_but_rejected": 0.05461993627674101,
+          "threshold": -279.86679811014824
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.8116224922096565,
+          "rejection_f1": 0.9360410830999066,
+          "known_acceptance": 0.9126081019572144,
+          "unknown_rejection": 0.21153846153846154,
+          "identity_correct_but_rejected": 0.05234410559854347,
+          "threshold": -359.0411606399281
+        }
+      }
+    },
+    {
+      "held_subject": 9,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.9163694468555196,
+          "rejection_f1": 0.9263773768893223,
+          "known_acceptance": 0.8695652173913043,
+          "unknown_rejection": 0.853448275862069,
+          "identity_correct_but_rejected": 0.07917620137299772,
+          "threshold": -75.58357425636838
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.9224059023120019,
+          "rejection_f1": 0.9283625730994152,
+          "known_acceptance": 0.8718535469107551,
+          "unknown_rejection": 0.8793103448275862,
+          "identity_correct_but_rejected": 0.08054919908466819,
+          "threshold": -91.73376997057608
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.9199952655251322,
+          "rejection_f1": 0.9255552843544057,
+          "known_acceptance": 0.8677345537757437,
+          "unknown_rejection": 0.8620689655172413,
+          "identity_correct_but_rejected": 0.08329519450800915,
+          "threshold": -74.68985245685963
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.9257634340724374,
+          "rejection_f1": 0.92653160849402,
+          "known_acceptance": 0.8686498855835241,
+          "unknown_rejection": 0.8793103448275862,
+          "identity_correct_but_rejected": 0.08375286041189932,
+          "threshold": -90.62063430136573
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.9282963781267262,
+          "rejection_f1": 0.9241311796377876,
+          "known_acceptance": 0.8640732265446224,
+          "unknown_rejection": 0.8879310344827587,
+          "identity_correct_but_rejected": 0.09290617848970252,
+          "threshold": -74.91309696439174
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.9316775822615009,
+          "rejection_f1": 0.9232655062515323,
+          "known_acceptance": 0.8617848970251716,
+          "unknown_rejection": 0.9051724137931034,
+          "identity_correct_but_rejected": 0.09610983981693363,
+          "threshold": -88.07517708890319
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.9308056498066756,
+          "rejection_f1": 0.9248470012239902,
+          "known_acceptance": 0.8645308924485126,
+          "unknown_rejection": 0.9051724137931034,
+          "identity_correct_but_rejected": 0.09153318077803203,
+          "threshold": -85.27158467489684
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.9316065651384834,
+          "rejection_f1": 0.9213759213759214,
+          "known_acceptance": 0.8581235697940504,
+          "unknown_rejection": 0.9137931034482759,
+          "identity_correct_but_rejected": 0.0988558352402746,
+          "threshold": -98.97927773408487
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.8586640890081275,
+          "rejection_f1": 0.9352788891503884,
+          "known_acceptance": 0.9093821510297483,
+          "unknown_rejection": 0.33620689655172414,
+          "identity_correct_but_rejected": 0.05537757437070938,
+          "threshold": -275.74668704621735
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.8725045372050817,
+          "rejection_f1": 0.9375,
+          "known_acceptance": 0.9130434782608695,
+          "unknown_rejection": 0.3448275862068966,
+          "identity_correct_but_rejected": 0.05354691075514874,
+          "threshold": -359.91679820235896
+        }
+      }
+    },
+    {
+      "held_subject": 10,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8928769200623621,
+          "rejection_f1": 0.923485397055274,
+          "known_acceptance": 0.8719234275296263,
+          "unknown_rejection": 0.6635514018691588,
+          "identity_correct_but_rejected": 0.08340929808568824,
+          "threshold": -73.98838368195361
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8935797715093842,
+          "rejection_f1": 0.9253012048192771,
+          "known_acceptance": 0.8751139471285324,
+          "unknown_rejection": 0.6635514018691588,
+          "identity_correct_but_rejected": 0.08158614402917047,
+          "threshold": -89.44859740056027
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.8943252200138014,
+          "rejection_f1": 0.9247467438494935,
+          "known_acceptance": 0.873746581586144,
+          "unknown_rejection": 0.6728971962616822,
+          "identity_correct_but_rejected": 0.08386508659981769,
+          "threshold": -73.42462380324699
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8946233994155683,
+          "rejection_f1": 0.923411452041556,
+          "known_acceptance": 0.8710118505013673,
+          "unknown_rejection": 0.6822429906542056,
+          "identity_correct_but_rejected": 0.08659981768459435,
+          "threshold": -87.97303516114856
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.899901174826843,
+          "rejection_f1": 0.9212121212121213,
+          "known_acceptance": 0.8659981768459435,
+          "unknown_rejection": 0.7102803738317757,
+          "identity_correct_but_rejected": 0.09662716499544212,
+          "threshold": -73.00713818130599
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8960546605440496,
+          "rejection_f1": 0.9203109815354713,
+          "known_acceptance": 0.8632634457611669,
+          "unknown_rejection": 0.7383177570093458,
+          "identity_correct_but_rejected": 0.09981768459434823,
+          "threshold": -85.6430165675854
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.9017626662350164,
+          "rejection_f1": 0.924304715840387,
+          "known_acceptance": 0.8710118505013673,
+          "unknown_rejection": 0.719626168224299,
+          "identity_correct_but_rejected": 0.09206927985414767,
+          "threshold": -82.98187410480725
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.8934690191601564,
+          "rejection_f1": 0.9191943702984713,
+          "known_acceptance": 0.8632634457611669,
+          "unknown_rejection": 0.6915887850467289,
+          "identity_correct_but_rejected": 0.09981768459434823,
+          "threshold": -96.4375724104788
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.8250837032177817,
+          "rejection_f1": 0.9360805431983142,
+          "known_acceptance": 0.9111212397447584,
+          "unknown_rejection": 0.27102803738317754,
+          "identity_correct_but_rejected": 0.05879671832269827,
+          "threshold": -277.9999802463145
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.8221700644919449,
+          "rejection_f1": 0.9379084967320261,
+          "known_acceptance": 0.9156791248860529,
+          "unknown_rejection": 0.24299065420560748,
+          "identity_correct_but_rejected": 0.055150410209662715,
+          "threshold": -359.2689440514332
+        }
+      }
+    },
+    {
+      "held_subject": 11,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8738304647812571,
+          "rejection_f1": 0.9191551347414421,
+          "known_acceptance": 0.868348623853211,
+          "unknown_rejection": 0.6198347107438017,
+          "identity_correct_but_rejected": 0.08027522935779817,
+          "threshold": -74.94129883423629
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8540867389491242,
+          "rejection_f1": 0.9173333333333333,
+          "known_acceptance": 0.8678899082568807,
+          "unknown_rejection": 0.5619834710743802,
+          "identity_correct_but_rejected": 0.08623853211009175,
+          "threshold": -91.88983657255906
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.8797520661157024,
+          "rejection_f1": 0.9200097252613664,
+          "known_acceptance": 0.8678899082568807,
+          "unknown_rejection": 0.6611570247933884,
+          "identity_correct_but_rejected": 0.08302752293577982,
+          "threshold": -74.4531990694655
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8632193494578816,
+          "rejection_f1": 0.9166058837831267,
+          "known_acceptance": 0.8646788990825688,
+          "unknown_rejection": 0.6033057851239669,
+          "identity_correct_but_rejected": 0.0908256880733945,
+          "threshold": -90.50675576680953
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.8900371521722648,
+          "rejection_f1": 0.9208211143695014,
+          "known_acceptance": 0.8642201834862385,
+          "unknown_rejection": 0.768595041322314,
+          "identity_correct_but_rejected": 0.0908256880733945,
+          "threshold": -74.40902438610499
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8849040867389492,
+          "rejection_f1": 0.9154791154791154,
+          "known_acceptance": 0.8545871559633027,
+          "unknown_rejection": 0.7768595041322314,
+          "identity_correct_but_rejected": 0.10091743119266056,
+          "threshold": -87.26333700561877
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.8891576313594662,
+          "rejection_f1": 0.9195402298850575,
+          "known_acceptance": 0.8623853211009175,
+          "unknown_rejection": 0.7603305785123967,
+          "identity_correct_but_rejected": 0.09311926605504588,
+          "threshold": -84.90866006981476
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.8833383880506482,
+          "rejection_f1": 0.9126261383214374,
+          "known_acceptance": 0.8504587155963302,
+          "unknown_rejection": 0.7603305785123967,
+          "identity_correct_but_rejected": 0.10550458715596331,
+          "threshold": -98.68740301629283
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.6923458943058609,
+          "rejection_f1": 0.9254846998364868,
+          "known_acceptance": 0.9087155963302752,
+          "unknown_rejection": 0.008264462809917356,
+          "identity_correct_but_rejected": 0.056422018348623856,
+          "threshold": -280.1072677997921
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.7123057093032072,
+          "rejection_f1": 0.9274889251573794,
+          "known_acceptance": 0.9123853211009174,
+          "unknown_rejection": 0.008264462809917356,
+          "identity_correct_but_rejected": 0.053669724770642205,
+          "threshold": -362.54679963172555
+        }
+      }
+    },
+    {
+      "held_subject": 12,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8117312047186632,
+          "rejection_f1": 0.911976911976912,
+          "known_acceptance": 0.8701239100504818,
+          "unknown_rejection": 0.319672131147541,
+          "identity_correct_but_rejected": 0.07939421753097751,
+          "threshold": -76.91398128845762
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8032147398039408,
+          "rejection_f1": 0.9107529468366611,
+          "known_acceptance": 0.8687471317117944,
+          "unknown_rejection": 0.30327868852459017,
+          "identity_correct_but_rejected": 0.08398347865993575,
+          "threshold": -93.35144018682792
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.8175204447821606,
+          "rejection_f1": 0.9109292248435243,
+          "known_acceptance": 0.8682882055988986,
+          "unknown_rejection": 0.319672131147541,
+          "identity_correct_but_rejected": 0.08398347865993575,
+          "threshold": -76.08499860610966
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8099707340560792,
+          "rejection_f1": 0.9103614457831325,
+          "known_acceptance": 0.8669114272602111,
+          "unknown_rejection": 0.32786885245901637,
+          "identity_correct_but_rejected": 0.08765488756310234,
+          "threshold": -91.947333260412
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.8347038421896043,
+          "rejection_f1": 0.9092229484386347,
+          "known_acceptance": 0.861863240018357,
+          "unknown_rejection": 0.39344262295081966,
+          "identity_correct_but_rejected": 0.0945387792565397,
+          "threshold": -75.48473565361964
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8380254139739239,
+          "rejection_f1": 0.9123910939012585,
+          "known_acceptance": 0.8650757228086278,
+          "unknown_rejection": 0.4426229508196721,
+          "identity_correct_but_rejected": 0.09178522257916476,
+          "threshold": -89.2292837305671
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.8441343976406683,
+          "rejection_f1": 0.9124334784712144,
+          "known_acceptance": 0.8655346489215237,
+          "unknown_rejection": 0.4344262295081967,
+          "identity_correct_but_rejected": 0.09132629646626893,
+          "threshold": -85.89445108361892
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.8488214626953258,
+          "rejection_f1": 0.9086479902557856,
+          "known_acceptance": 0.8558972005507114,
+          "unknown_rejection": 0.5,
+          "identity_correct_but_rejected": 0.10234052317576871,
+          "threshold": -99.95830662135606
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.687475078807394,
+          "rejection_f1": 0.9267040149393091,
+          "known_acceptance": 0.9109683340982102,
+          "unknown_rejection": 0.01639344262295082,
+          "identity_correct_but_rejected": 0.05507113354749885,
+          "threshold": -287.5236046706032
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.7159623530119847,
+          "rejection_f1": 0.9264534204996497,
+          "known_acceptance": 0.9105094079853143,
+          "unknown_rejection": 0.01639344262295082,
+          "identity_correct_but_rejected": 0.0559889857732905,
+          "threshold": -368.2387994999538
+        }
+      }
+    },
+    {
+      "held_subject": 13,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.9524737396134292,
+          "rejection_f1": 0.9303689225506964,
+          "known_acceptance": 0.8741965105601469,
+          "unknown_rejection": 0.9105691056910569,
+          "identity_correct_but_rejected": 0.07713498622589532,
+          "threshold": -76.79033288534133
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.948554278931219,
+          "rejection_f1": 0.9293225727561751,
+          "known_acceptance": 0.8723599632690542,
+          "unknown_rejection": 0.9105691056910569,
+          "identity_correct_but_rejected": 0.08080808080808081,
+          "threshold": -92.4208769819346
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.954235630510575,
+          "rejection_f1": 0.9292533659730722,
+          "known_acceptance": 0.8714416896235078,
+          "unknown_rejection": 0.926829268292683,
+          "identity_correct_but_rejected": 0.08218549127640037,
+          "threshold": -75.9842133057969
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.9502639103526022,
+          "rejection_f1": 0.9282741738066096,
+          "known_acceptance": 0.8705234159779615,
+          "unknown_rejection": 0.9105691056910569,
+          "identity_correct_but_rejected": 0.08494031221303948,
+          "threshold": -91.398182030248
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.9580431066018649,
+          "rejection_f1": 0.9247417609444171,
+          "known_acceptance": 0.8631772268135904,
+          "unknown_rejection": 0.9349593495934959,
+          "identity_correct_but_rejected": 0.09320477502295683,
+          "threshold": -75.55613620081456
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.9553256138621993,
+          "rejection_f1": 0.9218249075215783,
+          "known_acceptance": 0.8581267217630854,
+          "unknown_rejection": 0.9349593495934959,
+          "identity_correct_but_rejected": 0.09871441689623507,
+          "threshold": -88.53160988976079
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.9595362344808022,
+          "rejection_f1": 0.9270807758409035,
+          "known_acceptance": 0.8668503213957759,
+          "unknown_rejection": 0.943089430894309,
+          "identity_correct_but_rejected": 0.08907254361799816,
+          "threshold": -85.73932318367504
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.957804206141235,
+          "rejection_f1": 0.9180895817866864,
+          "known_acceptance": 0.8516988062442608,
+          "unknown_rejection": 0.9349593495934959,
+          "identity_correct_but_rejected": 0.10560146923783287,
+          "threshold": -99.60176373427919
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.8810686316229553,
+          "rejection_f1": 0.9361400189214759,
+          "known_acceptance": 0.9086317722681359,
+          "unknown_rejection": 0.42276422764227645,
+          "identity_correct_but_rejected": 0.05555555555555555,
+          "threshold": -285.5686592379888
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.8737485721964657,
+          "rejection_f1": 0.9353163361661945,
+          "known_acceptance": 0.9095500459136823,
+          "unknown_rejection": 0.37398373983739835,
+          "identity_correct_but_rejected": 0.05463728191000918,
+          "threshold": -365.8856562211649
+        }
+      }
+    },
+    {
+      "held_subject": 14,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.9404579573887331,
+          "rejection_f1": 0.9289563939245468,
+          "known_acceptance": 0.8697247706422019,
+          "unknown_rejection": 0.9504132231404959,
+          "identity_correct_but_rejected": 0.08119266055045872,
+          "threshold": -76.45463492145643
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.9452725756312078,
+          "rejection_f1": 0.926217412690605,
+          "known_acceptance": 0.8637614678899083,
+          "unknown_rejection": 0.9752066115702479,
+          "identity_correct_but_rejected": 0.0889908256880734,
+          "threshold": -92.0697807423321
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.9413033588596558,
+          "rejection_f1": 0.9265897372943777,
+          "known_acceptance": 0.8655963302752293,
+          "unknown_rejection": 0.9504132231404959,
+          "identity_correct_but_rejected": 0.08577981651376147,
+          "threshold": -75.95639373471381
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.9463947228751232,
+          "rejection_f1": 0.9241005421389847,
+          "known_acceptance": 0.8600917431192661,
+          "unknown_rejection": 0.9752066115702479,
+          "identity_correct_but_rejected": 0.0944954128440367,
+          "threshold": -90.8291515970042
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.947562362574873,
+          "rejection_f1": 0.9243283214197683,
+          "known_acceptance": 0.8600917431192661,
+          "unknown_rejection": 0.9834710743801653,
+          "identity_correct_but_rejected": 0.09495412844036698,
+          "threshold": -75.51991459183361
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.9515429524603837,
+          "rejection_f1": 0.9205642167780252,
+          "known_acceptance": 0.8532110091743119,
+          "unknown_rejection": 0.9917355371900827,
+          "identity_correct_but_rejected": 0.10229357798165138,
+          "threshold": -88.65296174830674
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.9538668587459246,
+          "rejection_f1": 0.9264452644526445,
+          "known_acceptance": 0.8637614678899083,
+          "unknown_rejection": 0.9834710743801653,
+          "identity_correct_but_rejected": 0.09128440366972478,
+          "threshold": -86.56173943860891
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.9571915990598225,
+          "rejection_f1": 0.9232288323870649,
+          "known_acceptance": 0.8577981651376146,
+          "unknown_rejection": 0.9917355371900827,
+          "identity_correct_but_rejected": 0.09770642201834863,
+          "threshold": -100.7941189744833
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.8360906816286299,
+          "rejection_f1": 0.9283036551077788,
+          "known_acceptance": 0.9087155963302752,
+          "unknown_rejection": 0.11570247933884298,
+          "identity_correct_but_rejected": 0.05688073394495413,
+          "threshold": -284.5066502681759
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.8731139586018651,
+          "rejection_f1": 0.9313587212035731,
+          "known_acceptance": 0.9087155963302752,
+          "unknown_rejection": 0.23140495867768596,
+          "identity_correct_but_rejected": 0.05733944954128441,
+          "threshold": -367.3288028971779
+        }
+      }
+    },
+    {
+      "held_subject": 15,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8515912202813162,
+          "rejection_f1": 0.9198941544382968,
+          "known_acceptance": 0.8726608854404382,
+          "unknown_rejection": 0.509090909090909,
+          "identity_correct_but_rejected": 0.07850296668188042,
+          "threshold": -75.05422012991491
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8374216837475623,
+          "rejection_f1": 0.9168874969886774,
+          "known_acceptance": 0.8685531720675491,
+          "unknown_rejection": 0.4818181818181818,
+          "identity_correct_but_rejected": 0.08443633044272023,
+          "threshold": -89.35002674215815
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.8560889589643583,
+          "rejection_f1": 0.9194015444015444,
+          "known_acceptance": 0.8694659972615244,
+          "unknown_rejection": 0.5636363636363636,
+          "identity_correct_but_rejected": 0.08261068005476951,
+          "threshold": -73.97474122318324
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8437326252022738,
+          "rejection_f1": 0.9151148730350666,
+          "known_acceptance": 0.8635326335006847,
+          "unknown_rejection": 0.5272727272727272,
+          "identity_correct_but_rejected": 0.08991328160657235,
+          "threshold": -87.44192134752262
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.8668188041989959,
+          "rejection_f1": 0.9172530939092454,
+          "known_acceptance": 0.8626198083067093,
+          "unknown_rejection": 0.6363636363636364,
+          "identity_correct_but_rejected": 0.09447740757644911,
+          "threshold": -73.56984576321028
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.854840048130783,
+          "rejection_f1": 0.9081133919843597,
+          "known_acceptance": 0.8480146052031036,
+          "unknown_rejection": 0.6090909090909091,
+          "identity_correct_but_rejected": 0.10953902327704244,
+          "threshold": -85.19224181703643
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.8613335546242894,
+          "rejection_f1": 0.9150485436893204,
+          "known_acceptance": 0.8603377453217709,
+          "unknown_rejection": 0.6,
+          "identity_correct_but_rejected": 0.09584664536741214,
+          "threshold": -83.90771366794891
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.846707605493548,
+          "rejection_f1": 0.9095342599366009,
+          "known_acceptance": 0.8512094933820173,
+          "unknown_rejection": 0.5909090909090909,
+          "identity_correct_but_rejected": 0.10680054769511639,
+          "threshold": -97.74630185760007
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.7630305796439981,
+          "rejection_f1": 0.9333647280433247,
+          "known_acceptance": 0.9046097672295755,
+          "unknown_rejection": 0.32727272727272727,
+          "identity_correct_but_rejected": 0.05750798722044728,
+          "threshold": -279.2682759975579
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.7675324675324675,
+          "rejection_f1": 0.9364297443115177,
+          "known_acceptance": 0.910999543587403,
+          "unknown_rejection": 0.3090909090909091,
+          "identity_correct_but_rejected": 0.05294386125057052,
+          "threshold": -360.81772622843675
+        }
+      }
+    },
+    {
+      "held_subject": 16,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8363924855001579,
+          "rejection_f1": 0.9157844080846969,
+          "known_acceptance": 0.8721356553620532,
+          "unknown_rejection": 0.40336134453781514,
+          "identity_correct_but_rejected": 0.07882676443629698,
+          "threshold": -75.43556527446232
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8177872432199278,
+          "rejection_f1": 0.9149447381066795,
+          "known_acceptance": 0.8725939505041247,
+          "unknown_rejection": 0.36134453781512604,
+          "identity_correct_but_rejected": 0.08249312557286893,
+          "threshold": -91.49759816392235
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.8443606590207119,
+          "rejection_f1": 0.9144927536231884,
+          "known_acceptance": 0.8675527039413382,
+          "unknown_rejection": 0.453781512605042,
+          "identity_correct_but_rejected": 0.08524289642529789,
+          "threshold": -74.64196652524063
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8278389265880505,
+          "rejection_f1": 0.9139551699204628,
+          "known_acceptance": 0.8689275893675527,
+          "unknown_rejection": 0.40336134453781514,
+          "identity_correct_but_rejected": 0.08753437213565536,
+          "threshold": -89.69182134100717
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.8614369670874766,
+          "rejection_f1": 0.9135082604470359,
+          "known_acceptance": 0.8615948670944088,
+          "unknown_rejection": 0.5462184873949579,
+          "identity_correct_but_rejected": 0.09486709440879927,
+          "threshold": -74.11560810785986
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8452348858883608,
+          "rejection_f1": 0.9106796116504854,
+          "known_acceptance": 0.8597616865261228,
+          "unknown_rejection": 0.4789915966386555,
+          "identity_correct_but_rejected": 0.09761686526122823,
+          "threshold": -86.77199897094559
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.8606782768102658,
+          "rejection_f1": 0.9125456760048721,
+          "known_acceptance": 0.8583868010999084,
+          "unknown_rejection": 0.5798319327731093,
+          "identity_correct_but_rejected": 0.09670027497708525,
+          "threshold": -83.59433199542323
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.8428548321253341,
+          "rejection_f1": 0.9084249084249084,
+          "known_acceptance": 0.8524289642529789,
+          "unknown_rejection": 0.5546218487394958,
+          "identity_correct_but_rejected": 0.10403299725022915,
+          "threshold": -97.66493495185065
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.6822089055603909,
+          "rejection_f1": 0.9267723880597015,
+          "known_acceptance": 0.9106324472960586,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.05591200733272227,
+          "threshold": -284.0548429518592
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.6574224556917175,
+          "rejection_f1": 0.9265220433869839,
+          "known_acceptance": 0.9101741521539871,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.054995417048579284,
+          "threshold": -361.54873342901357
+        }
+      }
+    },
+    {
+      "held_subject": 17,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8851522221497096,
+          "rejection_f1": 0.9228163561577547,
+          "known_acceptance": 0.8711740520785747,
+          "unknown_rejection": 0.6696428571428571,
+          "identity_correct_but_rejected": 0.08131566925536775,
+          "threshold": -75.5022770699623
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8680455850681982,
+          "rejection_f1": 0.9232619677652153,
+          "known_acceptance": 0.8766560073092736,
+          "unknown_rejection": 0.5625,
+          "identity_correct_but_rejected": 0.07857469164001828,
+          "threshold": -92.06206730032486
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.8901161652417934,
+          "rejection_f1": 0.9212121212121213,
+          "known_acceptance": 0.8679762448606669,
+          "unknown_rejection": 0.6785714285714286,
+          "identity_correct_but_rejected": 0.08542713567839195,
+          "threshold": -74.87314338447712
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8746981661554526,
+          "rejection_f1": 0.9223347805113362,
+          "known_acceptance": 0.8734582000913659,
+          "unknown_rejection": 0.5982142857142857,
+          "identity_correct_but_rejected": 0.0808588396528095,
+          "threshold": -90.63971041730932
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.9035640866671018,
+          "rejection_f1": 0.9205653021442495,
+          "known_acceptance": 0.8629511192325263,
+          "unknown_rejection": 0.7678571428571429,
+          "identity_correct_but_rejected": 0.09456372772955687,
+          "threshold": -74.58175858664183
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8902018207922731,
+          "rejection_f1": 0.9176814417924988,
+          "known_acceptance": 0.860666971219735,
+          "unknown_rejection": 0.7053571428571429,
+          "identity_correct_but_rejected": 0.09730470534490634,
+          "threshold": -87.8486185415295
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.905305749526855,
+          "rejection_f1": 0.9196973395167195,
+          "known_acceptance": 0.860666971219735,
+          "unknown_rejection": 0.7857142857142857,
+          "identity_correct_but_rejected": 0.09639104613978985,
+          "threshold": -85.09934306263386
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.8918823011159694,
+          "rejection_f1": 0.917135174773894,
+          "known_acceptance": 0.857012334399269,
+          "unknown_rejection": 0.7678571428571429,
+          "identity_correct_but_rejected": 0.10050251256281408,
+          "threshold": -98.40449209564218
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.7209260588657573,
+          "rejection_f1": 0.9308820107051431,
+          "known_acceptance": 0.9136592051164916,
+          "unknown_rejection": 0.03571428571428571,
+          "identity_correct_but_rejected": 0.05573321151210599,
+          "threshold": -281.09121656379887
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.705459113750571,
+          "rejection_f1": 0.9301350721937587,
+          "known_acceptance": 0.9122887163088168,
+          "unknown_rejection": 0.03571428571428571,
+          "identity_correct_but_rejected": 0.05573321151210599,
+          "threshold": -361.3218107737801
+        }
+      }
+    },
+    {
+      "held_subject": 18,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8880376481050886,
+          "rejection_f1": 0.924373795761079,
+          "known_acceptance": 0.8710848842487517,
+          "unknown_rejection": 0.6938775510204082,
+          "identity_correct_but_rejected": 0.08352246935996369,
+          "threshold": -74.41465754860195
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8805200700343687,
+          "rejection_f1": 0.9234472797303803,
+          "known_acceptance": 0.8706309577848389,
+          "unknown_rejection": 0.6632653061224489,
+          "identity_correct_but_rejected": 0.08579210167952792,
+          "threshold": -89.66144452805209
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.8900478938738455,
+          "rejection_f1": 0.9227799227799228,
+          "known_acceptance": 0.8679073990013618,
+          "unknown_rejection": 0.7040816326530612,
+          "identity_correct_but_rejected": 0.08669995460735361,
+          "threshold": -73.39655985881635
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8838920951948641,
+          "rejection_f1": 0.9207346544224263,
+          "known_acceptance": 0.8647299137539719,
+          "unknown_rejection": 0.6938775510204082,
+          "identity_correct_but_rejected": 0.09123921924648207,
+          "threshold": -88.09355576708417
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.8948604407718602,
+          "rejection_f1": 0.9197964623212987,
+          "known_acceptance": 0.861552428506582,
+          "unknown_rejection": 0.7346938775510204,
+          "identity_correct_but_rejected": 0.09532455742169768,
+          "threshold": -73.6022301644523
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8919655015887427,
+          "rejection_f1": 0.9178181818181819,
+          "known_acceptance": 0.8592827961870178,
+          "unknown_rejection": 0.7040816326530612,
+          "identity_correct_but_rejected": 0.09804811620517476,
+          "threshold": -86.32206018707679
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.8937580479309291,
+          "rejection_f1": 0.9213646261795306,
+          "known_acceptance": 0.8642759872900591,
+          "unknown_rejection": 0.7346938775510204,
+          "identity_correct_but_rejected": 0.09214707217430776,
+          "threshold": -84.28289393763319
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.8905018203377584,
+          "rejection_f1": 0.9173553719008265,
+          "known_acceptance": 0.8565592374035407,
+          "unknown_rejection": 0.7551020408163265,
+          "identity_correct_but_rejected": 0.10077167498865183,
+          "threshold": -97.73337937961324
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.7857559728385226,
+          "rejection_f1": 0.9307207837648706,
+          "known_acceptance": 0.905583295506128,
+          "unknown_rejection": 0.09183673469387756,
+          "identity_correct_but_rejected": 0.06264185201997277,
+          "threshold": -286.8852390447868
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.7837271994589937,
+          "rejection_f1": 0.9299185098952271,
+          "known_acceptance": 0.9064911484339537,
+          "unknown_rejection": 0.030612244897959183,
+          "identity_correct_but_rejected": 0.05946436677258284,
+          "threshold": -364.9310587881522
+        }
+      }
+    },
+    {
+      "held_subject": 19,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.9219510825532051,
+          "rejection_f1": 0.9275996112730807,
+          "known_acceptance": 0.8728852309099223,
+          "unknown_rejection": 0.8245614035087719,
+          "identity_correct_but_rejected": 0.10882487425697303,
+          "threshold": -68.92277255835616
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.9167930113349216,
+          "rejection_f1": 0.9247626004382761,
+          "known_acceptance": 0.8683127572016461,
+          "unknown_rejection": 0.8157894736842105,
+          "identity_correct_but_rejected": 0.11476909007773205,
+          "threshold": -85.75771623336308
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.9260743307743524,
+          "rejection_f1": 0.9253658536585366,
+          "known_acceptance": 0.8673982624599909,
+          "unknown_rejection": 0.8596491228070176,
+          "identity_correct_but_rejected": 0.11476909007773205,
+          "threshold": -67.80645785987276
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.920499121603735,
+          "rejection_f1": 0.9247259439707674,
+          "known_acceptance": 0.8678555098308185,
+          "unknown_rejection": 0.8245614035087719,
+          "identity_correct_but_rejected": 0.11431184270690443,
+          "threshold": -84.41103227646862
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.9354960331785109,
+          "rejection_f1": 0.9227751899975484,
+          "known_acceptance": 0.8605395518975766,
+          "unknown_rejection": 0.9122807017543859,
+          "identity_correct_but_rejected": 0.12848651120256058,
+          "threshold": -67.72064357327811
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.9312364129344852,
+          "rejection_f1": 0.9206583149103414,
+          "known_acceptance": 0.8568815729309557,
+          "unknown_rejection": 0.9122807017543859,
+          "identity_correct_but_rejected": 0.13214449016918153,
+          "threshold": -81.628612411957
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.9362099808276979,
+          "rejection_f1": 0.9209621993127147,
+          "known_acceptance": 0.8577960676726109,
+          "unknown_rejection": 0.9035087719298246,
+          "identity_correct_but_rejected": 0.13122999542752628,
+          "threshold": -77.35243957512846
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.9332940261032096,
+          "rejection_f1": 0.9172821270310192,
+          "known_acceptance": 0.8518518518518519,
+          "unknown_rejection": 0.8947368421052632,
+          "identity_correct_but_rejected": 0.13717421124828533,
+          "threshold": -92.09261896253743
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.8659182249175752,
+          "rejection_f1": 0.9316888045540797,
+          "known_acceptance": 0.8980338363054412,
+          "unknown_rejection": 0.4298245614035088,
+          "identity_correct_but_rejected": 0.0772748056698674,
+          "threshold": -258.95595622613666
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.8808830489575562,
+          "rejection_f1": 0.9403195488721805,
+          "known_acceptance": 0.9149519890260631,
+          "unknown_rejection": 0.40350877192982454,
+          "identity_correct_but_rejected": 0.06767261088248742,
+          "threshold": -344.86180468295925
+        }
+      }
+    },
+    {
+      "held_subject": 20,
+      "metrics": {
+        "fisher_l0.1_d32": {
+          "auc": 0.8349274675122617,
+          "rejection_f1": 0.9161475802587447,
+          "known_acceptance": 0.8782728525493799,
+          "unknown_rejection": 0.31451612903225806,
+          "identity_correct_but_rejected": 0.07625172255397336,
+          "threshold": -75.92621774323503
+        },
+        "fisher_l0.1_d64": {
+          "auc": 0.8227917969386697,
+          "rejection_f1": 0.9120615088899567,
+          "known_acceptance": 0.8718419843821773,
+          "unknown_rejection": 0.29838709677419356,
+          "identity_correct_but_rejected": 0.0840606338998622,
+          "threshold": -92.30746682389118
+        },
+        "fisher_l1.0_d32": {
+          "auc": 0.840643383170092,
+          "rejection_f1": 0.9134199134199135,
+          "known_acceptance": 0.8723013321084061,
+          "unknown_rejection": 0.3387096774193548,
+          "identity_correct_but_rejected": 0.08222324299494717,
+          "threshold": -74.52792916535637
+        },
+        "fisher_l1.0_d64": {
+          "auc": 0.8288707454769066,
+          "rejection_f1": 0.9125933060438237,
+          "known_acceptance": 0.870463941203491,
+          "unknown_rejection": 0.3467741935483871,
+          "identity_correct_but_rejected": 0.08727606798346348,
+          "threshold": -91.04979494146673
+        },
+        "fisher_l10.0_d32": {
+          "auc": 0.8580985967667847,
+          "rejection_f1": 0.9153771760154739,
+          "known_acceptance": 0.8695452457510335,
+          "unknown_rejection": 0.46774193548387094,
+          "identity_correct_but_rejected": 0.08865411116214975,
+          "threshold": -74.60849446570458
+        },
+        "fisher_l10.0_d64": {
+          "auc": 0.8476113918236104,
+          "rejection_f1": 0.9096209912536443,
+          "known_acceptance": 0.8598989435002297,
+          "unknown_rejection": 0.4596774193548387,
+          "identity_correct_but_rejected": 0.09921910886541112,
+          "threshold": -87.35919860604763
+        },
+        "fisher_l100.0_d32": {
+          "auc": 0.8563760427934268,
+          "rejection_f1": 0.914811229428848,
+          "known_acceptance": 0.8681672025723473,
+          "unknown_rejection": 0.47580645161290325,
+          "identity_correct_but_rejected": 0.08865411116214975,
+          "threshold": -85.36301338698364
+        },
+        "fisher_l100.0_d64": {
+          "auc": 0.8439180879280453,
+          "rejection_f1": 0.9123486682808717,
+          "known_acceptance": 0.8654111162149747,
+          "unknown_rejection": 0.4435483870967742,
+          "identity_correct_but_rejected": 0.09232889297197978,
+          "threshold": -99.3984145252604
+        },
+        "pca_whiten_l0_d32": {
+          "auc": 0.7123705306207121,
+          "rejection_f1": 0.9264534204996497,
+          "known_acceptance": 0.9113458888378503,
+          "unknown_rejection": 0.016129032258064516,
+          "identity_correct_but_rejected": 0.05558107487367937,
+          "threshold": -282.6412872472973
+        },
+        "pca_whiten_l0_d64": {
+          "auc": 0.695245010150103,
+          "rejection_f1": 0.9274550968042921,
+          "known_acceptance": 0.9131832797427653,
+          "unknown_rejection": 0.016129032258064516,
+          "identity_correct_but_rejected": 0.05466237942122187,
+          "threshold": -363.45215459805763
+        }
+      }
+    }
+  ],
+  "test_audit": {
+    "S1_N": 3033,
+    "S1_rejection": 0.8717441477085394,
+    "S2_N": 19218,
+    "S2_acceptance": 0.4349568113227183,
+    "official_AUC": "N/A",
+    "official_F1": "N/A"
+  },
+  "protocol": {
+    "test_not_used_for_selection": true,
+    "stability_regularizer": "matched random feature perturbation; PGD not run at full scale",
+    "unknown_proxy": "held-out enrolled subject"
+  }
+}

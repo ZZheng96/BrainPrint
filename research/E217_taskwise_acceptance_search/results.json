@@ -1,0 +1,601 @@
+{
+  "E65_PCA96_k12": {
+    "config": "E65_PCA96_k12",
+    "device": "cuda",
+    "selected": null,
+    "selection_status": "no_combination_meets_loso_rejection_and_known_acceptance_constraints",
+    "loso_auc_fold_mean": 0.9101734480306461,
+    "loso_auc_fold_values": [
+      0.8651036495917732,
+      0.9325361795468529,
+      0.9170961262122044,
+      0.9285644949928006,
+      0.9927317731773178,
+      0.9227740157363641,
+      0.899039815075496,
+      0.9307622282132979,
+      0.9630947684052711,
+      0.9374675197437361,
+      0.8872279930244901,
+      0.8623936382308022,
+      0.9431790185670452,
+      0.9868830085677458,
+      0.8819841500352682,
+      0.7967557325404956,
+      0.8334203484957253,
+      0.859542182737825,
+      0.9616313302689737,
+      0.9012809874494347
+    ],
+    "identity_macro_f1": 0.9877567719053129,
+    "identity_macro_f1_final_inner_oof": 0.9872880288998772,
+    "official_test_auc": "N/A",
+    "official_test_f1": "N/A",
+    "candidate_count": 4096,
+    "eligible_count": 0,
+    "pareto_candidates": [],
+    "candidate_summary": [
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8461538461538461,
+        "LOSO_rejection_macro": 0.8467618745260838,
+        "known_acceptance_micro": 0.8308058281296461,
+        "known_acceptance_macro": 0.830807711178498,
+        "rejection_f1_mean": 0.8860387381313736
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.85,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8348544111255976,
+        "LOSO_rejection_macro": 0.8358454034197333,
+        "known_acceptance_micro": 0.836249685491434,
+        "known_acceptance_macro": 0.8362495890906846,
+        "rejection_f1_mean": 0.889545386930801
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.85,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8279009126466753,
+        "LOSO_rejection_macro": 0.8288601821075382,
+        "known_acceptance_micro": 0.8359294585877993,
+        "known_acceptance_macro": 0.8359323474289709,
+        "rejection_f1_mean": 0.8895293291356973
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.88,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8222511951325511,
+        "LOSO_rejection_macro": 0.823431046095781,
+        "known_acceptance_micro": 0.84002378828427,
+        "known_acceptance_macro": 0.8400246243025291,
+        "rejection_f1_mean": 0.8920837636950694
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.88,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8209474141677532,
+        "LOSO_rejection_macro": 0.8221072839044627,
+        "known_acceptance_micro": 0.8395663212790777,
+        "known_acceptance_macro": 0.8395697366837277,
+        "rejection_f1_mean": 0.8918475078121935
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.85,
+          "EO": 0.85,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8166014776184267,
+        "LOSO_rejection_macro": 0.8179437110011879,
+        "known_acceptance_micro": 0.8413733159495871,
+        "known_acceptance_macro": 0.8413742253411576,
+        "rejection_f1_mean": 0.893019585209931
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.9,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8135593220338984,
+        "LOSO_rejection_macro": 0.8143470323961388,
+        "known_acceptance_micro": 0.8428372103662023,
+        "known_acceptance_macro": 0.8428407072533005,
+        "rejection_f1_mean": 0.8939537858621334
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.9,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8131247283789657,
+        "LOSO_rejection_macro": 0.8142542888545623,
+        "known_acceptance_micro": 0.8420137697568563,
+        "known_acceptance_macro": 0.8420146643910111,
+        "rejection_f1_mean": 0.8934814186257294
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.88,
+          "EO": 0.85,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8096479791395046,
+        "LOSO_rejection_macro": 0.8111908127981124,
+        "known_acceptance_micro": 0.8450101786408655,
+        "known_acceptance_macro": 0.8450116145959143,
+        "rejection_f1_mean": 0.8953252793929846
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.8,
+          "Imagery": 0.85,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8087787918296393,
+        "LOSO_rejection_macro": 0.810193412420374,
+        "known_acceptance_micro": 0.856378233719893,
+        "known_acceptance_macro": 0.8563785993967116,
+        "rejection_f1_mean": 0.9019626237127802
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.85
+        },
+        "LOSO_rejection_micro": 0.8053020425901782,
+        "LOSO_rejection_macro": 0.806287710461983,
+        "known_acceptance_micro": 0.8415334294014044,
+        "known_acceptance_macro": 0.8415372926097758,
+        "rejection_f1_mean": 0.8933992571295637
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.92,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8048674489352455,
+        "LOSO_rejection_macro": 0.8056295528473422,
+        "known_acceptance_micro": 0.8455591390470962,
+        "known_acceptance_macro": 0.8455626678237422,
+        "rejection_f1_mean": 0.895764885728525
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.92,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8044328552803129,
+        "LOSO_rejection_macro": 0.8056024763903482,
+        "known_acceptance_micro": 0.8431116905693177,
+        "known_acceptance_macro": 0.8431124804089665,
+        "rejection_f1_mean": 0.8943418957783804
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.85,
+          "EO": 0.88,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8039982616253802,
+        "LOSO_rejection_macro": 0.8055293536772353,
+        "known_acceptance_micro": 0.8451474187424232,
+        "known_acceptance_macro": 0.8451492605530021,
+        "rejection_f1_mean": 0.8955466058673108
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.9,
+          "EO": 0.85,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8022598870056498,
+        "LOSO_rejection_macro": 0.8034305612897883,
+        "known_acceptance_micro": 0.8482810677279902,
+        "known_acceptance_macro": 0.8482825851654873,
+        "rejection_f1_mean": 0.8974209777837713
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.94,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8000869187309865,
+        "LOSO_rejection_macro": 0.8011500959656539,
+        "known_acceptance_micro": 0.8440494979299618,
+        "known_acceptance_macro": 0.8440504053348518,
+        "rejection_f1_mean": 0.894999348423404
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.85,
+          "Imagery": 0.85,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.7974793568013907,
+        "LOSO_rejection_macro": 0.7992769413140234,
+        "known_acceptance_micro": 0.8618220910816807,
+        "known_acceptance_macro": 0.8618204773088983,
+        "rejection_f1_mean": 0.9053855592290949
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.88,
+          "EO": 0.88,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.7970447631464581,
+        "LOSO_rejection_macro": 0.7987764554741599,
+        "known_acceptance_micro": 0.8487842814337015,
+        "known_acceptance_macro": 0.8487866498077589,
+        "rejection_f1_mean": 0.8978442059867534
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.94,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.7966101694915254,
+        "LOSO_rejection_macro": 0.7973728779010585,
+        "known_acceptance_micro": 0.8471831469155288,
+        "known_acceptance_macro": 0.8471854420148459,
+        "rejection_f1_mean": 0.8969194087410983
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.96,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.7957409821816601,
+        "LOSO_rejection_macro": 0.7966497454094552,
+        "known_acceptance_micro": 0.845101672041904,
+        "known_acceptance_macro": 0.8451024869398317,
+        "rejection_f1_mean": 0.8957232260037904
+      }
+    ],
+    "protocol": "Selection uses only outer-fold inner OOF known scores by task and strict LOSO scores; no Test selection."
+  },
+  "E65_PCA64_logbp_PCA32_blocknorm_jointPCA96_k6": {
+    "config": "E65_PCA64_logbp_PCA32_blocknorm_jointPCA96_k6",
+    "device": "cuda",
+    "selected": null,
+    "selection_status": "no_combination_meets_loso_rejection_and_known_acceptance_constraints",
+    "loso_auc_fold_mean": 0.9049607560494477,
+    "loso_auc_fold_values": [
+      0.8597952198201135,
+      0.9178548181437195,
+      0.9677886532399431,
+      0.9238282829917005,
+      0.9913591359135914,
+      0.8997825507134708,
+      0.9170395779927986,
+      0.908892370715311,
+      0.9463110549988164,
+      0.9235766193271369,
+      0.852570323754644,
+      0.8437093267328223,
+      0.9421823557078546,
+      0.9712790962165441,
+      0.8849093398614165,
+      0.7969097813277465,
+      0.8454896234418847,
+      0.8896356545341696,
+      0.9476933073424302,
+      0.868608028212841
+    ],
+    "identity_macro_f1": 0.985736712643264,
+    "identity_macro_f1_final_inner_oof": 0.9854908583990347,
+    "official_test_auc": "N/A",
+    "official_test_f1": "N/A",
+    "candidate_count": 4096,
+    "eligible_count": 0,
+    "pareto_candidates": [],
+    "candidate_summary": [
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.914819643633203,
+        "LOSO_rejection_macro": 0.9161679546962986,
+        "known_acceptance_micro": 0.7924700930945355,
+        "known_acceptance_macro": 0.7924748516926178,
+        "rejection_f1_mean": 0.8610803348158566
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.85,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8965667101260322,
+        "LOSO_rejection_macro": 0.8986291092018055,
+        "known_acceptance_micro": 0.7991262380200828,
+        "known_acceptance_macro": 0.7991326913897597,
+        "rejection_f1_mean": 0.8656349490931221
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.85,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8926553672316384,
+        "LOSO_rejection_macro": 0.8947460927301751,
+        "known_acceptance_micro": 0.8002012854822846,
+        "known_acceptance_macro": 0.8002061844115772,
+        "rejection_f1_mean": 0.8663924768315582
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.88,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8843980877879183,
+        "LOSO_rejection_macro": 0.8864778323785132,
+        "known_acceptance_micro": 0.8055993961435531,
+        "known_acceptance_macro": 0.80560730072472,
+        "rejection_f1_mean": 0.8699007349218798
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.85
+        },
+        "LOSO_rejection_micro": 0.8843980877879183,
+        "LOSO_rejection_macro": 0.8858526648309418,
+        "known_acceptance_micro": 0.8057823829456301,
+        "known_acceptance_macro": 0.8057873598526302,
+        "rejection_f1_mean": 0.8700164911441897
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.88,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8791829639287266,
+        "LOSO_rejection_macro": 0.8814530908610975,
+        "known_acceptance_micro": 0.8023285070564286,
+        "known_acceptance_macro": 0.8023314245973954,
+        "rejection_f1_mean": 0.8680296782716661
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.9,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8748370273794003,
+        "LOSO_rejection_macro": 0.8769343240903968,
+        "known_acceptance_micro": 0.8033349344678515,
+        "known_acceptance_macro": 0.8033388683888486,
+        "rejection_f1_mean": 0.8687540332355402
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.85,
+          "EO": 0.85,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8744024337244676,
+        "LOSO_rejection_macro": 0.8772072472356818,
+        "known_acceptance_micro": 0.8068574304078319,
+        "known_acceptance_macro": 0.8068640241087192,
+        "rejection_f1_mean": 0.8709152077283082
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.8,
+          "Imagery": 0.85,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8722294654498044,
+        "LOSO_rejection_macro": 0.8746922026282663,
+        "known_acceptance_micro": 0.819300532949061,
+        "known_acceptance_macro": 0.8193016352017967,
+        "rejection_f1_mean": 0.8785022223596265
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.92,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8717948717948718,
+        "LOSO_rejection_macro": 0.8738360817421794,
+        "known_acceptance_micro": 0.8059653697477069,
+        "known_acceptance_macro": 0.8059682631456327,
+        "rejection_f1_mean": 0.8704364292111635
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.9,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8704910908300739,
+        "LOSO_rejection_macro": 0.8724038524438094,
+        "known_acceptance_micro": 0.8103341796472929,
+        "known_acceptance_macro": 0.810340446620082,
+        "rejection_f1_mean": 0.8731272589283463
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.85,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.85
+        },
+        "LOSO_rejection_micro": 0.8661451542807475,
+        "LOSO_rejection_macro": 0.8683138193364484,
+        "known_acceptance_micro": 0.8124385278711773,
+        "known_acceptance_macro": 0.812445199549772,
+        "rejection_f1_mean": 0.8745151999773976
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.94,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8652759669708823,
+        "LOSO_rejection_macro": 0.8672341482549898,
+        "known_acceptance_micro": 0.8079324778700336,
+        "known_acceptance_macro": 0.8079364720372064,
+        "rejection_f1_mean": 0.871797757667526
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.88,
+          "EO": 0.85,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8622338113863538,
+        "LOSO_rejection_macro": 0.8650559704123892,
+        "known_acceptance_micro": 0.8133305885313021,
+        "known_acceptance_macro": 0.8133386334436794,
+        "rejection_f1_mean": 0.8751492558803085
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.85,
+          "Imagery": 0.8,
+          "SSVEP": 0.85
+        },
+        "LOSO_rejection_micro": 0.8622338113863538,
+        "LOSO_rejection_macro": 0.8644308028648181,
+        "known_acceptance_micro": 0.8135135753333791,
+        "known_acceptance_macro": 0.8135186925715896,
+        "rejection_f1_mean": 0.8752639982397594
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.85,
+          "EO": 0.88,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8609300304215558,
+        "LOSO_rejection_macro": 0.863914245366604,
+        "known_acceptance_micro": 0.8089846519819758,
+        "known_acceptance_macro": 0.8089892642945371,
+        "rejection_f1_mean": 0.8725441872842812
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.8,
+          "EO": 0.96,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.85832246849196,
+        "LOSO_rejection_macro": 0.8600182923635898,
+        "known_acceptance_micro": 0.8113634804089755,
+        "known_acceptance_macro": 0.8113677790643307,
+        "rejection_f1_mean": 0.8740536165345862
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.92,
+          "EO": 0.8,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8574532811820947,
+        "LOSO_rejection_macro": 0.8593619822185069,
+        "known_acceptance_micro": 0.8145657494453212,
+        "known_acceptance_macro": 0.8145702393796175,
+        "rejection_f1_mean": 0.8760144001910476
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.85,
+          "EO": 0.9,
+          "Imagery": 0.8,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8565840938722294,
+        "LOSO_rejection_macro": 0.8593954785959035,
+        "known_acceptance_micro": 0.8099910793933988,
+        "known_acceptance_macro": 0.8099967080859903,
+        "rejection_f1_mean": 0.8732642206268622
+      },
+      {
+        "acceptance_by_task": {
+          "EC": 0.85,
+          "EO": 0.8,
+          "Imagery": 0.85,
+          "SSVEP": 0.8
+        },
+        "LOSO_rejection_micro": 0.8539765319426337,
+        "LOSO_rejection_macro": 0.8571533571337729,
+        "known_acceptance_micro": 0.8259566778746082,
+        "known_acceptance_macro": 0.8259594748989387,
+        "rejection_f1_mean": 0.8829444822640781
+      }
+    ],
+    "protocol": "Selection uses only outer-fold inner OOF known scores by task and strict LOSO scores; no Test selection."
+  },
+  "runtime_seconds": 612.8396725654602
+}

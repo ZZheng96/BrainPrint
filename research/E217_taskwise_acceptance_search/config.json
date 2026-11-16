@@ -1,0 +1,16 @@
+{
+  "experiment": "E217_taskwise_acceptance_search",
+  "acceptance_grid": [0.80, 0.85, 0.88, 0.90, 0.92, 0.94, 0.96, 0.98],
+  "known_acceptance_floor": 0.80,
+  "loso_rejection_target": 0.90,
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "configs": {
+    "E65_PCA96_k12": {},
+    "E65_PCA64_logbp_PCA32_blocknorm_jointPCA96_k6": {}
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "source_cache": "research/E215_strict_loso_e170_rebuild/models"
+}

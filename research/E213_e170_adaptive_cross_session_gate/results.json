@@ -1,0 +1,113 @@
+{
+  "experiment": "E213_e170_adaptive_cross_session_gate",
+  "protocol": "E170 frozen_scores only; gate fit on Train OOF known plus Train LOSO unknown; model/reg selected by Train LOSO AUC; Test frozen audit only",
+  "cache": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E170_three_way_fusion_ceiling\\frozen_scores.npz",
+  "features": [
+    "4 E170 streams",
+    "6 pairwise absolute disagreements",
+    "stream std",
+    "stream range"
+  ],
+  "device": "numpy (cached-score experiment; no raw EEG extraction)",
+  "selected_regularization": 0.0001,
+  "train_oof_auc": 0.9511791082556493,
+  "train_oof_f1": 0.9388623534520191,
+  "loso_auc": 0.9527443045034784,
+  "reference_090": {
+    "acceptance_rate": 0.9,
+    "threshold": 0.7640287220478057,
+    "LOSO_rejection": 0.8718214058252499,
+    "Test_S1_rejection": 0.8565776458951533,
+    "Test_S2_acceptance": 0.5076490789884484,
+    "W_audit": 0.6859243024243249
+  },
+  "curve": [
+    {
+      "acceptance_rate": 0.8,
+      "threshold": 0.8988994598388672,
+      "LOSO_rejection": 0.9767258839563642,
+      "Test_S1_rejection": 0.9736234751071546,
+      "Test_S2_acceptance": 0.2469039442189614,
+      "W_audit": 0.6110393118753604
+    },
+    {
+      "acceptance_rate": 0.85,
+      "threshold": 0.8555552959442139,
+      "LOSO_rejection": 0.9454130904889564,
+      "Test_S1_rejection": 0.9432904714803825,
+      "Test_S2_acceptance": 0.34634197106878967,
+      "W_audit": 0.6453468760267296
+    },
+    {
+      "acceptance_rate": 0.88,
+      "threshold": 0.8082094359397888,
+      "LOSO_rejection": 0.9090939423106399,
+      "Test_S1_rejection": 0.8977909660402242,
+      "Test_S2_acceptance": 0.43750650431886773,
+      "W_audit": 0.6704744792471499
+    },
+    {
+      "acceptance_rate": 0.9,
+      "threshold": 0.7640287220478057,
+      "LOSO_rejection": 0.8718214058252499,
+      "Test_S1_rejection": 0.8565776458951533,
+      "Test_S2_acceptance": 0.5076490789884484,
+      "W_audit": 0.6859243024243249
+    },
+    {
+      "acceptance_rate": 0.91,
+      "threshold": 0.7366326248645783,
+      "LOSO_rejection": 0.8443887231238328,
+      "Test_S1_rejection": 0.8298714144411474,
+      "Test_S2_acceptance": 0.5443334374024352,
+      "W_audit": 0.6907317530924626
+    },
+    {
+      "acceptance_rate": 0.92,
+      "threshold": 0.7037686133384704,
+      "LOSO_rejection": 0.8135783892224016,
+      "Test_S1_rejection": 0.7945928123969667,
+      "Test_S2_acceptance": 0.5836715579144552,
+      "W_audit": 0.6938785793620696
+    },
+    {
+      "acceptance_rate": 0.93,
+      "threshold": 0.6624435889720911,
+      "LOSO_rejection": 0.7666097624378236,
+      "Test_S1_rejection": 0.7537091988130564,
+      "Test_S2_acceptance": 0.6248829222603809,
+      "W_audit": 0.6925212014429105
+    },
+    {
+      "acceptance_rate": 0.94,
+      "threshold": 0.6195426046848297,
+      "LOSO_rejection": 0.7118080893731896,
+      "Test_S1_rejection": 0.7200791295746786,
+      "Test_S2_acceptance": 0.6621396607347279,
+      "W_audit": 0.6890416351043309
+    },
+    {
+      "acceptance_rate": 0.95,
+      "threshold": 0.5516012400388721,
+      "LOSO_rejection": 0.6527189080518645,
+      "Test_S1_rejection": 0.655786350148368,
+      "Test_S2_acceptance": 0.7090748256842544,
+      "W_audit": 0.6816637273921853
+    },
+    {
+      "acceptance_rate": 0.96,
+      "threshold": 0.4754617226123814,
+      "LOSO_rejection": 0.5885744081192497,
+      "Test_S1_rejection": 0.5835806132542037,
+      "Test_S2_acceptance": 0.7520553647622021,
+      "W_audit": 0.6690664377244644
+    }
+  ],
+  "test_official": {
+    "AUC": "N/A(no labels)",
+    "F1": "N/A(no labels)"
+  },
+  "test_diagnostic_auc": 0.7448843585718233,
+  "model_file": "model.npz",
+  "score_file": "adaptive_scores.npz"
+}

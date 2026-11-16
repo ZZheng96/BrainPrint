@@ -1,0 +1,21 @@
+{
+  "experiment": "E216_taskwise_strict_gate",
+  "acceptance_grid": [0.85, 0.88, 0.90, 0.92, 0.94, 0.96],
+  "diagnostic_acceptance_grid": [0.50, 0.60, 0.70, 0.75, 0.80],
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "fit_fraction": 0.6,
+  "score_fraction": [0.6, 0.8],
+  "blocks": 5,
+  "configs": {
+    "E65_PCA96_k12": {"streams": ["e65"], "pca": {"e65": 96}, "joint_pca": null, "k": 12},
+    "E65_PCA64_logbp_PCA32_blocknorm_jointPCA96_k6": {"streams": ["e65", "logbp"], "pca": {"e65": 64, "logbp": 32}, "joint_pca": 96, "block_norm": true, "k": 6}
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "e65_train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "e65_test": "research/E121_pca_sweep/test_logspd.npy",
+    "logbp_train": "research/E146_phase_features/train_log_band_power.npy",
+    "logbp_test": "research/E146_phase_features/test_log_band_power.npy"
+  }
+}
