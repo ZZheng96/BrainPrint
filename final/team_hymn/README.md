@@ -1,4 +1,4 @@
-# BrainPrint final submission
+# team_hymn（赞美诗）决赛提交
 
 ## 方法简述
 
@@ -35,9 +35,9 @@
 ## 本地运行 / 自测
 
 ```python
-import sys; sys.path.insert(0, "brainprint")
+import sys; sys.path.insert(0, "team_hymn")
 import model
-art = model.load_model("brainprint", "cuda:0")
+art = model.load_model("team_hymn", "cuda:0")
 art = model.enroll(art, x_enroll, meta_enroll, labels_enroll)   # labels in 21..23
 scores = model.predict_batch(art, x, meta)                      # (N, 24)
 pred = scores.argmax(1); pred[pred == 0] = -1

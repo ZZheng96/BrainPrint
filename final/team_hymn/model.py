@@ -41,9 +41,10 @@ def _task_index(meta_row) -> int:
             text = "".join(ch for ch in str(meta_row[key]).lower() if ch.isalnum())
             if text in _TASK_ALIASES:
                 return _TASK_ALIASES[text]
-            for alias in ("ssvep", "imagery", "eyesclosed", "eyesopen"):
+            for alias, idx in (("ssvep", 3), ("imagery", 2), ("想象", 2), ("eyesclosed", 0),
+                               ("闭眼", 0), ("eyesopen", 1), ("睁眼", 1)):
                 if alias in text:
-                    return _TASK_ALIASES[alias]
+                    return idx
     return -1
 
 
@@ -95,9 +96,15 @@ def _subwindow_feature(x: torch.Tensor, cfg: dict) -> torch.Tensor:
     return ((vec - mean) / sd).flatten(-2)
 
 
+def _as_numpy(x) -> np.ndarray:
+    if isinstance(x, torch.Tensor):
+        x = x.detach().cpu().numpy()
+    return np.array(x, dtype=np.float32, copy=True)  # never touch the caller's array
+
+
 def _features(art: dict, x) -> torch.Tensor:
     cfg = art["feature"]
-    data = np.array(x, dtype=np.float32, copy=True)  # never touch the caller's array
+    data = _as_numpy(x)
     if data.ndim == 2:
         data = data[None]
     data = np.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0)
@@ -138,8 +145,8 @@ def load_model(model_dir: str, device: str = "cpu"):
 
 @torch.no_grad()
 def predict_batch(artifact, x, meta):
-    n = int(np.shape(x)[0]) if np.ndim(x) == 3 else 1
     feat = _features(artifact, x)
+    n = int(feat.shape[0])
     tasks = _task_indices(meta, n)
     dist = torch.full((n, N_COLS - 1), float("inf"), device=artifact["device"])
     for t in range(len(TASKS)):
@@ -165,11 +172,13 @@ def enroll(artifact, x, meta, labels):
     # All enrollment samples of a user are pooled under every task's standardisation.
     # With only ~20 samples per user this beats per-task prototypes on Train
     # simulation (new-user acc 0.80 vs 0.69, see final/tools/selftest_report.md).
+    if isinstance(labels, torch.Tensor):
+        labels = labels.detach().cpu().numpy()
     labels = np.asarray(labels, dtype=np.int64).reshape(-1)
     feat = _features(artifact, x)
     for uid in np.unique(labels):
         uid = int(uid)
-        if uid < 1 or uid >= N_COLS:
+        if uid not in NEW_IDS:
             continue
         rows = torch.as_tensor(labels == uid, device=artifact["device"])
         for t in range(len(TASKS)):

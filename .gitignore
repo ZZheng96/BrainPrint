@@ -8,7 +8,10 @@ BrainPrint_cache/
 
 # 实验中间产物：可重建的大数组缓存
 research/*/test_logspd.npy
-research/*/*.npy
+research/**/*.npy
+research/**/*.npz
+research/**/*_work/
+research/*/cache/
 
 # 系统与工具
 .DS_Store
@@ -16,3 +19,4 @@ Thumbs.db
 __pycache__/
 *.pyc
 .venv/
+.venv*/

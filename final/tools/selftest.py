@@ -1,4 +1,4 @@
-"""Self-test for final/brainprint (not part of the submission zip).
+"""Self-test for final/team_hymn (not part of the submission zip).
 
 1. interface: weights_only load, (N,24) for N=1/7/128, finite, x untouched,
    meta without task, cpu + cuda.
@@ -23,7 +23,7 @@ import torch
 from scipy.io import loadmat
 
 ROOT = Path(__file__).resolve().parents[2]
-PKG = ROOT / "final/brainprint"
+PKG = ROOT / "final/team_hymn"
 DATA = ROOT / "Brainprint_Competition"
 CACHE = ROOT / "BrainPrint_cache/e201_final_selftest"
 sys.path.insert(0, str(PKG))

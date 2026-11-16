@@ -1,4 +1,4 @@
-"""Zip final/brainprint -> final/brainprint.zip and verify the unpacked copy in isolation."""
+"""Zip final/team_hymn -> final/team_hymn.zip and verify the unpacked copy in isolation."""
 import hashlib
 import importlib.util
 import shutil
@@ -11,7 +11,7 @@ import numpy as np
 import torch
 
 ROOT = Path(__file__).resolve().parents[2]
-TEAM = "brainprint"
+TEAM = "team_hymn"
 SRC = ROOT / "final" / TEAM
 ZIP = ROOT / "final" / f"{TEAM}.zip"
 FILES = ["model.py", "weights.pt", "team.json", "requirements.txt", "README.md"]

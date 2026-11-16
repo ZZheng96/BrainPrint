@@ -1,4 +1,4 @@
-"""Convert the E200 frozen bundle into final/brainprint/weights.pt (weights_only-safe).
+"""Convert the E200 frozen bundle into final/team_hymn/weights.pt (weights_only-safe).
 
 Only tensors and plain python types are stored, so the evaluator can call
 torch.load(..., weights_only=True). Values are copied bit-for-bit from
@@ -11,7 +11,7 @@ import torch
 
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "research/E200_final_freeze/bundle/frozen_bundle.pt"
-DST = ROOT / "final/brainprint/weights.pt"
+DST = ROOT / "final/team_hymn/weights.pt"
 
 b = torch.load(SRC, map_location="cpu", weights_only=False)
 s1, s2, s3 = b["stage1"], b["stage2"], b["stage3"]
