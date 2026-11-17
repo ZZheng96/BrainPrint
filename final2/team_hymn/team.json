@@ -1,0 +1,10 @@
+{
+  "team_id": "team_hymn",
+  "team_name": "赞美诗",
+  "institution": "西安电子科技大学广州研究院",
+  "contact": "karlozone@163.com",
+  "architecture": "Training-free geometric template matcher: 6 sub-window x 5-band FFT filter bank, channel correlation logSPD (855-d), per-task z-score, PCA-96, then two heads: within-class-whitened cosine for identity ranking and euclidean nearest-prototype distance for unknown rejection",
+  "description": "Each 4 s trial is cut into six 200-sample sub-windows; each sub-window is split into 5 frequency bands, the 18x18 channel correlation of each band is shrunk and mapped to the log-SPD tangent space, z-scored per band and the six vectors are averaged. Task-wise standardisation and PCA (96-d) are fitted on Train session1 only. Identity ranking uses the cosine similarity after a within-class whitening (shrink 0.5) estimated on Train; rejection uses the euclidean nearest-prototype distance with tau = 19.1706 (90% quantile of Train 5-block out-of-fold genuine distances). Identities 1-20 use Train prototypes; new users 21-23 get prototypes from the provided enrollment samples, and enroll never touches the pretrained statistics.",
+  "weights": "weights.pt",
+  "new_user_support": true
+}

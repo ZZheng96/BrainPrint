@@ -1,0 +1,132 @@
+{
+  "frozen_tau": 19.26382579803467,
+  "variants": {
+    "V0_mean": {
+      "tau_oof90": 31.865513229370116,
+      "train_oof_closed_acc": 0.9678874734607219,
+      "train_genuine_accept_at_tau": 0.8999469214437368,
+      "test_session1": {
+        "n": 3033,
+        "top1_acc_no_reject": 0.0,
+        "accept_rate": 0.4388394329047148,
+        "acc_given_accept": 0.0,
+        "end_to_end_acc": 0.0
+      },
+      "test_session2": {
+        "n": 19218,
+        "top1_acc_no_reject": 0.48928088250598395,
+        "accept_rate": 0.739879279841815,
+        "acc_given_accept": 0.5278148955622758,
+        "end_to_end_acc": 0.3905193048183994
+      },
+      "test_top1_acc_at_accept85": 0.44720562576005923,
+      "test_top1_acc_at_accept70": 0.482216230097586,
+      "test_top1_acc_at_accept55": 0.5224709919921556
+    },
+    "V1_median": {
+      "tau_oof90": 31.31301956176758,
+      "train_oof_closed_acc": 0.9459483368719037,
+      "train_genuine_accept_at_tau": 0.8999469214437368,
+      "test_session1": {
+        "n": 3033,
+        "top1_acc_no_reject": 0.0,
+        "accept_rate": 0.47148038245961094,
+        "acc_given_accept": 0.0,
+        "end_to_end_acc": 0.0
+      },
+      "test_session2": {
+        "n": 19218,
+        "top1_acc_no_reject": 0.4406806119263191,
+        "accept_rate": 0.7668331772296805,
+        "acc_given_accept": 0.47513062360046143,
+        "end_to_end_acc": 0.36434592569466123
+      },
+      "test_top1_acc_at_accept85": 0.4069687516523027,
+      "test_top1_acc_at_accept70": 0.4386877247046739,
+      "test_top1_acc_at_accept55": 0.47033829057035464
+    },
+    "V2_cos": {
+      "tau_oof90": -0.43749737441539754,
+      "train_oof_closed_acc": 0.9713375796178344,
+      "train_genuine_accept_at_tau": 0.8999469214437368,
+      "test_session1": {
+        "n": 3033,
+        "top1_acc_no_reject": 0.0,
+        "accept_rate": 0.31124299373557535,
+        "acc_given_accept": 0.0,
+        "end_to_end_acc": 0.0
+      },
+      "test_session2": {
+        "n": 19218,
+        "top1_acc_no_reject": 0.5287230721198876,
+        "accept_rate": 0.3687688625247164,
+        "acc_given_accept": 0.7985043036545788,
+        "end_to_end_acc": 0.2944635237797898
+      },
+      "test_top1_acc_at_accept85": 0.5023528789721355,
+      "test_top1_acc_at_accept70": 0.5575243965074473,
+      "test_top1_acc_at_accept55": 0.618238274227815
+    },
+    "V3_cos_med": {
+      "tau_oof90": -0.27041583359241483,
+      "train_oof_closed_acc": 0.9658527954706299,
+      "train_genuine_accept_at_tau": 0.8999469214437368,
+      "test_session1": {
+        "n": 3033,
+        "top1_acc_no_reject": 0.0,
+        "accept_rate": 0.49159248269040556,
+        "acc_given_accept": 0.0,
+        "end_to_end_acc": 0.0
+      },
+      "test_session2": {
+        "n": 19218,
+        "top1_acc_no_reject": 0.5079612862940993,
+        "accept_rate": 0.4397439900093662,
+        "acc_given_accept": 0.7331676724647971,
+        "end_to_end_acc": 0.32240607763555
+      },
+      "test_top1_acc_at_accept85": 0.4825252471844763,
+      "test_top1_acc_at_accept70": 0.5309450436569081,
+      "test_top1_acc_at_accept55": 0.5838372283052786
+    },
+    "V4_trim": {
+      "tau_oof90": 31.144086837768555,
+      "train_oof_closed_acc": 0.9658527954706299,
+      "train_genuine_accept_at_tau": 0.8999469214437368,
+      "test_session1": {
+        "n": 3033,
+        "top1_acc_no_reject": 0.0,
+        "accept_rate": 0.4137817342565117,
+        "acc_given_accept": 0.0,
+        "end_to_end_acc": 0.0
+      },
+      "test_session2": {
+        "n": 19218,
+        "top1_acc_no_reject": 0.4840253928608596,
+        "accept_rate": 0.7309813716307628,
+        "acc_given_accept": 0.5243451025056948,
+        "end_to_end_acc": 0.38328650223748567
+      },
+      "test_top1_acc_at_accept85": 0.44371596256543117,
+      "test_top1_acc_at_accept70": 0.47759373394966614,
+      "test_top1_acc_at_accept55": 0.5158522634417388
+    },
+    "V5_rank": {
+      "note": "rejection = V0 accept AND V1 accept; prediction = V0",
+      "test_session1": {
+        "n": 3033,
+        "top1_acc_no_reject": 0.0,
+        "accept_rate": 0.4038905374216947,
+        "acc_given_accept": 0.0,
+        "end_to_end_acc": 0.0
+      },
+      "test_session2": {
+        "n": 19218,
+        "top1_acc_no_reject": 0.48928088250598395,
+        "accept_rate": 0.7157872827557498,
+        "acc_given_accept": 0.5306048269845886,
+        "end_to_end_acc": 0.37980018732438336
+      }
+    }
+  }
+}

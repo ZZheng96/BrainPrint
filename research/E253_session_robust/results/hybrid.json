@@ -1,0 +1,90 @@
+{
+  "tau": {
+    "euclid": 20.392309188842773,
+    "cosine": -0.3445395648479455,
+    "maha": 11.565942764282227
+  },
+  "combos": {
+    "euclid|euclid": {
+      "rank_metric": "euclid",
+      "reject_metric": "euclid",
+      "top1": 0.49068581538141326,
+      "accept": 0.8077323342699553,
+      "e2e": 0.4143511291497554,
+      "unknown_rejection": 0.5895153313550939,
+      "J": 0.45814217970109006
+    },
+    "euclid|cosine": {
+      "rank_metric": "euclid",
+      "reject_metric": "cosine",
+      "top1": 0.49068581538141326,
+      "accept": 0.6296701009470288,
+      "e2e": 0.39691955458424394,
+      "unknown_rejection": 0.405209363666337,
+      "J": 0.3989920068547672
+    },
+    "euclid|maha": {
+      "rank_metric": "euclid",
+      "reject_metric": "maha",
+      "top1": 0.49068581538141326,
+      "accept": 5.2034550941825375e-05,
+      "e2e": 5.2034550941825375e-05,
+      "unknown_rejection": 1.0,
+      "J": 0.25003902591320637
+    },
+    "cosine|euclid": {
+      "rank_metric": "cosine",
+      "reject_metric": "euclid",
+      "top1": 0.5280466229576439,
+      "accept": 0.8077323342699553,
+      "e2e": 0.43214694557185973,
+      "unknown_rejection": 0.5895153313550939,
+      "J": 0.4714890420176683
+    },
+    "cosine|cosine": {
+      "rank_metric": "cosine",
+      "reject_metric": "cosine",
+      "top1": 0.5280466229576439,
+      "accept": 0.6296701009470288,
+      "e2e": 0.4241856592777604,
+      "unknown_rejection": 0.405209363666337,
+      "J": 0.41944158537490456
+    },
+    "cosine|maha": {
+      "rank_metric": "cosine",
+      "reject_metric": "maha",
+      "top1": 0.5280466229576439,
+      "accept": 5.2034550941825375e-05,
+      "e2e": 5.2034550941825375e-05,
+      "unknown_rejection": 1.0,
+      "J": 0.25003902591320637
+    },
+    "maha|euclid": {
+      "rank_metric": "maha",
+      "reject_metric": "euclid",
+      "top1": 0.5582266625039026,
+      "accept": 0.8077323342699553,
+      "e2e": 0.45082734935997504,
+      "unknown_rejection": 0.5895153313550939,
+      "J": 0.4854993448587548
+    },
+    "maha|cosine": {
+      "rank_metric": "maha",
+      "reject_metric": "cosine",
+      "top1": 0.5582266625039026,
+      "accept": 0.6296701009470288,
+      "e2e": 0.43599750234155477,
+      "unknown_rejection": 0.405209363666337,
+      "J": 0.4283004676727503
+    },
+    "maha|maha": {
+      "rank_metric": "maha",
+      "reject_metric": "maha",
+      "top1": 0.5582266625039026,
+      "accept": 5.2034550941825375e-05,
+      "e2e": 5.2034550941825375e-05,
+      "unknown_rejection": 1.0,
+      "J": 0.25003902591320637
+    }
+  }
+}

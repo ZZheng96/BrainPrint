@@ -1,0 +1,29 @@
+{
+  "interface": {
+    "cpu_N1": true,
+    "cpu_N7": true,
+    "cpu_N128": true,
+    "cpu_meta_none": true,
+    "cpu_col0_zero_before_enroll": true,
+    "cuda:0_N1": true,
+    "cuda:0_N7": true,
+    "cuda:0_N128": true,
+    "cuda:0_meta_none": true,
+    "cuda:0_col0_zero_before_enroll": true
+  },
+  "test_audit": {
+    "registered_top1_given_accept": 0.5878796925143668,
+    "registered_accept_rate": 0.6972109480695181,
+    "registered_e2e": 0.40987615776875846,
+    "registered_top1_ignoring_reject": 0.40987615776875846,
+    "unknown_rejection": 0.7227167820639631,
+    "score_matrix_finite_or_inf": true
+  },
+  "enroll": {
+    "base_unchanged": true,
+    "new_valid": true,
+    "new_changed": true,
+    "new_user_can_win": true,
+    "cols21_24_finite": true
+  }
+}
