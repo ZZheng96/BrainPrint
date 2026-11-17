@@ -1,0 +1,32 @@
+{
+  "experiment": "E250_score_split_calibration",
+  "version": "E250-S1-v1-score-split-calibration",
+  "candidates": {
+    "C0": "top-1 max-cos baseline",
+    "C1_margin": "top-1 and top-1/top-2 margin",
+    "C2_margin_cohort_hubness": "top-1, margin, cohort mean/std, predicted-prototype hubness"
+  },
+  "temporal_split": {
+    "outer_fit": "frac <= 0.6",
+    "inner_fit": "frac <= 0.4",
+    "inner_calibration": "0.4 < frac <= 0.6",
+    "evaluation": "frac > 0.8"
+  },
+  "calibration": {
+    "standardization": "median/MAD",
+    "logistic": "L2 logistic, known=1, pseudo-unknown=0",
+    "far": 0.1,
+    "threshold": "identity-balanced weighted FAR10 on pseudo-unknown"
+  },
+  "identity_decision": "top-1 strict LDA-cos; refusal calibration does not change ranking",
+  "data": {
+    "metadata": "BrainPrint_cache/train_metadata.csv",
+    "features": "BrainPrint_cache/e201_final_selftest/train_raw_scores_inputs.npy",
+    "test_used_for_selection": false,
+    "session_used_for_decision": false
+  },
+  "device": "cuda:0 when available",
+  "attack_logic": "not_used; E249 gates_attack.py is not imported",
+  "model_output": "results/outer_{subject}/model.pt",
+  "resume": true
+}

@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 6,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.3624624609947205,
+      "AUC": 0.9921516913875239,
+      "F1_unknown_rejection": 0.5495495495495496,
+      "known_acceptance": 0.9080406654343808,
+      "unknown_rejection": 0.991869918699187,
+      "known_false_rejection": 0.09195933456561922,
+      "known_identification_accuracy": 0.9057301293900185,
+      "accepted_correct_accuracy": 0.9974554707379135,
+      "actual_FAR": 0.008130081300813009,
+      "accepted_count": 1966,
+      "known_count": 2164,
+      "unknown_count": 123,
+      "inner_known_acceptance": 0.9518617609755363
+    },
+    {
+      "outer_subject": 6,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8587375466857906,
+      "AUC": 0.9906564176547495,
+      "F1_unknown_rejection": 0.55125284738041,
+      "known_acceptance": 0.9098890942698706,
+      "unknown_rejection": 0.983739837398374,
+      "known_false_rejection": 0.09011090573012936,
+      "known_identification_accuracy": 0.9085027726432532,
+      "accepted_correct_accuracy": 0.9984763839512443,
+      "actual_FAR": 0.016260162601626018,
+      "accepted_count": 1971,
+      "known_count": 2164,
+      "unknown_count": 123,
+      "inner_known_acceptance": 0.952640471254381
+    },
+    {
+      "outer_subject": 6,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8599659224649133,
+      "AUC": 0.9905286807027035,
+      "F1_unknown_rejection": 0.5537757437070938,
+      "known_acceptance": 0.9108133086876156,
+      "unknown_rejection": 0.983739837398374,
+      "known_false_rejection": 0.08918669131238444,
+      "known_identification_accuracy": 0.9094269870609981,
+      "accepted_correct_accuracy": 0.9984779299847792,
+      "actual_FAR": 0.016260162601626018,
+      "accepted_count": 1973,
+      "known_count": 2164,
+      "unknown_count": 123,
+      "inner_known_acceptance": 0.9524320156154665
+    }
+  ]
+}

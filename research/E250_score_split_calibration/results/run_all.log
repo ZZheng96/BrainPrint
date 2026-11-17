@@ -1,0 +1,61 @@
+﻿{
+  "rows": 11304,
+  "feature_shape": [
+    11304,
+    855
+  ],
+  "subjects": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "session": "session1",
+  "blocks": {
+    "early": 6757,
+    "late": 2287,
+    "middle": 2260
+  },
+  "duplicate_rows": 0,
+  "device": "cuda:0",
+  "feature_source": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\e201_final_selftest\\train_raw_scores_inputs.npy"
+}
+outer=2 seconds=5.0
+outer=3 seconds=8.7
+outer=4 seconds=12.5
+outer=5 seconds=16.2
+outer=6 seconds=19.9
+outer=7 seconds=23.7
+outer=8 seconds=27.3
+outer=9 seconds=31.0
+outer=10 seconds=34.8
+outer=11 seconds=38.5
+outer=12 seconds=42.2
+outer=13 seconds=46.0
+outer=14 seconds=49.8
+outer=15 seconds=53.5
+outer=16 seconds=57.2
+outer=17 seconds=60.9
+outer=18 seconds=64.7
+outer=19 seconds=68.4
+outer=20 seconds=72.2
+               candidate      AUC  F1_unknown_rejection  known_acceptance  unknown_rejection  known_identification_accuracy
+                      C0 0.970837              0.529743          0.919201           0.918827                       0.916762
+               C1_margin 0.970884              0.537552          0.922170           0.916214                       0.920537
+C2_margin_cohort_hubness 0.971098              0.540616          0.923548           0.913479                       0.921753

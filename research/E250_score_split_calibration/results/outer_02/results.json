@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 2,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.3688859343528748,
+      "AUC": 0.9666980751110513,
+      "F1_unknown_rejection": 0.46798029556650245,
+      "known_acceptance": 0.9043478260869565,
+      "unknown_rejection": 0.9313725490196079,
+      "known_false_rejection": 0.09565217391304348,
+      "known_identification_accuracy": 0.9011441647597254,
+      "accepted_correct_accuracy": 0.9964574898785425,
+      "actual_FAR": 0.06862745098039216,
+      "accepted_count": 1983,
+      "known_count": 2185,
+      "unknown_count": 102,
+      "inner_known_acceptance": 0.9498108094577441
+    },
+    {
+      "outer_subject": 2,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8673766272465286,
+      "AUC": 0.967438417014403,
+      "F1_unknown_rejection": 0.47738693467336685,
+      "known_acceptance": 0.9080091533180779,
+      "unknown_rejection": 0.9313725490196079,
+      "known_false_rejection": 0.09199084668192214,
+      "known_identification_accuracy": 0.9061784897025171,
+      "accepted_correct_accuracy": 0.9979838709677419,
+      "actual_FAR": 0.06862745098039216,
+      "accepted_count": 1991,
+      "known_count": 2185,
+      "unknown_count": 102,
+      "inner_known_acceptance": 0.9505270282160944
+    },
+    {
+      "outer_subject": 2,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8701718208095142,
+      "AUC": 0.9695382958675461,
+      "F1_unknown_rejection": 0.47959183673469385,
+      "known_acceptance": 0.9102974828375286,
+      "unknown_rejection": 0.9215686274509803,
+      "known_false_rejection": 0.08970251716247135,
+      "known_identification_accuracy": 0.9080091533180779,
+      "accepted_correct_accuracy": 0.9974861739567622,
+      "actual_FAR": 0.0784313725490196,
+      "accepted_count": 1997,
+      "known_count": 2185,
+      "unknown_count": 102,
+      "inner_known_acceptance": 0.9498343710654144
+    }
+  ]
+}

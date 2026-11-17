@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 9,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.36454099416732794,
+      "AUC": 0.9642262700143002,
+      "F1_unknown_rejection": 0.5167464114832536,
+      "known_acceptance": 0.9114799446749654,
+      "unknown_rejection": 0.9152542372881356,
+      "known_false_rejection": 0.0885200553250346,
+      "known_identification_accuracy": 0.9087136929460581,
+      "accepted_correct_accuracy": 0.9969650986342944,
+      "actual_FAR": 0.0847457627118644,
+      "accepted_count": 1987,
+      "known_count": 2169,
+      "unknown_count": 118,
+      "inner_known_acceptance": 0.9525363937121061
+    },
+    {
+      "outer_subject": 9,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8646386076688319,
+      "AUC": 0.9640230989833635,
+      "F1_unknown_rejection": 0.5227817745803357,
+      "known_acceptance": 0.9124020285846012,
+      "unknown_rejection": 0.923728813559322,
+      "known_false_rejection": 0.08759797141539882,
+      "known_identification_accuracy": 0.9105578607653296,
+      "accepted_correct_accuracy": 0.9979787771601819,
+      "actual_FAR": 0.07627118644067797,
+      "accepted_count": 1988,
+      "known_count": 2169,
+      "unknown_count": 118,
+      "inner_known_acceptance": 0.9522494100570079
+    },
+    {
+      "outer_subject": 9,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.862362019696545,
+      "AUC": 0.9648201545662689,
+      "F1_unknown_rejection": 0.5317073170731708,
+      "known_acceptance": 0.9156293222683264,
+      "unknown_rejection": 0.923728813559322,
+      "known_false_rejection": 0.08437067773167362,
+      "known_identification_accuracy": 0.9137851544490548,
+      "accepted_correct_accuracy": 0.9979859013091642,
+      "actual_FAR": 0.07627118644067797,
+      "accepted_count": 1995,
+      "known_count": 2169,
+      "unknown_count": 118,
+      "inner_known_acceptance": 0.9535170863205142
+    }
+  ]
+}

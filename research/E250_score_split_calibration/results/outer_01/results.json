@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 1,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.35922873020172125,
+      "AUC": 0.9902726201661373,
+      "F1_unknown_rejection": 0.5947242206235012,
+      "known_acceptance": 0.9218677762367082,
+      "unknown_rejection": 1.0,
+      "known_false_rejection": 0.07813222376329176,
+      "known_identification_accuracy": 0.9195561719833565,
+      "accepted_correct_accuracy": 0.9974924774322969,
+      "actual_FAR": 0.0,
+      "accepted_count": 1994,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.959012894766177
+    },
+    {
+      "outer_subject": 1,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8438976869991506,
+      "AUC": 0.989247311827957,
+      "F1_unknown_rejection": 0.5918854415274463,
+      "known_acceptance": 0.9209431345353676,
+      "unknown_rejection": 1.0,
+      "known_false_rejection": 0.07905686546463242,
+      "known_identification_accuracy": 0.919093851132686,
+      "accepted_correct_accuracy": 0.9979919678714859,
+      "actual_FAR": 0.0,
+      "accepted_count": 1992,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9589331131048588
+    },
+    {
+      "outer_subject": 1,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8368604536648356,
+      "AUC": 0.9896947191027993,
+      "F1_unknown_rejection": 0.6019417475728155,
+      "known_acceptance": 0.9241793804900601,
+      "unknown_rejection": 1.0,
+      "known_false_rejection": 0.0758206195099399,
+      "known_identification_accuracy": 0.9218677762367082,
+      "accepted_correct_accuracy": 0.9974987493746873,
+      "actual_FAR": 0.0,
+      "accepted_count": 1999,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9604935446493889
+    }
+  ]
+}

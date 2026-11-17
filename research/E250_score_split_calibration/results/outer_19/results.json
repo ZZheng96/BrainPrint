@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 19,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.3564555644989014,
+      "AUC": 0.9849915737883759,
+      "F1_unknown_rejection": 0.6306306306306306,
+      "known_acceptance": 0.9471021159153634,
+      "unknown_rejection": 0.9292035398230089,
+      "known_false_rejection": 0.05289788408463658,
+      "known_identification_accuracy": 0.9461821527138914,
+      "accepted_correct_accuracy": 0.9990286546867412,
+      "actual_FAR": 0.07079646017699115,
+      "accepted_count": 2067,
+      "known_count": 2174,
+      "unknown_count": 113,
+      "inner_known_acceptance": 0.967662280571045
+    },
+    {
+      "outer_subject": 19,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8187021472429444,
+      "AUC": 0.9858911838216737,
+      "F1_unknown_rejection": 0.6523076923076923,
+      "known_acceptance": 0.9512419503219871,
+      "unknown_rejection": 0.9380530973451328,
+      "known_false_rejection": 0.048758049678012894,
+      "known_identification_accuracy": 0.9503219871205152,
+      "accepted_correct_accuracy": 0.9990328820116054,
+      "actual_FAR": 0.061946902654867256,
+      "accepted_count": 2075,
+      "known_count": 2174,
+      "unknown_count": 113,
+      "inner_known_acceptance": 0.9694423592521318
+    },
+    {
+      "outer_subject": 19,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8238084903300803,
+      "AUC": 0.9870553850412355,
+      "F1_unknown_rejection": 0.6604938271604939,
+      "known_acceptance": 0.952161913523459,
+      "unknown_rejection": 0.9469026548672567,
+      "known_false_rejection": 0.047838086476540975,
+      "known_identification_accuracy": 0.9512419503219871,
+      "accepted_correct_accuracy": 0.9990338164251208,
+      "actual_FAR": 0.05309734513274336,
+      "accepted_count": 2076,
+      "known_count": 2174,
+      "unknown_count": 113,
+      "inner_known_acceptance": 0.9700085229407359
+    }
+  ]
+}

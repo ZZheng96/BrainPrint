@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 10,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.3601008355617524,
+      "AUC": 0.9783466457160316,
+      "F1_unknown_rejection": 0.5543478260869565,
+      "known_acceptance": 0.9262144821264895,
+      "unknown_rejection": 0.9714285714285714,
+      "known_false_rejection": 0.07378551787351051,
+      "known_identification_accuracy": 0.923923006416132,
+      "accepted_correct_accuracy": 0.9975259772389906,
+      "actual_FAR": 0.02857142857142857,
+      "accepted_count": 2024,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9685381406485083
+    },
+    {
+      "outer_subject": 10,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8047935815127146,
+      "AUC": 0.9791934005499542,
+      "F1_unknown_rejection": 0.56353591160221,
+      "known_acceptance": 0.9289642529789184,
+      "unknown_rejection": 0.9714285714285714,
+      "known_false_rejection": 0.07103574702108162,
+      "known_identification_accuracy": 0.9280476626947755,
+      "accepted_correct_accuracy": 0.9990133201776024,
+      "actual_FAR": 0.02857142857142857,
+      "accepted_count": 2030,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.970159042515399
+    },
+    {
+      "outer_subject": 10,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8057859347666835,
+      "AUC": 0.978787481995548,
+      "F1_unknown_rejection": 0.5617977528089888,
+      "known_acceptance": 0.9307974335472043,
+      "unknown_rejection": 0.9523809523809523,
+      "known_false_rejection": 0.06920256645279566,
+      "known_identification_accuracy": 0.9289642529789184,
+      "accepted_correct_accuracy": 0.9980305268340719,
+      "actual_FAR": 0.047619047619047616,
+      "accepted_count": 2036,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9695148404315512
+    }
+  ]
+}

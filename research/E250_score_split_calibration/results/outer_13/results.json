@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 13,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.34653216600418096,
+      "AUC": 0.974005637331663,
+      "F1_unknown_rejection": 0.5742092457420924,
+      "known_acceptance": 0.9218677762367082,
+      "unknown_rejection": 0.9516129032258065,
+      "known_false_rejection": 0.07813222376329176,
+      "known_identification_accuracy": 0.9195561719833565,
+      "accepted_correct_accuracy": 0.9974924774322969,
+      "actual_FAR": 0.04838709677419355,
+      "accepted_count": 2000,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9567835825295868
+    },
+    {
+      "outer_subject": 13,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8255538971136113,
+      "AUC": 0.9743561063636228,
+      "F1_unknown_rejection": 0.5852417302798982,
+      "known_acceptance": 0.9288025889967637,
+      "unknown_rejection": 0.9274193548387096,
+      "known_false_rejection": 0.07119741100323629,
+      "known_identification_accuracy": 0.9269533055940823,
+      "accepted_correct_accuracy": 0.9980089596814335,
+      "actual_FAR": 0.07258064516129033,
+      "accepted_count": 2018,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9583938005503295
+    },
+    {
+      "outer_subject": 13,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.824683350650983,
+      "AUC": 0.9687486018522661,
+      "F1_unknown_rejection": 0.5642317380352645,
+      "known_acceptance": 0.9255663430420712,
+      "unknown_rejection": 0.9032258064516129,
+      "known_false_rejection": 0.0744336569579288,
+      "known_identification_accuracy": 0.9232547387887193,
+      "accepted_correct_accuracy": 0.9975024975024975,
+      "actual_FAR": 0.0967741935483871,
+      "accepted_count": 2014,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9583938751659583
+    }
+  ]
+}

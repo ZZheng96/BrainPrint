@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 3,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.3579507470130921,
+      "AUC": 0.9703744368303487,
+      "F1_unknown_rejection": 0.5679611650485437,
+      "known_acceptance": 0.9200923787528869,
+      "unknown_rejection": 0.9590163934426229,
+      "known_false_rejection": 0.07990762124711315,
+      "known_identification_accuracy": 0.9173210161662817,
+      "accepted_correct_accuracy": 0.9969879518072289,
+      "actual_FAR": 0.040983606557377046,
+      "accepted_count": 1997,
+      "known_count": 2165,
+      "unknown_count": 122,
+      "inner_known_acceptance": 0.9573265828493686
+    },
+    {
+      "outer_subject": 3,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8521391769529156,
+      "AUC": 0.9724605307992277,
+      "F1_unknown_rejection": 0.5707317073170731,
+      "known_acceptance": 0.9210161662817552,
+      "unknown_rejection": 0.9590163934426229,
+      "known_false_rejection": 0.0789838337182448,
+      "known_identification_accuracy": 0.9196304849884527,
+      "accepted_correct_accuracy": 0.9984954864593781,
+      "actual_FAR": 0.040983606557377046,
+      "accepted_count": 1999,
+      "known_count": 2165,
+      "unknown_count": 122,
+      "inner_known_acceptance": 0.9559498009539403
+    },
+    {
+      "outer_subject": 3,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8469073079546148,
+      "AUC": 0.9732404497785182,
+      "F1_unknown_rejection": 0.5812807881773399,
+      "known_acceptance": 0.9233256351039261,
+      "unknown_rejection": 0.9672131147540983,
+      "known_false_rejection": 0.07667436489607393,
+      "known_identification_accuracy": 0.9214780600461894,
+      "accepted_correct_accuracy": 0.9979989994997499,
+      "actual_FAR": 0.03278688524590164,
+      "accepted_count": 2003,
+      "known_count": 2165,
+      "unknown_count": 122,
+      "inner_known_acceptance": 0.9570648294879642
+    }
+  ]
+}

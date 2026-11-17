@@ -1,0 +1,45 @@
+{
+  "protocol": {
+    "version": "E250-S1-v1-score-split-calibration",
+    "outer_fit": "known identities, frac <= 0.6",
+    "inner_fit": "remaining identities, frac <= 0.4",
+    "inner_calibration": "held identity unknown and remaining identities known, 0.4 < frac <= 0.6",
+    "evaluation": "outer held identity and known identities, frac > 0.8",
+    "identity_decision": "top-1 strict LDA-cos prototype score; calibration never changes ranking",
+    "C0": "raw top-1 max-cos score, E247 strict LDA-cos shrink 0.01",
+    "C1_margin": "L2 logistic calibration of top-1 and top-1 minus top-2 margin",
+    "C2_margin_cohort_hubness": "L2 logistic calibration of top-1, margin, cohort mean/std and predicted-prototype hubness",
+    "standardization": "median/MAD fitted only on pooled inner calibration features",
+    "logistic": "PyTorch L2 logistic, labels known=1 and pseudo-unknown=0",
+    "threshold": "weighted identity-balanced FAR10 threshold from pseudo-unknown scores",
+    "session": "not used; only the metadata session validation in E247 is retained",
+    "test_data": "not read; no Test result participates in fitting or selection",
+    "attack_logic": "not_used; E249 gates_attack.py is not imported"
+  },
+  "summary": [
+    {
+      "candidate": "C0",
+      "AUC": 0.9708374034948296,
+      "F1_unknown_rejection": 0.5293938236924335,
+      "known_acceptance": 0.9192696482766228,
+      "unknown_rejection": 0.917568529217584,
+      "known_identification_accuracy": 0.9168076541275667
+    },
+    {
+      "candidate": "C1_margin",
+      "AUC": 0.9708844880809053,
+      "F1_unknown_rejection": 0.5376300970735726,
+      "known_acceptance": 0.9222390148370824,
+      "unknown_rejection": 0.9158111539192912,
+      "known_identification_accuracy": 0.9205828580903223
+    },
+    {
+      "candidate": "C2_margin_cohort_hubness",
+      "AUC": 0.9710980652254685,
+      "F1_unknown_rejection": 0.5407596699133639,
+      "known_acceptance": 0.9236632891402531,
+      "unknown_rejection": 0.9130031080409966,
+      "known_identification_accuracy": 0.9218453131049886
+    }
+  ]
+}

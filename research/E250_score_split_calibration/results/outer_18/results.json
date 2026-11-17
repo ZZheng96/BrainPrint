@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 18,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.35992655158042913,
+      "AUC": 0.9835593969370932,
+      "F1_unknown_rejection": 0.5745257452574526,
+      "known_acceptance": 0.9288664525011473,
+      "unknown_rejection": 0.9814814814814815,
+      "known_false_rejection": 0.0711335474988527,
+      "known_identification_accuracy": 0.9265718219366682,
+      "accepted_correct_accuracy": 0.9975296442687747,
+      "actual_FAR": 0.018518518518518517,
+      "accepted_count": 2026,
+      "known_count": 2179,
+      "unknown_count": 108,
+      "inner_known_acceptance": 0.9608284266050126
+    },
+    {
+      "outer_subject": 18,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8325655387098712,
+      "AUC": 0.9825608077099587,
+      "F1_unknown_rejection": 0.5667574931880109,
+      "known_acceptance": 0.9288664525011473,
+      "unknown_rejection": 0.9629629629629629,
+      "known_false_rejection": 0.0711335474988527,
+      "known_identification_accuracy": 0.9274896741624599,
+      "accepted_correct_accuracy": 0.9985177865612648,
+      "actual_FAR": 0.037037037037037035,
+      "accepted_count": 2028,
+      "known_count": 2179,
+      "unknown_count": 108,
+      "inner_known_acceptance": 0.9626005094004113
+    },
+    {
+      "outer_subject": 18,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8366506506414493,
+      "AUC": 0.9829304981897914,
+      "F1_unknown_rejection": 0.5698630136986301,
+      "known_acceptance": 0.929784304726939,
+      "unknown_rejection": 0.9629629629629629,
+      "known_false_rejection": 0.07021569527306104,
+      "known_identification_accuracy": 0.9284075263882515,
+      "accepted_correct_accuracy": 0.9985192497532083,
+      "actual_FAR": 0.037037037037037035,
+      "accepted_count": 2030,
+      "known_count": 2179,
+      "unknown_count": 108,
+      "inner_known_acceptance": 0.9616987861046024
+    }
+  ]
+}

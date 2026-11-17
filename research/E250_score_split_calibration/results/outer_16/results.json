@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 16,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.36299791932106024,
+      "AUC": 0.9800970532386244,
+      "F1_unknown_rejection": 0.5671641791044776,
+      "known_acceptance": 0.9216228676809589,
+      "unknown_rejection": 0.9661016949152542,
+      "known_false_rejection": 0.07837713231904109,
+      "known_identification_accuracy": 0.9188566159520516,
+      "accepted_correct_accuracy": 0.9969984992496248,
+      "actual_FAR": 0.03389830508474576,
+      "accepted_count": 2003,
+      "known_count": 2169,
+      "unknown_count": 118,
+      "inner_known_acceptance": 0.9563000801159578
+    },
+    {
+      "outer_subject": 16,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8395764989150393,
+      "AUC": 0.9790264981909964,
+      "F1_unknown_rejection": 0.5885416666666666,
+      "known_acceptance": 0.9294605809128631,
+      "unknown_rejection": 0.9576271186440678,
+      "known_false_rejection": 0.0705394190871369,
+      "known_identification_accuracy": 0.9285384970032273,
+      "accepted_correct_accuracy": 0.9990079365079365,
+      "actual_FAR": 0.0423728813559322,
+      "accepted_count": 2021,
+      "known_count": 2169,
+      "unknown_count": 118,
+      "inner_known_acceptance": 0.95824089287029
+    },
+    {
+      "outer_subject": 16,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8340663858492658,
+      "AUC": 0.9792843691148776,
+      "F1_unknown_rejection": 0.5900783289817232,
+      "known_acceptance": 0.929921622867681,
+      "unknown_rejection": 0.9576271186440678,
+      "known_false_rejection": 0.07007837713231901,
+      "known_identification_accuracy": 0.9285384970032273,
+      "accepted_correct_accuracy": 0.9985126425384234,
+      "actual_FAR": 0.0423728813559322,
+      "accepted_count": 2022,
+      "known_count": 2169,
+      "unknown_count": 118,
+      "inner_known_acceptance": 0.959717960327185
+    }
+  ]
+}

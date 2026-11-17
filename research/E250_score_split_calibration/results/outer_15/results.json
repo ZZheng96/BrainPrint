@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 15,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.35614061355590826,
+      "AUC": 0.9579154118109205,
+      "F1_unknown_rejection": 0.4649859943977591,
+      "known_acceptance": 0.9225481209899175,
+      "unknown_rejection": 0.7904761904761904,
+      "known_false_rejection": 0.07745187901008255,
+      "known_identification_accuracy": 0.9197983501374886,
+      "accepted_correct_accuracy": 0.9970193740685543,
+      "actual_FAR": 0.20952380952380953,
+      "accepted_count": 2035,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9599691879148348
+    },
+    {
+      "outer_subject": 15,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8459059432740178,
+      "AUC": 0.9605822530662127,
+      "F1_unknown_rejection": 0.49025069637883006,
+      "known_acceptance": 0.923923006416132,
+      "unknown_rejection": 0.8380952380952381,
+      "known_false_rejection": 0.07607699358386799,
+      "known_identification_accuracy": 0.922089825847846,
+      "accepted_correct_accuracy": 0.998015873015873,
+      "actual_FAR": 0.1619047619047619,
+      "accepted_count": 2033,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9597085318430061
+    },
+    {
+      "outer_subject": 15,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8383629969107026,
+      "AUC": 0.9596525686351535,
+      "F1_unknown_rejection": 0.4860335195530726,
+      "known_acceptance": 0.923923006416132,
+      "unknown_rejection": 0.8285714285714286,
+      "known_false_rejection": 0.07607699358386799,
+      "known_identification_accuracy": 0.922089825847846,
+      "accepted_correct_accuracy": 0.998015873015873,
+      "actual_FAR": 0.17142857142857143,
+      "accepted_count": 2034,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9611497476858296
+    }
+  ]
+}

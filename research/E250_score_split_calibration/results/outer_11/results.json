@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 11,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.3578911125659943,
+      "AUC": 0.9762902253458788,
+      "F1_unknown_rejection": 0.5432692307692307,
+      "known_acceptance": 0.9159741458910434,
+      "unknown_rejection": 0.9338842975206612,
+      "known_false_rejection": 0.08402585410895658,
+      "known_identification_accuracy": 0.9136657433056325,
+      "accepted_correct_accuracy": 0.9974798387096774,
+      "actual_FAR": 0.06611570247933884,
+      "accepted_count": 1992,
+      "known_count": 2166,
+      "unknown_count": 121,
+      "inner_known_acceptance": 0.9555059410710229
+    },
+    {
+      "outer_subject": 11,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.852872569410416,
+      "AUC": 0.9756568454629396,
+      "F1_unknown_rejection": 0.5388349514563107,
+      "known_acceptance": 0.9168975069252078,
+      "unknown_rejection": 0.9173553719008265,
+      "known_false_rejection": 0.08310249307479223,
+      "known_identification_accuracy": 0.9155124653739612,
+      "accepted_correct_accuracy": 0.9984894259818731,
+      "actual_FAR": 0.08264462809917356,
+      "accepted_count": 1996,
+      "known_count": 2166,
+      "unknown_count": 121,
+      "inner_known_acceptance": 0.9548556889714143
+    },
+    {
+      "outer_subject": 11,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8480826978737404,
+      "AUC": 0.9757560495409904,
+      "F1_unknown_rejection": 0.5467980295566502,
+      "known_acceptance": 0.9196675900277008,
+      "unknown_rejection": 0.9173553719008265,
+      "known_false_rejection": 0.08033240997229918,
+      "known_identification_accuracy": 0.9178208679593721,
+      "accepted_correct_accuracy": 0.9979919678714859,
+      "actual_FAR": 0.08264462809917356,
+      "accepted_count": 2002,
+      "known_count": 2166,
+      "unknown_count": 121,
+      "inner_known_acceptance": 0.956384133910355
+    }
+  ]
+}

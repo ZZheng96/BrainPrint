@@ -1,0 +1,66 @@
+{
+  "disclosure": "looked at Test (one-shot descriptive audit; no Test selection or fitting)",
+  "selection_rule": "choose C2 if its Train inner known acceptance >= C0; otherwise C0",
+  "chosen": "C2_margin_cohort_hubness",
+  "train_inner_known_acceptance": {
+    "C0": {
+      "inner_known_acceptance": 0.9558071015029821,
+      "unknown_count": 2262,
+      "known_count": 42978
+    },
+    "C1_margin": {
+      "inner_known_acceptance": 0.9570176548934392,
+      "unknown_count": 2262,
+      "known_count": 42978
+    },
+    "C2_margin_cohort_hubness": {
+      "inner_known_acceptance": 0.9572498564557625,
+      "unknown_count": 2262,
+      "known_count": 42978
+    }
+  },
+  "thresholds_P1_FAR10": {
+    "C0": 0.3594579100608826,
+    "C1_margin": 0.8563419773990545,
+    "C2_margin_cohort_hubness": 0.8566925543867092
+  },
+  "test": {
+    "C0": {
+      "session1": {
+        "n": 3033,
+        "acceptance": 0.4520276953511375,
+        "rejection": 0.5479723046488625,
+        "score_median": 0.32537394762039185,
+        "accepted_id_count_cv": 3.9184269471196096
+      },
+      "session2": {
+        "n": 19218,
+        "acceptance": 0.44104485378291186,
+        "rejection": 0.5589551462170882,
+        "score_median": 0.33633749186992645,
+        "accepted_id_count_cv": 1.0703343935435492
+      },
+      "S1_vs_S2_score_AUC_descriptive": 0.4625309543816026
+    },
+    "C2_margin_cohort_hubness": {
+      "session1": {
+        "n": 3033,
+        "acceptance": 0.45103857566765576,
+        "rejection": 0.5489614243323442,
+        "score_median": 0.7159534984249396,
+        "accepted_id_count_cv": 3.928094596248157
+      },
+      "session2": {
+        "n": 19218,
+        "acceptance": 0.442189613903632,
+        "rejection": 0.557810386096368,
+        "score_median": 0.7746076399733219,
+        "accepted_id_count_cv": 1.0811316131885587
+      },
+      "S1_vs_S2_score_AUC_descriptive": 0.46235740294166605
+    }
+  },
+  "official_test_AUC": "N/A (no identity truth)",
+  "official_test_F1": "N/A (no identity truth)",
+  "attack_audit": "N/A; no attack rescore was run"
+}

@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 5,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.3572553992271424,
+      "AUC": 0.9671294544537261,
+      "F1_unknown_rejection": 0.4712328767123288,
+      "known_acceptance": 0.915640674874601,
+      "unknown_rejection": 0.9148936170212766,
+      "known_false_rejection": 0.08435932512539901,
+      "known_identification_accuracy": 0.9124487004103967,
+      "accepted_correct_accuracy": 0.9965139442231076,
+      "actual_FAR": 0.0851063829787234,
+      "accepted_count": 2016,
+      "known_count": 2193,
+      "unknown_count": 94,
+      "inner_known_acceptance": 0.9551961192743039
+    },
+    {
+      "outer_subject": 5,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8527054482133202,
+      "AUC": 0.9676194079809064,
+      "F1_unknown_rejection": 0.47513812154696133,
+      "known_acceptance": 0.9170086639306886,
+      "unknown_rejection": 0.9148936170212766,
+      "known_false_rejection": 0.08299133606931142,
+      "known_identification_accuracy": 0.9138166894664843,
+      "accepted_correct_accuracy": 0.9965191447041273,
+      "actual_FAR": 0.0851063829787234,
+      "accepted_count": 2019,
+      "known_count": 2193,
+      "unknown_count": 94,
+      "inner_known_acceptance": 0.9572473697826386
+    },
+    {
+      "outer_subject": 5,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.843182013586397,
+      "AUC": 0.9690698644623609,
+      "F1_unknown_rejection": 0.4871060171919771,
+      "known_acceptance": 0.9224806201550387,
+      "unknown_rejection": 0.9042553191489362,
+      "known_false_rejection": 0.07751937984496127,
+      "known_identification_accuracy": 0.9202006383948929,
+      "accepted_correct_accuracy": 0.9975284231339595,
+      "actual_FAR": 0.09574468085106383,
+      "accepted_count": 2032,
+      "known_count": 2193,
+      "unknown_count": 94,
+      "inner_known_acceptance": 0.9607051426944613
+    }
+  ]
+}

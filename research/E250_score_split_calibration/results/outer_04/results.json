@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "outer_subject": 4,
+      "candidate": "C0",
+      "endpoint": "P1",
+      "threshold_value": 0.3639808595180512,
+      "AUC": 0.9831467300191237,
+      "F1_unknown_rejection": 0.5255474452554745,
+      "known_acceptance": 0.9109274563820018,
+      "unknown_rejection": 0.9908256880733946,
+      "known_false_rejection": 0.08907254361799821,
+      "known_identification_accuracy": 0.9090909090909091,
+      "accepted_correct_accuracy": 0.9979838709677419,
+      "actual_FAR": 0.009174311926605505,
+      "accepted_count": 1985,
+      "known_count": 2178,
+      "unknown_count": 109,
+      "inner_known_acceptance": 0.95351308439664
+    },
+    {
+      "outer_subject": 4,
+      "candidate": "C1_margin",
+      "endpoint": "P1",
+      "threshold_value": 0.8515328793504586,
+      "AUC": 0.9823969469507418,
+      "F1_unknown_rejection": 0.5440806045340051,
+      "known_acceptance": 0.9173553719008265,
+      "unknown_rejection": 0.9908256880733946,
+      "known_false_rejection": 0.0826446280991735,
+      "known_identification_accuracy": 0.9155188246097337,
+      "accepted_correct_accuracy": 0.997997997997998,
+      "actual_FAR": 0.009174311926605505,
+      "accepted_count": 1999,
+      "known_count": 2178,
+      "unknown_count": 109,
+      "inner_known_acceptance": 0.9565272142912169
+    },
+    {
+      "outer_subject": 4,
+      "candidate": "C2_margin_cohort_hubness",
+      "endpoint": "P1",
+      "threshold_value": 0.8563331507996075,
+      "AUC": 0.9832899470097135,
+      "F1_unknown_rejection": 0.5468354430379747,
+      "known_acceptance": 0.9182736455463728,
+      "unknown_rejection": 0.9908256880733946,
+      "known_false_rejection": 0.08172635445362719,
+      "known_identification_accuracy": 0.9168962350780533,
+      "accepted_correct_accuracy": 0.9985,
+      "actual_FAR": 0.009174311926605505,
+      "accepted_count": 2001,
+      "known_count": 2178,
+      "unknown_count": 109,
+      "inner_known_acceptance": 0.9564496881697573
+    }
+  ]
+}
