@@ -1,0 +1,36 @@
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121
+fit rows=6695 eval rows=2301 test S1=3033 S2=19218
+E233 mean_align raw reproduction {"S1_rejection": 1.0, "S2_acceptance": 0.3121552711000104, "separation_auc": 0.8795220263643784, "train_known_acceptance_at_deployed_tau": 0.8058052562958896}
+EEG per-task z stats {"EC": [-21.9487, 6.0282, -0.3632], "EO": [-21.8634, 4.6839, -0.4857], "Imagery": [-20.3448, 4.5412, -0.8354], "SSVEP": [-20.2248, 5.1173, -0.7648]}
+  z(X_correlation   ) test mean=-0.522 sd=0.953
+  z(X_covariance5   ) test mean=-1.343 sd=2.349
+  z(X_covariance_hr ) test mean=-1.591 sd=2.997
+  z(X_topomap5      ) test mean=-0.281 sd=1.080
+  z(X_mw_corr8      ) test mean=-0.004 sd=1.215
+  z(X_mw_cov4       ) test mean=-0.954 sd=1.942
+  z(X_mw_cov8       ) test mean=-0.728 sd=1.541
+image source IMG_px_all   test mean=-0.775 sd=1.317 sepAUC_raw=0.9490
+image source X_mw_cov4    test mean=-0.954 sd=1.942 sepAUC_raw=0.9334
+building the label-free k=20 partition in the baseline EEG PCA space
+  kmeans k=20 sizes=[1001, 804, 931, 455, 712, 1112, 594, 546, 1965, 802, 1388, 1361, 84, 1044, 1155, 1388, 1061, 729, 1125, 961]
+  purity over all S2 rows {"n": 19218, "purity_micro": 0.634977625143095, "purity_macro": 0.6394518884181595, "n_distinct_pred": 20, "max_identity_share": 0.10771152044957852}
+IMG_px_all_a0.00       tau=-0.7109 losoRej=0.9000 losoAUC=0.9088 known=0.8051 sep=0.8731 S1=1.0000 S2=0.3089 dS2=-0.0032 pur=0.8127 cov=17
+IMG_px_all_a0.05       tau=-0.6833 losoRej=0.9000 losoAUC=0.9086 known=0.8031 sep=0.8865 S1=1.0000 S2=0.3083 dS2=-0.0039 pur=0.8157 cov=17
+IMG_px_all_a0.10       tau=-0.6651 losoRej=0.9000 losoAUC=0.9082 known=0.8026 sep=0.8987 S1=1.0000 S2=0.3135 dS2=+0.0013 pur=0.8141 cov=17
+IMG_px_all_a0.15       tau=-0.6445 losoRej=0.9000 losoAUC=0.9075 known=0.8019 sep=0.9098 S1=1.0000 S2=0.3172 dS2=+0.0050 pur=0.8131 cov=17
+IMG_px_all_a0.20       tau=-0.6081 losoRej=0.9000 losoAUC=0.9065 known=0.7968 sep=0.9198 S1=1.0000 S2=0.3131 dS2=+0.0010 pur=0.8139 cov=17
+IMG_px_all_a0.30       tau=-0.5529 losoRej=0.9000 losoAUC=0.9034 known=0.7906 sep=0.9361 S1=1.0000 S2=0.3132 dS2=+0.0010 pur=0.8134 cov=17
+IMG_px_all_a0.40       tau=-0.4917 losoRej=0.9000 losoAUC=0.8981 known=0.7803 sep=0.9477 S1=1.0000 S2=0.3104 dS2=-0.0017 pur=0.8113 cov=17
+IMG_px_all_a0.50       tau=-0.4342 losoRej=0.9000 losoAUC=0.8896 known=0.7674 sep=0.9553 S1=1.0000 S2=0.3145 dS2=+0.0023 pur=0.8038 cov=17
+X_mw_cov4_a0.00        tau=-0.7109 losoRej=0.9000 losoAUC=0.9088 known=0.8051 sep=0.8731 S1=1.0000 S2=0.3089 dS2=-0.0032 pur=0.8127 cov=17
+X_mw_cov4_a0.05        tau=-0.6772 losoRej=0.9000 losoAUC=0.9078 known=0.7997 sep=0.8921 S1=1.0000 S2=0.3052 dS2=-0.0070 pur=0.8153 cov=17
+X_mw_cov4_a0.10        tau=-0.6581 losoRej=0.9000 losoAUC=0.9060 known=0.7976 sep=0.9082 S1=1.0000 S2=0.3088 dS2=-0.0034 pur=0.8118 cov=17
+X_mw_cov4_a0.15        tau=-0.6160 losoRej=0.9000 losoAUC=0.9032 known=0.7869 sep=0.9219 S1=1.0000 S2=0.3030 dS2=-0.0092 pur=0.8097 cov=17
+X_mw_cov4_a0.20        tau=-0.5835 losoRej=0.9000 losoAUC=0.8991 known=0.7774 sep=0.9330 S1=1.0000 S2=0.2989 dS2=-0.0133 pur=0.8050 cov=17
+X_mw_cov4_a0.30        tau=-0.4851 losoRej=0.9000 losoAUC=0.8863 known=0.7450 sep=0.9479 S1=1.0000 S2=0.2753 dS2=-0.0368 pur=0.8004 cov=17
+X_mw_cov4_a0.40        tau=-0.3858 losoRej=0.9000 losoAUC=0.8653 known=0.7019 sep=0.9554 S1=1.0000 S2=0.2557 dS2=-0.0565 pur=0.7916 cov=16
+X_mw_cov4_a0.50        tau=-0.2674 losoRej=0.9000 losoAUC=0.8348 known=0.6514 sep=0.9582 S1=1.0000 S2=0.2356 dS2=-0.0766 pur=0.7815 cov=17
+floor=0.904254 passing=['IMG_px_all_a0.00', 'IMG_px_all_a0.05', 'IMG_px_all_a0.10', 'IMG_px_all_a0.15', 'IMG_px_all_a0.20'] win=[] best_eval=IMG_px_all_a0.15 best_train=IMG_px_all_a0.00 verdict=tradeoff_only
+control source win=[]
+E239 cross-check ok: alpha=0.30 == wsum_70_30, alpha=0.50 == wsum_50_50
+results.json + report.md written, runtime=4s

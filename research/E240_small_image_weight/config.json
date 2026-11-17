@@ -1,0 +1,95 @@
+{
+  "experiment": "E240_small_image_weight",
+  "purpose": "回答唯一问题：只掺少量图像信息（alpha=0.05~0.50）能否同时保住训练域排序（LOSO AUC >= 0.9043）与跨会话兑现（LOSO=0.90 下 Test S2）。E237 证明图像视图把 Test 跨会话可分性从 0.8795 推到 0.9611，但同等权重的融合把训练域 LOSO AUC 从 0.9088 压到 0.8896，导致 E239 在训练侧锚定阈值下 S2 只有 0.3145。本轮假设：图像权重过大破坏了训练域排序，小权重可能双赢。",
+  "predecessors": {
+    "eeg_score": "research/E233_delta_estimation/cache/test_v1_mean_align.npz（E233 mean_align，冻结，不重训）",
+    "eeg_oof": "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz（oof_s / oof_fit，用于逐 task z 统计量）",
+    "eeg_folds": "research/E235_deployment_calibration/cache/fold_v1_{fold:02d}.npz（score = -d1_orig，冻结逐折 LOSO）",
+    "image_views": "research/E237_image_view_fusion/cache/view_X_*.npz（7 个 E149 像素视图的 test_aligned / ref / fold_score，已打分，不重建特征）",
+    "purity_space": "E227 deploy_auc2_lofo.pt + E233 config.feature_cache.test 的 10 个 block",
+    "read_only": true,
+    "no_refit": "本轮不训练、不重建任何特征、不改任何前序缓存；只做逐 task z 与线性组合。"
+  },
+  "baseline_anchors": {
+    "e233_mean_align": {
+      "test_tau": -24.138366795919048,
+      "test_S2_acceptance": 0.3121552711000104,
+      "test_S1_rejection": 1.0,
+      "test_separation_auc": 0.8795220263643784,
+      "loso_auc": 0.9087978788004492,
+      "train_known_acceptance_at_deployed_tau": 0.8058052562958896,
+      "loso_unknown_rejection_at_deployed_tau": 0.8978704910908301,
+      "S2_at_loso_recalibrated_tau": 0.3089,
+      "purity_k20_micro_all_S2": 0.634977625143095,
+      "tau_eeg_z_per_task": {"EC": -0.3632432190049154, "EO": -0.4857049098510149,
+                             "Imagery": -0.8353623528576164, "SSVEP": -0.7647723618231156}
+    },
+    "e237_best": {
+      "candidate": "fuse_zscore_50_50",
+      "loso_unknown_rejection": 0.8996,
+      "loso_auc_note": "E239 逐 task z 口径下同为 0.8896（全局 z 口径未单独重算）",
+      "test_S2_acceptance": 0.2906,
+      "test_separation_auc": 0.9611,
+      "S2_at_S1_0p95": 0.8776
+    },
+    "e239_reference": {
+      "wsum_50_50_loso_auc": 0.8896,
+      "wsum_50_50_S2_at_recalibrated_tau": 0.31449682589239253,
+      "wsum_70_30_loso_auc": 0.9034,
+      "wsum_70_30_S2_at_recalibrated_tau": 0.3132,
+      "note": "E239 逐 task z 加权和；本轮 alpha 网格的 alpha=0.50 行应逐位复现 wsum_50_50，alpha=0.30 行应逐位复现 wsum_70_30（同一公式、同一 z 口径），作为实现正确性的交叉校验。"
+    }
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "folds": 20,
+    "combination": "s(alpha) = (1 - alpha) * z(s_eeg) + alpha * z(s_img)",
+    "z_spec": "逐 task z：z = (x - mu_t) / sd_t，mu_t / sd_t 由该分量自己的 fit 行（trial fraction <= 0.6，全部 20 个身份）参考分数统计；Train 侧逐折分数、Test 侧分数一律使用同一组 mu/sd。z 是分量内的仿射变换，不改变单分量排序。",
+    "eeg_component": "E233 mean_align Test 分数（已对齐）；Train 侧逐折分数取 E235 冻结 fold_v1 的 -d1_orig（未对齐，与 E233 一致）。z 统计量取 E227 oof_s 的 fit 行。",
+    "image_components": {
+      "IMG_px_all": "主图像源：7 个像素视图各自逐 task z 后的等权均值（E149 的 IMG_px_all 定义，E239 同口径）。",
+      "X_mw_cov4": "对照图像源：E237 中单视图 Test AUC 最高者（对齐后 0.9487），独立逐 task z。"
+    },
+    "alpha_grid": [0.0, 0.05, 0.10, 0.15, 0.20, 0.30, 0.40, 0.50],
+    "tau_calibration": "对每个 alpha，在 Train 侧 pooled LOSO unknown 分数上用二分法求 tau，使 LOSO 未知拒识 = 0.90（E228 同口径：拒识 iff score < tau）。求得后一次性读 Test。",
+    "note_alpha0": "alpha=0 是纯 EEG 基线。原始 E233 tau 下必须逐位复现 Test S2=0.3122、sepAUC=0.8795；Train 侧 LOSO AUC 必须复现 0.9088。由于 LOSO=0.90 重标定的 tau 与部署 tau 差一个极小量（部署 tau 的 LOSO 拒识是 0.8979），重标定后的 alpha=0 S2 是 0.3089（E239 同规则基线），两者都在结果里分列。"
+  },
+  "selection_rules": {
+    "filter": "先按 Train 侧 LOSO AUC >= 0.9088 的 99.5%（= 0.9043）过滤候选 alpha。",
+    "eval_selection": "在通过过滤的 alpha 中选 Test S2 最高者。这一步读取 Test，属评估选点，报告中必须标注。",
+    "train_only_selection": "同时报告仅按 Train 侧规则（选 LOSO AUC 最大的 alpha）会选出哪个 alpha，以及它对应的 Test S2，用于区分合规选型与评估选型的差距。"
+  },
+  "decision_rule": {
+    "win_win": "存在 alpha 使 LOSO=0.90 下 Test S2 >= 0.40 且 Train LOSO AUC >= 0.9043 -> 判定少量图像信息可在 LOSO 固定下兑现，冻结并给部署参数。",
+    "tradeoff_only": "最优 S2 <= 0.35 -> 判定图像信息的兑现需要以训练域排序为代价，给 alpha 与训练域 AUC 的完整权衡曲线，说明不存在双赢点。",
+    "intermediate": "0.35 < 最优 S2 < 0.40 -> 报告为部分兑现（既未达标也未落入明确失败区间），如实给出曲线与两种选型的差距。",
+    "followup_round": "只允许一轮追加：第二个图像源 X_mw_cov4（已在本轮 grid 内并行给出，不再追加第三轮）。"
+  },
+  "metrics": {
+    "train_loso_auc": "Train 域 known（已注册、窗口内）vs unknown（留出身份、窗口内）的 pooled AUC（ties 用 mid-rank），另报 20 折均值±std。判断训练域排序是否被破坏。",
+    "train_known_acceptance": "LOSO 工作点 tau 下 Train 域 known 行接受率（>= tau）。",
+    "separation_auc": "Test S2（20 名注册用户，session2）vs S1（5 名未注册，session1）的 AUC，与阈值无关。",
+    "S1_rejection": "Test S1 在 tau 下被拒识的比例。",
+    "S2_acceptance": "Test S2 在 tau 下被接受的比例。",
+    "purity": "冻结 E233 基线 EEG PCA 空间的 k-means k=20（seed 20261117+20，60 次 Lloyd，全部 S2 行）分区；报被接受 S2 行上的 EEG 分支预测身份 micro 纯度。",
+    "coverage": "被接受 S2 行里出现的不同 EEG 预测身份数（20 个注册身份中的覆盖数）。",
+    "delta_vs_0312": "Test S2 相对 0.3122（E233 mean_align 在部署 tau 下的 S2，任务基线的兑现水平）的差值。"
+  },
+  "limitations": [
+    "Test 自 E65 起被反复查看，本轮 alpha 网格与选型规则在运行前写入 config，但所有 Test S2 数字仍带反复检视偏倚。",
+    "Test 没有身份标签，官方 C / RA / ASafeR 为 N/A；门控任务没有闭集分类器输出，F1 亦为 N/A。S1 拒识与 S2 接受率是唯一读数。",
+    "E232：S1 = 5 名未注册被试、S2 = 20 名注册用户，session 与注册状态混叠；图像视图的对齐后 AUC 0.93+ 主要来自批次均值回移。",
+    "均值对齐是转导式批次统计量，需与竞赛规则确认。",
+    "融合分数是标量，预测身份仍来自 EEG 分支；纯度与覆盖只检验接受决策的身份一致性，不能证明图像分支独立带来身份信息。",
+    "逐 task z 不是跨 task 的单调变换，pooled Test sepAUC 与阈值会随归一化约定微动（E239 已记录：EEG 单支 0.8795 -> 0.8731）。",
+    "第二图像源 X_mw_cov4 属预先登记的对照（只允许一轮追加），不作为新的独立假设。"
+  ]
+}
