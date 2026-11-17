@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "outer_subject": 13,
+      "candidate": "lambda_0.00",
+      "lambda": 0.0,
+      "selected": true,
+      "endpoint": "P1",
+      "threshold_value": 0.34653216600418096,
+      "AUC": 0.974005637331663,
+      "F1_unknown_rejection": 0.5742092457420924,
+      "known_acceptance": 0.9218677762367082,
+      "unknown_rejection": 0.9516129032258065,
+      "known_false_rejection": 0.07813222376329176,
+      "known_identification_accuracy": 0.9195561719833565,
+      "accepted_correct_accuracy": 0.9974924774322969,
+      "actual_FAR": 0.04838709677419355,
+      "accepted_count": 2000,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9567872362540276
+    },
+    {
+      "outer_subject": 13,
+      "candidate": "lambda_0.02",
+      "lambda": 0.02,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.3482123587587561,
+      "AUC": 0.9774991424693898,
+      "F1_unknown_rejection": 0.5922330097087378,
+      "known_acceptance": 0.9232547387887193,
+      "unknown_rejection": 0.9838709677419355,
+      "known_false_rejection": 0.07674526121128067,
+      "known_identification_accuracy": 0.9209431345353676,
+      "accepted_correct_accuracy": 0.9974962443665498,
+      "actual_FAR": 0.016129032258064516,
+      "accepted_count": 1999,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9546304957904583
+    },
+    {
+      "outer_subject": 13,
+      "candidate": "lambda_0.05",
+      "lambda": 0.05,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.35681011426968245,
+      "AUC": 0.9805713390899736,
+      "F1_unknown_rejection": 0.5734265734265734,
+      "known_acceptance": 0.9158576051779935,
+      "unknown_rejection": 0.9919354838709677,
+      "known_false_rejection": 0.08414239482200647,
+      "known_identification_accuracy": 0.9144706426259824,
+      "accepted_correct_accuracy": 0.9984856133266027,
+      "actual_FAR": 0.008064516129032258,
+      "accepted_count": 1982,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9453798981394865
+    },
+    {
+      "outer_subject": 13,
+      "candidate": "lambda_0.10",
+      "lambda": 0.1,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.38265816665734587,
+      "AUC": 0.9807316600301255,
+      "F1_unknown_rejection": 0.5020242914979757,
+      "known_acceptance": 0.8862690707350902,
+      "unknown_rejection": 1.0,
+      "known_false_rejection": 0.1137309292649098,
+      "known_identification_accuracy": 0.8858067498844198,
+      "accepted_correct_accuracy": 0.9994783515910276,
+      "actual_FAR": 0.0,
+      "accepted_count": 1917,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9186155285313377
+    }
+  ],
+  "inner_stats": {
+    "0.0": {
+      "threshold": 0.34653216600418096,
+      "known_acceptance": 0.9567872362540276,
+      "unknown_rejection": 0.90177736202058,
+      "AUC": 0.9823943270824881,
+      "F1_unknown_rejection": 0.6730668528539012,
+      "identity_acceptance_min": 0.952054794520548
+    },
+    "0.02": {
+      "threshold": 0.3482123587587561,
+      "known_acceptance": 0.9546304957904583,
+      "unknown_rejection": 0.901309635173059,
+      "AUC": 0.981625593141912,
+      "F1_unknown_rejection": 0.6632249182584753,
+      "identity_acceptance_min": 0.9489445262641139
+    },
+    "0.05": {
+      "threshold": 0.35681011426968245,
+      "known_acceptance": 0.9453798981394865,
+      "unknown_rejection": 0.9003741814780168,
+      "AUC": 0.9785044486311856,
+      "F1_unknown_rejection": 0.624493106244931,
+      "identity_acceptance_min": 0.9366022783556216
+    },
+    "0.1": {
+      "threshold": 0.38265816665734587,
+      "known_acceptance": 0.9186155285313377,
+      "unknown_rejection": 0.8999064546304958,
+      "AUC": 0.9677286948986805,
+      "F1_unknown_rejection": 0.534890186266333,
+      "identity_acceptance_min": 0.8872960949085517
+    }
+  }
+}

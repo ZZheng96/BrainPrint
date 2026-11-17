@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "outer_subject": 4,
+      "candidate": "lambda_0.00",
+      "lambda": 0.0,
+      "selected": true,
+      "endpoint": "P1",
+      "threshold_value": 0.3639808595180512,
+      "AUC": 0.9831467300191237,
+      "F1_unknown_rejection": 0.5255474452554745,
+      "known_acceptance": 0.9109274563820018,
+      "unknown_rejection": 0.9908256880733946,
+      "known_false_rejection": 0.08907254361799821,
+      "known_identification_accuracy": 0.9090909090909091,
+      "accepted_correct_accuracy": 0.9979838709677419,
+      "actual_FAR": 0.009174311926605505,
+      "accepted_count": 1985,
+      "known_count": 2178,
+      "unknown_count": 109,
+      "inner_known_acceptance": 0.9535189481825213
+    },
+    {
+      "outer_subject": 4,
+      "candidate": "lambda_0.02",
+      "lambda": 0.02,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.36452481408326975,
+      "AUC": 0.9821442110849951,
+      "F1_unknown_rejection": 0.5232273838630807,
+      "known_acceptance": 0.911386593204775,
+      "unknown_rejection": 0.981651376146789,
+      "known_false_rejection": 0.088613406795225,
+      "known_identification_accuracy": 0.9095500459136823,
+      "accepted_correct_accuracy": 0.9979848866498741,
+      "actual_FAR": 0.01834862385321101,
+      "accepted_count": 1987,
+      "known_count": 2178,
+      "unknown_count": 109,
+      "inner_known_acceptance": 0.9534158288218613
+    },
+    {
+      "outer_subject": 4,
+      "candidate": "lambda_0.05",
+      "lambda": 0.05,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.36667841672897344,
+      "AUC": 0.9776918475834239,
+      "F1_unknown_rejection": 0.5147058823529411,
+      "known_acceptance": 0.9109274563820018,
+      "unknown_rejection": 0.963302752293578,
+      "known_false_rejection": 0.08907254361799821,
+      "known_identification_accuracy": 0.9090909090909091,
+      "accepted_correct_accuracy": 0.9979838709677419,
+      "actual_FAR": 0.03669724770642202,
+      "accepted_count": 1988,
+      "known_count": 2178,
+      "unknown_count": 109,
+      "inner_known_acceptance": 0.9503995875225574
+    },
+    {
+      "outer_subject": 4,
+      "candidate": "lambda_0.10",
+      "lambda": 0.1,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.38404852151870733,
+      "AUC": 0.9639977759243814,
+      "F1_unknown_rejection": 0.44635193133047213,
+      "known_acceptance": 0.8838383838383839,
+      "unknown_rejection": 0.9541284403669725,
+      "known_false_rejection": 0.11616161616161613,
+      "known_identification_accuracy": 0.8824609733700642,
+      "accepted_correct_accuracy": 0.9984415584415585,
+      "actual_FAR": 0.045871559633027525,
+      "accepted_count": 1930,
+      "known_count": 2178,
+      "unknown_count": 109,
+      "inner_known_acceptance": 0.9278937870585202
+    }
+  ],
+  "inner_stats": {
+    "0.0": {
+      "threshold": 0.3639808595180512,
+      "known_acceptance": 0.9535189481825213,
+      "unknown_rejection": 0.9002320185614849,
+      "AUC": 0.9821045501118821,
+      "F1_unknown_rejection": 0.6578501186842998,
+      "identity_acceptance_min": 0.9458394879369768
+    },
+    "0.02": {
+      "threshold": 0.36452481408326975,
+      "known_acceptance": 0.9534158288218613,
+      "unknown_rejection": 0.9002320185614849,
+      "AUC": 0.9818959606998,
+      "F1_unknown_rejection": 0.6574042697390715,
+      "identity_acceptance_min": 0.947808961102905
+    },
+    "0.05": {
+      "threshold": 0.36667841672897344,
+      "known_acceptance": 0.9503995875225574,
+      "unknown_rejection": 0.8997679814385151,
+      "AUC": 0.979686873635119,
+      "F1_unknown_rejection": 0.6444001329345297,
+      "identity_acceptance_min": 0.942997542997543
+    },
+    "0.1": {
+      "threshold": 0.38404852151870733,
+      "known_acceptance": 0.9278937870585202,
+      "unknown_rejection": 0.8993039443155453,
+      "AUC": 0.9710013284692577,
+      "F1_unknown_rejection": 0.5625544267053701,
+      "identity_acceptance_min": 0.9140893470790378
+    }
+  }
+}

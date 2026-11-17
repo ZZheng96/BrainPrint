@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "outer_subject": 10,
+      "candidate": "lambda_0.00",
+      "lambda": 0.0,
+      "selected": true,
+      "endpoint": "P1",
+      "threshold_value": 0.3601008355617524,
+      "AUC": 0.9783466457160316,
+      "F1_unknown_rejection": 0.5543478260869565,
+      "known_acceptance": 0.9262144821264895,
+      "unknown_rejection": 0.9714285714285714,
+      "known_false_rejection": 0.07378551787351051,
+      "known_identification_accuracy": 0.923923006416132,
+      "accepted_correct_accuracy": 0.9975259772389906,
+      "actual_FAR": 0.02857142857142857,
+      "accepted_count": 2024,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9685408299866132
+    },
+    {
+      "outer_subject": 10,
+      "candidate": "lambda_0.02",
+      "lambda": 0.02,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.3623233463308131,
+      "AUC": 0.9779538213085417,
+      "F1_unknown_rejection": 0.5283018867924528,
+      "known_acceptance": 0.923006416131989,
+      "unknown_rejection": 0.9333333333333333,
+      "known_false_rejection": 0.07699358386801103,
+      "known_identification_accuracy": 0.9207149404216315,
+      "accepted_correct_accuracy": 0.9975173783515392,
+      "actual_FAR": 0.06666666666666667,
+      "accepted_count": 2021,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9658377098136134
+    },
+    {
+      "outer_subject": 10,
+      "candidate": "lambda_0.05",
+      "lambda": 0.05,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.368281900882721,
+      "AUC": 0.975666710313823,
+      "F1_unknown_rejection": 0.5291005291005291,
+      "known_acceptance": 0.9207149404216315,
+      "unknown_rejection": 0.9523809523809523,
+      "known_false_rejection": 0.07928505957836851,
+      "known_identification_accuracy": 0.919340054995417,
+      "accepted_correct_accuracy": 0.9985067197610752,
+      "actual_FAR": 0.047619047619047616,
+      "accepted_count": 2014,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9584491813407476
+    },
+    {
+      "outer_subject": 10,
+      "candidate": "lambda_0.10",
+      "lambda": 0.1,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.388811813820941,
+      "AUC": 0.9672689974248178,
+      "F1_unknown_rejection": 0.460093896713615,
+      "known_acceptance": 0.8978001833180568,
+      "unknown_rejection": 0.9333333333333333,
+      "known_false_rejection": 0.10219981668194322,
+      "known_identification_accuracy": 0.8964252978918423,
+      "accepted_correct_accuracy": 0.998468606431853,
+      "actual_FAR": 0.06666666666666667,
+      "accepted_count": 1966,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9354597878694264
+    }
+  ],
+  "inner_stats": {
+    "0.0": {
+      "threshold": 0.3601008355617524,
+      "known_acceptance": 0.9685408299866132,
+      "unknown_rejection": 0.9003707136237257,
+      "AUC": 0.9851933696621996,
+      "F1_unknown_rejection": 0.7300394514371595,
+      "identity_acceptance_min": 0.9616519174041298
+    },
+    "0.02": {
+      "threshold": 0.3623233463308131,
+      "known_acceptance": 0.9658377098136134,
+      "unknown_rejection": 0.9003707136237257,
+      "AUC": 0.9847344154307875,
+      "F1_unknown_rejection": 0.7159174649963154,
+      "identity_acceptance_min": 0.9587020648967551
+    },
+    "0.05": {
+      "threshold": 0.368281900882721,
+      "known_acceptance": 0.9584491813407476,
+      "unknown_rejection": 0.9003707136237257,
+      "AUC": 0.9825214691612628,
+      "F1_unknown_rejection": 0.6799650043744532,
+      "identity_acceptance_min": 0.9450656295576082
+    },
+    "0.1": {
+      "threshold": 0.388811813820941,
+      "known_acceptance": 0.9354597878694264,
+      "unknown_rejection": 0.9008341056533827,
+      "AUC": 0.9742060492629963,
+      "F1_unknown_rejection": 0.5882886972310486,
+      "identity_acceptance_min": 0.9017987360233349
+    }
+  }
+}

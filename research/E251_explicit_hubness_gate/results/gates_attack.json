@@ -1,0 +1,128 @@
+{
+  "deployment": "full Train known identities, frac<=0.6; lambda/threshold from Train inner LOSO",
+  "candidate": "lambda_0.00",
+  "lambda": 0.0,
+  "threshold": 0.3594579100608826,
+  "n_trials": 1227,
+  "per_task": {
+    "0": 215,
+    "1": 212,
+    "2": 400,
+    "3": 400
+  },
+  "clean": {
+    "RA": 0.9576202118989405,
+    "ASafeR": 0.9983700081499592,
+    "accept_rate": 0.9592502037489813,
+    "closed_set_accuracy": 0.9918500407497962,
+    "wrong_identity_rate": 0.0016299918500407497
+  },
+  "conditions": [
+    {
+      "RA": 0.0,
+      "ASafeR": 1.0,
+      "accept_rate": 0.0,
+      "closed_set_accuracy": 0.04726976365118175,
+      "wrong_identity_rate": 0.0,
+      "snr": 30,
+      "goal": "A"
+    },
+    {
+      "RA": 0.0,
+      "ASafeR": 1.0,
+      "accept_rate": 0.0,
+      "closed_set_accuracy": 0.04726976365118175,
+      "wrong_identity_rate": 0.0,
+      "snr": 30,
+      "goal": "B"
+    },
+    {
+      "RA": 0.0,
+      "ASafeR": 1.0,
+      "accept_rate": 0.0,
+      "closed_set_accuracy": 0.04726976365118175,
+      "wrong_identity_rate": 0.0,
+      "snr": 30,
+      "goal": "C"
+    },
+    {
+      "RA": 0.0,
+      "ASafeR": 1.0,
+      "accept_rate": 0.0,
+      "closed_set_accuracy": 0.04726976365118175,
+      "wrong_identity_rate": 0.0,
+      "snr": 30,
+      "goal": "D"
+    },
+    {
+      "RA": 0.0,
+      "ASafeR": 1.0,
+      "accept_rate": 0.0,
+      "closed_set_accuracy": 0.04726976365118175,
+      "wrong_identity_rate": 0.0,
+      "snr": 20,
+      "goal": "A"
+    },
+    {
+      "RA": 0.0,
+      "ASafeR": 1.0,
+      "accept_rate": 0.0,
+      "closed_set_accuracy": 0.04726976365118175,
+      "wrong_identity_rate": 0.0,
+      "snr": 20,
+      "goal": "B"
+    },
+    {
+      "RA": 0.0,
+      "ASafeR": 1.0,
+      "accept_rate": 0.0,
+      "closed_set_accuracy": 0.04726976365118175,
+      "wrong_identity_rate": 0.0,
+      "snr": 20,
+      "goal": "C"
+    },
+    {
+      "RA": 0.0,
+      "ASafeR": 1.0,
+      "accept_rate": 0.0,
+      "closed_set_accuracy": 0.04726976365118175,
+      "wrong_identity_rate": 0.0,
+      "snr": 20,
+      "goal": "D"
+    }
+  ],
+  "RA": 0.0,
+  "ASafeR": 1.0,
+  "worst_RA": {
+    "RA": 0.0,
+    "ASafeR": 1.0,
+    "accept_rate": 0.0,
+    "closed_set_accuracy": 0.04726976365118175,
+    "wrong_identity_rate": 0.0,
+    "snr": 30,
+    "goal": "A"
+  },
+  "worst_ASafeR": {
+    "RA": 0.0,
+    "ASafeR": 1.0,
+    "accept_rate": 0.0,
+    "closed_set_accuracy": 0.04726976365118175,
+    "wrong_identity_rate": 0.0,
+    "snr": 30,
+    "goal": "A"
+  },
+  "protocol": {
+    "subset": "Train 0.6<frac<=0.8, cap 400/task, seed 20261115",
+    "snr_db": [
+      30,
+      20
+    ],
+    "steps": 20,
+    "goals": "A/B/C maximize wrong-vs-true; D minimize gate",
+    "radius": "demeaned waveform L2 / 10^(SNR/20)",
+    "primary_snr_db": 30,
+    "snr20": "reference only",
+    "device": "cuda:0"
+  },
+  "seconds": 189.30496788024902
+}

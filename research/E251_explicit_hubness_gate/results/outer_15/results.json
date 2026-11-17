@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "outer_subject": 15,
+      "candidate": "lambda_0.00",
+      "lambda": 0.0,
+      "selected": true,
+      "endpoint": "P1",
+      "threshold_value": 0.35614061355590826,
+      "AUC": 0.9579154118109205,
+      "F1_unknown_rejection": 0.4649859943977591,
+      "known_acceptance": 0.9225481209899175,
+      "unknown_rejection": 0.7904761904761904,
+      "known_false_rejection": 0.07745187901008255,
+      "known_identification_accuracy": 0.9197983501374886,
+      "accepted_correct_accuracy": 0.9970193740685543,
+      "actual_FAR": 0.20952380952380953,
+      "accepted_count": 2035,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9599752743007263
+    },
+    {
+      "outer_subject": 15,
+      "candidate": "lambda_0.02",
+      "lambda": 0.02,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.356878012418747,
+      "AUC": 0.9620924446772293,
+      "F1_unknown_rejection": 0.4712328767123288,
+      "known_acceptance": 0.9202566452795601,
+      "unknown_rejection": 0.819047619047619,
+      "known_false_rejection": 0.07974335472043992,
+      "known_identification_accuracy": 0.918423464711274,
+      "accepted_correct_accuracy": 0.99800796812749,
+      "actual_FAR": 0.18095238095238095,
+      "accepted_count": 2027,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9579147993612528
+    },
+    {
+      "outer_subject": 15,
+      "candidate": "lambda_0.05",
+      "lambda": 0.05,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.3642375469207764,
+      "AUC": 0.9652132163589542,
+      "F1_unknown_rejection": 0.48148148148148145,
+      "known_acceptance": 0.916590284142988,
+      "unknown_rejection": 0.8666666666666667,
+      "known_false_rejection": 0.08340971585701196,
+      "known_identification_accuracy": 0.9138405132905592,
+      "accepted_correct_accuracy": 0.997,
+      "actual_FAR": 0.13333333333333333,
+      "accepted_count": 2014,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9488487096275692
+    },
+    {
+      "outer_subject": 15,
+      "candidate": "lambda_0.10",
+      "lambda": 0.1,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.3762215504750186,
+      "AUC": 0.9646632621884684,
+      "F1_unknown_rejection": 0.4418604651162791,
+      "known_acceptance": 0.8945921173235564,
+      "unknown_rejection": 0.9047619047619048,
+      "known_false_rejection": 0.10540788267644363,
+      "known_identification_accuracy": 0.8918423464711274,
+      "accepted_correct_accuracy": 0.9969262295081968,
+      "actual_FAR": 0.09523809523809523,
+      "accepted_count": 1962,
+      "known_count": 2182,
+      "unknown_count": 105,
+      "inner_known_acceptance": 0.9311028692113532
+    }
+  ],
+  "inner_stats": {
+    "0.0": {
+      "threshold": 0.35614061355590826,
+      "known_acceptance": 0.9599752743007263,
+      "unknown_rejection": 0.8998609179415855,
+      "AUC": 0.9826172621709099,
+      "F1_unknown_rejection": 0.6868365180467091,
+      "identity_acceptance_min": 0.9530102790014684
+    },
+    "0.02": {
+      "threshold": 0.356878012418747,
+      "known_acceptance": 0.9579147993612528,
+      "unknown_rejection": 0.8998609179415855,
+      "AUC": 0.9820787398032104,
+      "F1_unknown_rejection": 0.6772505233775297,
+      "identity_acceptance_min": 0.9505628976994616
+    },
+    "0.05": {
+      "threshold": 0.3642375469207764,
+      "known_acceptance": 0.9488487096275692,
+      "unknown_rejection": 0.9003245248029671,
+      "AUC": 0.9798251729522496,
+      "F1_unknown_rejection": 0.638290879211175,
+      "identity_acceptance_min": 0.937836514929026
+    },
+    "0.1": {
+      "threshold": 0.3762215504750186,
+      "known_acceptance": 0.9311028692113532,
+      "unknown_rejection": 0.9003245248029671,
+      "AUC": 0.9721763045334199,
+      "F1_unknown_rejection": 0.5733687629170358,
+      "identity_acceptance_min": 0.917936117936118
+    }
+  }
+}

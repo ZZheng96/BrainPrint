@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "outer_subject": 11,
+      "candidate": "lambda_0.00",
+      "lambda": 0.0,
+      "selected": true,
+      "endpoint": "P1",
+      "threshold_value": 0.3578911125659943,
+      "AUC": 0.9762902253458788,
+      "F1_unknown_rejection": 0.5432692307692307,
+      "known_acceptance": 0.9159741458910434,
+      "unknown_rejection": 0.9338842975206612,
+      "known_false_rejection": 0.08402585410895658,
+      "known_identification_accuracy": 0.9136657433056325,
+      "accepted_correct_accuracy": 0.9974798387096774,
+      "actual_FAR": 0.06611570247933884,
+      "accepted_count": 1992,
+      "known_count": 2166,
+      "unknown_count": 121,
+      "inner_known_acceptance": 0.9555140768393218
+    },
+    {
+      "outer_subject": 11,
+      "candidate": "lambda_0.02",
+      "lambda": 0.02,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.3594101395150935,
+      "AUC": 0.9767480903214976,
+      "F1_unknown_rejection": 0.5419664268585132,
+      "known_acceptance": 0.9155124653739612,
+      "unknown_rejection": 0.9338842975206612,
+      "known_false_rejection": 0.08448753462603875,
+      "known_identification_accuracy": 0.9136657433056325,
+      "accepted_correct_accuracy": 0.9979828542612204,
+      "actual_FAR": 0.06611570247933884,
+      "accepted_count": 1991,
+      "known_count": 2166,
+      "unknown_count": 121,
+      "inner_known_acceptance": 0.9517291439829937
+    },
+    {
+      "outer_subject": 11,
+      "candidate": "lambda_0.05",
+      "lambda": 0.05,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.37054570220862104,
+      "AUC": 0.9761604969361202,
+      "F1_unknown_rejection": 0.515695067264574,
+      "known_acceptance": 0.9030470914127424,
+      "unknown_rejection": 0.9504132231404959,
+      "known_false_rejection": 0.09695290858725758,
+      "known_identification_accuracy": 0.9012003693444137,
+      "accepted_correct_accuracy": 0.9979550102249489,
+      "actual_FAR": 0.049586776859504134,
+      "accepted_count": 1962,
+      "known_count": 2166,
+      "unknown_count": 121,
+      "inner_known_acceptance": 0.9392077565199357
+    },
+    {
+      "outer_subject": 11,
+      "candidate": "lambda_0.10",
+      "lambda": 0.1,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.39253136112383474,
+      "AUC": 0.9724060041360469,
+      "F1_unknown_rejection": 0.46613545816733065,
+      "known_acceptance": 0.8781163434903048,
+      "unknown_rejection": 0.9669421487603306,
+      "known_false_rejection": 0.12188365650969524,
+      "known_identification_accuracy": 0.8767313019390581,
+      "accepted_correct_accuracy": 0.998422712933754,
+      "actual_FAR": 0.03305785123966942,
+      "accepted_count": 1906,
+      "known_count": 2166,
+      "unknown_count": 121,
+      "inner_known_acceptance": 0.9112096230621662
+    }
+  ],
+  "inner_stats": {
+    "0.0": {
+      "threshold": 0.3578911125659943,
+      "known_acceptance": 0.9555140768393218,
+      "unknown_rejection": 0.8996733551096594,
+      "AUC": 0.9808902311405333,
+      "F1_unknown_rejection": 0.6663210644548125,
+      "identity_acceptance_min": 0.9474987617632491
+    },
+    "0.02": {
+      "threshold": 0.3594101395150935,
+      "known_acceptance": 0.9517291439829937,
+      "unknown_rejection": 0.8992067195520299,
+      "AUC": 0.9796170723821744,
+      "F1_unknown_rejection": 0.6496965610249494,
+      "identity_acceptance_min": 0.9415552253590886
+    },
+    "0.05": {
+      "threshold": 0.37054570220862104,
+      "known_acceptance": 0.9392077565199357,
+      "unknown_rejection": 0.8992067195520299,
+      "AUC": 0.9753431968191457,
+      "F1_unknown_rejection": 0.6007794232268121,
+      "identity_acceptance_min": 0.9248640632723678
+    },
+    "0.1": {
+      "threshold": 0.39253136112383474,
+      "known_acceptance": 0.9112096230621662,
+      "unknown_rejection": 0.8982734484367709,
+      "AUC": 0.9621797287968431,
+      "F1_unknown_rejection": 0.5138128920325638,
+      "identity_acceptance_min": 0.8695007414730598
+    }
+  }
+}

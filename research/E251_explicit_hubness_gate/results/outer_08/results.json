@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "outer_subject": 8,
+      "candidate": "lambda_0.00",
+      "lambda": 0.0,
+      "selected": true,
+      "endpoint": "P1",
+      "threshold_value": 0.3600680232048035,
+      "AUC": 0.9683178534571724,
+      "F1_unknown_rejection": 0.4908616187989556,
+      "known_acceptance": 0.91441647597254,
+      "unknown_rejection": 0.9215686274509803,
+      "known_false_rejection": 0.08558352402745995,
+      "known_identification_accuracy": 0.9116704805491991,
+      "accepted_correct_accuracy": 0.996996996996997,
+      "actual_FAR": 0.0784313725490196,
+      "accepted_count": 2006,
+      "known_count": 2185,
+      "unknown_count": 102,
+      "inner_known_acceptance": 0.9554218725898503
+    },
+    {
+      "outer_subject": 8,
+      "candidate": "lambda_0.02",
+      "lambda": 0.02,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.3615044679185664,
+      "AUC": 0.9685152779647328,
+      "F1_unknown_rejection": 0.49343832020997375,
+      "known_acceptance": 0.9153318077803204,
+      "unknown_rejection": 0.9215686274509803,
+      "known_false_rejection": 0.08466819221967958,
+      "known_identification_accuracy": 0.9125858123569794,
+      "accepted_correct_accuracy": 0.997,
+      "actual_FAR": 0.0784313725490196,
+      "accepted_count": 2008,
+      "known_count": 2185,
+      "unknown_count": 102,
+      "inner_known_acceptance": 0.9506144274769911
+    },
+    {
+      "outer_subject": 8,
+      "candidate": "lambda_0.05",
+      "lambda": 0.05,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.3626233850769487,
+      "AUC": 0.9678377529501503,
+      "F1_unknown_rejection": 0.4895833333333333,
+      "known_acceptance": 0.9139588100686499,
+      "unknown_rejection": 0.9215686274509803,
+      "known_false_rejection": 0.08604118993135013,
+      "known_identification_accuracy": 0.9107551487414187,
+      "accepted_correct_accuracy": 0.9964947421131698,
+      "actual_FAR": 0.0784313725490196,
+      "accepted_count": 2005,
+      "known_count": 2185,
+      "unknown_count": 102,
+      "inner_known_acceptance": 0.9436217800401049
+    },
+    {
+      "outer_subject": 8,
+      "candidate": "lambda_0.10",
+      "lambda": 0.1,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.37878684497918425,
+      "AUC": 0.9634046753712927,
+      "F1_unknown_rejection": 0.45622119815668205,
+      "known_acceptance": 0.8933638443935927,
+      "unknown_rejection": 0.9705882352941176,
+      "known_false_rejection": 0.10663615560640727,
+      "known_identification_accuracy": 0.891533180778032,
+      "accepted_correct_accuracy": 0.9979508196721312,
+      "actual_FAR": 0.029411764705882353,
+      "accepted_count": 1955,
+      "known_count": 2185,
+      "unknown_count": 102,
+      "inner_known_acceptance": 0.922463879890997
+    }
+  ],
+  "inner_stats": {
+    "0.0": {
+      "threshold": 0.3600680232048035,
+      "known_acceptance": 0.9554218725898503,
+      "unknown_rejection": 0.9005090236001851,
+      "AUC": 0.9813731919186166,
+      "F1_unknown_rejection": 0.6663242595445985,
+      "identity_acceptance_min": 0.9474717722140402
+    },
+    "0.02": {
+      "threshold": 0.3615044679185664,
+      "known_acceptance": 0.9506144274769911,
+      "unknown_rejection": 0.9005090236001851,
+      "AUC": 0.9810159529465273,
+      "F1_unknown_rejection": 0.6456536164565362,
+      "identity_acceptance_min": 0.944526264113893
+    },
+    "0.05": {
+      "threshold": 0.3626233850769487,
+      "known_acceptance": 0.9436217800401049,
+      "unknown_rejection": 0.9000462748727441,
+      "AUC": 0.9781961098604357,
+      "F1_unknown_rejection": 0.6175583425940625,
+      "identity_acceptance_min": 0.9363369245837414
+    },
+    "0.1": {
+      "threshold": 0.37878684497918425,
+      "known_acceptance": 0.922463879890997,
+      "unknown_rejection": 0.9000462748727441,
+      "AUC": 0.9680178387029102,
+      "F1_unknown_rejection": 0.5461948890761023,
+      "identity_acceptance_min": 0.8883447600391773
+    }
+  }
+}

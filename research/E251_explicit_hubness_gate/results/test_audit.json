@@ -1,0 +1,63 @@
+{
+  "disclosure": "looked at Test once; descriptive only; no Test fitting, selection, or threshold changes",
+  "frozen_candidate": "lambda_0.00",
+  "lambda": 0.0,
+  "threshold_P1_FAR10": 0.3594579100608826,
+  "train_inner_stats": {
+    "0.0": {
+      "threshold": 0.3594579100608826,
+      "known_acceptance": 0.9558146028200475,
+      "unknown_rejection": 0.9000884173297966,
+      "AUC": 0.9819603692535473,
+      "F1_unknown_rejection": 0.657092141358722,
+      "identity_acceptance_min": 0.9490177736202058
+    },
+    "0.02": {
+      "threshold": 0.35938295722007757,
+      "known_acceptance": 0.9546279491833031,
+      "unknown_rejection": 0.9000884173297966,
+      "AUC": 0.9816582695096321,
+      "F1_unknown_rejection": 0.6517285531370038,
+      "identity_acceptance_min": 0.9476145930776426
+    },
+    "0.05": {
+      "threshold": 0.36267116665840154,
+      "known_acceptance": 0.9484154683791708,
+      "unknown_rejection": 0.8996463306808135,
+      "AUC": 0.9797692434831564,
+      "F1_unknown_rejection": 0.6248081056186675,
+      "identity_acceptance_min": 0.9391955098222639
+    },
+    "0.1": {
+      "threshold": 0.3763670752152377,
+      "known_acceptance": 0.9322676718321001,
+      "unknown_rejection": 0.8996463306808135,
+      "AUC": 0.9728911742684627,
+      "F1_unknown_rejection": 0.5646503884572697,
+      "identity_acceptance_min": 0.921421889616464
+    }
+  },
+  "test": {
+    "S1": {
+      "n": 3033,
+      "acceptance": 0.4520276953511375,
+      "rejection": 0.5479723046488625,
+      "score_median": 0.32537394762039185,
+      "accepted_id_count_cv": 3.9184269471196096
+    },
+    "S2": {
+      "n": 19218,
+      "acceptance": 0.44104485378291186,
+      "rejection": 0.5589551462170882,
+      "score_median": 0.33633749186992645,
+      "accepted_id_count_cv": 1.0703343935435492
+    },
+    "S1_vs_S2_score_AUC_descriptive": 0.4625309543816026
+  },
+  "official_test_AUC": "N/A (no identity truth)",
+  "official_test_F1": "N/A (no identity truth)",
+  "session_groups": [
+    "S1",
+    "S2"
+  ]
+}

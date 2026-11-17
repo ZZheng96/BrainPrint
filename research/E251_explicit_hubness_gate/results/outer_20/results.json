@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "outer_subject": 20,
+      "candidate": "lambda_0.00",
+      "lambda": 0.0,
+      "selected": true,
+      "endpoint": "P1",
+      "threshold_value": 0.36046013236045843,
+      "AUC": 0.9820701534606953,
+      "F1_unknown_rejection": 0.5627906976744186,
+      "known_acceptance": 0.9144706426259824,
+      "unknown_rejection": 0.9758064516129032,
+      "known_false_rejection": 0.08552935737401757,
+      "known_identification_accuracy": 0.9116967175219602,
+      "accepted_correct_accuracy": 0.9969666329625885,
+      "actual_FAR": 0.024193548387096774,
+      "accepted_count": 1981,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9538769358694522
+    },
+    {
+      "outer_subject": 20,
+      "candidate": "lambda_0.02",
+      "lambda": 0.02,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.3623031701585566,
+      "AUC": 0.9848142514130613,
+      "F1_unknown_rejection": 0.5741176470588235,
+      "known_acceptance": 0.9172445677300046,
+      "unknown_rejection": 0.9838709677419355,
+      "known_false_rejection": 0.08275543226999538,
+      "known_identification_accuracy": 0.9149329634766528,
+      "accepted_correct_accuracy": 0.9974798387096774,
+      "actual_FAR": 0.016129032258064516,
+      "accepted_count": 1986,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.951538301631847
+    },
+    {
+      "outer_subject": 20,
+      "candidate": "lambda_0.05",
+      "lambda": 0.05,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.367855212574431,
+      "AUC": 0.9876329172445677,
+      "F1_unknown_rejection": 0.5668202764976958,
+      "known_acceptance": 0.9135460009246417,
+      "unknown_rejection": 0.9919354838709677,
+      "known_false_rejection": 0.08645399907535833,
+      "known_identification_accuracy": 0.9112343966712899,
+      "accepted_correct_accuracy": 0.9974696356275303,
+      "actual_FAR": 0.008064516129032258,
+      "accepted_count": 1977,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9432231576759172
+    },
+    {
+      "outer_subject": 20,
+      "candidate": "lambda_0.10",
+      "lambda": 0.1,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.3827851841553622,
+      "AUC": 0.9885538305519515,
+      "F1_unknown_rejection": 0.5221052631578947,
+      "known_acceptance": 0.8950531668978271,
+      "unknown_rejection": 1.0,
+      "known_false_rejection": 0.1049468331021729,
+      "known_identification_accuracy": 0.8932038834951457,
+      "accepted_correct_accuracy": 0.9979338842975206,
+      "actual_FAR": 0.0,
+      "accepted_count": 1936,
+      "known_count": 2163,
+      "unknown_count": 124,
+      "inner_known_acceptance": 0.9238124935037938
+    }
+  ],
+  "inner_stats": {
+    "0.0": {
+      "threshold": 0.36046013236045843,
+      "known_acceptance": 0.9538769358694522,
+      "unknown_rejection": 0.8994387277829747,
+      "AUC": 0.9815394348521792,
+      "F1_unknown_rejection": 0.6590130226182317,
+      "identity_acceptance_min": 0.9463753723932473
+    },
+    "0.02": {
+      "threshold": 0.3623031701585566,
+      "known_acceptance": 0.951538301631847,
+      "unknown_rejection": 0.8994387277829747,
+      "AUC": 0.9809546547547757,
+      "F1_unknown_rejection": 0.649004387445157,
+      "identity_acceptance_min": 0.9438927507447865
+    },
+    "0.05": {
+      "threshold": 0.367855212574431,
+      "known_acceptance": 0.9432231576759172,
+      "unknown_rejection": 0.8994387277829747,
+      "AUC": 0.9785900478461084,
+      "F1_unknown_rejection": 0.6157540826128722,
+      "identity_acceptance_min": 0.9329692154915591
+    },
+    "0.1": {
+      "threshold": 0.3827851841553622,
+      "known_acceptance": 0.9238124935037938,
+      "unknown_rejection": 0.8999064546304958,
+      "AUC": 0.9705970039035089,
+      "F1_unknown_rejection": 0.550185873605948,
+      "identity_acceptance_min": 0.9093161546085233
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "experiment": "E251_explicit_hubness_gate",
+  "version": "E251-v1-explicit-hubness-gate",
+  "reject_score": "top1_cosine - lambda * standardized_predicted_prototype_hubness",
+  "lambdas": [0.0, 0.02, 0.05, 0.1],
+  "selection": "inner LOSO: unknown rejection >= C0, known acceptance loss <= 1 percentage point, stable AUC/F1 trend, worst identity not worse; maximize known acceptance",
+  "temporal_split": {
+    "outer_fit": "known identities, frac <= 0.6",
+    "inner_fit": "remaining identities, frac <= 0.4",
+    "inner_calibration": "held identity unknown and remaining identities known, 0.4 < frac <= 0.6",
+    "evaluation": "outer held identity and known identities, frac > 0.8"
+  },
+  "identity_decision": "top-1 strict LDA-cos; refusal score never changes ranking",
+  "threshold": "identity-balanced weighted FAR10 from inner pseudo-unknown scores",
+  "data": {
+    "metadata": "BrainPrint_cache/train_metadata.csv",
+    "features": "BrainPrint_cache/e201_final_selftest/train_raw_scores_inputs.npy",
+    "test_used_for_selection": false,
+    "session_used_for_decision": false
+  },
+  "device": "cuda:0 when available",
+  "model_output": "results/outer_{subject}/model.pt",
+  "resume": true
+}

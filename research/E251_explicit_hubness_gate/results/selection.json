@@ -1,0 +1,55 @@
+{
+  "protocol": {
+    "version": "E251-v1-explicit-hubness-gate",
+    "outer_fit": "known identities, frac <= 0.6",
+    "inner_fit": "remaining identities, frac <= 0.4",
+    "inner_calibration": "held identity unknown and remaining identities known, 0.4 < frac <= 0.6",
+    "evaluation": "outer held identity and known identities, frac > 0.8",
+    "identity_decision": "top-1 strict LDA-cos prototype score; lambda changes refusal score only",
+    "reject_score": "top1_cosine - lambda * standardized_predicted_prototype_hubness",
+    "lambdas": [
+      0.0,
+      0.02,
+      0.05,
+      0.1
+    ],
+    "hubness": "prototype mutual-nearest-neighbor in fitted identity prototype space; standardization fit on fitted identities",
+    "threshold": "weighted identity-balanced FAR10 threshold from inner pseudo-unknown scores",
+    "session": "not used",
+    "test_data": "not read; no Test result participates in fitting or selection"
+  },
+  "summary": [
+    {
+      "candidate": "lambda_0.00",
+      "AUC": 0.9708374034948296,
+      "F1_unknown_rejection": 0.5293938236924335,
+      "known_acceptance": 0.9192696482766228,
+      "unknown_rejection": 0.917568529217584,
+      "known_identification_accuracy": 0.9168076541275667
+    },
+    {
+      "candidate": "lambda_0.02",
+      "AUC": 0.9710650324921651,
+      "F1_unknown_rejection": 0.5294523061515662,
+      "known_acceptance": 0.9193653814741978,
+      "unknown_rejection": 0.9172701616246173,
+      "known_identification_accuracy": 0.9169488584632475
+    },
+    {
+      "candidate": "lambda_0.05",
+      "AUC": 0.9696947678614162,
+      "F1_unknown_rejection": 0.5161362446810305,
+      "known_acceptance": 0.9143020829906547,
+      "unknown_rejection": 0.9199084176654587,
+      "known_identification_accuracy": 0.9120004652791549
+    },
+    {
+      "candidate": "lambda_0.10",
+      "AUC": 0.9631731337930036,
+      "F1_unknown_rejection": 0.4645544922147661,
+      "known_acceptance": 0.8918404723399194,
+      "unknown_rejection": 0.9269976601692091,
+      "known_identification_accuracy": 0.8898839836472078
+    }
+  ]
+}

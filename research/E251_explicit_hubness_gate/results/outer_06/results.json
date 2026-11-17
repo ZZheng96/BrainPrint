@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "outer_subject": 6,
+      "candidate": "lambda_0.00",
+      "lambda": 0.0,
+      "selected": true,
+      "endpoint": "P1",
+      "threshold_value": 0.3624624609947205,
+      "AUC": 0.9921516913875239,
+      "F1_unknown_rejection": 0.5495495495495496,
+      "known_acceptance": 0.9080406654343808,
+      "unknown_rejection": 0.991869918699187,
+      "known_false_rejection": 0.09195933456561922,
+      "known_identification_accuracy": 0.9057301293900185,
+      "accepted_correct_accuracy": 0.9974554707379135,
+      "actual_FAR": 0.008130081300813009,
+      "accepted_count": 1966,
+      "known_count": 2164,
+      "unknown_count": 123,
+      "inner_known_acceptance": 0.9518691588785047
+    },
+    {
+      "outer_subject": 6,
+      "candidate": "lambda_0.02",
+      "lambda": 0.02,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.35933068394660955,
+      "AUC": 0.990754098853373,
+      "F1_unknown_rejection": 0.54627539503386,
+      "known_acceptance": 0.9080406654343808,
+      "unknown_rejection": 0.983739837398374,
+      "known_false_rejection": 0.09195933456561922,
+      "known_identification_accuracy": 0.905268022181146,
+      "accepted_correct_accuracy": 0.9969465648854962,
+      "actual_FAR": 0.016260162601626018,
+      "accepted_count": 1967,
+      "known_count": 2164,
+      "unknown_count": 123,
+      "inner_known_acceptance": 0.95067497403946
+    },
+    {
+      "outer_subject": 6,
+      "candidate": "lambda_0.05",
+      "lambda": 0.05,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.35885328900294644,
+      "AUC": 0.9867754684940565,
+      "F1_unknown_rejection": 0.532150776053215,
+      "known_acceptance": 0.9038817005545287,
+      "unknown_rejection": 0.975609756097561,
+      "known_false_rejection": 0.09611829944547134,
+      "known_identification_accuracy": 0.9006469500924215,
+      "accepted_correct_accuracy": 0.9964212678936605,
+      "actual_FAR": 0.024390243902439025,
+      "accepted_count": 1959,
+      "known_count": 2164,
+      "unknown_count": 123,
+      "inner_known_acceptance": 0.9467808930425753
+    },
+    {
+      "outer_subject": 6,
+      "candidate": "lambda_0.10",
+      "lambda": 0.1,
+      "selected": false,
+      "endpoint": "P1",
+      "threshold_value": 0.36644582248772917,
+      "AUC": 0.9733969012518221,
+      "F1_unknown_rejection": 0.4816326530612245,
+      "known_acceptance": 0.8849353049907579,
+      "unknown_rejection": 0.959349593495935,
+      "known_false_rejection": 0.1150646950092421,
+      "known_identification_accuracy": 0.8807763401109058,
+      "accepted_correct_accuracy": 0.9953002610966057,
+      "actual_FAR": 0.04065040650406504,
+      "accepted_count": 1920,
+      "known_count": 2164,
+      "unknown_count": 123,
+      "inner_known_acceptance": 0.9309709241952233
+    }
+  ],
+  "inner_stats": {
+    "0.0": {
+      "threshold": 0.3624624609947205,
+      "known_acceptance": 0.9518691588785047,
+      "unknown_rejection": 0.8995327102803738,
+      "AUC": 0.9800118156850186,
+      "F1_unknown_rejection": 0.6504477107619531,
+      "identity_acceptance_min": 0.9439484126984127
+    },
+    "0.02": {
+      "threshold": 0.35933068394660955,
+      "known_acceptance": 0.95067497403946,
+      "unknown_rejection": 0.8990654205607477,
+      "AUC": 0.9800013222891859,
+      "F1_unknown_rejection": 0.6452045606975184,
+      "identity_acceptance_min": 0.9429563492063492
+    },
+    "0.05": {
+      "threshold": 0.35885328900294644,
+      "known_acceptance": 0.9467808930425753,
+      "unknown_rejection": 0.8995327102803738,
+      "AUC": 0.9782751890024359,
+      "F1_unknown_rejection": 0.6295993458708095,
+      "identity_acceptance_min": 0.9375
+    },
+    "0.1": {
+      "threshold": 0.36644582248772917,
+      "known_acceptance": 0.9309709241952233,
+      "unknown_rejection": 0.8995327102803738,
+      "AUC": 0.9709646038955367,
+      "F1_unknown_rejection": 0.5725758477096966,
+      "identity_acceptance_min": 0.910218253968254
+    }
+  }
+}
