@@ -1,0 +1,15 @@
+{
+  "experiment": "E221_metric_corrected",
+  "seed": 20261117,
+  "data": {"metadata": "BrainPrint_cache/train_metadata.csv", "test_metadata": "BrainPrint_cache/test_metadata.csv"},
+  "features": {"e65": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy", "e65_test": "research/E121_pca_sweep/test_logspd.npy", "logbp": "research/E146_phase_features/train_log_band_power.npy", "logbp_test": "research/E146_phase_features/test_log_band_power.npy"},
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "fit_fraction": 0.6,
+  "evaluation_fraction": [0.6, 0.8],
+  "inner_blocks": "floor(within_subject_task_trial_fraction*5)",
+  "known_acceptance_target": 0.9,
+  "threshold_quantile": 0.1,
+  "candidates": {"baseline": "E65 PCA96 k12", "fisher": "E219 fisher lambda100 dim64", "norm": "E220 query_norm k1", "fusion": "E220 rank fusion w025 k3, frozen OOF ECDF"},
+  "selection": "Train macro unknown rejection, then known acceptance",
+  "device": "cuda_required"
+}

@@ -1,0 +1,1138 @@
+{
+  "experiment": "E220_domain_invariant_prototypes",
+  "device": "numpy_gpu_unavailable",
+  "n_rows": 11304,
+  "feature_dims": {
+    "E65": 855,
+    "logbp": 90
+  },
+  "fold_count": 20,
+  "candidate_summary": {
+    "baseline_fixed_oof": {
+      "auc": 0.7446884304792364,
+      "rejection_f1": 0.09431943695134051,
+      "known_acceptance": 0.9857719362954575,
+      "unknown_rejection": 0.0863074445310412,
+      "identity_correct_but_rejected": 0.013085071760704437,
+      "threshold": 1.7498537480831147
+    },
+    "task_query_norm": {
+      "auc": 0.9490183365829562,
+      "rejection_f1": 0.14734988557373457,
+      "known_acceptance": 0.997232042672854,
+      "unknown_rejection": 0.08872337958538426,
+      "identity_correct_but_rejected": 0.0007548671677196598,
+      "threshold": 1.1026371002197266
+    },
+    "robust_mahalanobis": {
+      "auc": 0.6747351626355617,
+      "rejection_f1": 0.08404816996578399,
+      "known_acceptance": 0.9951981629520674,
+      "unknown_rejection": 0.07419016498503563,
+      "identity_correct_but_rejected": 0.002858389088830304,
+      "threshold": 2.2218679666519163
+    },
+    "branch_rank_fusion": {
+      "auc": 0.7167734829783539,
+      "rejection_f1": 0.09929576200878243,
+      "known_acceptance": 0.9613906596254622,
+      "unknown_rejection": 0.11190458315164808,
+      "identity_correct_but_rejected": 0.025687785076793358,
+      "threshold": 0.9250139027833939
+    },
+    "branch_rank_fusion_w025": {
+      "auc": 0.7215260140665887,
+      "rejection_f1": 0.09289101869072654,
+      "known_acceptance": 0.9509611356371422,
+      "unknown_rejection": 0.11264174308223251,
+      "identity_correct_but_rejected": 0.03440271586958908,
+      "threshold": 0.9241874039173126
+    },
+    "branch_rank_fusion_w075": {
+      "auc": 0.687462047340729,
+      "rejection_f1": 0.10081450834787124,
+      "known_acceptance": 0.9667449953996471,
+      "unknown_rejection": 0.11252011414971023,
+      "identity_correct_but_rejected": 0.02038039610101411,
+      "threshold": 0.932636272907257
+    }
+  },
+  "selected_candidate": "branch_rank_fusion_w025",
+  "folds": [
+    {
+      "held_subject": 1,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.6944874568435402,
+          "rejection_f1": 0.012987012987012988,
+          "known_acceptance": 0.9866789159393661,
+          "unknown_rejection": 0.008064516129032258,
+          "identity_correct_but_rejected": 0.012861736334405145,
+          "threshold": 1.763160228729248
+        },
+        "task_query_norm": {
+          "auc": 0.9829004104494199,
+          "rejection_f1": 0.27631578947368424,
+          "known_acceptance": 0.9967845659163987,
+          "unknown_rejection": 0.1693548387096774,
+          "identity_correct_but_rejected": 0.0009186954524575103,
+          "threshold": 1.1092206239700317
+        },
+        "robust_mahalanobis": {
+          "auc": 0.610087868774727,
+          "rejection_f1": 0.014925373134328358,
+          "known_acceptance": 0.9958658704639411,
+          "unknown_rejection": 0.008064516129032258,
+          "identity_correct_but_rejected": 0.0022967386311437757,
+          "threshold": 2.2477073669433594
+        },
+        "branch_rank_fusion": {
+          "auc": 0.5439862492035503,
+          "rejection_f1": 0.04672897196261682,
+          "known_acceptance": 0.9609554432705558,
+          "unknown_rejection": 0.04032258064516129,
+          "identity_correct_but_rejected": 0.025264124942581533,
+          "threshold": 0.9327102303504944
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.5596059241039015,
+          "rejection_f1": 0.04149377593360996,
+          "known_acceptance": 0.9485530546623794,
+          "unknown_rejection": 0.04032258064516129,
+          "identity_correct_but_rejected": 0.03628847037207166,
+          "threshold": 0.9318928122520447
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.5193315008816513,
+          "rejection_f1": 0.020100502512562814,
+          "known_acceptance": 0.9664676159853008,
+          "unknown_rejection": 0.016129032258064516,
+          "identity_correct_but_rejected": 0.020211299954065228,
+          "threshold": 0.9387475848197937
+        }
+      }
+    },
+    {
+      "held_subject": 2,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.8121828995354394,
+          "rejection_f1": 0.015037593984962405,
+          "known_acceptance": 0.9863574351978172,
+          "unknown_rejection": 0.00980392156862745,
+          "identity_correct_but_rejected": 0.01273306048203729,
+          "threshold": 1.76544988155365
+        },
+        "task_query_norm": {
+          "auc": 0.9752204656305451,
+          "rejection_f1": 0.256,
+          "known_acceptance": 0.9968167348794906,
+          "unknown_rejection": 0.1568627450980392,
+          "identity_correct_but_rejected": 0.0009095043201455207,
+          "threshold": 1.1031620502471924
+        },
+        "robust_mahalanobis": {
+          "auc": 0.7677241883565613,
+          "rejection_f1": 0.01818181818181818,
+          "known_acceptance": 0.9968167348794906,
+          "unknown_rejection": 0.00980392156862745,
+          "identity_correct_but_rejected": 0.0018190086402910413,
+          "threshold": 2.250501871109009
+        },
+        "branch_rank_fusion": {
+          "auc": 0.7089140340083282,
+          "rejection_f1": 0.0546448087431694,
+          "known_acceptance": 0.9654388358344702,
+          "unknown_rejection": 0.049019607843137254,
+          "identity_correct_but_rejected": 0.0263756252842201,
+          "threshold": 0.9322049617767334
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.6433962852990218,
+          "rejection_f1": 0.04854368932038835,
+          "known_acceptance": 0.9549795361527967,
+          "unknown_rejection": 0.049019607843137254,
+          "identity_correct_but_rejected": 0.03547066848567531,
+          "threshold": 0.9314711093902588
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.7303252815450874,
+          "rejection_f1": 0.05813953488372093,
+          "known_acceptance": 0.9704411095952705,
+          "unknown_rejection": 0.049019607843137254,
+          "identity_correct_but_rejected": 0.020918599363346977,
+          "threshold": 0.9386889338493347
+        }
+      }
+    },
+    {
+      "held_subject": 3,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.6730226679406255,
+          "rejection_f1": 0.013071895424836602,
+          "known_acceptance": 0.9862322166131253,
+          "unknown_rejection": 0.00819672131147541,
+          "identity_correct_but_rejected": 0.012849931161083065,
+          "threshold": 1.7330262660980225
+        },
+        "task_query_norm": {
+          "auc": 0.9569963662079913,
+          "rejection_f1": 0.11851851851851852,
+          "known_acceptance": 0.9977053694355209,
+          "unknown_rejection": 0.06557377049180328,
+          "identity_correct_but_rejected": 0.0004589261128958238,
+          "threshold": 1.1011128425598145
+        },
+        "robust_mahalanobis": {
+          "auc": 0.5269449815301048,
+          "rejection_f1": 0.015384615384615385,
+          "known_acceptance": 0.9967875172097292,
+          "unknown_rejection": 0.00819672131147541,
+          "identity_correct_but_rejected": 0.0018357044515832951,
+          "threshold": 2.208000898361206
+        },
+        "branch_rank_fusion": {
+          "auc": 0.7785060826518406,
+          "rejection_f1": 0.06572769953051644,
+          "known_acceptance": 0.9614502065167508,
+          "unknown_rejection": 0.05737704918032787,
+          "identity_correct_but_rejected": 0.027076640660853604,
+          "threshold": 0.9219392538070679
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.8688355314138686,
+          "rejection_f1": 0.13389121338912133,
+          "known_acceptance": 0.9536484625975218,
+          "unknown_rejection": 0.13114754098360656,
+          "identity_correct_but_rejected": 0.03533731069297843,
+          "threshold": 0.9176167249679565
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.6415354463996871,
+          "rejection_f1": 0.020942408376963352,
+          "known_acceptance": 0.9692519504359798,
+          "unknown_rejection": 0.01639344262295082,
+          "identity_correct_but_rejected": 0.020192748967416244,
+          "threshold": 0.9354166388511658
+        }
+      }
+    },
+    {
+      "held_subject": 4,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.8296985973370435,
+          "rejection_f1": 0.013986013986013986,
+          "known_acceptance": 0.9867458866544789,
+          "unknown_rejection": 0.008849557522123894,
+          "identity_correct_but_rejected": 0.012340036563071298,
+          "threshold": 1.7682896852493286
+        },
+        "task_query_norm": {
+          "auc": 0.9648161330507515,
+          "rejection_f1": 0.08064516129032258,
+          "known_acceptance": 0.9972577696526508,
+          "unknown_rejection": 0.04424778761061947,
+          "identity_correct_but_rejected": 0.0009140767824497258,
+          "threshold": 1.1015616655349731
+        },
+        "robust_mahalanobis": {
+          "auc": 0.7926784876478297,
+          "rejection_f1": 0.016,
+          "known_acceptance": 0.9949725776965265,
+          "unknown_rejection": 0.008849557522123894,
+          "identity_correct_but_rejected": 0.002742230347349177,
+          "threshold": 2.240816354751587
+        },
+        "branch_rank_fusion": {
+          "auc": 0.8256540098040802,
+          "rejection_f1": 0.029411764705882353,
+          "known_acceptance": 0.9597806215722121,
+          "unknown_rejection": 0.02654867256637168,
+          "identity_correct_but_rejected": 0.027879341864716637,
+          "threshold": 0.9232651591300964
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.8536283994758215,
+          "rejection_f1": 0.034934497816593885,
+          "known_acceptance": 0.9488117001828154,
+          "unknown_rejection": 0.035398230088495575,
+          "identity_correct_but_rejected": 0.0370201096892139,
+          "threshold": 0.9207970499992371
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.7593308634385465,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9657221206581352,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.021937842778793418,
+          "threshold": 0.9327782988548279
+        }
+      }
+    },
+    {
+      "held_subject": 5,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.9946264626462646,
+          "rejection_f1": 0.8141592920353983,
+          "known_acceptance": 0.985,
+          "unknown_rejection": 0.9108910891089109,
+          "identity_correct_but_rejected": 0.011818181818181818,
+          "threshold": 1.6613233089447021
+        },
+        "task_query_norm": {
+          "auc": 0.9867731773177317,
+          "rejection_f1": 0.32558139534883723,
+          "known_acceptance": 0.9968181818181818,
+          "unknown_rejection": 0.2079207920792079,
+          "identity_correct_but_rejected": 0.0009090909090909091,
+          "threshold": 1.100900650024414
+        },
+        "robust_mahalanobis": {
+          "auc": 0.9986678667866786,
+          "rejection_f1": 0.8888888888888888,
+          "known_acceptance": 0.9890909090909091,
+          "unknown_rejection": 0.9900990099009901,
+          "identity_correct_but_rejected": 0.006363636363636364,
+          "threshold": 2.071542501449585
+        },
+        "branch_rank_fusion": {
+          "auc": 0.9979477947794779,
+          "rejection_f1": 0.6778523489932886,
+          "known_acceptance": 0.9563636363636364,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.02181818181818182,
+          "threshold": 0.882155179977417
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.9994194419441944,
+          "rejection_f1": 0.6392405063291139,
+          "known_acceptance": 0.9481818181818182,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.026818181818181817,
+          "threshold": 0.8831009268760681
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.9952857785778578,
+          "rejection_f1": 0.6757679180887372,
+          "known_acceptance": 0.9577272727272728,
+          "unknown_rejection": 0.9801980198019802,
+          "identity_correct_but_rejected": 0.019545454545454546,
+          "threshold": 0.8915137052536011
+        }
+      }
+    },
+    {
+      "held_subject": 6,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.7707521448575281,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9857602204869086,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.0133210840606339,
+          "threshold": 1.7601416110992432
+        },
+        "task_query_norm": {
+          "auc": 0.9852304888348867,
+          "rejection_f1": 0.44970414201183434,
+          "known_acceptance": 0.9967845659163987,
+          "unknown_rejection": 0.3064516129032258,
+          "identity_correct_but_rejected": 0.0013780431786862655,
+          "threshold": 1.100242018699646
+        },
+        "robust_mahalanobis": {
+          "auc": 0.699516203120601,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.99632521819017,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.0018373909049150207,
+          "threshold": 2.2340683937072754
+        },
+        "branch_rank_fusion": {
+          "auc": 0.7347303925200409,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9600367478180983,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.028938906752411574,
+          "threshold": 0.9298507571220398
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.6932631469764547,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9480937069361507,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.03904455672944419,
+          "threshold": 0.9279122352600098
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.7254878717382607,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9646302250803859,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.022967386311437757,
+          "threshold": 0.936832070350647
+        }
+      }
+    },
+    {
+      "held_subject": 7,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.7278327677923155,
+          "rejection_f1": 0.012903225806451613,
+          "known_acceptance": 0.9862195682131374,
+          "unknown_rejection": 0.008064516129032258,
+          "identity_correct_but_rejected": 0.012861736334405145,
+          "threshold": 1.76235032081604
+        },
+        "task_query_norm": {
+          "auc": 0.835142323706788,
+          "rejection_f1": 0.015151515151515152,
+          "known_acceptance": 0.9967845659163987,
+          "unknown_rejection": 0.008064516129032258,
+          "identity_correct_but_rejected": 0.0009186954524575103,
+          "threshold": 1.102697491645813
+        },
+        "robust_mahalanobis": {
+          "auc": 0.6793901047609169,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9954065227377125,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.0022967386311437757,
+          "threshold": 2.2332675457000732
+        },
+        "branch_rank_fusion": {
+          "auc": 0.7797168343532829,
+          "rejection_f1": 0.009259259259259259,
+          "known_acceptance": 0.9581993569131833,
+          "unknown_rejection": 0.008064516129032258,
+          "identity_correct_but_rejected": 0.027101515847496555,
+          "threshold": 0.9289478659629822
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.766440203298413,
+          "rejection_f1": 0.00819672131147541,
+          "known_acceptance": 0.9453376205787781,
+          "unknown_rejection": 0.008064516129032258,
+          "identity_correct_but_rejected": 0.03674781809830041,
+          "threshold": 0.9265854954719543
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.7496443759538874,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9655489205328434,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.02067064768029398,
+          "threshold": 0.9366254806518555
+        }
+      }
+    },
+    {
+      "held_subject": 8,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.8989399880956549,
+          "rejection_f1": 0.2236842105263158,
+          "known_acceptance": 0.9858898497951752,
+          "unknown_rejection": 0.16346153846153846,
+          "identity_correct_but_rejected": 0.013199817933545745,
+          "threshold": 1.7390422821044922
+        },
+        "task_query_norm": {
+          "auc": 0.9782526872308392,
+          "rejection_f1": 0.2923076923076923,
+          "known_acceptance": 0.9968138370505234,
+          "unknown_rejection": 0.18269230769230768,
+          "identity_correct_but_rejected": 0.0009103322712790169,
+          "threshold": 1.1004226207733154
+        },
+        "robust_mahalanobis": {
+          "auc": 0.9022486957739575,
+          "rejection_f1": 0.24427480916030533,
+          "known_acceptance": 0.9949931725079654,
+          "unknown_rejection": 0.15384615384615385,
+          "identity_correct_but_rejected": 0.0027309968138370506,
+          "threshold": 2.1928915977478027
+        },
+        "branch_rank_fusion": {
+          "auc": 0.813169619411085,
+          "rejection_f1": 0.16080402010050251,
+          "known_acceptance": 0.9640418752844788,
+          "unknown_rejection": 0.15384615384615385,
+          "identity_correct_but_rejected": 0.02275830678197542,
+          "threshold": 0.9270346164703369
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.7593527887679002,
+          "rejection_f1": 0.14414414414414414,
+          "known_acceptance": 0.9535730541647701,
+          "unknown_rejection": 0.15384615384615385,
+          "identity_correct_but_rejected": 0.030951297223486572,
+          "threshold": 0.9273413419723511
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.8270587514442772,
+          "rejection_f1": 0.20100502512562815,
+          "known_acceptance": 0.9658625398270368,
+          "unknown_rejection": 0.19230769230769232,
+          "identity_correct_but_rejected": 0.01957214383249886,
+          "threshold": 0.9326802492141724
+        }
+      }
+    },
+    {
+      "held_subject": 9,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.851653120808017,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9858123569794051,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.013272311212814645,
+          "threshold": 1.7705739736557007
+        },
+        "task_query_norm": {
+          "auc": 0.9316933638443936,
+          "rejection_f1": 0.032,
+          "known_acceptance": 0.9967963386727688,
+          "unknown_rejection": 0.017241379310344827,
+          "identity_correct_but_rejected": 0.0009153318077803204,
+          "threshold": 1.1014729738235474
+        },
+        "robust_mahalanobis": {
+          "auc": 0.8000315631657855,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9963386727688787,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.0018306636155606408,
+          "threshold": 2.243868350982666
+        },
+        "branch_rank_fusion": {
+          "auc": 0.8325396512270181,
+          "rejection_f1": 0.02857142857142857,
+          "known_acceptance": 0.9583524027459954,
+          "unknown_rejection": 0.02586206896551724,
+          "identity_correct_but_rejected": 0.02745995423340961,
+          "threshold": 0.9270074367523193
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.7996547778742208,
+          "rejection_f1": 0.04219409282700422,
+          "known_acceptance": 0.9469107551487415,
+          "unknown_rejection": 0.04310344827586207,
+          "identity_correct_but_rejected": 0.037986270022883295,
+          "threshold": 0.924842894077301
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.8258817959441332,
+          "rejection_f1": 0.010101010101010102,
+          "known_acceptance": 0.962929061784897,
+          "unknown_rejection": 0.008620689655172414,
+          "identity_correct_but_rejected": 0.02288329519450801,
+          "threshold": 0.9348921179771423
+        }
+      }
+    },
+    {
+      "held_subject": 10,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.8022772386883514,
+          "rejection_f1": 0.18543046357615894,
+          "known_acceptance": 0.9863263445761167,
+          "unknown_rejection": 0.1308411214953271,
+          "identity_correct_but_rejected": 0.01276207839562443,
+          "threshold": 1.7596373558044434
+        },
+        "task_query_norm": {
+          "auc": 0.9580035611139982,
+          "rejection_f1": 0.11666666666666667,
+          "known_acceptance": 0.9972652689152234,
+          "unknown_rejection": 0.06542056074766354,
+          "identity_correct_but_rejected": 0.00045578851412944393,
+          "threshold": 1.103287696838379
+        },
+        "robust_mahalanobis": {
+          "auc": 0.6997035244805289,
+          "rejection_f1": 0.03389830508474576,
+          "known_acceptance": 0.995897903372835,
+          "unknown_rejection": 0.018691588785046728,
+          "identity_correct_but_rejected": 0.0018231540565177757,
+          "threshold": 2.2591919898986816
+        },
+        "branch_rank_fusion": {
+          "auc": 0.8007139266819449,
+          "rejection_f1": 0.24880382775119617,
+          "known_acceptance": 0.9653600729261622,
+          "unknown_rejection": 0.24299065420560748,
+          "identity_correct_but_rejected": 0.024612579762989972,
+          "threshold": 0.9207273721694946
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.815759207353956,
+          "rejection_f1": 0.2716049382716049,
+          "known_acceptance": 0.9530537830446673,
+          "unknown_rejection": 0.308411214953271,
+          "identity_correct_but_rejected": 0.03463992707383774,
+          "threshold": 0.918870210647583
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.7570689816747459,
+          "rejection_f1": 0.20725388601036268,
+          "known_acceptance": 0.9699179580674567,
+          "unknown_rejection": 0.18691588785046728,
+          "identity_correct_but_rejected": 0.019143117593436645,
+          "threshold": 0.9298564195632935
+        }
+      }
+    },
+    {
+      "held_subject": 11,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.6293994995829858,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9857798165137615,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.013761467889908258,
+          "threshold": 1.7618749141693115
+        },
+        "task_query_norm": {
+          "auc": 0.9473007809538252,
+          "rejection_f1": 0.046511627906976744,
+          "known_acceptance": 0.9977064220183486,
+          "unknown_rejection": 0.024793388429752067,
+          "identity_correct_but_rejected": 0.00045871559633027525,
+          "threshold": 1.1020598411560059
+        },
+        "robust_mahalanobis": {
+          "auc": 0.4719463189021154,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9954128440366973,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.0022935779816513763,
+          "threshold": 2.228276491165161
+        },
+        "branch_rank_fusion": {
+          "auc": 0.5441106224884373,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9665137614678899,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.02018348623853211,
+          "threshold": 0.9308479428291321
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.5334748654181515,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9619266055045872,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.02431192660550459,
+          "threshold": 0.931432843208313
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.5341060732428539,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9706422018348624,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.016972477064220184,
+          "threshold": 0.9383716583251953
+        }
+      }
+    },
+    {
+      "held_subject": 12,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.7397249452674185,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9834786599357503,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.014685635612666361,
+          "threshold": 1.7494558095932007
+        },
+        "task_query_norm": {
+          "auc": 0.9204515532015739,
+          "rejection_f1": 0.015625,
+          "known_acceptance": 0.9977053694355209,
+          "unknown_rejection": 0.00819672131147541,
+          "identity_correct_but_rejected": 0.0004589261128958238,
+          "threshold": 1.1029311418533325
+        },
+        "robust_mahalanobis": {
+          "auc": 0.7384384474755302,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9908214777420835,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.0073428178063331805,
+          "threshold": 2.204315185546875
+        },
+        "branch_rank_fusion": {
+          "auc": 0.7149918371338936,
+          "rejection_f1": 0.009259259259259259,
+          "known_acceptance": 0.9573198715006884,
+          "unknown_rejection": 0.00819672131147541,
+          "identity_correct_but_rejected": 0.029371271225332722,
+          "threshold": 0.9208380579948425
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.7171585702570739,
+          "rejection_f1": 0.008264462809917356,
+          "known_acceptance": 0.945387792565397,
+          "unknown_rejection": 0.00819672131147541,
+          "identity_correct_but_rejected": 0.03809086737035337,
+          "threshold": 0.9188933372497559
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.6715988684838134,
+          "rejection_f1": 0.00975609756097561,
+          "known_acceptance": 0.9623680587425425,
+          "unknown_rejection": 0.00819672131147541,
+          "identity_correct_but_rejected": 0.023405231757687012,
+          "threshold": 0.928993284702301
+        }
+      }
+    },
+    {
+      "held_subject": 13,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.8558571673871008,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9866850321395776,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.012855831037649219,
+          "threshold": 1.7729852199554443
+        },
+        "task_query_norm": {
+          "auc": 0.9055671272966174,
+          "rejection_f1": 0.045454545454545456,
+          "known_acceptance": 0.9972451790633609,
+          "unknown_rejection": 0.024390243902439025,
+          "identity_correct_but_rejected": 0.0004591368227731864,
+          "threshold": 1.1031842231750488
+        },
+        "robust_mahalanobis": {
+          "auc": 0.8267187768296416,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9958677685950413,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.0027548209366391185,
+          "threshold": 2.245758533477783
+        },
+        "branch_rank_fusion": {
+          "auc": 0.8744559415291122,
+          "rejection_f1": 0.04672897196261682,
+          "known_acceptance": 0.960514233241506,
+          "unknown_rejection": 0.04065040650406504,
+          "identity_correct_but_rejected": 0.025252525252525252,
+          "threshold": 0.9304131865501404
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.8736291219661508,
+          "rejection_f1": 0.0502092050209205,
+          "known_acceptance": 0.9494949494949495,
+          "unknown_rejection": 0.04878048780487805,
+          "identity_correct_but_rejected": 0.03397612488521579,
+          "threshold": 0.9286929965019226
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.8538675744884171,
+          "rejection_f1": 0.04060913705583756,
+          "known_acceptance": 0.967860422405877,
+          "unknown_rejection": 0.032520325203252036,
+          "identity_correct_but_rejected": 0.01928374655647383,
+          "threshold": 0.9378897547721863
+        }
+      }
+    },
+    {
+      "held_subject": 14,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.9754568200773371,
+          "rejection_f1": 0.4326923076923077,
+          "known_acceptance": 0.9807339449541285,
+          "unknown_rejection": 0.371900826446281,
+          "identity_correct_but_rejected": 0.01651376146788991,
+          "threshold": 1.7371900081634521
+        },
+        "task_query_norm": {
+          "auc": 0.9535749488209871,
+          "rejection_f1": 0.13138686131386862,
+          "known_acceptance": 0.9967889908256881,
+          "unknown_rejection": 0.0743801652892562,
+          "identity_correct_but_rejected": 0.0009174311926605505,
+          "threshold": 1.1003388166427612
+        },
+        "robust_mahalanobis": {
+          "auc": 0.9829592842520282,
+          "rejection_f1": 0.31901840490797545,
+          "known_acceptance": 0.9926605504587156,
+          "unknown_rejection": 0.21487603305785125,
+          "identity_correct_but_rejected": 0.005045871559633028,
+          "threshold": 2.202962636947632
+        },
+        "branch_rank_fusion": {
+          "auc": 0.9608878610963681,
+          "rejection_f1": 0.40336134453781514,
+          "known_acceptance": 0.968348623853211,
+          "unknown_rejection": 0.39669421487603307,
+          "identity_correct_but_rejected": 0.019724770642201836,
+          "threshold": 0.9153414368629456
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.9368602623398287,
+          "rejection_f1": 0.25,
+          "known_acceptance": 0.9623853211009175,
+          "unknown_rejection": 0.2396694214876033,
+          "identity_correct_but_rejected": 0.02431192660550459,
+          "threshold": 0.9204872846603394
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.9732561225263477,
+          "rejection_f1": 0.5317460317460317,
+          "known_acceptance": 0.9706422018348624,
+          "unknown_rejection": 0.5537190082644629,
+          "identity_correct_but_rejected": 0.01834862385321101,
+          "threshold": 0.9165536761283875
+        }
+      }
+    },
+    {
+      "held_subject": 15,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.5757686403053816,
+          "rejection_f1": 0.028169014084507043,
+          "known_acceptance": 0.9863076220903697,
+          "unknown_rejection": 0.01818181818181818,
+          "identity_correct_but_rejected": 0.012779552715654952,
+          "threshold": 1.7423551082611084
+        },
+        "task_query_norm": {
+          "auc": 0.9387162358408365,
+          "rejection_f1": 0.11475409836065574,
+          "known_acceptance": 0.9977179370150616,
+          "unknown_rejection": 0.06363636363636363,
+          "identity_correct_but_rejected": 0.0009128251939753537,
+          "threshold": 1.1020302772521973
+        },
+        "robust_mahalanobis": {
+          "auc": 0.43552134766192274,
+          "rejection_f1": 0.01652892561983471,
+          "known_acceptance": 0.9954358740301232,
+          "unknown_rejection": 0.00909090909090909,
+          "identity_correct_but_rejected": 0.0022820629849383844,
+          "threshold": 2.205791473388672
+        },
+        "branch_rank_fusion": {
+          "auc": 0.5394713912285797,
+          "rejection_f1": 0.029556650246305417,
+          "known_acceptance": 0.9589228662711091,
+          "unknown_rejection": 0.02727272727272727,
+          "identity_correct_but_rejected": 0.02875399361022364,
+          "threshold": 0.9265668988227844
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.616061574208539,
+          "rejection_f1": 0.02631578947368421,
+          "known_acceptance": 0.9475125513464172,
+          "unknown_rejection": 0.02727272727272727,
+          "identity_correct_but_rejected": 0.03879507074395253,
+          "threshold": 0.9254952073097229
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.4613688228704203,
+          "rejection_f1": 0.041884816753926704,
+          "known_acceptance": 0.9648562300319489,
+          "unknown_rejection": 0.03636363636363636,
+          "identity_correct_but_rejected": 0.02327704244637152,
+          "threshold": 0.9355806112289429
+        }
+      }
+    },
+    {
+      "held_subject": 16,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.36121744756564406,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9867094408799266,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.011915673693858845,
+          "threshold": 1.726906180381775
+        },
+        "task_query_norm": {
+          "auc": 0.9468531683984318,
+          "rejection_f1": 0.09090909090909091,
+          "known_acceptance": 0.9967919340054996,
+          "unknown_rejection": 0.05042016806722689,
+          "identity_correct_but_rejected": 0.00045829514207149406,
+          "threshold": 1.1026493310928345
+        },
+        "robust_mahalanobis": {
+          "auc": 0.2091674433293024,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9963336388634281,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.0018331805682859762,
+          "threshold": 2.2055182456970215
+        },
+        "branch_rank_fusion": {
+          "auc": 0.3434305894676844,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9615032080659945,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.025664527956003668,
+          "threshold": 0.9342231154441833
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.41997358063298645,
+          "rejection_f1": 0.008620689655172414,
+          "known_acceptance": 0.9486709440879927,
+          "unknown_rejection": 0.008403361344537815,
+          "identity_correct_but_rejected": 0.03666361136571952,
+          "threshold": 0.9323078989982605
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.29802085820579377,
+          "rejection_f1": 0.0,
+          "known_acceptance": 0.9711274060494959,
+          "unknown_rejection": 0.0,
+          "identity_correct_but_rejected": 0.01695692025664528,
+          "threshold": 0.9422133564949036
+        }
+      }
+    },
+    {
+      "held_subject": 17,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.4639267767408471,
+          "rejection_f1": 0.013888888888888888,
+          "known_acceptance": 0.9858382823206944,
+          "unknown_rejection": 0.008928571428571428,
+          "identity_correct_but_rejected": 0.013704888076747372,
+          "threshold": 1.7261723279953003
+        },
+        "task_query_norm": {
+          "auc": 0.960716733015728,
+          "rejection_f1": 0.128,
+          "known_acceptance": 0.9977158519872088,
+          "unknown_rejection": 0.07142857142857142,
+          "identity_correct_but_rejected": 0.0009136592051164915,
+          "threshold": 1.1035062074661255
+        },
+        "robust_mahalanobis": {
+          "auc": 0.32980242119689357,
+          "rejection_f1": 0.01652892561983471,
+          "known_acceptance": 0.996345363179534,
+          "unknown_rejection": 0.008928571428571428,
+          "identity_correct_but_rejected": 0.0022841480127912287,
+          "threshold": 2.200810194015503
+        },
+        "branch_rank_fusion": {
+          "auc": 0.39536766625334463,
+          "rejection_f1": 0.030612244897959183,
+          "known_acceptance": 0.962996802192782,
+          "unknown_rejection": 0.026785714285714284,
+          "identity_correct_but_rejected": 0.02466879853814527,
+          "threshold": 0.9327136874198914
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.4566766462181035,
+          "rejection_f1": 0.03636363636363636,
+          "known_acceptance": 0.9524897213339424,
+          "unknown_rejection": 0.03571428571428571,
+          "identity_correct_but_rejected": 0.03334856098675194,
+          "threshold": 0.9318712949752808
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.35900280623898717,
+          "rejection_f1": 0.032432432432432434,
+          "known_acceptance": 0.9680219278209228,
+          "unknown_rejection": 0.026785714285714284,
+          "identity_correct_but_rejected": 0.01964367291000457,
+          "threshold": 0.9398162961006165
+        }
+      }
+    },
+    {
+      "held_subject": 18,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.6185813408431916,
+          "rejection_f1": 0.015625,
+          "known_acceptance": 0.9868361325465275,
+          "unknown_rejection": 0.01020408163265306,
+          "identity_correct_but_rejected": 0.011802088061733999,
+          "threshold": 1.7496634721755981
+        },
+        "task_query_norm": {
+          "auc": 0.9482940702381725,
+          "rejection_f1": 0.09345794392523364,
+          "known_acceptance": 0.9981842941443486,
+          "unknown_rejection": 0.05102040816326531,
+          "identity_correct_but_rejected": 0.00045392646391284613,
+          "threshold": 1.1081451177597046
+        },
+        "robust_mahalanobis": {
+          "auc": 0.5340908038203933,
+          "rejection_f1": 0.01818181818181818,
+          "known_acceptance": 0.9950068088969587,
+          "unknown_rejection": 0.01020408163265306,
+          "identity_correct_but_rejected": 0.003631411711302769,
+          "threshold": 2.228034734725952
+        },
+        "branch_rank_fusion": {
+          "auc": 0.6596061029949882,
+          "rejection_f1": 0.031088082901554404,
+          "known_acceptance": 0.9582387653200182,
+          "unknown_rejection": 0.030612244897959183,
+          "identity_correct_but_rejected": 0.02723558783477077,
+          "threshold": 0.9293112754821777
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.7058602832871687,
+          "rejection_f1": 0.01818181818181818,
+          "known_acceptance": 0.9455288243304585,
+          "unknown_rejection": 0.02040816326530612,
+          "identity_correct_but_rejected": 0.03767589650476623,
+          "threshold": 0.9288761019706726
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.5756829740520811,
+          "rejection_f1": 0.03389830508474576,
+          "known_acceptance": 0.9655015887426237,
+          "unknown_rejection": 0.030612244897959183,
+          "identity_correct_but_rejected": 0.020426690876078075,
+          "threshold": 0.9366708993911743
+        }
+      }
+    },
+    {
+      "held_subject": 19,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.8532115611387866,
+          "rejection_f1": 0.07894736842105263,
+          "known_acceptance": 0.9853680841335163,
+          "unknown_rejection": 0.05263157894736842,
+          "identity_correct_but_rejected": 0.013260173754000914,
+          "threshold": 1.7681325674057007
+        },
+        "task_query_norm": {
+          "auc": 0.9234632076304158,
+          "rejection_f1": 0.1111111111111111,
+          "known_acceptance": 0.9977137631458619,
+          "unknown_rejection": 0.06140350877192982,
+          "identity_correct_but_rejected": 0.0004572473708276177,
+          "threshold": 1.1024248600006104
+        },
+        "robust_mahalanobis": {
+          "auc": 0.7655403941953649,
+          "rejection_f1": 0.064,
+          "known_acceptance": 0.9967992684042066,
+          "unknown_rejection": 0.03508771929824561,
+          "identity_correct_but_rejected": 0.002286236854138089,
+          "threshold": 2.262821674346924
+        },
+        "branch_rank_fusion": {
+          "auc": 0.8306740788872043,
+          "rejection_f1": 0.09389671361502347,
+          "known_acceptance": 0.959304983996342,
+          "unknown_rejection": 0.08771929824561403,
+          "identity_correct_but_rejected": 0.027892089620484683,
+          "threshold": 0.9232938289642334
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.8066124387328633,
+          "rejection_f1": 0.07792207792207792,
+          "known_acceptance": 0.9506172839506173,
+          "unknown_rejection": 0.07894736842105263,
+          "identity_correct_but_rejected": 0.03566529492455418,
+          "threshold": 0.9223676919937134
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.8215812737146937,
+          "rejection_f1": 0.11224489795918367,
+          "known_acceptance": 0.9675354366712391,
+          "unknown_rejection": 0.09649122807017543,
+          "identity_correct_but_rejected": 0.019661636945587563,
+          "threshold": 0.9307796359062195
+        }
+      }
+    },
+    {
+      "held_subject": 20,
+      "metrics": {
+        "baseline_fixed_oof": {
+          "auc": 0.7651510661312549,
+          "rejection_f1": 0.025806451612903226,
+          "known_acceptance": 0.9866789159393661,
+          "unknown_rejection": 0.016129032258064516,
+          "identity_correct_but_rejected": 0.01240238860817639,
+          "threshold": 1.7793444395065308
+        },
+        "task_query_norm": {
+          "auc": 0.9803999288751908,
+          "rejection_f1": 0.20689655172413793,
+          "known_acceptance": 0.9972439136426274,
+          "unknown_rejection": 0.12096774193548387,
+          "identity_correct_but_rejected": 0.0009186954524575103,
+          "threshold": 1.1013915538787842
+        },
+        "robust_mahalanobis": {
+          "auc": 0.7235245306503475,
+          "rejection_f1": 0.015151515151515152,
+          "known_acceptance": 0.9967845659163987,
+          "unknown_rejection": 0.008064516129032258,
+          "identity_correct_but_rejected": 0.0018373909049150207,
+          "threshold": 2.2712132930755615
+        },
+        "branch_rank_fusion": {
+          "auc": 0.656594973846815,
+          "rejection_f1": 0.0196078431372549,
+          "known_acceptance": 0.9641708773541571,
+          "unknown_rejection": 0.016129032258064516,
+          "identity_correct_but_rejected": 0.02572347266881029,
+          "threshold": 0.9308857917785645
+        },
+        "branch_rank_fusion_w025": {
+          "auc": 0.6048572317631544,
+          "rejection_f1": 0.017699115044247787,
+          "known_acceptance": 0.9540652273771245,
+          "unknown_rejection": 0.016129032258064516,
+          "identity_correct_but_rejected": 0.03491042719338539,
+          "threshold": 0.9328926205635071
+        },
+        "branch_rank_fusion_w075": {
+          "auc": 0.6698049253930387,
+          "rejection_f1": 0.02040816326530612,
+          "known_acceptance": 0.9678456591639871,
+          "unknown_rejection": 0.016129032258064516,
+          "identity_correct_but_rejected": 0.021589343132751494,
+          "threshold": 0.9378247857093811
+        }
+      }
+    }
+  ],
+  "test_audit": {
+    "S1_N": 3033,
+    "S1_rejection": 0.0,
+    "S2_N": 19218,
+    "S2_acceptance": 1.0,
+    "official_AUC": "N/A",
+    "official_F1": "N/A"
+  },
+  "protocol": {
+    "outer_fit_only": true,
+    "held_identity_excluded": true,
+    "threshold_from_enrolled_inner_oof_query_blocks": true,
+    "query_normalization_unlabeled_self_statistics": true,
+    "test_not_used_for_selection": true
+  }
+}

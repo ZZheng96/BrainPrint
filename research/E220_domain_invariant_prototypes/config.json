@@ -1,0 +1,20 @@
+{
+  "experiment": "E220_domain_invariant_prototypes",
+  "seed": 20261117,
+  "data": {"metadata": "BrainPrint_cache/train_metadata.csv", "test_metadata": "BrainPrint_cache/test_metadata.csv"},
+  "features": {"e65": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy", "e65_test": "research/E121_pca_sweep/test_logspd.npy", "logbp": "research/E146_phase_features/train_log_band_power.npy", "logbp_test": "research/E146_phase_features/test_log_band_power.npy"},
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "fit_fraction": 0.6,
+  "calibration_fraction": [0.6, 0.8],
+  "inner_blocks": 5,
+  "threshold_quantile": 0.1,
+  "candidates": {
+    "baseline_fixed_oof": {"kind": "raw", "prototype_k": 1},
+    "task_query_norm": {"kind": "query_norm", "prototype_k": 1},
+    "robust_mahalanobis": {"kind": "mahalanobis", "prototype_k": 1, "eigen_floor": 0.05},
+    "branch_rank_fusion": {"kind": "rank_fusion", "prototype_k": 3, "weight_e65": 0.5},
+    "branch_rank_fusion_w025": {"kind": "rank_fusion", "prototype_k": 3, "weight_e65": 0.25},
+    "branch_rank_fusion_w075": {"kind": "rank_fusion", "prototype_k": 3, "weight_e65": 0.75}
+  },
+  "targets": {"loso_unknown_rejection": 0.9, "test_s2_acceptance": 0.7, "test_s1_rejection": 0.7}
+}

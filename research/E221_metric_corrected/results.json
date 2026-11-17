@@ -1,0 +1,845 @@
+{
+  "experiment": "E221_metric_corrected",
+  "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+  "fold_count": 20,
+  "candidate_summary": {
+    "baseline": {
+      "auc": 0.9101734480306461,
+      "rejection_f1": 0.3467265615310132,
+      "known_acceptance": 0.9183872407182967,
+      "unknown_rejection": 0.5635191053421289,
+      "identity_correct_but_rejected": 0.07047321510059638,
+      "threshold": -16.49617045402527
+    },
+    "fisher": {
+      "auc": 0.9018528301968189,
+      "rejection_f1": 0.3414278461925447,
+      "known_acceptance": 0.8970257197911167,
+      "unknown_rejection": 0.6291879654748909,
+      "identity_correct_but_rejected": 0.06779491781411516,
+      "threshold": -118.73692489624023
+    },
+    "norm": {
+      "auc": 0.9490183365829562,
+      "rejection_f1": 0.32495743911339,
+      "known_acceptance": 0.795086267070211,
+      "unknown_rejection": 0.9519127823251801,
+      "identity_correct_but_rejected": 0.16792587301731005,
+      "threshold": -0.9396620762348176
+    },
+    "fusion": {
+      "auc": 0.7230283592981337,
+      "rejection_f1": 0.13835329705148192,
+      "known_acceptance": 0.9024231916720439,
+      "unknown_rejection": 0.23039729382424823,
+      "identity_correct_but_rejected": 0.05800896243468836,
+      "threshold": 0.13996712180915913
+    }
+  },
+  "selected_candidate": "norm",
+  "folds": [
+    {
+      "held_subject": 1,
+      "metrics": {
+        "baseline": {
+          "auc": 0.8651036495917732,
+          "rejection_f1": 0.17737003058103976,
+          "known_acceptance": 0.9200734956361966,
+          "unknown_rejection": 0.23387096774193547,
+          "identity_correct_but_rejected": 0.06936150666054203,
+          "threshold": -16.470041275024414
+        },
+        "fisher": {
+          "auc": 0.8814253115414821,
+          "rejection_f1": 0.25,
+          "known_acceptance": 0.9026182820395039,
+          "unknown_rejection": 0.3870967741935484,
+          "identity_correct_but_rejected": 0.06201194304088195,
+          "threshold": -118.09123992919922
+        },
+        "norm": {
+          "auc": 0.9829004104494199,
+          "rejection_f1": 0.36123348017621143,
+          "known_acceptance": 0.8006430868167203,
+          "unknown_rejection": 0.9919354838709677,
+          "identity_correct_but_rejected": 0.16214974735875057,
+          "threshold": -0.9335039854049683
+        },
+        "fusion": {
+          "auc": 0.5637511668914013,
+          "rejection_f1": 0.04046242774566474,
+          "known_acceptance": 0.9012402388608176,
+          "unknown_rejection": 0.056451612903225805,
+          "identity_correct_but_rejected": 0.05787781350482315,
+          "threshold": 0.13986035195127988
+        }
+      }
+    },
+    {
+      "held_subject": 2,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9325361795468529,
+          "rejection_f1": 0.4180790960451977,
+          "known_acceptance": 0.9190541155070486,
+          "unknown_rejection": 0.7254901960784313,
+          "identity_correct_but_rejected": 0.07003183265120509,
+          "threshold": -16.526765823364258
+        },
+        "fisher": {
+          "auc": 0.9045109630937413,
+          "rejection_f1": 0.3641025641025641,
+          "known_acceptance": 0.901318781264211,
+          "unknown_rejection": 0.696078431372549,
+          "identity_correct_but_rejected": 0.06321055025011368,
+          "threshold": -119.25245666503906
+        },
+        "norm": {
+          "auc": 0.9752204656305451,
+          "rejection_f1": 0.30493273542600896,
+          "known_acceptance": 0.7885402455661664,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.17280582082764892,
+          "threshold": -0.9402005910873413
+        },
+        "fusion": {
+          "auc": 0.6568248490846998,
+          "rejection_f1": 0.07100591715976332,
+          "known_acceptance": 0.8981355161437017,
+          "unknown_rejection": 0.11764705882352941,
+          "identity_correct_but_rejected": 0.06366530241018645,
+          "threshold": 0.14030399348003267
+        }
+      }
+    },
+    {
+      "held_subject": 3,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9170961262122044,
+          "rejection_f1": 0.3794037940379404,
+          "known_acceptance": 0.9187700780174392,
+          "unknown_rejection": 0.5737704918032787,
+          "identity_correct_but_rejected": 0.06837999082147775,
+          "threshold": -16.482354736328126
+        },
+        "fisher": {
+          "auc": 0.9640382488583272,
+          "rejection_f1": 0.5144124168514412,
+          "known_acceptance": 0.9022487379531895,
+          "unknown_rejection": 0.9508196721311475,
+          "identity_correct_but_rejected": 0.06287287746672786,
+          "threshold": -121.96209716796875
+        },
+        "norm": {
+          "auc": 0.9569963662079913,
+          "rejection_f1": 0.36065573770491804,
+          "known_acceptance": 0.8035796236805874,
+          "unknown_rejection": 0.9918032786885246,
+          "identity_correct_but_rejected": 0.15787058283616337,
+          "threshold": -0.9414555907249451
+        },
+        "fusion": {
+          "auc": 0.862741594504924,
+          "rejection_f1": 0.22038567493112948,
+          "known_acceptance": 0.9077558513079395,
+          "unknown_rejection": 0.32786885245901637,
+          "identity_correct_but_rejected": 0.0578246902248738,
+          "threshold": 0.13874903602511846
+        }
+      }
+    },
+    {
+      "held_subject": 4,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9285644949928006,
+          "rejection_f1": 0.3923705722070845,
+          "known_acceptance": 0.916819012797075,
+          "unknown_rejection": 0.6371681415929203,
+          "identity_correct_but_rejected": 0.0712979890310786,
+          "threshold": -16.464775466918944
+        },
+        "fisher": {
+          "auc": 0.884446134183236,
+          "rejection_f1": 0.3155339805825243,
+          "known_acceptance": 0.8930530164533821,
+          "unknown_rejection": 0.5752212389380531,
+          "identity_correct_but_rejected": 0.06992687385740402,
+          "threshold": -117.35914306640625
+        },
+        "norm": {
+          "auc": 0.9648161330507515,
+          "rejection_f1": 0.3171428571428571,
+          "known_acceptance": 0.7824497257769653,
+          "unknown_rejection": 0.9823008849557522,
+          "identity_correct_but_rejected": 0.1796160877513711,
+          "threshold": -0.9357061982154846
+        },
+        "fusion": {
+          "auc": 0.8534140363365744,
+          "rejection_f1": 0.1725067385444744,
+          "known_acceptance": 0.896709323583181,
+          "unknown_rejection": 0.2831858407079646,
+          "identity_correct_but_rejected": 0.06352833638025594,
+          "threshold": 0.1418832866381836
+        }
+      }
+    },
+    {
+      "held_subject": 5,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9927317731773178,
+          "rejection_f1": 0.51010101010101,
+          "known_acceptance": 0.9118181818181819,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.07545454545454545,
+          "threshold": -16.63827133178711
+        },
+        "fisher": {
+          "auc": 0.9970747074707471,
+          "rejection_f1": 0.4601366742596811,
+          "known_acceptance": 0.8922727272727272,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.06954545454545455,
+          "threshold": -119.90938568115234
+        },
+        "norm": {
+          "auc": 0.9867731773177317,
+          "rejection_f1": 0.3053435114503817,
+          "known_acceptance": 0.7936363636363636,
+          "unknown_rejection": 0.9900990099009901,
+          "identity_correct_but_rejected": 0.16727272727272727,
+          "threshold": -0.9424954652786255
+        },
+        "fusion": {
+          "auc": 0.9986116111611161,
+          "rejection_f1": 0.49876543209876545,
+          "known_acceptance": 0.9077272727272727,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.04363636363636364,
+          "threshold": 0.14018395179194418
+        }
+      }
+    },
+    {
+      "held_subject": 6,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9227740157363641,
+          "rejection_f1": 0.40102827763496146,
+          "known_acceptance": 0.9141019751952227,
+          "unknown_rejection": 0.6290322580645161,
+          "identity_correct_but_rejected": 0.07441433164905834,
+          "threshold": -16.48933506011963
+        },
+        "fisher": {
+          "auc": 0.8999325796079245,
+          "rejection_f1": 0.37719298245614036,
+          "known_acceptance": 0.8870004593477262,
+          "unknown_rejection": 0.6935483870967742,
+          "identity_correct_but_rejected": 0.07762976573265962,
+          "threshold": -119.91413116455078
+        },
+        "norm": {
+          "auc": 0.9852304888348867,
+          "rejection_f1": 0.35581061692969873,
+          "known_acceptance": 0.793752870923289,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.16766192007349565,
+          "threshold": -0.94361212849617
+        },
+        "fusion": {
+          "auc": 0.6958877265251086,
+          "rejection_f1": 0.023323615160349854,
+          "known_acceptance": 0.9012402388608176,
+          "unknown_rejection": 0.03225806451612903,
+          "identity_correct_but_rejected": 0.06430868167202572,
+          "threshold": 0.1419783464566929
+        }
+      }
+    },
+    {
+      "held_subject": 7,
+      "metrics": {
+        "baseline": {
+          "auc": 0.899039815075496,
+          "rejection_f1": 0.30985915492957744,
+          "known_acceptance": 0.9191548001837391,
+          "unknown_rejection": 0.4435483870967742,
+          "identity_correct_but_rejected": 0.06752411575562701,
+          "threshold": -16.51814842224121
+        },
+        "fisher": {
+          "auc": 0.8864559100271163,
+          "rejection_f1": 0.3325740318906606,
+          "known_acceptance": 0.8888378502526413,
+          "unknown_rejection": 0.5887096774193549,
+          "identity_correct_but_rejected": 0.07303628847037207,
+          "threshold": -117.1137924194336
+        },
+        "norm": {
+          "auc": 0.835142323706788,
+          "rejection_f1": 0.23583460949464014,
+          "known_acceptance": 0.7923748277446027,
+          "unknown_rejection": 0.6209677419354839,
+          "identity_correct_but_rejected": 0.16858061552595316,
+          "threshold": -0.939447283744812
+        },
+        "fusion": {
+          "auc": 0.7585331248981285,
+          "rejection_f1": 0.11019283746556474,
+          "known_acceptance": 0.8994028479559026,
+          "unknown_rejection": 0.16129032258064516,
+          "identity_correct_but_rejected": 0.05925585668350942,
+          "threshold": 0.1375912408759124
+        }
+      }
+    },
+    {
+      "held_subject": 8,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9307622282132979,
+          "rejection_f1": 0.39296187683284456,
+          "known_acceptance": 0.9226217569412836,
+          "unknown_rejection": 0.6442307692307693,
+          "identity_correct_but_rejected": 0.06645425580336822,
+          "threshold": -16.52081127166748
+        },
+        "fisher": {
+          "auc": 0.9376553692097616,
+          "rejection_f1": 0.42105263157894735,
+          "known_acceptance": 0.8971324533454711,
+          "unknown_rejection": 0.8461538461538461,
+          "identity_correct_but_rejected": 0.06599908966772872,
+          "threshold": -120.59759292602538
+        },
+        "norm": {
+          "auc": 0.9782526872308392,
+          "rejection_f1": 0.3123123123123123,
+          "known_acceptance": 0.7915339098771051,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.16886663632225762,
+          "threshold": -0.9428701877593995
+        },
+        "fusion": {
+          "auc": 0.7633661286369525,
+          "rejection_f1": 0.16,
+          "known_acceptance": 0.9007737824305871,
+          "unknown_rejection": 0.2692307692307692,
+          "identity_correct_but_rejected": 0.05507510241238052,
+          "threshold": 0.14195514383227698
+        }
+      }
+    },
+    {
+      "held_subject": 9,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9630947684052711,
+          "rejection_f1": 0.5449871465295629,
+          "known_acceptance": 0.9235697940503432,
+          "unknown_rejection": 0.9137931034482759,
+          "identity_correct_but_rejected": 0.0654462242562929,
+          "threshold": -16.603712463378905
+        },
+        "fisher": {
+          "auc": 0.929306399431863,
+          "rejection_f1": 0.4342105263157895,
+          "known_acceptance": 0.8897025171624714,
+          "unknown_rejection": 0.853448275862069,
+          "identity_correct_but_rejected": 0.07368421052631578,
+          "threshold": -118.46888580322265
+        },
+        "norm": {
+          "auc": 0.9316933638443936,
+          "rejection_f1": 0.3287671232876712,
+          "known_acceptance": 0.8018306636155607,
+          "unknown_rejection": 0.9310344827586207,
+          "identity_correct_but_rejected": 0.16109839816933638,
+          "threshold": -0.9438056111335754
+        },
+        "fusion": {
+          "auc": 0.8017438649096504,
+          "rejection_f1": 0.07202216066481995,
+          "known_acceptance": 0.8938215102974828,
+          "unknown_rejection": 0.11206896551724138,
+          "identity_correct_but_rejected": 0.06407322654462243,
+          "threshold": 0.13874037034043585
+        }
+      }
+    },
+    {
+      "held_subject": 10,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9374675197437361,
+          "rejection_f1": 0.43455497382198954,
+          "known_acceptance": 0.9124886052871468,
+          "unknown_rejection": 0.7757009345794392,
+          "identity_correct_but_rejected": 0.07702825888787602,
+          "threshold": -16.228765869140624
+        },
+        "fisher": {
+          "auc": 0.8857930294175278,
+          "rejection_f1": 0.27807486631016043,
+          "known_acceptance": 0.9020054694621695,
+          "unknown_rejection": 0.48598130841121495,
+          "identity_correct_but_rejected": 0.06426618049225159,
+          "threshold": -118.27449188232421
+        },
+        "norm": {
+          "auc": 0.9580035611139982,
+          "rejection_f1": 0.30303030303030304,
+          "known_acceptance": 0.7807657247037375,
+          "unknown_rejection": 0.9813084112149533,
+          "identity_correct_but_rejected": 0.1836827711941659,
+          "threshold": -0.9342152714729309
+        },
+        "fusion": {
+          "auc": 0.8177208018470085,
+          "rejection_f1": 0.22162162162162163,
+          "known_acceptance": 0.8988149498632635,
+          "unknown_rejection": 0.38317757009345793,
+          "identity_correct_but_rejected": 0.060619872379216046,
+          "threshold": 0.1458263534748577
+        }
+      }
+    },
+    {
+      "held_subject": 11,
+      "metrics": {
+        "baseline": {
+          "auc": 0.8872279930244901,
+          "rejection_f1": 0.26744186046511625,
+          "known_acceptance": 0.9188073394495413,
+          "unknown_rejection": 0.38016528925619836,
+          "identity_correct_but_rejected": 0.07110091743119266,
+          "threshold": -16.506459617614745
+        },
+        "fisher": {
+          "auc": 0.8919288801273789,
+          "rejection_f1": 0.3251231527093596,
+          "known_acceptance": 0.8995412844036698,
+          "unknown_rejection": 0.5454545454545454,
+          "identity_correct_but_rejected": 0.062385321100917435,
+          "threshold": -119.18819885253906
+        },
+        "norm": {
+          "auc": 0.9473007809538252,
+          "rejection_f1": 0.33183856502242154,
+          "known_acceptance": 0.7995412844036697,
+          "unknown_rejection": 0.9173553719008265,
+          "identity_correct_but_rejected": 0.16238532110091744,
+          "threshold": -0.9433534562587738
+        },
+        "fusion": {
+          "auc": 0.535751383728865,
+          "rejection_f1": 0.006349206349206349,
+          "known_acceptance": 0.9114678899082569,
+          "unknown_rejection": 0.008264462809917356,
+          "identity_correct_but_rejected": 0.04954128440366973,
+          "threshold": 0.13736223360660774
+        }
+      }
+    },
+    {
+      "held_subject": 12,
+      "metrics": {
+        "baseline": {
+          "auc": 0.8623936382308022,
+          "rejection_f1": 0.12269938650306748,
+          "known_acceptance": 0.9155575952271684,
+          "unknown_rejection": 0.16393442622950818,
+          "identity_correct_but_rejected": 0.07205139972464433,
+          "threshold": -16.636137771606446
+        },
+        "fisher": {
+          "auc": 0.8384956251551697,
+          "rejection_f1": 0.17222222222222222,
+          "known_acceptance": 0.9050022946305645,
+          "unknown_rejection": 0.2540983606557377,
+          "identity_correct_but_rejected": 0.058742542450665444,
+          "threshold": -120.64314117431638
+        },
+        "norm": {
+          "auc": 0.9204515532015739,
+          "rejection_f1": 0.335243553008596,
+          "known_acceptance": 0.7893529141808169,
+          "unknown_rejection": 0.9590163934426229,
+          "identity_correct_but_rejected": 0.17072051399724644,
+          "threshold": -0.9389665484428406
+        },
+        "fusion": {
+          "auc": 0.7145385535551727,
+          "rejection_f1": 0.03867403314917127,
+          "known_acceptance": 0.893070215695273,
+          "unknown_rejection": 0.05737704918032787,
+          "identity_correct_but_rejected": 0.06103717301514456,
+          "threshold": 0.14304710028836912
+        }
+      }
+    },
+    {
+      "held_subject": 13,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9431790185670452,
+          "rejection_f1": 0.5037783375314862,
+          "known_acceptance": 0.9201101928374655,
+          "unknown_rejection": 0.8130081300813008,
+          "identity_correct_but_rejected": 0.06887052341597796,
+          "threshold": -16.632845306396483
+        },
+        "fisher": {
+          "auc": 0.9557399568486042,
+          "rejection_f1": 0.4900662251655629,
+          "known_acceptance": 0.8994490358126722,
+          "unknown_rejection": 0.9024390243902439,
+          "identity_correct_but_rejected": 0.06336088154269973,
+          "threshold": -119.7922348022461
+        },
+        "norm": {
+          "auc": 0.9055671272966174,
+          "rejection_f1": 0.3406754772393539,
+          "known_acceptance": 0.7970615243342516,
+          "unknown_rejection": 0.943089430894309,
+          "identity_correct_but_rejected": 0.16804407713498623,
+          "threshold": -0.9434776425361633
+        },
+        "fusion": {
+          "auc": 0.8721154635788783,
+          "rejection_f1": 0.2871046228710462,
+          "known_acceptance": 0.8948576675849403,
+          "unknown_rejection": 0.4796747967479675,
+          "identity_correct_but_rejected": 0.05968778696051423,
+          "threshold": 0.1406351659535971
+        }
+      }
+    },
+    {
+      "held_subject": 14,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9868830085677458,
+          "rejection_f1": 0.555045871559633,
+          "known_acceptance": 0.9110091743119266,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.07660550458715597,
+          "threshold": -16.542358779907225
+        },
+        "fisher": {
+          "auc": 0.9638069603457426,
+          "rejection_f1": 0.5096359743040685,
+          "known_acceptance": 0.8958715596330276,
+          "unknown_rejection": 0.9834710743801653,
+          "identity_correct_but_rejected": 0.06834862385321101,
+          "threshold": -119.96996612548828
+        },
+        "norm": {
+          "auc": 0.9535749488209871,
+          "rejection_f1": 0.3357041251778094,
+          "known_acceptance": 0.7871559633027523,
+          "unknown_rejection": 0.9752066115702479,
+          "identity_correct_but_rejected": 0.17339449541284405,
+          "threshold": -0.9399376332759857
+        },
+        "fusion": {
+          "auc": 0.9438812646902722,
+          "rejection_f1": 0.5091863517060368,
+          "known_acceptance": 0.9252293577981652,
+          "unknown_rejection": 0.8016528925619835,
+          "identity_correct_but_rejected": 0.044954128440366975,
+          "threshold": 0.13461574658063494
+        }
+      }
+    },
+    {
+      "held_subject": 15,
+      "metrics": {
+        "baseline": {
+          "auc": 0.8819841500352682,
+          "rejection_f1": 0.3209169054441261,
+          "known_acceptance": 0.9164764947512551,
+          "unknown_rejection": 0.509090909090909,
+          "identity_correct_but_rejected": 0.07120036513007759,
+          "threshold": -16.402854919433594
+        },
+        "fisher": {
+          "auc": 0.8463009833616862,
+          "rejection_f1": 0.22337662337662337,
+          "known_acceptance": 0.894112277498859,
+          "unknown_rejection": 0.39090909090909093,
+          "identity_correct_but_rejected": 0.06800547695116385,
+          "threshold": -117.16024017333984
+        },
+        "norm": {
+          "auc": 0.9387162358408365,
+          "rejection_f1": 0.3123123123123123,
+          "known_acceptance": 0.7937015061615701,
+          "unknown_rejection": 0.9454545454545454,
+          "identity_correct_but_rejected": 0.17206754906435417,
+          "threshold": -0.9390731453895569
+        },
+        "fusion": {
+          "auc": 0.6166383137629144,
+          "rejection_f1": 0.04747774480712166,
+          "known_acceptance": 0.9000456412596988,
+          "unknown_rejection": 0.07272727272727272,
+          "identity_correct_but_rejected": 0.06344135098128709,
+          "threshold": 0.14284581218274112
+        }
+      }
+    },
+    {
+      "held_subject": 16,
+      "metrics": {
+        "baseline": {
+          "auc": 0.7967557325404956,
+          "rejection_f1": 0.06472491909385113,
+          "known_acceptance": 0.9175068744271311,
+          "unknown_rejection": 0.08403361344537816,
+          "identity_correct_but_rejected": 0.07057745187901009,
+          "threshold": -16.445543479919433
+        },
+        "fisher": {
+          "auc": 0.8332729975583267,
+          "rejection_f1": 0.20159151193633953,
+          "known_acceptance": 0.8991750687442713,
+          "unknown_rejection": 0.31932773109243695,
+          "identity_correct_but_rejected": 0.06370302474793767,
+          "threshold": -118.54437789916992
+        },
+        "norm": {
+          "auc": 0.9468531683984318,
+          "rejection_f1": 0.36476043276661513,
+          "known_acceptance": 0.8120989917506874,
+          "unknown_rejection": 0.9915966386554622,
+          "identity_correct_but_rejected": 0.1535288725939505,
+          "threshold": -0.9393102109432221
+        },
+        "fusion": {
+          "auc": 0.42540765160326277,
+          "rejection_f1": 0.006060606060606061,
+          "known_acceptance": 0.9037580201649863,
+          "unknown_rejection": 0.008403361344537815,
+          "identity_correct_but_rejected": 0.05866177818515124,
+          "threshold": 0.13890796141899625
+        }
+      }
+    },
+    {
+      "held_subject": 17,
+      "metrics": {
+        "baseline": {
+          "auc": 0.8334203484957253,
+          "rejection_f1": 0.11333333333333333,
+          "known_acceptance": 0.9218821379625399,
+          "unknown_rejection": 0.15178571428571427,
+          "identity_correct_but_rejected": 0.06806761078117862,
+          "threshold": -16.45056018829346
+        },
+        "fisher": {
+          "auc": 0.8731645239182928,
+          "rejection_f1": 0.27817745803357313,
+          "known_acceptance": 0.8871630881681133,
+          "unknown_rejection": 0.5178571428571429,
+          "identity_correct_but_rejected": 0.07537688442211055,
+          "threshold": -117.92103271484375
+        },
+        "norm": {
+          "auc": 0.960716733015728,
+          "rejection_f1": 0.3313253012048193,
+          "known_acceptance": 0.7980813156692553,
+          "unknown_rejection": 0.9821428571428571,
+          "identity_correct_but_rejected": 0.16857012334399268,
+          "threshold": -0.938782560825348
+        },
+        "fusion": {
+          "auc": 0.4666820302812765,
+          "rejection_f1": 0.041791044776119404,
+          "known_acceptance": 0.9013248058474189,
+          "unknown_rejection": 0.0625,
+          "identity_correct_but_rejected": 0.05938784833257195,
+          "threshold": 0.1447481670385719
+        }
+      }
+    },
+    {
+      "held_subject": 18,
+      "metrics": {
+        "baseline": {
+          "auc": 0.859542182737825,
+          "rejection_f1": 0.19333333333333333,
+          "known_acceptance": 0.9214707217430776,
+          "unknown_rejection": 0.29591836734693877,
+          "identity_correct_but_rejected": 0.06718111665910123,
+          "threshold": -16.460925674438478
+        },
+        "fisher": {
+          "auc": 0.8865415435352534,
+          "rejection_f1": 0.31496062992125984,
+          "known_acceptance": 0.8987743985474353,
+          "unknown_rejection": 0.6122448979591837,
+          "identity_correct_but_rejected": 0.06400363141171131,
+          "threshold": -118.30923461914062
+        },
+        "norm": {
+          "auc": 0.9482940702381725,
+          "rejection_f1": 0.2897196261682243,
+          "known_acceptance": 0.7952791647753064,
+          "unknown_rejection": 0.9489795918367347,
+          "identity_correct_but_rejected": 0.1693145710394916,
+          "threshold": -0.9344591856002807
+        },
+        "fusion": {
+          "auc": 0.7021987642083615,
+          "rejection_f1": 0.03225806451612903,
+          "known_acceptance": 0.9060372219700409,
+          "unknown_rejection": 0.05102040816326531,
+          "identity_correct_but_rejected": 0.05628688152519292,
+          "threshold": 0.13798414309665838
+        }
+      }
+    },
+    {
+      "held_subject": 19,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9616313302689737,
+          "rejection_f1": 0.532258064516129,
+          "known_acceptance": 0.9272976680384087,
+          "unknown_rejection": 0.868421052631579,
+          "identity_correct_but_rejected": 0.06675811614083219,
+          "threshold": -16.26968879699707
+        },
+        "fisher": {
+          "auc": 0.9337633062995853,
+          "rejection_f1": 0.4152744630071599,
+          "known_acceptance": 0.9003200731595793,
+          "unknown_rejection": 0.7631578947368421,
+          "identity_correct_but_rejected": 0.09099222679469593,
+          "threshold": -112.6099868774414
+        },
+        "norm": {
+          "auc": 0.9234632076304158,
+          "rejection_f1": 0.3146417445482866,
+          "known_acceptance": 0.8047553726566072,
+          "unknown_rejection": 0.8859649122807017,
+          "identity_correct_but_rejected": 0.16598079561042525,
+          "threshold": -0.9394405841827392
+        },
+        "fusion": {
+          "auc": 0.8024009497910299,
+          "rejection_f1": 0.19607843137254902,
+          "known_acceptance": 0.9048925468678555,
+          "unknown_rejection": 0.30701754385964913,
+          "identity_correct_but_rejected": 0.06035665294924554,
+          "threshold": 0.13805422647527912
+        }
+      }
+    },
+    {
+      "held_subject": 20,
+      "metrics": {
+        "baseline": {
+          "auc": 0.9012809874494347,
+          "rejection_f1": 0.3002832861189802,
+          "known_acceptance": 0.9191548001837391,
+          "unknown_rejection": 0.4274193548387097,
+          "identity_correct_but_rejected": 0.07165824529168581,
+          "threshold": -16.633052825927734
+        },
+        "fisher": {
+          "auc": 0.8434031739446115,
+          "rejection_f1": 0.15083798882681565,
+          "known_acceptance": 0.9049150206706477,
+          "unknown_rejection": 0.21774193548387097,
+          "identity_correct_but_rejected": 0.05879650895728066,
+          "threshold": -119.65686798095703
+        },
+        "norm": {
+          "auc": 0.9803999288751908,
+          "rejection_f1": 0.3578643578643579,
+          "known_acceptance": 0.7955902618282039,
+          "unknown_rejection": 1.0,
+          "identity_correct_but_rejected": 0.1649058337161231,
+          "threshold": -0.9391282439231873
+        },
+        "fusion": {
+          "auc": 0.6083579059670752,
+          "rejection_f1": 0.011799410029498525,
+          "known_acceptance": 0.9021589343132751,
+          "unknown_rejection": 0.016129032258064516,
+          "identity_correct_but_rejected": 0.05695911805236564,
+          "threshold": 0.13406980467499202
+        }
+      }
+    }
+  ],
+  "test_audit": {
+    "baseline": {
+      "S1_N": 3033,
+      "S1_rejection": 0.8265743488295417,
+      "S2_N": 19218,
+      "S2_acceptance": 0.5507336871682798,
+      "official_AUC": "N/A",
+      "official_F1": "N/A"
+    },
+    "fisher": {
+      "S1_N": 3033,
+      "S1_rejection": 0.7790966040224201,
+      "S2_N": 19218,
+      "S2_acceptance": 0.5501613071079197,
+      "official_AUC": "N/A",
+      "official_F1": "N/A"
+    },
+    "norm": {
+      "S1_N": 3033,
+      "S1_rejection": 0.7952522255192879,
+      "S2_N": 19218,
+      "S2_acceptance": 0.22166718701217608,
+      "official_AUC": "N/A",
+      "official_F1": "N/A"
+    },
+    "fusion": {
+      "S1_N": 3033,
+      "S1_rejection": 0.6050115397296406,
+      "S2_N": 19218,
+      "S2_acceptance": 0.7791133312519513,
+      "official_AUC": "N/A",
+      "official_F1": "N/A"
+    }
+  },
+  "old_blocks_missing_enrolled_subjects": {
+    "0": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "1": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "2": [
+      10,
+      11,
+      12
+    ],
+    "3": [
+      14,
+      15,
+      16
+    ],
+    "4": [
+      18,
+      19,
+      20
+    ]
+  }
+}

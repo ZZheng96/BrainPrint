@@ -1,0 +1,47 @@
+{
+  "experiment": "E224_identity_calibrated_tau",
+  "purpose": "Per-identity threshold calibration on the frozen E65 baseline scorer (E221 pipeline). Only thresholds change; no new representation or head is trained.",
+  "seed": 20261117,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "features": {
+    "e65_train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "e65_test": "research/E121_pca_sweep/test_logspd.npy"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "fit_fraction": 0.6,
+  "evaluation_fraction": [0.6, 0.8],
+  "inner_blocks": 5,
+  "threshold_quantile": 0.1,
+  "pca_dim": 96,
+  "prototypes_k": 12,
+  "subject_task_min_samples": 30,
+  "subject_shrink_weight": 0.5,
+  "candidates": [
+    {"name": "global_tau", "type": "global",
+     "note": "E221 reproduction: tau = 10% quantile of all enrolled inner-OOF known scores."},
+    {"name": "per_subject_tau", "type": "subject",
+     "note": "tau_i = 10% quantile of subject i inner-OOF known scores (all tasks pooled). Applied with the predicted identity."},
+    {"name": "per_subject_task_tau", "type": "subject_task",
+     "note": "tau_{i,t} = 10% quantile of subject i, task t inner-OOF known scores; if n<30 rows fall back to tau_i."},
+    {"name": "per_subject_tau_shrunk", "type": "subject_shrunk", "shrink_weight": 0.5,
+     "note": "tau_i = 0.5 * subject_i_quantile + 0.5 * global_quantile (w fixed in config)."}
+  ],
+  "stage_targets": {"S1_rejection": 0.70, "S2_acceptance": 0.70},
+  "official_thresholds": {"S1_rejection": 0.95, "S2_acceptance": 0.98},
+  "reference_e65_baseline": {
+    "source": "E221/E222/E223 frozen baseline (E65 PCA96 k12, global tau)",
+    "loso_auc": 0.910173,
+    "loso_unknown_rejection": 0.563519,
+    "loso_known_acceptance": 0.918387,
+    "test_S1_rejection": 0.826574,
+    "test_S2_acceptance": 0.550734,
+    "test_S2_vs_S1_auc": 0.766024,
+    "test_max_S2_acceptance_at_S1_rej_0_70": 0.680144
+  },
+  "freeze_rule": "Freeze a per-identity calibrated candidate only if LOSO unknown rejection > 0.90 AND Test S2 acceptance >= 0.70 AND Test S1 rejection >= 0.70. Test is read once, after all thresholds are constructed from Train only.",
+  "selection": "All candidates and parameters are fixed before the run. No Test-based selection. Test is used only for uniform evaluation and for the pre-declared freeze check.",
+  "device": "cuda_required"
+}

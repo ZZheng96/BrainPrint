@@ -1,0 +1,37 @@
+{
+  "candidate_summary": {
+    "baseline": {
+      "auc": 0.9101734480306461,
+      "rejection_f1": 0.3467265615310132,
+      "known_acceptance": 0.9183872407182967,
+      "unknown_rejection": 0.5635191053421289,
+      "identity_correct_but_rejected": 0.07047321510059638,
+      "threshold": -16.49617045402527
+    },
+    "fisher": {
+      "auc": 0.9018528301968189,
+      "rejection_f1": 0.3414278461925447,
+      "known_acceptance": 0.8970257197911167,
+      "unknown_rejection": 0.6291879654748909,
+      "identity_correct_but_rejected": 0.06779491781411516,
+      "threshold": -118.73692489624023
+    },
+    "norm": {
+      "auc": 0.9490183365829562,
+      "rejection_f1": 0.32495743911339,
+      "known_acceptance": 0.795086267070211,
+      "unknown_rejection": 0.9519127823251801,
+      "identity_correct_but_rejected": 0.16792587301731005,
+      "threshold": -0.9396620762348176
+    },
+    "fusion": {
+      "auc": 0.7230283592981337,
+      "rejection_f1": 0.13835329705148192,
+      "known_acceptance": 0.9024231916720439,
+      "unknown_rejection": 0.23039729382424823,
+      "identity_correct_but_rejected": 0.05800896243468836,
+      "threshold": 0.13996712180915913
+    }
+  },
+  "selected_candidate": "norm"
+}

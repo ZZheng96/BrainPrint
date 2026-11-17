@@ -1,0 +1,83 @@
+{
+  "experiment": "E223_fold_metric_learning",
+  "purpose": "Fold-internal metric learning on frozen unsupervised representations. Representations (E65 correlation-logSPD 855 + E146 log-band-power 90) are never trained with identity supervision outside the fold; only a small MLP metric head is learned from enrolled fit rows (trial fraction <= 0.6).",
+  "seed": 20261117,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "features": {
+    "e65_train": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "e65_test": "research/E121_pca_sweep/test_logspd.npy",
+    "logbp_train": "research/E146_phase_features/train_log_band_power.npy",
+    "logbp_test": "research/E146_phase_features/test_log_band_power.npy"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "fit_fraction": 0.6,
+  "evaluation_fraction": [0.6, 0.8],
+  "inner_blocks": 5,
+  "threshold_quantile": 0.1,
+  "representation": {
+    "task_standardization": true,
+    "pca_dim_per_stream": {"e65": 96, "logbp": 32},
+    "block_rms_normalization": true,
+    "head_input_dim": 128,
+    "note": "Per-stream task-wise z-score on outer-train fit rows, per-stream PCA fitted on the same rows, block RMS normalization, concatenation. No identity labels are used for the representation."
+  },
+  "head": {
+    "hidden_dim": 128,
+    "embed_dim": 32,
+    "dropout": 0.1,
+    "batch_size": 1024,
+    "max_epochs": 80,
+    "patience": 10,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "supcon_temperature": 0.1,
+    "ce_weight": 1.0,
+    "supcon_weight": 0.5,
+    "validation_block": "one inner trial-fraction block held out from the fold fit rows only; chosen automatically so every enrolled subject has validation rows"
+  },
+  "augment": {
+    "band_gain_sigma": 0.10,
+    "channel_gain_sigma": 0.10,
+    "spectral_tilt_sigma": 0.08,
+    "additive_noise_sigma": 0.05,
+    "band_swap_prob": 0.30,
+    "note": "Training-only, feature-space simulation of session drift: log-normal per-band gain, per-channel gain (log-band-power stream), linear spectral tilt across bands, additive Gaussian noise, and random band-block replacement from another trial of the same subject (feature-space surrogate for a random time sub-window; cached features have no raw sub-windows)."
+  },
+  "augment_disabled": {
+    "band_gain_sigma": 0.0,
+    "channel_gain_sigma": 0.0,
+    "spectral_tilt_sigma": 0.0,
+    "additive_noise_sigma": 0.0,
+    "band_swap_prob": 0.0
+  },
+  "mahalanobis_shrinkage": 0.1,
+  "candidates": [
+    {"name": "e65_baseline_repro", "type": "baseline", "proto_k": 12, "note": "E221/E222 pipeline verbatim: E65 task standardization + PCA96 + k12 prototypes, raw distance score."},
+    {"name": "mlp_ce_contrast_k1", "type": "learned", "head": "aug", "scorer": "proto", "proto_k": 1},
+    {"name": "mlp_ce_contrast_k3", "type": "learned", "head": "aug", "scorer": "proto", "proto_k": 3},
+    {"name": "mlp_ce_contrast_maha", "type": "learned", "head": "aug", "scorer": "maha", "proto_k": 1},
+    {"name": "mlp_no_augment", "type": "learned", "head": "noaug", "scorer": "proto", "proto_k": 1}
+  ],
+  "reference_e65_baseline": {
+    "source": "E221/E222 frozen baseline (E65 PCA96 k12)",
+    "loso_auc": 0.910173,
+    "loso_unknown_rejection": 0.563519,
+    "loso_known_acceptance": 0.918387,
+    "test_S1_rejection": 0.826574,
+    "test_S2_acceptance": 0.550734,
+    "test_S2_vs_S1_auc": 0.766024
+  },
+  "stage_targets": {"S1_rejection": 0.70, "S2_acceptance": 0.70},
+  "official_thresholds": {"S1_rejection": 0.95, "S2_acceptance": 0.98},
+  "freeze_rule": "A candidate is frozen only if its LOSO unknown rejection > 0.90 AND its Test S2-vs-S1 separation AUC >= 0.80. Freezing means: no further hyperparameter search, report the official-gap honestly.",
+  "extra_round": {
+    "rule": "One extra round only. Triggered when the best learned candidate's LOSO unknown rejection is >= e65_baseline_repro + 0.05 and < 0.90 (learning helped but did not reach the LOSO target). The extra round reruns the same recipe with embed_dim=64 and identical augmentation.",
+    "embed_dim": 64,
+    "name_suffix": "_d64"
+  },
+  "selection": "All hyperparameters, candidates and the extra-round rule are fixed before the run. No Test-based selection. Test is read once after all folds and the extra-round decision are complete.",
+  "device": "cuda_required"
+}

@@ -1,0 +1,39 @@
+{
+  "experiment": "E222_asnorm_session_gap",
+  "seed": 20261117,
+  "data": {
+    "metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv"
+  },
+  "features": {
+    "e65": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "e65_test": "research/E121_pca_sweep/test_logspd.npy"
+  },
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "fit_fraction": 0.6,
+  "evaluation_fraction": [0.6, 0.8],
+  "inner_blocks": 5,
+  "pca_dim": 96,
+  "prototypes_k": 12,
+  "threshold_quantile": 0.1,
+  "acceptance": 0.9,
+  "score_convention": "score = -min distance (baseline) or AS/z-normalised score; high=known; reject if score<tau; tau=0.1 quantile of known inner OOF",
+  "candidates": [
+    {"name": "baseline_raw", "mode": "raw", "topk": 0, "proto_k": 12},
+    {"name": "asnorm_all", "mode": "asnorm", "topk": 0, "proto_k": 12},
+    {"name": "asnorm_topk10", "mode": "asnorm_topk", "topk": 10, "proto_k": 12},
+    {"name": "asnorm_topk25", "mode": "asnorm_topk", "topk": 25, "proto_k": 12},
+    {"name": "asnorm_topk50", "mode": "asnorm_topk", "topk": 50, "proto_k": 12},
+    {"name": "znorm", "mode": "znorm", "topk": 0, "proto_k": 12},
+    {"name": "zt_norm", "mode": "zt", "topk": 0, "proto_k": 12}
+  ],
+  "extra_round": {
+    "rule": "Train-side only: take the best AS-norm candidate by mean LOSO unknown rejection (tie-break known acceptance); if its rejection is >= baseline_raw + 0.05 and < 0.90, rerun exactly that normaliser with prototypes_k=3.",
+    "prototypes_k": 3,
+    "name_suffix": "_k3"
+  },
+  "stage_targets": {"S1_rejection": 0.70, "S2_acceptance": 0.70},
+  "official_thresholds": {"S1_rejection": 0.95, "S2_acceptance": 0.98},
+  "selection": "No Test-based selection; candidates and extra-round rule fixed before running.",
+  "device": "cuda_required"
+}
