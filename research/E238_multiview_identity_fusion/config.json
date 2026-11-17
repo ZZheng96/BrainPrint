@@ -1,0 +1,141 @@
+{
+  "experiment": "E238_multiview_identity_fusion",
+  "purpose": "Make the image views vote on the IDENTITY, not only on the gating score. Every branch (EEG + three image branches) emits a nearest-prototype identity and its own distance margins (d1, d2). Five fixed identity-fusion candidates and three fixed gating candidates are compared. The point of the round is the LABEL-FREE part: closed-set identity ability (LOSO fold-wise macro-F1 / accuracy, train-domain OOF macro-F1), branch agreement, and Test cluster purity / coverage. No session information is used to decide an identity, and Test labels do not exist.",
+  "predecessors": {
+    "eeg_branch": "E233 mean_align: E227 deploy_auc2_lofo.pt frozen representation (10 blocks, sqrt(w), task-wise standardisation, PCA96) + k=12 prototypes per (task, identity) + symmetric per-(session, task) batch-mean alignment. Read only.",
+    "image_views": "E149 pixel views (32x32x3 = 3072); the scoring harness is the E237 image_component (task-wise standardisation on the fit rows -> PCA96 -> k=12 prototypes -> negative nearest distance -> the same batch-mean alignment).",
+    "gate_control": "E237 fuse_zscore_50_50 (research/E237_image_view_fusion/cache/cand_fuse_zscore_50_50.npz).",
+    "purity": "E232 / E233 label-free Test session2 k-means purity (k=20) in the frozen baseline EEG PCA space.",
+    "read_only": true,
+    "writes": "research/E238_multiview_identity_fusion/ only; no historical experiment is modified."
+  },
+  "baseline_anchors": {
+    "e233_mean_align": {
+      "test_tau": -24.138366795919048,
+      "loso_unknown_rejection": 0.9000434593654932,
+      "test_S1_rejection": 1.0,
+      "test_S2_acceptance": 0.3121552711000104,
+      "test_separation_auc": 0.8795220263643784,
+      "S2_at_S1_0p95": 0.7569466125507337,
+      "purity_k20_micro_all_S2": 0.634977625143095
+    },
+    "e237_image_view_fusion": {
+      "adopted": "fuse_zscore_50_50",
+      "test_separation_auc": 0.9611472093302462,
+      "S2_at_S1_0p95": 0.877562701633885,
+      "S2_at_loso_tau": 0.2906129670100947,
+      "purity_accepted_S2_at_loso_tau": 0.8186423438836612,
+      "baseline_rank_reading_separation_auc": 0.8768,
+      "baseline_rank_reading_S2_at_S1_0p95": 0.7062649599333958,
+      "target_S2_at_S1_0p95_for_this_round": 0.8776
+    },
+    "closed_set_identity_reference": {
+      "e65_e228_loso_macro_f1": 0.985,
+      "note": "reference only; E238 recomputes the closed-set F1 for its own branches with the 20-fold LOSO protocol below."
+    }
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "identities": [1, 20],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "inner_blocks": 5,
+    "folds": 20,
+    "task_standardisation": "per-task mean/std of the fit rows (all 20 identities, trial fraction <= 0.6), applied to Train and Test (E228 rule). Also used for the image views (E237 rule).",
+    "pca_dim": 96,
+    "prototypes_k": 12,
+    "prototype_init": "random sample init, seed = 17 * identity, 20 Lloyd iterations (E143/E237 harness).",
+    "eeg_branch": "frozen E227 deploy model: state['p'] (960 prototypes) and state['keys'] (task, identity). Nothing refitted.",
+    "alignment": "E233 mean_align in each branch's own space: z <- z - mean(z | session, task) + mu_ref(task), mu_ref(task) = fit-row mean of the task. One identical rule for both sessions, min_cell_n = 200. Session is only a batch key: it never selects an identity and never gates a sample. Train rows (OOF / LOSO) are single-session and are not aligned.",
+    "closed_set_loso": "20 folds, one held-out identity each: prototypes built from the ENROLLED identities' fit rows; identity predicted on the eval window (trial fraction in (0.6, 0.8]) rows of the enrolled identities (the `known` rows); macro-F1 / accuracy computed there. The held-out identity rows are used only for the open-set rejection read-out, never for the F1.",
+    "train_oof": "inner 5-block OOF on the fit rows (blocks = floor(5 * trial_fraction) clipped to [0, 4]); prototypes built on the other 4 blocks; all 20 identities; macro-F1 over all fit rows."
+  },
+  "branches": {
+    "EEG": {
+      "source": "E233 mean_align (aligned Test score/pred read from cache; identity distances recomputed from the frozen prototypes)",
+      "test_score": "research/E233_delta_estimation/cache/test_v1_mean_align.npz",
+      "test_oof": "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz",
+      "fold_cache": "research/E235_deployment_calibration/cache/fold_v1_{fold:02d}.npz"
+    },
+    "X_mw_cov4": {"train": "research/E149_image_route_audit/train_px_mw_cov4.npy", "test": "research/E149_image_route_audit/test_px_mw_cov4.npy"},
+    "X_covariance_hr": {"train": "research/E149_image_route_audit/train_px_covariance_hr.npy", "test": "research/E149_image_route_audit/test_px_covariance_hr.npy"},
+    "IMG_px_all": {
+      "definition": "composite of the 7 E149 pixel views (X_correlation, X_covariance5, X_covariance_hr, X_topomap5, X_mw_corr8, X_mw_cov4, X_mw_cov8); per-view scores are z-scored with the fit-row OOF reference and averaged (the E149 / E237 definition). Its per-identity distance matrix is the mean of the per-view z-scored per-identity distance matrices, which is the same affine-then-average operation.",
+      "pixel_views": {
+        "X_correlation": {"train": "research/E149_image_route_audit/train_px_correlation.npy", "test": "research/E149_image_route_audit/test_px_correlation.npy"},
+        "X_covariance5": {"train": "research/E149_image_route_audit/train_px_covariance5.npy", "test": "research/E149_image_route_audit/test_px_covariance5.npy"},
+        "X_covariance_hr": {"train": "research/E149_image_route_audit/train_px_covariance_hr.npy", "test": "research/E149_image_route_audit/test_px_covariance_hr.npy"},
+        "X_topomap5": {"train": "research/E149_image_route_audit/train_px_topomap5.npy", "test": "research/E149_image_route_audit/test_px_topomap5.npy"},
+        "X_mw_corr8": {"train": "research/E149_image_route_audit/train_px_mw_corr8.npy", "test": "research/E149_image_route_audit/test_px_mw_corr8.npy"},
+        "X_mw_cov4": {"train": "research/E149_image_route_audit/train_px_mw_cov4.npy", "test": "research/E149_image_route_audit/test_px_mw_cov4.npy"},
+        "X_mw_cov8": {"train": "research/E149_image_route_audit/train_px_mw_cov8.npy", "test": "research/E149_image_route_audit/test_px_mw_cov8.npy"}
+      }
+    }
+  },
+  "branch_outputs": {
+    "per_row": "id_b = argmin over the 20 identities of the minimum distance to that identity's k=12 prototypes of the row's task; d1_b = that minimum distance; d2_b = the smallest distance to a prototype of a DIFFERENT identity.",
+    "note": "All distances are Euclidean in the branch's own PCA96 space (96 dims, so no distance-concentration correction)."
+  },
+  "identity_fusion": {
+    "weights_fixed_before_run": {
+      "vote_equal": {"EEG": 0.25, "X_mw_cov4": 0.25, "X_covariance_hr": 0.25, "IMG_px_all": 0.25},
+      "vote_weighted": {"EEG": 0.5, "X_mw_cov4": 0.16666666666666666, "X_covariance_hr": 0.16666666666666666, "IMG_px_all": 0.16666666666666666},
+      "rank_sum_identity": {"EEG": 0.5, "X_mw_cov4": 0.16666666666666666, "X_covariance_hr": 0.16666666666666666, "IMG_px_all": 0.16666666666666666},
+      "eeg_plus_best_img": {"EEG": 0.5, "IMG_px_all": 0.5}
+    },
+    "candidates": {
+      "eeg_only": "BASELINE; must reproduce the E233 mean_align pred row for row.",
+      "vote_equal": "the 4 branch identities vote with equal weight 0.25; the winner is the identity with the largest vote share.",
+      "vote_weighted": "the 4 branch identities vote with the fixed weights above.",
+      "rank_sum_identity": "inside each row the 20 per-identity distances of each branch are replaced by their rank (1 = nearest); the fixed weighted sum of ranks is minimised.",
+      "eeg_plus_best_img": "rank-sum rule restricted to EEG and IMG_px_all, 0.5 / 0.5."
+    },
+    "tie_break": "ties are broken by the EEG branch d1 (the identity that is nearest in the EEG branch wins), fixed before the run for all vote candidates; the rank-sum candidates reduce to a continuous score and have no ties in practice.",
+    "oob_rule": "if a branch's predicted identity is not in the enrolled set of a LOSO fold it cannot happen: every branch only scores the fold's enrolled prototypes, so all votes are inside the enrolled set."
+  },
+  "gating": {
+    "candidates": {
+      "gate_score_fused": "CONTROL: the E237 fuse_zscore_50_50 Test score (cache), unchanged; tau from the LOSO unknown quantile at rejection 0.90, S1 gate = 0.95 quantile of the S1 scores.",
+      "gate_agreement": {
+        "formula": "G = 0.5 * P(fused_zscore) + 0.5 * (1 - P(vote_entropy))",
+        "agreement_score": "1 - P(vote_entropy), where vote_entropy = -sum_i p_i log p_i over the identities with p_i = (weighted vote share of identity i) / (sum of the 4 branch weights), normalised by log(4) so it lies in [0, 1]; 0 = all four branches agree.",
+        "percentile_rule": "P(x) = per-task percentile of x inside the population being scored (Test rows for Test, that fold's eval rows for LOSO), ties get the mid-rank. Both components are monotone transforms of their own values, so P() cannot change a component's own AUC; it only puts the two components on one [0, 1] scale. A fit-row inner-OOF reference was rejected because the aligned Test fused score sits entirely below that reference, which compresses P(fused) into [0, 0.01] and lets the entropy term dominate by construction.",
+        "weights": {"fused_zscore": 0.5, "agreement": 0.5}
+      },
+      "gate_agreement_threshold_sweep": "CURVE ONLY: the gate_agreement score with tau swept over 200 quantiles of the S1 scores in [0.50, 0.999]; S1 rejection and S2 acceptance are reported as arrays. No point is selected."
+    },
+    "loso_gate": "tau = 90th percentile of the pooled LOSO unknown scores (unknown rejection = 0.90, the compliant operating point).",
+    "s1_gate_095": "tau = 95th percentile of the candidate's Test S1 scores -> S1 rejection 0.95 exactly; read S2 acceptance."
+  },
+  "metrics": {
+    "label_free_primary": {
+      "closed_set_loso_macro_f1": "per-fold macro-F1 over the enrolled identities on the eval-window known rows; reported as mean +- std over 20 folds and as the pooled value",
+      "closed_set_loso_accuracy": "same rows, micro accuracy",
+      "train_oof_macro_f1": "inner 5-block OOF on the fit rows, all 20 identities",
+      "branch_agreement": "share of rows on which each pair of the 4 branches predicts the same identity (Test all rows, Test S2, fit-row OOF), plus the share with >= 3 of 4 agreeing and with 4 of 4 agreeing",
+      "test_cluster_purity": "k-means k=20 partition of all 19218 Test session2 rows in the frozen baseline EEG PCA space (E232 flow, seed 20261117+20, 60 Lloyd iterations); micro purity of the candidate's predicted identities over ALL S2 rows (primary, gate-independent) and over the accepted rows at each gate",
+      "coverage": "distinct predicted identities among the accepted Test rows; the full identity distribution is written to results.json"
+    },
+    "gate_metrics": ["Test S1 rejection", "Test S2 acceptance", "S2-vs-S1 separation AUC", "S2 acceptance at the S1 >= 0.95 gate", "overall rejection", "20-fold Train-side S2 proxy mean +- std"]
+  },
+  "decision_rule": {
+    "identity": "a fusion candidate is FROZEN if its closed-set LOSO macro-F1 >= eeg_only macro-F1 AND its Test k=20 purity over all S2 rows >= eeg_only purity - 0.005 (the 0.5 pp tolerance is fixed here, before the run). Tie-break: higher LOSO macro-F1, then higher purity, then higher train OOF macro-F1.",
+    "degenerate_exclusion": "a candidate whose Test predictions are identical to eeg_only row for row is reported but cannot be adopted: it carries no image information, so it cannot support the claim that image branches help. vote_weighted is such a case by algebra (EEG 0.5 >= 3 * 1/6, plus the EEG d1 tie-break).",
+    "gate": "the agreement gate is FROZEN if its S2 acceptance at S1 >= 0.95 is > 0.8776 (the E237 result).",
+    "official_note": "Official C / RA / ASafeR and the official identity macro-F1 on Test are N/A: Test has no identity labels. Every F1 in this report is a train-domain closed-set value (LOSO fold-in or inner-OOF), never a Test value."
+  },
+  "limitations": [
+    "Test has no identity labels: all F1 numbers are train-domain (LOSO fold-in / inner 5-block OOF). The closed-set F1 and the Test cluster purity measure different things and can disagree.",
+    "Only 7 image types have both Train and Test pixel caches; GAF / MTF / spectrogram / DINOv3 exist only for Train and are unusable here.",
+    "Test has been inspected repeatedly since E65; every S2 number carries a repeated-inspection bias. All weights, ranks, entropy definitions and decision rules were written in this file before the run.",
+    "E232 showed session and registration status are confounded (S1 = 5 unregistered subjects, S2 = 20 enrolled users); alignment uses session only as a batch key and never to decide an identity.",
+    "The mean alignment and the S1-quantile gate are transductive: they use unlabelled statistics of the batch being scored.",
+    "The identity votes are nearest-prototype decisions in a 96-d space; the image branches can only re-rank the same 20 enrolled identities, so fusion cannot create identity information that no branch has."
+  ]
+}

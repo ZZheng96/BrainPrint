@@ -1,0 +1,48 @@
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121
+fit rows=6695 eval rows=2301 test S1=3033 S2=19218
+EEG branch: frozen E227 PCA space, mean_align on Test, k=12 prototypes
+  E233 reproduction {"pred_identical_e233": true, "score_max_abs_diff": 2.6702880859375e-05}
+scoring the 7 pixel views (task-wise standardisation -> PCA96 -> k=12 protos)
+    pca eigen top1..3=[533.27087719 245.93266667 197.64191883] explained=0.9175
+  view X_correlation    auc_aligned=0.6778 (2.2s)
+    pca eigen top1..3=[843.80967317 399.34880067 379.14204091] explained=0.9340
+  view X_covariance5    auc_aligned=0.9350 (2.3s)
+    pca eigen top1..3=[1198.77153464  722.39149021  508.4439846 ] explained=0.9550
+  view X_covariance_hr  auc_aligned=0.9021 (2.4s)
+    pca eigen top1..3=[625.0129363  269.85319932 246.36560124] explained=0.9997
+  view X_topomap5       auc_aligned=0.7823 (2.2s)
+    pca eigen top1..3=[374.75292943 127.27826837  62.67126671] explained=0.7133
+  view X_mw_corr8       auc_aligned=0.5704 (2.1s)
+    pca eigen top1..3=[1023.1391637   389.49360731  258.3722054 ] explained=0.9424
+  view X_mw_cov4        auc_aligned=0.9353 (2.3s)
+    pca eigen top1..3=[993.74799962 343.20652985 171.74586595] explained=0.9520
+  view X_mw_cov8        auc_aligned=0.8896 (2.3s)
+  composite IMG_px_all auc_aligned=0.9470
+  branch EEG              d1_test_mean=28.743 (d2-d1)_mean=3.209
+  branch X_mw_cov4        d1_test_mean=39.615 (d2-d1)_mean=4.302
+  branch X_covariance_hr  d1_test_mean=33.501 (d2-d1)_mean=4.323
+  branch IMG_px_all       d1_test_mean=-0.584 (d2-d1)_mean=0.219
+  branch EEG              LOSO macroF1=0.9779 acc=0.9784
+  branch X_mw_cov4        LOSO macroF1=0.4175 acc=0.4235
+  branch X_covariance_hr  LOSO macroF1=0.6561 acc=0.6596
+  branch IMG_px_all       LOSO macroF1=0.8308 acc=0.8328
+  fusion eeg_only           LOSO macroF1=0.9779+-0.0023 acc=0.9784 OOF-F1=0.9898
+  fusion vote_equal         LOSO macroF1=0.8992+-0.0051 acc=0.9002 OOF-F1=0.9466
+  fusion vote_weighted      LOSO macroF1=0.9779+-0.0023 acc=0.9784 OOF-F1=0.9898
+  fusion rank_sum_identity  LOSO macroF1=0.8630+-0.0066 acc=0.8615 OOF-F1=0.9077
+  fusion eeg_plus_best_img  LOSO macroF1=0.9016+-0.0057 acc=0.9018 OOF-F1=0.9466
+  agreement Test unanimous=0.1236 ge3=0.4061 | S2 unanimous=0.1299 ge3=0.4126
+  E237 fuse_zscore_50_50 reconstruction max|diff|=1.43e-06
+  agreement component {"test_auc_agreement_vs_s1": 0.5852275076493192, "entropy_mean_S1": 0.6014726546553705, "entropy_mean_S2": 0.5235529522151036, "note": "AUC of -vote entropy (higher = all four branches agree) as a standalone known/unknown ranker; 0.5 means the agreement carries no information."}
+building the label-free k=20 partition in the baseline EEG PCA space
+  kmeans k=20 sizes=[1001, 804, 931, 455, 712, 1112, 594, 546, 1965, 802, 1388, 1361, 84, 1044, 1155, 1388, 1061, 729, 1125, 961]
+  E233 eeg_only purity over all S2 rows {"n": 19218, "purity_micro": 0.634977625143095, "purity_macro": 0.6394518884181595, "n_distinct_pred": 20, "max_identity_share": 0.10771152044957852}
+  gate gate_score_fused             LOSO=0.8996 S1=1.0000 S2=0.2906 sepAUC=0.9611 S2@95=0.8776 pur@95=0.6488 foldS2=0.7246+-0.0121
+  gate gate_agreement               LOSO=0.8996 S1=0.7583 S2=0.7617 sepAUC=0.8561 S2@95=0.5119 pur@95=0.7621 foldS2=0.7029+-0.0044
+  identity eeg_only           purity_all_S2=0.6350 distinct_all=20 purity@gate=0.6488 n_accepted=16865 same_as_eeg=1.0000
+  identity vote_equal         purity_all_S2=0.5564 distinct_all=20 purity@gate=0.5525 n_accepted=16865 same_as_eeg=0.7041
+  identity vote_weighted      purity_all_S2=0.6350 distinct_all=20 purity@gate=0.6488 n_accepted=16865 same_as_eeg=1.0000
+  identity rank_sum_identity  purity_all_S2=0.5328 distinct_all=20 purity@gate=0.5321 n_accepted=16865 same_as_eeg=0.6032
+  identity eeg_plus_best_img  purity_all_S2=0.5596 distinct_all=20 purity@gate=0.5586 n_accepted=16865 same_as_eeg=0.6524
+submission {"tau_at_S1_95": -2.1735281606345014, "S1_rejection": 0.9498846027035938, "S1_rejection_at_loso_tau": 1.0, "S2_acceptance": 0.877562701633885, "S2_acceptance_at_loso_tau": 0.2906129670100947, "overall_rejection": 0.23522538312884814, "identities": 20, "identity_scheme": "eeg_only", "gate": "gate_score_fused", "note": "label 0 = rejected at the S1>=0.95 gate; Test has no identity labels so the official C / identity macro-F1 are N/A"}
+results.json + report.md written, runtime=18s

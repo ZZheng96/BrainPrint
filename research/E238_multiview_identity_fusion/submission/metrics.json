@@ -1,0 +1,12 @@
+{
+  "tau_at_S1_95": -2.1735281606345014,
+  "S1_rejection": 0.9498846027035938,
+  "S1_rejection_at_loso_tau": 1.0,
+  "S2_acceptance": 0.877562701633885,
+  "S2_acceptance_at_loso_tau": 0.2906129670100947,
+  "overall_rejection": 0.23522538312884814,
+  "identities": 20,
+  "identity_scheme": "eeg_only",
+  "gate": "gate_score_fused",
+  "note": "label 0 = rejected at the S1>=0.95 gate; Test has no identity labels so the official C / identity macro-F1 are N/A"
+}
