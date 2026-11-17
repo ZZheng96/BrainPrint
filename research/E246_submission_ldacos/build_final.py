@@ -35,15 +35,17 @@ W = R.whiten(eig, LAM)
 diff = float((protos[:, :20] - art["prototypes"][:, :20]).abs().max())
 
 late, rng = frac > 0.8, np.random.default_rng(0)
-qs = []
+qs, qe = [], []
 for j in ids:
     kj = ids[ids != j]; sj = np.isin(subj, kj)
     sp = R.Space(feats, tasks, stat_rows=sj, pca_rows=sj & (frac <= 0.6))
     pj, vj, fmj, eigj = R.build(feats, tasks, subj, frac, sp, kj, none_i, none_l)
     rows = late
-    res = R.score(feats, tasks, rows, sp, pj, vj, fmj, {"c": R.whiten(eigj, LAM)}, "none", rng)
-    qs.append(float(np.quantile(res["c"][0][subj[np.flatnonzero(rows)] == j], R.Q)))
-th = float(np.median(qs))
+    res = R.score(feats, tasks, rows, sp, pj, vj, fmj, {"c": R.whiten(eigj, LAM), "e": None}, "none", rng)
+    isj = subj[np.flatnonzero(rows)] == j
+    qs.append(float(np.quantile(res["c"][0][isj], R.Q)))
+    qe.append(float(np.quantile(res["e"][0][isj], R.Q)))
+th, th_e = float(np.median(qs)), float(np.median(qe))  # th_e = Euclid at matched LOSO operating point
 
 # Test descriptive
 tmeta = pd.read_csv(ROOT / "BrainPrint_cache/test_metadata.csv")
@@ -60,12 +62,14 @@ for s in np.unique(sess):
     cnt = np.bincount(am[m][mx[m] >= th], minlength=24)[1:21]; ecnt = np.bincount(eam[m][ea], minlength=24)[1:21]
     desc[s] = {"n": int(m.sum()), "ldacos_accept": float((mx[m] >= th).mean()),
                "euclid_tau_accept": float(ea.mean()),
+               "euclid_matched_loso_accept": float((emx[m] >= th_e).mean()),
                "nearest_agree_ldacos_vs_euclid": float((am[m] == eam[m]).mean()),
                "nearest_agree_on_euclid_top25pct_conf": float((am[m][conf] == eam[m][conf]).mean()),
                "accepted_id_count_cv_ldacos": float(cnt.std() / max(cnt.mean(), 1e-9)),
                "accepted_id_count_cv_euclid": float(ecnt.std() / max(ecnt.mean(), 1e-9))}
 (OUT / "models").mkdir(exist_ok=True)
 torch.save({"whiten": W.cpu(), "threshold": th, "shrink": LAM, "inner_q90": qs}, OUT / "models/ldacos_whiten.pt")
-out = {"proto_maxabs_diff_vs_submission": diff, "threshold": th, "inner_q90": qs, "test_descriptive": desc}
+out = {"proto_maxabs_diff_vs_submission": diff, "threshold": th, "inner_q90": qs,
+       "euclid_threshold_matched_loso": th_e, "inner_q90_euclid": qe, "test_descriptive": desc}
 (OUT / "final_results.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
 print(json.dumps(out, indent=2))
