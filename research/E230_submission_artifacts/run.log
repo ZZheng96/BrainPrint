@@ -1,0 +1,18 @@
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121
+model=D:\WORK\BCIC2026\BrainPrint\research\E228_constrained_maxS2\models\deploy_frozen.pt
+candidate=e226_auc2W rep=e226_all_blocks_v2 variant=plain source=E227 frozen deploy_auc2_lofo.pt (block-weighted representation)
+tau=-24.138366796 A=0.804985444 pca=96 k=12 dim=1569
+rows=22251 S1=3033 S2=19218 tasks={'Imagery': 11207, 'SSVEP': 6760, 'EO': 2312, 'EC': 1972}
+test feature matrix=(22251, 1569)
+reload check vs test_v1_auc2_lofo.npz: max|dscore|=0.000e+00 pred_identical=True
+negative control: E228 unweighted plain cache max|dscore|=13.728691 (expected non-zero; different candidate)
+Test S1 rejection=0.963732278 (N=3033) S2 acceptance=0.304298054 (N=19218)
+anchor deltas: dS1=+0.000e+00 dS2=+0.000e+00 dSepAUC=+0.000e+00
+fold audit: known=43719 unknown=2301 block_acc=0.978385 known_accept=0.808687 loso_rej=0.900043 auc=0.909597 U@95(perfold)=0.372447 (global=0.371578)
+in-sample fit accuracy=0.999104 on 6695 fit rows
+labels: rejected=16293/22251=0.732237; accepted=5958
+identity counts: 1:344, 2:23, 3:443, 4:2, 5:0, 6:513, 7:478, 8:0, 9:2, 10:67, 11:191, 12:53, 13:961, 14:8, 15:654, 16:1144, 17:513, 18:540, 19:0, 20:22
+identities never predicted: [5, 8, 19]
+read-back audit: 22251 rows, Sample order identical to test_metadata.csv, labels 0-20 OK
+wrote test.csv (22251 rows) and test_predictions_detailed.csv
+wrote metrics_summary.md and report.md (0.9s total)

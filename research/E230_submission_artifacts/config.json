@@ -1,0 +1,121 @@
+{
+  "experiment": "E230_submission_artifacts",
+  "purpose": "Load the frozen E228 deploy model only, predict the 22251 Test trials in original metadata order, and emit official-format test.csv plus an auditable detailed CSV. No retraining, no threshold change, no Test-side statistics.",
+  "frozen_model": "research/E228_constrained_maxS2/models/deploy_frozen.pt",
+  "frozen_candidate": "e226_auc2W",
+  "model_source": "E227 frozen deploy_auc2_lofo.pt (block-weighted representation), re-frozen by E228 as deploy_frozen.pt",
+  "threshold": {
+    "tau": -24.138366795919048,
+    "A": 0.8049854437115825,
+    "rule": "reject if score < tau; otherwise output nearest-prototype identity (1-20)"
+  },
+  "representation": {
+    "pca_dim": 96,
+    "prototypes_k": 12,
+    "input_dim": 1569,
+    "block_order": [
+      "corr_logspd",
+      "bandpower_gainfree",
+      "spectral_shape",
+      "spectral_slope",
+      "pac",
+      "trial_energy",
+      "hjorth",
+      "spec_entropy",
+      "power_ratio",
+      "graph_metrics"
+    ],
+    "block_dims": {
+      "corr_logspd": 855,
+      "bandpower_gainfree": 90,
+      "spectral_shape": 90,
+      "spectral_slope": 18,
+      "pac": 18,
+      "trial_energy": 1,
+      "hjorth": 180,
+      "spec_entropy": 180,
+      "power_ratio": 112,
+      "graph_metrics": 25
+    },
+    "block_weights_sqrt_applied_before_pca": [
+      1.8723500967025757,
+      1.3899229764938354,
+      1.1489406824111938,
+      0.9140388369560242,
+      0.5668210983276367,
+      0.591008186340332,
+      0.8123737573623657,
+      0.6581529974937439,
+      1.3086190223693848,
+      0.7377724647521973
+    ],
+    "pipeline": "task-wise z-score (Train fit rows) -> multiply sqrt(block weight) -> subtract fit-row mean -> PCA 96 -> nearest of 12 k-means prototypes per (task, identity) -> score = -min Euclidean distance"
+  },
+  "feature_paths": {
+    "train": {
+      "corr_logspd": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/train_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/train_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/train_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/train_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/train_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/train_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/train_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/train_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/train_graph_metrics.npy"
+    },
+    "test": {
+      "corr_logspd": "research/E121_pca_sweep/test_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/test_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/test_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/test_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/test_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/test_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/test_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/test_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/test_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/test_graph_metrics.npy"
+    }
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251
+  },
+  "reference_scores": {
+    "path": "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz",
+    "note": "E228 build_frozen() loaded this cache as the reference for the frozen candidate. E228/cache contains only the unweighted e226_all_blocks_v2/plain test scores, which are not the frozen auc2W candidate."
+  },
+  "e228_plain_cache_for_negative_control": "research/E228_constrained_maxS2/cache/test_v1_e226_all_blocks_v2_plain.npz",
+  "e228_results": "research/E228_constrained_maxS2/results.json",
+  "expected_anchors": {
+    "loso_unknown_rejection_micro": 0.9000434593654932,
+    "test_S1_rejection": 0.9637322782723377,
+    "test_S2_acceptance": 0.3042980539077948,
+    "test_separation_auc": 0.7918401795053043,
+    "N_S1": 3033,
+    "N_S2": 19218,
+    "official_Test_AUC": "N/A",
+    "official_Test_F1": "N/A"
+  },
+  "tolerance": {
+    "score_reproduction_abs": 1e-06,
+    "anchor_abs": 0.0001
+  },
+  "label_rule": "label = 0 if score < tau else nearest-prototype identity (1-20)",
+  "outputs": [
+    "test.csv",
+    "test_predictions_detailed.csv",
+    "metrics_summary.md",
+    "report.md",
+    "run_e230.py",
+    "config.json",
+    "run.log"
+  ],
+  "notes": [
+    "Test has no identity labels: official C, identity macro-F1, RA, ASafeR and Test AUROC/F1 are N/A.",
+    "S1/S2 are post-freeze session-stratified audit numbers, not official C/U.",
+    "Test has been inspected repeatedly since E65; this submission is not an unbiased test estimate."
+  ]
+}
