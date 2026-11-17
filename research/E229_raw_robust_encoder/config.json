@@ -1,0 +1,138 @@
+{
+  "experiment": "E229_raw_robust_encoder",
+  "purpose": "Hard constraint kept from E228: LOSO unknown rejection pinned at 0.90; maximise Test S2 acceptance. Single new route: retrain a light raw-EEG encoder from scratch inside every strict outer LOSO fold, using ONLY the enrolled identities' fit rows (trial fraction <= 0.6). Held identity never participates in training, early stopping or calibration. Ablate cross-session drift augmentation and waveform PGD adversarial training.",
+  "date": "2026-11-17",
+  "baseline": {
+    "id": "e228_anchor",
+    "source": "E228 frozen e226_auc2W (E227 block-weighted features)",
+    "loso_unknown_rejection_micro": 0.9000434593654932,
+    "test_S1_rejection": 0.9637322782723377,
+    "test_S2_acceptance": 0.3042980539077948,
+    "test_separation_auc": 0.7918401795053043,
+    "A": 0.8049854437115825,
+    "tau": -24.138366795919048,
+    "rule": "An E229 candidate is an improvement only if LOSO rejection in [0.90, 0.91] AND Test S2 > 0.3042980539077948 AND separation AUC > 0.7918401795053043."
+  },
+  "seed": 20261117,
+  "device": "cuda_required",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "root": "Brainprint_Competition",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "train_session": "session1",
+    "mat_layout": "loadmat 'data' is (1200, 18); transposed to (18, 1200)",
+    "raw_cache": {
+      "train": "cache/train_raw.npy",
+      "test": "cache/test_raw.npy"
+    },
+    "raw_cache_note": "float32 memmap, written once, read-only reuse. Train is kept on GPU (about 1GB); Test is streamed in chunks."
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "folds": 20,
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "inner_blocks": 5,
+    "blocks_rule": "block = clip(int(frac * 5), 0, 4) per (subject, task) trial order",
+    "fit_rows": "per outer fold: subjects != held identity AND frac <= 0.6 (6695 rows in total, about 6360 per fold)",
+    "evaluation_window": "0.6 < frac <= 0.8 (2301 rows); held identity appears only here",
+    "inner_oof": {
+      "holdout_block": 2,
+      "train_blocks": [0, 1],
+      "rule": "tau needs known scores the encoder has NOT seen. Inside each fold a second encoder is trained on fit rows of blocks 0-1 only and scores fit rows of block 2 (frac in (0.4, 0.6]). The deploy/LOSO encoder is trained on all fit rows. This is the latest of the E228 inner-block folds (E228 averages its 3 blocks; here one block is used to keep the 20-fold budget under one hour). Deviation documented in report.md."
+    },
+    "open_set_direction": "high score = known; reject if score < tau; unknown is the positive class for rejection F1 and AUC.",
+    "seed_per_fold": "seed = 20261117 + 101 * held + 7 * regime_index"
+  },
+  "encoder": {
+    "architecture": "Conv1d(18->32,k9,s2)-GroupNorm(8)-ELU -> Conv1d(32->64,k9,s2)-GroupNorm(8)-ELU -> Conv1d(64->64,k9,s2)-GroupNorm(8)-ELU -> global average pool -> Dropout -> Linear(64->64) -> L2 normalise",
+    "widths": [32, 64, 64],
+    "kernel": 9,
+    "stride": 2,
+    "norm": "GroupNorm(8)",
+    "dropout": 0.1,
+    "embedding_dim": 64,
+    "l2_normalise": true,
+    "parameter_count": "about 62k (conv 5184 + 18432 + 36864, head 4160, norms); well below the 200k budget",
+    "input_normalisation": "per-trial per-channel mean removal, then divide by the whole-trial global RMS (differentiable, computed inside forward, no cross-sample statistics)",
+    "classifier": "Linear(64 -> n_enrolled_identities), bias=True, trained only, never used for scoring"
+  },
+  "train": {
+    "regimes": {
+      "ce_contrast": {"drift": false, "adversarial": false},
+      "ce_contrast_drift": {"drift": true, "adversarial": false},
+      "ce_contrast_drift_adv": {"drift": true, "adversarial": true}
+    },
+    "loss": "cross_entropy + supcon_weight * supervised_contrastive",
+    "supcon": "positives = other trials of the same subject inside the batch; temperature 0.1; L2-normalised embeddings",
+    "supcon_weight": 0.5,
+    "supcon_temperature": 0.1,
+    "batch_size": 128,
+    "epochs": 15,
+    "learning_rate": 0.002,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "amp": true,
+    "early_stop": "none (no held-identity data is used for stopping; fixed epochs)",
+    "sampling": "full fit rows, no subsampling"
+  },
+  "augmentation": {
+    "drift": {
+      "channel_gain_db": 3.0,
+      "global_gain_db": 3.0,
+      "spectral_tilt_exponent": 0.5,
+      "spectral_tilt_note": "rfft magnitude reweight (f/f_nyq + 0.05)^alpha, alpha ~ U(-0.5, 0.5) per trial, weights normalised to mean 1",
+      "white_noise_snr_db": [10.0, 20.0],
+      "time_shift_samples": 50,
+      "crop_fraction": [0.9, 1.0],
+      "crop_resample": "circular shift then random crop to L in [0.9*1200, 1200], linear interpolate back to 1200",
+      "channel_dropout": 0.1,
+      "random_rereference": "subtract one randomly chosen channel per trial"
+    }
+  },
+  "adversarial": {
+    "ratio": 0.3,
+    "ratio_note": "30% of each batch is replaced by a PGD adversarial copy inside the loss; the clean 70% is still used",
+    "eps_rms": [0.005, 0.01],
+    "eps_definition": "L-infinity bound = eps * per-trial global RMS; eps drawn per batch from the two values",
+    "steps": 8,
+    "step_size": "2*eps/steps*RMS, sign gradient, random start",
+    "objective": "maximise cross-entropy of the identity classifier (identity confusion)",
+    "loss_weight": 0.5,
+    "domain": "train-split only (fit rows of enrolled identities), never held identity"
+  },
+  "scoring": {
+    "prototypes_k": 12,
+    "alt_k": 1,
+    "prototypes": "per (task, identity) k-means on fit-row embeddings; k=12 for the main candidates, k=1 (centroid) for the k1 candidate",
+    "score": "-min euclidean distance to same-task prototypes (L2-normalised embedding space)",
+    "identity": "identity of the nearest prototype",
+    "threshold": "tau(A) = (1-A) quantile of inner-OOF known scores, A bisected on the Train side until pooled micro LOSO unknown rejection equals 0.90"
+  },
+  "candidates": [
+    {"id": "e228_anchor", "source": "e227_cache", "weights": "auc2_lofo", "scoring": "k12", "family": "anchor"},
+    {"id": "raw_ce_contrast", "regime": "ce_contrast", "scoring": "k12", "family": "ablation_base"},
+    {"id": "raw_ce_contrast_drift", "regime": "ce_contrast_drift", "scoring": "k12", "family": "ablation_drift"},
+    {"id": "raw_ce_contrast_drift_adv", "regime": "ce_contrast_drift_adv", "scoring": "k12", "family": "ablation_full"},
+    {"id": "raw_ce_contrast_drift_adv_k1", "regime": "ce_contrast_drift_adv", "scoring": "k1", "family": "ablation_full_k1"}
+  ],
+  "constraint": {
+    "target": "loso_unknown_rejection_micro == 0.90",
+    "accepted_band": [0.90, 0.91],
+    "calibration": "bisect A on the Train side; keep the loosest A whose pooled LOSO unknown rejection is still >= 0.90",
+    "selection": "highest Test S2 among candidates whose LOSO rejection lies in the accepted band",
+    "improvement": "S2 > 0.3042980539077948 AND separation AUC > 0.7918401795053043",
+    "one_extra_round": "at most one follow-up round (augmentation strength or k); not used unless the first round is close"
+  },
+  "official_note": "Official Test AUC/F1 = N/A: Test has no identity labels.",
+  "bias_note": "Test has been inspected repeatedly since E65. Calibration, augmentation, adversarial and candidate definitions are frozen in this config before the run and use Train rows only; the final candidate comparison reads Test, so the reported S2 gap carries an evaluation bias.",
+  "runtime": {
+    "expected": "about 10-20s per encoder; 2 encoders per fold and regime; 20 folds x 3 regimes x 2 = 120 trainings",
+    "guard": "if the 3-fold smoke projects > 60 min, log that in run.log before the full run"
+  }
+}

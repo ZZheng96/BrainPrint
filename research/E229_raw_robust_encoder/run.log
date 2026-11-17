@@ -1,0 +1,768 @@
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121 cuda=12.1 amp=True
+rows=11304 fit=6695 window=2301 fit blocks=[2173, 2203, 2246, 73, 0]
+raw cache train: (11304, 18, 1200) float32
+train raw on GPU: (11304, 18, 1200) torch.float32 (931 MB)
+anchor check A*=0.804985 LOSO=0.900043 S1=0.963732 S2=0.304298 sepAUC=0.791840 (expect 0.304298/0.791840)
+fold 01 regime=ce_contrast n_fit=6326 n_window=2301 known=2177 unknown=124
+  [ce_contrast_f01] epoch 1/15 loss 4.8643 acc 0.2784 0.9s
+  [ce_contrast_f01] epoch 5/15 loss 2.5155 acc 0.9336 0.4s
+  [ce_contrast_f01] epoch 10/15 loss 1.6638 acc 0.9896 0.4s
+  [ce_contrast_f01] epoch 15/15 loss 1.4814 acc 0.9983 0.4s
+  [ce_contrast_oof_f01] epoch 1/15 loss 4.9318 acc 0.1935 0.3s
+  [ce_contrast_oof_f01] epoch 5/15 loss 3.0147 acc 0.8917 0.2s
+  [ce_contrast_oof_f01] epoch 10/15 loss 2.1380 acc 0.9857 0.2s
+  [ce_contrast_oof_f01] epoch 15/15 loss 1.9408 acc 0.9952 0.2s
+fold 01 regime=ce_contrast done in 11.8s fit_acc=0.9995 win_acc=0.9545 sep_fit=0.311 sep_win=0.456 oof_n=2122
+fold 01 regime=ce_contrast_drift n_fit=6326 n_window=2301 known=2177 unknown=124
+  [ce_contrast_drift_f01] epoch 1/15 loss 5.3162 acc 0.0915 0.6s
+  [ce_contrast_drift_f01] epoch 5/15 loss 3.8289 acc 0.5991 0.5s
+  [ce_contrast_drift_f01] epoch 10/15 loss 2.9296 acc 0.7853 0.5s
+  [ce_contrast_drift_f01] epoch 15/15 loss 2.6171 acc 0.8414 0.5s
+  [ce_contrast_drift_oof_f01] epoch 1/15 loss 5.2914 acc 0.0873 0.3s
+  [ce_contrast_drift_oof_f01] epoch 5/15 loss 4.3807 acc 0.4484 0.3s
+  [ce_contrast_drift_oof_f01] epoch 10/15 loss 3.5507 acc 0.6655 0.3s
+  [ce_contrast_drift_oof_f01] epoch 15/15 loss 3.2345 acc 0.7369 0.3s
+fold 01 regime=ce_contrast_drift done in 13.7s fit_acc=0.9888 win_acc=0.8962 sep_fit=0.469 sep_win=0.631 oof_n=2122
+fold 01 regime=ce_contrast_drift_adv n_fit=6326 n_window=2301 known=2177 unknown=124
+  [ce_contrast_drift_adv_f01] epoch 1/15 loss 6.7952 acc 0.0838 2.0s
+  [ce_contrast_drift_adv_f01] epoch 5/15 loss 5.1236 acc 0.5466 1.9s
+  [ce_contrast_drift_adv_f01] epoch 10/15 loss 3.7432 acc 0.7739 2.0s
+  [ce_contrast_drift_adv_f01] epoch 15/15 loss 3.3547 acc 0.8359 2.0s
+  [ce_contrast_drift_adv_oof_f01] epoch 1/15 loss 6.7720 acc 0.0706 1.4s
+  [ce_contrast_drift_adv_oof_f01] epoch 5/15 loss 5.5705 acc 0.4800 1.3s
+  [ce_contrast_drift_adv_oof_f01] epoch 10/15 loss 4.4088 acc 0.7054 1.3s
+  [ce_contrast_drift_adv_oof_f01] epoch 15/15 loss 4.0085 acc 0.7705 1.3s
+fold 01 regime=ce_contrast_drift_adv done in 49.2s fit_acc=0.9888 win_acc=0.8902 sep_fit=0.469 sep_win=0.625 oof_n=2122
+fold 02 regime=ce_contrast n_fit=6399 n_window=2301 known=2199 unknown=102
+  [ce_contrast_f02] epoch 1/15 loss 4.9301 acc 0.2227 0.4s
+  [ce_contrast_f02] epoch 5/15 loss 2.6502 acc 0.9065 0.4s
+  [ce_contrast_f02] epoch 10/15 loss 1.7376 acc 0.9833 0.4s
+  [ce_contrast_f02] epoch 15/15 loss 1.5616 acc 0.9934 0.4s
+  [ce_contrast_oof_f02] epoch 1/15 loss 4.8691 acc 0.2429 0.3s
+  [ce_contrast_oof_f02] epoch 5/15 loss 2.9241 acc 0.9265 0.2s
+  [ce_contrast_oof_f02] epoch 10/15 loss 2.0491 acc 0.9914 0.2s
+  [ce_contrast_oof_f02] epoch 15/15 loss 1.8682 acc 0.9950 0.2s
+fold 02 regime=ce_contrast done in 10.0s fit_acc=0.9992 win_acc=0.9477 sep_fit=0.336 sep_win=0.482 oof_n=2151
+fold 02 regime=ce_contrast_drift n_fit=6399 n_window=2301 known=2199 unknown=102
+  [ce_contrast_drift_f02] epoch 1/15 loss 5.3096 acc 0.0889 0.5s
+  [ce_contrast_drift_f02] epoch 5/15 loss 3.8881 acc 0.5979 0.5s
+  [ce_contrast_drift_f02] epoch 10/15 loss 2.8062 acc 0.8259 0.5s
+  [ce_contrast_drift_f02] epoch 15/15 loss 2.5349 acc 0.8772 0.5s
+  [ce_contrast_drift_oof_f02] epoch 1/15 loss 5.3237 acc 0.0715 0.3s
+  [ce_contrast_drift_oof_f02] epoch 5/15 loss 4.3900 acc 0.4324 0.3s
+  [ce_contrast_drift_oof_f02] epoch 10/15 loss 3.3976 acc 0.7325 0.3s
+  [ce_contrast_drift_oof_f02] epoch 15/15 loss 3.1598 acc 0.7952 0.3s
+fold 02 regime=ce_contrast_drift done in 13.7s fit_acc=0.9912 win_acc=0.9150 sep_fit=0.449 sep_win=0.599 oof_n=2151
+fold 02 regime=ce_contrast_drift_adv n_fit=6399 n_window=2301 known=2199 unknown=102
+  [ce_contrast_drift_adv_f02] epoch 1/15 loss 6.7734 acc 0.0731 1.9s
+  [ce_contrast_drift_adv_f02] epoch 5/15 loss 5.1966 acc 0.5138 1.9s
+  [ce_contrast_drift_adv_f02] epoch 10/15 loss 3.8057 acc 0.7673 2.0s
+  [ce_contrast_drift_adv_f02] epoch 15/15 loss 3.4627 acc 0.8225 2.0s
+  [ce_contrast_drift_adv_oof_f02] epoch 1/15 loss 6.7518 acc 0.0888 1.4s
+  [ce_contrast_drift_adv_oof_f02] epoch 5/15 loss 5.2483 acc 0.5281 1.3s
+  [ce_contrast_drift_adv_oof_f02] epoch 10/15 loss 4.1133 acc 0.7358 1.3s
+  [ce_contrast_drift_adv_oof_f02] epoch 15/15 loss 3.7944 acc 0.8064 1.2s
+fold 02 regime=ce_contrast_drift_adv done in 49.0s fit_acc=0.9880 win_acc=0.8709 sep_fit=0.486 sep_win=0.655 oof_n=2151
+fold 03 regime=ce_contrast n_fit=6333 n_window=2301 known=2179 unknown=122
+  [ce_contrast_f03] epoch 1/15 loss 4.9433 acc 0.2204 0.4s
+  [ce_contrast_f03] epoch 5/15 loss 2.6229 acc 0.9163 0.4s
+  [ce_contrast_f03] epoch 10/15 loss 1.7427 acc 0.9828 0.4s
+  [ce_contrast_f03] epoch 15/15 loss 1.5506 acc 0.9953 0.4s
+  [ce_contrast_oof_f03] epoch 1/15 loss 4.9186 acc 0.1618 0.3s
+  [ce_contrast_oof_f03] epoch 5/15 loss 3.0374 acc 0.8954 0.2s
+  [ce_contrast_oof_f03] epoch 10/15 loss 2.1135 acc 0.9860 0.2s
+  [ce_contrast_oof_f03] epoch 15/15 loss 1.9082 acc 0.9952 0.2s
+fold 03 regime=ce_contrast done in 9.9s fit_acc=0.9994 win_acc=0.9417 sep_fit=0.333 sep_win=0.477 oof_n=2124
+fold 03 regime=ce_contrast_drift n_fit=6333 n_window=2301 known=2179 unknown=122
+  [ce_contrast_drift_f03] epoch 1/15 loss 5.3080 acc 0.0861 0.5s
+  [ce_contrast_drift_f03] epoch 5/15 loss 4.0486 acc 0.5384 0.5s
+  [ce_contrast_drift_f03] epoch 10/15 loss 3.0146 acc 0.7777 0.5s
+  [ce_contrast_drift_f03] epoch 15/15 loss 2.7165 acc 0.8402 0.5s
+  [ce_contrast_drift_oof_f03] epoch 1/15 loss 5.3332 acc 0.0700 0.3s
+  [ce_contrast_drift_oof_f03] epoch 5/15 loss 4.5955 acc 0.3790 0.3s
+  [ce_contrast_drift_oof_f03] epoch 10/15 loss 3.6928 acc 0.6297 0.3s
+  [ce_contrast_drift_oof_f03] epoch 15/15 loss 3.3655 acc 0.7266 0.4s
+fold 03 regime=ce_contrast_drift done in 13.7s fit_acc=0.9888 win_acc=0.8981 sep_fit=0.473 sep_win=0.632 oof_n=2124
+fold 03 regime=ce_contrast_drift_adv n_fit=6333 n_window=2301 known=2179 unknown=122
+  [ce_contrast_drift_adv_f03] epoch 1/15 loss 6.8080 acc 0.0687 2.0s
+  [ce_contrast_drift_adv_f03] epoch 5/15 loss 5.3568 acc 0.5140 1.9s
+  [ce_contrast_drift_adv_f03] epoch 10/15 loss 3.8022 acc 0.7827 1.9s
+  [ce_contrast_drift_adv_f03] epoch 15/15 loss 3.3847 acc 0.8416 1.9s
+  [ce_contrast_drift_adv_oof_f03] epoch 1/15 loss 6.8101 acc 0.0703 1.4s
+  [ce_contrast_drift_adv_oof_f03] epoch 5/15 loss 5.7186 acc 0.4394 1.3s
+  [ce_contrast_drift_adv_oof_f03] epoch 10/15 loss 4.5139 acc 0.6676 1.3s
+  [ce_contrast_drift_adv_oof_f03] epoch 15/15 loss 4.1383 acc 0.7601 1.3s
+fold 03 regime=ce_contrast_drift_adv done in 49.7s fit_acc=0.9905 win_acc=0.9009 sep_fit=0.470 sep_win=0.621 oof_n=2124
+timing: 9 fold/regime trainings in 3.7 min (24.5s per fold/regime, 2 encoders each)
+SMOKE: projected 20-fold training = 24.5 min
+
+=== run start 2026-11-17 12:14:44 folds=8 smoke=True ===
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121 cuda=12.1 amp=True
+rows=11304 fit=6695 window=2301 fit blocks=[2173, 2203, 2246, 73, 0]
+raw cache train: (11304, 18, 1200) float32
+train raw on GPU: (11304, 18, 1200) torch.float32 (931 MB)
+anchor check A*=0.804985 LOSO=0.900043 S1=0.963732 S2=0.304298 sepAUC=0.791840 (expect 0.304298/0.791840)
+fold 04 regime=ce_contrast n_fit=6385 n_window=2301 known=2188 unknown=113
+  [ce_contrast_f04] epoch 1/15 loss 4.8137 acc 0.2664 1.0s
+  [ce_contrast_f04] epoch 5/15 loss 2.4688 acc 0.9491 0.4s
+  [ce_contrast_f04] epoch 10/15 loss 1.6097 acc 0.9926 0.4s
+  [ce_contrast_f04] epoch 15/15 loss 1.4504 acc 0.9980 0.4s
+  [ce_contrast_oof_f04] epoch 1/15 loss 5.0185 acc 0.1497 0.3s
+  [ce_contrast_oof_f04] epoch 5/15 loss 3.0676 acc 0.8762 0.2s
+  [ce_contrast_oof_f04] epoch 10/15 loss 2.1223 acc 0.9854 0.2s
+  [ce_contrast_oof_f04] epoch 15/15 loss 1.9295 acc 0.9933 0.2s
+fold 04 regime=ce_contrast done in 11.9s fit_acc=0.9998 win_acc=0.9570 sep_fit=0.315 sep_win=0.453 oof_n=2141
+fold 04 regime=ce_contrast_drift n_fit=6385 n_window=2301 known=2188 unknown=113
+  [ce_contrast_drift_f04] epoch 1/15 loss 5.3079 acc 0.0990 0.6s
+  [ce_contrast_drift_f04] epoch 5/15 loss 3.9164 acc 0.5654 0.5s
+  [ce_contrast_drift_f04] epoch 10/15 loss 2.8608 acc 0.8011 0.5s
+  [ce_contrast_drift_f04] epoch 15/15 loss 2.5811 acc 0.8556 0.5s
+  [ce_contrast_drift_oof_f04] epoch 1/15 loss 5.3131 acc 0.0786 0.3s
+  [ce_contrast_drift_oof_f04] epoch 5/15 loss 4.4595 acc 0.4271 0.3s
+  [ce_contrast_drift_oof_f04] epoch 10/15 loss 3.5255 acc 0.6925 0.3s
+  [ce_contrast_drift_oof_f04] epoch 15/15 loss 3.1954 acc 0.7806 0.3s
+fold 04 regime=ce_contrast_drift done in 13.7s fit_acc=0.9901 win_acc=0.9045 sep_fit=0.454 sep_win=0.596 oof_n=2141
+fold 04 regime=ce_contrast_drift_adv n_fit=6385 n_window=2301 known=2188 unknown=113
+  [ce_contrast_drift_adv_f04] epoch 1/15 loss 6.7957 acc 0.0847 2.0s
+  [ce_contrast_drift_adv_f04] epoch 5/15 loss 5.0558 acc 0.5424 1.9s
+  [ce_contrast_drift_adv_f04] epoch 10/15 loss 3.6647 acc 0.7751 1.9s
+  [ce_contrast_drift_adv_f04] epoch 15/15 loss 3.3452 acc 0.8288 2.0s
+  [ce_contrast_drift_adv_oof_f04] epoch 1/15 loss 6.7965 acc 0.0666 1.4s
+  [ce_contrast_drift_adv_oof_f04] epoch 5/15 loss 5.6141 acc 0.4484 1.3s
+  [ce_contrast_drift_adv_oof_f04] epoch 10/15 loss 4.3876 acc 0.7176 1.3s
+  [ce_contrast_drift_adv_oof_f04] epoch 15/15 loss 3.9976 acc 0.7835 1.3s
+fold 04 regime=ce_contrast_drift_adv done in 49.4s fit_acc=0.9890 win_acc=0.8935 sep_fit=0.465 sep_win=0.623 oof_n=2141
+fold 05 regime=ce_contrast n_fit=6431 n_window=2301 known=2200 unknown=101
+  [ce_contrast_f05] epoch 1/15 loss 4.8906 acc 0.2654 0.4s
+  [ce_contrast_f05] epoch 5/15 loss 2.6653 acc 0.9103 0.4s
+  [ce_contrast_f05] epoch 10/15 loss 1.7168 acc 0.9857 0.4s
+  [ce_contrast_f05] epoch 15/15 loss 1.5423 acc 0.9946 0.4s
+  [ce_contrast_oof_f05] epoch 1/15 loss 5.1462 acc 0.1287 0.3s
+  [ce_contrast_oof_f05] epoch 5/15 loss 3.2320 acc 0.8487 0.3s
+  [ce_contrast_oof_f05] epoch 10/15 loss 2.2738 acc 0.9748 0.2s
+  [ce_contrast_oof_f05] epoch 15/15 loss 2.0469 acc 0.9886 0.2s
+fold 05 regime=ce_contrast done in 10.1s fit_acc=0.9991 win_acc=0.9500 sep_fit=0.344 sep_win=0.490 oof_n=2148
+fold 05 regime=ce_contrast_drift n_fit=6431 n_window=2301 known=2200 unknown=101
+  [ce_contrast_drift_f05] epoch 1/15 loss 5.2671 acc 0.1096 0.5s
+  [ce_contrast_drift_f05] epoch 5/15 loss 4.1972 acc 0.4766 0.5s
+  [ce_contrast_drift_f05] epoch 10/15 loss 3.0557 acc 0.7781 0.5s
+  [ce_contrast_drift_f05] epoch 15/15 loss 2.7423 acc 0.8330 0.5s
+  [ce_contrast_drift_oof_f05] epoch 1/15 loss 5.3444 acc 0.0789 0.3s
+  [ce_contrast_drift_oof_f05] epoch 5/15 loss 4.6749 acc 0.3572 0.3s
+  [ce_contrast_drift_oof_f05] epoch 10/15 loss 3.7294 acc 0.6354 0.3s
+  [ce_contrast_drift_oof_f05] epoch 15/15 loss 3.4195 acc 0.7154 0.3s
+fold 05 regime=ce_contrast_drift done in 13.9s fit_acc=0.9874 win_acc=0.8932 sep_fit=0.492 sep_win=0.659 oof_n=2148
+fold 05 regime=ce_contrast_drift_adv n_fit=6431 n_window=2301 known=2200 unknown=101
+  [ce_contrast_drift_adv_f05] epoch 1/15 loss 6.7807 acc 0.0916 2.0s
+  [ce_contrast_drift_adv_f05] epoch 5/15 loss 5.4183 acc 0.4729 2.0s
+  [ce_contrast_drift_adv_f05] epoch 10/15 loss 4.1059 acc 0.7100 2.0s
+  [ce_contrast_drift_adv_f05] epoch 15/15 loss 3.7585 acc 0.7734 2.0s
+  [ce_contrast_drift_adv_oof_f05] epoch 1/15 loss 6.7977 acc 0.0789 1.3s
+  [ce_contrast_drift_adv_oof_f05] epoch 5/15 loss 5.6969 acc 0.4135 1.3s
+  [ce_contrast_drift_adv_oof_f05] epoch 10/15 loss 4.5959 acc 0.6739 1.3s
+  [ce_contrast_drift_adv_oof_f05] epoch 15/15 loss 4.2212 acc 0.7447 1.3s
+fold 05 regime=ce_contrast_drift_adv done in 49.9s fit_acc=0.9815 win_acc=0.8673 sep_fit=0.533 sep_win=0.709 oof_n=2148
+fold 06 regime=ce_contrast n_fit=6326 n_window=2301 known=2177 unknown=124
+  [ce_contrast_f06] epoch 1/15 loss 4.8964 acc 0.2316 0.4s
+  [ce_contrast_f06] epoch 5/15 loss 2.6521 acc 0.9037 0.3s
+  [ce_contrast_f06] epoch 10/15 loss 1.7375 acc 0.9853 0.4s
+  [ce_contrast_f06] epoch 15/15 loss 1.5570 acc 0.9956 0.4s
+  [ce_contrast_oof_f06] epoch 1/15 loss 4.9566 acc 0.1848 0.2s
+  [ce_contrast_oof_f06] epoch 5/15 loss 3.1182 acc 0.8735 0.2s
+  [ce_contrast_oof_f06] epoch 10/15 loss 2.1469 acc 0.9840 0.2s
+  [ce_contrast_oof_f06] epoch 15/15 loss 1.9479 acc 0.9927 0.2s
+fold 06 regime=ce_contrast done in 9.9s fit_acc=0.9992 win_acc=0.9531 sep_fit=0.344 sep_win=0.494 oof_n=2123
+fold 06 regime=ce_contrast_drift n_fit=6326 n_window=2301 known=2177 unknown=124
+  [ce_contrast_drift_f06] epoch 1/15 loss 5.3435 acc 0.0675 0.5s
+  [ce_contrast_drift_f06] epoch 5/15 loss 4.2626 acc 0.4717 0.5s
+  [ce_contrast_drift_f06] epoch 10/15 loss 3.2024 acc 0.7256 0.5s
+  [ce_contrast_drift_f06] epoch 15/15 loss 2.8910 acc 0.8078 0.5s
+  [ce_contrast_drift_oof_f06] epoch 1/15 loss 5.3096 acc 0.0851 0.3s
+  [ce_contrast_drift_oof_f06] epoch 5/15 loss 4.3655 acc 0.4894 0.3s
+  [ce_contrast_drift_oof_f06] epoch 10/15 loss 3.5062 acc 0.6979 0.3s
+  [ce_contrast_drift_oof_f06] epoch 15/15 loss 3.2109 acc 0.7821 0.3s
+fold 06 regime=ce_contrast_drift done in 13.7s fit_acc=0.9896 win_acc=0.8865 sep_fit=0.499 sep_win=0.655 oof_n=2123
+fold 06 regime=ce_contrast_drift_adv n_fit=6326 n_window=2301 known=2177 unknown=124
+  [ce_contrast_drift_adv_f06] epoch 1/15 loss 6.7781 acc 0.0800 2.0s
+  [ce_contrast_drift_adv_f06] epoch 5/15 loss 5.2329 acc 0.4894 1.9s
+  [ce_contrast_drift_adv_f06] epoch 10/15 loss 3.9178 acc 0.7502 2.0s
+  [ce_contrast_drift_adv_f06] epoch 15/15 loss 3.5324 acc 0.8150 1.9s
+  [ce_contrast_drift_adv_oof_f06] epoch 1/15 loss 6.8007 acc 0.0776 1.3s
+  [ce_contrast_drift_adv_oof_f06] epoch 5/15 loss 5.6809 acc 0.4514 1.3s
+  [ce_contrast_drift_adv_oof_f06] epoch 10/15 loss 4.5336 acc 0.6768 1.3s
+  [ce_contrast_drift_adv_oof_f06] epoch 15/15 loss 4.1288 acc 0.7525 1.3s
+fold 06 regime=ce_contrast_drift_adv done in 49.3s fit_acc=0.9864 win_acc=0.8741 sep_fit=0.506 sep_win=0.679 oof_n=2123
+fold 07 regime=ce_contrast n_fit=6351 n_window=2301 known=2177 unknown=124
+  [ce_contrast_f07] epoch 1/15 loss 4.9468 acc 0.2015 0.4s
+  [ce_contrast_f07] epoch 5/15 loss 2.6067 acc 0.9285 0.4s
+  [ce_contrast_f07] epoch 10/15 loss 1.6866 acc 0.9868 0.4s
+  [ce_contrast_f07] epoch 15/15 loss 1.5116 acc 0.9964 0.4s
+  [ce_contrast_oof_f07] epoch 1/15 loss 4.9491 acc 0.1715 0.3s
+  [ce_contrast_oof_f07] epoch 5/15 loss 3.1055 acc 0.8649 0.2s
+  [ce_contrast_oof_f07] epoch 10/15 loss 2.1572 acc 0.9776 0.2s
+  [ce_contrast_oof_f07] epoch 15/15 loss 1.9359 acc 0.9949 0.2s
+fold 07 regime=ce_contrast done in 9.9s fit_acc=0.9986 win_acc=0.9522 sep_fit=0.332 sep_win=0.473 oof_n=2137
+fold 07 regime=ce_contrast_drift n_fit=6351 n_window=2301 known=2177 unknown=124
+  [ce_contrast_drift_f07] epoch 1/15 loss 5.3234 acc 0.0721 0.5s
+  [ce_contrast_drift_f07] epoch 5/15 loss 4.1608 acc 0.5237 0.5s
+  [ce_contrast_drift_f07] epoch 10/15 loss 3.0229 acc 0.7690 0.5s
+  [ce_contrast_drift_f07] epoch 15/15 loss 2.7177 acc 0.8377 0.5s
+  [ce_contrast_drift_oof_f07] epoch 1/15 loss 5.3245 acc 0.0784 0.3s
+  [ce_contrast_drift_oof_f07] epoch 5/15 loss 4.3038 acc 0.5324 0.3s
+  [ce_contrast_drift_oof_f07] epoch 10/15 loss 3.4071 acc 0.7298 0.3s
+  [ce_contrast_drift_oof_f07] epoch 15/15 loss 3.0977 acc 0.8014 0.3s
+fold 07 regime=ce_contrast_drift done in 13.8s fit_acc=0.9896 win_acc=0.8769 sep_fit=0.469 sep_win=0.640 oof_n=2137
+fold 07 regime=ce_contrast_drift_adv n_fit=6351 n_window=2301 known=2177 unknown=124
+  [ce_contrast_drift_adv_f07] epoch 1/15 loss 6.7977 acc 0.0672 1.9s
+  [ce_contrast_drift_adv_f07] epoch 5/15 loss 5.1508 acc 0.5291 2.0s
+  [ce_contrast_drift_adv_f07] epoch 10/15 loss 3.8470 acc 0.7626 1.9s
+  [ce_contrast_drift_adv_f07] epoch 15/15 loss 3.4973 acc 0.8227 2.0s
+  [ce_contrast_drift_adv_oof_f07] epoch 1/15 loss 6.8112 acc 0.0577 1.3s
+  [ce_contrast_drift_adv_oof_f07] epoch 5/15 loss 5.6290 acc 0.4743 1.3s
+  [ce_contrast_drift_adv_oof_f07] epoch 10/15 loss 4.4261 acc 0.7242 1.6s
+  [ce_contrast_drift_adv_oof_f07] epoch 15/15 loss 4.0310 acc 0.7795 1.3s
+fold 07 regime=ce_contrast_drift_adv done in 50.1s fit_acc=0.9883 win_acc=0.8769 sep_fit=0.491 sep_win=0.667 oof_n=2137
+fold 08 regime=ce_contrast n_fit=6404 n_window=2301 known=2197 unknown=104
+  [ce_contrast_f08] epoch 1/15 loss 4.8745 acc 0.2428 0.4s
+  [ce_contrast_f08] epoch 5/15 loss 2.6580 acc 0.9166 0.4s
+  [ce_contrast_f08] epoch 10/15 loss 1.7284 acc 0.9864 0.4s
+  [ce_contrast_f08] epoch 15/15 loss 1.5609 acc 0.9938 0.4s
+  [ce_contrast_oof_f08] epoch 1/15 loss 4.9644 acc 0.1789 0.3s
+  [ce_contrast_oof_f08] epoch 5/15 loss 3.0525 acc 0.8832 0.2s
+  [ce_contrast_oof_f08] epoch 10/15 loss 2.1392 acc 0.9861 0.2s
+  [ce_contrast_oof_f08] epoch 15/15 loss 1.9441 acc 0.9943 0.2s
+fold 08 regime=ce_contrast done in 10.0s fit_acc=0.9983 win_acc=0.9549 sep_fit=0.334 sep_win=0.475 oof_n=2148
+fold 08 regime=ce_contrast_drift n_fit=6404 n_window=2301 known=2197 unknown=104
+  [ce_contrast_drift_f08] epoch 1/15 loss 5.2757 acc 0.0991 0.5s
+  [ce_contrast_drift_f08] epoch 5/15 loss 3.8743 acc 0.5675 0.5s
+  [ce_contrast_drift_f08] epoch 10/15 loss 2.8556 acc 0.8048 0.5s
+  [ce_contrast_drift_f08] epoch 15/15 loss 2.5633 acc 0.8602 0.5s
+  [ce_contrast_drift_oof_f08] epoch 1/15 loss 5.2848 acc 0.0934 0.3s
+  [ce_contrast_drift_oof_f08] epoch 5/15 loss 4.1837 acc 0.5149 0.3s
+  [ce_contrast_drift_oof_f08] epoch 10/15 loss 3.3162 acc 0.7370 0.3s
+  [ce_contrast_drift_oof_f08] epoch 15/15 loss 3.0176 acc 0.8135 0.4s
+fold 08 regime=ce_contrast_drift done in 13.8s fit_acc=0.9925 win_acc=0.8953 sep_fit=0.457 sep_win=0.604 oof_n=2148
+fold 08 regime=ce_contrast_drift_adv n_fit=6404 n_window=2301 known=2197 unknown=104
+  [ce_contrast_drift_adv_f08] epoch 1/15 loss 6.7936 acc 0.0862 1.9s
+  [ce_contrast_drift_adv_f08] epoch 5/15 loss 5.1012 acc 0.5475 1.9s
+  [ce_contrast_drift_adv_f08] epoch 10/15 loss 3.6949 acc 0.7775 1.9s
+  [ce_contrast_drift_adv_f08] epoch 15/15 loss 3.3295 acc 0.8320 2.0s
+  [ce_contrast_drift_adv_oof_f08] epoch 1/15 loss 6.7856 acc 0.0726 1.4s
+  [ce_contrast_drift_adv_oof_f08] epoch 5/15 loss 5.5329 acc 0.4777 1.3s
+  [ce_contrast_drift_adv_oof_f08] epoch 10/15 loss 4.3418 acc 0.7239 1.3s
+  [ce_contrast_drift_adv_oof_f08] epoch 15/15 loss 3.9645 acc 0.7934 1.3s
+fold 08 regime=ce_contrast_drift_adv done in 49.2s fit_acc=0.9895 win_acc=0.8939 sep_fit=0.462 sep_win=0.621 oof_n=2148
+timing: 15 fold/regime trainings in 6.1 min (24.6s per fold/regime, 2 encoders each)
+SMOKE: projected 20-fold training = 24.6 min
+
+=== run start 2026-11-17 12:21:02 folds=14 smoke=True ===
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121 cuda=12.1 amp=True
+rows=11304 fit=6695 window=2301 fit blocks=[2173, 2203, 2246, 73, 0]
+raw cache train: (11304, 18, 1200) float32
+train raw on GPU: (11304, 18, 1200) torch.float32 (931 MB)
+anchor check A*=0.804985 LOSO=0.900043 S1=0.963732 S2=0.304298 sepAUC=0.791840 (expect 0.304298/0.791840)
+fold 09 regime=ce_contrast n_fit=6347 n_window=2301 known=2185 unknown=116
+  [ce_contrast_f09] epoch 1/15 loss 4.8350 acc 0.2730 1.0s
+  [ce_contrast_f09] epoch 5/15 loss 2.5723 acc 0.9252 0.4s
+  [ce_contrast_f09] epoch 10/15 loss 1.6881 acc 0.9898 0.4s
+  [ce_contrast_f09] epoch 15/15 loss 1.5217 acc 0.9967 0.4s
+  [ce_contrast_oof_f09] epoch 1/15 loss 4.9457 acc 0.2122 0.3s
+  [ce_contrast_oof_f09] epoch 5/15 loss 3.0177 acc 0.8923 0.2s
+  [ce_contrast_oof_f09] epoch 10/15 loss 2.1163 acc 0.9839 0.2s
+  [ce_contrast_oof_f09] epoch 15/15 loss 1.8993 acc 0.9940 0.2s
+fold 09 regime=ce_contrast done in 12.0s fit_acc=0.9995 win_acc=0.9515 sep_fit=0.326 sep_win=0.478 oof_n=2126
+fold 09 regime=ce_contrast_drift n_fit=6347 n_window=2301 known=2185 unknown=116
+  [ce_contrast_drift_f09] epoch 1/15 loss 5.2724 acc 0.1155 0.6s
+  [ce_contrast_drift_f09] epoch 5/15 loss 3.9823 acc 0.5269 0.5s
+  [ce_contrast_drift_f09] epoch 10/15 loss 2.9094 acc 0.7938 0.5s
+  [ce_contrast_drift_f09] epoch 15/15 loss 2.6126 acc 0.8447 0.5s
+  [ce_contrast_drift_oof_f09] epoch 1/15 loss 5.3043 acc 0.0896 0.4s
+  [ce_contrast_drift_oof_f09] epoch 5/15 loss 4.3281 acc 0.4777 0.3s
+  [ce_contrast_drift_oof_f09] epoch 10/15 loss 3.4015 acc 0.7201 0.4s
+  [ce_contrast_drift_oof_f09] epoch 15/15 loss 3.1480 acc 0.7897 0.3s
+fold 09 regime=ce_contrast_drift done in 14.0s fit_acc=0.9885 win_acc=0.9007 sep_fit=0.466 sep_win=0.621 oof_n=2126
+fold 09 regime=ce_contrast_drift_adv n_fit=6347 n_window=2301 known=2185 unknown=116
+  [ce_contrast_drift_adv_f09] epoch 1/15 loss 6.7867 acc 0.0909 2.3s
+  [ce_contrast_drift_adv_f09] epoch 5/15 loss 4.9781 acc 0.5582 2.1s
+  [ce_contrast_drift_adv_f09] epoch 10/15 loss 3.6528 acc 0.7900 2.1s
+  [ce_contrast_drift_adv_f09] epoch 15/15 loss 3.3105 acc 0.8407 2.1s
+  [ce_contrast_drift_adv_oof_f09] epoch 1/15 loss 6.8204 acc 0.0691 1.5s
+  [ce_contrast_drift_adv_oof_f09] epoch 5/15 loss 5.9038 acc 0.3568 1.4s
+  [ce_contrast_drift_adv_oof_f09] epoch 10/15 loss 4.6260 acc 0.6591 1.4s
+  [ce_contrast_drift_adv_oof_f09] epoch 15/15 loss 4.1999 acc 0.7422 1.4s
+fold 09 regime=ce_contrast_drift_adv done in 54.0s fit_acc=0.9899 win_acc=0.8984 sep_fit=0.464 sep_win=0.614 oof_n=2126
+fold 10 regime=ce_contrast n_fit=6399 n_window=2301 known=2194 unknown=107
+  [ce_contrast_f10] epoch 1/15 loss 4.8231 acc 0.2772 0.5s
+  [ce_contrast_f10] epoch 5/15 loss 2.4496 acc 0.9495 0.4s
+  [ce_contrast_f10] epoch 10/15 loss 1.5972 acc 0.9931 0.4s
+  [ce_contrast_f10] epoch 15/15 loss 1.4443 acc 0.9980 0.4s
+  [ce_contrast_oof_f10] epoch 1/15 loss 4.9434 acc 0.1622 0.3s
+  [ce_contrast_oof_f10] epoch 5/15 loss 2.9852 acc 0.9184 0.2s
+  [ce_contrast_oof_f10] epoch 10/15 loss 2.1122 acc 0.9847 0.2s
+  [ce_contrast_oof_f10] epoch 15/15 loss 1.9174 acc 0.9952 0.2s
+fold 10 regime=ce_contrast done in 10.1s fit_acc=0.9998 win_acc=0.9676 sep_fit=0.312 sep_win=0.446 oof_n=2149
+fold 10 regime=ce_contrast_drift n_fit=6399 n_window=2301 known=2194 unknown=107
+  [ce_contrast_drift_f10] epoch 1/15 loss 5.3181 acc 0.0847 0.5s
+  [ce_contrast_drift_f10] epoch 5/15 loss 4.0461 acc 0.5349 0.5s
+  [ce_contrast_drift_f10] epoch 10/15 loss 2.9381 acc 0.7911 0.5s
+  [ce_contrast_drift_f10] epoch 15/15 loss 2.6809 acc 0.8444 0.5s
+  [ce_contrast_drift_oof_f10] epoch 1/15 loss 5.3470 acc 0.0581 0.4s
+  [ce_contrast_drift_oof_f10] epoch 5/15 loss 4.5358 acc 0.3870 0.4s
+  [ce_contrast_drift_oof_f10] epoch 10/15 loss 3.5697 acc 0.6900 0.4s
+  [ce_contrast_drift_oof_f10] epoch 15/15 loss 3.2697 acc 0.7795 0.4s
+fold 10 regime=ce_contrast_drift done in 14.1s fit_acc=0.9922 win_acc=0.9015 sep_fit=0.465 sep_win=0.607 oof_n=2149
+fold 10 regime=ce_contrast_drift_adv n_fit=6399 n_window=2301 known=2194 unknown=107
+  [ce_contrast_drift_adv_f10] epoch 1/15 loss 6.7501 acc 0.1052 2.1s
+  [ce_contrast_drift_adv_f10] epoch 5/15 loss 4.9860 acc 0.5668 2.1s
+  [ce_contrast_drift_adv_f10] epoch 10/15 loss 3.5981 acc 0.8072 2.1s
+  [ce_contrast_drift_adv_f10] epoch 15/15 loss 3.2096 acc 0.8597 2.1s
+  [ce_contrast_drift_adv_oof_f10] epoch 1/15 loss 6.7823 acc 0.0715 1.5s
+  [ce_contrast_drift_adv_oof_f10] epoch 5/15 loss 5.5111 acc 0.5224 1.4s
+  [ce_contrast_drift_adv_oof_f10] epoch 10/15 loss 4.3253 acc 0.7252 1.4s
+  [ce_contrast_drift_adv_oof_f10] epoch 15/15 loss 3.9542 acc 0.7969 1.4s
+fold 10 regime=ce_contrast_drift_adv done in 53.9s fit_acc=0.9925 win_acc=0.9180 sep_fit=0.460 sep_win=0.610 oof_n=2149
+fold 11 regime=ce_contrast n_fit=6342 n_window=2301 known=2180 unknown=121
+  [ce_contrast_f11] epoch 1/15 loss 4.8355 acc 0.2576 0.4s
+  [ce_contrast_f11] epoch 5/15 loss 2.5959 acc 0.9204 0.4s
+  [ce_contrast_f11] epoch 10/15 loss 1.6895 acc 0.9880 0.4s
+  [ce_contrast_f11] epoch 15/15 loss 1.5154 acc 0.9959 0.4s
+  [ce_contrast_oof_f11] epoch 1/15 loss 5.0005 acc 0.1471 0.3s
+  [ce_contrast_oof_f11] epoch 5/15 loss 3.0267 acc 0.9069 0.2s
+  [ce_contrast_oof_f11] epoch 10/15 loss 2.1171 acc 0.9877 0.2s
+  [ce_contrast_oof_f11] epoch 15/15 loss 1.9018 acc 0.9964 0.2s
+fold 11 regime=ce_contrast done in 10.1s fit_acc=0.9998 win_acc=0.9495 sep_fit=0.325 sep_win=0.476 oof_n=2126
+fold 11 regime=ce_contrast_drift n_fit=6342 n_window=2301 known=2180 unknown=121
+  [ce_contrast_drift_f11] epoch 1/15 loss 5.2836 acc 0.1082 0.5s
+  [ce_contrast_drift_f11] epoch 5/15 loss 3.9915 acc 0.5539 0.5s
+  [ce_contrast_drift_f11] epoch 10/15 loss 2.9373 acc 0.7936 0.5s
+  [ce_contrast_drift_f11] epoch 15/15 loss 2.6580 acc 0.8480 0.5s
+  [ce_contrast_drift_oof_f11] epoch 1/15 loss 5.2655 acc 0.0984 0.4s
+  [ce_contrast_drift_oof_f11] epoch 5/15 loss 4.1743 acc 0.5459 0.3s
+  [ce_contrast_drift_oof_f11] epoch 10/15 loss 3.3036 acc 0.7584 0.4s
+  [ce_contrast_drift_oof_f11] epoch 15/15 loss 3.0070 acc 0.8141 0.4s
+fold 11 regime=ce_contrast_drift done in 14.1s fit_acc=0.9913 win_acc=0.8876 sep_fit=0.465 sep_win=0.625 oof_n=2126
+fold 11 regime=ce_contrast_drift_adv n_fit=6342 n_window=2301 known=2180 unknown=121
+  [ce_contrast_drift_adv_f11] epoch 1/15 loss 6.7227 acc 0.0807 2.2s
+  [ce_contrast_drift_adv_f11] epoch 5/15 loss 5.0631 acc 0.5442 2.1s
+  [ce_contrast_drift_adv_f11] epoch 10/15 loss 3.7092 acc 0.7906 2.1s
+  [ce_contrast_drift_adv_f11] epoch 15/15 loss 3.3203 acc 0.8477 2.1s
+  [ce_contrast_drift_adv_oof_f11] epoch 1/15 loss 6.8168 acc 0.0649 1.5s
+  [ce_contrast_drift_adv_oof_f11] epoch 5/15 loss 5.7924 acc 0.3742 1.4s
+  [ce_contrast_drift_adv_oof_f11] epoch 10/15 loss 4.6190 acc 0.6501 1.4s
+  [ce_contrast_drift_adv_oof_f11] epoch 15/15 loss 4.2414 acc 0.7352 1.4s
+fold 11 regime=ce_contrast_drift_adv done in 54.0s fit_acc=0.9912 win_acc=0.8812 sep_fit=0.478 sep_win=0.652 oof_n=2126
+fold 12 regime=ce_contrast n_fit=6345 n_window=2301 known=2179 unknown=122
+  [ce_contrast_f12] epoch 1/15 loss 5.1164 acc 0.1373 0.4s
+  [ce_contrast_f12] epoch 5/15 loss 2.9143 acc 0.8640 0.4s
+  [ce_contrast_f12] epoch 10/15 loss 1.8491 acc 0.9792 0.4s
+  [ce_contrast_f12] epoch 15/15 loss 1.6458 acc 0.9918 0.4s
+  [ce_contrast_oof_f12] epoch 1/15 loss 4.9704 acc 0.1702 0.3s
+  [ce_contrast_oof_f12] epoch 5/15 loss 3.0235 acc 0.9061 0.2s
+  [ce_contrast_oof_f12] epoch 10/15 loss 2.0907 acc 0.9877 0.2s
+  [ce_contrast_oof_f12] epoch 15/15 loss 1.8864 acc 0.9947 0.2s
+fold 12 regime=ce_contrast done in 10.3s fit_acc=0.9989 win_acc=0.9436 sep_fit=0.351 sep_win=0.497 oof_n=2123
+fold 12 regime=ce_contrast_drift n_fit=6345 n_window=2301 known=2179 unknown=122
+  [ce_contrast_drift_f12] epoch 1/15 loss 5.3110 acc 0.0824 0.6s
+  [ce_contrast_drift_f12] epoch 5/15 loss 4.0523 acc 0.5447 0.5s
+  [ce_contrast_drift_f12] epoch 10/15 loss 3.0332 acc 0.7642 0.5s
+  [ce_contrast_drift_f12] epoch 15/15 loss 2.7364 acc 0.8322 0.5s
+  [ce_contrast_drift_oof_f12] epoch 1/15 loss 5.3175 acc 0.0592 0.4s
+  [ce_contrast_drift_oof_f12] epoch 5/15 loss 4.5227 acc 0.3523 0.4s
+  [ce_contrast_drift_oof_f12] epoch 10/15 loss 3.5738 acc 0.6814 0.3s
+  [ce_contrast_drift_oof_f12] epoch 15/15 loss 3.2804 acc 0.7585 0.4s
+fold 12 regime=ce_contrast_drift done in 14.1s fit_acc=0.9891 win_acc=0.8871 sep_fit=0.476 sep_win=0.625 oof_n=2123
+fold 12 regime=ce_contrast_drift_adv n_fit=6345 n_window=2301 known=2179 unknown=122
+  [ce_contrast_drift_adv_f12] epoch 1/15 loss 6.7338 acc 0.0988 2.1s
+  [ce_contrast_drift_adv_f12] epoch 5/15 loss 5.0643 acc 0.5658 2.1s
+  [ce_contrast_drift_adv_f12] epoch 10/15 loss 3.7481 acc 0.7863 2.1s
+  [ce_contrast_drift_adv_f12] epoch 15/15 loss 3.3719 acc 0.8424 2.1s
+  [ce_contrast_drift_adv_oof_f12] epoch 1/15 loss 6.7820 acc 0.0860 1.4s
+  [ce_contrast_drift_adv_oof_f12] epoch 5/15 loss 5.6821 acc 0.4626 1.4s
+  [ce_contrast_drift_adv_oof_f12] epoch 10/15 loss 4.4899 acc 0.6937 1.4s
+  [ce_contrast_drift_adv_oof_f12] epoch 15/15 loss 4.1124 acc 0.7626 1.4s
+fold 12 regime=ce_contrast_drift_adv done in 53.9s fit_acc=0.9894 win_acc=0.9004 sep_fit=0.473 sep_win=0.623 oof_n=2123
+fold 13 regime=ce_contrast n_fit=6323 n_window=2301 known=2178 unknown=123
+  [ce_contrast_f13] epoch 1/15 loss 4.8692 acc 0.2349 0.4s
+  [ce_contrast_f13] epoch 5/15 loss 2.6349 acc 0.9106 0.4s
+  [ce_contrast_f13] epoch 10/15 loss 1.7060 acc 0.9883 0.4s
+  [ce_contrast_f13] epoch 15/15 loss 1.5272 acc 0.9962 0.4s
+  [ce_contrast_oof_f13] epoch 1/15 loss 4.9193 acc 0.1779 0.3s
+  [ce_contrast_oof_f13] epoch 5/15 loss 3.0340 acc 0.8802 0.2s
+  [ce_contrast_oof_f13] epoch 10/15 loss 2.1359 acc 0.9855 0.2s
+  [ce_contrast_oof_f13] epoch 15/15 loss 1.9378 acc 0.9944 0.2s
+fold 13 regime=ce_contrast done in 10.0s fit_acc=0.9997 win_acc=0.9444 sep_fit=0.327 sep_win=0.468 oof_n=2122
+fold 13 regime=ce_contrast_drift n_fit=6323 n_window=2301 known=2178 unknown=123
+  [ce_contrast_drift_f13] epoch 1/15 loss 5.2973 acc 0.0927 0.5s
+  [ce_contrast_drift_f13] epoch 5/15 loss 3.9224 acc 0.5773 0.5s
+  [ce_contrast_drift_f13] epoch 10/15 loss 2.9099 acc 0.7889 0.5s
+  [ce_contrast_drift_f13] epoch 15/15 loss 2.6229 acc 0.8486 0.5s
+  [ce_contrast_drift_oof_f13] epoch 1/15 loss 5.3385 acc 0.0845 0.4s
+  [ce_contrast_drift_oof_f13] epoch 5/15 loss 4.3879 acc 0.4806 0.3s
+  [ce_contrast_drift_oof_f13] epoch 10/15 loss 3.5097 acc 0.6931 0.4s
+  [ce_contrast_drift_oof_f13] epoch 15/15 loss 3.2322 acc 0.7698 0.4s
+fold 13 regime=ce_contrast_drift done in 14.1s fit_acc=0.9911 win_acc=0.9091 sep_fit=0.460 sep_win=0.606 oof_n=2122
+fold 13 regime=ce_contrast_drift_adv n_fit=6323 n_window=2301 known=2178 unknown=123
+  [ce_contrast_drift_adv_f13] epoch 1/15 loss 6.7986 acc 0.0742 2.2s
+  [ce_contrast_drift_adv_f13] epoch 5/15 loss 5.2062 acc 0.5311 2.2s
+  [ce_contrast_drift_adv_f13] epoch 10/15 loss 3.8215 acc 0.7829 2.1s
+  [ce_contrast_drift_adv_f13] epoch 15/15 loss 3.4709 acc 0.8279 2.1s
+  [ce_contrast_drift_adv_oof_f13] epoch 1/15 loss 6.7802 acc 0.0765 1.4s
+  [ce_contrast_drift_adv_oof_f13] epoch 5/15 loss 5.6359 acc 0.4722 1.4s
+  [ce_contrast_drift_adv_oof_f13] epoch 10/15 loss 4.4430 acc 0.6958 1.4s
+  [ce_contrast_drift_adv_oof_f13] epoch 15/15 loss 4.0775 acc 0.7672 1.4s
+fold 13 regime=ce_contrast_drift_adv done in 53.9s fit_acc=0.9888 win_acc=0.8916 sep_fit=0.479 sep_win=0.646 oof_n=2122
+fold 14 regime=ce_contrast n_fit=6350 n_window=2301 known=2180 unknown=121
+  [ce_contrast_f14] epoch 1/15 loss 4.7964 acc 0.3115 0.5s
+  [ce_contrast_f14] epoch 5/15 loss 2.5648 acc 0.9318 0.4s
+  [ce_contrast_f14] epoch 10/15 loss 1.6726 acc 0.9890 0.4s
+  [ce_contrast_f14] epoch 15/15 loss 1.4952 acc 0.9972 0.4s
+  [ce_contrast_oof_f14] epoch 1/15 loss 4.9827 acc 0.1750 0.3s
+  [ce_contrast_oof_f14] epoch 5/15 loss 3.0528 acc 0.8696 0.2s
+  [ce_contrast_oof_f14] epoch 10/15 loss 2.1429 acc 0.9800 0.2s
+  [ce_contrast_oof_f14] epoch 15/15 loss 1.9422 acc 0.9921 0.2s
+fold 14 regime=ce_contrast done in 10.1s fit_acc=0.9998 win_acc=0.9573 sep_fit=0.319 sep_win=0.456 oof_n=2126
+fold 14 regime=ce_contrast_drift n_fit=6350 n_window=2301 known=2180 unknown=121
+  [ce_contrast_drift_f14] epoch 1/15 loss 5.3016 acc 0.0849 0.5s
+  [ce_contrast_drift_f14] epoch 5/15 loss 4.0762 acc 0.5186 0.6s
+  [ce_contrast_drift_f14] epoch 10/15 loss 3.0243 acc 0.7721 0.5s
+  [ce_contrast_drift_f14] epoch 15/15 loss 2.7177 acc 0.8367 0.5s
+  [ce_contrast_drift_oof_f14] epoch 1/15 loss 5.3362 acc 0.0669 0.4s
+  [ce_contrast_drift_oof_f14] epoch 5/15 loss 4.4504 acc 0.4448 0.4s
+  [ce_contrast_drift_oof_f14] epoch 10/15 loss 3.5104 acc 0.6919 0.4s
+  [ce_contrast_drift_oof_f14] epoch 15/15 loss 3.2150 acc 0.7673 0.4s
+fold 14 regime=ce_contrast_drift done in 14.3s fit_acc=0.9869 win_acc=0.8794 sep_fit=0.469 sep_win=0.644 oof_n=2126
+fold 14 regime=ce_contrast_drift_adv n_fit=6350 n_window=2301 known=2180 unknown=121
+  [ce_contrast_drift_adv_f14] epoch 1/15 loss 6.7781 acc 0.0847 2.2s
+  [ce_contrast_drift_adv_f14] epoch 5/15 loss 5.1795 acc 0.5332 2.1s
+  [ce_contrast_drift_adv_f14] epoch 10/15 loss 3.7054 acc 0.7828 2.1s
+  [ce_contrast_drift_adv_f14] epoch 15/15 loss 3.3145 acc 0.8417 2.1s
+  [ce_contrast_drift_adv_oof_f14] epoch 1/15 loss 6.7886 acc 0.0840 1.5s
+  [ce_contrast_drift_adv_oof_f14] epoch 5/15 loss 5.6306 acc 0.4691 1.4s
+  [ce_contrast_drift_adv_oof_f14] epoch 10/15 loss 4.3953 acc 0.6992 1.4s
+  [ce_contrast_drift_adv_oof_f14] epoch 15/15 loss 3.9937 acc 0.7757 1.4s
+fold 14 regime=ce_contrast_drift_adv done in 53.9s fit_acc=0.9902 win_acc=0.8986 sep_fit=0.475 sep_win=0.627 oof_n=2126
+timing: 18 fold/regime trainings in 7.8 min (26.2s per fold/regime, 2 encoders each)
+SMOKE: projected 20-fold training = 26.2 min
+
+=== run start 2026-11-17 12:29:01 folds=20 smoke=True ===
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121 cuda=12.1 amp=True
+rows=11304 fit=6695 window=2301 fit blocks=[2173, 2203, 2246, 73, 0]
+raw cache train: (11304, 18, 1200) float32
+train raw on GPU: (11304, 18, 1200) torch.float32 (931 MB)
+anchor check A*=0.804985 LOSO=0.900043 S1=0.963732 S2=0.304298 sepAUC=0.791840 (expect 0.304298/0.791840)
+fold 15 regime=ce_contrast n_fit=6381 n_window=2301 known=2191 unknown=110
+  [ce_contrast_f15] epoch 1/15 loss 4.8790 acc 0.2567 0.9s
+  [ce_contrast_f15] epoch 5/15 loss 2.6030 acc 0.9213 0.4s
+  [ce_contrast_f15] epoch 10/15 loss 1.6911 acc 0.9870 0.4s
+  [ce_contrast_f15] epoch 15/15 loss 1.5166 acc 0.9958 0.3s
+  [ce_contrast_oof_f15] epoch 1/15 loss 4.8974 acc 0.2088 0.3s
+  [ce_contrast_oof_f15] epoch 5/15 loss 2.9877 acc 0.9058 0.2s
+  [ce_contrast_oof_f15] epoch 10/15 loss 2.0952 acc 0.9870 0.2s
+  [ce_contrast_oof_f15] epoch 15/15 loss 1.8990 acc 0.9945 0.2s
+fold 15 regime=ce_contrast done in 11.8s fit_acc=0.9989 win_acc=0.9525 sep_fit=0.333 sep_win=0.473 oof_n=2150
+fold 15 regime=ce_contrast_drift n_fit=6381 n_window=2301 known=2191 unknown=110
+  [ce_contrast_drift_f15] epoch 1/15 loss 5.3199 acc 0.0887 0.6s
+  [ce_contrast_drift_f15] epoch 5/15 loss 4.0725 acc 0.5206 0.5s
+  [ce_contrast_drift_f15] epoch 10/15 loss 3.0075 acc 0.7710 0.5s
+  [ce_contrast_drift_f15] epoch 15/15 loss 2.6575 acc 0.8477 0.5s
+  [ce_contrast_drift_oof_f15] epoch 1/15 loss 5.3228 acc 0.0860 0.3s
+  [ce_contrast_drift_oof_f15] epoch 5/15 loss 4.3108 acc 0.5094 0.3s
+  [ce_contrast_drift_oof_f15] epoch 10/15 loss 3.3147 acc 0.7463 0.3s
+  [ce_contrast_drift_oof_f15] epoch 15/15 loss 3.0053 acc 0.8123 0.3s
+fold 15 regime=ce_contrast_drift done in 13.7s fit_acc=0.9875 win_acc=0.8959 sep_fit=0.466 sep_win=0.623 oof_n=2150
+fold 15 regime=ce_contrast_drift_adv n_fit=6381 n_window=2301 known=2191 unknown=110
+  [ce_contrast_drift_adv_f15] epoch 1/15 loss 6.7806 acc 0.0838 2.1s
+  [ce_contrast_drift_adv_f15] epoch 5/15 loss 5.0813 acc 0.5535 2.0s
+  [ce_contrast_drift_adv_f15] epoch 10/15 loss 3.7191 acc 0.7765 2.0s
+  [ce_contrast_drift_adv_f15] epoch 15/15 loss 3.3692 acc 0.8286 2.0s
+  [ce_contrast_drift_adv_oof_f15] epoch 1/15 loss 6.7244 acc 0.1045 1.3s
+  [ce_contrast_drift_adv_oof_f15] epoch 5/15 loss 5.4521 acc 0.4964 1.3s
+  [ce_contrast_drift_adv_oof_f15] epoch 10/15 loss 4.3298 acc 0.7100 1.3s
+  [ce_contrast_drift_adv_oof_f15] epoch 15/15 loss 3.9405 acc 0.7705 1.3s
+fold 15 regime=ce_contrast_drift_adv done in 49.7s fit_acc=0.9890 win_acc=0.8791 sep_fit=0.473 sep_win=0.645 oof_n=2150
+fold 16 regime=ce_contrast n_fit=6348 n_window=2301 known=2182 unknown=119
+  [ce_contrast_f16] epoch 1/15 loss 4.9130 acc 0.2065 0.4s
+  [ce_contrast_f16] epoch 5/15 loss 2.5610 acc 0.9301 0.4s
+  [ce_contrast_f16] epoch 10/15 loss 1.6690 acc 0.9882 0.4s
+  [ce_contrast_f16] epoch 15/15 loss 1.4985 acc 0.9951 0.3s
+  [ce_contrast_oof_f16] epoch 1/15 loss 5.0060 acc 0.1409 0.3s
+  [ce_contrast_oof_f16] epoch 5/15 loss 3.0813 acc 0.8911 0.2s
+  [ce_contrast_oof_f16] epoch 10/15 loss 2.1387 acc 0.9855 0.2s
+  [ce_contrast_oof_f16] epoch 15/15 loss 1.9410 acc 0.9933 0.2s
+fold 16 regime=ce_contrast done in 9.9s fit_acc=0.9995 win_acc=0.9560 sep_fit=0.322 sep_win=0.457 oof_n=2128
+fold 16 regime=ce_contrast_drift n_fit=6348 n_window=2301 known=2182 unknown=119
+  [ce_contrast_drift_f16] epoch 1/15 loss 5.3109 acc 0.0788 0.5s
+  [ce_contrast_drift_f16] epoch 5/15 loss 3.9532 acc 0.5703 0.5s
+  [ce_contrast_drift_f16] epoch 10/15 loss 2.8995 acc 0.8040 0.5s
+  [ce_contrast_drift_f16] epoch 15/15 loss 2.6010 acc 0.8535 0.5s
+  [ce_contrast_drift_oof_f16] epoch 1/15 loss 5.3430 acc 0.0612 0.4s
+  [ce_contrast_drift_oof_f16] epoch 5/15 loss 4.4975 acc 0.3968 0.3s
+  [ce_contrast_drift_oof_f16] epoch 10/15 loss 3.5679 acc 0.6728 0.4s
+  [ce_contrast_drift_oof_f16] epoch 15/15 loss 3.3018 acc 0.7480 0.3s
+fold 16 regime=ce_contrast_drift done in 13.9s fit_acc=0.9902 win_acc=0.9070 sep_fit=0.457 sep_win=0.604 oof_n=2128
+fold 16 regime=ce_contrast_drift_adv n_fit=6348 n_window=2301 known=2182 unknown=119
+  [ce_contrast_drift_adv_f16] epoch 1/15 loss 6.7577 acc 0.0854 2.1s
+  [ce_contrast_drift_adv_f16] epoch 5/15 loss 5.1589 acc 0.5244 1.9s
+  [ce_contrast_drift_adv_f16] epoch 10/15 loss 3.8243 acc 0.7645 2.0s
+  [ce_contrast_drift_adv_f16] epoch 15/15 loss 3.4661 acc 0.8256 1.9s
+  [ce_contrast_drift_adv_oof_f16] epoch 1/15 loss 6.7777 acc 0.0846 1.3s
+  [ce_contrast_drift_adv_oof_f16] epoch 5/15 loss 5.5710 acc 0.4471 1.3s
+  [ce_contrast_drift_adv_oof_f16] epoch 10/15 loss 4.3573 acc 0.7046 1.3s
+  [ce_contrast_drift_adv_oof_f16] epoch 15/15 loss 3.9712 acc 0.7894 1.3s
+fold 16 regime=ce_contrast_drift_adv done in 49.5s fit_acc=0.9876 win_acc=0.8818 sep_fit=0.491 sep_win=0.662 oof_n=2128
+fold 17 regime=ce_contrast n_fit=6348 n_window=2301 known=2189 unknown=112
+  [ce_contrast_f17] epoch 1/15 loss 4.7809 acc 0.2839 0.4s
+  [ce_contrast_f17] epoch 5/15 loss 2.5228 acc 0.9384 0.4s
+  [ce_contrast_f17] epoch 10/15 loss 1.6547 acc 0.9899 0.4s
+  [ce_contrast_f17] epoch 15/15 loss 1.4809 acc 0.9976 0.4s
+  [ce_contrast_oof_f17] epoch 1/15 loss 4.9174 acc 0.1873 0.3s
+  [ce_contrast_oof_f17] epoch 5/15 loss 2.9960 acc 0.9069 0.2s
+  [ce_contrast_oof_f17] epoch 10/15 loss 2.0759 acc 0.9872 0.2s
+  [ce_contrast_oof_f17] epoch 15/15 loss 1.8781 acc 0.9925 0.2s
+fold 17 regime=ce_contrast done in 9.8s fit_acc=0.9994 win_acc=0.9470 sep_fit=0.321 sep_win=0.452 oof_n=2131
+fold 17 regime=ce_contrast_drift n_fit=6348 n_window=2301 known=2189 unknown=112
+  [ce_contrast_drift_f17] epoch 1/15 loss 5.2773 acc 0.1095 0.5s
+  [ce_contrast_drift_f17] epoch 5/15 loss 3.9159 acc 0.5860 0.5s
+  [ce_contrast_drift_f17] epoch 10/15 loss 2.8530 acc 0.8110 0.5s
+  [ce_contrast_drift_f17] epoch 15/15 loss 2.5572 acc 0.8659 0.5s
+  [ce_contrast_drift_oof_f17] epoch 1/15 loss 5.3082 acc 0.0750 0.3s
+  [ce_contrast_drift_oof_f17] epoch 5/15 loss 4.2411 acc 0.5434 0.4s
+  [ce_contrast_drift_oof_f17] epoch 10/15 loss 3.4056 acc 0.7375 0.4s
+  [ce_contrast_drift_oof_f17] epoch 15/15 loss 3.0969 acc 0.8086 0.3s
+fold 17 regime=ce_contrast_drift done in 13.7s fit_acc=0.9907 win_acc=0.9000 sep_fit=0.442 sep_win=0.598 oof_n=2131
+fold 17 regime=ce_contrast_drift_adv n_fit=6348 n_window=2301 known=2189 unknown=112
+  [ce_contrast_drift_adv_f17] epoch 1/15 loss 6.7166 acc 0.1136 2.0s
+  [ce_contrast_drift_adv_f17] epoch 5/15 loss 4.8432 acc 0.6189 2.0s
+  [ce_contrast_drift_adv_f17] epoch 10/15 loss 3.4763 acc 0.8168 2.0s
+  [ce_contrast_drift_adv_f17] epoch 15/15 loss 3.1094 acc 0.8663 2.0s
+  [ce_contrast_drift_adv_oof_f17] epoch 1/15 loss 6.7995 acc 0.0755 1.3s
+  [ce_contrast_drift_adv_oof_f17] epoch 5/15 loss 5.8279 acc 0.4024 1.3s
+  [ce_contrast_drift_adv_oof_f17] epoch 10/15 loss 4.6218 acc 0.6721 1.3s
+  [ce_contrast_drift_adv_oof_f17] epoch 15/15 loss 4.2621 acc 0.7343 1.3s
+fold 17 regime=ce_contrast_drift_adv done in 49.5s fit_acc=0.9915 win_acc=0.9077 sep_fit=0.447 sep_win=0.588 oof_n=2131
+fold 18 regime=ce_contrast n_fit=6373 n_window=2301 known=2203 unknown=98
+  [ce_contrast_f18] epoch 1/15 loss 4.8634 acc 0.2485 0.4s
+  [ce_contrast_f18] epoch 5/15 loss 2.6470 acc 0.9049 0.4s
+  [ce_contrast_f18] epoch 10/15 loss 1.7209 acc 0.9881 0.4s
+  [ce_contrast_f18] epoch 15/15 loss 1.5495 acc 0.9947 0.4s
+  [ce_contrast_oof_f18] epoch 1/15 loss 4.9964 acc 0.1659 0.3s
+  [ce_contrast_oof_f18] epoch 5/15 loss 3.0634 acc 0.8970 0.2s
+  [ce_contrast_oof_f18] epoch 10/15 loss 2.0883 acc 0.9882 0.2s
+  [ce_contrast_oof_f18] epoch 15/15 loss 1.8857 acc 0.9957 0.2s
+fold 18 regime=ce_contrast done in 9.9s fit_acc=0.9995 win_acc=0.9469 sep_fit=0.328 sep_win=0.464 oof_n=2137
+fold 18 regime=ce_contrast_drift n_fit=6373 n_window=2301 known=2203 unknown=98
+  [ce_contrast_drift_f18] epoch 1/15 loss 5.3075 acc 0.0858 0.5s
+  [ce_contrast_drift_f18] epoch 5/15 loss 3.9836 acc 0.5453 0.5s
+  [ce_contrast_drift_f18] epoch 10/15 loss 2.9916 acc 0.7857 0.5s
+  [ce_contrast_drift_f18] epoch 15/15 loss 2.6741 acc 0.8476 0.5s
+  [ce_contrast_drift_oof_f18] epoch 1/15 loss 5.2983 acc 0.0871 0.3s
+  [ce_contrast_drift_oof_f18] epoch 5/15 loss 4.2293 acc 0.5197 0.4s
+  [ce_contrast_drift_oof_f18] epoch 10/15 loss 3.3774 acc 0.7331 0.4s
+  [ce_contrast_drift_oof_f18] epoch 15/15 loss 3.0681 acc 0.8116 0.3s
+fold 18 regime=ce_contrast_drift done in 13.8s fit_acc=0.9906 win_acc=0.9074 sep_fit=0.472 sep_win=0.615 oof_n=2137
+fold 18 regime=ce_contrast_drift_adv n_fit=6373 n_window=2301 known=2203 unknown=98
+  [ce_contrast_drift_adv_f18] epoch 1/15 loss 6.7747 acc 0.0775 2.0s
+  [ce_contrast_drift_adv_f18] epoch 5/15 loss 5.0916 acc 0.5641 1.9s
+  [ce_contrast_drift_adv_f18] epoch 10/15 loss 3.7276 acc 0.7739 1.9s
+  [ce_contrast_drift_adv_f18] epoch 15/15 loss 3.3305 acc 0.8415 1.9s
+  [ce_contrast_drift_adv_oof_f18] epoch 1/15 loss 6.7767 acc 0.0713 1.4s
+  [ce_contrast_drift_adv_oof_f18] epoch 5/15 loss 5.4777 acc 0.4921 1.3s
+  [ce_contrast_drift_adv_oof_f18] epoch 10/15 loss 4.2495 acc 0.7103 1.3s
+  [ce_contrast_drift_adv_oof_f18] epoch 15/15 loss 3.8822 acc 0.7789 1.3s
+fold 18 regime=ce_contrast_drift_adv done in 49.3s fit_acc=0.9904 win_acc=0.8988 sep_fit=0.463 sep_win=0.613 oof_n=2137
+fold 19 regime=ce_contrast n_fit=6369 n_window=2301 known=2187 unknown=114
+  [ce_contrast_f19] epoch 1/15 loss 4.8474 acc 0.2696 0.4s
+  [ce_contrast_f19] epoch 5/15 loss 2.4988 acc 0.9386 0.4s
+  [ce_contrast_f19] epoch 10/15 loss 1.6183 acc 0.9939 0.4s
+  [ce_contrast_f19] epoch 15/15 loss 1.4615 acc 0.9989 0.3s
+  [ce_contrast_oof_f19] epoch 1/15 loss 5.0958 acc 0.1413 0.3s
+  [ce_contrast_oof_f19] epoch 5/15 loss 3.1343 acc 0.8599 0.2s
+  [ce_contrast_oof_f19] epoch 10/15 loss 2.1994 acc 0.9740 0.2s
+  [ce_contrast_oof_f19] epoch 15/15 loss 1.9664 acc 0.9899 0.2s
+fold 19 regime=ce_contrast done in 10.0s fit_acc=1.0000 win_acc=0.9726 sep_fit=0.308 sep_win=0.435 oof_n=2138
+fold 19 regime=ce_contrast_drift n_fit=6369 n_window=2301 known=2187 unknown=114
+  [ce_contrast_drift_f19] epoch 1/15 loss 5.3241 acc 0.0881 0.5s
+  [ce_contrast_drift_f19] epoch 5/15 loss 3.9426 acc 0.5797 0.5s
+  [ce_contrast_drift_f19] epoch 10/15 loss 2.8864 acc 0.8097 0.5s
+  [ce_contrast_drift_f19] epoch 15/15 loss 2.5915 acc 0.8689 0.5s
+  [ce_contrast_drift_oof_f19] epoch 1/15 loss 5.3152 acc 0.0911 0.4s
+  [ce_contrast_drift_oof_f19] epoch 5/15 loss 4.4470 acc 0.4372 0.3s
+  [ce_contrast_drift_oof_f19] epoch 10/15 loss 3.3942 acc 0.7433 0.3s
+  [ce_contrast_drift_oof_f19] epoch 15/15 loss 3.0795 acc 0.8183 0.3s
+fold 19 regime=ce_contrast_drift done in 13.6s fit_acc=0.9928 win_acc=0.9140 sep_fit=0.454 sep_win=0.608 oof_n=2138
+fold 19 regime=ce_contrast_drift_adv n_fit=6369 n_window=2301 known=2187 unknown=114
+  [ce_contrast_drift_adv_f19] epoch 1/15 loss 6.8019 acc 0.0713 2.0s
+  [ce_contrast_drift_adv_f19] epoch 5/15 loss 5.1259 acc 0.5420 1.9s
+  [ce_contrast_drift_adv_f19] epoch 10/15 loss 3.6648 acc 0.8037 1.9s
+  [ce_contrast_drift_adv_f19] epoch 15/15 loss 3.2570 acc 0.8697 1.9s
+  [ce_contrast_drift_adv_oof_f19] epoch 1/15 loss 6.8103 acc 0.0678 1.3s
+  [ce_contrast_drift_adv_oof_f19] epoch 5/15 loss 5.8691 acc 0.3641 1.3s
+  [ce_contrast_drift_adv_oof_f19] epoch 10/15 loss 4.6098 acc 0.6633 1.3s
+  [ce_contrast_drift_adv_oof_f19] epoch 15/15 loss 4.2524 acc 0.7299 1.3s
+fold 19 regime=ce_contrast_drift_adv done in 49.3s fit_acc=0.9945 win_acc=0.9127 sep_fit=0.454 sep_win=0.611 oof_n=2138
+fold 20 regime=ce_contrast n_fit=6325 n_window=2301 known=2177 unknown=124
+  [ce_contrast_f20] epoch 1/15 loss 4.9566 acc 0.2175 0.4s
+  [ce_contrast_f20] epoch 5/15 loss 2.6066 acc 0.9300 0.4s
+  [ce_contrast_f20] epoch 10/15 loss 1.6954 acc 0.9866 0.3s
+  [ce_contrast_f20] epoch 15/15 loss 1.5220 acc 0.9954 0.3s
+  [ce_contrast_oof_f20] epoch 1/15 loss 4.9565 acc 0.1672 0.3s
+  [ce_contrast_oof_f20] epoch 5/15 loss 3.0542 acc 0.8785 0.2s
+  [ce_contrast_oof_f20] epoch 10/15 loss 2.1398 acc 0.9780 0.2s
+  [ce_contrast_oof_f20] epoch 15/15 loss 1.9331 acc 0.9920 0.2s
+fold 20 regime=ce_contrast done in 9.9s fit_acc=0.9984 win_acc=0.9499 sep_fit=0.336 sep_win=0.474 oof_n=2124
+fold 20 regime=ce_contrast_drift n_fit=6325 n_window=2301 known=2177 unknown=124
+  [ce_contrast_drift_f20] epoch 1/15 loss 5.2720 acc 0.1102 0.5s
+  [ce_contrast_drift_f20] epoch 5/15 loss 3.9864 acc 0.5233 0.5s
+  [ce_contrast_drift_f20] epoch 10/15 loss 2.9628 acc 0.7693 0.5s
+  [ce_contrast_drift_f20] epoch 15/15 loss 2.7045 acc 0.8281 0.5s
+  [ce_contrast_drift_oof_f20] epoch 1/15 loss 5.3218 acc 0.0825 0.4s
+  [ce_contrast_drift_oof_f20] epoch 5/15 loss 4.5158 acc 0.3804 0.3s
+  [ce_contrast_drift_oof_f20] epoch 10/15 loss 3.5981 acc 0.6520 0.3s
+  [ce_contrast_drift_oof_f20] epoch 15/15 loss 3.3175 acc 0.7331 0.3s
+fold 20 regime=ce_contrast_drift done in 13.6s fit_acc=0.9855 win_acc=0.8902 sep_fit=0.467 sep_win=0.626 oof_n=2124
+fold 20 regime=ce_contrast_drift_adv n_fit=6325 n_window=2301 known=2177 unknown=124
+  [ce_contrast_drift_adv_f20] epoch 1/15 loss 6.8041 acc 0.0748 2.0s
+  [ce_contrast_drift_adv_f20] epoch 5/15 loss 5.3838 acc 0.4599 2.0s
+  [ce_contrast_drift_adv_f20] epoch 10/15 loss 3.9635 acc 0.7415 2.0s
+  [ce_contrast_drift_adv_f20] epoch 15/15 loss 3.5464 acc 0.8049 1.9s
+  [ce_contrast_drift_adv_oof_f20] epoch 1/15 loss 6.7703 acc 0.0707 1.4s
+  [ce_contrast_drift_adv_oof_f20] epoch 5/15 loss 5.6126 acc 0.4729 1.3s
+  [ce_contrast_drift_adv_oof_f20] epoch 10/15 loss 4.4163 acc 0.6919 1.3s
+  [ce_contrast_drift_adv_oof_f20] epoch 15/15 loss 4.0002 acc 0.7718 1.3s
+fold 20 regime=ce_contrast_drift_adv done in 49.5s fit_acc=0.9801 win_acc=0.8870 sep_fit=0.499 sep_win=0.653 oof_n=2124
+timing: 18 fold/regime trainings in 7.3 min (24.5s per fold/regime, 2 encoders each)
+SMOKE: projected 20-fold training = 24.5 min
+
+=== run start 2026-11-17 12:36:31 folds=20 smoke=False ===
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121 cuda=12.1 amp=True
+rows=11304 fit=6695 window=2301 fit blocks=[2173, 2203, 2246, 73, 0]
+raw cache train: (11304, 18, 1200) float32
+train raw on GPU: (11304, 18, 1200) torch.float32 (931 MB)
+  raw test 4096/22251 (2s)
+  raw test 8192/22251 (4s)
+  raw test 12288/22251 (5s)
+  raw test 16384/22251 (7s)
+  raw test 20480/22251 (9s)
+  raw test 22251/22251 (10s)
+raw cache test written: D:\WORK\BCIC2026\BrainPrint\research\E229_raw_robust_encoder\cache\test_raw.npy (21s)
+  [ce_contrast_deploy] epoch 1/15 loss 4.8913 acc 0.2580 1.0s
+  [ce_contrast_deploy] epoch 5/15 loss 2.5820 acc 0.9180 0.4s
+  [ce_contrast_deploy] epoch 10/15 loss 1.6736 acc 0.9861 0.4s
+  [ce_contrast_deploy] epoch 15/15 loss 1.4984 acc 0.9952 0.4s
+  [ce_contrast_deploy_oof] epoch 1/15 loss 4.9927 acc 0.1771 0.3s
+  [ce_contrast_deploy_oof] epoch 5/15 loss 3.2018 acc 0.8585 0.2s
+  [ce_contrast_deploy_oof] epoch 10/15 loss 2.2225 acc 0.9762 0.3s
+  [ce_contrast_deploy_oof] epoch 15/15 loss 1.9964 acc 0.9872 0.3s
+test ce_contrast: built in 14.2s (train loss 1.4984, params 66260)
+  [ce_contrast_drift_deploy] epoch 1/15 loss 5.3259 acc 0.0942 0.6s
+  [ce_contrast_drift_deploy] epoch 5/15 loss 3.9560 acc 0.5804 0.6s
+  [ce_contrast_drift_deploy] epoch 10/15 loss 2.8468 acc 0.8058 0.6s
+  [ce_contrast_drift_deploy] epoch 15/15 loss 2.5452 acc 0.8617 0.6s
+  [ce_contrast_drift_deploy_oof] epoch 1/15 loss 5.3885 acc 0.0775 0.4s
+  [ce_contrast_drift_deploy_oof] epoch 5/15 loss 4.7383 acc 0.3496 0.4s
+  [ce_contrast_drift_deploy_oof] epoch 10/15 loss 3.7650 acc 0.6396 0.4s
+  [ce_contrast_drift_deploy_oof] epoch 15/15 loss 3.4513 acc 0.7166 0.4s
+test ce_contrast_drift: built in 15.6s (train loss 2.5452, params 66260)
+  [ce_contrast_drift_adv_deploy] epoch 1/15 loss 6.8075 acc 0.1052 2.1s
+  [ce_contrast_drift_adv_deploy] epoch 5/15 loss 5.0882 acc 0.5479 2.0s
+  [ce_contrast_drift_adv_deploy] epoch 10/15 loss 3.6546 acc 0.8024 2.0s
+  [ce_contrast_drift_adv_deploy] epoch 15/15 loss 3.3067 acc 0.8487 2.0s
+  [ce_contrast_drift_adv_deploy_oof] epoch 1/15 loss 6.8375 acc 0.0825 1.4s
+  [ce_contrast_drift_adv_deploy_oof] epoch 5/15 loss 5.5775 acc 0.4785 1.3s
+  [ce_contrast_drift_adv_deploy_oof] epoch 10/15 loss 4.3640 acc 0.7034 1.3s
+  [ce_contrast_drift_adv_deploy_oof] epoch 15/15 loss 4.0456 acc 0.7665 1.3s
+test ce_contrast_drift_adv: built in 51.6s (train loss 3.3067, params 66260)
+candidate e228_anchor                  A*=0.804985 LOSO=0.9000 known=0.8087 F1=0.3245 S1=0.9637 S2=0.3043 sep=0.7918 dS2=+0.0000
+candidate raw_ce_contrast              A*=0.794939 LOSO=0.9000 known=0.8415 F1=0.3672 S1=0.5638 S2=0.2895 sep=0.4262 dS2=-0.0148
+candidate raw_ce_contrast_drift        A*=0.696726 LOSO=0.9000 known=0.6706 F1=0.2209 S1=0.5816 S2=0.2479 sep=0.4580 dS2=-0.0564
+candidate raw_ce_contrast_drift_adv    A*=0.666345 LOSO=0.9000 known=0.6336 F1=0.2034 S1=0.5773 S2=0.2497 sep=0.4327 dS2=-0.0546
+candidate raw_ce_contrast_drift_adv_k1 A*=0.632984 LOSO=0.9000 known=0.5884 F1=0.1851 S1=0.5757 S2=0.2569 sep=0.4333 dS2=-0.0474
+results.json + report.md written; improved=False frozen=e228_anchor S2=0.3043 (1.8 min)
+
+=== run start 2026-11-17 12:38:55 folds=20 smoke=False ===
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121 cuda=12.1 amp=True
+rows=11304 fit=6695 window=2301 fit blocks=[2173, 2203, 2246, 73, 0]
+raw cache train: (11304, 18, 1200) float32
+train raw on GPU: (11304, 18, 1200) torch.float32 (931 MB)
+raw cache test: (22251, 18, 1200) float32
+test ce_contrast: reuse cache
+test ce_contrast_drift: reuse cache
+test ce_contrast_drift_adv: reuse cache
+candidate e228_anchor                  A*=0.804985 LOSO=0.9000 known=0.8087 F1=0.3245 S1=0.9637 S2=0.3043 sep=0.7918 dS2=+0.0000
+candidate raw_ce_contrast              A*=0.794939 LOSO=0.9000 known=0.8415 F1=0.3672 S1=0.5638 S2=0.2895 sep=0.4262 dS2=-0.0148
+candidate raw_ce_contrast_drift        A*=0.696726 LOSO=0.9000 known=0.6706 F1=0.2209 S1=0.5816 S2=0.2479 sep=0.4580 dS2=-0.0564
+candidate raw_ce_contrast_drift_adv    A*=0.666345 LOSO=0.9000 known=0.6336 F1=0.2034 S1=0.5773 S2=0.2497 sep=0.4327 dS2=-0.0546
+candidate raw_ce_contrast_drift_adv_k1 A*=0.632984 LOSO=0.9000 known=0.5884 F1=0.1851 S1=0.5757 S2=0.2569 sep=0.4333 dS2=-0.0474
+results.json + report.md written; improved=False frozen=e228_anchor S2=0.3043 (0.1 min)
+
+=== run start 2026-11-17 12:39:40 folds=20 smoke=False ===
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121 cuda=12.1 amp=True
+rows=11304 fit=6695 window=2301 fit blocks=[2173, 2203, 2246, 73, 0]
+raw cache train: (11304, 18, 1200) float32
+train raw on GPU: (11304, 18, 1200) torch.float32 (931 MB)
+raw cache test: (22251, 18, 1200) float32
+  [ce_contrast_deploy] epoch 1/15 loss 4.8901 acc 0.2560 0.8s
+  [ce_contrast_deploy] epoch 5/15 loss 2.5920 acc 0.9141 0.4s
+  [ce_contrast_deploy] epoch 10/15 loss 1.6822 acc 0.9857 0.4s
+  [ce_contrast_deploy] epoch 15/15 loss 1.5062 acc 0.9946 0.4s
+  [ce_contrast_deploy_oof] epoch 1/15 loss 4.9925 acc 0.1776 0.3s
+  [ce_contrast_deploy_oof] epoch 5/15 loss 3.2002 acc 0.8569 0.2s
+  [ce_contrast_deploy_oof] epoch 10/15 loss 2.2195 acc 0.9765 0.3s
+  [ce_contrast_deploy_oof] epoch 15/15 loss 1.9950 acc 0.9872 0.3s
+test ce_contrast: built in 13.0s (train loss 1.5062, params 66260)
+  [ce_contrast_drift_deploy] epoch 1/15 loss 5.3259 acc 0.0941 0.6s
+  [ce_contrast_drift_deploy] epoch 5/15 loss 3.9680 acc 0.5719 0.6s
+  [ce_contrast_drift_deploy] epoch 10/15 loss 2.8608 acc 0.8015 0.6s
+  [ce_contrast_drift_deploy] epoch 15/15 loss 2.5599 acc 0.8588 0.6s
+  [ce_contrast_drift_deploy_oof] epoch 1/15 loss 5.3884 acc 0.0777 0.4s
+  [ce_contrast_drift_deploy_oof] epoch 5/15 loss 4.7365 acc 0.3437 0.4s
+  [ce_contrast_drift_deploy_oof] epoch 10/15 loss 3.7660 acc 0.6392 0.4s
+  [ce_contrast_drift_deploy_oof] epoch 15/15 loss 3.4587 acc 0.7112 0.4s
+test ce_contrast_drift: built in 15.6s (train loss 2.5599, params 66260)
+  [ce_contrast_drift_adv_deploy] epoch 1/15 loss 6.8074 acc 0.1049 2.1s
+  [ce_contrast_drift_adv_deploy] epoch 5/15 loss 5.0878 acc 0.5489 2.0s
+  [ce_contrast_drift_adv_deploy] epoch 10/15 loss 3.6491 acc 0.8048 2.1s
+  [ce_contrast_drift_adv_deploy] epoch 15/15 loss 3.3040 acc 0.8514 2.0s
+  [ce_contrast_drift_adv_deploy_oof] epoch 1/15 loss 6.8375 acc 0.0823 1.4s
+  [ce_contrast_drift_adv_deploy_oof] epoch 5/15 loss 5.5885 acc 0.4790 1.3s
+  [ce_contrast_drift_adv_deploy_oof] epoch 10/15 loss 4.3590 acc 0.7059 1.4s
+  [ce_contrast_drift_adv_deploy_oof] epoch 15/15 loss 4.0378 acc 0.7626 1.4s
+test ce_contrast_drift_adv: built in 53.0s (train loss 3.3040, params 66260)
+candidate e228_anchor                  A*=0.804985 LOSO=0.9000 known=0.8087 F1=0.3245 S1=0.9637 S2=0.3043 sep=0.7918 dS2=+0.0000
+candidate raw_ce_contrast              A*=0.794939 LOSO=0.9000 known=0.8415 F1=0.3672 S1=0.5618 S2=0.2885 sep=0.4254 dS2=-0.0158
+candidate raw_ce_contrast_drift        A*=0.696726 LOSO=0.9000 known=0.6706 F1=0.2209 S1=0.5790 S2=0.2494 sep=0.4504 dS2=-0.0549
+candidate raw_ce_contrast_drift_adv    A*=0.666345 LOSO=0.9000 known=0.6336 F1=0.2034 S1=0.5780 S2=0.2472 sep=0.4359 dS2=-0.0571
+candidate raw_ce_contrast_drift_adv_k1 A*=0.632984 LOSO=0.9000 known=0.5884 F1=0.1851 S1=0.5757 S2=0.2521 sep=0.4344 dS2=-0.0522
+results.json + report.md written; improved=False frozen=e228_anchor S2=0.3043 (1.4 min)
+
+=== run start 2026-11-17 12:41:34 folds=20 smoke=False ===
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121 cuda=12.1 amp=True
+rows=11304 fit=6695 window=2301 fit blocks=[2173, 2203, 2246, 73, 0]
+raw cache train: (11304, 18, 1200) float32
+train raw on GPU: (11304, 18, 1200) torch.float32 (931 MB)
+raw cache test: (22251, 18, 1200) float32
+test ce_contrast: reuse cache
+test ce_contrast_drift: reuse cache
+test ce_contrast_drift_adv: reuse cache
+candidate e228_anchor                  A*=0.804985 LOSO=0.9000 known=0.8087 F1=0.3245 S1=0.9637 S2=0.3043 sep=0.7918 dS2=+0.0000
+candidate raw_ce_contrast              A*=0.794939 LOSO=0.9000 known=0.8415 F1=0.3672 S1=0.5618 S2=0.2885 sep=0.4254 dS2=-0.0158
+candidate raw_ce_contrast_drift        A*=0.696726 LOSO=0.9000 known=0.6706 F1=0.2209 S1=0.5790 S2=0.2494 sep=0.4504 dS2=-0.0549
+candidate raw_ce_contrast_drift_adv    A*=0.666345 LOSO=0.9000 known=0.6336 F1=0.2034 S1=0.5780 S2=0.2472 sep=0.4359 dS2=-0.0571
+candidate raw_ce_contrast_drift_adv_k1 A*=0.632984 LOSO=0.9000 known=0.5884 F1=0.1851 S1=0.5757 S2=0.2521 sep=0.4344 dS2=-0.0522
+results.json + report.md written; improved=False frozen=e228_anchor S2=0.3043 (0.1 min)
+
+=== run start 2026-11-17 12:42:11 folds=20 smoke=False ===
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121 cuda=12.1 amp=True
+rows=11304 fit=6695 window=2301 fit blocks=[2173, 2203, 2246, 73, 0]
+raw cache train: (11304, 18, 1200) float32
+train raw on GPU: (11304, 18, 1200) torch.float32 (931 MB)
+raw cache test: (22251, 18, 1200) float32
+test ce_contrast: reuse cache
+test ce_contrast_drift: reuse cache
+test ce_contrast_drift_adv: reuse cache
+candidate e228_anchor                  A*=0.804985 LOSO=0.9000 known=0.8087 F1=0.3245 S1=0.9637 S2=0.3043 sep=0.7918 dS2=+0.0000
+candidate raw_ce_contrast              A*=0.794939 LOSO=0.9000 known=0.8415 F1=0.3672 S1=0.5618 S2=0.2885 sep=0.4254 dS2=-0.0158
+candidate raw_ce_contrast_drift        A*=0.696726 LOSO=0.9000 known=0.6706 F1=0.2209 S1=0.5790 S2=0.2494 sep=0.4504 dS2=-0.0549
+candidate raw_ce_contrast_drift_adv    A*=0.666345 LOSO=0.9000 known=0.6336 F1=0.2034 S1=0.5780 S2=0.2472 sep=0.4359 dS2=-0.0571
+candidate raw_ce_contrast_drift_adv_k1 A*=0.632984 LOSO=0.9000 known=0.5884 F1=0.1851 S1=0.5757 S2=0.2521 sep=0.4344 dS2=-0.0522
+results.json + report.md written; improved=False frozen=e228_anchor S2=0.3043 (0.1 min)

@@ -1,0 +1,730 @@
+{
+  "experiment": "E229_raw_robust_encoder",
+  "protocol": {
+    "tasks": [
+      "EC",
+      "EO",
+      "Imagery",
+      "SSVEP"
+    ],
+    "folds": 20,
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [
+      0.6,
+      0.8
+    ],
+    "inner_blocks": 5,
+    "blocks_rule": "block = clip(int(frac * 5), 0, 4) per (subject, task) trial order",
+    "fit_rows": "per outer fold: subjects != held identity AND frac <= 0.6 (6695 rows in total, about 6360 per fold)",
+    "evaluation_window": "0.6 < frac <= 0.8 (2301 rows); held identity appears only here",
+    "inner_oof": {
+      "holdout_block": 2,
+      "train_blocks": [
+        0,
+        1
+      ],
+      "rule": "tau needs known scores the encoder has NOT seen. Inside each fold a second encoder is trained on fit rows of blocks 0-1 only and scores fit rows of block 2 (frac in (0.4, 0.6]). The deploy/LOSO encoder is trained on all fit rows. This is the latest of the E228 inner-block folds (E228 averages its 3 blocks; here one block is used to keep the 20-fold budget under one hour). Deviation documented in report.md."
+    },
+    "open_set_direction": "high score = known; reject if score < tau; unknown is the positive class for rejection F1 and AUC.",
+    "seed_per_fold": "seed = 20261117 + 101 * held + 7 * regime_index"
+  },
+  "encoder": {
+    "architecture": "Conv1d(18->32,k9,s2)-GroupNorm(8)-ELU -> Conv1d(32->64,k9,s2)-GroupNorm(8)-ELU -> Conv1d(64->64,k9,s2)-GroupNorm(8)-ELU -> global average pool -> Dropout -> Linear(64->64) -> L2 normalise",
+    "widths": [
+      32,
+      64,
+      64
+    ],
+    "kernel": 9,
+    "stride": 2,
+    "norm": "GroupNorm(8)",
+    "dropout": 0.1,
+    "embedding_dim": 64,
+    "l2_normalise": true,
+    "parameter_count": "about 62k (conv 5184 + 18432 + 36864, head 4160, norms); well below the 200k budget",
+    "input_normalisation": "per-trial per-channel mean removal, then divide by the whole-trial global RMS (differentiable, computed inside forward, no cross-sample statistics)",
+    "classifier": "Linear(64 -> n_enrolled_identities), bias=True, trained only, never used for scoring"
+  },
+  "train": {
+    "regimes": {
+      "ce_contrast": {
+        "drift": false,
+        "adversarial": false
+      },
+      "ce_contrast_drift": {
+        "drift": true,
+        "adversarial": false
+      },
+      "ce_contrast_drift_adv": {
+        "drift": true,
+        "adversarial": true
+      }
+    },
+    "loss": "cross_entropy + supcon_weight * supervised_contrastive",
+    "supcon": "positives = other trials of the same subject inside the batch; temperature 0.1; L2-normalised embeddings",
+    "supcon_weight": 0.5,
+    "supcon_temperature": 0.1,
+    "batch_size": 128,
+    "epochs": 15,
+    "learning_rate": 0.002,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "amp": true,
+    "early_stop": "none (no held-identity data is used for stopping; fixed epochs)",
+    "sampling": "full fit rows, no subsampling"
+  },
+  "augmentation": {
+    "drift": {
+      "channel_gain_db": 3.0,
+      "global_gain_db": 3.0,
+      "spectral_tilt_exponent": 0.5,
+      "spectral_tilt_note": "rfft magnitude reweight (f/f_nyq + 0.05)^alpha, alpha ~ U(-0.5, 0.5) per trial, weights normalised to mean 1",
+      "white_noise_snr_db": [
+        10.0,
+        20.0
+      ],
+      "time_shift_samples": 50,
+      "crop_fraction": [
+        0.9,
+        1.0
+      ],
+      "crop_resample": "circular shift then random crop to L in [0.9*1200, 1200], linear interpolate back to 1200",
+      "channel_dropout": 0.1,
+      "random_rereference": "subtract one randomly chosen channel per trial"
+    }
+  },
+  "adversarial": {
+    "ratio": 0.3,
+    "ratio_note": "30% of each batch is replaced by a PGD adversarial copy inside the loss; the clean 70% is still used",
+    "eps_rms": [
+      0.005,
+      0.01
+    ],
+    "eps_definition": "L-infinity bound = eps * per-trial global RMS; eps drawn per batch from the two values",
+    "steps": 8,
+    "step_size": "2*eps/steps*RMS, sign gradient, random start",
+    "objective": "maximise cross-entropy of the identity classifier (identity confusion)",
+    "loss_weight": 0.5,
+    "domain": "train-split only (fit rows of enrolled identities), never held identity"
+  },
+  "encoder_params": 66260,
+  "candidates": {
+    "e228_anchor": {
+      "id": "e228_anchor",
+      "A": 0.8049854437115825,
+      "loso": {
+        "A": 0.8049854437115825,
+        "tau_mean": -24.18467938154109,
+        "tau_min": -24.70031846474852,
+        "tau_max": -23.72901886821574,
+        "unknown_rejection_micro": 0.9000434593654932,
+        "unknown_rejection_macro": 0.9011994396513066,
+        "known_acceptance_micro": 0.8086872984286009,
+        "known_acceptance_macro": 0.8086974875818973,
+        "rejection_f1": 0.32453299717705014,
+        "identity_correct_but_rejected": 0.1714962144856731,
+        "loso_auc": 0.9095969878484796,
+        "loso_auc_std": 0.047341532530066566,
+        "n_known": 43719,
+        "n_unknown": 2301,
+        "per_task": {
+          "EC": {
+            "n_unknown": 222,
+            "n_known": 4218,
+            "unknown_rejection": 0.8828828828828829,
+            "known_acceptance": 0.7311522048364154
+          },
+          "EO": {
+            "n_unknown": 230,
+            "n_known": 4370,
+            "unknown_rejection": 0.9130434782608695,
+            "known_acceptance": 0.6606407322654462
+          },
+          "Imagery": {
+            "n_unknown": 1102,
+            "n_known": 20938,
+            "unknown_rejection": 0.9246823956442831,
+            "known_acceptance": 0.8359442162575222
+          },
+          "SSVEP": {
+            "n_unknown": 747,
+            "n_known": 14193,
+            "unknown_rejection": 0.8647925033467202,
+            "known_acceptance": 0.8371027971535264
+          }
+        }
+      },
+      "test": {
+        "tau": -24.138366795919048,
+        "S1_rejection": 0.9637322782723377,
+        "S2_acceptance": 0.3042980539077948,
+        "S1_rejection_macro": 0.9695547247374372,
+        "S2_acceptance_macro": 0.27863993731679104,
+        "N_S1": 3033,
+        "N_S2": 19218,
+        "per_task": {
+          "EC": {
+            "n_S1": 292,
+            "n_S2": 1680,
+            "S1_rejection": 0.9828767123287672,
+            "S2_acceptance": 0.2892857142857143
+          },
+          "EO": {
+            "n_S1": 291,
+            "n_S2": 2021,
+            "S1_rejection": 0.9862542955326461,
+            "S2_acceptance": 0.16724393864423553
+          },
+          "Imagery": {
+            "n_S1": 1459,
+            "n_S2": 9748,
+            "S1_rejection": 0.9766963673749143,
+            "S2_acceptance": 0.30857611817808783
+          },
+          "SSVEP": {
+            "n_S1": 991,
+            "n_S2": 5769,
+            "S1_rejection": 0.9323915237134208,
+            "S2_acceptance": 0.3494539781591264
+          }
+        },
+        "separation_auc": 0.7918401795053043
+      },
+      "delta_S2": 0.0,
+      "within_band": true,
+      "official_AUC": "N/A",
+      "official_F1": "N/A",
+      "regime": "e226_frozen_features",
+      "k": 12,
+      "family": "anchor",
+      "calibration": {
+        "A": 0.8049854437115825,
+        "rejection": 0.9000434593654932,
+        "reached": true,
+        "note": "bisection"
+      }
+    },
+    "raw_ce_contrast": {
+      "id": "raw_ce_contrast",
+      "A": 0.7949387436355857,
+      "loso": {
+        "A": 0.7949387436355857,
+        "tau_mean": -0.49432427288991443,
+        "tau_min": -0.5164379523438997,
+        "tau_max": -0.46651000177274893,
+        "unknown_rejection_micro": 0.9000434593654932,
+        "unknown_rejection_macro": 0.8981160895956186,
+        "known_acceptance_micro": 0.8415334294014044,
+        "known_acceptance_macro": 0.8415467115512654,
+        "rejection_f1": 0.3671742366378173,
+        "identity_correct_but_rejected": 0.12029725660910524,
+        "loso_auc": 0.9347665099807333,
+        "loso_auc_std": 0.0320517375483995,
+        "n_known": 43719,
+        "n_unknown": 2301,
+        "per_task": {
+          "EC": {
+            "n_unknown": 222,
+            "n_known": 4218,
+            "unknown_rejection": 0.9234234234234234,
+            "known_acceptance": 0.7671882408724514
+          },
+          "EO": {
+            "n_unknown": 230,
+            "n_known": 4370,
+            "unknown_rejection": 0.9260869565217391,
+            "known_acceptance": 0.7947368421052632
+          },
+          "Imagery": {
+            "n_unknown": 1102,
+            "n_known": 20938,
+            "unknown_rejection": 0.9165154264972777,
+            "known_acceptance": 0.8682300124176139
+          },
+          "SSVEP": {
+            "n_unknown": 747,
+            "n_known": 14193,
+            "unknown_rejection": 0.8607764390896921,
+            "known_acceptance": 0.8386528570422039
+          }
+        }
+      },
+      "test": {
+        "tau": -0.48358086735135375,
+        "S1_rejection": 0.5618199802176064,
+        "S2_acceptance": 0.2885315849724217,
+        "S1_rejection_macro": 0.5509317145234831,
+        "S2_acceptance_macro": 0.28042405625668554,
+        "N_S1": 3033,
+        "N_S2": 19218,
+        "per_task": {
+          "EC": {
+            "n_S1": 292,
+            "n_S2": 1680,
+            "S1_rejection": 0.5342465753424658,
+            "S2_acceptance": 0.28273809523809523
+          },
+          "EO": {
+            "n_S1": 291,
+            "n_S2": 2021,
+            "S1_rejection": 0.5292096219931272,
+            "S2_acceptance": 0.24443344878772885
+          },
+          "Imagery": {
+            "n_S1": 1459,
+            "n_S2": 9748,
+            "S1_rejection": 0.5640849897189856,
+            "S2_acceptance": 0.2880590890439064
+          },
+          "SSVEP": {
+            "n_S1": 991,
+            "n_S2": 5769,
+            "S1_rejection": 0.5761856710393541,
+            "S2_acceptance": 0.3064655919570116
+          }
+        },
+        "separation_auc": 0.4254358781471253
+      },
+      "delta_S2": -0.01576646893537309,
+      "within_band": true,
+      "official_AUC": "N/A",
+      "official_F1": "N/A",
+      "regime": "ce_contrast",
+      "k": 12,
+      "family": "ablation_base",
+      "calibration": {
+        "A": 0.7949387436355857,
+        "rejection": 0.9000434593654932,
+        "reached": true,
+        "note": "bisection"
+      }
+    },
+    "raw_ce_contrast_drift": {
+      "id": "raw_ce_contrast_drift",
+      "A": 0.6967256355160734,
+      "loso": {
+        "A": 0.6967256355160734,
+        "tau_mean": -0.4180690132493132,
+        "tau_min": -0.4416218066919531,
+        "tau_max": -0.3762173043581757,
+        "unknown_rejection_micro": 0.9000434593654932,
+        "unknown_rejection_macro": 0.9006685513676974,
+        "known_acceptance_micro": 0.6705551362108008,
+        "known_acceptance_macro": 0.6705308907728653,
+        "rejection_f1": 0.2209254968597852,
+        "identity_correct_but_rejected": 0.2412755020221932,
+        "loso_auc": 0.8695362917522036,
+        "loso_auc_std": 0.04080671997374948,
+        "n_known": 43719,
+        "n_unknown": 2301,
+        "per_task": {
+          "EC": {
+            "n_unknown": 222,
+            "n_known": 4218,
+            "unknown_rejection": 0.8378378378378378,
+            "known_acceptance": 0.55049786628734
+          },
+          "EO": {
+            "n_unknown": 230,
+            "n_known": 4370,
+            "unknown_rejection": 0.8826086956521739,
+            "known_acceptance": 0.531350114416476
+          },
+          "Imagery": {
+            "n_unknown": 1102,
+            "n_known": 20938,
+            "unknown_rejection": 0.9074410163339383,
+            "known_acceptance": 0.7142993600152833
+          },
+          "SSVEP": {
+            "n_unknown": 747,
+            "n_known": 14193,
+            "unknown_rejection": 0.9129852744310576,
+            "known_acceptance": 0.6845628126541252
+          }
+        }
+      },
+      "test": {
+        "tau": -0.39802534358292635,
+        "S1_rejection": 0.5789647213979559,
+        "S2_acceptance": 0.249401602664169,
+        "S1_rejection_macro": 0.5756022740410355,
+        "S2_acceptance_macro": 0.24243879949819763,
+        "N_S1": 3033,
+        "N_S2": 19218,
+        "per_task": {
+          "EC": {
+            "n_S1": 292,
+            "n_S2": 1680,
+            "S1_rejection": 0.5547945205479452,
+            "S2_acceptance": 0.23333333333333334
+          },
+          "EO": {
+            "n_S1": 291,
+            "n_S2": 2021,
+            "S1_rejection": 0.584192439862543,
+            "S2_acceptance": 0.23057892132607619
+          },
+          "Imagery": {
+            "n_S1": 1459,
+            "n_S2": 9748,
+            "S1_rejection": 0.5791638108293352,
+            "S2_acceptance": 0.255539597866229
+          },
+          "SSVEP": {
+            "n_S1": 991,
+            "n_S2": 5769,
+            "S1_rejection": 0.5842583249243188,
+            "S2_acceptance": 0.250303345467152
+          }
+        },
+        "separation_auc": 0.4504455396233412
+      },
+      "delta_S2": -0.0548964512436258,
+      "within_band": true,
+      "official_AUC": "N/A",
+      "official_F1": "N/A",
+      "regime": "ce_contrast_drift",
+      "k": 12,
+      "family": "ablation_drift",
+      "calibration": {
+        "A": 0.6967256355160734,
+        "rejection": 0.9000434593654932,
+        "reached": true,
+        "note": "bisection"
+      }
+    },
+    "raw_ce_contrast_drift_adv": {
+      "id": "raw_ce_contrast_drift_adv",
+      "A": 0.6663446867951012,
+      "loso": {
+        "A": 0.6663446867951012,
+        "tau_mean": -0.411271648175122,
+        "tau_min": -0.4275731534387893,
+        "tau_max": -0.38044402558940227,
+        "unknown_rejection_micro": 0.9000434593654932,
+        "unknown_rejection_macro": 0.8997776223981588,
+        "known_acceptance_micro": 0.633591802191267,
+        "known_acceptance_macro": 0.6335728040771555,
+        "rejection_f1": 0.2034103839972075,
+        "identity_correct_but_rejected": 0.27099853626075904,
+        "loso_auc": 0.851318001177076,
+        "loso_auc_std": 0.04914141624938291,
+        "n_known": 43719,
+        "n_unknown": 2301,
+        "per_task": {
+          "EC": {
+            "n_unknown": 222,
+            "n_known": 4218,
+            "unknown_rejection": 0.8873873873873874,
+            "known_acceptance": 0.49834044570886676
+          },
+          "EO": {
+            "n_unknown": 230,
+            "n_known": 4370,
+            "unknown_rejection": 0.8695652173913043,
+            "known_acceptance": 0.5100686498855835
+          },
+          "Imagery": {
+            "n_unknown": 1102,
+            "n_known": 20938,
+            "unknown_rejection": 0.9047186932849365,
+            "known_acceptance": 0.6772375585060655
+          },
+          "SSVEP": {
+            "n_unknown": 747,
+            "n_known": 14193,
+            "unknown_rejection": 0.9062918340026773,
+            "known_acceptance": 0.647431832593532
+          }
+        }
+      },
+      "test": {
+        "tau": -0.4117770561254126,
+        "S1_rejection": 0.5779756017144742,
+        "S2_acceptance": 0.24716411697367052,
+        "S1_rejection_macro": 0.5782636491663806,
+        "S2_acceptance_macro": 0.24500243206079336,
+        "N_S1": 3033,
+        "N_S2": 19218,
+        "per_task": {
+          "EC": {
+            "n_S1": 292,
+            "n_S2": 1680,
+            "S1_rejection": 0.5787671232876712,
+            "S2_acceptance": 0.23273809523809524
+          },
+          "EO": {
+            "n_S1": 291,
+            "n_S2": 2021,
+            "S1_rejection": 0.5773195876288659,
+            "S2_acceptance": 0.23899059871350817
+          },
+          "Imagery": {
+            "n_S1": 1459,
+            "n_S2": 9748,
+            "S1_rejection": 0.5757368060315284,
+            "S2_acceptance": 0.23717685679113665
+          },
+          "SSVEP": {
+            "n_S1": 991,
+            "n_S2": 5769,
+            "S1_rejection": 0.5812310797174571,
+            "S2_acceptance": 0.27110417750043336
+          }
+        },
+        "separation_auc": 0.4358597814850808
+      },
+      "delta_S2": -0.057133936934124274,
+      "within_band": true,
+      "official_AUC": "N/A",
+      "official_F1": "N/A",
+      "regime": "ce_contrast_drift_adv",
+      "k": 12,
+      "family": "ablation_full",
+      "calibration": {
+        "A": 0.6663446867951012,
+        "rejection": 0.9000434593654932,
+        "reached": true,
+        "note": "bisection"
+      }
+    },
+    "raw_ce_contrast_drift_adv_k1": {
+      "id": "raw_ce_contrast_drift_adv_k1",
+      "A": 0.6329842618907179,
+      "loso": {
+        "A": 0.6329842618907179,
+        "tau_mean": -0.5107817504141209,
+        "tau_min": -0.5309530390297252,
+        "tau_max": -0.4852942170654449,
+        "unknown_rejection_micro": 0.9000434593654932,
+        "unknown_rejection_macro": 0.8995750410985959,
+        "known_acceptance_micro": 0.5884169354285322,
+        "known_acceptance_macro": 0.5884059954312689,
+        "rejection_f1": 0.18514926100576323,
+        "identity_correct_but_rejected": 0.29521089547963875,
+        "loso_auc": 0.8277266829793473,
+        "loso_auc_std": 0.057392633971456275,
+        "n_known": 43719,
+        "n_unknown": 2301,
+        "per_task": {
+          "EC": {
+            "n_unknown": 222,
+            "n_known": 4218,
+            "unknown_rejection": 0.9009009009009009,
+            "known_acceptance": 0.4570886676149834
+          },
+          "EO": {
+            "n_unknown": 230,
+            "n_known": 4370,
+            "unknown_rejection": 0.8565217391304348,
+            "known_acceptance": 0.4638443935926774
+          },
+          "Imagery": {
+            "n_unknown": 1102,
+            "n_known": 20938,
+            "unknown_rejection": 0.911070780399274,
+            "known_acceptance": 0.6400324768363741
+          },
+          "SSVEP": {
+            "n_unknown": 747,
+            "n_known": 14193,
+            "unknown_rejection": 0.8969210174029452,
+            "known_acceptance": 0.589656873106461
+          }
+        }
+      },
+      "test": {
+        "tau": -0.5156180248125574,
+        "S1_rejection": 0.5756676557863502,
+        "S2_acceptance": 0.2520553647622021,
+        "S1_rejection_macro": 0.5743308252037591,
+        "S2_acceptance_macro": 0.2543977191744721,
+        "N_S1": 3033,
+        "N_S2": 19218,
+        "per_task": {
+          "EC": {
+            "n_S1": 292,
+            "n_S2": 1680,
+            "S1_rejection": 0.5582191780821918,
+            "S2_acceptance": 0.2363095238095238
+          },
+          "EO": {
+            "n_S1": 291,
+            "n_S2": 2021,
+            "S1_rejection": 0.584192439862543,
+            "S2_acceptance": 0.2627412172191984
+          },
+          "Imagery": {
+            "n_S1": 1459,
+            "n_S2": 9748,
+            "S1_rejection": 0.5736806031528444,
+            "S2_acceptance": 0.23235535494460402
+          },
+          "SSVEP": {
+            "n_S1": 991,
+            "n_S2": 5769,
+            "S1_rejection": 0.5812310797174571,
+            "S2_acceptance": 0.2861847807245623
+          }
+        },
+        "separation_auc": 0.4344195841785731
+      },
+      "delta_S2": -0.05224268914559271,
+      "within_band": true,
+      "official_AUC": "N/A",
+      "official_F1": "N/A",
+      "regime": "ce_contrast_drift_adv",
+      "k": 1,
+      "family": "ablation_full_k1",
+      "calibration": {
+        "A": 0.6329842618907179,
+        "rejection": 0.9000434593654932,
+        "reached": true,
+        "note": "bisection"
+      }
+    }
+  },
+  "best_raw": "raw_ce_contrast",
+  "frozen": "e228_anchor",
+  "improved": false,
+  "anchor_check": {
+    "ok": true,
+    "reproduced": {
+      "S2": 0.3042980539077948,
+      "S1": 0.9637322782723377,
+      "sep_auc": 0.7918401795053043,
+      "loso": 0.9000434593654932,
+      "A": 0.8049854437115825
+    }
+  },
+  "diagnostics": {
+    "ce_contrast": {
+      "train_proto_acc": 0.9993241452615023,
+      "window_known_acc": 0.9525115425214787,
+      "sep_fit": 0.3279528621487819,
+      "sep_window": 0.4688426990766367
+    },
+    "ce_contrast_drift": {
+      "train_proto_acc": 0.989723033953719,
+      "window_known_acc": 0.8972795064718468,
+      "sep_fit": 0.466110749423421,
+      "sep_window": 0.6208903967219814
+    },
+    "ce_contrast_drift_adv": {
+      "train_proto_acc": 0.9888608462773385,
+      "window_known_acc": 0.8911450941929168,
+      "sep_fit": 0.4768111762576945,
+      "sep_window": 0.6372213430618401
+    }
+  },
+  "curve": {
+    "ce_contrast": [
+      4.883781433105469,
+      4.081425666809082,
+      3.47322416305542,
+      2.9891202449798584,
+      2.6005141735076904,
+      2.3077521324157715,
+      2.0805270671844482,
+      1.9152151346206665,
+      1.7876895666122437,
+      1.6937439441680908,
+      1.6243683099746704,
+      1.5760776996612549,
+      1.5455403327941895,
+      1.5268594026565552,
+      1.5197153091430664
+    ],
+    "ce_contrast_drift": [
+      5.30234956741333,
+      5.03165864944458,
+      4.68342399597168,
+      4.330948829650879,
+      4.005099296569824,
+      3.7114787101745605,
+      3.469552516937256,
+      3.2618134021759033,
+      3.090909481048584,
+      2.9550375938415527,
+      2.85132098197937,
+      2.75827956199646,
+      2.70759916305542,
+      2.674133777618408,
+      2.65891695022583
+    ],
+    "ce_contrast_drift_adv": [
+      6.776403903961182,
+      6.483778953552246,
+      6.048214435577393,
+      5.575440406799316,
+      5.139901161193848,
+      4.759286403656006,
+      4.438241004943848,
+      4.168059825897217,
+      3.944913148880005,
+      3.759599208831787,
+      3.6188137531280518,
+      3.519944667816162,
+      3.444580078125,
+      3.4017319679260254,
+      3.3870689868927
+    ]
+  },
+  "timing": {
+    "per_fold_regime_s": 24.103906150658926,
+    "train_minutes": 24.103906150658926,
+    "per_regime_seconds": {
+      "ce_contrast": 9.208035469055176,
+      "ce_contrast_drift": 13.082278668880463,
+      "ce_contrast_drift_adv": 50.021404314041135
+    }
+  },
+  "deploy": {
+    "model": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E229_raw_robust_encoder\\models\\deploy_e229_ce_contrast.pt",
+    "regime": "ce_contrast",
+    "tau": -0.48358086735135375,
+    "A": 0.7949387436355857,
+    "reload_check": 4.209578037261963e-06,
+    "fold_taus": [
+      -0.5002523112766804,
+      -0.4764262787291745,
+      -0.49423703593115215,
+      -0.4890591217585402,
+      -0.4998721057843274,
+      -0.4970285743474959,
+      -0.5037775914846175,
+      -0.46651000177274893,
+      -0.5112844574411658,
+      -0.47552107616242223,
+      -0.500870416183442,
+      -0.4904449492150749,
+      -0.5159786388199424,
+      -0.49571315755868894,
+      -0.49046936556927323,
+      -0.4824335167635356,
+      -0.5164379523438997,
+      -0.48552157535560103,
+      -0.48823591927066057,
+      -0.5064114120298443
+    ]
+  },
+  "baseline": {
+    "id": "e228_anchor",
+    "source": "E228 frozen e226_auc2W (E227 block-weighted features)",
+    "loso_unknown_rejection_micro": 0.9000434593654932,
+    "test_S1_rejection": 0.9637322782723377,
+    "test_S2_acceptance": 0.3042980539077948,
+    "test_separation_auc": 0.7918401795053043,
+    "A": 0.8049854437115825,
+    "tau": -24.138366795919048,
+    "rule": "An E229 candidate is an improvement only if LOSO rejection in [0.90, 0.91] AND Test S2 > 0.3042980539077948 AND separation AUC > 0.7918401795053043."
+  },
+  "bias_note": "Test has been inspected repeatedly since E65. Calibration, augmentation, adversarial and candidate definitions are frozen in this config before the run and use Train rows only; the final candidate comparison reads Test, so the reported S2 gap carries an evaluation bias.",
+  "official": {
+    "AUC": "N/A",
+    "F1": "N/A",
+    "note": "Test has no identity labels."
+  },
+  "runtime_s": 4.070290803909302
+}
