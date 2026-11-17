@@ -1,0 +1,139 @@
+{
+  "experiment": "E231_two_extreme_attribution",
+  "purpose": "User verdict: the feature families are discriminative but not essential -- LOSO is high while Test S2 is low, so they do not transfer across sessions. Freeze the two extreme operating points (A: high LOSO / low S2, B: low LOSO / high S2), compare which dimensions each one actually uses, score all 1569 dimensions on (in-session Fisher, cross-run identity consistency), cut the feature space into four quadrants, and run strict-LOSO ablations of fixed-rule subsets to test whether the high/high quadrant beats the E228 baseline Test S2 = 0.3043 at matched LOSO rejection 0.90. No Test label is used for selection; the per-dimension Test AUC is a diagnostic only.",
+  "predecessor": {
+    "experiments": ["E228_constrained_maxS2", "E227_joint_frontier", "E226_stable_feature_families_v2", "E225_session_invariant_features", "E221_metric_corrected"],
+    "calibration_rule": "Identical to E221/E226/E227/E228: strict 20-fold subject-LOSO, fit rows = trial fraction <= 0.6, evaluation window (0.6, 0.8], inner 5 blocks = min(floor(fraction*5), 4), tau = quantile of inner-OOF known scores, score = -min euclidean distance to same-task k12 prototypes, high score = known, unknown is the positive class.",
+    "failed_do_not_repeat": ["AS-Norm", "in-fold ML metric learning", "per-identity / per-task thresholds", "hard dimension screening by F/D only", "global optimal threshold search", "raw-waveform in-fold retraining with drift augmentation / adversarial training"],
+    "known_anchors": {
+      "e65_corr_A075": {"A": 0.75, "loso_unknown_rejection": 0.9218, "test_S1_rejection": 0.9693, "test_S2_acceptance": 0.2304, "test_separation_auc": 0.7660},
+      "e226_auc2W_A075": {"A": 0.75, "loso_unknown_rejection": 0.9609, "test_S2_acceptance": 0.2063, "test_separation_auc": 0.7918},
+      "e228_baseline_auc2W_calibrated": {"A": 0.804985, "loso_unknown_rejection": 0.9000, "test_S1_rejection": 0.9637, "test_S2_acceptance": 0.3043, "test_separation_auc": 0.7918},
+      "e228_all_blocks_v2_plain_calibrated": {"A": 0.771694, "loso_unknown_rejection": 0.9000, "test_S1_rejection": 0.9670, "test_S2_acceptance": 0.2845, "test_separation_auc": 0.7996},
+      "E225_random_96": {"loso_unknown_rejection": 0.182798, "test_S1_rejection": 0.565776, "test_S2_acceptance": 0.776876, "test_separation_auc": 0.696887},
+      "E221_rank_fusion": {"loso_unknown_rejection": 0.2304, "test_S1_rejection": 0.605012, "test_S2_acceptance": 0.779113}
+    }
+  },
+  "seed": 20261117,
+  "device": "cuda_required",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300
+  },
+  "blocks": {
+    "corr_logspd": 855,
+    "bandpower_gainfree": 90,
+    "spectral_shape": 90,
+    "spectral_slope": 18,
+    "pac": 18,
+    "trial_energy": 1,
+    "hjorth": 180,
+    "spec_entropy": 180,
+    "power_ratio": 112,
+    "graph_metrics": 25
+  },
+  "feature_cache": {
+    "train": {
+      "corr_logspd": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/train_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/train_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/train_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/train_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/train_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/train_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/train_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/train_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/train_graph_metrics.npy"
+    },
+    "test": {
+      "corr_logspd": "research/E121_pca_sweep/test_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/test_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/test_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/test_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/test_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/test_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/test_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/test_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/test_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/test_graph_metrics.npy"
+    },
+    "e146_log_band_power": "research/E146_phase_features/train_log_band_power.npy",
+    "e226_drift_stats": "research/E226_stable_feature_families_v2/cache/drift_stats_v2_9703c7f151.npz",
+    "read_only_score_caches": {
+      "e65_corr_folds": "research/E228_constrained_maxS2/cache/fold_v1_e65_corr_{fold:02d}.npz",
+      "e65_corr_test": "research/E228_constrained_maxS2/cache/test_v1_e65_corr_plain.npz",
+      "auc2W_folds": "research/E227_joint_frontier/cache/fold_v1_auc2_lofo_{fold:02d}.npz",
+      "auc2W_test": "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz",
+      "random_96_folds": "research/E225_session_invariant_features/cache/win_random_96_{fold:02d}.npz",
+      "random_96_test": "research/E225_session_invariant_features/cache/test_scores_random_96.npz",
+      "rank_fusion_folds": "research/E221_metric_corrected/cache/fusion_fold_{fold:02d}_scores.npz",
+      "rank_fusion_test": "research/E221_metric_corrected/cache/fusion_test_scores.npz",
+      "rank_fusion_thresholds": "research/E221_metric_corrected/results.json"
+    }
+  },
+  "representation": {
+    "pipeline": "task-wise standardisation on fold fit rows -> PCA96 -> k=12 k-means prototypes per (task, identity mode)",
+    "pca_dim": 96,
+    "prototypes_k": 12,
+    "block_weights_source": "E227 results.json block_weights.auc2_lofo.mean (10 blocks, order = config blocks)"
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "inner_blocks": 5,
+    "folds": 20,
+    "score_rule": "high score = known; reject if score < tau; identity = nearest prototype identity",
+    "open_set_direction": "high score = known; unknown is the positive class for rejection F1 and AUC(-score)"
+  },
+  "task1_ends": {
+    "A": [
+      {"id": "e65_corr", "A": 0.75, "rep": "e65_corr", "note": "E65 correlation logSPD only, 855 dims, no block weights."},
+      {"id": "e226_auc2W", "A": 0.75, "rep": "e226_all_blocks_v2", "weights": "auc2_lofo", "note": "10 blocks, E227 auc^2 leave-one-fold-out block weights."}
+    ],
+    "B": [
+      {"id": "random_96", "source": "E225", "operating_tau": "recorded per fold (10% quantile rule)", "note": "96 random dims drawn once from the 1072 E225 dims with seed 20261117; the random subspace carries no semantics, it is the score-shift control."},
+      {"id": "rank_fusion", "source": "E221 fusion", "operating_tau": "recorded per-fold train threshold (0.1 quantile on the frozen OOF ECDF)", "note": "E221 rank fusion w025 k3 of the E65 corr stream (855 dims) and the E146 log band power stream (90 dims)."}
+    ],
+    "normalised_position_note": "Raw score scales differ across configurations (negative distance vs ECDF rank in [0,1]). Every threshold position is therefore reported as (x - tau) / IQR(known) and as the quantile of x inside the fold's known-score distribution."
+  },
+  "attribution": {
+    "rows": "Train rows with trial fraction <= 0.6 of the enrolled identities only (never the held identity, never the evaluation window).",
+    "in_session": "E226 task-wise Fisher: per task, between = var over subject means, within = mean over subject variances; Fisher = mean_t between_t / (mean_t within_t + 1e-9).",
+    "cross_run": "Per (subject, task) the trials are split at that cell's trial-index median into run1 (trial <= median) and run2 (trial > median). Per task and dimension: c1[s,d], c2[s,d] = subject centroid in run1/run2; z-score each dimension across subjects inside each run; same[d] = mean_s z1[s,d]*z2[s,d]; diff[d] = mean_{s != s'} z1[s,d]*z2[s',d]; cross_run[d] = mean over the 4 tasks of (same - diff).",
+    "cross_run_note": "same[d] is the Pearson correlation across subjects of the run1 vs run2 identity profile of dimension d; diff[d] is the mismatched-subject null. The run split is the only possible approximation of a second session inside Train and is recorded with the actual per-cell trial counts.",
+    "quadrants": "High/low is a median split of each statistic over the enrolled fit rows of the fold (fixed rule: strictly above the median = high). Applied per fold for the ablations and once over all 20 identities for the descriptive table.",
+    "test_diagnostic": "Per-dimension AUC separating Test session2 from session1 rows, over all 22251 Test rows. Diagnosis only, never used for selection. Polarity: high = larger value in S2.",
+    "fallback_proxy": "If cross_run fails the Test-AUC validation, fall back to the E226 synthetic-drift ledger (subject_delta over 10 drift conditions, 20 subjects, 1569 dims): drift sensitivity = mean_{cond,subject}|delta| / (sqrt(between) + 1e-9). Read-only, descriptive, not used for subset selection."
+  },
+  "ablations": {
+    "pca_dim": 96,
+    "subsets": [
+      {"id": "Q1_essence", "rule": "in_session > median AND cross_run > median"},
+      {"id": "Q1Q2_in_session", "rule": "in_session > median"},
+      {"id": "Q1Q3_transfer", "rule": "cross_run > median"},
+      {"id": "Q2_only", "rule": "in_session > median AND cross_run <= median"},
+      {"id": "Q3_only", "rule": "in_session <= median AND cross_run > median"},
+      {"id": "random_same_size", "rule": "uniform random dimensions, count = |Q1_essence| of the fold"},
+      {"id": "all_dims_plain", "rule": "all 1569 dimensions, no block weights (same-code-path E228 plain reference)"}
+    ],
+    "random_control_seed": "20261117 + 7919 * fold",
+    "subset_selection": "Per fold the statistics are computed on that fold's enrolled fit rows only, so the held identity never influences its own subset. The Test model of each subset uses the subset selected once on all 20 identities' fit rows.",
+    "calibration": "Bisect A on the Train side so that pooled (micro) LOSO unknown rejection hits 0.90; keep the loosest A that still clears 0.90 (identical to E228).",
+    "test_read": "Test is read once per fixed subset after A is frozen."
+  },
+  "decision_rule": {
+    "baseline_subset": "Q1_essence",
+    "baseline_S2": 0.3043,
+    "baseline_source": "E228 frozen e226_auc2W, LOSO unknown rejection 0.9000, Test S2 0.3043",
+    "win": "Q1_essence Test S2 > 0.3043 while its LOSO unknown rejection stays in [0.90, 0.91]",
+    "lose": "record the four-quadrant evidence and state that the essential features are insufficient on this data; do not re-run with a new recipe."
+  },
+  "official_note": "Official Test AUC/F1 = N/A: Test has no identity labels. Reported AUC is the threshold-free LOSO AUC, reported F1 is the LOSO rejection F1 with unknown as the positive class.",
+  "bias_note": "Test has been inspected repeatedly since E65. Subset rules, PCA size and the calibration rule are fixed in this file before the run and never use Test; only the per-dimension Test AUC is diagnostic and it introduces a repeated-inspection bias. The final S2 comparison is therefore optimistic."
+}

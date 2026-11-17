@@ -1,0 +1,31 @@
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121
+rows=11304 fit=6695 window=2301
+run split: run1 mean 70.8 run2 mean 70.5 max|imbalance| 1
+test rows=22251 S1=3033 S2=19218
+train features (11304, 1569)  test features (22251, 1569)
+task1 e65_corr     LOSO_rej=0.9218 known_acc=0.7798 S1=0.9773 S2=0.2304 sepAUC=0.7660
+task1 e226_auc2W   LOSO_rej=0.9609 known_acc=0.7378 S1=0.9855 S2=0.2063 sepAUC=0.7918
+task1 random_96    LOSO_rej=0.1760 known_acc=0.9442 S1=0.5658 S2=0.7769 sepAUC=0.6969
+task1 rank_fusion  LOSO_rej=0.2260 known_acc=0.9024 S1=0.6073 S2=0.7764 sepAUC=0.7258
+task1 done (1.1s)
+task2 done (4.2s) rho(cross_run,testAUC)=-0.0296 p=0.24 | rho(in_session,testAUC)=0.0202 | rho(intra)=0.7187
+  block corr_logspd          Q1=0.298 Q2=0.103 Q3=0.123 Q4=0.476
+  block bandpower_gainfree   Q1=0.667 Q2=0.300 Q3=0.022 Q4=0.011
+  block spectral_shape       Q1=0.900 Q2=0.089 Q3=0.011 Q4=0.000
+  block spectral_slope       Q1=0.778 Q2=0.222 Q3=0.000 Q4=0.000
+  block pac                  Q1=0.000 Q2=0.000 Q3=0.000 Q4=1.000
+  block trial_energy         Q1=1.000 Q2=0.000 Q3=0.000 Q4=0.000
+  block hjorth               Q1=0.450 Q2=0.067 Q3=0.122 Q4=0.361
+  block spec_entropy         Q1=0.044 Q2=0.139 Q3=0.306 Q4=0.511
+  block power_ratio          Q1=0.768 Q2=0.143 Q3=0.009 Q4=0.080
+  block graph_metrics        Q1=0.480 Q2=0.240 Q3=0.000 Q4=0.280
+ablate Q1_essence       dims=600 A*=0.8013 LOSO=0.9000 known=0.7663 F1=0.2831 S1=0.9515 S2=0.2502 sep=0.7836 (1.9s)
+ablate Q1Q2_in_session  dims=784 A*=0.7803 LOSO=0.9000 known=0.7642 F1=0.2814 S1=0.9611 S2=0.2482 sep=0.7943 (2.1s)
+ablate Q1Q3_transfer    dims=784 A*=0.7993 LOSO=0.9000 known=0.7646 F1=0.2819 S1=0.9469 S2=0.2869 sep=0.7904 (2.1s)
+ablate Q2_only          dims=184 A*=0.5439 LOSO=0.9000 known=0.5708 F1=0.1788 S1=0.9618 S2=0.1690 sep=0.7541 (1.5s)
+ablate Q3_only          dims=184 A*=0.2363 LOSO=0.9000 known=0.2608 F1=0.1128 S1=0.9337 S2=0.1330 sep=0.5835 (1.6s)
+ablate random_same_size dims=600 A*=0.7191 LOSO=0.9000 known=0.7142 F1=0.2453 S1=0.9453 S2=0.2862 sep=0.7742 (1.8s)
+ablate all_dims_plain   dims=1569 A*=0.7717 LOSO=0.9000 known=0.7492 F1=0.2697 S1=0.9670 S2=0.2845 sep=0.7996 (3.6s)
+baseline e228_auc2W A*=0.8050 LOSO=0.9000 S2=0.3043 (recorded 0.3043)
+results.json + report.md written
+Q1_essence S2=0.2502 vs 0.3043 win=False (21s)
