@@ -1,0 +1,237 @@
+﻿{
+  "rows": 11304,
+  "feature_shape": [
+    11304,
+    855
+  ],
+  "subjects": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "session": "session1",
+  "blocks": {
+    "early": 6757,
+    "late": 2287,
+    "middle": 2260
+  },
+  "duplicate_rows": 0,
+  "device": "cuda:0",
+  "feature_source": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\e201_final_selftest\\train_raw_scores_inputs.npy"
+}
+outer=1 seconds=9.7
+outer=2 seconds=9.4
+outer=3 seconds=9.5
+outer=4 seconds=9.5
+outer=5 seconds=9.5
+outer=6 seconds=9.5
+outer=7 seconds=10.2
+outer=8 seconds=9.4
+outer=9 seconds=9.6
+outer=10 seconds=9.4
+outer=11 seconds=9.5
+outer=12 seconds=9.5
+outer=13 seconds=9.5
+outer=14 seconds=9.5
+outer=15 seconds=9.4
+outer=16 seconds=9.5
+outer=17 seconds=9.4
+outer=18 seconds=9.4
+outer=19 seconds=9.5
+outer=20 seconds=9.5
+total_seconds=190.5
+candidate endpoint  AUC_mean  F1_unknown_rejection_mean  known_acceptance_mean  unknown_rejection_mean  closed_set_acc_mean
+       C0       P1  0.970837                   0.529394               0.919270                0.917569             0.982162
+       C0       P2  0.946774                   0.394632               0.847897                0.923106             0.968731
+       C1       P1  0.971238                   0.519487               0.914663                0.922151             0.984695
+       C1       P2  0.946928                   0.398072               0.850394                0.923291             0.965371
+       C2       P1  0.977861                   0.562695               0.928796                0.923196             0.987317
+       C2       P2  0.957647                   0.437448               0.873556                0.923998             0.975908
+contrast endpoint            metric  mean_diff    ci_low   ci_high  n_folds
+   C1-C0       P1  known_acceptance  -0.004606 -0.006514 -0.002473       20
+   C1-C0       P1 unknown_rejection   0.004583 -0.015270  0.028708       20
+   C1-C0       P1               AUC   0.000401 -0.003034  0.004220       20
+   C1-C0       P2  known_acceptance   0.002497 -0.001002  0.005874       20
+   C1-C0       P2 unknown_rejection   0.000186 -0.015595  0.016550       20
+   C1-C0       P2               AUC   0.000154 -0.004766  0.005602       20
+   C2-C0       P1  known_acceptance   0.009526  0.008225  0.010970       20
+   C2-C0       P1 unknown_rejection   0.005627 -0.007797  0.022897       20
+   C2-C0       P1               AUC   0.007023  0.004186  0.011373       20
+   C2-C0       P2  known_acceptance   0.025659  0.023733  0.027661       20
+   C2-C0       P2 unknown_rejection   0.000892 -0.010491  0.014098       20
+   C2-C0       P2               AUC   0.010873  0.006507  0.016783       20
+{
+ "selection": "C2",
+ "criterion": {
+  "C1": {
+   "p2_known_acc_diff": 0.0024967072599908604,
+   "ci": [
+    -0.0010021389400070128,
+    0.005874177512365345
+   ],
+   "p1_unknown_rejection": 0.9221511349637007,
+   "p2_unknown_rejection": 0.9232914286445645,
+   "p2_known_acceptance": 0.8503938201805005,
+   "pass": false
+  },
+  "C2": {
+   "p2_known_acc_diff": 0.025659333441537667,
+   "ci": [
+    0.023733223812920607,
+    0.02766052107014024
+   ],
+   "p1_unknown_rejection": 0.9231958070937287,
+   "p2_unknown_rejection": 0.9239975862153857,
+   "p2_known_acceptance": 0.8735564463620475,
+   "pass": true
+  }
+ },
+ "repro": {
+  "AUC": {
+   "max_abs_diff_per_fold": 1.1102230246251565e-16,
+   "E249_mean": 0.9708374034948296,
+   "E247_mean": 0.9708374034948297
+  },
+  "known_acceptance": {
+   "max_abs_diff_per_fold": 1.1102230246251565e-16,
+   "E249_mean": 0.919269648276623,
+   "E247_mean": 0.9192696482766228
+  },
+  "unknown_rejection": {
+   "max_abs_diff_per_fold": 1.1102230246251565e-16,
+   "E249_mean": 0.917568529217584,
+   "E247_mean": 0.917568529217584
+  },
+  "F1_unknown_rejection": {
+   "max_abs_diff_per_fold": 5.551115123125783e-17,
+   "E249_mean": 0.5293938236924335,
+   "E247_mean": 0.5293938236924335
+  },
+  "threshold_max_abs_diff": 5.551115123125783e-17,
+  "folds": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20
+  ]
+ },
+ "worst": {
+  "C0|P1": [
+   {
+    "subject": 7,
+    "unknown_rejection": 0.36134453781512604
+   },
+   {
+    "subject": 15,
+    "unknown_rejection": 0.7904761904761904
+   },
+   {
+    "subject": 5,
+    "unknown_rejection": 0.9148936170212766
+   }
+  ],
+  "C0|P2": [
+   {
+    "subject": 7,
+    "unknown_rejection": 0.49226190476190484
+   },
+   {
+    "subject": 10,
+    "unknown_rejection": 0.8641929499072356
+   },
+   {
+    "subject": 15,
+    "unknown_rejection": 0.8884437108176604
+   }
+  ],
+  "C1|P1": [
+   {
+    "subject": 7,
+    "unknown_rejection": 0.4789915966386555
+   },
+   {
+    "subject": 5,
+    "unknown_rejection": 0.8723404255319149
+   },
+   {
+    "subject": 8,
+    "unknown_rejection": 0.8921568627450981
+   }
+  ],
+  "C1|P2": [
+   {
+    "subject": 7,
+    "unknown_rejection": 0.46349206349206346
+   },
+   {
+    "subject": 5,
+    "unknown_rejection": 0.8264353155055125
+   },
+   {
+    "subject": 8,
+    "unknown_rejection": 0.9062447201102662
+   }
+  ],
+  "C2|P1": [
+   {
+    "subject": 7,
+    "unknown_rejection": 0.4789915966386555
+   },
+   {
+    "subject": 15,
+    "unknown_rejection": 0.8666666666666667
+   },
+   {
+    "subject": 5,
+    "unknown_rejection": 0.9042553191489362
+   }
+  ],
+  "C2|P2": [
+   {
+    "subject": 7,
+    "unknown_rejection": 0.566468253968254
+   },
+   {
+    "subject": 8,
+    "unknown_rejection": 0.8754468454048285
+   },
+   {
+    "subject": 5,
+    "unknown_rejection": 0.8835473844710298
+   }
+  ]
+ }
+}

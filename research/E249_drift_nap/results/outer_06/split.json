@@ -1,0 +1,38 @@
+{
+  "protocol_version": "E249-v1-drift-nap-wccn",
+  "outer_subject": 6,
+  "known": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "outer_fit_rows": 6391,
+  "outer_D_rows": [
+    3180,
+    3211
+  ],
+  "late_rows": 2287,
+  "selected": {
+    "C1": "C1_k16",
+    "C2": "C2_a0.5"
+  },
+  "reload_check": "passed",
+  "metadata_sha256": "f3be516e93082b78a9f483f9edb92f6330b1be39d32dff999a0a60b9bb92b545",
+  "feature_sha256": "c93a7aa8a6f423d53e026b8782f76671c0834899ce2bfc2b049ba3ebd1a9b610"
+}

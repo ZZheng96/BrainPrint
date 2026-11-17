@@ -1,0 +1,48 @@
+{
+  "disclosure": "looked at Test (one-shot descriptive audit, no iteration, no selection by Test)",
+  "chosen_C2": "C2_a0.5",
+  "inner_selection_score": {
+    "C0": 0.8562890960371045,
+    "C2_a0.5": 0.8800058360432662,
+    "C2_a1.0": 0.8751965197783406,
+    "C2_a2.0": 0.8701896008340168
+  },
+  "thresholds_P1_FAR10": {
+    "C0": 0.35945785045623785,
+    "C2_a0.5": 0.3448357284069062,
+    "C2_a1.0": 0.3424519300460816,
+    "C2_a2.0": 0.34222006797790533
+  },
+  "test": {
+    "C0": {
+      "session1": {
+        "n": 3033,
+        "accept": 0.4520276953511375,
+        "score_median": 0.32537388801574707,
+        "accepted_id_count_cv": 3.9184269471196096
+      },
+      "session2": {
+        "n": 19218,
+        "accept": 0.44104485378291186,
+        "score_median": 0.3363376259803772,
+        "accepted_id_count_cv": 1.0703343935435492
+      },
+      "S1_vs_S2_score_AUC_descriptive": 0.4625309886938683
+    },
+    "C2_a0.5": {
+      "session1": {
+        "n": 3033,
+        "accept": 0.44642268381140787,
+        "score_median": 0.30968743562698364,
+        "accepted_id_count_cv": 3.9667488456603626
+      },
+      "session2": {
+        "n": 19218,
+        "accept": 0.4291809761681757,
+        "score_median": 0.31832800805568695,
+        "accepted_id_count_cv": 1.0852439921549215
+      },
+      "S1_vs_S2_score_AUC_descriptive": 0.4575519358173973
+    }
+  }
+}
