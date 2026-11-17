@@ -1,0 +1,26 @@
+{
+  "1_in_sample_accuracy": 0.9988160426224656,
+  "4_forward_block_out_accuracy": 0.9863646360237519,
+  "2_oof_5block_closed_set_accuracy": 0.9964614295824487,
+  "3_oof_5block_macro_f1": 0.9964077957377651,
+  "2_per_block_accuracy": {
+    "0": 0.9954689623923878,
+    "1": 0.9977876106194691,
+    "2": 0.9982316534040672,
+    "3": 0.9969026548672566,
+    "4": 0.9939524838012959
+  },
+  "6_U_at_95_strict": 1.0,
+  "6_U_at_95_min": 1.0,
+  "lambda": 0.0,
+  "protocol": {
+    "fit": "all 20 identities, frac <= 0.6",
+    "blocks": "block = clip(int(frac*5), 0, 4) per (subject, task) trial order",
+    "1": "closed-set top-1 on the fit block",
+    "4": "closed-set top-1 on frac > 0.6 with the frac <= 0.6 fit",
+    "2_3": "leave-one-block-out, statistics and prototypes fitted on the other four blocks",
+    "6": "inner LOSO: fit on 19 identities frac <= 0.4, threshold = quantile(known 0.4 < frac <= 0.6, 0.95), unknown = held identity, same window",
+    "score": "strict LDA-cos top-1 cosine (lambda = 0)",
+    "test_data": "not read"
+  }
+}

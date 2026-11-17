@@ -20,5 +20,28 @@
   },
   "device": "cuda:0 when available",
   "model_output": "results/outer_{subject}/model.pt",
-  "resume": true
+  "resume": true,
+  "gates": {
+    "1": "Train in-sample accuracy = 1.00 (fitted on all 20 identities, frac <= 0.6, evaluated on the same rows)",
+    "2": "5-block OOF closed-set accuracy >= 0.95 (block = clip(int(frac*5),0,4), leave-one-block-out)",
+    "3": "5-block OOF identity macro-F1 >= 0.92",
+    "4": "forward block-out accuracy >= 0.90 (fit frac <= 0.6, evaluate frac > 0.6)",
+    "5": "pseudo-unknown LOSO AUROC >= 0.98 (strict reading)",
+    "6": "U@95% >= 0.95 (strict; inner LOSO, threshold = quantile of known 0.4 < frac <= 0.6 at 0.95)",
+    "7": "RA worst over the SNR30 x goal conditions >= 0.95 (SNR20 reported as reference)",
+    "8": "ASafeR worst over the same conditions >= 0.98",
+    "9": "Test S2 acceptance >= 0.70",
+    "10": "Test S1 rejection >= 0.70",
+    "11": "strict LOSO unknown rejection at a=0.90 > 0.90"
+  },
+  "attack": {
+    "script": "gates_attack.py",
+    "subset": "Train 0.6 < frac <= 0.8, cap 400 per task, seed 20261115",
+    "snr_db": [30, 20],
+    "steps": 20,
+    "radius": "per-trial L2 norm of the demeaned waveform / 10^(SNR/20)",
+    "goals": "A/B/C maximise wrong-vs-true identity margin; D maximises the refusal gate (E195 gate-evasion)",
+    "gradient": "Daleckii-Krein SPD matrix-log backward; the torch.linalg.eigh NaN on repeated eigenvalues is removed",
+    "primary_snr_db": 30
+  }
 }

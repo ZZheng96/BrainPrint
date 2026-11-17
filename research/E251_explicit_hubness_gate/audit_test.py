@@ -45,8 +45,6 @@ for group in ("S1", "S2"):
     m = sess == group
     cnt = np.bincount(pred[m][score[m] >= threshold], minlength=21)[1:]
     out["test"][group] = {"n":int(m.sum()),"acceptance":float((score[m]>=threshold).mean()),"rejection":float((score[m]<threshold).mean()),"score_median":float(np.median(score[m])),"accepted_id_count_cv":float(cnt.std()/max(cnt.mean(),1e-12))}
-for c in ("lambda_0.00", f"lambda_{chosen:.2f}"):
-    pass
 s1, s2 = score[sess == "S1"], score[sess == "S2"]
 out["test"]["S1_vs_S2_score_AUC_descriptive"] = R.auc(s2, s1)
 (OUT / "results" / "test_audit.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
