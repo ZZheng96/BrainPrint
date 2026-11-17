@@ -1,0 +1,136 @@
+{
+  "experiment": "E226_stable_feature_families_v2",
+  "purpose": "Add four theoretically gain/reference-invariant feature families (hjorth, spec_entropy, power_ratio, graph_metrics) on top of the E225 blocks, build one merged drift ledger, and test reliability weighting (diagonal metric + block-level fusion) under the identical strict 20-fold subject-LOSO protocol. Final arbiter stays Test S2-vs-S1 separation AUC (E225 all_blocks = 0.787784).",
+  "predecessor": {
+    "path": "research/E225_session_invariant_features/run_e225.py",
+    "protocol_note": "Byte-identical protocol: fit rows = trial fraction <= 0.6, eval window (0.6, 0.8], tau = 10% quantile of inner 5-block OOF known scores, score = -min euclidean distance to same-task k12 prototypes, higher = known, unknown is the positive class.",
+    "anchor_candidate": "e225_all_blocks",
+    "anchor_expected": {
+      "loso_auc": 0.9085511934882498,
+      "loso_unknown_rejection": 0.6502790012249146,
+      "test_S1_rejection": 0.8249258160237388,
+      "test_S2_acceptance": 0.5353314600894994,
+      "test_S2_vs_S1_auc": 0.7877842466692312,
+      "test_max_S2_acceptance_at_S1_rej_0_70": 0.6746279529607659
+    }
+  },
+  "seed": 20261117,
+  "device": "cuda_required",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_root": "Brainprint_Competition",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300,
+    "channel_order": ["P3", "C3", "F3", "Fz", "F4", "C4", "P4", "Cz", "Fp1", "Fp2", "T3", "T5", "O1", "O2", "F7", "F8", "T6", "T4"]
+  },
+  "features": {
+    "e65_train_cache": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "e65_test_cache": "research/E121_pca_sweep/test_logspd.npy",
+    "e225_cache_dir": "research/E225_session_invariant_features/cache",
+    "e225_cache_note": "Old blocks bandpower_gainfree / spectral_shape / spectral_slope / pac / trial_energy are read from the frozen E225 cache for both Train and Test, exactly as E225 did, so the anchor candidate is bit-reproducible. corr_logspd comes from the E65 Train cache and the E121 Test cache.",
+    "bands_hz": [[1, 8], [8, 13], [13, 20], [20, 30], [30, 40]],
+    "blocks": {
+      "corr_logspd": {"dim": 855, "family": "old", "definition": "E65 per-trial per-band channel-standardised correlation logSPD (fixed, frozen)."},
+      "bandpower_gainfree": {"dim": 90, "family": "old", "definition": "log band power per channel per band minus that band's channel mean (E225)."},
+      "spectral_shape": {"dim": 90, "family": "old", "definition": "frequency-demeaned per-channel log PSD averaged inside each band (E225)."},
+      "spectral_slope": {"dim": 18, "family": "old", "definition": "per-channel log-log PSD slope over 1-40 Hz (E225)."},
+      "pac": {"dim": 18, "family": "old", "definition": "alpha-beta phase-amplitude coupling, mean resultant length (E225)."},
+      "trial_energy": {"dim": 1, "family": "old", "definition": "log RMS of the whole trial; negative control (E225)."},
+      "hjorth": {"dim": 180, "family": "new_invariant", "definition": "For each of the 5 FFT bands and each of the 18 channels on the band-passed waveform: mobility = sqrt(var(dx)/var(x)) and complexity = mobility(dx)/mobility(x). Exactly invariant to any per-channel/per-trial amplitude scaling. Layout: [mobility 5x18][complexity 5x18], band-major."},
+      "spec_entropy": {"dim": 180, "family": "new_invariant", "definition": "Per channel per band: Shannon entropy of the normalised within-band PSD divided by log(n_bins) (in [0,1]), and spectral flatness = geometric mean / arithmetic mean of the within-band PSD. Both cancel any multiplicative gain. Layout: [entropy 5x18][flatness 5x18], band-major."},
+      "power_ratio": {"dim": 112, "family": "new_invariant", "definition": "Log-power differences only. (a) 5 bands x 8 fixed contralateral channel pairs = 40 dims, log P_i - log P_j, cancels any global/common gain. Pairs (0-based CHANNEL_ORDER): P3-P4 (0,6), C3-C4 (1,5), F3-F4 (2,4), T3-T4 (10,17), T5-T6 (11,16), O1-O2 (12,13), F7-F8 (14,15), Fp1-Fp2 (8,9). (b) 4 cross-band log ratios x 18 channels = 72 dims: alpha/theta, beta/alpha, beta/theta, gamma/alpha with beta = logaddexp(13-20, 20-30) - log 2. Cross-band ratios cancel per-channel broadband gain."},
+      "graph_metrics": {"dim": 25, "family": "new_invariant", "definition": "Per band, on the 18x18 absolute correlation matrix of the band-passed, per-channel standardised signal with a fixed edge density (top 30% of the 153 off-diagonal weights per trial): mean binary clustering coefficient, global efficiency (= inverse harmonic mean shortest path; reported instead of raw path length so that disconnected trials stay finite), normalised strength entropy, dominant-eigenvalue share (largest / sum of |eigenvalues|), spectral-bipartition modularity Q (Newman modularity matrix, leading non-trivial eigenvector, deterministic sign). Layout: band-major, 5 metrics per band in that order."}
+    },
+    "total_dim": 1569,
+    "old_dim": 1072,
+    "chunk_trials": 128,
+    "drift_chunk_trials": 800,
+    "io_workers": 12
+  },
+  "drift_simulation": {
+    "conditions": [
+      "gain_ch_pm3dB",
+      "gain_global_p3dB",
+      "gain_global_m3dB",
+      "tilt_p0.5",
+      "tilt_m0.5",
+      "noise_snr20",
+      "noise_snr10",
+      "reref_pair12",
+      "resample_150",
+      "bandpass_2_38"
+    ],
+    "note": "Identical conditions, seeds, subset rule and code path as E225. Every condition is applied to raw waveforms and every block (including the frozen-source blocks) is recomputed from the drifted waveform.",
+    "subset_per_subject_task": 20,
+    "subset_rule": "20 evenly spaced trials inside the fit range (fraction <= 0.6) of each subject x task cell, deterministic.",
+    "sensitivity_definition": "per dimension: mean over conditions and over enrolled subjects of |f_drifted - f_clean| divided by the between-subject standard deviation of that dimension on the fit rows."
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "inner_blocks": 5,
+    "threshold_quantile": 0.1,
+    "pca_dim": 96,
+    "pca_dim_large": 192,
+    "prototypes_k": 12,
+    "folds": 20,
+    "score_rule": "score = -min euclidean distance to same-task prototypes (higher = known); reject if score < tau",
+    "tau_rule": "global tau = 10% quantile of the inner 5-block OOF known scores of the fold's fit rows (E221/E224/E225 rule, unchanged)",
+    "open_set_direction": "high score = known; unknown is the positive class for rejection F1 and AUC(-score)"
+  },
+  "weighting": {
+    "reliability_diagonal": {
+      "estimate": "w_d = between-subject variance / (within-subject variance + 1e-9), both task-wise on the fold's fit rows, averaged over the 4 tasks.",
+      "postprocess": "clip w_d to its own [q05, q95] on the fold's fit rows, then divide by its mean; features are multiplied by sqrt(w_d) after task-wise standardisation and before PCA96. All dimensions are kept.",
+      "no_test_information": true
+    },
+    "random_weight_control": "the same w vector permuted with numpy default_rng(seed + fold index); identical pipeline otherwise (negative control for the weighting itself).",
+    "block_fusion": {
+      "pipeline": "per block: task-wise standardisation on fit rows -> per-block PCA(32) -> k12 prototypes -> d_b = min euclidean distance to same-task prototypes. Scale normalisation uses only fit rows and only prototypes of OTHER identities: d_other(row) = min distance to same-task prototypes with a different identity; z_b = (d_b - median(d_other)) / (IQR(d_other)/1.349). Block score = -z_b. Fused score = -sum_b w_b z_b (higher = known). Identity = weighted vote of the per-block nearest-prototype identities.",
+      "schemes": {
+        "block_fusion_equal": "w_b = 1 for every block",
+        "block_fusion_byF": "w_b = F_b / mean_b(F_b), F_b = block-mean Fisher discriminability on the fold's fit rows",
+        "block_fusion_byFD": "w_b = (F_b / (D_b + 1e-9)) / mean_b(F_b / (D_b + 1e-9)), D_b = block-mean drift sensitivity on the fold's fit rows (drift restricted to the fold's enrolled subjects)"
+      },
+      "pca_per_block": 32,
+      "weights_source": "fold fit rows only; no held identity and no Test information",
+      "fixed_in_config": true
+    }
+  },
+  "candidates": [
+    {"name": "e225_all_blocks", "mode": "concat", "blocks": "old", "pca": 96, "note": "E225 all_blocks reproduction anchor (1072 dims, PCA96, k12). Must reproduce to 1e-6."},
+    {"name": "all_blocks_v2", "mode": "concat", "blocks": "all", "pca": 96, "note": "Old + 4 new blocks, 1569 dims, PCA96, k12."},
+    {"name": "all_blocks_v2_pca192", "mode": "concat", "blocks": "all", "pca": 192, "note": "Same 1569 dims, PCA192 (capacity check, no dimension filtering)."},
+    {"name": "icc_weighted", "mode": "concat", "blocks": "all", "pca": 96, "weights": "icc", "note": "Diagonal reliability weights w_d = between/within on fold fit rows, all dims kept, then PCA96."},
+    {"name": "random_weight_control", "mode": "concat", "blocks": "all", "pca": 96, "weights": "icc_permuted", "note": "Permuted reliability weights, negative control."},
+    {"name": "hjorth_entropy_only", "mode": "concat", "blocks": ["hjorth", "spec_entropy"], "pca": 96, "note": "Only the two new strictly gain-invariant blocks (360 dims)."},
+    {"name": "block_fusion_equal", "mode": "fusion", "weights": "equal", "note": "10-block z-scored distance fusion, equal weights."},
+    {"name": "block_fusion_byF", "mode": "fusion", "weights": "byF", "note": "10-block fusion, weights proportional to block Fisher."},
+    {"name": "block_fusion_byFD", "mode": "fusion", "weights": "byFD", "note": "10-block fusion, weights proportional to block Fisher / drift sensitivity."}
+  ],
+  "decision_rule": {
+    "anchor_test_separation_auc": 0.7877842466692312,
+    "e225_corr_baseline_separation_auc": 0.766024,
+    "freeze_all": "LOSO unknown rejection > 0.90 AND Test S2 acceptance > 0.70 AND Test S1 rejection >= 0.70",
+    "breakthrough": "Test S2-vs-S1 separation AUC >= 0.80 AND max S2 acceptance at S1 rejection >= 0.70 is > 0.70",
+    "no_gain": "every candidate's LOSO unknown rejection <= anchor 0.650279 AND Test separation AUC <= anchor 0.787784",
+    "stage_targets": {"S1_rejection": 0.70, "S2_acceptance": 0.70},
+    "no_recipe_rerun": "If no candidate beats the E225 anchor, record '新成分族无增益' with the ledger evidence and stop; do not re-run with a new recipe."
+  },
+  "reference_e65_baseline": {
+    "loso_auc": 0.910173,
+    "loso_unknown_rejection": 0.563519,
+    "loso_known_acceptance": 0.918387,
+    "test_S1_rejection": 0.826574,
+    "test_S2_acceptance": 0.550734,
+    "test_S2_vs_S1_auc": 0.766024
+  },
+  "selection": "Every candidate, block definition, weight formula and PCA size is fixed in this file before the run. Reliability weights and fusion weights are recomputed inside each fold from that fold's fit rows only. Test is read once, after all Train-side artefacts are frozen, and is used only for uniform evaluation.",
+  "official_note": "Official Test AUC/F1 = N/A: Test has no identity labels."
+}

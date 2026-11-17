@@ -1,0 +1,115 @@
+{
+  "experiment": "E227_joint_frontier",
+  "purpose": "Freeze the E226 all_blocks_v2 representation and map the joint reachable region over a train-side-only threshold grid. A = target known acceptance on the fold's inner OOF scores, tau = (1-A) quantile. Report LOSO rejection vs Test S1 rejection vs Test S2 acceptance for A in [0.70..0.99]; add two block-weighting schemes driven by single-block LOSO AUC (leave-one-fold-out, no Test, no held identity).",
+  "predecessor": {
+    "experiment": "E226_stable_feature_families_v2",
+    "path": "research/E226_stable_feature_families_v2/run_e226.py",
+    "representation_candidate": "all_blocks_v2",
+    "known_results": {
+      "all_blocks_v2": {
+        "loso_auc": 0.888993,
+        "loso_unknown_rejection_macro": 0.580112,
+        "loso_unknown_rejection_micro": 0.578010,
+        "test_S1_rejection": 0.790966,
+        "test_S2_acceptance": 0.588927,
+        "test_S2_vs_S1_auc": 0.799645,
+        "test_max_S2_acceptance_at_S1_rej_0_70": 0.716152
+      },
+      "e225_all_blocks_anchor": {
+        "loso_auc": 0.9085511934882498,
+        "loso_unknown_rejection_macro": 0.6502790012249146,
+        "test_S1_rejection": 0.8249258160237388,
+        "test_S2_acceptance": 0.5353314600894994,
+        "test_S2_vs_S1_auc": 0.7877842466692312
+      }
+    },
+    "note": "E226 tau rule = 10% quantile of inner OOF known scores, i.e. A = 0.90. This experiment reproduces that point bitwise as the A=0.90 row."
+  },
+  "seed": 20261117,
+  "device": "cuda_required",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300
+  },
+  "representation": {
+    "name": "all_blocks_v2",
+    "blocks": {
+      "corr_logspd": 855,
+      "bandpower_gainfree": 90,
+      "spectral_shape": 90,
+      "spectral_slope": 18,
+      "pac": 18,
+      "trial_energy": 1,
+      "hjorth": 180,
+      "spec_entropy": 180,
+      "power_ratio": 112,
+      "graph_metrics": 25
+    },
+    "total_dim": 1569,
+    "pca_dim": 96,
+    "prototypes_k": 12,
+    "frozen": "Feature extraction is NOT re-designed. Arrays are read from the frozen E226/E225/E65 caches produced by research/E226_stable_feature_families_v2/run_e226.py."
+  },
+  "feature_cache": {
+    "train": {
+      "corr_logspd": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/train_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/train_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/train_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/train_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/train_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/train_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/train_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/train_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/train_graph_metrics.npy"
+    },
+    "test": {
+      "corr_logspd": "research/E121_pca_sweep/test_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/test_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/test_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/test_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/test_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/test_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/test_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/test_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/test_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/test_graph_metrics.npy"
+    },
+    "block_only_fold_metrics": "research/E226_stable_feature_families_v2/cache/fold_v2_blockonly_{block}_{fold:02d}.json",
+    "e226_window_scores": "research/E226_stable_feature_families_v2/cache/win_v2_all_blocks_v2_{fold:02d}.npz",
+    "reuse_note": "Read-only reuse. E227 writes only inside research/E227_joint_frontier/."
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "inner_blocks": 5,
+    "folds": 20,
+    "score_rule": "score = -min euclidean distance to same-task k12 prototypes (higher = known); reject if score < tau; identity = nearest prototype identity",
+    "open_set_direction": "high score = known; unknown is the positive class for rejection F1 and AUC(-score)"
+  },
+  "threshold_grid": {
+    "target_known_acceptance_A": [0.70, 0.75, 0.80, 0.85, 0.88, 0.90, 0.92, 0.94, 0.96, 0.98, 0.99],
+    "rule": "tau(A) = (1-A) quantile of the inner 5-block OOF known scores of the fold's fit rows; higher A = stricter gate. A uses Train-side rows only, never Test.",
+    "note": "A = target known acceptance on Train. The realised known acceptance is A up to inner-OOF vs outer-fit mismatch."
+  },
+  "block_weighting": {
+    "none": "w_b = 1 for all 10 blocks (E226 all_blocks_v2, reproduction target).",
+    "auc_lofo": "w_b proportional to the leave-one-fold-out mean of the single-block LOSO AUC (folds != held) over the 20 block-only results already cached by E226; normalised to mean 1.",
+    "auc2_lofo": "same but weights proportional to AUC^2, normalised to mean 1.",
+    "application": "Features are task-wise standardised, multiplied by sqrt(w_b) inside block b, then PCA96 and k12 prototypes. Block weight vectors are fold-specific and logged for every fold.",
+    "leakage_rule": "Fold held's block weight never uses held's evaluation-window rows: only the other 19 folds' block-only AUC values are averaged. No Test information."
+  },
+  "decision_rule": {
+    "joint_target": {"loso_unknown_rejection": 0.90, "test_S1_rejection": 0.70, "test_S2_acceptance": 0.70},
+    "comparators": "> for LOSO rejection, >= for Test S1 rejection, > for Test S2 acceptance (identical to E226 freeze_all).",
+    "closest_point_gap": "sum of max(0, 0.90-LOSO) + max(0, 0.70-S1) + max(0, 0.70-S2); lower is closer.",
+    "no_test_tuning": "Every scheme, weight formula and A value is fixed in this file before the run. Test is read once, after all Train-side artefacts are frozen."
+  },
+  "official_note": "Official Test AUC/F1 = N/A: Test has no identity labels."
+}
