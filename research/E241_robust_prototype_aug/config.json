@@ -1,0 +1,16 @@
+{
+  "seed": 20261117,
+  "representation": "E65_PCA96_k12",
+  "candidates": ["baseline", "aug_mean", "aug_trimmed"],
+  "target_rejection": 0.90,
+  "inner_subject_groups": 2,
+  "batch_size": 64,
+  "views": ["channel_gain", "global_gain", "tilt_up", "tilt_down", "dropout_reference"],
+  "channel_gain_db": 2.0,
+  "global_gain_db": 2.0,
+  "tilt_exponent": 0.12,
+  "reference_fraction": 0.15,
+  "trim_fraction": 0.15,
+  "raw_train": "research/E229_raw_robust_encoder/cache/train_raw.npy",
+  "protocol": "E215 outer subject LOSO; fit frac<=0.6; evaluation (0.6,0.8]; all nonempty inner time blocks. Inner pseudo-unknown subjects entirely excluded from representation/prototypes. Calibrate quantile using only outer-fit inner OOF; outer-held identity and Test excluded."
+}

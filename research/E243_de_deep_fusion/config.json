@@ -1,0 +1,24 @@
+{
+  "experiment": "E243_de_deep_fusion",
+  "fit_fraction": 0.6,
+  "score_fraction": [0.6, 0.8],
+  "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+  "pca_dim": 128,
+  "hidden": 256,
+  "epochs": 80,
+  "patience": 12,
+  "batch_size": 1024,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "threshold_acceptance": 0.90,
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "eeg": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "eeg_test": "research/E121_pca_sweep/test_logspd.npy",
+    "logbp": "research/E146_phase_features/train_log_band_power.npy",
+    "logbp_test": "research/E146_phase_features/test_log_band_power.npy",
+    "dino": "BrainPrint_cache/eeg_image_dinov2/train_covariance_hr_dinov2.npy",
+    "dino_test": "BrainPrint_cache/eeg_image_dinov2/test_covariance_hr_dinov2.npy"
+  }
+}

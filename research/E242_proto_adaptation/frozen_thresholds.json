@@ -1,0 +1,170 @@
+{
+  "outer_01": {
+    "thresholds": {
+      "baseline": -15.426222801208494,
+      "query_ema": -15.396935462951658,
+      "query_center_mean": -15.431509017944334
+    },
+    "confidence_threshold": -9.965934753417969
+  },
+  "outer_02": {
+    "thresholds": {
+      "baseline": -15.060875892639158,
+      "query_ema": -15.048840522766112,
+      "query_center_mean": -15.090815544128416
+    },
+    "confidence_threshold": -10.005973815917969
+  },
+  "outer_03": {
+    "thresholds": {
+      "baseline": -15.084149360656737,
+      "query_ema": -15.04440402984619,
+      "query_center_mean": -15.068247795104979
+    },
+    "confidence_threshold": -10.076041221618652
+  },
+  "outer_04": {
+    "thresholds": {
+      "baseline": -15.112758636474608,
+      "query_ema": -15.093381881713865,
+      "query_center_mean": -15.112758636474608
+    },
+    "confidence_threshold": -10.044367790222168
+  },
+  "outer_05": {
+    "thresholds": {
+      "baseline": -15.22391605377197,
+      "query_ema": -15.179710388183592,
+      "query_center_mean": -15.221096038818358
+    },
+    "confidence_threshold": -10.156063079833984
+  },
+  "outer_06": {
+    "thresholds": {
+      "baseline": -14.958827018737791,
+      "query_ema": -14.958277702331541,
+      "query_center_mean": -14.999866485595701
+    },
+    "confidence_threshold": -9.972229957580566
+  },
+  "outer_07": {
+    "thresholds": {
+      "baseline": -14.964842796325682,
+      "query_ema": -14.966097831726072,
+      "query_center_mean": -15.01149272918701
+    },
+    "confidence_threshold": -9.978697776794434
+  },
+  "outer_08": {
+    "thresholds": {
+      "baseline": -15.118165969848631,
+      "query_ema": -15.091144561767576,
+      "query_center_mean": -15.111927986145018
+    },
+    "confidence_threshold": -10.003573417663574
+  },
+  "outer_09": {
+    "thresholds": {
+      "baseline": -14.958826065063475,
+      "query_ema": -14.952710151672362,
+      "query_center_mean": -14.966833114624022
+    },
+    "confidence_threshold": -10.045788764953613
+  },
+  "outer_10": {
+    "thresholds": {
+      "baseline": -15.064036369323729,
+      "query_ema": -15.049214363098143,
+      "query_center_mean": -15.072937011718748
+    },
+    "confidence_threshold": -10.058483123779297
+  },
+  "outer_11": {
+    "thresholds": {
+      "baseline": -14.91001796722412,
+      "query_ema": -14.922057151794432,
+      "query_center_mean": -14.922057151794432
+    },
+    "confidence_threshold": -9.945880889892578
+  },
+  "outer_12": {
+    "thresholds": {
+      "baseline": -15.134645462036131,
+      "query_ema": -15.11123466491699,
+      "query_center_mean": -15.153639793395994
+    },
+    "confidence_threshold": -10.036298751831055
+  },
+  "outer_13": {
+    "thresholds": {
+      "baseline": -15.039235115051268,
+      "query_ema": -15.027560234069822,
+      "query_center_mean": -15.051671981811522
+    },
+    "confidence_threshold": -10.028782844543457
+  },
+  "outer_14": {
+    "thresholds": {
+      "baseline": -15.089221000671385,
+      "query_ema": -15.071311950683592,
+      "query_center_mean": -15.11441135406494
+    },
+    "confidence_threshold": -10.107804298400879
+  },
+  "outer_15": {
+    "thresholds": {
+      "baseline": -14.85207939147949,
+      "query_ema": -14.848958015441893,
+      "query_center_mean": -14.895163536071776
+    },
+    "confidence_threshold": -10.010462760925293
+  },
+  "outer_16": {
+    "thresholds": {
+      "baseline": -15.047838211059569,
+      "query_ema": -15.01820373535156,
+      "query_center_mean": -15.05144691467285
+    },
+    "confidence_threshold": -10.017251968383789
+  },
+  "outer_17": {
+    "thresholds": {
+      "baseline": -14.980746269226072,
+      "query_ema": -14.963588714599608,
+      "query_center_mean": -15.012860298156737
+    },
+    "confidence_threshold": -9.998034477233887
+  },
+  "outer_18": {
+    "thresholds": {
+      "baseline": -15.152830123901365,
+      "query_ema": -15.111225128173826,
+      "query_center_mean": -15.181962013244627
+    },
+    "confidence_threshold": -9.989325523376465
+  },
+  "outer_19": {
+    "thresholds": {
+      "baseline": -14.99867820739746,
+      "query_ema": -14.983152389526365,
+      "query_center_mean": -15.029747009277342
+    },
+    "confidence_threshold": -10.06576156616211
+  },
+  "outer_20": {
+    "thresholds": {
+      "baseline": -14.945347785949705,
+      "query_ema": -14.952880859374998,
+      "query_center_mean": -14.96779155731201
+    },
+    "confidence_threshold": -9.993825912475586
+  },
+  "final": {
+    "thresholds": {
+      "baseline": -14.990396499633787,
+      "query_ema": -14.980746269226072,
+      "query_center_mean": -14.990396499633787
+    },
+    "confidence_threshold": -10.009382247924805
+  }
+}

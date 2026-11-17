@@ -12,6 +12,7 @@ research/**/*.npy
 research/**/*.npz
 research/**/*_work/
 research/*/cache/
+research/E24*/models/
 
 # 系统与工具
 .DS_Store

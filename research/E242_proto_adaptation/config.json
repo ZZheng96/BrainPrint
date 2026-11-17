@@ -1,0 +1,12 @@
+{
+  "seed": 20261117,
+  "source_fingerprint": "af0d5c05ca9e",
+  "representation": "E65_PCA96_k12",
+  "candidates": ["baseline", "query_ema", "query_center_mean"],
+  "ema_alpha": 0.1,
+  "confidence_known_quantile": 0.9,
+  "target_rejection": 0.9,
+  "inner_subject_groups": 2,
+  "test_policy": "Do not open Test: chronological stream identity/order not established without identity labels.",
+  "protocol": "Reuse E241 fit-only models and feature cache. Outer fit<=0.6; history (0.6,0.7]; query (0.7,0.8]. Inner OOF: split each held-out time block at its fixed temporal midpoint; adapt on first half and score second half. Confidence threshold from known baseline inner OOF history in OTHER identity group and OTHER time blocks. Freeze rejection thresholds on adapted inner OOF query scores. Train-simulated adaptation is this inner procedure, not an additional trained encoder."
+}
