@@ -1,17 +1,17 @@
 """BrainPrint final-round entry: load_model / predict_batch / enroll.
 
-Pipeline (E253 scheme: E200 features, whitened-cosine ranking):
+Pipeline (E254 scheme: E200 sub-window features, LDA-cos multi-prototype):
   x (18 x 1200) -> 6 sub-windows of 200 samples -> per sub-window: 5 FFT bands ->
   channel standardisation -> correlation -> shrinkage -> logSPD -> upper triangle ->
   per-band detrend/z-score -> mean of the 6 855-d vectors -> per-task z-score ->
-  PCA-96 -> two heads:
-    ranking  : cosine between within-class-whitened projections and prototypes
-    rejection: euclidean distance to the same prototypes, threshold tau
+  PCA-256 -> within-class whitening -> cosine match against 4 prototypes per identity.
 
-Score matrix (N, 24): column c (1..23) = whitened cosine similarity to identity c
-(-inf if identity c is not enrolled).  Column 0 wins exactly when the euclidean
-nearest-prototype distance exceeds tau, i.e. when the trial is unregistered.
-No pretrained parameter is changed by enroll().
+Score matrix (N, 24): column c (1..23) = whitened cosine match to identity c
+(-inf if identity c is not enrolled).  Column 0 wins exactly when
+    s1 + beta * (s1 - s2) < tau
+i.e. when the best match is neither strong enough nor clear enough over the
+runner-up, which is the unregistered decision.  No pretrained parameter is
+changed by enroll().
 """
 from __future__ import annotations
 
@@ -132,8 +132,9 @@ def load_model(model_dir: str, device: str = "cpu"):
         device = "cpu"
     dev = torch.device(device)
     w = torch.load(os.path.join(model_dir, "weights.pt"), map_location="cpu", weights_only=True)
-    base = w["prototypes"].float()  # (4, 20, 96)
-    protos = torch.zeros(len(TASKS), N_COLS - 1, base.shape[-1])
+    base = w["prototypes"].float()  # (4, 20, k, dim)
+    n_proto, dim = int(base.shape[2]), int(base.shape[3])
+    protos = torch.zeros(len(TASKS), N_COLS - 1, n_proto, dim)
     protos[:, :N_BASE] = base
     valid = torch.zeros(len(TASKS), N_COLS - 1, dtype=torch.bool)
     valid[:, :N_BASE] = True
@@ -147,7 +148,9 @@ def load_model(model_dir: str, device: str = "cpu"):
         "whiten": w["whiten"].float().to(dev),
         "prototypes": protos.to(dev),   # identity c -> index c-1
         "valid": valid.to(dev),
-        "tau": float(w["tau_dist"]),
+        "n_proto": n_proto,
+        "tau": float(w["tau_score"]),
+        "beta": float(w["beta"]),
     }
 
 
@@ -157,7 +160,6 @@ def predict_batch(artifact, x, meta):
     n = int(feat.shape[0])
     tasks = _task_indices(meta, n)
     dev = artifact["device"]
-    dist = torch.full((n, N_COLS - 1), float("inf"), device=dev)
     sim = torch.full((n, N_COLS - 1), -float("inf"), device=dev)
     for t in range(len(TASKS)):
         # known task -> that task only; unknown task -> best match over all tasks
@@ -165,16 +167,19 @@ def predict_batch(artifact, x, meta):
         if not bool(take.any()):
             continue
         proj = _project(artifact, feat[take], t)
-        d = torch.cdist(proj, artifact["prototypes"][t])
-        d = d.masked_fill(~artifact["valid"][t][None], float("inf"))
-        dist[take] = torch.minimum(dist[take], d)
-        s = _unit(proj @ artifact["whiten"]) @ _unit(
-            artifact["prototypes"][t] @ artifact["whiten"]).T
+        p = artifact["prototypes"][t]
+        q = _unit(proj @ artifact["whiten"])
+        pn = _unit(p.reshape(-1, p.shape[-1]) @ artifact["whiten"]).reshape(
+            N_COLS - 1, artifact["n_proto"], -1)
+        s = (q[:, None, None, :] * pn[None]).sum(-1).max(2).values
         s = s.masked_fill(~artifact["valid"][t][None], -float("inf"))
         sim[take] = torch.maximum(sim[take], s)
-    best = sim.max(dim=1).values
+    top2 = sim.topk(2, dim=1).values
+    best, second = top2[:, 0], top2[:, 1]
     finite = torch.isfinite(best)
-    reject = (~finite) | (dist.min(dim=1).values > artifact["tau"])
+    # open-set gate: absolute match plus the margin over the runner-up identity
+    gate = best + artifact["beta"] * (best - second)
+    reject = (~finite) | (gate < artifact["tau"])
     scores = torch.empty((n, N_COLS), dtype=torch.float32, device=dev)
     scores[:, 1:] = sim
     scores[:, 0] = best - 1.0
@@ -200,6 +205,13 @@ def enroll(artifact, x, meta, labels):
             continue
         rows = torch.as_tensor(labels == uid, device=artifact["device"])
         for t in range(len(TASKS)):
-            artifact["prototypes"][t, uid - 1] = _project(artifact, feat[rows], t).mean(dim=0)
+            proj = _project(artifact, feat[rows], t)
+            count, k = len(proj), artifact["n_proto"]
+            if count >= k:
+                for j in range(k):
+                    artifact["prototypes"][t, uid - 1, j] = proj[
+                        j * count // k:(j + 1) * count // k].mean(dim=0)
+            else:
+                artifact["prototypes"][t, uid - 1] = proj.mean(dim=0)
             artifact["valid"][t, uid - 1] = True
     return artifact

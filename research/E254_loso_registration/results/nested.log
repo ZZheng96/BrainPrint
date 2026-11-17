@@ -1,0 +1,37 @@
+﻿held  1 -> d256_s0.95_k4_b0.5       outer auc 0.9955 u95 0.9919 rej90 0.9984
+held  2 -> d256_s0.95_k4_b0.5       outer auc 0.9910 u95 0.9842 rej90 0.9980
+held  3 -> d256_s0.9_k4_b0.5        outer auc 0.9825 u95 0.9405 rej90 0.9967
+held  4 -> d256_s0.95_k4_b0.5       outer auc 0.9870 u95 0.9536 rej90 0.9926
+held  5 -> d256_s0.95_k4_b0.5       outer auc 0.9935 u95 0.9892 rej90 0.9957
+held  6 -> d256_s0.95_k4_b0.5       outer auc 0.9932 u95 0.9886 rej90 1.0000
+held  7 -> d256_s0.95_k4_b0.5       outer auc 0.9588 u95 0.7432 rej90 0.8682
+held  8 -> d256_s0.95_k4_b0.5       outer auc 0.9870 u95 0.9559 rej90 0.9940
+held  9 -> d256_s0.95_k4_b0.5       outer auc 0.9881 u95 0.9637 rej90 0.9931
+held 10 -> d256_s0.95_k4_b0.5       outer auc 0.9874 u95 0.9555 rej90 0.9865
+held 11 -> d256_s0.95_k4_b0.5       outer auc 0.9867 u95 0.9415 rej90 0.9866
+held 12 -> d256_s0.95_k4_b0.5       outer auc 0.9911 u95 0.9815 rej90 0.9966
+held 13 -> d256_s0.95_k4_b0.5       outer auc 0.9826 u95 0.9289 rej90 0.9935
+held 14 -> d256_s0.95_k4_b0.5       outer auc 0.9899 u95 0.9779 rej90 1.0000
+held 15 -> d256_s0.95_k4_b0.5       outer auc 0.9785 u95 0.8942 rej90 0.9692
+held 16 -> d256_s0.95_k4_b0.5       outer auc 0.9908 u95 0.9863 rej90 0.9983
+held 17 -> d256_s0.95_k4_b0.5       outer auc 0.9898 u95 0.9842 rej90 0.9947
+held 18 -> d192_s0.95_k4_b0.5       outer auc 0.9884 u95 0.9568 rej90 1.0000
+held 19 -> d192_s0.95_k4_b0.5       outer auc 0.9855 u95 0.9313 rej90 0.9765
+held 20 -> d256_s0.95_k4_b0.5       outer auc 0.9952 u95 0.9951 rej90 1.0000
+{
+  "protocol": "E254e nested identity-LOSO, inner selection",
+  "chosen": {
+    "d256_s0.95_k4_b0.5": 17,
+    "d256_s0.9_k4_b0.5": 1,
+    "d192_s0.95_k4_b0.5": 2
+  },
+  "outer_auroc_mean": 0.9871263803395705,
+  "outer_auroc_min": 0.9587877030162413,
+  "outer_u95_mean": 0.9522037603493816,
+  "outer_u95_min": 0.7432432432432432,
+  "outer_rej90_mean": 0.9869340582641396,
+  "outer_rej90_min": 0.8682432432432432,
+  "pass_auroc": false,
+  "pass_u95": false,
+  "pass_rej90": false
+}

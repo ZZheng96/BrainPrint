@@ -1,0 +1,20 @@
+{
+  "1_train_in_sample_acc": 0.9996461429582448,
+  "2_oof_closed_acc": 0.9988499646142959,
+  "3_oof_macro_f1": 0.9988253655342916,
+  "4_forward_block_out_acc": 0.9982509838216004,
+  "5_strict_loso_auroc": 0.9871263803395705,
+  "6_strict_loso_u_at_95": 0.9522037603493816,
+  "11_strict_loso_unknown_rej_at_90": 0.9869340582641396,
+  "5_fold_min_auroc": 0.9587877030162413,
+  "6_fold_min_u95": 0.7432432432432432,
+  "11_fold_min_rej90": 0.8682432432432432,
+  "7_RA": "N/A (final round has no adversarial samples)",
+  "8_ASafeR": "N/A (final round has no adversarial samples)",
+  "9_test_registered_accept": 0.22416484545738372,
+  "9b_test_registered_top1_given_accept": 0.930594243268338,
+  "9c_test_registered_e2e": 0.2086065147257779,
+  "10_test_unregistered_rejection": 0.5918232772832179,
+  "tau": 0.40755866169929506,
+  "test_rows": 22251
+}

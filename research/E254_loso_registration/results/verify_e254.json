@@ -1,0 +1,13 @@
+{
+  "cpu_N1": true,
+  "cpu_N7": true,
+  "cpu_N128": true,
+  "cuda:0_N1": true,
+  "cuda:0_N7": true,
+  "cuda:0_N128": true,
+  "meta_none": true,
+  "base_unchanged": true,
+  "new_valid": true,
+  "new_changed": true,
+  "predict_after_enroll_finite": true
+}
