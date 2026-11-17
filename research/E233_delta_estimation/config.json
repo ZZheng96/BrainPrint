@@ -1,0 +1,130 @@
+{
+  "experiment": "E233_delta_estimation",
+  "purpose": "Directly estimate the per-(session, task) cross-session offset delta in the frozen e226_auc2W PCA space and remove it symmetrically with unlabeled batch statistics (mean align / CORAL / mean + per-task covariance scaling). The representation, prototypes, LOSO folds and the calibrated threshold tau are taken unchanged from E228, so the LOSO unknown rejection must stay exactly 0.9000. Text does not use session to decide identity or gating; session only defines the batch on which an unlabeled statistic is estimated, and every transform is applied to BOTH sessions with the same rule (except the explicitly labelled degenerate control).",
+  "predecessor": {
+    "experiments": ["E228_constrained_maxS2", "E232_session_confound", "E231_two_extreme_attribution", "E227_joint_frontier"],
+    "frozen_baseline": "E228 frozen e226_auc2W: E227 deploy_auc2_lofo.pt representation (10 blocks, sqrt(w) block weights, task-wise standardisation on all-20-identity fit rows, PCA96, k=12 prototypes per (task, identity)), tau from the deploy model inner 5-block OOF known scores at A=0.8049854437115825.",
+    "known_anchors": {
+      "e228_auc2W_calibrated": {"A": 0.8049854437115825, "loso_unknown_rejection": 0.9000434593654932, "test_tau": -24.138366795919048, "test_S1_rejection": 0.9637322782723377, "test_S2_acceptance": 0.3042980539077948, "test_separation_auc": 0.7918401795053043, "N_S1": 3033, "N_S2": 19218},
+      "e226_auc2W_A075": {"A": 0.75, "loso_unknown_rejection": 0.9609, "test_S2_acceptance": 0.2063, "test_separation_auc": 0.7918},
+      "e231_best_four_quadrant": {"test_S2_acceptance": 0.2869, "random_control_S2": 0.2862},
+      "e232_session2": {"n_total": 19218, "best_k_by_silhouette": 28},
+      "e232_session1": {"n_total": 3033, "best_k_by_silhouette": 5}
+    },
+    "failed_do_not_repeat": ["AS-Norm", "in-fold ML metric learning", "per-identity / per-task thresholds", "hard dimension screening by F/D", "global optimal threshold search", "raw-waveform in-fold retraining with drift augmentation / adversarial training", "four-quadrant feature ablation at fixed LOSO 0.90 (E231, all <= 0.3043)"]
+  },
+  "seed": 20261117,
+  "device": "cuda",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251
+  },
+  "blocks": {
+    "corr_logspd": 855,
+    "bandpower_gainfree": 90,
+    "spectral_shape": 90,
+    "spectral_slope": 18,
+    "pac": 18,
+    "trial_energy": 1,
+    "hjorth": 180,
+    "spec_entropy": 180,
+    "power_ratio": 112,
+    "graph_metrics": 25
+  },
+  "feature_cache": {
+    "train": {
+      "corr_logspd": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/train_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/train_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/train_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/train_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/train_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/train_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/train_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/train_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/train_graph_metrics.npy"
+    },
+    "test": {
+      "corr_logspd": "research/E121_pca_sweep/test_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/test_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/test_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/test_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/test_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/test_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/test_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/test_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/test_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/test_graph_metrics.npy"
+    },
+    "frozen_model": "research/E227_joint_frontier/models/deploy_auc2_lofo.pt",
+    "frozen_fold_cache": "research/E227_joint_frontier/cache/fold_v1_auc2_lofo_{fold:02d}.npz",
+    "frozen_test_cache": "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz",
+    "read_only": true,
+    "note": "Only reads predecessor artifacts; E233 writes inside research/E233_delta_estimation/ only. No historical experiment is modified."
+  },
+  "representation": {
+    "rep": "e226_all_blocks_v2",
+    "block_order": ["corr_logspd", "bandpower_gainfree", "spectral_shape", "spectral_slope", "pac", "trial_energy", "hjorth", "spec_entropy", "power_ratio", "graph_metrics"],
+    "pca_dim": 96,
+    "prototypes_k": 12,
+    "pipeline": "byte-identical to E228 e226_auc2W: task-wise z-score with all-20-identity fit-row mean/std -> sqrt(w_b) block weights (E227 auc2_lofo mean) -> subtract pooled fit mean pm, multiply PCA W (1569x96) -> k=12 k-means prototypes per (task, identity). Read from the frozen E227 deploy model; nothing is refitted."
+  },
+  "frozen_calibration": {
+    "A": 0.8049854437115825,
+    "tau_rule": "tau = (1-A) quantile of the deployment model inner 5-block OOF known scores (fit rows of all 20 identities, trial fraction <= 0.6)",
+    "test_tau": -24.138366795919048,
+    "loso_unknown_rejection_micro": 0.9000434593654932,
+    "note": "tau is carried over from E228 unchanged; E233 never re-calibrates it. The LOSO path is not touched by any alignment, so the LOSO rejection is identical by construction and is re-verified from the frozen fold caches."
+  },
+  "alignment": {
+    "grouping": "(session, task) on Test. Session enters only as a batch key for an unlabeled statistic; it never selects an identity and never gates a sample.",
+    "train_reference": "per-task mean and covariance of the fit rows (all 20 identities, trial fraction <= 0.6) in the frozen PCA space. The task reference is used because scoring is task-wise; using the pooled global mean (which is ~0 by PCA centering) would delete the task offset and is reported separately as a diagnostic.",
+    "shrinkage_lambda_coral": 0.2,
+    "shrinkage_lambda_diag": 0.2,
+    "ridge_rel": 1e-08,
+    "min_cell_n": 200,
+    "min_cell_n_note": "Cells below this size would not be aligned; the smallest cell in Test is session1/EO with 291 rows, so no cell falls below the guard.",
+    "candidates": {
+      "baseline_frozen": "no alignment; exactly the E228 e226_auc2W Test read-out (reference row).",
+      "mean_align": "z <- z - mean(z | session, task) + mean_train(task). Removes the whole batch translation of every (session, task) cell, identically for S1 and S2.",
+      "coral": "standard CORAL per (session, task): mean align + whiten with the shrunk batch covariance C_s = (1-lam) C_batch + lam C_train(task) then recolour to C_train(task): z <- mu_train + (z - mu_batch) M, M = C_s^{-1/2} C_train^{1/2}.",
+      "mean_align_per_task_cov": "mean align plus a diagonal-only covariance rescale per task: z <- mu_train + (z - mu_batch) * sqrt(var_train / var_eff), var_eff = (1-lam) diag(C_batch) + lam diag(C_train). No rotation.",
+      "mean_align_session2_only": "DEGENERATE CONTROL, diagnostic only, never a conclusion: mean_align applied to session2 cells only, session1 untouched. Quantifies how much S2 rises and S1 falls when only the registered segment is aligned.",
+      "mean_align_pooled_global": "DIAGNOSTIC ONLY: mean align with the literal pooled Train global mean (pm -> 0 in PCA space). Shows the artefact of deleting the task offset; not a conclusion."
+    },
+    "symmetric_note": "mean_align / coral / mean_align_per_task_cov are applied with one identical rule to both sessions; the number of cells (8) and the estimator are the same. No per-segment parameter is tuned."
+  },
+  "metrics": {
+    "fixed_tau": ["Test S1 rejection", "Test S2 acceptance", "Test separation AUC (S2 vs S1)", "per-task S1/S2"],
+    "gates": {
+      "s1_095": "tau set to the 95% quantile of the candidate's S1 scores (reject iff score < tau) -> S1 rejection 0.95 exactly; read S2 acceptance (official gate).",
+      "s1_070": "tau set to the 70% quantile of the candidate's S1 scores -> S1 rejection 0.70; read S2 acceptance (upper bound of S2 at the looser gate).",
+      "s1_matched_baseline": "tau set to the quantile of the candidate's S1 scores that reproduces the baseline S1 rejection (0.9637); S2 acceptance at the same S1 operating point."
+    },
+    "purity": {
+      "space": "frozen baseline PCA space (no alignment) so the cluster partition is identical across candidates and purity changes are attributable to the predictions only",
+      "k": [20, 28],
+      "rows": "all 19218 Test session2 rows (no subsampling)",
+      "seed": 20261117,
+      "init": "random sample init, 60 Lloyd iterations, chunked distances",
+      "primary": "micro share of S2 rows whose predicted identity equals the mode identity of their cluster",
+      "secondary": "macro cluster purity = mean over clusters of the max predicted-identity share; n_distinct predicted identities; max single-identity share"
+    }
+  },
+  "stability": {
+    "split_half_seed": 20261117,
+    "bootstrap_B": 400,
+    "bootstrap_seed": 20261117,
+    "targets": "per-cell delta norm, split-half cosine and relative half-difference for the mean estimate; per-cell covariance condition number and effective n/d; bootstrap CI of S1 rejection and S2 acceptance at the frozen tau; paired row bootstrap and paired k=20-cluster bootstrap of the S2 acceptance difference versus the baseline."
+  },
+  "decision_rule": {
+    "pass": "LOSO unknown rejection in [0.89, 0.91] AND Test S1 >= 0.95 AND Test S2 > 0.3043 AND purity_micro >= 0.95 * baseline purity_micro",
+    "trade_off": "if S2 rises but S1 < 0.95 -> report the S1/S2 trade-off and the maximum S2 under an S1 = 0.95 constraint",
+    "fail": "if every candidate is worse than the baseline -> state that batch mean/covariance estimation of delta is insufficient, report the split-half consistency and explain why",
+    "degenerate": "any candidate whose S2 rises while purity drops materially is a degenerate solution and cannot be adopted; mean_align_session2_only is banned from being a conclusion by construction"
+  },
+  "official_note": "Official Test C/RA/ASafeR are N/A: Test has no identity labels. The official gate used here is the session-level S1 rejection >= 0.95 proxy requested by the reviewer.",
+  "bias_note": "Transductive: the alignment statistics are estimated from the unlabeled Test inputs of the same (session, task) batch that is being scored, which sits in a grey zone of the competition rules and requires user confirmation before any submission use. Test has been inspected repeatedly since E65, so every S2 number carries a repeated-inspection bias. E232 showed session and registration status are heavily confounded (S1 = 5 unregistered subjects, S2 = 20 registered users), so S1/S2 are not clean biometric metrics."
+}

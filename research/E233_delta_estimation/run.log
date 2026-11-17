@@ -1,0 +1,33 @@
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121
+frozen model scheme=auc2_lofo pca=96 k=12 dim=1569 blocks=['corr_logspd', 'bandpower_gainfree', 'spectral_shape', 'spectral_slope', 'pac', 'trial_energy', 'hjorth', 'spec_entropy', 'power_ratio', 'graph_metrics']
+train fit rows=6695 test S1=3033 S2=19218
+PCA space: train (11304, 96) test (22251, 96)
+LOSO micro=0.9000434594 (ref 0.9000434594) tau_deploy=-24.1383667959 score_repro_max|d|=0.00e+00
+baseline readout S1=0.9637 S2=0.3043 sepAUC=0.7918
+score quantiles {"S1": {"0.01": -60.0285173034668, "0.05": -52.34857864379883, "0.1": -49.2814338684082, "0.3": -43.20061569213867, "0.5": -35.81296157836914, "0.9": -25.730292510986327, "0.95": -24.52506103515625, "0.9637": -24.150438587951662}, "S2": {"0.01": -45.13248245239258, "0.05": -39.91728973388672, "0.1": -36.4845027923584, "0.3": -29.550474548339842, "0.5": -26.5222749710083, "0.9": -21.186896324157715, "0.95": -19.87642459869386, "0.9637": -19.399900725936888}, "tau": -24.138366795919048}
+train ref EC: n=631 trace=1207.38 cond=193.9
+train ref EO: n=613 trace=1129.80 cond=146.5
+train ref Imagery: n=3301 trace=1168.94 cond=86.4
+train ref SSVEP: n=2150 trace=1127.70 cond=70.3
+cell session1 EC      n=  292 ||mu||=19.975 trace=1494.68 cond=1909.1
+cell session1 EO      n=  291 ||mu||=21.100 trace=1496.12 cond=1776.2
+cell session1 Imagery n= 1459 ||mu||=21.697 trace=1560.15 cond=676.3
+cell session1 SSVEP   n=  991 ||mu||=20.508 trace=1414.56 cond=930.7
+cell session2 EC      n= 1680 ||mu||=6.238 trace=1004.28 cond=173.2
+cell session2 EO      n= 2021 ||mu||=7.083 trace=963.32 cond=142.7
+cell session2 Imagery n= 9748 ||mu||=6.725 trace=1009.23 cond=87.8
+cell session2 SSVEP   n= 5769 ||mu||=4.077 trace=969.79 cond=114.3
+kmeans k=20 on 19218 S2 rows (0.1s) sizes min/max=84/1965 cv=0.412
+kmeans k=28 on 19218 S2 rows (0.1s) sizes min/max=230/1090 cv=0.316
+cand baseline_frozen              S1=0.9637 S2=0.3043 sepAUC=0.7918 S2@S1.95=0.3360 S2@S1.70=0.6809 pur20=0.6390 pur28=0.6520 (1.1s)
+cand mean_align                   S1=1.0000 S2=0.3122 sepAUC=0.8795 S2@S1.95=0.7569 S2@S1.70=0.8441 pur20=0.6350 pur28=0.6461 (1.1s)
+cand coral                        S1=0.8365 S2=0.3458 sepAUC=0.5724 S2@S1.95=0.2119 S2@S1.70=0.4546 pur20=0.5561 pur28=0.5680 (1.1s)
+cand mean_align_per_task_cov      S1=1.0000 S2=0.2775 sepAUC=0.7514 S2@S1.95=0.5171 S2@S1.70=0.6860 pur20=0.6400 pur28=0.6511 (1.1s)
+cand mean_align_session2_only     S1=0.9637 S2=0.3122 sepAUC=0.7965 S2@S1.95=0.3455 S2@S1.70=0.6916 pur20=0.6350 pur28=0.6461 (1.2s)
+cand mean_align_pooled_global     S1=1.0000 S2=0.3122 sepAUC=0.8795 S2@S1.95=0.7569 S2@S1.70=0.8441 pur20=0.6350 pur28=0.6461 (1.1s)
+paired bootstrap vs baseline: baseline_frozen dS2=+0.0000[+0.0000,+0.0000]p<=0=1.000, mean_align dS2=+0.0078[+0.0045,+0.0115]p<=0=0.000, coral dS2=+0.0414[+0.0363,+0.0471]p<=0=0.000, mean_align_per_task_cov dS2=-0.0270[-0.0307,-0.0233]p<=0=1.000, mean_align_session2_only dS2=+0.0078[+0.0045,+0.0115]p<=0=0.000, mean_align_pooled_global dS2=+0.0078[+0.0045,+0.0115]p<=0=0.000
+paired cluster bootstrap (k=20) vs baseline: baseline_frozen dS2=+0.0000[+0.0000,+0.0000], mean_align dS2=+0.0069[-0.0103,+0.0235], coral dS2=+0.0407[+0.0034,+0.0817], mean_align_per_task_cov dS2=-0.0270[-0.0509,-0.0006], mean_align_session2_only dS2=+0.0069[-0.0103,+0.0235], mean_align_pooled_global dS2=+0.0069[-0.0103,+0.0235]
+S2 rows identical (mean_align vs session2_only): {"max_abs_score_diff": 0.0, "pred_identical": true}
+decision verdict=pass adopted=mean_align max S2@S1.95=0.7569 (mean_align) baseline S2@S1.95=0.3360
+results.json + report.md written
+verdict=pass runtime=10s
