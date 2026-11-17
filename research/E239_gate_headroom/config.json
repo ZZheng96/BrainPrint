@@ -1,0 +1,86 @@
+{
+  "experiment": "E239_gate_headroom",
+  "purpose": "回答唯一问题：在 LOSO 保持 0.90 的前提下提升 Test S2。已确认的结构性事实：LOSO=0.90 等价于把 tau 钉在训练域冒充者 90% 分位；对同一分数做单调变换不改变 (LOSO, S2) 组合。唯一可行机制是在不抬高 tau 的前提下先买到 LOSO 余量，再降低 tau 花在 S2 上。本实验构造 min / 软 and / 加权和组合分数，并按 A/B/C 三个读数检验该机制是否成立。",
+  "predecessors": {
+    "eeg_score": "research/E233_delta_estimation/cache/test_v1_mean_align.npz（E233 mean_align，冻结不重训）",
+    "eeg_oof": "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz（oof_s / oof_fit）",
+    "eeg_folds": "research/E235_deployment_calibration/cache/fold_v1_{fold:02d}.npz（score = -d1_orig）",
+    "image_views": "research/E237_image_view_fusion/cache/view_X_*.npz（7 个 E149 像素视图，已打分，不重建特征）",
+    "purity_space": "E227 deploy_auc2_lofo.pt + E233 feature_cache.test 的 10 个 block",
+    "read_only": true
+  },
+  "baseline_anchors": {
+    "e233_mean_align": {
+      "test_tau": -24.138366795919048,
+      "loso_unknown_rejection": 0.9000434593654932,
+      "test_S1_rejection": 1.0,
+      "test_S2_acceptance": 0.3121552711000104,
+      "test_separation_auc": 0.8795220263643784,
+      "S2_at_S1_0p95": 0.7569466125507337,
+      "purity_k20_micro_all_S2": 0.634977625143095
+    },
+    "e237_best": {
+      "candidate": "fuse_zscore_50_50",
+      "loso_unknown_rejection": 0.8996,
+      "test_S1_rejection": 1.0,
+      "test_S2_acceptance": 0.2906,
+      "test_separation_auc": 0.9611,
+      "S2_at_S1_0p95": 0.8776,
+      "note": "E237 的 z-score 等权融合（全局 z，非逐 task）。作为对照锚点。"
+    }
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "folds": 20,
+    "standardisation": "逐 task z-score：每个分量用它自己的 fit 行（trial fraction <= 0.6，全部 20 个身份）参考分数的逐 task 均值/标准差变换。Train 侧与 Test 侧、逐折 LOSO 分数一律使用同一组逐 task mu/sd；这是单调变换，不改变任何单分量的 FAR/FRR 曲线。",
+    "loso": "20 折，每折留出一个身份；known = 已注册身份在 (0.6,0.8] 窗口的行，unknown = 留出身份在窗口内的行（E227/E233 协议，与冻结 fold 缓存逐行一致）。",
+    "note_loso_floor": "LOSO=0.90 不是性能，而是把 tau 钉在训练域冒充者 90% 分位的定义；分数单调变换不改变 (LOSO, S2) 组合，所以必须改变分数族的排序结构才可能同时改善两者。"
+  },
+  "components": {
+    "eeg": "E233 mean_align Test 分数（已对齐）；折叠分数用 E235 冻结逐折分数（未对齐，与 E233 一致）。",
+    "img_px_all": "7 个像素视图逐 task z 分数的等权均值（E149 的 IMG_px_all 定义，改成逐 task 尺度）。",
+    "img_threeview": "E237 round2 的三视图定义：mean(z(X_mw_cov4), z(X_covariance_hr), z(IMG_px_all))。注意 IMG_px_all 本身已含这两个视图，故两者被二次加权，与 E237 完全一致以保持可比。"
+  },
+  "candidates_fixed_before_run": {
+    "eeg_only": {"formula": "z_eeg", "role": "基线锚点"},
+    "img_only_px_all": {"formula": "z_img_px_all", "role": "图像单支参考"},
+    "min_rule": {"formula": "min(z_eeg, z_img_px_all)", "role": "主候选 1"},
+    "min_rule_3view": {"formula": "min(z_eeg, z_img_threeview)", "role": "主候选 2"},
+    "wsum_70_30": {"formula": "0.7*z_eeg + 0.3*z_img_px_all", "role": "对照（加权和）"},
+    "wsum_50_50": {"formula": "0.5*z_eeg + 0.5*z_img_px_all", "role": "对照（加权和）"},
+    "and_rule_soft": {"formula": "min(z_eeg, z_img_px_all) + 0.2*max(z_eeg, z_img_px_all)", "role": "主候选 3"}
+  },
+  "readout_columns": {
+    "A": "tau 固定为 E228/E233 的原始 tau，换算到 EEG 逐 task z 空间：tau_z(t) = (tau_eeg - mu_eeg(t)) / sd_eeg(t)。这是 EEG 单支在训练侧标定出的同一个操作点（LOSO=0.90），不改动任何阈值就把它套到组合分数上，看 LOSO 拒识是否上升（是否买到余量）。同时报同 tau 下训练域已知行的接受率，暴露 min 规则的代价。",
+    "B": "把 tau 重新二分标定到组合分数自身的 LOSO=0.90（pooled unknown 的 90% 分位，训练侧标定，合规），报 S1/S2/sepAUC/簇纯度。",
+    "C": "在 B 的 tau 上继续下移，取 Test S1 分数的 5% 分位（S1 拒识=0.95），报 S2。这是评估选点，不得当作合规结论。"
+  },
+  "metrics": {
+    "loso_auc": "训练域已知 vs 未知的可分性：pooled known / pooled unknown 的 AUC（ties 用 mid-rank）；另报 20 折 AUC 的均值±标准差。这是余量来源的直接诊断量。",
+    "separation_auc": "Test S2 vs S1 的 AUC（与阈值无关）。",
+    "purity": "冻结 E233 基线 EEG PCA 空间的 k-means k=20（seed 20261117+20，60 次 Lloyd，全部 19218 条 S2 行）分区；报接受行上用 EEG 分支预测身份的微平均纯度。",
+    "fold_s2_proxy": "A 列 tau 下每折已注册行的接受率，均值±标准差。"
+  },
+  "decision_rule": {
+    "pass_B": "某候选 B 列 S2 > 0.3121552711000104 且 B 列 S1 >= 0.95 -> 达成 LOSO 稳定 0.90 同时 S2 提升，冻结并给部署参数（组合公式 + tau）",
+    "mechanism_but_no_gain": "A 列 LOSO 明显提升（>= 0.95）但 B 列 S2 未升 -> 报告机制成立但无净收益，并解释余量被 tau 重新标定吃掉的原因",
+    "fail": "A 列 LOSO 不升 -> 判 min 规则不能提高训练域拒识，给逐 task 证据，不换配方重跑",
+    "followup_round": "最多一轮追加，只允许改权重或换图像视图"
+  },
+  "limitations": [
+    "Test 自 E65 起被反复查看，所有 S2 数字都带反复检视偏倚；本轮候选在运行前固定在 config 中，不做 Test 侧选点（C 列只作诊断）。",
+    "Test 没有身份标签，官方 C / RA / ASafeR 为 N/A；F1 也是 N/A（门控任务没有闭集分类器输出）。S1 拒识与 S2 接受率是唯一读数。",
+    "E232：S1 = 5 名未注册被试、S2 = 20 名注册用户，session 与注册状态混叠；对齐只把 session 当批次键。",
+    "均值对齐是批次/转导统计量（在被打分的批次上估计无标签统计量），需与竞赛规则确认。",
+    "组合分数是标量，身份仍来自 EEG 分支，纯度只检验接受决策是否保持身份一致。",
+    "B 列 tau 来自 Train 侧 LOSO unknown 分数的 90% 分位，属于训练侧标定；C 列 tau 来自 Test S1 分位，属于评估选点。"
+  ]
+}

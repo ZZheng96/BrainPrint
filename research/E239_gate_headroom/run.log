@@ -1,0 +1,24 @@
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121
+fit rows=6695 eval rows=2301 test S1=3033 S2=19218
+E233 mean_align raw reproduction {"S1_rejection": 1.0, "S2_acceptance": 0.3121552711000104, "separation_auc": 0.8795220263643784}
+EEG per-task z stats {"EC": [-21.9487, 6.0282, -0.3632], "EO": [-21.8634, 4.6839, -0.4857], "Imagery": [-20.3448, 4.5412, -0.8354], "SSVEP": [-20.2248, 5.1173, -0.7648]}
+per-task z + deployed tau reproduction {"loso": 0.8978704910908301, "S1": 1.0, "S2": 0.3121552711000104}
+  z(X_correlation   ) test mean=-0.522 sd=0.953
+  z(X_covariance5   ) test mean=-1.343 sd=2.349
+  z(X_covariance_hr ) test mean=-1.591 sd=2.997
+  z(X_topomap5      ) test mean=-0.281 sd=1.080
+  z(X_mw_corr8      ) test mean=-0.004 sd=1.215
+  z(X_mw_cov4       ) test mean=-0.954 sd=1.942
+  z(X_mw_cov8       ) test mean=-0.728 sd=1.541
+building the label-free k=20 partition in the baseline EEG PCA space
+  kmeans k=20 sizes=[1001, 804, 931, 455, 712, 1112, 594, 546, 1965, 802, 1388, 1361, 84, 1044, 1155, 1388, 1061, 729, 1125, 961]
+  purity over all S2 rows {"n": 19218, "purity_micro": 0.634977625143095, "purity_macro": 0.6394518884181595, "n_distinct_pred": 20}
+eeg_only         losoAUC=0.9088 A[loso=0.8979 known=0.8058 S1=1.0000 S2=0.3122] B[S1=1.0000 S2=0.3089 sep=0.8731 pur=0.8127] C[S1=0.9499 S2=0.7002]
+img_only_px_all  losoAUC=0.7328 A[loso=0.2738 known=0.8735 S1=0.9637 S2=0.7585] B[S1=0.9993 S2=0.2106 sep=0.9490 pur=0.7267] C[S1=0.9499 S2=0.8079]
+min_rule         losoAUC=0.9003 A[loso=0.9192 known=0.7565 S1=1.0000 S2=0.2783] B[S1=1.0000 S2=0.2995 sep=0.9356 pur=0.8148] C[S1=0.9499 S2=0.7998]
+min_rule_3view   losoAUC=0.8835 A[loso=0.9296 known=0.7097 S1=1.0000 S2=0.2432] B[S1=1.0000 S2=0.2825 sep=0.9538 pur=0.8142] C[S1=0.9499 S2=0.8243]
+wsum_70_30       losoAUC=0.9034 A[loso=0.8205 known=0.8311 S1=1.0000 S2=0.4077] B[S1=1.0000 S2=0.3132 sep=0.9361 pur=0.8134] C[S1=0.9499 S2=0.8277]
+wsum_50_50       losoAUC=0.8896 A[loso=0.7040 known=0.8513 S1=1.0000 S2=0.5029] B[S1=1.0000 S2=0.3145 sep=0.9553 pur=0.8038] C[S1=0.9499 S2=0.8629]
+and_rule_soft    losoAUC=0.8993 A[loso=0.9279 known=0.7541 S1=1.0000 S2=0.2741] B[S1=1.0000 S2=0.3084 sep=0.9434 pur=0.8139] C[S1=0.9499 S2=0.8250]
+verdict=pass_B adopted=wsum_50_50 passB=['wsum_70_30', 'wsum_50_50'] headroom=[] bestB=wsum_50_50(0.3145) bestC=wsum_50_50(0.8629)
+results.json + report.md written, runtime=2s
