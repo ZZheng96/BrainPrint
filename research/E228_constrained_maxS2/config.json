@@ -1,0 +1,128 @@
+{
+  "experiment": "E228_constrained_maxS2",
+  "purpose": "Hard constraint: LOSO unknown rejection = 0.90 (accepted band 0.90-0.91). Under that constraint maximise Test S2 acceptance. Every candidate is calibrated the same way: bisect the train-side threshold rule tau(A) = (1-A) quantile of the fold inner 5-block OOF known scores until the LOSO unknown rejection micro hits 0.90, then read Test once (S1 rejection, S2 acceptance). No candidate may use Test information for calibration or selection.",
+  "predecessor": {
+    "experiments": ["E227_joint_frontier", "E226_stable_feature_families_v2", "E225_session_invariant_features", "E221_metric_corrected"],
+    "calibration_rule": "Identical to E221/E226/E227: strict 20-fold subject-LOSO, fit rows = trial fraction <= 0.6, evaluation window (0.6, 0.8], inner 5 blocks = min(floor(fraction*5), 4), tau = quantile of inner-OOF known scores.",
+    "known_anchors": {
+      "e65_corr": {"A": 0.75, "loso_unknown_rejection": 0.9218, "test_S2_acceptance": 0.2304},
+      "e226_all_blocks_v2_A075": {"loso_unknown_rejection": 0.9235, "test_S1_rejection": 0.9763, "test_S2_acceptance": 0.2458, "loso_auc": 0.888993},
+      "e226_aucW_A075": {"loso_unknown_rejection": 0.9513, "test_S2_acceptance": 0.2188, "loso_auc": 0.902197},
+      "e226_auc2W_A075": {"loso_unknown_rejection": 0.9609, "test_S2_acceptance": 0.2063, "loso_auc": 0.909597},
+      "e225_all_blocks": {"loso_auc": 0.9085511934882498, "loso_unknown_rejection": 0.6502790012249146, "test_S1_rejection": 0.8249258160237388, "test_S2_acceptance": 0.5353314600894994, "test_S2_vs_S1_auc": 0.7877842466692312}
+    },
+    "failed_do_not_repeat": ["AS-Norm", "in-fold ML metric learning", "per-identity / per-task thresholds", "hard dimension screening by F/D", "global optimal threshold search"]
+  },
+  "seed": 20261117,
+  "device": "cuda_required",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300
+  },
+  "blocks": {
+    "corr_logspd": 855,
+    "bandpower_gainfree": 90,
+    "spectral_shape": 90,
+    "spectral_slope": 18,
+    "pac": 18,
+    "trial_energy": 1,
+    "hjorth": 180,
+    "spec_entropy": 180,
+    "power_ratio": 112,
+    "graph_metrics": 25
+  },
+  "feature_cache": {
+    "train": {
+      "corr_logspd": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/train_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/train_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/train_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/train_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/train_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/train_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/train_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/train_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/train_graph_metrics.npy"
+    },
+    "test": {
+      "corr_logspd": "research/E121_pca_sweep/test_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/test_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/test_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/test_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/test_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/test_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/test_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/test_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/test_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/test_graph_metrics.npy"
+    },
+    "block_only_fold_metrics": "research/E226_stable_feature_families_v2/cache/fold_v2_blockonly_{block}_{fold:02d}.json",
+    "reuse_read_only": [
+      "research/E225_session_invariant_features/cache/win_corr_only_{fold:02d}.npz",
+      "research/E225_session_invariant_features/cache/test_scores_corr_only.npz",
+      "research/E226_stable_feature_families_v2/cache/win_v2_e225_all_blocks_{fold:02d}.npz",
+      "research/E226_stable_feature_families_v2/cache/test_scores_v2_e225_all_blocks.npz",
+      "research/E226_stable_feature_families_v2/cache/win_v2_all_blocks_v2_{fold:02d}.npz",
+      "research/E227_joint_frontier/cache/fold_v1_auc_lofo_{fold:02d}.npz",
+      "research/E227_joint_frontier/cache/fold_v1_auc2_lofo_{fold:02d}.npz",
+      "research/E227_joint_frontier/cache/test_v1_auc_lofo.npz",
+      "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz"
+    ],
+    "note": "Read-only reuse of frozen feature arrays and frozen predecessor score caches; E228 writes only inside research/E228_constrained_maxS2/. Score caches are used for the two block-weighted variants (aucW / auc2W) so that they are bit-identical to E227; every other candidate is refitted here and cross-checked against the predecessor cache."
+  },
+  "representation": {
+    "reps": {
+      "e65_corr": ["corr_logspd"],
+      "e225_all_blocks": ["corr_logspd", "bandpower_gainfree", "spectral_shape", "spectral_slope", "pac", "trial_energy"],
+      "e226_all_blocks_v2": ["corr_logspd", "bandpower_gainfree", "spectral_shape", "spectral_slope", "pac", "trial_energy", "hjorth", "spec_entropy", "power_ratio", "graph_metrics"],
+      "corr_plus_powerratio": ["corr_logspd", "power_ratio"]
+    },
+    "pipeline": "task-wise standardisation on fold fit rows -> optional block weight sqrt(w_b) -> PCA96 -> k=12 k-means prototypes per (task, identity)",
+    "pca_dim": 96,
+    "prototypes_k": 12
+  },
+  "scoring_variants": {
+    "plain": "score = -min euclidean distance to same-task prototypes; identity = nearest prototype identity (frozen E226 rule).",
+    "identity_scaled": "score = -d / s_hat_k with k the nearest-prototype identity; s_k = 90-10 interquantile span of the fit-row distances of identity k (same task) to its OWN prototypes, s_hat_k = s_k / median(s). Effectively a per-identity distance threshold (-tau)*s_hat_k at a single global tau. Estimated on fold fit rows only.",
+    "two_proto_agg": "identity = nearest prototype identity as in plain; d = median of the 3 smallest distances to that identity's 12 prototypes; score = -d.",
+    "dual_gate_05": "score = -(0.5*z_d + 0.5*z_o); z_d = robust z of the plain min distance, z_o = robust z of the task-wise shrunk-covariance Mahalanobis OOD distance. Both normalisations from fold fit rows only.",
+    "dual_gate_03": "same components as dual_gate_05 with fixed weights: score = -(0.3*z_d + 0.7*z_o).",
+    "mahalanobis": "per task: mu and covariance of all enrolled fit rows in the 96-d PCA space, shrinkage lambda=0.1 towards tr(C)/d * I, m = sqrt((z-mu)^T C^-1 (z-mu)), robust z per task.",
+    "z_note": "robust z = (x - median) / ((q90 - q10)/1.349); higher z = farther / more OOD, hence the minus sign in the gate score."
+  },
+  "candidates": [
+    {"id": "e65_corr", "rep": "e65_corr", "variant": "plain", "family": "task1_anchor"},
+    {"id": "e225_all_blocks", "rep": "e225_all_blocks", "variant": "plain", "family": "task1_baseline"},
+    {"id": "e226_all_blocks_v2", "rep": "e226_all_blocks_v2", "variant": "plain", "family": "task1_baseline"},
+    {"id": "e226_aucW", "rep": "e226_all_blocks_v2", "variant": "plain", "weights": "auc_lofo", "source": "e227_cache", "family": "task1_baseline"},
+    {"id": "e226_auc2W", "rep": "e226_all_blocks_v2", "variant": "plain", "weights": "auc2_lofo", "source": "e227_cache", "family": "task1_baseline"},
+    {"id": "corr_plus_powerratio", "rep": "corr_plus_powerratio", "variant": "plain", "family": "task1_new"},
+    {"id": "identity_scaled", "rep": "e226_all_blocks_v2", "variant": "identity_scaled", "family": "task2_new"},
+    {"id": "two_proto_agg", "rep": "e226_all_blocks_v2", "variant": "two_proto_agg", "family": "task2_new"},
+    {"id": "dual_gate_50", "rep": "e226_all_blocks_v2", "variant": "dual_gate_05", "family": "task2_new"},
+    {"id": "dual_gate_30", "rep": "e226_all_blocks_v2", "variant": "dual_gate_03", "family": "task2_new"}
+  ],
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "inner_blocks": 5,
+    "folds": 20,
+    "score_rule": "high score = known; reject if score < tau; identity = nearest prototype identity",
+    "open_set_direction": "high score = known; unknown is the positive class for rejection F1 and AUC(-score)"
+  },
+  "constraint": {
+    "target": "loso_unknown_rejection_micro == 0.90",
+    "accepted_band": [0.90, 0.91],
+    "calibration": "tau(A) = (1-A) quantile of the fold inner-OOF known scores; bisect A on the Train side so that the pooled (micro) LOSO unknown rejection equals 0.90. Bisection keeps the LOOSEST A whose rejection is still >= 0.90, which maximises Test S2 within the constraint.",
+    "selection": "Among candidates whose achieved LOSO rejection lies in [0.90, 0.91], the frozen one is the one with the highest Test S2 acceptance.",
+    "reported_gap": "max(0, 0.90-LOSO) + max(0, 0.70-S1) + max(0, 0.70-S2), the E226/E227 three-metric gap, reported only as a distance to the abandoned joint target."
+  },
+  "official_note": "Official Test AUC/F1 = N/A: Test has no identity labels.",
+  "bias_note": "Test has been inspected repeatedly since E65. Calibration and every candidate definition are fixed before this run and are Train-only, but the final comparison across candidates reads Test, so the reported S2 gap carries an evaluation bias."
+}
