@@ -1,0 +1,17 @@
+{
+  "1_train_in_sample_acc": 0.9900842905044556,
+  "2_oof_closed_acc": 0.968241330502477,
+  "3_oof_macro_f1": 0.96794539121718,
+  "4_forward_block_out_acc": 0.908950924873352,
+  "5_strict_loso_auroc": 0.7919982519900906,
+  "5_diag_median_known": 15.559268951416016,
+  "5_diag_median_unknown": 18.410030364990234,
+  "11_strict_loso_unknown_rej_at_90": 0.29470922606034106,
+  "6_strict_loso_u_at_95": 0.17577612592916483,
+  "strict_loso_known_accept_at_90": 0.8999838906404621,
+  "strict_loso_known_accept_at_95": 0.949991945320231,
+  "9_test_registered_accept": 0.6972109480695181,
+  "9b_test_registered_top1_given_accept": 0.5878796925143668,
+  "9c_test_registered_e2e": 0.40987615776875846,
+  "10_test_unregistered_rejection": 0.7227167820639631
+}
