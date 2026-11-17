@@ -1,0 +1,96 @@
+{
+  "experiment": "E225_session_invariant_features",
+  "purpose": "Build a fine-grained, interpretable component ledger of session-drift robustness on 18ch raw EEG, then test pre-declared feature subsets under the strict 20-fold subject-LOSO protocol. Final arbiter = Test S2-vs-S1 separation AUC of the E65 baseline (0.766024).",
+  "seed": 20261117,
+  "device": "cuda_required",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "test_root": "Brainprint_Competition",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300
+  },
+  "features": {
+    "e65_train_cache": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+    "e65_test_cache": "research/E121_pca_sweep/test_logspd.npy",
+    "e65_cache_source": "E65 per-trial per-band channel-standardized correlation logSPD (855 dims). Train cache from BrainPrint_cache/e65_correlation_spd with feature_manifest.json; Test cache is the E121/E122/E224 frozen Test logSPD.",
+    "bands_hz": [[1, 8], [8, 13], [13, 20], [20, 30], [30, 40]],
+    "bands_note": "Same 5 bands as E36/E65 so that every block uses one common band definition.",
+    "blocks": {
+      "corr_logspd": {"dim": 855, "source": "E65 cache (Train) / E121 cache (Test); recomputed from raw only inside the drift simulation and validated against the cache."},
+      "bandpower_gainfree": {"dim": 90, "definition": "log band power per channel per band (5 bands x 18 channels), minus that band's mean log power across the 18 channels of the same trial (removes per-band global gain/impedance drift)."},
+      "spectral_shape": {"dim": 90, "definition": "per-channel log periodogram (1-40 Hz) demeaned along the frequency axis, then averaged inside each of the 5 bands (removes broadband 1/f level and gain)."},
+      "spectral_slope": {"dim": 18, "definition": "per-channel least-squares slope of log power on log frequency over 1-40 Hz (1 value per channel)."},
+      "pac": {"dim": 18, "definition": "per-channel alpha(8-13 Hz)-beta(13-30 Hz) phase-amplitude coupling, mean resultant length of beta amplitude modulated by alpha phase (Hilbert analytic signal)."},
+      "trial_energy": {"dim": 1, "definition": "log RMS of the whole trial. Negative control: expected drift-sensitive and identity-poor."}
+    },
+    "total_dim": 1072,
+    "chunk_trials": 256,
+    "io_workers": 12
+  },
+  "drift_simulation": {
+    "conditions": [
+      "gain_ch_pm3dB",
+      "gain_global_p3dB",
+      "gain_global_m3dB",
+      "tilt_p0.5",
+      "tilt_m0.5",
+      "noise_snr20",
+      "noise_snr10",
+      "reref_pair12",
+      "resample_150",
+      "bandpass_2_38"
+    ],
+    "note": "Every condition is applied to the raw waveform, then all blocks (including corr_logspd) are recomputed from the drifted waveform. No feature is ever perturbed in feature space.",
+    "subset_per_subject_task": 20,
+    "subset_rule": "20 evenly spaced trials inside the fit range (frac<=0.6) of each subject x task cell, deterministic.",
+    "sensitivity_definition": "per dimension: mean over conditions and over enrolled subjects of |f_drifted - f_clean|, divided by the between-subject standard deviation of that dimension on the fold's fit rows."
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "inner_blocks": 5,
+    "threshold_quantile": 0.1,
+    "pca_dim": 96,
+    "prototypes_k": 12,
+    "folds": 20,
+    "score_rule": "score = -min euclidean distance to same-task prototypes (higher = known); reject if score < tau",
+    "tau_rule": "global tau = 10% quantile of the inner 5-block OOF known scores of the fold's fit rows (E221/E224 rule, unchanged)",
+    "open_set_direction": "high score = known; unknown is the positive class for rejection F1 and AUC(-score)"
+  },
+  "candidates": [
+    {"name": "corr_only", "rule": "block:corr_logspd", "note": "E65/baseline reproduction anchor (not a new candidate)."},
+    {"name": "all_blocks", "rule": "all", "note": "All 1072 dims concatenated -> PCA96, k12. New baseline."},
+    {"name": "gainfree_only", "rule": "all_minus_trial_energy", "note": "corr_logspd + bandpower_gainfree + spectral_shape + spectral_slope + pac (no trial_energy)."},
+    {"name": "low_drift", "rule": "drop_top_drift_30pct", "note": "Drop dimensions whose drift sensitivity exceeds the 70th percentile of the fold's fit-row drift-sensitivity distribution."},
+    {"name": "high_disc_low_drift_96", "rule": "top_disc_over_drift", "n_dim": 96, "note": "Top 96 dims ranked by discriminability / drift sensitivity (fold fit rows only)."},
+    {"name": "high_disc_low_drift_192", "rule": "top_disc_over_drift", "n_dim": 192, "note": "Top 192 dims of the same ranking."},
+    {"name": "random_96", "rule": "random_dims", "n_dim": 96, "note": "Deterministic random dims, seed = config seed."},
+    {"name": "random_192", "rule": "random_dims", "n_dim": 192, "note": "Deterministic random dims, seed = config seed + 1."},
+    {"name": "ledger_clean", "rule": "ledger_clean_blocks", "round": 2,
+     "note": "Supplementary round (allowed once). Chosen from the round-1 ledger only: keep corr_logspd + bandpower_gainfree + spectral_shape + spectral_slope, drop pac (lowest discriminability and stability in the ledger) and trial_energy. No Test information used."}
+  ],
+  "decision_rule": {
+    "baseline_test_separation_auc": 0.766024,
+    "freeze": "Test S2-vs-S1 separation AUC >= 0.80 AND LOSO AUC > 0.90",
+    "no_gain": "every candidate's Test separation AUC <= 0.766024",
+    "stage_targets": {"S1_rejection": 0.70, "S2_acceptance": 0.70}
+  },
+  "reference_e65_baseline": {
+    "source": "E221/E222/E223/E224 frozen baseline (E65 PCA96 k12, global tau)",
+    "loso_auc": 0.910173,
+    "loso_unknown_rejection": 0.563519,
+    "loso_known_acceptance": 0.918387,
+    "test_S1_rejection": 0.826574,
+    "test_S2_acceptance": 0.550734,
+    "test_S2_vs_S1_auc": 0.766024,
+    "test_max_S2_acceptance_at_S1_rej_0_70": 0.680144
+  },
+  "selection": "Every candidate and every parameter is fixed in this file before the run. Per-dimension rankings for low_drift / high_disc_low_drift are recomputed inside each fold from that fold's fit rows only. Test is read once, after all Train-side artefacts are frozen, and is used only for uniform evaluation.",
+  "official_note": "Official Test AUC/F1 = N/A: Test has no identity labels."
+}
