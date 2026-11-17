@@ -1,0 +1,124 @@
+{
+  "candidate": "C2_a0.5",
+  "tau": 0.3448357284069062,
+  "n_trials": 1227,
+  "per_task": {
+    "0": 215,
+    "1": 212,
+    "2": 400,
+    "3": 400
+  },
+  "clean": {
+    "RA": 0.9633251833740831,
+    "ASafeR": 0.9991850040749797,
+    "accept_rate": 0.9641401792991035,
+    "closed_set_accuracy": 0.9894050529747351,
+    "wrong_identity_rate": 0.0008149959250203749
+  },
+  "conditions": [
+    {
+      "RA": 0.6992665036674817,
+      "ASafeR": 0.7669111654441728,
+      "accept_rate": 0.9323553382233088,
+      "closed_set_accuracy": 0.7253463732681337,
+      "wrong_identity_rate": 0.2330888345558272,
+      "snr": 30,
+      "goal": "A"
+    },
+    {
+      "RA": 0.6414017929910351,
+      "ASafeR": 0.9853300733496333,
+      "accept_rate": 0.6560717196414018,
+      "closed_set_accuracy": 0.7995110024449877,
+      "wrong_identity_rate": 0.014669926650366748,
+      "snr": 30,
+      "goal": "B"
+    },
+    {
+      "RA": 0.7310513447432763,
+      "ASafeR": 0.9111654441727791,
+      "accept_rate": 0.8198859005704972,
+      "closed_set_accuracy": 0.8337408312958435,
+      "wrong_identity_rate": 0.08883455582722087,
+      "snr": 30,
+      "goal": "C"
+    },
+    {
+      "RA": 0.9885900570497147,
+      "ASafeR": 0.993480032599837,
+      "accept_rate": 0.9951100244498777,
+      "closed_set_accuracy": 0.9902200488997555,
+      "wrong_identity_rate": 0.006519967400162999,
+      "snr": 30,
+      "goal": "D"
+    },
+    {
+      "RA": 0.33251833740831294,
+      "ASafeR": 0.3569682151589242,
+      "accept_rate": 0.9755501222493888,
+      "closed_set_accuracy": 0.3406682966585167,
+      "wrong_identity_rate": 0.6430317848410758,
+      "snr": 20,
+      "goal": "A"
+    },
+    {
+      "RA": 0.3341483292583537,
+      "ASafeR": 0.9649551752241239,
+      "accept_rate": 0.3691931540342298,
+      "closed_set_accuracy": 0.4767726161369193,
+      "wrong_identity_rate": 0.03504482477587612,
+      "snr": 20,
+      "goal": "B"
+    },
+    {
+      "RA": 0.4172779136104319,
+      "ASafeR": 0.6658516707416463,
+      "accept_rate": 0.7514262428687857,
+      "closed_set_accuracy": 0.5044824775876121,
+      "wrong_identity_rate": 0.3341483292583537,
+      "snr": 20,
+      "goal": "C"
+    },
+    {
+      "RA": 0.9877750611246944,
+      "ASafeR": 0.9894050529747351,
+      "accept_rate": 0.9983700081499592,
+      "closed_set_accuracy": 0.9885900570497147,
+      "wrong_identity_rate": 0.010594947025264874,
+      "snr": 20,
+      "goal": "D"
+    }
+  ],
+  "RA": 0.33251833740831294,
+  "ASafeR": 0.3569682151589242,
+  "worst_RA": {
+    "RA": 0.33251833740831294,
+    "ASafeR": 0.3569682151589242,
+    "accept_rate": 0.9755501222493888,
+    "closed_set_accuracy": 0.3406682966585167,
+    "wrong_identity_rate": 0.6430317848410758,
+    "snr": 20,
+    "goal": "A"
+  },
+  "worst_ASafeR": {
+    "RA": 0.33251833740831294,
+    "ASafeR": 0.3569682151589242,
+    "accept_rate": 0.9755501222493888,
+    "closed_set_accuracy": 0.3406682966585167,
+    "wrong_identity_rate": 0.6430317848410758,
+    "snr": 20,
+    "goal": "A"
+  },
+  "protocol": {
+    "subset": "Train 0.6<frac<=0.8, cap 400/task, seed 20261115",
+    "snr_db": [
+      30,
+      20
+    ],
+    "steps": 20,
+    "goals": "A,B,C,D",
+    "radius": "per-trial L2 of demeaned waveform / 10^(SNR/20)",
+    "note": "self-built white-box PGD on the E249 C2 deployment model, not E191 branch-A"
+  },
+  "seconds": 74.18487644195557
+}
