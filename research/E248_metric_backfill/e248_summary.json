@@ -1,0 +1,210 @@
+{
+  "script": "D:\\WORK\\BCIC2026\\BrainPrint\\research\\E248_metric_backfill\\run_e248.py",
+  "runtime_s": 69.34532594680786,
+  "protocol": {
+    "far_definition": "fraction of unknown-identity eval rows accepted (score >= threshold); FAR threshold = np.quantile(unknown_scores, 1-far/100, method='higher')",
+    "legacy_E245_naming": "E245 TPR_FAR1/TPR_FAR5 = unknown rejection rate at 1%/5% known false rejection (known false-rejection operating point), NOT TPR@FAR",
+    "score_convention": "higher = more known",
+    "test_data_read": false
+  },
+  "E245": {
+    "fidelity_max_abs_diff": {
+      "TPR_FAR1": 1.1102230246251565e-16,
+      "TPR_FAR5": 2.220446049250313e-16
+    },
+    "selected": {
+      "0.01/True/max": {
+        "far1": {
+          "tpr": 0.9327501063272801,
+          "far_real": 0.01697436644174755,
+          "f1_unknown": 0.6276309192141989
+        },
+        "far5": {
+          "tpr": 0.9638943189754615,
+          "far_real": 0.05560903319149433,
+          "f1_unknown": 0.7354926032706472
+        },
+        "far10": {
+          "tpr": 0.9769555081714552,
+          "far_real": 0.10516469069167955,
+          "f1_unknown": 0.7802408978558495
+        },
+        "legacy_frr1": 0.7989518729001566,
+        "legacy_frr5": 0.9616942162263371,
+        "delta_new_vs_legacy": {
+          "far1_minus_frr1": 0.1337982334271235,
+          "far5_minus_frr5": 0.0022001027491244107
+        }
+      },
+      "0.01/False/max": {
+        "far1": {
+          "tpr": 0.9204772697002191,
+          "far_real": 0.01697436644174755,
+          "f1_unknown": 0.596998255619199
+        },
+        "far5": {
+          "tpr": 0.9567505413236036,
+          "far_real": 0.05560903319149433,
+          "f1_unknown": 0.7065280216022909
+        },
+        "far10": {
+          "tpr": 0.9704081921779565,
+          "far_real": 0.10516469069167955,
+          "f1_unknown": 0.7481098728357455
+        },
+        "legacy_frr1": 0.7327749985012355,
+        "legacy_frr5": 0.9480861361430761,
+        "delta_new_vs_legacy": {
+          "far1_minus_frr1": 0.18770227119898364,
+          "far5_minus_frr5": 0.008664405180527468
+        }
+      }
+    },
+    "n_rows": 960
+  },
+  "E246": {
+    "fidelity_max_abs_diff": {
+      "AUC": 1.1102230246251565e-16,
+      "closed_acc": 1.1102230246251565e-16
+    },
+    "selected": {
+      "honest/ldacos0.01/none": {
+        "far1": {
+          "tpr_reg": 0.7742350814963839,
+          "far_real": 0.010196552166286923
+        },
+        "far5": {
+          "tpr_reg": 0.8633138805849171,
+          "far_real": 0.05025537466490496
+        },
+        "far10": {
+          "tpr_reg": 0.9012427751112965,
+          "far_real": 0.1002483167338083
+        }
+      },
+      "honest/euclid/none": {
+        "far1": {
+          "tpr_reg": 0.31733529982595876,
+          "far_real": 0.010196552166286923
+        },
+        "far5": {
+          "tpr_reg": 0.47402950696987906,
+          "far_real": 0.05025537466490496
+        },
+        "far10": {
+          "tpr_reg": 0.5487631912326774,
+          "far_real": 0.1002483167338083
+        }
+      }
+    },
+    "n_rows": 720
+  },
+  "E247": {
+    "fidelity_max_abs_diff_known_identification_accuracy": 1.1102230246251565e-16,
+    "closed_set_acc": {
+      "strict_euclid/late": {
+        "closed_set_acc": 0.8918386038438111,
+        "ci_low": 0.8884844547081152,
+        "ci_high": 0.8966733333724052
+      },
+      "strict_euclid/middle": {
+        "closed_set_acc": 0.9306711999662616,
+        "ci_low": 0.9286604369917905,
+        "ci_high": 0.9329813572690923
+      },
+      "strict_ldacos_shrink001/late": {
+        "closed_set_acc": 0.9821624037480066,
+        "ci_low": 0.980968342095158,
+        "ci_high": 0.9837184994078472
+      },
+      "strict_ldacos_shrink001/middle": {
+        "closed_set_acc": 0.9917086503901856,
+        "ci_low": 0.9912219036916418,
+        "ci_high": 0.9921940339757308
+      }
+    },
+    "paired_ldacos_minus_euclid": [
+      {
+        "block": "middle",
+        "metric": "AUC",
+        "delta": "strict_ldacos_shrink001-strict_euclid",
+        "delta_mean": 0.14379886035977266,
+        "ci_low": 0.11211890854429904,
+        "ci_high": 0.1758720152640769,
+        "n_pairs": 20,
+        "n_boot": 10000
+      },
+      {
+        "block": "middle",
+        "metric": "known_acceptance",
+        "delta": "strict_ldacos_shrink001-strict_euclid",
+        "delta_mean": 0.28576537192456863,
+        "ci_low": 0.2799760579906707,
+        "ci_high": 0.2914618566109343,
+        "n_pairs": 20,
+        "n_boot": 10000
+      },
+      {
+        "block": "middle",
+        "metric": "unknown_rejection",
+        "delta": "strict_ldacos_shrink001-strict_euclid",
+        "delta_mean": 0.03437495865381942,
+        "ci_low": -0.021936982421630606,
+        "ci_high": 0.09390827435670203,
+        "n_pairs": 20,
+        "n_boot": 10000
+      },
+      {
+        "block": "middle",
+        "metric": "closed_set_acc",
+        "delta": "strict_ldacos_shrink001-strict_euclid",
+        "delta_mean": 0.061037450423923986,
+        "ci_low": 0.058583853243910994,
+        "ci_high": 0.06296191141764704,
+        "n_pairs": 20,
+        "n_boot": 10000
+      },
+      {
+        "block": "late",
+        "metric": "AUC",
+        "delta": "strict_ldacos_shrink001-strict_euclid",
+        "delta_mean": 0.17496499920348435,
+        "ci_low": 0.13201655810024154,
+        "ci_high": 0.22067846740136132,
+        "n_pairs": 20,
+        "n_boot": 10000
+      },
+      {
+        "block": "late",
+        "metric": "known_acceptance",
+        "delta": "strict_ldacos_shrink001-strict_euclid",
+        "delta_mean": 0.33210458539425697,
+        "ci_low": 0.3257207755703636,
+        "ci_high": 0.33853874680998225,
+        "n_pairs": 20,
+        "n_boot": 10000
+      },
+      {
+        "block": "late",
+        "metric": "unknown_rejection",
+        "delta": "strict_ldacos_shrink001-strict_euclid",
+        "delta_mean": 0.03852389884763376,
+        "ci_low": -0.04856795801064321,
+        "ci_high": 0.12279074328547135,
+        "n_pairs": 20,
+        "n_boot": 10000
+      },
+      {
+        "block": "late",
+        "metric": "closed_set_acc",
+        "delta": "strict_ldacos_shrink001-strict_euclid",
+        "delta_mean": 0.09032379990419537,
+        "ci_low": 0.08682094697887181,
+        "ci_high": 0.09298485328459444,
+        "n_pairs": 20,
+        "n_boot": 10000
+      }
+    ],
+    "n_rows": 280
+  }
+}
