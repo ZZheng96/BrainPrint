@@ -1,0 +1,130 @@
+{
+  "experiment": "E237_image_view_fusion",
+  "purpose": "Fuse the deployable image-view scores (E149 pixel views) with the current compliant optimum E233 mean_align (e226_auc2W representation + symmetric batch-mean alignment). Every image view goes through the same E228/E233 scoring flow (task-wise standardisation on the fit rows -> PCA96 -> k=12 prototypes per (task, identity) -> negative nearest distance) and the same E233 symmetric per-(session, task) batch-mean alignment. Fusion weights are written here BEFORE the run and are never tuned on Test. Objective: raise the Test S2-vs-S1 separation AUC above 0.8795 and the S2 acceptance at an S1>=0.95 gate above 0.706.",
+  "predecessors": {
+    "eeg_score": "E233 mean_align (research/E233_delta_estimation/cache/test_v1_mean_align.npz), i.e. E228 e226_auc2W + symmetric batch-mean alignment; frozen, not refitted.",
+    "image_views": "research/E149_image_route_audit (pixel space, 32x32x3 = 3072) and research/E143_k_sweep_nearest/run_e143.py for the scoring harness.",
+    "purity": "E233 / E232 label-free test-session2 k-means purity (k=20).",
+    "read_only": true
+  },
+  "baseline_anchors": {
+    "e233_mean_align": {
+      "test_tau": -24.138366795919048,
+      "loso_unknown_rejection": 0.9000434593654932,
+      "test_S1_rejection": 1.0,
+      "test_S2_acceptance": 0.3121552711000104,
+      "test_separation_auc": 0.8795220263643784,
+      "S2_at_S1_0p95": 0.7569466125507337,
+      "purity_k20_micro_all_S2": 0.634977625143095
+    },
+    "e236_frontier": {
+      "tau_minus27.5": {"loso": 0.603, "S1": 1.000, "S2": 0.581},
+      "tau_minus28.5": {"loso": 0.511, "S1": 0.995, "S2": 0.647},
+      "tau_minus29.6": {"loso": 0.440, "S1": 0.950, "S2": 0.706}
+    },
+    "image_route_audit_e149": {
+      "best_pixel_test_auc": 0.7347,
+      "X_mw_cov4_test_auc": 0.7347,
+      "X_covariance_hr_test_auc": 0.7051,
+      "IMG_px_all_test_auc": 0.7590,
+      "note": "test AUC = S2-vs-S1 AUC of the unaligned image score with the E149 harness (all-train-row standardisation and prototypes)."
+    },
+    "e65_reference_test_auc": 0.7578
+  },
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "inner_blocks": 5,
+    "folds": 20,
+    "task_standardisation": "per-task mean/std of the fit rows (trial fraction <= 0.6, all 20 identities) applied to Train and Test (E228 rule).",
+    "pca_dim": 96,
+    "prototypes_k": 12,
+    "prototype_init": "random sample init, seed = 17 * identity, 20 Lloyd iterations (E143 harness).",
+    "known_reference": "inner 5-block out-of-fold scores of the fit rows (prototypes built on the other 4 blocks); this is the Train-side ECDF reference for the rank transform. Folds are blocks of floor(5 * trial_fraction) clipped to [0,4].",
+    "loso": "20 folds, one held-out identity each; prototypes from the enrolled identities' fit rows; unknown = held-out identity rows with trial fraction in (0.6, 0.8], known = enrolled rows in the same window (E227/E233 protocol, verified to reproduce the frozen fold caches row-for-row).",
+    "alignment": "E233 mean_align applied in each component's own PCA space: z <- z - mean(z | session, task) + mu_ref(task); mu_ref(task) is the fit-row mean of the task, which is exactly 0 because the PCA basis is centred on the fit rows. One identical rule for both sessions, min_cell_n = 200. Session is only a batch key: it never selects an identity and never gates a sample. LOSO rows are not aligned (they are single-session Train data)."
+  },
+  "eeg_component": {
+    "test_score": "research/E233_delta_estimation/cache/test_v1_mean_align.npz",
+    "test_oof": "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz",
+    "fold_cache": "research/E235_deployment_calibration/cache/fold_v1_{fold:02d}.npz",
+    "fold_score_key": "d1_orig (E235 re-saved -distance); score = -d1_orig",
+    "purpose": "alignment-applied EEG score = the E233 mean_align Test score (frozen). Ref = deploy inner-OOF known scores. LOSO = frozen per-fold scores, unaligned, identical to E233."
+  },
+  "image_views": {
+    "spec": "the 7 pixel-space views are scored separately; IMG_px_all is their equal-weight mean in z-score space (the E149 definition), not a feature concatenation.",
+    "comparison_views": {
+      "X_mw_cov4": {
+        "train": "research/E149_image_route_audit/train_px_mw_cov4.npy",
+        "test": "research/E149_image_route_audit/test_px_mw_cov4.npy",
+        "dim": 3072
+      },
+      "X_covariance_hr": {
+        "train": "research/E149_image_route_audit/train_px_covariance_hr.npy",
+        "test": "research/E149_image_route_audit/test_px_covariance_hr.npy",
+        "dim": 3072
+      }
+    },
+    "pixel_views": {
+      "X_correlation": {"train": "research/E149_image_route_audit/train_px_correlation.npy", "test": "research/E149_image_route_audit/test_px_correlation.npy"},
+      "X_covariance5": {"train": "research/E149_image_route_audit/train_px_covariance5.npy", "test": "research/E149_image_route_audit/test_px_covariance5.npy"},
+      "X_covariance_hr": {"train": "research/E149_image_route_audit/train_px_covariance_hr.npy", "test": "research/E149_image_route_audit/test_px_covariance_hr.npy"},
+      "X_topomap5": {"train": "research/E149_image_route_audit/train_px_topomap5.npy", "test": "research/E149_image_route_audit/test_px_topomap5.npy"},
+      "X_mw_corr8": {"train": "research/E149_image_route_audit/train_px_mw_corr8.npy", "test": "research/E149_image_route_audit/test_px_mw_corr8.npy"},
+      "X_mw_cov4": {"train": "research/E149_image_route_audit/train_px_mw_cov4.npy", "test": "research/E149_image_route_audit/test_px_mw_cov4.npy"},
+      "X_mw_cov8": {"train": "research/E149_image_route_audit/train_px_mw_cov8.npy", "test": "research/E149_image_route_audit/test_px_mw_cov8.npy"}
+    },
+    "excluded_only_train_cache": ["gaf", "mtf", "spectrogram", "topomap(old)", "correlation_tokens", "topomap_tokens", "covariance5_dinov3b16"]
+  },
+  "fusion": {
+    "primary_image_component": "IMG_px_all",
+    "rank_transform": "per-task empirical CDF of the fit-row OOF known reference scores: r = P(ref_task <= s); higher = more likely known.",
+    "weights_fixed_before_run": {
+      "fuse_rank_50_50": {"eeg": 0.5, "image": 0.5},
+      "fuse_rank_70_30": {"eeg": 0.7, "image": 0.3},
+      "fuse_rank_30_70": {"eeg": 0.3, "image": 0.7},
+      "fuse_zscore_50_50": {"eeg": 0.5, "image": 0.5}
+    },
+    "note": "fuse_zscore_50_50 standardises each component with the mean/std of its fit-row OOF reference scores and averages; it is the scale-control candidate. fuse_rank_50_50 with X_mw_cov4 and X_covariance_hr are reported as single-view fusion diagnostics."
+  },
+  "round2_candidates": {
+    "when": "only reported as the allowed single follow-up round; never used to re-pick the verdict of round 1",
+    "candidates": {
+      "fuse_rank_80_20": {"eeg": 0.8, "image": 0.2},
+      "fuse_rank_20_80": {"eeg": 0.2, "image": 0.8},
+      "fuse_rank_50_50_threeview": {"eeg": 0.5, "image": 0.5, "image_component": "mean of X_mw_cov4, X_covariance_hr, IMG_px_all ranks"}
+    }
+  },
+  "metrics": {
+    "separation_auc": "S2-vs-S1 AUC of the fused Test score (ties handled by mid-rank).",
+    "loso_gate": "tau = 10th percentile of the pooled LOSO unknown fused scores, i.e. LOSO unknown rejection = 0.90 (the compliant operating point); read Test S1 rejection and S2 acceptance there.",
+    "s1_gate_095": "tau = 95th percentile of the fused Test S1 scores; read S2 acceptance (official gate).",
+    "fold_s2_proxy": "per-fold acceptance of the enrolled (known) rows with trial fraction in (0.6,0.8] at the LOSO=0.90 tau; mean +- std over the 20 folds.",
+    "purity": {
+      "space": "frozen E233 baseline EEG PCA space (no alignment), k-means k=20, seed 20261117+20, 60 Lloyd iterations on all 19218 Test session2 rows; the partition is identical for every candidate",
+      "reported": "purity over the accepted S2 rows at the candidate's tau, using the EEG-branch predicted identity (the fused score is scalar, it carries no identity head)",
+      "baseline_definition": "the same quantity for the EEG-only candidate at its own LOSO=0.90 tau"
+    },
+    "coverage": "number of distinct identities among the accepted Test rows"
+  },
+  "decision_rule": {
+    "valid": "S2 at the S1>=0.95 gate > 0.706 AND separation AUC > 0.8795 AND accepted-row purity >= 0.95 x baseline purity",
+    "separable_only": "separation AUC rises but S2 at the S1>=0.95 gate does not -> report 'the separability gain did not translate into the operating point' and explain why",
+    "fail": "every candidate is worse than the baseline -> state that fusing image views with the aligned EEG score gives no gain, with the evidence"
+  },
+  "limitations": [
+    "Only 7 image types have both Train and Test caches; GAF / MTF / spectrogram / DINOv3 exist only for Train and cannot be used.",
+    "Test has no identity labels: official C / RA / ASafeR are N/A; S1 rejection and S2 acceptance are the only read-outs.",
+    "Test has been inspected repeatedly since E65, so every S2 number carries a repeated-inspection bias; four fusion weights and all thresholds are fixed in this file before the run.",
+    "E232 showed session and registration status are confounded (S1 = 5 unregistered subjects, S2 = 20 enrolled users); alignment uses session only as a batch key.",
+    "The mean alignment is batch/transductive: it estimates an unlabelled statistic on the batch that is being scored, which needs confirmation against the competition rules.",
+    "The fused score is scalar; identity still comes from the EEG branch, so purity/coverage only measure whether the fused accept decision keeps coherent identities."
+  ]
+}

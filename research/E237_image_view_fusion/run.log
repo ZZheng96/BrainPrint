@@ -1,0 +1,37 @@
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121
+fit rows=6695 eval rows=2301 test S1=3033 S2=19218
+E233 mean_align raw reproduction {"S1_rejection": 1.0, "S2_acceptance": 0.3121552711000104, "separation_auc": 0.8795220263643784}
+scoring image views (task-wise standardisation -> PCA96 -> k=12 protos)
+    pca eigen top1..3=[533.27087719 245.93266667 197.64191883] explained=0.9175
+  view X_correlation  dim=3072 auc_raw=0.6912 auc_aligned=0.6778 (5.0s)
+    pca eigen top1..3=[843.80967317 399.34880067 379.14204091] explained=0.9340
+  view X_covariance5  dim=3072 auc_raw=0.7111 auc_aligned=0.9350 (5.2s)
+    pca eigen top1..3=[1198.77153464  722.39149021  508.4439846 ] explained=0.9550
+  view X_covariance_hr dim=3072 auc_raw=0.7085 auc_aligned=0.9021 (5.6s)
+    pca eigen top1..3=[625.0129363  269.85319932 246.36560124] explained=0.9997
+  view X_topomap5     dim=3072 auc_raw=0.6583 auc_aligned=0.7823 (5.2s)
+    pca eigen top1..3=[374.75292943 127.27826837  62.67126671] explained=0.7133
+  view X_mw_corr8     dim=3072 auc_raw=0.5815 auc_aligned=0.5704 (4.4s)
+    pca eigen top1..3=[1023.1391637   389.49360731  258.3722054 ] explained=0.9424
+  view X_mw_cov4      dim=3072 auc_raw=0.7410 auc_aligned=0.9353 (5.3s)
+    pca eigen top1..3=[993.74799962 343.20652985 171.74586595] explained=0.9520
+  view X_mw_cov8      dim=3072 auc_raw=0.7346 auc_aligned=0.8896 (5.1s)
+  composite IMG_px_all auc_raw=0.7600 auc_aligned=0.9487
+building the label-free k=20 partition in the baseline EEG PCA space
+  kmeans k=20 sizes=[1001, 804, 931, 455, 712, 1112, 594, 546, 1965, 802, 1388, 1361, 84, 1044, 1155, 1388, 1061, 729, 1125, 961]
+  E233 mean_align purity over all S2 rows {"n": 19218, "purity_micro": 0.634977625143095, "purity_macro": 0.6394518884181595, "n_distinct_pred": 20, "max_identity_share": 0.10771152044957852}
+baseline_eeg_rank                LOSO=0.8996 S1=1.0000 S2=0.3041 sepAUC=0.8768 S2@95=0.7063 pur=0.8145 foldS2=0.8015+-0.0126
+img_only_X_mw_cov4               LOSO=0.8996 S1=0.9964 S2=0.1188 sepAUC=0.9332 S2@95=0.6712 pur=0.6484 foldS2=0.1890+-0.0067
+img_only_X_covariance_hr         LOSO=0.8996 S1=0.9941 S2=0.1820 sepAUC=0.9025 S2@95=0.5129 pur=0.7332 foldS2=0.4109+-0.0114
+img_only_IMG_px_all              LOSO=0.8996 S1=0.9993 S2=0.2122 sepAUC=0.9488 S2@95=0.8051 pur=0.7252 foldS2=0.4520+-0.0126
+fuse_rank_50_50                  LOSO=0.8996 S1=1.0000 S2=0.2690 sepAUC=0.9471 S2@95=0.8753 pur=0.7760 foldS2=0.6850+-0.0129
+fuse_rank_70_30                  LOSO=0.8996 S1=1.0000 S2=0.3094 sepAUC=0.9395 S2@95=0.8469 pur=0.7921 foldS2=0.7594+-0.0120
+fuse_rank_30_70                  LOSO=0.8996 S1=0.9997 S2=0.2419 sepAUC=0.9502 S2@95=0.8598 pur=0.7501 foldS2=0.5848+-0.0129
+fuse_zscore_50_50                LOSO=0.8996 S1=1.0000 S2=0.2906 sepAUC=0.9611 S2@95=0.8776 pur=0.8186 foldS2=0.7246+-0.0121
+fuse_rank_50_50_X_mw_cov4        LOSO=0.8996 S1=0.9984 S2=0.1770 sepAUC=0.9469 S2@95=0.8190 pur=0.7357 foldS2=0.5442+-0.0137
+fuse_rank_50_50_X_covariance_hr  LOSO=0.8996 S1=0.9974 S2=0.2535 sepAUC=0.9290 S2@95=0.7198 pur=0.7814 foldS2=0.7182+-0.0137
+fuse_rank_80_20                  LOSO=0.8996 S1=1.0000 S2=0.3193 sepAUC=0.9319 S2@95=0.8184 pur=0.8023 foldS2=0.7841+-0.0121
+fuse_rank_20_80                  LOSO=0.8996 S1=0.9997 S2=0.2326 sepAUC=0.9506 S2@95=0.8454 pur=0.7425 foldS2=0.5399+-0.0127
+fuse_rank_50_50_threeview        LOSO=0.8996 S1=0.9993 S2=0.2706 sepAUC=0.9542 S2@95=0.8678 pur=0.7685 foldS2=0.7113+-0.0127
+decision verdict=pass adopted=fuse_zscore_50_50 best_sep=fuse_zscore_50_50 best_gate=fuse_zscore_50_50
+results.json + report.md written, runtime=38s

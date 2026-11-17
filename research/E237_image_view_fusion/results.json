@@ -1,0 +1,1057 @@
+{
+  "experiment": "E237_image_view_fusion",
+  "config": {
+    "experiment": "E237_image_view_fusion",
+    "purpose": "Fuse the deployable image-view scores (E149 pixel views) with the current compliant optimum E233 mean_align (e226_auc2W representation + symmetric batch-mean alignment). Every image view goes through the same E228/E233 scoring flow (task-wise standardisation on the fit rows -> PCA96 -> k=12 prototypes per (task, identity) -> negative nearest distance) and the same E233 symmetric per-(session, task) batch-mean alignment. Fusion weights are written here BEFORE the run and are never tuned on Test. Objective: raise the Test S2-vs-S1 separation AUC above 0.8795 and the S2 acceptance at an S1>=0.95 gate above 0.706.",
+    "predecessors": {
+      "eeg_score": "E233 mean_align (research/E233_delta_estimation/cache/test_v1_mean_align.npz), i.e. E228 e226_auc2W + symmetric batch-mean alignment; frozen, not refitted.",
+      "image_views": "research/E149_image_route_audit (pixel space, 32x32x3 = 3072) and research/E143_k_sweep_nearest/run_e143.py for the scoring harness.",
+      "purity": "E233 / E232 label-free test-session2 k-means purity (k=20).",
+      "read_only": true
+    },
+    "baseline_anchors": {
+      "e233_mean_align": {
+        "test_tau": -24.138366795919048,
+        "loso_unknown_rejection": 0.9000434593654932,
+        "test_S1_rejection": 1.0,
+        "test_S2_acceptance": 0.3121552711000104,
+        "test_separation_auc": 0.8795220263643784,
+        "S2_at_S1_0p95": 0.7569466125507337,
+        "purity_k20_micro_all_S2": 0.634977625143095
+      },
+      "e236_frontier": {
+        "tau_minus27.5": {
+          "loso": 0.603,
+          "S1": 1.0,
+          "S2": 0.581
+        },
+        "tau_minus28.5": {
+          "loso": 0.511,
+          "S1": 0.995,
+          "S2": 0.647
+        },
+        "tau_minus29.6": {
+          "loso": 0.44,
+          "S1": 0.95,
+          "S2": 0.706
+        }
+      },
+      "image_route_audit_e149": {
+        "best_pixel_test_auc": 0.7347,
+        "X_mw_cov4_test_auc": 0.7347,
+        "X_covariance_hr_test_auc": 0.7051,
+        "IMG_px_all_test_auc": 0.759,
+        "note": "test AUC = S2-vs-S1 AUC of the unaligned image score with the E149 harness (all-train-row standardisation and prototypes)."
+      },
+      "e65_reference_test_auc": 0.7578
+    },
+    "data": {
+      "train_metadata": "BrainPrint_cache/train_metadata.csv",
+      "test_metadata": "BrainPrint_cache/test_metadata.csv",
+      "train_trials": 11304,
+      "test_trials": 22251
+    },
+    "protocol": {
+      "tasks": [
+        "EC",
+        "EO",
+        "Imagery",
+        "SSVEP"
+      ],
+      "fit_fraction": 0.6,
+      "evaluation_fraction": [
+        0.6,
+        0.8
+      ],
+      "inner_blocks": 5,
+      "folds": 20,
+      "task_standardisation": "per-task mean/std of the fit rows (trial fraction <= 0.6, all 20 identities) applied to Train and Test (E228 rule).",
+      "pca_dim": 96,
+      "prototypes_k": 12,
+      "prototype_init": "random sample init, seed = 17 * identity, 20 Lloyd iterations (E143 harness).",
+      "known_reference": "inner 5-block out-of-fold scores of the fit rows (prototypes built on the other 4 blocks); this is the Train-side ECDF reference for the rank transform. Folds are blocks of floor(5 * trial_fraction) clipped to [0,4].",
+      "loso": "20 folds, one held-out identity each; prototypes from the enrolled identities' fit rows; unknown = held-out identity rows with trial fraction in (0.6, 0.8], known = enrolled rows in the same window (E227/E233 protocol, verified to reproduce the frozen fold caches row-for-row).",
+      "alignment": "E233 mean_align applied in each component's own PCA space: z <- z - mean(z | session, task) + mu_ref(task); mu_ref(task) is the fit-row mean of the task, which is exactly 0 because the PCA basis is centred on the fit rows. One identical rule for both sessions, min_cell_n = 200. Session is only a batch key: it never selects an identity and never gates a sample. LOSO rows are not aligned (they are single-session Train data)."
+    },
+    "eeg_component": {
+      "test_score": "research/E233_delta_estimation/cache/test_v1_mean_align.npz",
+      "test_oof": "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz",
+      "fold_cache": "research/E235_deployment_calibration/cache/fold_v1_{fold:02d}.npz",
+      "fold_score_key": "d1_orig (E235 re-saved -distance); score = -d1_orig",
+      "purpose": "alignment-applied EEG score = the E233 mean_align Test score (frozen). Ref = deploy inner-OOF known scores. LOSO = frozen per-fold scores, unaligned, identical to E233."
+    },
+    "image_views": {
+      "spec": "the 7 pixel-space views are scored separately; IMG_px_all is their equal-weight mean in z-score space (the E149 definition), not a feature concatenation.",
+      "comparison_views": {
+        "X_mw_cov4": {
+          "train": "research/E149_image_route_audit/train_px_mw_cov4.npy",
+          "test": "research/E149_image_route_audit/test_px_mw_cov4.npy",
+          "dim": 3072
+        },
+        "X_covariance_hr": {
+          "train": "research/E149_image_route_audit/train_px_covariance_hr.npy",
+          "test": "research/E149_image_route_audit/test_px_covariance_hr.npy",
+          "dim": 3072
+        }
+      },
+      "pixel_views": {
+        "X_correlation": {
+          "train": "research/E149_image_route_audit/train_px_correlation.npy",
+          "test": "research/E149_image_route_audit/test_px_correlation.npy"
+        },
+        "X_covariance5": {
+          "train": "research/E149_image_route_audit/train_px_covariance5.npy",
+          "test": "research/E149_image_route_audit/test_px_covariance5.npy"
+        },
+        "X_covariance_hr": {
+          "train": "research/E149_image_route_audit/train_px_covariance_hr.npy",
+          "test": "research/E149_image_route_audit/test_px_covariance_hr.npy"
+        },
+        "X_topomap5": {
+          "train": "research/E149_image_route_audit/train_px_topomap5.npy",
+          "test": "research/E149_image_route_audit/test_px_topomap5.npy"
+        },
+        "X_mw_corr8": {
+          "train": "research/E149_image_route_audit/train_px_mw_corr8.npy",
+          "test": "research/E149_image_route_audit/test_px_mw_corr8.npy"
+        },
+        "X_mw_cov4": {
+          "train": "research/E149_image_route_audit/train_px_mw_cov4.npy",
+          "test": "research/E149_image_route_audit/test_px_mw_cov4.npy"
+        },
+        "X_mw_cov8": {
+          "train": "research/E149_image_route_audit/train_px_mw_cov8.npy",
+          "test": "research/E149_image_route_audit/test_px_mw_cov8.npy"
+        }
+      },
+      "excluded_only_train_cache": [
+        "gaf",
+        "mtf",
+        "spectrogram",
+        "topomap(old)",
+        "correlation_tokens",
+        "topomap_tokens",
+        "covariance5_dinov3b16"
+      ]
+    },
+    "fusion": {
+      "primary_image_component": "IMG_px_all",
+      "rank_transform": "per-task empirical CDF of the fit-row OOF known reference scores: r = P(ref_task <= s); higher = more likely known.",
+      "weights_fixed_before_run": {
+        "fuse_rank_50_50": {
+          "eeg": 0.5,
+          "image": 0.5
+        },
+        "fuse_rank_70_30": {
+          "eeg": 0.7,
+          "image": 0.3
+        },
+        "fuse_rank_30_70": {
+          "eeg": 0.3,
+          "image": 0.7
+        },
+        "fuse_zscore_50_50": {
+          "eeg": 0.5,
+          "image": 0.5
+        }
+      },
+      "note": "fuse_zscore_50_50 standardises each component with the mean/std of its fit-row OOF reference scores and averages; it is the scale-control candidate. fuse_rank_50_50 with X_mw_cov4 and X_covariance_hr are reported as single-view fusion diagnostics."
+    },
+    "round2_candidates": {
+      "when": "only reported as the allowed single follow-up round; never used to re-pick the verdict of round 1",
+      "candidates": {
+        "fuse_rank_80_20": {
+          "eeg": 0.8,
+          "image": 0.2
+        },
+        "fuse_rank_20_80": {
+          "eeg": 0.2,
+          "image": 0.8
+        },
+        "fuse_rank_50_50_threeview": {
+          "eeg": 0.5,
+          "image": 0.5,
+          "image_component": "mean of X_mw_cov4, X_covariance_hr, IMG_px_all ranks"
+        }
+      }
+    },
+    "metrics": {
+      "separation_auc": "S2-vs-S1 AUC of the fused Test score (ties handled by mid-rank).",
+      "loso_gate": "tau = 10th percentile of the pooled LOSO unknown fused scores, i.e. LOSO unknown rejection = 0.90 (the compliant operating point); read Test S1 rejection and S2 acceptance there.",
+      "s1_gate_095": "tau = 95th percentile of the fused Test S1 scores; read S2 acceptance (official gate).",
+      "fold_s2_proxy": "per-fold acceptance of the enrolled (known) rows with trial fraction in (0.6,0.8] at the LOSO=0.90 tau; mean +- std over the 20 folds.",
+      "purity": {
+        "space": "frozen E233 baseline EEG PCA space (no alignment), k-means k=20, seed 20261117+20, 60 Lloyd iterations on all 19218 Test session2 rows; the partition is identical for every candidate",
+        "reported": "purity over the accepted S2 rows at the candidate's tau, using the EEG-branch predicted identity (the fused score is scalar, it carries no identity head)",
+        "baseline_definition": "the same quantity for the EEG-only candidate at its own LOSO=0.90 tau"
+      },
+      "coverage": "number of distinct identities among the accepted Test rows"
+    },
+    "decision_rule": {
+      "valid": "S2 at the S1>=0.95 gate > 0.706 AND separation AUC > 0.8795 AND accepted-row purity >= 0.95 x baseline purity",
+      "separable_only": "separation AUC rises but S2 at the S1>=0.95 gate does not -> report 'the separability gain did not translate into the operating point' and explain why",
+      "fail": "every candidate is worse than the baseline -> state that fusing image views with the aligned EEG score gives no gain, with the evidence"
+    },
+    "limitations": [
+      "Only 7 image types have both Train and Test caches; GAF / MTF / spectrogram / DINOv3 exist only for Train and cannot be used.",
+      "Test has no identity labels: official C / RA / ASafeR are N/A; S1 rejection and S2 acceptance are the only read-outs.",
+      "Test has been inspected repeatedly since E65, so every S2 number carries a repeated-inspection bias; four fusion weights and all thresholds are fixed in this file before the run.",
+      "E232 showed session and registration status are confounded (S1 = 5 unregistered subjects, S2 = 20 enrolled users); alignment uses session only as a batch key.",
+      "The mean alignment is batch/transductive: it estimates an unlabelled statistic on the batch that is being scored, which needs confirmation against the competition rules.",
+      "The fused score is scalar; identity still comes from the EEG branch, so purity/coverage only measure whether the fused accept decision keeps coherent identities."
+    ]
+  },
+  "eeg_component": {
+    "name": "E233 mean_align",
+    "raw_reproduction": {
+      "S1_rejection": 1.0,
+      "S2_acceptance": 0.3121552711000104,
+      "separation_auc": 0.8795220263643784
+    },
+    "tau": -24.138366795919048
+  },
+  "image_views": {
+    "X_correlation": {
+      "auc_raw": 0.6912328335305774,
+      "auc_aligned": 0.6777912007361216,
+      "dim": 3072
+    },
+    "X_covariance5": {
+      "auc_raw": 0.7110554583317507,
+      "auc_aligned": 0.9349630218428109,
+      "dim": 3072
+    },
+    "X_covariance_hr": {
+      "auc_raw": 0.7085394428243909,
+      "auc_aligned": 0.9021351219082204,
+      "dim": 3072
+    },
+    "X_topomap5": {
+      "auc_raw": 0.6582989773194894,
+      "auc_aligned": 0.7822622622344415,
+      "dim": 3072
+    },
+    "X_mw_corr8": {
+      "auc_raw": 0.581492977806106,
+      "auc_aligned": 0.5704405166507647,
+      "dim": 3072
+    },
+    "X_mw_cov4": {
+      "auc_raw": 0.7410114902513535,
+      "auc_aligned": 0.935346487146265,
+      "dim": 3072
+    },
+    "X_mw_cov8": {
+      "auc_raw": 0.7345946247708413,
+      "auc_aligned": 0.8896183333455142,
+      "dim": 3072
+    },
+    "IMG_px_all": {
+      "auc_raw": 0.7599606791728699,
+      "auc_aligned": 0.9487022191835279,
+      "dim": "composite of 7 x 3072"
+    }
+  },
+  "candidates": {
+    "baseline_eeg_rank": {
+      "tau": 0.19836644914371696,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9005032089881848,
+      "loso_fold_rejection_std": 0.09917330103505041,
+      "S1_rejection": 1.0,
+      "S2_acceptance": 0.3041419502549693,
+      "separation_auc": 0.8768397421954779,
+      "S2_at_S1_0p95": 0.7062649599333958,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.05774525183992254,
+      "S2_at_S1_0p70": 0.8382766156728068,
+      "overall_rejection": 0.7373151768459845,
+      "identities_predicted": 17,
+      "fold_S2_proxy_mean": 0.8015280845534303,
+      "fold_S2_proxy_std": 0.012599407025520542,
+      "fold_S2_proxy": [
+        0.8107487367937529,
+        0.8076398362892224,
+        0.7939421753097752,
+        0.7993601462522852,
+        0.765,
+        0.7960496095544327,
+        0.8015617822691777,
+        0.8024578971324533,
+        0.8064073226544622,
+        0.8199635369188697,
+        0.8055045871559633,
+        0.7893529141808169,
+        0.7915518824609734,
+        0.786697247706422,
+        0.8060246462802373,
+        0.8120989917506874,
+        0.8113293741434445,
+        0.8002723558783477,
+        0.8248742569730224,
+        0.7997243913642628
+      ],
+      "purity_accepted_S2": {
+        "n": 5845,
+        "purity_micro": 0.8145423438836612,
+        "purity_macro": 0.7702785064316289,
+        "n_distinct_pred": 17,
+        "max_identity_share": 0.20359281437125748
+      },
+      "purity_at_gate_S2": {
+        "n": 13573,
+        "purity_micro": 0.6837103072275842,
+        "purity_macro": 0.6883170847870501,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.1376998452810727
+      },
+      "n_accepted": 5845,
+      "n_accepted_S2": 5845,
+      "note": "EEG only, per-task rank of the E233 mean_align score"
+    },
+    "img_only_X_mw_cov4": {
+      "tau": 0.7544131224266767,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.900728382176568,
+      "loso_fold_rejection_std": 0.07189626683164387,
+      "S1_rejection": 0.9963732278272338,
+      "S2_acceptance": 0.11884691435112915,
+      "separation_auc": 0.9332060365431806,
+      "S2_at_S1_0p95": 0.6712457071495473,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.2052763275770326,
+      "S2_at_S1_0p70": 0.9522843167863462,
+      "overall_rejection": 0.8968585681542403,
+      "identities_predicted": 19,
+      "fold_S2_proxy_mean": 0.18899554262810558,
+      "fold_S2_proxy_std": 0.006700762271695118,
+      "fold_S2_proxy": [
+        0.18465778594395957,
+        0.18508412914961347,
+        0.18219366681964203,
+        0.2006398537477148,
+        0.18636363636363637,
+        0.19338539274230593,
+        0.17271474506201195,
+        0.19344560764679108,
+        0.19038901601830663,
+        0.18778486782133091,
+        0.18577981651376146,
+        0.18953648462597522,
+        0.19651056014692378,
+        0.17844036697247706,
+        0.19078046554084893,
+        0.19523373052245646,
+        0.18410232983097305,
+        0.19745801180208805,
+        0.19615912208504802,
+        0.18925126320624713
+      ],
+      "purity_accepted_S2": {
+        "n": 2284,
+        "purity_micro": 0.6484238178633975,
+        "purity_macro": 0.6055754865926416,
+        "n_distinct_pred": 19,
+        "max_identity_share": 0.1703152364273205
+      },
+      "purity_at_gate_S2": {
+        "n": 12900,
+        "purity_micro": 0.6534883720930232,
+        "purity_macro": 0.652372324852247,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.09232558139534884
+      },
+      "n_accepted": 2295,
+      "n_accepted_S2": 2284,
+      "note": "X_mw_cov4 only, per-task rank"
+    },
+    "img_only_X_covariance_hr": {
+      "tau": 0.5195135142801761,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9018700487882712,
+      "loso_fold_rejection_std": 0.077333744445807,
+      "S1_rejection": 0.9940652818991098,
+      "S2_acceptance": 0.18196482464356334,
+      "separation_auc": 0.9024737925487964,
+      "S2_at_S1_0p95": 0.5129045686335727,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.23119234180116202,
+      "S2_at_S1_0p70": 0.908523259444271,
+      "overall_rejection": 0.8420295717046425,
+      "identities_predicted": 19,
+      "fold_S2_proxy_mean": 0.4108582847611936,
+      "fold_S2_proxy_std": 0.011373585594031422,
+      "fold_S2_proxy": [
+        0.3987138263665595,
+        0.40654843110504774,
+        0.3969710876548876,
+        0.43007312614259596,
+        0.40545454545454546,
+        0.40606338998621955,
+        0.3899862195682131,
+        0.4255803368229404,
+        0.4073226544622426,
+        0.4047402005469462,
+        0.4077981651376147,
+        0.41854061496099126,
+        0.40633608815426997,
+        0.3967889908256881,
+        0.416704701049749,
+        0.4234647112740605,
+        0.4029237094563728,
+        0.4266908760780754,
+        0.4247828074988569,
+        0.42168121267799724
+      ],
+      "purity_accepted_S2": {
+        "n": 3497,
+        "purity_micro": 0.7331998856162425,
+        "purity_macro": 0.6973144439814398,
+        "n_distinct_pred": 19,
+        "max_identity_share": 0.10866456963111239
+      },
+      "purity_at_gate_S2": {
+        "n": 9857,
+        "purity_micro": 0.6832707720401745,
+        "purity_macro": 0.6819861923438273,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.0978999695647763
+      },
+      "n_accepted": 3515,
+      "n_accepted_S2": 3497,
+      "note": "X_covariance_hr only, per-task rank"
+    },
+    "img_only_IMG_px_all": {
+      "tau": 0.5241593582370978,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9013238775008686,
+      "loso_fold_rejection_std": 0.09514700315477846,
+      "S1_rejection": 0.9993405868776789,
+      "S2_acceptance": 0.2122489332917057,
+      "separation_auc": 0.9487982592152366,
+      "S2_at_S1_0p95": 0.805130606722864,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.08710513997755026,
+      "S2_at_S1_0p70": 0.9453116869601416,
+      "overall_rejection": 0.8165925126960586,
+      "identities_predicted": 19,
+      "fold_S2_proxy_mean": 0.45197644088460054,
+      "fold_S2_proxy_std": 0.01264032176860449,
+      "fold_S2_proxy": [
+        0.4322462103812586,
+        0.4483856298317417,
+        0.45296007342817807,
+        0.47623400365630714,
+        0.4495454545454545,
+        0.44740468534680755,
+        0.4304088194763436,
+        0.45744196631770595,
+        0.4443935926773455,
+        0.4658158614402917,
+        0.4371559633027523,
+        0.44882973841211565,
+        0.43709825528007346,
+        0.44908256880733943,
+        0.45276129621177547,
+        0.4711274060494959,
+        0.45271813613522155,
+        0.46709033136631867,
+        0.4709647919524463,
+        0.4478640330730363
+      ],
+      "purity_accepted_S2": {
+        "n": 4079,
+        "purity_micro": 0.7251777396420691,
+        "purity_macro": 0.6999102910545262,
+        "n_distinct_pred": 19,
+        "max_identity_share": 0.12454032851189017
+      },
+      "purity_at_gate_S2": {
+        "n": 15473,
+        "purity_micro": 0.6552704711432819,
+        "purity_macro": 0.6479242701493751,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.10825308602081045
+      },
+      "n_accepted": 4081,
+      "n_accepted_S2": 4079,
+      "note": "IMG_px_all only, per-task rank"
+    },
+    "fuse_rank_50_50": {
+      "tau": 0.33115256687031597,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9016885601367166,
+      "loso_fold_rejection_std": 0.09707573686916134,
+      "S1_rejection": 1.0,
+      "S2_acceptance": 0.2690186283692372,
+      "separation_auc": 0.9470912583086722,
+      "S2_at_S1_0p95": 0.8753252159433864,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.05184487276673555,
+      "S2_at_S1_0p70": 0.9434384431262358,
+      "overall_rejection": 0.7676508920947374,
+      "identities_predicted": 19,
+      "fold_S2_proxy_mean": 0.6849526359308044,
+      "fold_S2_proxy_std": 0.012930546743684853,
+      "fold_S2_proxy": [
+        0.6821313734497014,
+        0.6871305138699408,
+        0.6773749426342359,
+        0.6928702010968921,
+        0.6563636363636364,
+        0.6793752870923289,
+        0.6807533302710151,
+        0.6932180245789713,
+        0.6842105263157895,
+        0.6969006381039198,
+        0.6807339449541284,
+        0.6668196420376319,
+        0.6712580348943985,
+        0.6711009174311927,
+        0.6850753080785029,
+        0.7043996333638863,
+        0.7003197807217908,
+        0.6963231956423059,
+        0.710562414266118,
+        0.6821313734497014
+      ],
+      "purity_accepted_S2": {
+        "n": 5170,
+        "purity_micro": 0.7760154738878143,
+        "purity_macro": 0.7374216649916057,
+        "n_distinct_pred": 19,
+        "max_identity_share": 0.15203094777562862
+      },
+      "purity_at_gate_S2": {
+        "n": 16822,
+        "purity_micro": 0.6474854357389134,
+        "purity_macro": 0.6502326599064803,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.11758411603852098
+      },
+      "n_accepted": 5170,
+      "n_accepted_S2": 5170,
+      "note": "rank fusion EEG 0.5 / IMG_px_all 0.5"
+    },
+    "fuse_rank_70_30": {
+      "tau": 0.2626380458805275,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9016460703126746,
+      "loso_fold_rejection_std": 0.10077513580175673,
+      "S1_rejection": 1.0,
+      "S2_acceptance": 0.30939743990009366,
+      "separation_auc": 0.9395423711360829,
+      "S2_at_S1_0p95": 0.8469143511291497,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.05425419498405895,
+      "S2_at_S1_0p70": 0.9319908419190343,
+      "overall_rejection": 0.7327760550087636,
+      "identities_predicted": 18,
+      "fold_S2_proxy_mean": 0.7594113543283671,
+      "fold_S2_proxy_std": 0.011965360960811583,
+      "fold_S2_proxy": [
+        0.7643546164446486,
+        0.7639836289222374,
+        0.7540156034878385,
+        0.7669104204753199,
+        0.73,
+        0.754248966467616,
+        0.7602204869085898,
+        0.7619481110605371,
+        0.7588100686498855,
+        0.7748404740200547,
+        0.7582568807339449,
+        0.7425424506654429,
+        0.7456382001836547,
+        0.7417431192660551,
+        0.762665449566408,
+        0.7703941338221815,
+        0.7693010507080859,
+        0.7648660916931457,
+        0.7828074988568816,
+        0.7606798346348186
+      ],
+      "purity_accepted_S2": {
+        "n": 5946,
+        "purity_micro": 0.7921291624621595,
+        "purity_macro": 0.764348362860394,
+        "n_distinct_pred": 18,
+        "max_identity_share": 0.16044399596367306
+      },
+      "purity_at_gate_S2": {
+        "n": 16276,
+        "purity_micro": 0.651634308183829,
+        "purity_macro": 0.6420397224927971,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.12072990906856722
+      },
+      "n_accepted": 5946,
+      "n_accepted_S2": 5946,
+      "note": "rank fusion EEG 0.7 / IMG_px_all 0.3"
+    },
+    "fuse_rank_30_70": {
+      "tau": 0.40569435961769357,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9012821116742096,
+      "loso_fold_rejection_std": 0.0963151294875843,
+      "S1_rejection": 0.9996702934388394,
+      "S2_acceptance": 0.24190862732854615,
+      "separation_auc": 0.9502344334085904,
+      "S2_at_S1_0p95": 0.8597668852117806,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.06502728213249467,
+      "S2_at_S1_0p70": 0.9487980018732438,
+      "overall_rejection": 0.7910206282863691,
+      "identities_predicted": 19,
+      "fold_S2_proxy_mean": 0.5848288613861868,
+      "fold_S2_proxy_std": 0.012872795172116185,
+      "fold_S2_proxy": [
+        0.5760220486908589,
+        0.584356525693497,
+        0.5823772372648004,
+        0.606489945155393,
+        0.5695454545454546,
+        0.5746440055121728,
+        0.5728066146072577,
+        0.5867091488393263,
+        0.5789473684210527,
+        0.6007292616226071,
+        0.5775229357798165,
+        0.5722808627810922,
+        0.566574839302112,
+        0.5715596330275229,
+        0.5869465997261525,
+        0.6067827681026581,
+        0.594792142530836,
+        0.598729005901044,
+        0.6067672610882487,
+        0.5819935691318328
+      ],
+      "purity_accepted_S2": {
+        "n": 4649,
+        "purity_micro": 0.7500537750053775,
+        "purity_macro": 0.7458841583975399,
+        "n_distinct_pred": 19,
+        "max_identity_share": 0.13486771348677135
+      },
+      "purity_at_gate_S2": {
+        "n": 16523,
+        "purity_micro": 0.6509108515402772,
+        "purity_macro": 0.6495229589480169,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.11898565635780427
+      },
+      "n_accepted": 4650,
+      "n_accepted_S2": 4649,
+      "note": "rank fusion EEG 0.3 / IMG_px_all 0.7"
+    },
+    "fuse_zscore_50_50": {
+      "tau": -0.4085545502901872,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9016663282814472,
+      "loso_fold_rejection_std": 0.10651040900746601,
+      "S1_rejection": 1.0,
+      "S2_acceptance": 0.2906129670100947,
+      "separation_auc": 0.9611472093302462,
+      "S2_at_S1_0p95": 0.877562701633885,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": -2.1735281606345014,
+      "S2_at_S1_0p70": 0.9500988656467895,
+      "overall_rejection": 0.7490000449418004,
+      "identities_predicted": 17,
+      "fold_S2_proxy_mean": 0.7245982601056535,
+      "fold_S2_proxy_std": 0.012080252921721131,
+      "fold_S2_proxy": [
+        0.7220946256316031,
+        0.7262391996361983,
+        0.7205139972464433,
+        0.7394881170018281,
+        0.6959090909090909,
+        0.718419843821773,
+        0.7243913642627469,
+        0.727810650887574,
+        0.7254004576659039,
+        0.7406563354603464,
+        0.7201834862385321,
+        0.7122533272143184,
+        0.7125803489439853,
+        0.7077981651376147,
+        0.7243267914194432,
+        0.7360219981668195,
+        0.7354956601187757,
+        0.7271901951883795,
+        0.7508001828989483,
+        0.7243913642627469
+      ],
+      "purity_accepted_S2": {
+        "n": 5585,
+        "purity_micro": 0.8186213070725157,
+        "purity_macro": 0.7992306104331839,
+        "n_distinct_pred": 17,
+        "max_identity_share": 0.1550581915846016
+      },
+      "purity_at_gate_S2": {
+        "n": 16865,
+        "purity_micro": 0.6487992884672399,
+        "purity_macro": 0.659934863126561,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.11793655499555292
+      },
+      "n_accepted": 5585,
+      "n_accepted_S2": 5585,
+      "note": "z-score standardised equal-weight mean (scale control)"
+    },
+    "fuse_rank_50_50_X_mw_cov4": {
+      "tau": 0.43069683053991964,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9011215183353116,
+      "loso_fold_rejection_std": 0.08038498797349575,
+      "S1_rejection": 0.9983514671941972,
+      "S2_acceptance": 0.1769695077531481,
+      "separation_auc": 0.9469063666649201,
+      "S2_at_S1_0p95": 0.8189717972733895,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.11220601359916381,
+      "S2_at_S1_0p70": 0.9599854303257362,
+      "overall_rejection": 0.8469282279448115,
+      "identities_predicted": 19,
+      "fold_S2_proxy_mean": 0.5442189017866362,
+      "fold_S2_proxy_std": 0.013748867047787484,
+      "fold_S2_proxy": [
+        0.5512172714745062,
+        0.5466120964074579,
+        0.5332721431849472,
+        0.5562157221206582,
+        0.509090909090909,
+        0.5434083601286174,
+        0.5392742305925585,
+        0.5461993627674101,
+        0.548741418764302,
+        0.5537830446672743,
+        0.5426605504587156,
+        0.5300596603946764,
+        0.5358126721763086,
+        0.5169724770642202,
+        0.5481515289821999,
+        0.5669110907424382,
+        0.5486523526724532,
+        0.5619609623241035,
+        0.5582990397805213,
+        0.5470831419384474
+      ],
+      "purity_accepted_S2": {
+        "n": 3401,
+        "purity_micro": 0.735665980593943,
+        "purity_macro": 0.6625733021838641,
+        "n_distinct_pred": 19,
+        "max_identity_share": 0.14260511614231108
+      },
+      "purity_at_gate_S2": {
+        "n": 15739,
+        "purity_micro": 0.6648452887731113,
+        "purity_macro": 0.6582950750566058,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.1229430078149819
+      },
+      "n_accepted": 3406,
+      "n_accepted_S2": 3401,
+      "note": "rank fusion EEG 0.5 / X_mw_cov4 0.5 (single-view diagnostic)"
+    },
+    "fuse_rank_50_50_X_covariance_hr": {
+      "tau": 0.3107095523980766,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9018305200958265,
+      "loso_fold_rejection_std": 0.08036818382589951,
+      "S1_rejection": 0.9973623475107155,
+      "S2_acceptance": 0.2534602976376314,
+      "separation_auc": 0.9290040106578015,
+      "S2_at_S1_0p95": 0.7198459777292122,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.11986059672990382,
+      "S2_at_S1_0p70": 0.9414611301904464,
+      "overall_rejection": 0.7807289560019774,
+      "identities_predicted": 19,
+      "fold_S2_proxy_mean": 0.7182173659567486,
+      "fold_S2_proxy_std": 0.013748243397208173,
+      "fold_S2_proxy": [
+        0.7175011483693156,
+        0.7180536607548886,
+        0.7076640660853603,
+        0.7317184643510055,
+        0.6818181818181818,
+        0.7133670188332568,
+        0.7152044097381718,
+        0.727810650887574,
+        0.7203661327231121,
+        0.7201458523245214,
+        0.7243119266055046,
+        0.7085819183111519,
+        0.7056932966023876,
+        0.6912844036697248,
+        0.7243267914194432,
+        0.7355637030247479,
+        0.7259022384650525,
+        0.7321833862914208,
+        0.7375400091449474,
+        0.7253100597152045
+      ],
+      "purity_accepted_S2": {
+        "n": 4871,
+        "purity_micro": 0.7813590638472593,
+        "purity_macro": 0.7344536056376075,
+        "n_distinct_pred": 19,
+        "max_identity_share": 0.13097926503797988
+      },
+      "purity_at_gate_S2": {
+        "n": 13834,
+        "purity_micro": 0.6885933208038166,
+        "purity_macro": 0.6872716101252212,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.12982506867138932
+      },
+      "n_accepted": 4879,
+      "n_accepted_S2": 4871,
+      "note": "rank fusion EEG 0.5 / X_covariance_hr 0.5 (single-view diagnostic)"
+    },
+    "fuse_rank_80_20": {
+      "tau": 0.23532507083336798,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9010796465860137,
+      "loso_fold_rejection_std": 0.1040521752244427,
+      "S1_rejection": 1.0,
+      "S2_acceptance": 0.3192840045790405,
+      "separation_auc": 0.9318926230584533,
+      "S2_at_S1_0p95": 0.8183994172130294,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.056950014128615126,
+      "S2_at_S1_0p70": 0.9196066187948798,
+      "overall_rejection": 0.7242371129387444,
+      "identities_predicted": 17,
+      "fold_S2_proxy_mean": 0.7840957120109078,
+      "fold_S2_proxy_std": 0.012108347134573897,
+      "fold_S2_proxy": [
+        0.7896187413872301,
+        0.7880854934060937,
+        0.778797613584213,
+        0.7870201096892139,
+        0.7504545454545455,
+        0.7795130914101975,
+        0.7818098300413413,
+        0.7892580791989076,
+        0.7839816933638444,
+        0.8012762078395624,
+        0.7844036697247706,
+        0.7696190913262965,
+        0.7736455463728191,
+        0.7697247706422018,
+        0.7841168416248289,
+        0.7951420714940421,
+        0.7962539972590224,
+        0.7852927825692237,
+        0.8079561042524005,
+        0.7859439595774
+      ],
+      "purity_accepted_S2": {
+        "n": 6136,
+        "purity_micro": 0.8023142112125163,
+        "purity_macro": 0.7809192881645818,
+        "n_distinct_pred": 17,
+        "max_identity_share": 0.17095827900912647
+      },
+      "purity_at_gate_S2": {
+        "n": 15728,
+        "purity_micro": 0.6566632756866735,
+        "purity_macro": 0.6447587612100156,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.12398270600203459
+      },
+      "n_accepted": 6136,
+      "n_accepted_S2": 6136,
+      "note": "round 2: rank fusion EEG 0.8 / IMG_px_all 0.2"
+    },
+    "fuse_rank_20_80": {
+      "tau": 0.4445993473523392,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.9013853115313466,
+      "loso_fold_rejection_std": 0.09560845215999188,
+      "S1_rejection": 0.9996702934388394,
+      "S2_acceptance": 0.2325944427099594,
+      "separation_auc": 0.9506378255603527,
+      "S2_at_S1_0p95": 0.8454053491518368,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.07297057734797548,
+      "S2_at_S1_0p70": 0.9499947965449058,
+      "overall_rejection": 0.7990652105523347,
+      "identities_predicted": 19,
+      "fold_S2_proxy_mean": 0.5398552916771789,
+      "fold_S2_proxy_std": 0.012707746221453865,
+      "fold_S2_proxy": [
+        0.5231970601745521,
+        0.53706230104593,
+        0.5374024782010096,
+        0.5639853747714808,
+        0.5322727272727272,
+        0.5273311897106109,
+        0.5250344510794671,
+        0.5466545289030497,
+        0.5350114416475973,
+        0.5546946216955333,
+        0.5307339449541284,
+        0.5282239559430931,
+        0.5234159779614325,
+        0.5334862385321101,
+        0.5413053400273847,
+        0.5604949587534372,
+        0.546368204659662,
+        0.5542442124375851,
+        0.5601280292638318,
+        0.5360587965089573
+      ],
+      "purity_accepted_S2": {
+        "n": 4470,
+        "purity_micro": 0.7425055928411634,
+        "purity_macro": 0.7407584407413835,
+        "n_distinct_pred": 19,
+        "max_identity_share": 0.12930648769574943
+      },
+      "purity_at_gate_S2": {
+        "n": 16247,
+        "purity_micro": 0.6523665907552163,
+        "purity_macro": 0.6481788417491465,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.11842186249769188
+      },
+      "n_accepted": 4471,
+      "n_accepted_S2": 4470,
+      "note": "round 2: rank fusion EEG 0.2 / IMG_px_all 0.8"
+    },
+    "fuse_rank_50_50_threeview": {
+      "tau": 0.3254021424333704,
+      "loso_unknown_rejection": 0.8996088657105606,
+      "loso_fold_rejection_mean": 0.901805573404433,
+      "loso_fold_rejection_std": 0.10505629072781164,
+      "S1_rejection": 0.9993405868776789,
+      "S2_acceptance": 0.27063169944843374,
+      "separation_auc": 0.9542228911741544,
+      "S2_at_S1_0p95": 0.8677802060568217,
+      "S1_at_0p95": 0.0501153972964062,
+      "tau_S1_0p95": 0.08407120791405473,
+      "S2_at_S1_0p70": 0.9586845665521907,
+      "overall_rejection": 0.766167812682576,
+      "identities_predicted": 19,
+      "fold_S2_proxy_mean": 0.711325063986451,
+      "fold_S2_proxy_std": 0.01268370122332882,
+      "fold_S2_proxy": [
+        0.7055581074873679,
+        0.7130513869940882,
+        0.7035337310692978,
+        0.7244058500914077,
+        0.6859090909090909,
+        0.7055581074873679,
+        0.7087735415709693,
+        0.7168866636322258,
+        0.7102974828375286,
+        0.7210574293527803,
+        0.7114678899082569,
+        0.695273061037173,
+        0.6978879706152433,
+        0.691743119266055,
+        0.7142857142857143,
+        0.7314390467461045,
+        0.7213339424394701,
+        0.7235587834770767,
+        0.7366255144032922,
+        0.7078548461185117
+      ],
+      "purity_accepted_S2": {
+        "n": 5201,
+        "purity_micro": 0.7685060565275909,
+        "purity_macro": 0.7266391403046568,
+        "n_distinct_pred": 19,
+        "max_identity_share": 0.13824264564506825
+      },
+      "purity_at_gate_S2": {
+        "n": 16677,
+        "purity_micro": 0.6543143251184266,
+        "purity_macro": 0.6526711215632804,
+        "n_distinct_pred": 20,
+        "max_identity_share": 0.11920609222282184
+      },
+      "n_accepted": 5203,
+      "n_accepted_S2": 5201,
+      "note": "round 2: rank fusion EEG 0.5 / mean rank of 3 comparison views 0.5"
+    }
+  },
+  "purity_all_S2": {
+    "n": 19218,
+    "purity_micro": 0.634977625143095,
+    "purity_macro": 0.6394518884181595,
+    "n_distinct_pred": 20,
+    "max_identity_share": 0.10771152044957852
+  },
+  "partition_k20_sizes": [
+    1001,
+    804,
+    931,
+    455,
+    712,
+    1112,
+    594,
+    546,
+    1965,
+    802,
+    1388,
+    1361,
+    84,
+    1044,
+    1155,
+    1388,
+    1061,
+    729,
+    1125,
+    961
+  ],
+  "decision": {
+    "verdict": "pass",
+    "adopted": "fuse_zscore_50_50",
+    "valid": [
+      "fuse_rank_50_50",
+      "fuse_rank_70_30",
+      "fuse_zscore_50_50"
+    ],
+    "sep_above_baseline": [
+      "fuse_rank_50_50",
+      "fuse_rank_70_30",
+      "fuse_rank_30_70",
+      "fuse_zscore_50_50",
+      "fuse_rank_50_50_X_mw_cov4",
+      "fuse_rank_50_50_X_covariance_hr"
+    ],
+    "best_separation_auc": "fuse_zscore_50_50",
+    "best_separation": 0.9611472093302462,
+    "best_gate_candidate": "fuse_zscore_50_50",
+    "best_S2_at_S1_0p95": 0.877562701633885,
+    "baseline_sep_auc": 0.8795220263643784,
+    "baseline_S2_at_S1_0p95": 0.7569466125507337,
+    "baseline_S2": 0.3121552711000104,
+    "baseline_purity_accepted": 0.8145423438836612,
+    "baseline_purity_at_gate": 0.6837103072275842,
+    "baseline_S2_at_loso_tau": 0.3041419502549693,
+    "baseline_S2_at_gate_rank_space": 0.7062649599333958,
+    "adopted_S2_at_gate": 0.877562701633885,
+    "adopted_S2_at_loso_tau": 0.2906129670100947,
+    "adopted_S2_at_gate_rank_space": 0.877562701633885,
+    "adopted_purity_at_gate": 0.6487992884672399,
+    "target_S2": 0.706,
+    "purity_tolerance": 0.95
+  },
+  "limitations": [
+    "Only 7 image types have both Train and Test caches; GAF / MTF / spectrogram / DINOv3 exist only for Train and cannot be used.",
+    "Test has no identity labels: official C / RA / ASafeR are N/A; S1 rejection and S2 acceptance are the only read-outs.",
+    "Test has been inspected repeatedly since E65, so every S2 number carries a repeated-inspection bias; four fusion weights and all thresholds are fixed in this file before the run.",
+    "E232 showed session and registration status are confounded (S1 = 5 unregistered subjects, S2 = 20 enrolled users); alignment uses session only as a batch key.",
+    "The mean alignment is batch/transductive: it estimates an unlabelled statistic on the batch that is being scored, which needs confirmation against the competition rules.",
+    "The fused score is scalar; identity still comes from the EEG branch, so purity/coverage only measure whether the fused accept decision keeps coherent identities."
+  ],
+  "runtime_s": 37.49631977081299
+}
