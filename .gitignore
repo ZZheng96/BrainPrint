@@ -13,6 +13,7 @@ research/**/*.npz
 research/**/*_work/
 research/*/cache/
 research/E24*/models/
+research/E247_train_temporal_loso/results/**/models/
 
 # 系统与工具
 .DS_Store
