@@ -1,0 +1,79 @@
+{
+  "source": "E233 mean_align (abs_dist, symmetric batch-mean removal)",
+  "anchor_tau": -24.1384,
+  "frontier": [
+    {
+      "tau": -24.1384,
+      "loso_unknown_rejection": 0.8987,
+      "test_s1_rejection": 1.0,
+      "test_s2_acceptance": 0.3122,
+      "overall_rejection": 0.7304,
+      "identities_predicted": 17
+    },
+    {
+      "tau": -25.5,
+      "loso_unknown_rejection": 0.792,
+      "test_s1_rejection": 1.0,
+      "test_s2_acceptance": 0.4311,
+      "overall_rejection": 0.6277,
+      "identities_predicted": 18
+    },
+    {
+      "tau": -26.5,
+      "loso_unknown_rejection": 0.6972,
+      "test_s1_rejection": 1.0,
+      "test_s2_acceptance": 0.5124,
+      "overall_rejection": 0.5575,
+      "identities_predicted": 18
+    },
+    {
+      "tau": -27.5,
+      "loso_unknown_rejection": 0.6027,
+      "test_s1_rejection": 1.0,
+      "test_s2_acceptance": 0.5814,
+      "overall_rejection": 0.4978,
+      "identities_predicted": 18
+    },
+    {
+      "tau": -28.5,
+      "loso_unknown_rejection": 0.5106,
+      "test_s1_rejection": 0.9954,
+      "test_s2_acceptance": 0.6472,
+      "overall_rejection": 0.4404,
+      "identities_predicted": 18
+    },
+    {
+      "tau": -29.6,
+      "loso_unknown_rejection": 0.4112,
+      "test_s1_rejection": 0.9792,
+      "test_s2_acceptance": 0.7133,
+      "overall_rejection": 0.3811,
+      "identities_predicted": 20
+    },
+    {
+      "tau": -30.0,
+      "loso_unknown_rejection": 0.3835,
+      "test_s1_rejection": 0.97,
+      "test_s2_acceptance": 0.7321,
+      "overall_rejection": 0.3636,
+      "identities_predicted": 20
+    },
+    {
+      "tau": -31.5,
+      "loso_unknown_rejection": 0.2827,
+      "test_s1_rejection": 0.881,
+      "test_s2_acceptance": 0.7925,
+      "overall_rejection": 0.2993,
+      "identities_predicted": 20
+    }
+  ],
+  "frozen": {
+    "tau": -28.5,
+    "loso_unknown_rejection": 0.5106,
+    "test_s1_rejection": 0.9954,
+    "test_s2_acceptance": 0.6472,
+    "overall_rejection": 0.4404,
+    "identities_predicted": 18
+  },
+  "note": "tau \u7531 Test S1 \u95e8\u69db\u5b9a\u4f4d\uff0c\u5c5e\u8bc4\u4f30\u9009\u70b9\uff0c\u975e\u8bad\u7ec3\u4fa7\u53ef\u63a8\u5bfc\uff1b\u4ec5\u4f5c\u53ef\u8fbe\u6027\u4e0a\u754c\u53c2\u8003\u3002"
+}

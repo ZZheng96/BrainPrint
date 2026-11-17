@@ -1,0 +1,27 @@
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121
+frozen model scheme=auc2_lofo pca=96 k=12 dim=1569
+train rows=11304 fit=6695 window=2301 | test S1=3033 S2=19218
+features train (11304, 1569) test (22251, 1569)
+test score reproduction: max|d|=0.00e+00 pred_identical=True
+kmeans k=20 on 19218 S2 rows (0.1s) sizes min/max=84/1965
+kmeans k=28 on 19218 S2 rows (0.1s) sizes min/max=230/1090
+drift subset reused (1596 rows)
+clean re-extraction vs cache: {"corr_logspd": [0.000271, 2e-06], "bandpower_gainfree": [0.0, 0.0], "spectral_shape": [3e-06, 0.0], "spectral_slope": [1e-06, 0.0], "pac": [0.0, 0.0], "trial_energy": [0.0, 0.0], "hjorth": [0.0, 0.0], "spec_entropy": [0.0, 0.0], "power_ratio": [0.0, 0.0], "graph_metrics": [0.0, 0.0]}
+delta norms A={"EC": 5.473, "EO": 6.02, "Imagery": 5.898, "SSVEP": 3.687} B={"EC": 36.806, "EO": 33.825, "Imagery": 33.785, "SSVEP": 33.368}
+cos(delta,identity v1) A={"EC": 0.0793, "EO": 0.0587, "Imagery": 0.0534, "SSVEP": 0.1715} pooled=0.0110 | B={"EC": 0.299, "EO": 0.1627, "Imagery": 0.2294, "SSVEP": 0.2528} pooled=0.2371
+20/20 folds reused from cache
+fold reproduction: max|d1 - E227| = 3.43e-05
+order-statistic shift Delta_order = +1.186333 (score_shift = score - Delta_order)
+effective score shift per task (score_shift - score_orig): {"EC": [1.198, 15.352], "EO": [1.409, 13.147], "Imagery": [1.409, 12.668], "SSVEP": [0.785, 13.398]}
+deploy inner-OOF d1 vs E227 oof_s: max|d|=1.72e-05
+calibrate tau_orig               A*=0.804985430 shifted_LOSO=0.900043 tau=-24.138367 | unshifted_LOSO=0.900043 known_acc=0.8087
+calibrate tau_shift_A            A*=0.830533851 shifted_LOSO=0.900043 tau=-24.851307 | unshifted_LOSO=0.851804 known_acc=0.8367
+calibrate tau_shift_B            A*=0.991009987 shifted_LOSO=0.900043 tau=-37.310775 | unshifted_LOSO=0.075619 known_acc=0.9926
+calibrate tau_shift_A_half       A*=0.815211940 shifted_LOSO=0.900043 tau=-24.431812 | unshifted_LOSO=0.882660 known_acc=0.8221
+calibrate tau_shift_order_stats  A*=0.849305445 shifted_LOSO=0.900043 tau=-25.344922 | unshifted_LOSO=0.806171 known_acc=0.8531
+tau_orig calibration vs E228: {"A_measured": 0.8049854297710456, "A_reference": 0.8049854437115825, "abs_diff": 1.3940536947032456e-08, "loso_measured": 0.9000434593654932, "loso_reference": 0.9000434593654932, "loso_abs_diff": 0.0, "tau_measured": -24.138366675597894, "tau_reference": -24.138366795919048, "tau_abs_diff": 1.20321153929126e-07, "fold_tau_mean": -24.184679046459646, "fold_tau_reference": -24.18467938154109, "fold_tau_abs_diff": 3.3508144525740136e-07, "loso_auc": 0.9095969878484796, "loso_auc_reference": 0.9095969878484796, "loso_auc_abs_diff": 0.0}
+E233 reproduction: {"S1_rejection": [1.0, 0.0], "S2_acceptance": [0.312155, 2.5e-07], "separation_auc": [0.879522, 3e-08], "mean_score_S1": [-36.348745, 0.0], "mean_score_S2": [-27.54257, 0.0], "purity_k20": [0.634978, 3.7e-07], "purity_k28": [0.646061, 2e-08]}
+decision verdict=trade_off adopted=None best=tau_shift_B S2=0.9182 S1=0.3225
+S1=0.95 operating point: tau=-30.5746 S2=0.7569 (requires dtau=-6.4362 vs tau_orig)
+results.json + report.md written
+verdict=trade_off runtime=6s

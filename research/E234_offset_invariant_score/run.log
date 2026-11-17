@@ -1,0 +1,44 @@
+device=NVIDIA GeForce RTX 3080 Laptop GPU torch=2.5.1+cu121
+frozen model scheme=auc2_lofo pca=96 k=12 dim=1569
+train rows=11304 fit=6695 window=2301 | test S1=3033 S2=19218
+features train (11304, 1569) test (22251, 1569)
+20/20 folds reused from cache
+reproduction: max|d1 - E227| = 3.81e-05, max|oof_d1 - E227 oof| = 3.53e-05
+calibrate abs                A*=0.804985 LOSO_rej=0.900043 known_acc=0.8087 F1=0.3245 ICBR=0.1715 AUC=0.9096 tau_fold_mean=-24.1847
+calibrate margin             A*=0.949423 LOSO_rej=0.900043 known_acc=0.9074 F1=0.4906 ICBR=0.0728 AUC=0.9584 tau_fold_mean=3.8511
+calibrate ratio              A*=0.952641 LOSO_rej=0.900043 known_acc=0.9200 F1=0.5251 ICBR=0.0605 AUC=0.9634 tau_fold_mean=-0.8797
+calibrate mix_lam0.5         A*=0.892840 LOSO_rej=0.900043 known_acc=0.8790 F1=0.4279 ICBR=0.1011 AUC=0.9428 tau_fold_mean=-22.9976
+calibrate mix_lam1           A*=0.921587 LOSO_rej=0.900043 known_acc=0.9016 F1=0.4764 ICBR=0.0784 AUC=0.9535 tau_fold_mean=-21.6426
+abs calibration vs E228: {"A_measured": 0.8049854809917056, "A_reference": 0.8049854437115825, "abs_diff": 3.728012309966999e-08, "loso_measured": 0.9000434593654932, "loso_reference": 0.9000434593654932, "loso_abs_diff": 0.0, "fold_tau_mean": -24.184679995139895, "fold_tau_reference": -24.18467938154109, "fold_tau_abs_diff": 6.135988037669904e-07, "loso_auc": 0.9095969878484796, "loso_auc_reference": 0.9095969878484796, "loso_auc_abs_diff": 0.0}
+test score reproduction: max|d|=0.00e+00 pred_identical=True
+train ref EC: n=631 trace=1207.38 cond=193.9
+train ref EO: n=613 trace=1129.80 cond=146.5
+train ref Imagery: n=3301 trace=1168.94 cond=86.4
+train ref SSVEP: n=2150 trace=1127.70 cond=70.3
+cell session1 EC      n=  292 ||mu||=19.975 trace=1494.68 cond=1909.1
+cell session1 EO      n=  291 ||mu||=21.100 trace=1496.12 cond=1776.2
+cell session1 Imagery n= 1459 ||mu||=21.697 trace=1560.15 cond=676.3
+cell session1 SSVEP   n=  991 ||mu||=20.508 trace=1414.56 cond=930.7
+cell session2 EC      n= 1680 ||mu||=6.238 trace=1004.28 cond=173.2
+cell session2 EO      n= 2021 ||mu||=7.083 trace=963.32 cond=142.7
+cell session2 Imagery n= 9748 ||mu||=6.725 trace=1009.23 cond=87.8
+cell session2 SSVEP   n= 5769 ||mu||=4.077 trace=969.79 cond=114.3
+deploy inner-OOF d1 vs E227 oof_s: max|d|=1.53e-05
+deploy tau: abs=-24.1383671177 (E228 -24.1383667959) margin=3.828679 ratio=-0.880558 mix0.5=-23.015359 mix1=-21.628827
+baseline_frozen readout S1=0.9637 S2=0.3043 sepAUC=0.7918
+kmeans k=20 on 19218 S2 rows (0.1s) sizes min/max=84/1965
+kmeans k=28 on 19218 S2 rows (0.1s) sizes min/max=230/1090
+cand abs_dist             tau= -24.1384 S1=1.0000 S2=0.3122 sepAUC=0.8795 S2@S1.95=0.7569 pur20=0.6350 pur28=0.6461
+cand abs_dist_cal         tau= -24.1384 S1=1.0000 S2=0.3122 sepAUC=0.8795 S2@S1.95=0.7569 pur20=0.6350 pur28=0.6461
+cand margin               tau=   3.8287 S1=0.6634 S2=0.3284 sepAUC=0.4920 S2@S1.95=0.0000 pur20=0.6390 pur28=0.6520
+cand ratio                tau=  -0.8806 S1=0.7079 S2=0.3496 sepAUC=0.5484 S2@S1.95=0.0208 pur20=0.6390 pur28=0.6520
+cand mix_lam0.5           tau= -23.0154 S1=0.9159 S2=0.3371 sepAUC=0.7516 S2@S1.95=0.2403 pur20=0.6390 pur28=0.6520
+cand mix_lam1.0           tau= -21.6288 S1=0.8741 S2=0.3398 sepAUC=0.7276 S2@S1.95=0.0728 pur20=0.6390 pur28=0.6520
+cand margin_mean_align    tau=   3.8287 S1=0.8783 S2=0.3201 sepAUC=0.6510 S2@S1.95=0.0567 pur20=0.6350 pur28=0.6461
+cand ratio_mean_align     tau=  -0.8806 S1=0.9139 S2=0.3459 sepAUC=0.7001 S2@S1.95=0.1883 pur20=0.6350 pur28=0.6461
+E233 mean_align reproduction: {"S1_rejection": [1.0, 0.0], "S2_acceptance": [0.312155, 2.5e-07], "separation_auc": [0.879522, 3e-08], "mean_score_S1": [-36.348745, 0.0], "mean_score_S2": [-27.54257, 0.0], "purity_k20": [0.634978, 3.7e-07], "purity_k28": [0.646061, 2e-08]}
+delta evidence standardised gaps: {"abs": -1.2711, "margin": 0.3858, "ratio": -0.0739, "mix_lam1.0": -0.8887}
+paired bootstrap vs abs_dist_cal: abs_dist dS2=+0.0000[+0.0000,+0.0000], margin dS2=+0.0162[+0.0087,+0.0236], ratio dS2=+0.0375[+0.0304,+0.0442], mix_lam0.5 dS2=+0.0249[+0.0208,+0.0290], mix_lam1.0 dS2=+0.0276[+0.0227,+0.0329], margin_mean_align dS2=+0.0080[+0.0002,+0.0154], ratio_mean_align dS2=+0.0339[+0.0267,+0.0407]
+decision verdict=marginal_fail adopted=None best_relative=ratio S2=0.3496 best_overall=ratio S2=0.3496
+results.json + report.md written
+verdict=marginal_fail runtime=7s

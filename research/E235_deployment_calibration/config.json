@@ -1,0 +1,150 @@
+{
+  "experiment": "E235_deployment_calibration",
+  "purpose": "Test whether the Test S2 acceptance / S1 rejection trade-off of E233 can be resolved by moving the decision threshold to a DEPLOYMENT-CONDITION calibration: instead of calibrating tau on the raw Train-domain held-out impostors (same session, same batch, much harder than the 5 genuinely unregistered Test subjects), (1) estimate the cross-day offset delta in the frozen e226_auc2W PCA space, (2) translate the held-out Train impostors by delta (z_shifted = z_impostor + delta), (3) bisect the threshold so that LOSO rejection of the SHIFTED impostors is 0.90, and (4) read the resulting tau on the frozen E233 mean-align Test scores. The representation, prototypes, alignment and Test scores are frozen; only the threshold calibration target changes.",
+  "predecessor": {
+    "experiments": ["E233_delta_estimation", "E234_offset_invariant_score", "E228_constrained_maxS2", "E232_session_confound", "E227_joint_frontier"],
+    "frozen_baseline": "E233 winner = E228 frozen e226_auc2W (E227 deploy_auc2_lofo.pt) + per-(session, task) unlabeled mean alignment + score = -d1; tau = E228 deploy tau.",
+    "known_anchors": {
+      "e228_auc2W_calibrated": {"A": 0.8049854437115825, "loso_unknown_rejection": 0.9000434593654932, "loso_auc_mean": 0.9095969878484796, "fold_tau_mean": -24.18467938154109, "test_tau": -24.138366795919048, "test_S1_rejection": 0.9637322782723377, "test_S2_acceptance": 0.3042980539077948, "test_separation_auc": 0.7918401795053043, "N_S1": 3033, "N_S2": 19218},
+      "e233_mean_align_abs_exact": {"test_S2_acceptance": 0.31215501925382693, "test_S1_rejection": 1.0, "test_separation_auc": 0.879522},
+      "e233_mean_align_abs": {"test_S1_rejection": 1.0, "test_S2_acceptance": 0.312155, "test_separation_auc": 0.879522, "S2_at_S1_0p95": 0.7569466125507337, "purity_k20_micro": 0.634978, "purity_k28_micro": 0.646061, "mean_score_S1": -36.34874454049281, "mean_score_S2": -27.542570489342918},
+      "e233_baseline_frozen_purity": {"k20_micro": 0.639036, "k28_micro": 0.651993},
+      "e232_session2_k": 28,
+      "e232_session1_k": 5
+    },
+    "failed_do_not_repeat": ["AS-Norm", "in-fold ML metric learning", "per-identity / per-task thresholds", "hard dimension screening by F/D", "global optimal threshold search", "raw-waveform in-fold retraining with drift augmentation", "four-quadrant feature ablation at fixed LOSO 0.90 (E231)", "identity-scaled distance normalisation (E228)", "relative scores margin/ratio at fixed LOSO 0.90 (E234: S2 0.3284/0.3496, sepAUC collapses)", "CORAL on this data (E233)"]
+  },
+  "seed": 20261117,
+  "device": "cuda",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_root": "Brainprint_Competition",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300
+  },
+  "blocks": {
+    "corr_logspd": 855,
+    "bandpower_gainfree": 90,
+    "spectral_shape": 90,
+    "spectral_slope": 18,
+    "pac": 18,
+    "trial_energy": 1,
+    "hjorth": 180,
+    "spec_entropy": 180,
+    "power_ratio": 112,
+    "graph_metrics": 25
+  },
+  "features": {
+    "bands_hz": [[1, 8], [8, 13], [13, 20], [20, 30], [30, 40]],
+    "chunk_trials": 256,
+    "io_workers": 12,
+    "note": "Feature definitions and code are copied verbatim from E225 (first six blocks) and E226 (four extra blocks) so that features re-extracted from raw waveforms are on the same scale as the frozen caches. This is validated by re-extracting the CLEAN waveforms of the drift subset and comparing them to the frozen cached rows."
+  },
+  "feature_cache": {
+    "train": {
+      "corr_logspd": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/train_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/train_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/train_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/train_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/train_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/train_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/train_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/train_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/train_graph_metrics.npy"
+    },
+    "test": {
+      "corr_logspd": "research/E121_pca_sweep/test_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/test_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/test_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/test_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/test_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/test_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/test_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/test_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/test_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/test_graph_metrics.npy"
+    },
+    "block_only_fold_metrics": "research/E226_stable_feature_families_v2/cache/fold_v2_blockonly_{block}_{fold:02d}.json",
+    "frozen_model": "research/E227_joint_frontier/models/deploy_auc2_lofo.pt",
+    "frozen_fold_cache": "research/E227_joint_frontier/cache/fold_v1_auc2_lofo_{fold:02d}.npz",
+    "frozen_test_cache": "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz",
+    "read_only": true,
+    "note": "E235 only reads predecessor artifacts and writes inside research/E235_deployment_calibration/."
+  },
+  "representation": {
+    "rep": "e226_all_blocks_v2",
+    "block_order": ["corr_logspd", "bandpower_gainfree", "spectral_shape", "spectral_slope", "pac", "trial_energy", "hjorth", "spec_entropy", "power_ratio", "graph_metrics"],
+    "pca_dim": 96,
+    "prototypes_k": 12,
+    "pipeline": "byte-identical to E228 e226_auc2W: task-wise z-score on fit rows -> sqrt(w_b) block weights -> subtract fit mean pm, multiply PCA W -> k=12 k-means prototypes per (task, identity).",
+    "fold_refit_note": "The 20 held-identity folds are recomputed (main fold model + its 5 inner OOF models) because the held-out impostors must be available as points in each fold's own PCA space in order to be shifted by delta. d1 is cross-checked against the E227 fold cache per fold, and the calibrated A against E228."
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "inner_blocks": 5,
+    "folds": 20,
+    "open_set_direction": "high score = known; unknown is the positive class for rejection F1 and AUC"
+  },
+  "scoring": {
+    "metric": "abs",
+    "score": "score = -d1, d1 = distance to the nearest same-task prototype (E233 winner scoring)",
+    "alignment": "E233 mean_align, copied verbatim: per (session, task) on Test remove the unlabeled batch mean in the frozen PCA space and add back the per-task train fit-row mean. Applied with one identical rule to both sessions.",
+    "min_cell_n": 200
+  },
+  "delta": {
+    "space": "frozen deploy PCA96 (deploy_auc2_lofo transform); for the LOSO calibration the delta is re-expressed in each fold's own PCA96 space with the same fold's transform, so that the shift is compatible with the points it is applied to.",
+    "variant_A": "TRANSDUCTIVE: delta_A[t] = mean over all Test session2 rows of task t - mean over all Train rows of task t, in the frozen PCA space. Uses unlabeled Test inputs.",
+    "variant_B": "TRAIN-ONLY synthetic drift: apply the declared drift profile to the raw Train waveforms of a deterministic subset, re-extract all 10 feature blocks, transform, and take the mean displacement mean(z_drifted) - mean(z_clean) per task. No Test row is used.",
+    "variant_A_half": "0.5 * delta_A, an interpolation candidate fixed before the run.",
+    "profiles": {
+      "P1_gain_tilt_noise_reref": {"role": "primary delta_B", "per_channel_gain_db": "alternating", "per_channel_gain_note": "+3 / -3 dB by channel index parity, deterministic and fixed for the whole simulated session", "tilt_alpha": 0.3, "noise_snr_db": 10.0, "reref": "pair12", "note": "all four nuisance families named in the task (per-channel gain, spectral tilt, noise, re-reference), applied on the raw waveform."},
+      "P2_tilt_pos_reref": {"role": "sensitivity", "tilt_alpha": 0.5, "reref": "pair12"},
+      "P3_tilt_neg_gain": {"role": "sensitivity", "tilt_alpha": -0.5, "per_channel_gain_db": "random_pm3", "per_channel_gain_note": "one +-3 dB draw per channel, seed fixed, constant for the whole simulated session"}
+    },
+    "component_profiles": {
+      "C1_gain_alternating": {"per_channel_gain_db": "alternating", "note": "diagnostic only: per-channel gain alone"},
+      "C2_tilt_pos": {"tilt_alpha": 0.5, "note": "diagnostic only: spectral tilt alone"},
+      "C3_noise_snr10": {"noise_snr_db": 10.0, "note": "diagnostic only: additive noise alone"},
+      "C4_reref_pair12": {"reref": "pair12", "note": "diagnostic only: re-reference alone"}
+    },
+    "component_note": "one-block decomposition of the synthetic drift: tells which nuisance family produces the delta_B magnitude. Diagnostics only; no candidate is derived from them.",
+    "drift_subset": {"per_subject_task": 20, "rule": "20 evenly spaced trials inside the fit range (frac <= 0.6) of each subject x task cell, deterministic (same rule as E225/E226)."},
+    "stability": {"split_half_repeats": 50, "split_half_seed": 20261117, "note": "delta_A is re-estimated from two random halves of the session2 rows of each task; report cosine and relative norm difference."}
+  },
+  "threshold": {
+    "rule": "tau = (1-A) quantile of the deploy model inner 5-block OOF KNOWN scores (fit rows, all 20 identities); A bisected so that the pooled (micro) LOSO rejection of the held-out impostors is the largest value still >= 0.90.",
+    "target_loso_unknown_rejection": 0.90,
+    "bisection_iters": 90,
+    "shifted_rule": "identical, but the held-out impostors are first translated by delta (z + delta_task) before the min-distance score is recomputed; the OOF known scores used to read the tau quantile are NOT shifted (a registered user is mean-aligned in the scoring pipeline, which removes the batch offset).",
+    "order_stats_rule": "consistency check: instead of the per-task geometric shift, subtract one scalar Delta_order from every impostor score, Delta_order = pooled mean of (score_orig - score_shiftA) over all folds and impostor rows; the same bisection then follows."
+  },
+  "candidates": {
+    "tau_orig": {"delta": "none", "role": "reproduction control: must reproduce E233 mean_align S1 1.0 / S2 0.312155 / sepAUC 0.879522"},
+    "tau_shift_A": {"delta": "A", "role": "transductive delta from Test session2 vs Train mean"},
+    "tau_shift_B": {"delta": "B", "role": "train-only synthetic drift delta (profile P1)"},
+    "tau_shift_A_half": {"delta": "A_half", "role": "0.5 x delta_A interpolation"},
+    "tau_shift_order_stats": {"delta": "order", "role": "scalar order-statistic shift of the impostor scores (consistency check for tau_shift_A)"}
+  },
+  "metrics": {
+    "per_candidate": ["tau", "original (unshifted) LOSO unknown rejection at tau", "shifted LOSO unknown rejection at tau", "Test S1 rejection", "Test S2 acceptance", "Test separation AUC", "cluster purity k=20/28", "meets S1>=0.95 and S2>=0.60", "per-fold known acceptance mean+-std (the Train-side analogue of Test S2)", "per-task Test S1/S2", "S2 at a matched S1=0.95 gate"],
+    "delta_diagnostics": ["per-task ||delta||", "split-half cosine and relative norm difference", "cosine with the top identity between-class-scatter direction (per task and pooled over concatenated tasks)", "share of ||delta||^2 inside the top-5 identity discriminant subspace", "cosine with the mean outward direction of the held-out impostors from their nearest prototype"],
+    "purity": {"space": "frozen baseline PCA space (no alignment) so the cluster partition is identical across candidates", "k": [20, 28], "rows": "all Test session2 rows (19218)", "seed": 20261117, "init": "random sample init, 60 Lloyd iterations, chunked distances", "note": "purity is tau-independent: it scores the predicted identities, not the accept/reject decision"},
+    "bootstrap": {"B": 0, "note": "not used in this round; the read-outs are deterministic functions of the frozen scores."}
+  },
+  "decision_rule": {
+    "pass": "Test S1 rejection >= 0.95 AND Test S2 acceptance >= 0.60 AND purity micro >= 0.95 * baseline purity micro (k=20 and k=28) AND cosine(delta, identity direction) < 0.7",
+    "identity_leak": "if cosine(delta, identity discriminant direction) >= 0.7 -> the delta shift is moving identity information, the S2 gain is an artefact and the method cannot be adopted (no freeze), even if the numbers pass.",
+    "trade_off": "if S2 rises above 0.60 but S1 < 0.95 -> report the trade-off and the maximum S2 under an enforced S1 = 0.95 gate",
+    "fail": "if every shifted tau leaves S2 <= 0.3122 (the E233 compliant value) -> state that the deployment-condition calibration does not move the operating point",
+    "max_one_extra_round": true
+  },
+  "official_note": "Official Test C / RA / ASafeR are N/A: Test has no identity labels. S1 rejection >= 0.95 is a reviewer-imposed proxy, not an official metric.",
+  "bias_note": "delta_A is transductive (it reads the unlabeled Test session2 mean), so any candidate derived from it sits in a grey zone of the competition rules. Session and registration status are confounded (E232: S1 = 5 unregistered subjects, S2 = 20 registered users). Test has been inspected repeatedly since E65, so every S2 number carries a repeated-inspection bias; the candidates and the bisection rule are fixed in this file before the run."
+}

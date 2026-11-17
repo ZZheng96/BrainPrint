@@ -1,0 +1,142 @@
+{
+  "experiment": "E234_offset_invariant_score",
+  "purpose": "Test whether replacing the absolute nearest-prototype score (score = -d1) by a RELATIVE score that cancels a cross-session additive offset delta (margin = d2 - d1, ratio = -d1/d2, mix = -d1 + lam*(d2-d1)) raises Test S2 acceptance above 0.60 while the Train-side LOSO unknown rejection stays at 0.90 and Test S1 rejection stays above 0.95. Everything else is the frozen E228/E233 pipeline: the E227 deploy model (task-wise standardisation, sqrt(w_b) block weights, PCA96, k=12 prototypes per (task, identity)), the strict 20-fold subject-LOSO protocol, the inner 5-block OOF threshold rule, and the E233 per-(session, task) unlabeled mean alignment.",
+  "predecessor": {
+    "experiments": ["E233_delta_estimation", "E228_constrained_maxS2", "E232_session_confound", "E231_two_extreme_attribution", "E227_joint_frontier"],
+    "frozen_baseline": "E228 frozen e226_auc2W: E227 deploy_auc2_lofo.pt representation, task-wise standardisation on all-20-identity fit rows, sqrt(w_b) auc2_lofo block weights, PCA96, k=12 prototypes per (task, identity), tau = (1-A) quantile of the deploy model inner 5-block OOF known scores with A bisected on Train so that pooled LOSO unknown rejection hits 0.90.",
+    "known_anchors": {
+      "e228_auc2W_calibrated": {"A": 0.8049854437115825, "loso_unknown_rejection": 0.9000434593654932, "loso_auc_mean": 0.9095969878484796, "fold_tau_mean": -24.18467938154109, "test_tau": -24.138366795919048, "test_S1_rejection": 0.9637322782723377, "test_S2_acceptance": 0.3042980539077948, "test_separation_auc": 0.7918401795053043, "N_S1": 3033, "N_S2": 19218},
+      "e233_mean_align_abs": {"test_S1_rejection": 1.0, "test_S2_acceptance": 0.312155, "test_separation_auc": 0.879522, "S2_at_S1_0p95_reference": 0.7569466125507337, "purity_k20_micro": 0.634978, "purity_k28_micro": 0.646061, "mean_score_S1": -36.34874454049281, "mean_score_S2": -27.542570489342918},
+      "e233_baseline_frozen_purity": {"k20_micro": 0.639036, "k28_micro": 0.651993},
+      "e233_mean_align_abs_exact": {"test_S2_acceptance": 0.31215501925382693, "test_S1_rejection": 1.0, "test_separation_auc": 0.879522},
+      "e232_session2_k": 28,
+      "e232_session1_k": 5
+    },
+    "failed_do_not_repeat": ["AS-Norm", "in-fold ML metric learning", "per-identity / per-task thresholds", "hard dimension screening by F/D", "global optimal threshold search", "raw-waveform in-fold retraining with drift augmentation", "four-quadrant feature ablation at fixed LOSO 0.90 (E231)", "identity-scaled distance normalisation (E228 0.45 known acceptance)", "two_proto_agg / nearest-3 median distance (E228)", "distance + Mahalanobis OOD dual gate (E228)", "CORAL on this data (E233, separation AUC collapses to 0.57)"]
+  },
+  "seed": 20261117,
+  "device": "cuda",
+  "data": {
+    "train_metadata": "BrainPrint_cache/train_metadata.csv",
+    "test_metadata": "BrainPrint_cache/test_metadata.csv",
+    "train_trials": 11304,
+    "test_trials": 22251,
+    "channels": 18,
+    "samples_per_trial": 1200,
+    "sampling_rate_hz": 300
+  },
+  "blocks": {
+    "corr_logspd": 855,
+    "bandpower_gainfree": 90,
+    "spectral_shape": 90,
+    "spectral_slope": 18,
+    "pac": 18,
+    "trial_energy": 1,
+    "hjorth": 180,
+    "spec_entropy": 180,
+    "power_ratio": 112,
+    "graph_metrics": 25
+  },
+  "feature_cache": {
+    "train": {
+      "corr_logspd": "BrainPrint_cache/e65_correlation_spd/train_correlation_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/train_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/train_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/train_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/train_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/train_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/train_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/train_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/train_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/train_graph_metrics.npy"
+    },
+    "test": {
+      "corr_logspd": "research/E121_pca_sweep/test_logspd.npy",
+      "bandpower_gainfree": "research/E225_session_invariant_features/cache/test_bandpower_gainfree.npy",
+      "spectral_shape": "research/E225_session_invariant_features/cache/test_spectral_shape.npy",
+      "spectral_slope": "research/E225_session_invariant_features/cache/test_spectral_slope.npy",
+      "pac": "research/E225_session_invariant_features/cache/test_pac.npy",
+      "trial_energy": "research/E225_session_invariant_features/cache/test_trial_energy.npy",
+      "hjorth": "research/E226_stable_feature_families_v2/cache/test_hjorth.npy",
+      "spec_entropy": "research/E226_stable_feature_families_v2/cache/test_spec_entropy.npy",
+      "power_ratio": "research/E226_stable_feature_families_v2/cache/test_power_ratio.npy",
+      "graph_metrics": "research/E226_stable_feature_families_v2/cache/test_graph_metrics.npy"
+    },
+    "block_only_fold_metrics": "research/E226_stable_feature_families_v2/cache/fold_v2_blockonly_{block}_{fold:02d}.json",
+    "frozen_model": "research/E227_joint_frontier/models/deploy_auc2_lofo.pt",
+    "frozen_fold_cache": "research/E227_joint_frontier/cache/fold_v1_auc2_lofo_{fold:02d}.npz",
+    "frozen_test_cache": "research/E227_joint_frontier/cache/test_v1_auc2_lofo.npz",
+    "read_only": true,
+    "note": "Only reads predecessor artifacts; E234 writes inside research/E234_offset_invariant_score/ only. No historical experiment is modified."
+  },
+  "representation": {
+    "rep": "e226_all_blocks_v2",
+    "block_order": ["corr_logspd", "bandpower_gainfree", "spectral_shape", "spectral_slope", "pac", "trial_energy", "hjorth", "spec_entropy", "power_ratio", "graph_metrics"],
+    "pca_dim": 96,
+    "prototypes_k": 12,
+    "pipeline": "byte-identical to E228 e226_auc2W: task-wise z-score on fit rows -> sqrt(w_b) block weights (per fold: auc_lofo^2 mean over the other 19 folds, normalised to mean 1; deploy model: frozen E227 weights) -> subtract fit mean pm, multiply PCA W -> k=12 k-means prototypes per (task, identity). Nothing is refitted for the Test read-out; the frozen E227 deploy model is used.",
+    "fold_refit_note": "The 20 held-identity folds ARE recomputed here because margin/ratio need d2, which the E227 caches do not store. The fold code is a verbatim copy of E227's fit/transform/score; d1 is cross-checked against the E227 cached score per fold."
+  },
+  "protocol": {
+    "tasks": ["EC", "EO", "Imagery", "SSVEP"],
+    "fit_fraction": 0.6,
+    "evaluation_fraction": [0.6, 0.8],
+    "inner_blocks": 5,
+    "folds": 20,
+    "open_set_direction": "high score = known; unknown is the positive class for rejection F1 and AUC"
+  },
+  "scoring_variants": {
+    "abs": "score = -d1, d1 = distance to the nearest same-task prototype (E228 reference)",
+    "margin": "score = d2 - d1, d2 = distance to the nearest prototype of a DIFFERENT identity in the same task. Translation of both distances by a common offset cancels in the difference.",
+    "ratio": "score = -d1 / d2 (negated so that high = known); invariant to a multiplicative rescaling of all distances",
+    "mix": "score = -d1 + lam * (d2 - d1), lam fixed in config; interpolates between abs (lam=0) and margin-dominated (lam>1)",
+    "distance_rule": "d1 and d2 are computed within the SAME task; d2 excludes every prototype whose identity equals the nearest prototype's identity. Euclidean distance in the frozen PCA96 space.",
+    "why": "score = -d1 is not invariant to an additive cross-session offset: a shift delta that increases every distance of a registered user lowers the score uniformly. A relative score removes the common part of the shift at the level of each row."
+  },
+  "threshold": {
+    "rule": "tau = (1-A) quantile of the candidate's own inner 5-block OOF known scores (fit rows, all 20 identities); A is bisected on Train so that the pooled (micro) LOSO unknown rejection is the largest value still >= 0.90 (E228 rule, identical code path).",
+    "target_loso_unknown_rejection": 0.90,
+    "bisection_iters": 90,
+    "abs_dist_reproduction_tau": -24.138366795919048,
+    "note": "Every candidate gets its own A and tau because the score scale changes with the metric; the calibration uses Train rows only. Test is read once per candidate after the freeze."
+  },
+  "alignment": {
+    "mean_align": "E233 winner, copied verbatim: per (session, task) remove the unlabeled batch mean in the frozen PCA space and add back the per-task train fit-row mean. Applied with one identical rule to both sessions; session is only a batch key.",
+    "min_cell_n": 200,
+    "shrinkage_lambda_coral": 0.2,
+    "note": "Only margin/ratio/abs are evaluated with and without mean_align. Batch statistics are transductive (grey zone)."
+  },
+  "candidates": {
+    "abs_dist": {"metric": "abs", "align": true, "tau": "frozen_e228", "role": "reproduction control: must reproduce E233 mean_align S1 1.0 / S2 0.312155 / sepAUC 0.879522"},
+    "abs_dist_cal": {"metric": "abs", "align": true, "tau": "calibrated", "role": "same metric as the control but with its own calibrated A, so the comparison to the relative metrics is at identical LOSO=0.90"},
+    "margin": {"metric": "margin", "align": false, "tau": "calibrated"},
+    "ratio": {"metric": "ratio", "align": false, "tau": "calibrated"},
+    "mix_lam0.5": {"metric": "mix", "lam": 0.5, "align": false, "tau": "calibrated"},
+    "mix_lam1.0": {"metric": "mix", "lam": 1.0, "align": false, "tau": "calibrated"},
+    "margin_mean_align": {"metric": "margin", "align": true, "tau": "calibrated"},
+    "ratio_mean_align": {"metric": "ratio", "align": true, "tau": "calibrated"}
+  },
+  "metrics": {
+    "loso": ["unknown rejection micro/macro", "known acceptance micro/macro", "rejection F1 (macro over folds)", "identity-correct-but-rejected", "LOSO AUC (tau free)", "per-task rejection/acceptance", "per-fold unknown rejection and known acceptance (mean +- std)"],
+    "test": ["S1 rejection", "S2 acceptance", "separation AUC (S2 vs S1)", "per-task S1/S2", "S2 at matched S1 = 0.95 gate", "S2 at matched S1 = 0.70 gate", "S2 at matched baseline S1"],
+    "delta_cancellation": "mean score on Test session1 vs session2, raw gap, pooled-sd standardised gap, and per-(session, task) cell means, for abs vs margin vs ratio vs mix on the UNALIGNED space (that is where delta exists). A relative score cancels delta if its standardised S1-S2 gap is materially smaller than the abs one.",
+    "purity": {
+      "space": "frozen baseline PCA space (no alignment) so the cluster partition is identical across candidates",
+      "k": [20, 28],
+      "rows": "all Test session2 rows (19218), no subsampling",
+      "seed": 20261117,
+      "init": "random sample init, 60 Lloyd iterations, chunked distances",
+      "primary": "micro share of S2 rows whose predicted identity equals the mode identity of their cluster",
+      "reference": "E233 baseline_frozen purity k20 0.639036 / k28 0.651993"
+    },
+    "bootstrap": {"B": 400, "seed": 20261117, "targets": "paired row bootstrap of S2 acceptance difference vs abs_dist_cal, and vs abs_dist"}
+  },
+  "decision_rule": {
+    "hard_requirement": "LOSO unknown rejection in [0.89, 0.91] AND Test S1 rejection >= 0.95 AND Test S2 acceptance >= 0.60 AND purity micro >= 0.95 * baseline purity micro (k=20 and k=28)",
+    "partial": "best eligible S2 in [0.45, 0.60) -> report 'significant improvement but below the user requirement' and name the remaining bottleneck",
+    "fail": "best S2 <= 0.3122 (the E233 compliant value) -> state that the relative score is ineffective on this data and give the evidence",
+    "tie_break": "S2 under the matched S1 = 0.95 gate"
+  },
+  "official_note": "Official Test C / RA / ASafeR are N/A: Test has no identity labels. The session-level S1 rejection >= 0.95 is a reviewer-imposed proxy, not an official metric.",
+  "bias_note": "Test has been inspected repeatedly since E65, so every S2 number carries a repeated-inspection bias. Session and registration status are confounded (E232: S1 = 5 unregistered subjects, S2 = 20 registered users), so S1/S2 are behavioural proxies, not clean biometric metrics. The mean_align statistics are estimated from the unlabeled batch being scored (transductive grey zone)."
+}
