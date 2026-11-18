@@ -1,0 +1,352 @@
+2026-11-19 00:33:35 E269 start torch=2.5.1+cu121 cuda=12.1 device=NVIDIA GeForce RTX 3080 Laptop GPU validate=True
+2026-11-19 00:33:37 Train loaded on GPU: raw=(11304, 18, 1200), E254=(11304, 855), rows=11304
+2026-11-19 00:33:37 VALIDATE: checking all 40 fold masks and enrollment counts
+2026-11-19 00:33:39 VALIDATE PASS: 40 masks, new=20/person (5/task), forward/backward, finite scores, deterministic global-order stress, params=39698
+2026-11-19 00:35:02 E269 start torch=2.5.1+cu121 cuda=12.1 device=NVIDIA GeForce RTX 3080 Laptop GPU validate=False
+2026-11-19 00:35:03 Train loaded on GPU: raw=(11304, 18, 1200), E254=(11304, 855), rows=11304
+2026-11-19 00:35:03 loso_h01 start old=19 new=0 unknown=1 fit=6326 enroll=6326 cal=2177 late=2308 seed=269001
+2026-11-19 00:35:06 loso_h01 epoch 1/20 loss=7.05428 acc=0.0000 seconds=1.42
+2026-11-19 00:35:10 loso_h01 epoch 5/20 loss=2.23732 acc=0.5856 seconds=0.91
+2026-11-19 00:35:14 loso_h01 epoch 10/20 loss=1.16918 acc=0.8046 seconds=0.90
+2026-11-19 00:35:19 loso_h01 epoch 15/20 loss=0.87794 acc=0.8728 seconds=0.90
+2026-11-19 00:35:23 loso_h01 epoch 20/20 loss=0.78189 acc=0.8979 seconds=0.90
+2026-11-19 00:35:24 loso_h01 complete seconds=20.5 params=39698 final_loss=0.78189 tau=0.637215
+2026-11-19 00:35:24 loso_h02 start old=19 new=0 unknown=1 fit=6399 enroll=6399 cal=2199 late=2308 seed=269002
+2026-11-19 00:35:25 loso_h02 epoch 1/20 loss=6.89151 acc=0.0075 seconds=0.91
+2026-11-19 00:35:28 loso_h02 epoch 5/20 loss=2.15233 acc=0.6049 seconds=0.91
+2026-11-19 00:35:33 loso_h02 epoch 10/20 loss=1.18455 acc=0.7965 seconds=0.91
+2026-11-19 00:35:37 loso_h02 epoch 15/20 loss=0.83838 acc=0.8795 seconds=0.91
+2026-11-19 00:35:42 loso_h02 epoch 20/20 loss=0.77697 acc=0.8945 seconds=0.92
+2026-11-19 00:35:42 loso_h02 complete seconds=18.7 params=39698 final_loss=0.77697 tau=0.643160
+2026-11-19 00:35:42 loso_h03 start old=19 new=0 unknown=1 fit=6333 enroll=6333 cal=2179 late=2308 seed=269003
+2026-11-19 00:35:43 loso_h03 epoch 1/20 loss=7.40434 acc=0.0002 seconds=0.93
+2026-11-19 00:35:47 loso_h03 epoch 5/20 loss=2.45898 acc=0.5474 seconds=0.91
+2026-11-19 00:35:52 loso_h03 epoch 10/20 loss=1.17420 acc=0.8061 seconds=0.90
+2026-11-19 00:35:56 loso_h03 epoch 15/20 loss=0.89200 acc=0.8675 seconds=0.90
+2026-11-19 00:36:01 loso_h03 epoch 20/20 loss=0.79336 acc=0.8959 seconds=0.91
+2026-11-19 00:36:01 loso_h03 complete seconds=18.6 params=39698 final_loss=0.79336 tau=0.640633
+2026-11-19 00:36:01 loso_h04 start old=19 new=0 unknown=1 fit=6385 enroll=6385 cal=2188 late=2308 seed=269004
+2026-11-19 00:36:02 loso_h04 epoch 1/20 loss=7.05138 acc=0.0000 seconds=0.92
+2026-11-19 00:36:06 loso_h04 epoch 5/20 loss=2.31573 acc=0.5801 seconds=0.91
+2026-11-19 00:36:10 loso_h04 epoch 10/20 loss=1.13925 acc=0.8071 seconds=0.91
+2026-11-19 00:36:15 loso_h04 epoch 15/20 loss=0.88537 acc=0.8673 seconds=0.93
+2026-11-19 00:36:19 loso_h04 epoch 20/20 loss=0.80253 acc=0.8915 seconds=0.91
+2026-11-19 00:36:20 loso_h04 complete seconds=18.7 params=39698 final_loss=0.80253 tau=0.633346
+2026-11-19 00:36:20 loso_h05 start old=19 new=0 unknown=1 fit=6431 enroll=6431 cal=2200 late=2308 seed=269005
+2026-11-19 00:36:21 loso_h05 epoch 1/20 loss=7.12497 acc=0.0000 seconds=0.94
+2026-11-19 00:36:24 loso_h05 epoch 5/20 loss=2.58768 acc=0.5376 seconds=0.93
+2026-11-19 00:36:29 loso_h05 epoch 10/20 loss=1.27744 acc=0.7816 seconds=0.81
+2026-11-19 00:36:33 loso_h05 epoch 15/20 loss=0.95659 acc=0.8546 seconds=0.92
+2026-11-19 00:36:38 loso_h05 epoch 20/20 loss=0.88331 acc=0.8720 seconds=0.92
+2026-11-19 00:36:38 loso_h05 complete seconds=18.5 params=39698 final_loss=0.88331 tau=0.650569
+2026-11-19 00:36:38 loso_h06 start old=19 new=0 unknown=1 fit=6326 enroll=6326 cal=2177 late=2308 seed=269006
+2026-11-19 00:36:39 loso_h06 epoch 1/20 loss=6.98727 acc=0.0000 seconds=0.91
+2026-11-19 00:36:43 loso_h06 epoch 5/20 loss=2.33199 acc=0.5744 seconds=0.90
+2026-11-19 00:36:47 loso_h06 epoch 10/20 loss=1.19091 acc=0.7971 seconds=0.91
+2026-11-19 00:36:52 loso_h06 epoch 15/20 loss=0.88878 acc=0.8700 seconds=0.91
+2026-11-19 00:36:56 loso_h06 epoch 20/20 loss=0.80534 acc=0.8898 seconds=0.91
+2026-11-19 00:36:57 loso_h06 complete seconds=18.6 params=39698 final_loss=0.80534 tau=0.628088
+2026-11-19 00:36:57 loso_h07 start old=19 new=0 unknown=1 fit=6351 enroll=6351 cal=2177 late=2308 seed=269007
+2026-11-19 00:36:58 loso_h07 epoch 1/20 loss=7.07148 acc=0.0000 seconds=0.92
+2026-11-19 00:37:01 loso_h07 epoch 5/20 loss=2.31470 acc=0.5794 seconds=0.90
+2026-11-19 00:37:06 loso_h07 epoch 10/20 loss=1.18150 acc=0.8048 seconds=0.91
+2026-11-19 00:37:10 loso_h07 epoch 15/20 loss=0.90918 acc=0.8680 seconds=0.91
+2026-11-19 00:37:15 loso_h07 epoch 20/20 loss=0.81444 acc=0.8919 seconds=0.91
+2026-11-19 00:37:15 loso_h07 complete seconds=18.6 params=39698 final_loss=0.81444 tau=0.631331
+2026-11-19 00:37:15 loso_h08 start old=19 new=0 unknown=1 fit=6404 enroll=6404 cal=2197 late=2308 seed=269008
+2026-11-19 00:37:16 loso_h08 epoch 1/20 loss=7.05320 acc=0.0000 seconds=0.96
+2026-11-19 00:37:20 loso_h08 epoch 5/20 loss=3.08740 acc=0.4694 seconds=0.91
+2026-11-19 00:37:25 loso_h08 epoch 10/20 loss=1.36996 acc=0.7626 seconds=0.93
+2026-11-19 00:37:29 loso_h08 epoch 15/20 loss=1.07607 acc=0.8270 seconds=0.92
+2026-11-19 00:37:34 loso_h08 epoch 20/20 loss=0.87945 acc=0.8713 seconds=0.93
+2026-11-19 00:37:34 loso_h08 complete seconds=18.9 params=39698 final_loss=0.87945 tau=0.636755
+2026-11-19 00:37:34 loso_h09 start old=19 new=0 unknown=1 fit=6347 enroll=6347 cal=2185 late=2308 seed=269009
+2026-11-19 00:37:35 loso_h09 epoch 1/20 loss=7.03402 acc=0.0000 seconds=0.92
+2026-11-19 00:37:39 loso_h09 epoch 5/20 loss=2.49485 acc=0.5468 seconds=0.93
+2026-11-19 00:37:43 loso_h09 epoch 10/20 loss=1.21752 acc=0.7915 seconds=0.91
+2026-11-19 00:37:48 loso_h09 epoch 15/20 loss=0.91874 acc=0.8648 seconds=0.92
+2026-11-19 00:37:53 loso_h09 epoch 20/20 loss=0.82272 acc=0.8883 seconds=0.90
+2026-11-19 00:37:53 loso_h09 complete seconds=18.6 params=39698 final_loss=0.82272 tau=0.621143
+2026-11-19 00:37:53 loso_h10 start old=19 new=0 unknown=1 fit=6399 enroll=6399 cal=2194 late=2308 seed=269010
+2026-11-19 00:37:54 loso_h10 epoch 1/20 loss=7.08085 acc=0.0001 seconds=0.91
+2026-11-19 00:37:58 loso_h10 epoch 5/20 loss=2.37553 acc=0.5698 seconds=0.91
+2026-11-19 00:38:02 loso_h10 epoch 10/20 loss=1.16160 acc=0.8091 seconds=0.92
+2026-11-19 00:38:07 loso_h10 epoch 15/20 loss=0.85717 acc=0.8770 seconds=0.91
+2026-11-19 00:38:11 loso_h10 epoch 20/20 loss=0.78580 acc=0.8985 seconds=0.91
+2026-11-19 00:38:12 loso_h10 complete seconds=18.7 params=39698 final_loss=0.78580 tau=0.643454
+2026-11-19 00:38:12 loso_h11 start old=19 new=0 unknown=1 fit=6342 enroll=6342 cal=2180 late=2308 seed=269011
+2026-11-19 00:38:13 loso_h11 epoch 1/20 loss=6.97629 acc=0.0000 seconds=0.92
+2026-11-19 00:38:16 loso_h11 epoch 5/20 loss=2.41379 acc=0.5497 seconds=0.91
+2026-11-19 00:38:21 loso_h11 epoch 10/20 loss=1.18852 acc=0.7918 seconds=0.90
+2026-11-19 00:38:25 loso_h11 epoch 15/20 loss=0.86053 acc=0.8684 seconds=0.91
+2026-11-19 00:38:30 loso_h11 epoch 20/20 loss=0.78373 acc=0.8927 seconds=0.92
+2026-11-19 00:38:30 loso_h11 complete seconds=18.7 params=39698 final_loss=0.78373 tau=0.656199
+2026-11-19 00:38:30 loso_h12 start old=19 new=0 unknown=1 fit=6345 enroll=6345 cal=2179 late=2308 seed=269012
+2026-11-19 00:38:31 loso_h12 epoch 1/20 loss=7.33849 acc=0.0000 seconds=0.93
+2026-11-19 00:38:35 loso_h12 epoch 5/20 loss=3.13670 acc=0.4179 seconds=0.91
+2026-11-19 00:38:40 loso_h12 epoch 10/20 loss=1.36153 acc=0.7597 seconds=0.92
+2026-11-19 00:38:44 loso_h12 epoch 15/20 loss=0.96964 acc=0.8492 seconds=0.90
+2026-11-19 00:38:49 loso_h12 epoch 20/20 loss=0.88975 acc=0.8715 seconds=0.91
+2026-11-19 00:38:49 loso_h12 complete seconds=18.7 params=39698 final_loss=0.88975 tau=0.645618
+2026-11-19 00:38:49 loso_h13 start old=19 new=0 unknown=1 fit=6323 enroll=6323 cal=2178 late=2308 seed=269013
+2026-11-19 00:38:50 loso_h13 epoch 1/20 loss=7.45508 acc=0.0000 seconds=0.92
+2026-11-19 00:38:54 loso_h13 epoch 5/20 loss=2.92762 acc=0.4692 seconds=0.91
+2026-11-19 00:38:58 loso_h13 epoch 10/20 loss=1.34691 acc=0.7626 seconds=0.92
+2026-11-19 00:39:03 loso_h13 epoch 15/20 loss=0.95829 acc=0.8514 seconds=0.92
+2026-11-19 00:39:07 loso_h13 epoch 20/20 loss=0.86604 acc=0.8774 seconds=0.91
+2026-11-19 00:39:08 loso_h13 complete seconds=18.7 params=39698 final_loss=0.86604 tau=0.629878
+2026-11-19 00:39:08 loso_h14 start old=19 new=0 unknown=1 fit=6350 enroll=6350 cal=2180 late=2308 seed=269014
+2026-11-19 00:39:09 loso_h14 epoch 1/20 loss=6.98408 acc=0.0000 seconds=0.92
+2026-11-19 00:39:12 loso_h14 epoch 5/20 loss=2.15987 acc=0.6143 seconds=0.91
+2026-11-19 00:39:17 loso_h14 epoch 10/20 loss=1.16560 acc=0.8061 seconds=0.91
+2026-11-19 00:39:21 loso_h14 epoch 15/20 loss=0.84352 acc=0.8778 seconds=0.92
+2026-11-19 00:39:26 loso_h14 epoch 20/20 loss=0.77637 acc=0.8953 seconds=0.92
+2026-11-19 00:39:26 loso_h14 complete seconds=18.6 params=39698 final_loss=0.77637 tau=0.648924
+2026-11-19 00:39:26 loso_h15 start old=19 new=0 unknown=1 fit=6381 enroll=6381 cal=2191 late=2308 seed=269015
+2026-11-19 00:39:27 loso_h15 epoch 1/20 loss=7.40905 acc=0.0000 seconds=0.92
+2026-11-19 00:39:31 loso_h15 epoch 5/20 loss=2.42376 acc=0.5500 seconds=0.92
+2026-11-19 00:39:35 loso_h15 epoch 10/20 loss=1.13474 acc=0.8095 seconds=0.91
+2026-11-19 00:39:40 loso_h15 epoch 15/20 loss=0.85633 acc=0.8737 seconds=0.91
+2026-11-19 00:39:45 loso_h15 epoch 20/20 loss=0.78965 acc=0.8921 seconds=0.91
+2026-11-19 00:39:45 loso_h15 complete seconds=18.7 params=39698 final_loss=0.78965 tau=0.657270
+2026-11-19 00:39:45 loso_h16 start old=19 new=0 unknown=1 fit=6348 enroll=6348 cal=2182 late=2308 seed=269016
+2026-11-19 00:39:46 loso_h16 epoch 1/20 loss=7.28535 acc=0.0000 seconds=0.92
+2026-11-19 00:39:50 loso_h16 epoch 5/20 loss=2.46405 acc=0.5581 seconds=0.91
+2026-11-19 00:39:54 loso_h16 epoch 10/20 loss=1.21598 acc=0.7988 seconds=0.92
+2026-11-19 00:39:59 loso_h16 epoch 15/20 loss=0.88856 acc=0.8663 seconds=0.91
+2026-11-19 00:40:03 loso_h16 epoch 20/20 loss=0.80046 acc=0.8942 seconds=0.91
+2026-11-19 00:40:04 loso_h16 complete seconds=18.7 params=39698 final_loss=0.80046 tau=0.649891
+2026-11-19 00:40:04 loso_h17 start old=19 new=0 unknown=1 fit=6348 enroll=6348 cal=2189 late=2308 seed=269017
+2026-11-19 00:40:05 loso_h17 epoch 1/20 loss=7.23647 acc=0.0000 seconds=0.92
+2026-11-19 00:40:08 loso_h17 epoch 5/20 loss=2.71637 acc=0.5008 seconds=0.92
+2026-11-19 00:40:13 loso_h17 epoch 10/20 loss=1.24832 acc=0.7908 seconds=0.93
+2026-11-19 00:40:18 loso_h17 epoch 15/20 loss=0.90512 acc=0.8684 seconds=0.92
+2026-11-19 00:40:22 loso_h17 epoch 20/20 loss=0.82001 acc=0.8908 seconds=0.90
+2026-11-19 00:40:22 loso_h17 complete seconds=18.7 params=39698 final_loss=0.82001 tau=0.638450
+2026-11-19 00:40:22 loso_h18 start old=19 new=0 unknown=1 fit=6373 enroll=6373 cal=2203 late=2308 seed=269018
+2026-11-19 00:40:23 loso_h18 epoch 1/20 loss=6.99999 acc=0.0000 seconds=0.93
+2026-11-19 00:40:27 loso_h18 epoch 5/20 loss=2.30450 acc=0.5837 seconds=0.92
+2026-11-19 00:40:32 loso_h18 epoch 10/20 loss=1.14123 acc=0.8114 seconds=0.92
+2026-11-19 00:40:36 loso_h18 epoch 15/20 loss=0.84756 acc=0.8805 seconds=0.92
+2026-11-19 00:40:41 loso_h18 epoch 20/20 loss=0.76064 acc=0.9011 seconds=0.91
+2026-11-19 00:40:41 loso_h18 complete seconds=18.7 params=39698 final_loss=0.76064 tau=0.653540
+2026-11-19 00:40:41 loso_h19 start old=19 new=0 unknown=1 fit=6369 enroll=6369 cal=2187 late=2308 seed=269019
+2026-11-19 00:40:42 loso_h19 epoch 1/20 loss=7.01902 acc=0.0000 seconds=0.92
+2026-11-19 00:40:46 loso_h19 epoch 5/20 loss=2.27492 acc=0.5785 seconds=0.92
+2026-11-19 00:40:50 loso_h19 epoch 10/20 loss=1.12491 acc=0.8143 seconds=0.91
+2026-11-19 00:40:55 loso_h19 epoch 15/20 loss=0.83482 acc=0.8819 seconds=0.92
+2026-11-19 00:41:00 loso_h19 epoch 20/20 loss=0.76048 acc=0.9009 seconds=0.91
+2026-11-19 00:41:00 loso_h19 complete seconds=18.7 params=39698 final_loss=0.76048 tau=0.647177
+2026-11-19 00:41:00 loso_h20 start old=19 new=0 unknown=1 fit=6325 enroll=6325 cal=2177 late=2308 seed=269020
+2026-11-19 00:41:01 loso_h20 epoch 1/20 loss=7.03920 acc=0.0000 seconds=0.94
+2026-11-19 00:41:04 loso_h20 epoch 5/20 loss=2.39176 acc=0.5629 seconds=0.91
+2026-11-19 00:41:09 loso_h20 epoch 10/20 loss=1.14996 acc=0.8054 seconds=0.90
+2026-11-19 00:41:14 loso_h20 epoch 15/20 loss=0.85669 acc=0.8744 seconds=0.90
+2026-11-19 00:41:18 loso_h20 epoch 20/20 loss=0.76862 acc=0.9017 seconds=0.91
+2026-11-19 00:41:18 loso_h20 complete seconds=18.7 params=39698 final_loss=0.76862 tau=0.641774
+2026-11-19 00:41:18 registration_h00 start old=14 new=3 unknown=3 fit=4669 enroll=4729 cal=1624 late=2308 seed=279000
+2026-11-19 00:41:19 registration_h00 epoch 1/20 loss=7.06029 acc=0.0000 seconds=0.67
+2026-11-19 00:41:22 registration_h00 epoch 5/20 loss=2.37685 acc=0.5690 seconds=0.67
+2026-11-19 00:41:25 registration_h00 epoch 10/20 loss=0.97202 acc=0.8498 seconds=0.67
+2026-11-19 00:41:29 registration_h00 epoch 15/20 loss=0.72084 acc=0.9094 seconds=0.66
+2026-11-19 00:41:32 registration_h00 epoch 20/20 loss=0.65800 acc=0.9293 seconds=0.67
+2026-11-19 00:41:32 registration_h00 complete seconds=13.8 params=39058 final_loss=0.65800 tau=0.697367
+2026-11-19 00:41:32 registration_h01 start old=14 new=3 unknown=3 fit=4614 enroll=4674 cal=1610 late=2308 seed=279001
+2026-11-19 00:41:33 registration_h01 epoch 1/20 loss=6.74078 acc=0.0000 seconds=0.69
+2026-11-19 00:41:36 registration_h01 epoch 5/20 loss=2.52798 acc=0.5443 seconds=0.67
+2026-11-19 00:41:39 registration_h01 epoch 10/20 loss=1.04403 acc=0.8403 seconds=0.67
+2026-11-19 00:41:42 registration_h01 epoch 15/20 loss=0.77077 acc=0.9017 seconds=0.67
+2026-11-19 00:41:46 registration_h01 epoch 20/20 loss=0.69272 acc=0.9233 seconds=0.67
+2026-11-19 00:41:46 registration_h01 complete seconds=13.8 params=39058 final_loss=0.69272 tau=0.669792
+2026-11-19 00:41:46 registration_h02 start old=14 new=3 unknown=3 fit=4665 enroll=4725 cal=1627 late=2308 seed=279002
+2026-11-19 00:41:47 registration_h02 epoch 1/20 loss=6.93595 acc=0.0000 seconds=0.68
+2026-11-19 00:41:50 registration_h02 epoch 5/20 loss=2.01530 acc=0.6463 seconds=0.67
+2026-11-19 00:41:53 registration_h02 epoch 10/20 loss=0.93025 acc=0.8595 seconds=0.66
+2026-11-19 00:41:56 registration_h02 epoch 15/20 loss=0.69624 acc=0.9133 seconds=0.66
+2026-11-19 00:42:00 registration_h02 epoch 20/20 loss=0.63619 acc=0.9375 seconds=0.66
+2026-11-19 00:42:00 registration_h02 complete seconds=13.8 params=39058 final_loss=0.63619 tau=0.661673
+2026-11-19 00:42:00 registration_h03 start old=14 new=3 unknown=3 fit=4650 enroll=4710 cal=1617 late=2308 seed=279003
+2026-11-19 00:42:01 registration_h03 epoch 1/20 loss=7.01843 acc=0.0000 seconds=0.68
+2026-11-19 00:42:03 registration_h03 epoch 5/20 loss=2.34423 acc=0.5809 seconds=0.67
+2026-11-19 00:42:07 registration_h03 epoch 10/20 loss=0.94598 acc=0.8639 seconds=0.66
+2026-11-19 00:42:10 registration_h03 epoch 15/20 loss=0.70950 acc=0.9172 seconds=0.68
+2026-11-19 00:42:13 registration_h03 epoch 20/20 loss=0.63923 acc=0.9377 seconds=0.67
+2026-11-19 00:42:14 registration_h03 complete seconds=13.8 params=39058 final_loss=0.63923 tau=0.679045
+2026-11-19 00:42:14 registration_h04 start old=14 new=3 unknown=3 fit=4662 enroll=4722 cal=1602 late=2308 seed=279004
+2026-11-19 00:42:14 registration_h04 epoch 1/20 loss=6.85556 acc=0.0000 seconds=0.67
+2026-11-19 00:42:17 registration_h04 epoch 5/20 loss=2.00873 acc=0.6404 seconds=0.66
+2026-11-19 00:42:20 registration_h04 epoch 10/20 loss=0.97475 acc=0.8539 seconds=0.67
+2026-11-19 00:42:24 registration_h04 epoch 15/20 loss=0.67073 acc=0.9239 seconds=0.66
+2026-11-19 00:42:27 registration_h04 epoch 20/20 loss=0.62865 acc=0.9379 seconds=0.67
+2026-11-19 00:42:27 registration_h04 complete seconds=13.8 params=39058 final_loss=0.62865 tau=0.662621
+2026-11-19 00:42:27 registration_h05 start old=14 new=3 unknown=3 fit=4724 enroll=4784 cal=1615 late=2308 seed=279005
+2026-11-19 00:42:28 registration_h05 epoch 1/20 loss=7.01548 acc=0.0000 seconds=0.69
+2026-11-19 00:42:31 registration_h05 epoch 5/20 loss=2.18040 acc=0.6224 seconds=0.67
+2026-11-19 00:42:34 registration_h05 epoch 10/20 loss=1.05418 acc=0.8386 seconds=0.67
+2026-11-19 00:42:38 registration_h05 epoch 15/20 loss=0.75777 acc=0.9050 seconds=0.68
+2026-11-19 00:42:41 registration_h05 epoch 20/20 loss=0.70960 acc=0.9207 seconds=0.68
+2026-11-19 00:42:41 registration_h05 complete seconds=14.0 params=39058 final_loss=0.70960 tau=0.649555
+2026-11-19 00:42:41 registration_h06 start old=14 new=3 unknown=3 fit=4725 enroll=4785 cal=1615 late=2308 seed=279006
+2026-11-19 00:42:42 registration_h06 epoch 1/20 loss=6.83261 acc=0.0000 seconds=0.69
+2026-11-19 00:42:45 registration_h06 epoch 5/20 loss=2.35387 acc=0.5893 seconds=0.67
+2026-11-19 00:42:48 registration_h06 epoch 10/20 loss=1.13169 acc=0.8242 seconds=0.67
+2026-11-19 00:42:52 registration_h06 epoch 15/20 loss=0.83981 acc=0.8915 seconds=0.68
+2026-11-19 00:42:55 registration_h06 epoch 20/20 loss=0.77049 acc=0.9073 seconds=0.67
+2026-11-19 00:42:55 registration_h06 complete seconds=13.9 params=39058 final_loss=0.77049 tau=0.623544
+2026-11-19 00:42:55 registration_h07 start old=14 new=3 unknown=3 fit=4750 enroll=4810 cal=1615 late=2308 seed=279007
+2026-11-19 00:44:48 E269 start torch=2.5.1+cu121 cuda=12.1 device=NVIDIA GeForce RTX 3080 Laptop GPU validate=False
+2026-11-19 00:44:49 Train loaded on GPU: raw=(11304, 18, 1200), E254=(11304, 855), rows=11304
+2026-11-19 00:44:49 loso fold=01 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=02 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=03 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=04 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=05 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=06 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=07 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=08 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=09 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=10 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=11 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=12 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=13 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=14 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=15 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=16 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=17 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=18 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=19 complete checkpoint reused
+2026-11-19 00:44:49 loso fold=20 complete checkpoint reused
+2026-11-19 00:44:49 registration fold=00 complete checkpoint reused
+2026-11-19 00:44:49 registration fold=01 complete checkpoint reused
+2026-11-19 00:44:49 registration fold=02 complete checkpoint reused
+2026-11-19 00:44:49 registration fold=03 complete checkpoint reused
+2026-11-19 00:44:49 registration fold=04 complete checkpoint reused
+2026-11-19 00:44:49 registration fold=05 complete checkpoint reused
+2026-11-19 00:44:49 registration fold=06 complete checkpoint reused
+2026-11-19 00:44:49 registration_h07 start old=14 new=3 unknown=3 fit=4750 enroll=4810 cal=1615 late=2308 seed=279007
+2026-11-19 00:46:48 E269 start torch=2.5.1+cu121 cuda=12.1 device=NVIDIA GeForce RTX 3080 Laptop GPU validate=True
+2026-11-19 00:46:48 Train loaded on GPU: raw=(11304, 18, 1200), E254=(11304, 855), rows=11304
+2026-11-19 00:46:48 VALIDATE: checking all 40 fold masks and enrollment counts
+2026-11-19 00:46:50 VALIDATE PASS: 40 masks, new=20/person (5/task), forward/backward, finite scores, deterministic global-order stress, params=39698
+2026-11-19 00:47:03 E269 start torch=2.5.1+cu121 cuda=12.1 device=NVIDIA GeForce RTX 3080 Laptop GPU validate=False
+2026-11-19 00:47:03 Train loaded on GPU: raw=(11304, 18, 1200), E254=(11304, 855), rows=11304
+2026-11-19 00:47:03 loso fold=01 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=02 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=03 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=04 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=05 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=06 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=07 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=08 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=09 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=10 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=11 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=12 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=13 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=14 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=15 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=16 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=17 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=18 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=19 complete checkpoint reused
+2026-11-19 00:47:03 loso fold=20 complete checkpoint reused
+2026-11-19 00:47:03 registration fold=00 complete checkpoint reused
+2026-11-19 00:47:03 registration fold=01 complete checkpoint reused
+2026-11-19 00:47:03 registration fold=02 complete checkpoint reused
+2026-11-19 00:47:03 registration fold=03 complete checkpoint reused
+2026-11-19 00:47:03 registration fold=04 complete checkpoint reused
+2026-11-19 00:47:03 registration fold=05 complete checkpoint reused
+2026-11-19 00:47:03 registration fold=06 complete checkpoint reused
+2026-11-19 00:47:03 registration_h07 start old=14 new=3 unknown=3 fit=4750 enroll=4810 cal=1615 late=2308 seed=279007
+2026-11-19 00:47:06 registration_h07 epoch 1/20 loss=7.05454 acc=0.0000 seconds=1.04
+2026-11-19 00:47:09 registration_h07 epoch 5/20 loss=3.13408 acc=0.4394 seconds=0.69
+2026-11-19 00:47:12 registration_h07 epoch 10/20 loss=1.39403 acc=0.7788 seconds=0.68
+2026-11-19 00:47:16 registration_h07 epoch 15/20 loss=0.99288 acc=0.8621 seconds=0.70
+2026-11-19 00:47:19 registration_h07 epoch 20/20 loss=0.86922 acc=0.8864 seconds=0.69
+2026-11-19 00:47:19 registration_h07 complete seconds=15.9 params=39058 final_loss=0.86922 tau=0.666357
+2026-11-19 00:47:19 registration_h08 start old=14 new=3 unknown=3 fit=4755 enroll=4815 cal=1613 late=2308 seed=279008
+2026-11-19 00:47:20 registration_h08 epoch 1/20 loss=6.89021 acc=0.0000 seconds=0.70
+2026-11-19 00:47:23 registration_h08 epoch 5/20 loss=2.95404 acc=0.4644 seconds=0.69
+2026-11-19 00:47:26 registration_h08 epoch 10/20 loss=1.41630 acc=0.7545 seconds=0.68
+2026-11-19 00:47:30 registration_h08 epoch 15/20 loss=0.92579 acc=0.8697 seconds=0.69
+2026-11-19 00:47:33 registration_h08 epoch 20/20 loss=0.83845 acc=0.8917 seconds=0.68
+2026-11-19 00:47:33 registration_h08 complete seconds=14.1 params=39058 final_loss=0.83845 tau=0.620347
+2026-11-19 00:47:33 registration_h09 start old=14 new=3 unknown=3 fit=4769 enroll=4829 cal=1619 late=2308 seed=279009
+2026-11-19 00:47:34 registration_h09 epoch 1/20 loss=6.81813 acc=0.0000 seconds=0.70
+2026-11-19 00:47:37 registration_h09 epoch 5/20 loss=2.37499 acc=0.5719 seconds=0.68
+2026-11-19 00:47:40 registration_h09 epoch 10/20 loss=1.17934 acc=0.8114 seconds=0.69
+2026-11-19 00:47:44 registration_h09 epoch 15/20 loss=0.85641 acc=0.8831 seconds=0.69
+2026-11-19 00:47:47 registration_h09 epoch 20/20 loss=0.76338 acc=0.9036 seconds=0.69
+2026-11-19 00:47:48 registration_h09 complete seconds=14.1 params=39058 final_loss=0.76338 tau=0.679490
+2026-11-19 00:47:48 registration_h10 start old=14 new=3 unknown=3 fit=4783 enroll=4843 cal=1625 late=2308 seed=279010
+2026-11-19 00:47:48 registration_h10 epoch 1/20 loss=6.73645 acc=0.0000 seconds=0.71
+2026-11-19 00:47:51 registration_h10 epoch 5/20 loss=2.24503 acc=0.6032 seconds=0.69
+2026-11-19 00:47:55 registration_h10 epoch 10/20 loss=1.09125 acc=0.8265 seconds=0.69
+2026-11-19 00:47:58 registration_h10 epoch 15/20 loss=0.77184 acc=0.9024 seconds=0.68
+2026-11-19 00:48:01 registration_h10 epoch 20/20 loss=0.68541 acc=0.9232 seconds=0.69
+2026-11-19 00:48:02 registration_h10 complete seconds=14.1 params=39058 final_loss=0.68541 tau=0.646795
+2026-11-19 00:48:02 registration_h11 start old=14 new=3 unknown=3 fit=4694 enroll=4754 cal=1605 late=2308 seed=279011
+2026-11-19 00:48:03 registration_h11 epoch 1/20 loss=7.30634 acc=0.0000 seconds=0.69
+2026-11-19 00:48:05 registration_h11 epoch 5/20 loss=2.15153 acc=0.5970 seconds=0.68
+2026-11-19 00:48:09 registration_h11 epoch 10/20 loss=0.98890 acc=0.8470 seconds=0.67
+2026-11-19 00:48:12 registration_h11 epoch 15/20 loss=0.74153 acc=0.9073 seconds=0.67
+2026-11-19 00:48:15 registration_h11 epoch 20/20 loss=0.67405 acc=0.9248 seconds=0.67
+2026-11-19 00:48:16 registration_h11 complete seconds=13.9 params=39058 final_loss=0.67405 tau=0.660738
+2026-11-19 00:48:16 registration_h12 start old=14 new=3 unknown=3 fit=4713 enroll=4773 cal=1607 late=2308 seed=279012
+2026-11-19 00:48:16 registration_h12 epoch 1/20 loss=6.97850 acc=0.0000 seconds=0.69
+2026-11-19 00:48:19 registration_h12 epoch 5/20 loss=2.51377 acc=0.5500 seconds=0.67
+2026-11-19 00:48:22 registration_h12 epoch 10/20 loss=1.02179 acc=0.8381 seconds=0.67
+2026-11-19 00:48:26 registration_h12 epoch 15/20 loss=0.76058 acc=0.9027 seconds=0.68
+2026-11-19 00:48:29 registration_h12 epoch 20/20 loss=0.71030 acc=0.9163 seconds=0.69
+2026-11-19 00:48:30 registration_h12 complete seconds=13.9 params=39058 final_loss=0.71030 tau=0.647410
+2026-11-19 00:48:30 registration_h13 start old=14 new=3 unknown=3 fit=4685 enroll=4745 cal=1608 late=2308 seed=279013
+2026-11-19 00:48:30 registration_h13 epoch 1/20 loss=6.77792 acc=0.0000 seconds=0.69
+2026-11-19 00:48:33 registration_h13 epoch 5/20 loss=2.07818 acc=0.6314 seconds=0.67
+2026-11-19 00:48:36 registration_h13 epoch 10/20 loss=1.01556 acc=0.8412 seconds=0.67
+2026-11-19 00:48:40 registration_h13 epoch 15/20 loss=0.77611 acc=0.8994 seconds=0.68
+2026-11-19 00:48:43 registration_h13 epoch 20/20 loss=0.68703 acc=0.9240 seconds=0.67
+2026-11-19 00:48:43 registration_h13 complete seconds=13.9 params=39058 final_loss=0.68703 tau=0.645556
+2026-11-19 00:48:43 registration_h14 start old=14 new=3 unknown=3 fit=4631 enroll=4691 cal=1591 late=2308 seed=279014
+2026-11-19 00:48:44 registration_h14 epoch 1/20 loss=6.66668 acc=0.0000 seconds=0.67
+2026-11-19 00:48:47 registration_h14 epoch 5/20 loss=2.66110 acc=0.5308 seconds=0.67
+2026-11-19 00:48:50 registration_h14 epoch 10/20 loss=1.21449 acc=0.7990 seconds=0.68
+2026-11-19 00:48:54 registration_h14 epoch 15/20 loss=0.84843 acc=0.8875 seconds=0.67
+2026-11-19 00:48:57 registration_h14 epoch 20/20 loss=0.76820 acc=0.9028 seconds=0.67
+2026-11-19 00:48:57 registration_h14 complete seconds=13.8 params=39058 final_loss=0.76820 tau=0.644114
+2026-11-19 00:48:57 registration_h15 start old=14 new=3 unknown=3 fit=4665 enroll=4725 cal=1597 late=2308 seed=279015
+2026-11-19 00:48:58 registration_h15 epoch 1/20 loss=6.87908 acc=0.0000 seconds=0.68
+2026-11-19 00:49:01 registration_h15 epoch 5/20 loss=2.27819 acc=0.5847 seconds=0.68
+2026-11-19 00:49:04 registration_h15 epoch 10/20 loss=1.24102 acc=0.7999 seconds=0.68
+2026-11-19 00:49:07 registration_h15 epoch 15/20 loss=0.81834 acc=0.8937 seconds=0.67
+2026-11-19 00:49:11 registration_h15 epoch 20/20 loss=0.73870 acc=0.9110 seconds=0.67
+2026-11-19 00:49:11 registration_h15 complete seconds=13.8 params=39058 final_loss=0.73870 tau=0.646025
+2026-11-19 00:49:11 registration_h16 start old=14 new=3 unknown=3 fit=4614 enroll=4674 cal=1585 late=2308 seed=279016
+2026-11-19 00:49:12 registration_h16 epoch 1/20 loss=6.70271 acc=0.0000 seconds=0.70
+2026-11-19 00:49:14 registration_h16 epoch 5/20 loss=2.25253 acc=0.5976 seconds=0.67
+2026-11-19 00:49:18 registration_h16 epoch 10/20 loss=1.22569 acc=0.8022 seconds=0.67
+2026-11-19 00:49:21 registration_h16 epoch 15/20 loss=0.86610 acc=0.8834 seconds=0.68
+2026-11-19 00:49:25 registration_h16 epoch 20/20 loss=0.76507 acc=0.9051 seconds=0.66
+2026-11-19 00:49:25 registration_h16 complete seconds=13.8 params=39058 final_loss=0.76507 tau=0.674518
+2026-11-19 00:49:25 registration_h17 start old=14 new=3 unknown=3 fit=4620 enroll=4680 cal=1594 late=2308 seed=279017
+2026-11-19 00:49:26 registration_h17 epoch 1/20 loss=6.84805 acc=0.0000 seconds=0.69
+2026-11-19 00:49:28 registration_h17 epoch 5/20 loss=2.59373 acc=0.5417 seconds=0.67
+2026-11-19 00:49:32 registration_h17 epoch 10/20 loss=1.24619 acc=0.8031 seconds=0.67
+2026-11-19 00:49:35 registration_h17 epoch 15/20 loss=0.83664 acc=0.8859 seconds=0.67
+2026-11-19 00:49:38 registration_h17 epoch 20/20 loss=0.73883 acc=0.9092 seconds=0.67
+2026-11-19 00:49:39 registration_h17 complete seconds=13.8 params=39058 final_loss=0.73883 tau=0.663442
+2026-11-19 00:49:39 registration_h18 start old=14 new=3 unknown=3 fit=4648 enroll=4708 cal=1618 late=2308 seed=279018
+2026-11-19 00:49:39 registration_h18 epoch 1/20 loss=6.88647 acc=0.0000 seconds=0.68
+2026-11-19 00:49:42 registration_h18 epoch 5/20 loss=2.31404 acc=0.6018 seconds=0.66
+2026-11-19 00:49:45 registration_h18 epoch 10/20 loss=0.98752 acc=0.8499 seconds=0.67
+2026-11-19 00:49:49 registration_h18 epoch 15/20 loss=0.76087 acc=0.9035 seconds=0.66
+2026-11-19 00:49:52 registration_h18 epoch 20/20 loss=0.66598 acc=0.9314 seconds=0.67
+2026-11-19 00:49:52 registration_h18 complete seconds=13.8 params=39058 final_loss=0.66598 tau=0.659982
+2026-11-19 00:49:52 registration_h19 start old=14 new=3 unknown=3 fit=4694 enroll=4754 cal=1627 late=2308 seed=279019
+2026-11-19 00:49:53 registration_h19 epoch 1/20 loss=6.71292 acc=0.0000 seconds=0.69
+2026-11-19 00:49:56 registration_h19 epoch 5/20 loss=2.00534 acc=0.6423 seconds=0.68
+2026-11-19 00:49:59 registration_h19 epoch 10/20 loss=0.90515 acc=0.8720 seconds=0.67
+2026-11-19 00:50:03 registration_h19 epoch 15/20 loss=0.69434 acc=0.9217 seconds=0.68
+2026-11-19 00:50:06 registration_h19 epoch 20/20 loss=0.64441 acc=0.9350 seconds=0.67
+2026-11-19 00:50:06 registration_h19 complete seconds=13.9 params=39058 final_loss=0.64441 tau=0.682395
+2026-11-19 00:50:06 ALL 40 FOLDS COMPLETE: LOSO clean AUC=0.831720 F1=0.834025; proxy=0.500829; promote=False; runtime=3.1 min
+2026-11-19 00:50:06 RESULTS.json and REPORT.md written; no final/final2 files touched
