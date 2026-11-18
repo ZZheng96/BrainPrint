@@ -102,12 +102,13 @@ def train_verifier(clean, augmented, fit, people, held):
     parity = parity_halves(fit, people)
     gates, proofs, cohorts, labels = [], [], [], []
     for registered in inner_people(people):
-        registered_rows = torch.isin(r.y, r.tens(registered))
-        _, inner_art = r.project(fit & registered_rows)
+        enrolled = torch.isin(r.y, r.tens(registered))
+        inner_fit = fit & enrolled
+        _, inner_art = r.project(inner_fit)
         inner_clean = e264['project_subwindows'](clean, inner_art)
         inner_augmented = e264['project_subwindows'](augmented, inner_art)
         for half in (0, 1):
-            template_rows = fit & registered_rows & (parity != half)
+            template_rows = inner_fit & (parity != half)
             query_rows = fit & (parity == half)
             p, valid = e264['package_prototypes'](
                 inner_clean.mean(1), template_rows, registered, inner_art)
@@ -117,7 +118,7 @@ def train_verifier(clean, augmented, fit, people, held):
                 proofs.append(b)
                 cohorts.append(c)
                 labels.append(d)
-        del p, valid, inner_clean, inner_augmented, inner_art
+        del p, valid, q_sw, inner_clean, inner_augmented, inner_art
         torch.cuda.empty_cache()
     gates = torch.cat(gates)
     proofs = torch.cat(proofs)
@@ -171,10 +172,11 @@ def calibrate(clean, fit, cal, people, model):
     base_known_rates, base_unknown_rates = [], []
     for inner, registered in enumerate(inner_people(people)):
         enrolled = torch.isin(r.y, r.tens(registered))
-        _, inner_art = r.project(fit & enrolled)
+        inner_fit = fit & enrolled
+        _, inner_art = r.project(inner_fit)
         inner_clean = e264['project_subwindows'](clean, inner_art)
         p, valid = e264['package_prototypes'](
-            inner_clean.mean(1), fit & enrolled, registered, inner_art)
+            inner_clean.mean(1), inner_fit, registered, inner_art)
         base, candidate, _ = infer(inner_clean, p, valid, cal, registered, model)
         known = enrolled[cal]
         unknown = ~known
@@ -243,7 +245,7 @@ def no_worse(summary, candidate, baseline, keys):
 def report(results):
     folds, summary = results['folds'], results['summary']
     lines = [
-        '# E265：嵌套未注册训练的六子窗 DeepSets 门控', '',
+        '# E266：严格内层独立重拟合的六子窗 DeepSets 门控', '',
         '**联合判定：' + ('通过。' if results['passed'] else '不通过；保留 final2。') +
         '本轮不读取 Test，不修改 E264 或 final2。**', '',
         '表中为 20 个身份外折等权均值 / 最差折；accepted_misrank 的最差为最大值，其余为最小值。'
@@ -264,25 +266,25 @@ def report(results):
     lines += ['', '选中 q 分布：' + q_text + '。', '', '## 11 项指标', '',
               '|#|指标|数值与证据性质|', '|---:|---|---|']
     historical = {
-        1: ('Train 样本内 acc', '0.9996461429582448（现包历史值；E265未重算）'),
-        2: ('OOF acc', '0.9988499646142959（现包历史值；E265未重算）'),
-        3: ('OOF macro-F1', '0.9988253655342916（现包历史值；E265未重算）'),
-        4: ('forward acc', '0.9982509838216004（现包历史值；E265未重算）'),
+        1: ('Train 样本内 acc', '0.9996461429582448（现包历史值；E266未重算）'),
+        2: ('OOF acc', '0.9988499646142959（现包历史值；E266未重算）'),
+        3: ('OOF macro-F1', '0.9988253655342916（现包历史值；E266未重算）'),
+        4: ('forward acc', '0.9982509838216004（现包历史值；E266未重算）'),
     }
     for i in range(1, 5):
         lines.append(f'|{i}|{historical[i][0]}|{historical[i][1]}|')
     lines += [
-        f"|5|strict LOSO AUROC|{summary['clean_nested']['AUROC']['mean']:.12f}（E265 Train 晚段20折均值）|",
-        f"|6|U@95|{summary['clean_nested']['U95']['mean']:.12f}（E265 Train 晚段20折均值）|",
+        f"|5|strict LOSO AUROC|{summary['clean_nested']['AUROC']['mean']:.12f}（E266 Train 晚段20折均值）|",
+        f"|6|U@95|{summary['clean_nested']['U95']['mean']:.12f}（E266 Train 晚段20折均值）|",
         '|7|RA|N/A|', '|8|ASafeR|N/A|',
-        '|9|Test S2|0.22416484545738372（现包历史值；E265未审计）|',
-        '|10|Test S1|0.5918232772832179（现包历史值；E265未审计）|',
-        f"|11|strict LOSO rej@90|{summary['clean_nested']['R90']['mean']:.12f}（E265 Train 晚段20折均值）|",
+        '|9|Test S2|0.22416484545738372（现包历史值；E266未审计）|',
+        '|10|Test S1|0.5918232772832179（现包历史值；E266未审计）|',
+        f"|11|strict LOSO rej@90|{summary['clean_nested']['R90']['mean']:.12f}（E266 Train 晚段20折均值）|",
         '', '## 冻结方法与防泄漏', '',
         '- 每折留出一个身份；其余19人的前60%拟合任务标准化、PCA-256、类内白化及深度门控。中段(60%,80%]只做阈值选择，所有身份末20%只评估一次；held 身份不参与任何拟合、原型、网络或阈值。',
-        '- 19人按位置模5构造5个 inner enrollment folds，每次约15人注册，其余作为 inner unknown。每个 inner fold 内再按身份×任务的时间奇偶分半，查询使用另一半 clean 原型；clean 与 train_aug 都训练。label 为原 top1 是否等于真实身份，inner unknown 和已知错排均为0。',
+        '- 19人按位置模5构造5个 inner enrollment folds，每次约15人注册。每个 inner fold 只用 registered 身份的早60%重新拟合任务标准化、PCA-256和类内白化，并以其 inner_art 分别投影 clean/train_aug；inner unknown 不参与 inner 变换、原型、网络拟合或阈值。inner_art 使用后即释放且不写入 outer 权重。每个 inner fold 再按身份×任务的时间奇偶分半，查询使用另一半 clean 原型；clean 与 train_aug 都训练。label 为原 top1 是否等于真实身份，inner unknown 和已知错排均为0。',
         '- 每个查询仅评估原 base 第一名：6×4子窗证据经共享4→32→32 DeepSets、mean/min/max池化和E264统计；8维 cohort 为 s1、s2、margin、gate、mean、std、s1−mean、(s1−mean)/std，经8→16→16 MLP后融合。残差 logit=12×(base_gate−0.33)+residual，末层零初始化，BCE pos_weight 按全体训练标签平衡。',
-        '- 每个 inner fold 用早段完整注册原型和中段 clean 查询校准。base tau 为 known base 分 P10；候选 q 网格固定为[.05,.10,.15,.20,.25,.30]，先要求 inner known accept 与 unknown reject 均值均不低于 base，再依次最大化 known accept、unknown reject、较小 q；无合格项时最大化两项差值的较小者，再取较小 q。outer 候选 tau 为19人中段 clean candidate 分的选中 q 分位。stress 从未训练或校准。',
+        '- 每个 inner fold 重新使用该 inner 自己的 inner_art，投影 clean，并用早段完整 inner registered 原型和中段 clean 查询校准；绝不复用 outer_art。base tau 为 known base 分 P10；候选 q 网格固定为[.05,.10,.15,.20,.25,.30]，先要求 inner known accept 与 unknown reject 均值均不低于 base，再依次最大化 known accept、unknown reject、较小 q；无合格项时最大化两项差值的较小者，再取较小 q。outer 候选 tau 为19人中段 clean candidate 分的选中 q 分位。stress 从未训练或校准。',
         '- U@95/rej@90 是晚段 base 连续分经验 ROC 上已知接受率达到95%/90%时的未知拒识，不是冻结阈值拒识率。old_e2e 要求已知身份排对且接受；accepted_misrank 是已知错排且接受的比例。逐折权重在 weights/held01.pt 至 held20.pt，q、inner 校准诊断及逐折结果在 results.json。',
         '', '## 验收条件', '',
         f"- 两臂 AUROC/U@95/rej@90 与 package 逐折完全一致：{results['roc_identical']}",
@@ -290,16 +292,49 @@ def report(results):
         f"- clean/stress old_e2e、known_accept、unknown_reject 均值与最差均不降：{results['rates_ok']}",
         f"- clean/stress accepted_misrank 均值不增：{results['safety_ok']}",
         f"- 联合 passed：{results['passed']}",
-        '', '复跑：`..\\.venv\\Scripts\\python.exe -B research/E265_nested_openset/run.py`。',
+        '', '复跑：`..\\.venv\\Scripts\\python.exe -B research/E266_strict_nested/run.py`。',
     ]
     text = '\n'.join(lines) + '\n'
     (H / 'REPORT.md').write_text(text, encoding='utf-8')
     print(text, flush=True)
 
 
+def load_checkpoint(held):
+    stem = H / 'weights' / f'held{held:02d}'
+    try:
+        bundle = torch.load(stem.with_suffix('.pt'), map_location='cpu', weights_only=True)
+        record = json.loads(stem.with_suffix('.json').read_text(encoding='utf-8'))
+        fold, threshold = record['fold'], record['threshold']
+        valid = (
+            bundle['held'] == held and fold['held'] == held and threshold['held'] == held
+            and bundle['recipe'] == RECIPE
+            and bundle['selected_q'] == threshold['q']
+            and bundle['people'] == [i for i in r.ids if i != held]
+            and isinstance(bundle['projection'], dict)
+            and isinstance(bundle['prototypes'], torch.Tensor)
+            and isinstance(bundle['model'], dict)
+            and bundle['model'].keys() == NestedVerifier().state_dict().keys()
+            and all(isinstance(v, torch.Tensor) and torch.isfinite(v).all()
+                    for v in bundle['model'].values())
+            and bundle['candidate_tau'] == threshold['candidate']
+            and bundle['base_tau'] == threshold['package']
+            and len(threshold['q_diagnostics']) == len(Q_GRID)
+            and len(threshold['inner_calibration']) == 5
+        )
+        for view in ('clean', 'stress'):
+            package, nested = fold[view + '_package'], fold[view + '_nested']
+            valid = valid and all(
+                package[k] == nested[k] and np.isfinite(nested[k])
+                for k in ('AUROC', 'U95', 'R90', 'F1'))
+            valid = valid and all(np.isfinite(nested[k]) for k in CORE)
+        return (fold, threshold) if valid else None
+    except (OSError, ValueError, RuntimeError, KeyError, TypeError, json.JSONDecodeError, EOFError):
+        return None
+
+
 def main():
     if D != 'cuda':
-        raise RuntimeError('E265 requires CUDA')
+        raise RuntimeError('E266 requires CUDA')
     cache = r.CACHE / 'e264_subwindow_verifier'
     clean = r.tens(np.load(r.CACHE / 'e253_subwindow' / 'train_feat.npy'))
     augmented = r.tens(np.load(cache / 'train_aug.npy'))
@@ -310,6 +345,12 @@ def main():
     weights.mkdir(exist_ok=True)
     folds, thresholds = [], []
     for held in r.ids:
+        cached = load_checkpoint(held)
+        if cached is not None:
+            folds.append(cached[0])
+            thresholds.append(cached[1])
+            print('held', held, 'loaded valid checkpoint', flush=True)
+            continue
         fit = (r.f <= .6) & (r.y != held)
         cal = (r.f > .6) & (r.f <= .8) & (r.y != held)
         late = r.f > .8
@@ -320,9 +361,9 @@ def main():
         stress_q = e264['project_subwindows'](stress, art)
         if not torch.allclose(clean_q.mean(1), q_mean, atol=2e-5, rtol=2e-5):
             raise ValueError(f'Subwindow mean projection mismatch in fold {held}')
-        model = train_verifier(clean_q, aug_q, fit, people, art, held)
+        model = train_verifier(clean, augmented, fit, people, held)
         q, fallback, q_diagnostics, inner_diagnostics = calibrate(
-            clean_q, fit, cal, people, art, model)
+            clean, fit, cal, people, model)
         p, valid = e264['package_prototypes'](clean_q.mean(1), fit, people, art)
         base_cal, cand_cal, _ = infer(clean_q, p, valid, cal, people, model)
         base_tau = float(torch.quantile(base_cal, .10))
@@ -348,10 +389,16 @@ def main():
             held=held, q=q, fallback=fallback, package=base_tau, candidate=cand_tau,
             q_diagnostics=q_diagnostics, inner_calibration=inner_diagnostics))
         folds.append(row)
+        checkpoint = weights / f'held{held:02d}.json'
+        checkpoint.write_text(json.dumps(dict(
+            fold=row, threshold=thresholds[-1]), indent=2, ensure_ascii=False,
+            allow_nan=False), encoding='utf-8')
         print('held', held, 'q', q, 'clean known/unknown',
               row['clean_nested']['known_accept'], row['clean_nested']['unknown_reject'], flush=True)
         del clean_q, aug_q, stress_q, model
         torch.cuda.empty_cache()
+    if len(folds) != 20 or len(thresholds) != 20:
+        raise RuntimeError('E266 requires exactly 20 complete folds')
     summary = summarize(folds)
     roc_identical = all(
         row[view + '_nested'][key] == row[view + '_package'][key]
@@ -385,7 +432,7 @@ def main():
         stress={arm: {k: summary['stress_' + arm][k] for k in ('old_e2e', 'known_accept', 'unknown_reject', 'accepted_misrank')}
                 for arm in ('package', 'nested')},
     )
-    print('E265_FINAL ' + json.dumps(concise, ensure_ascii=False), flush=True)
+    print('E266_FINAL ' + json.dumps(concise, ensure_ascii=False), flush=True)
 
 
 if __name__ == '__main__':

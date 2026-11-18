@@ -1,0 +1,420 @@
+{
+  "fold": {
+    "held": 3,
+    "clean_package": {
+      "AUROC": 0.981509823260665,
+      "U95": 0.9338842975206612,
+      "R90": 0.9752066115702479,
+      "F1": 0.9935292650589266,
+      "old_e2e": 0.8664837677183356,
+      "known_accept": 0.8664837677183356,
+      "unknown_reject": 0.9834710743801653,
+      "accepted_misrank": 0.0
+    },
+    "clean_nested": {
+      "AUROC": 0.981509823260665,
+      "U95": 0.9338842975206612,
+      "R90": 0.9752066115702479,
+      "F1": 0.9935292650589266,
+      "old_e2e": 0.8710562414266118,
+      "known_accept": 0.8710562414266118,
+      "unknown_reject": 0.9834710743801653,
+      "accepted_misrank": 0.0
+    },
+    "stress_package": {
+      "AUROC": 0.9745944291398837,
+      "U95": 0.8842975206611571,
+      "R90": 0.9586776859504132,
+      "F1": 0.9921287979617412,
+      "old_e2e": 0.837219935985368,
+      "known_accept": 0.837219935985368,
+      "unknown_reject": 0.9917355371900827,
+      "accepted_misrank": 0.0
+    },
+    "stress_nested": {
+      "AUROC": 0.9745944291398837,
+      "U95": 0.8842975206611571,
+      "R90": 0.9586776859504132,
+      "F1": 0.9921287979617412,
+      "old_e2e": 0.8363054412437129,
+      "known_accept": 0.8363054412437129,
+      "unknown_reject": 0.9917355371900827,
+      "accepted_misrank": 0.0
+    }
+  },
+  "threshold": {
+    "held": 3,
+    "q": 0.1,
+    "fallback": true,
+    "package": 0.40149417519569397,
+    "candidate": 3.070941209793091,
+    "q_diagnostics": [
+      {
+        "q": 0.05,
+        "known_accept": 0.9498626947402954,
+        "unknown_reject": 0.9886168241500854,
+        "base_known_accept": 0.899725365638733,
+        "base_unknown_reject": 0.9987176418304443,
+        "eligible": false
+      },
+      {
+        "q": 0.1,
+        "known_accept": 0.899725365638733,
+        "unknown_reject": 0.9985672235488892,
+        "base_known_accept": 0.899725365638733,
+        "base_unknown_reject": 0.9987176418304443,
+        "eligible": false
+      },
+      {
+        "q": 0.15,
+        "known_accept": 0.8497022151947021,
+        "unknown_reject": 0.9995850563049317,
+        "base_known_accept": 0.899725365638733,
+        "base_unknown_reject": 0.9987176418304443,
+        "eligible": false
+      },
+      {
+        "q": 0.2,
+        "known_accept": 0.7997917056083679,
+        "unknown_reject": 0.9999999880790711,
+        "base_known_accept": 0.899725365638733,
+        "base_unknown_reject": 0.9987176418304443,
+        "eligible": false
+      },
+      {
+        "q": 0.25,
+        "known_accept": 0.7500015497207642,
+        "unknown_reject": 0.9999999880790711,
+        "base_known_accept": 0.899725365638733,
+        "base_unknown_reject": 0.9987176418304443,
+        "eligible": false
+      },
+      {
+        "q": 0.3,
+        "known_accept": 0.6998642206192016,
+        "unknown_reject": 0.9999999880790711,
+        "base_known_accept": 0.899725365638733,
+        "base_unknown_reject": 0.9987176418304443,
+        "eligible": false
+      }
+    ],
+    "inner_calibration": [
+      {
+        "inner": 0,
+        "registered": [
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          16,
+          18,
+          19,
+          20
+        ],
+        "n_known": 1697,
+        "n_unknown": 482,
+        "base_tau": 0.4328279197216034,
+        "base_known_accept": 0.8998232483863831,
+        "base_unknown_reject": 0.995850682258606,
+        "candidates": [
+          {
+            "q": 0.05,
+            "tau": 0.8464277982711792,
+            "known_accept": 0.9499116539955139,
+            "unknown_reject": 0.9854772090911865
+          },
+          {
+            "q": 0.1,
+            "tau": 3.2242038249969482,
+            "known_accept": 0.8998232483863831,
+            "unknown_reject": 0.997925341129303
+          },
+          {
+            "q": 0.15,
+            "tau": 4.915123462677002,
+            "known_accept": 0.8497348427772522,
+            "unknown_reject": 0.997925341129303
+          },
+          {
+            "q": 0.2,
+            "tau": 6.124915599822998,
+            "known_accept": 0.7996464371681213,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.25,
+            "tau": 7.06938362121582,
+            "known_accept": 0.7501473426818848,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.3,
+            "tau": 7.903669834136963,
+            "known_accept": 0.7000589370727539,
+            "unknown_reject": 1.0
+          }
+        ]
+      },
+      {
+        "inner": 1,
+        "registered": [
+          1,
+          4,
+          5,
+          6,
+          7,
+          9,
+          10,
+          11,
+          12,
+          14,
+          15,
+          16,
+          17,
+          19,
+          20
+        ],
+        "n_known": 1752,
+        "n_unknown": 427,
+        "base_tau": 0.4189656376838684,
+        "base_known_accept": 0.8995433449745178,
+        "base_unknown_reject": 0.9999999403953552,
+        "candidates": [
+          {
+            "q": 0.05,
+            "tau": 0.5125961303710938,
+            "known_accept": 0.9497716426849365,
+            "unknown_reject": 0.9953160881996155
+          },
+          {
+            "q": 0.1,
+            "tau": 2.6878910064697266,
+            "known_accept": 0.8995433449745178,
+            "unknown_reject": 0.9976580142974854
+          },
+          {
+            "q": 0.15,
+            "tau": 4.247305393218994,
+            "known_accept": 0.8498858213424683,
+            "unknown_reject": 0.9999999403953552
+          },
+          {
+            "q": 0.2,
+            "tau": 5.498579502105713,
+            "known_accept": 0.7996575236320496,
+            "unknown_reject": 0.9999999403953552
+          },
+          {
+            "q": 0.25,
+            "tau": 6.432587623596191,
+            "known_accept": 0.7499999403953552,
+            "unknown_reject": 0.9999999403953552
+          },
+          {
+            "q": 0.3,
+            "tau": 7.273730754852295,
+            "known_accept": 0.6997716426849365,
+            "unknown_reject": 0.9999999403953552
+          }
+        ]
+      },
+      {
+        "inner": 2,
+        "registered": [
+          1,
+          2,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          12,
+          13,
+          15,
+          16,
+          17,
+          18,
+          20
+        ],
+        "n_known": 1715,
+        "n_unknown": 464,
+        "base_tau": 0.41600412130355835,
+        "base_known_accept": 0.8997083902359009,
+        "base_unknown_reject": 1.0,
+        "candidates": [
+          {
+            "q": 0.05,
+            "tau": 0.37738990783691406,
+            "known_accept": 0.9498541951179504,
+            "unknown_reject": 0.9913793206214905
+          },
+          {
+            "q": 0.1,
+            "tau": 2.3969738483428955,
+            "known_accept": 0.8997083902359009,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.15,
+            "tau": 3.9261982440948486,
+            "known_accept": 0.8495626449584961,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.2,
+            "tau": 4.982371807098389,
+            "known_accept": 0.7999999523162842,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.25,
+            "tau": 6.039633750915527,
+            "known_accept": 0.7498542070388794,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.3,
+            "tau": 6.891076564788818,
+            "known_accept": 0.6997084021568298,
+            "unknown_reject": 1.0
+          }
+        ]
+      },
+      {
+        "inner": 3,
+        "registered": [
+          1,
+          2,
+          4,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19
+        ],
+        "n_known": 1737,
+        "n_unknown": 442,
+        "base_tau": 0.41623130440711975,
+        "base_known_accept": 0.8998273015022278,
+        "base_unknown_reject": 0.9977375864982605,
+        "candidates": [
+          {
+            "q": 0.05,
+            "tau": 0.6216387748718262,
+            "known_accept": 0.9499136805534363,
+            "unknown_reject": 0.9819005131721497
+          },
+          {
+            "q": 0.1,
+            "tau": 2.8008663654327393,
+            "known_accept": 0.8998273015022278,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.15,
+            "tau": 3.9963066577911377,
+            "known_accept": 0.8497409820556641,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.2,
+            "tau": 5.278576374053955,
+            "known_accept": 0.7996546030044556,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.25,
+            "tau": 6.421352863311768,
+            "known_accept": 0.7501439452171326,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.3,
+            "tau": 7.22215461730957,
+            "known_accept": 0.7000575661659241,
+            "unknown_reject": 1.0
+          }
+        ]
+      },
+      {
+        "inner": 4,
+        "registered": [
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          15,
+          17,
+          18,
+          19,
+          20
+        ],
+        "n_known": 1815,
+        "n_unknown": 364,
+        "base_tau": 0.40950751304626465,
+        "base_known_accept": 0.899724543094635,
+        "base_unknown_reject": 1.0,
+        "candidates": [
+          {
+            "q": 0.05,
+            "tau": 0.1907740831375122,
+            "known_accept": 0.9498623013496399,
+            "unknown_reject": 0.9890109896659851
+          },
+          {
+            "q": 0.1,
+            "tau": 2.7404556274414062,
+            "known_accept": 0.899724543094635,
+            "unknown_reject": 0.9972527623176575
+          },
+          {
+            "q": 0.15,
+            "tau": 4.182623863220215,
+            "known_accept": 0.8495867848396301,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.2,
+            "tau": 5.335720062255859,
+            "known_accept": 0.800000011920929,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.25,
+            "tau": 6.327563285827637,
+            "known_accept": 0.7498623132705688,
+            "unknown_reject": 1.0
+          },
+          {
+            "q": 0.3,
+            "tau": 7.149834156036377,
+            "known_accept": 0.699724555015564,
+            "unknown_reject": 1.0
+          }
+        ]
+      }
+    ]
+  }
+}
