@@ -1,0 +1,10 @@
+{
+  "team_id": "team_hymn",
+  "team_name": "赞美诗",
+  "institution": "西安电子科技大学广州研究院",
+  "contact": "karlozone@163.com",
+  "architecture": "Euclidean prototype rejection and whitened multi-prototype cosine identity ranking",
+  "description": "Independent frozen feature pipelines and independent enrollment updates.",
+  "weights": "weights.pt",
+  "new_user_support": true
+}

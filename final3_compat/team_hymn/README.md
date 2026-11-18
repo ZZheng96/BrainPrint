@@ -1,91 +1,54 @@
-# team_hymn（赞美诗）决赛提交
-
 ## 方法简述
 
-训练免参数的几何模板匹配，不含神经网络：
+每条脑电分为六个 200 点子窗。每窗在 1–8、8–13、13–20、20–30、30–40 Hz 五个频带计算通道相关矩阵，经收缩、矩阵对数和上三角标准化得到 855 维特征。六窗取平均后按任务标准化，投影至 256 维 PCA 空间。每个身份取四个原型中最大的白化余弦分数。最大分数加上第一、第二名分差的一半，低于阈值则拒识。旧用户阈值约为 0.407559；新用户阈值比它低 0.03。
 
-1. 每条 18×1200 样本切成 6 个 200 点子窗。
-2. 每个子窗用 FFT 掩码分成 5 个频带（1–8 / 8–13 / 13–20 / 20–30 / 30–40 Hz）。每个频带做通道标准化，计算 18×18 相关矩阵，按 0.05 收缩，取矩阵对数（logSPD），取上三角，非对角乘 √2。每个频带内对角去均值，再整体 z-score，得到 5×171 = 855 维向量。
-3. 6 个子窗向量取平均，按任务（EC / EO / Imagery / SSVEP）做 z-score，再投影到 PCA-256。
+## 输入与输出
 
-身份注册与匹配：
+`load_model(model_dir, device)` 仅读取指定目录的 `weights.pt`，可传队伍根目录或其 `model/` 子目录。支持 CPU 和 CUDA。根 `model.py` 提供三个接口；也可从 `inference.py` 导入加载和预测函数、从 `enroll.py` 导入注册函数。
 
-- **注册模板**：每个身份在每个任务下注册 4 个按试次顺序切分的原型（k=4），把同一身份的类内变化也建模进去。
-- **匹配分数**：对 PCA 投影做一次类内白化（Train 类内协方差向单位阵收缩 0.95，得到 256×256 矩阵 W），计算查询与每个原型的余弦相似度，同一身份取 4 个原型的最大值 s_c。
-- **未注册拒识**：显式的匹配度门控，而不是「先找最近再比距离」：
-  `s1 = 最大匹配分数`，`s2 = 次大匹配分数`，
-  `gate = s1 + 0.5 × (s1 - s2)`；低于赢家对应阈值时判为未注册。若排名第一的是原用户（1–20），阈值为 τ = 0.407559；若是新注册用户（21–23），阈值为 τ − 0.03 = 0.377559。并列时按身份列的首次最大值判定。偏移量仅用 Train 模拟注册选出，注册时不更新。
-  第一项要求绝对匹配足够强，第二项要求对第二名有足够优势，避免「谁都像一点」的样本被误接受。
-- τ 取 Train 交叉拟合（原型只用前 40%，查询用 40%–60% 试次）真实样本 gate 分数的 10% 分位，对应 90% 训练接受率；没有使用任何测试数据、测试统计量或测试标签。
+`predict_batch(artifact, x, meta)` 接收 float32 `(N,18,1200)`，N 为 1–128，不改变输入或通道顺序。返回 float32 `(N,24)`：第 0 列胜出表示未知（标签 -1），第 1–20 列为原用户，第 21–23 列为新用户。尚未注册的身份分数为负无穷。
 
-## 输入 / 输出
-
-- `load_model(model_dir, device)`：只读取 `model_dir/weights.pt`（`weights_only=True`）。请求 `cuda:0` 但 CUDA 不可用时自动退回 CPU。
-- `predict_batch(artifact, x, meta)`：x 为 float32 (N, 18, 1200)，N 取 1–128。返回 numpy float32 (N, 24)。
-  - 第 c 列（c=1..23）= 白化余弦匹配分数（越大越像）；未注册的新用户列为 -inf。
-  - 第 0 列在 gate 低于赢家对应阈值时取得最大值，此时 argmax 为 0，主办方映射为 -1。
-  - 输出不含 NaN，每行至少一个有限值，不修改 x，不读盘，不训练。
-- `enroll(artifact, x, meta, labels)`：labels 取 21–23。把新用户的注册样本按试次顺序切成 4 段，每段均值作为该任务下的一个原型；样本不足 4 条时退化为整体均值。只写第 21–23 列原型和 valid 标志，不改标准化统计量、PCA、W、τ 和 1–20 号原型。
-- `meta`：如果每条 dict 含 `task` 字段（EC/EO/Imagery/SSVEP 或 Task1–4），就用对应任务的标准化。缺失或无法识别时，取四种任务空间下的最大匹配分数。不从文件名、路径或数据顺序推断任何信息。
+显式任务字段（如 `task`、`paradigm`、`task_name`）支持 EC、EO、Imagery、SSVEP 或 Task1–4。无 meta 或无法识别任务时，逐身份取四个任务空间中的最大分数。不使用文件名、目录或身份字段。
 
 ## 训练数据来源和预处理
 
-只用主办方 Train（20 人，session1，11,304 条）。任务标准化均值/标准差、PCA 均值与基、类内白化矩阵 W、20 个身份各 4 个原型，全部只用 Train 拟合；τ 只用 Train 交叉拟合分数确定。原始信号除 FFT 带通外不做其他预处理，通道顺序保持不变。
-
-## 严格身份 LOSO 验证
-
-20 折身份留出：留出身份的任何样本都不参与任务标准化、PCA、白化、原型或阈值；外层训练池内部再做身份留出用于选择配置（内层选择，共 20×19 折）。
-
-| 指标 | 目标 | 本方案 |
-|---|---:|---:|
-| 严格 LOSO AUROC | ≥ 0.98 | 0.9871 |
-| 严格 LOSO U@95% | ≥ 0.95 | 0.9522 |
-| 严格 LOSO 未注册拒识 @ a=0.90 | > 0.90 | 0.9869 |
-| 5 折 OOF 闭集准确率 | ≥ 0.95 | 0.9988 |
-| 5 折 OOF 身份 macro-F1 | ≥ 0.92 | 0.9988 |
-| 前向块外准确率 | ≥ 0.90 | 0.9983 |
-
-最差单个留出身份的 U@95% 为 0.743、@a=0.90 拒识为 0.868，其余 19 个身份均在 0.89 以上。上一版（欧氏拒识）三项分别为 0.7920 / 0.1758 / 0.2947，本方案把拒识头从「最近邻欧氏距离」换成了「匹配度 + 歧义度」的联合门控。
+使用主办方提供的 20 名原用户 Train 脑电。输入为主办方预处理后的 300 Hz、4 秒片段；模型保留全部 18 通道。任务标准化、PCA、白化矩阵与原用户原型均在训练数据上拟合；拒识阈值由训练集交叉拟合分数确定。
 
 ## 新用户注册方法
 
-每名新用户的 20 条注册样本先提取 855 维特征，在每种任务空间下投影到 PCA-256 并白化，按试次顺序切成 4 段，每段均值作为一个原型（同一身份最多 4 个原型参与最大匹配）。注册不改变预训练权重、W、τ 和原有 20 个原型。
+`enroll(artifact, x, meta, labels)` 使用 21–23 各 20 条带标签样本。对每名用户的全部注册样本，在每个任务空间分别投影，按提供顺序分为四组取均值作为原型，匹配时才执行白化。返回新的状态，不修改传入状态、训练参数、旧身份原型或阈值。
 
-## 本地运行 / 自测
+## 本地运行与自测
+
+从解压所得 `team_hymn/` 的父目录运行以下 Python 代码。使用固定种子的合成数据，只检查接口，不衡量识别率。
 
 ```python
-import sys; sys.path.insert(0, "team_hymn")
-import model
-art = model.load_model("team_hymn", "cuda:0")
-art = model.enroll(art, x_enroll, meta_enroll, labels_enroll)   # labels in 21..23
-scores = model.predict_batch(art, x, meta)                      # (N, 24)
-pred = scores.argmax(1); pred[pred == 0] = -1
+import sys
+import numpy as np
+sys.path.insert(0, 'team_hymn')
+from model import load_model, predict_batch, enroll
+rng = np.random.default_rng(123)
+r = rng.standard_normal((60, 18, 1200), dtype=np.float32)
+y = np.repeat([21, 22, 23], 20).astype(np.int64)
+a = load_model('team_hymn', 'cpu')
+b = enroll(a, r, None, y)
+for n in (1, 128):
+    x = rng.standard_normal((n, 18, 1200), dtype=np.float32)
+    original = x.copy()
+    old = predict_batch(a, x, None)
+    new = predict_batch(b, x, None)
+    assert new.shape == (n, 24) and not np.isnan(new).any()
+    assert np.isfinite(new).any(1).all() and np.array_equal(x, original)
+    assert np.array_equal(old[:, 1:21], new[:, 1:21])
+    assert np.isneginf(old[:, 21:]).all() and np.isfinite(new[:, 21:]).all()
+    col = new.argmax(1)
+    labels = np.where(col == 0, -1, col)
 ```
-
-自测覆盖：`weights_only=True` 加载、CPU/CUDA、N=1/7/128、输出 (N,24)、无 NaN、每行有有限值、输入未被修改、`meta=None`、注册后 21–23 列可用且 1–20 列不变。
 
 ## 已知限制和失败情况
 
-- **跨时段绝对分数漂移**：初赛 Test（含对抗扰动和跨会话）上，白化余弦分数整体下移，本方案的 Train 校准阈值会拒绝大部分已注册样本：接受率 0.224、未注册拒识 0.592。但在被接受的样本中 top-1 达 0.931，端到端 0.209，说明排序本身很强，问题集中在绝对分数的跨域校准。这是「LOSO 优先」选择的直接代价：同一份数据上欧氏拒识能接受 0.70 已注册样本，但严格 LOSO 拒识只有 0.29。
-- **跨设备**：只用单一设备训练，没有做设备适配；不同设备的频响差异会让分数整体偏移。
-- **个体差异**：最差留出身份（7 号）的 U@95% 只有 0.743，其余身份明显更好。
-- **新用户**：只有 20 条注册样本，切成 4 段后每段仅 5 条，原型噪声较大。
-- 依赖 `meta['task']`。缺失时退化为四种任务的最大匹配分数，拒识率会略降。
+跨设备或跨时段可能造成绝对匹配分下降，从而误拒已注册用户。新用户注册样本过少或不具代表性会使原型不稳定；缺任务字段时跨任务取最大值可能增加误接受。
 
 ## 依赖说明
 
-只用 torch 和 numpy，均在官方环境（Python 3.10，torch 2.5.1+cu121，numpy 1.26.4）内。不用 scipy、pandas、自定义 CUDA 扩展，不联网，不启动子进程。
-
-## 决赛兼容入口
-
-解压后只有一个 `team_hymn/`。可按上例使用根 `model.py` 的三个函数，也可从 `inference.py` 导入 `load_model`、`predict_batch`，从 `enroll.py` 导入 `enroll`；两种方式使用相同的参数、返回值和注册状态。三个入口共享 `src/team_hymn_final3_core.py`，均为 Python 函数接口，不要求命令行参数或中间文件。
-
-`model_dir` 可传解压后的 `team_hymn/` 或 `team_hymn/model/`：两处 `weights.pt` 字节完全相同，只读取所传目录中的权重。分离入口示例（先如上将队伍目录加入模块搜索路径）：
-
-```python
-from inference import load_model, predict_batch
-from enroll import enroll
-art = load_model("team_hymn/model", "cpu")
-art = enroll(art, x_enroll, meta_enroll, labels_enroll)
-scores = predict_batch(art, x, meta)
-```
+使用 Python 3.10.22、torch 2.5.1+cu121 和 numpy 1.26.4。不需要安装其他包、自定义 CUDA 扩展或访问网络。

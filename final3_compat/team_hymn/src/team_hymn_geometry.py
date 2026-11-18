@@ -1,6 +1,6 @@
-"""BrainPrint final-round entry: load_model / predict_batch / enroll.
+"""BrainPrint entry: load_model / predict_batch / enroll.
 
-Pipeline (E254 scheme: E200 sub-window features, LDA-cos multi-prototype):
+Feature extraction and template matching:
   x (18 x 1200) -> 6 sub-windows of 200 samples -> per sub-window: 5 FFT bands ->
   channel standardisation -> correlation -> shrinkage -> logSPD -> upper triangle ->
   per-band detrend/z-score -> mean of the 6 855-d vectors -> per-task z-score ->
@@ -31,8 +31,9 @@ _TASK_ALIASES = {
     "task2": 1, "2": 1,
     "imagery": 2, "mi": 2, "vi": 2, "visualimagery": 2, "imagination": 2, "task3": 2, "3": 2,
     "ssvep": 3, "task4": 3, "4": 3,
+    "闭眼": 0, "睁眼": 1, "视觉想象": 2, "想象": 2, "静息闭眼": 0, "静息睁眼": 1,
 }
-_TASK_KEYS = ("task", "Task", "TASK", "paradigm", "Paradigm", "task_name", "task_folder")
+_TASK_KEYS = ("task", "Task", "TASK", "paradigm", "Paradigm", "task_name")
 
 
 def _task_index(meta_row) -> int:
@@ -41,13 +42,9 @@ def _task_index(meta_row) -> int:
         return -1
     for key in _TASK_KEYS:
         if key in meta_row and meta_row[key] is not None:
-            text = "".join(ch for ch in str(meta_row[key]).lower() if ch.isalnum())
+            text = str(meta_row[key]).strip().lower().replace(" ", "").replace("_", "").replace("-", "")
             if text in _TASK_ALIASES:
                 return _TASK_ALIASES[text]
-            for alias, idx in (("ssvep", 3), ("imagery", 2), ("想象", 2), ("eyesclosed", 0),
-                               ("闭眼", 0), ("eyesopen", 1), ("睁眼", 1)):
-                if alias in text:
-                    return idx
     return -1
 
 
@@ -179,7 +176,7 @@ def predict_batch(artifact, x, meta):
     finite = torch.isfinite(best)
     # open-set gate: absolute match plus the margin over the runner-up identity
     gate = best + artifact["beta"] * (best - second)
-    # Train-only E270 calibration for winners in the three enrollment slots.
+    # The enrollment offset was calibrated on training data.
     threshold = torch.where(sim.argmax(1) >= N_BASE, torch.full_like(gate, artifact["tau"] - 0.03),
                             torch.full_like(gate, artifact["tau"]))
     reject = (~finite) | (gate < threshold)
@@ -196,8 +193,7 @@ def predict_batch(artifact, x, meta):
 @torch.no_grad()
 def enroll(artifact, x, meta, labels):
     # All enrollment samples of a user are pooled under every task's standardisation.
-    # With only ~20 samples per user this beats per-task prototypes on Train
-    # simulation (new-user acc 0.80 vs 0.69, see final/tools/selftest_report.md).
+    artifact = dict(artifact, prototypes=artifact["prototypes"].clone(), valid=artifact["valid"].clone())
     if isinstance(labels, torch.Tensor):
         labels = labels.detach().cpu().numpy()
     labels = np.asarray(labels, dtype=np.int64).reshape(-1)

@@ -1,0 +1,4 @@
+# Only packages already in the official evaluation environment are used.
+# Official offline runtime: Python 3.10.22, CUDA runtime 12.1. No pip install.
+torch==2.5.1+cu121
+numpy==1.26.4
