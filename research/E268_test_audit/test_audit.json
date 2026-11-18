@@ -1,0 +1,34 @@
+{
+  "protocol": "E254 audit_e254 Test labels; frozen E266/E267 full-Train deployment",
+  "test_rows": 22251,
+  "registered_rows": 19218,
+  "unknown_rows": 3033,
+  "weights_sha256": "9e294c812367ffa95c7f97eb5454ec47e0112895a03d19f45ee6bf577c508624",
+  "delta": 0.08,
+  "veto": 0.0,
+  "base_tau": 0.3993836045265198,
+  "candidate_tau": 2.603748321533203,
+  "veto_tau": -1e+30,
+  "e267": {
+    "registered_accept": 0.19570194609220523,
+    "registered_top1_given_accept": 0.9274129220951874,
+    "registered_e2e": 0.1814965136850869,
+    "unregistered_reject": 0.5921529838443785,
+    "accepted_registered": 3761,
+    "rejected_unknown": 1796
+  },
+  "same_refit_base": {
+    "registered_accept": 0.1878447288999896,
+    "registered_top1_given_accept": 0.9271468144044321,
+    "registered_e2e": 0.17415964200228953,
+    "unregistered_reject": 0.592482690405539,
+    "accepted_registered": 3610,
+    "rejected_unknown": 1797
+  },
+  "final2_historical": {
+    "registered_accept": 0.22416484545738372,
+    "registered_top1_given_accept": 0.930594243268338,
+    "unregistered_reject": 0.5918232772832179
+  },
+  "selection": "one frozen candidate; no post-Test threshold or model changes"
+}

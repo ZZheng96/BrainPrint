@@ -1,0 +1,16 @@
+{
+  "train_samples": 6695,
+  "calibration_samples": 2301,
+  "deployment_samples": 11304,
+  "selected_parameters": {
+    "delta": 0.08,
+    "veto": 0.0,
+    "base_tau": 0.3993836045265198,
+    "candidate_tau": 2.603748321533203,
+    "veto_tau": -1e+30
+  },
+  "weights_sha256": "9e294c812367ffa95c7f97eb5454ec47e0112895a03d19f45ee6bf577c508624",
+  "weights_only_load_verified": true,
+  "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+  "test_accessed": false
+}
