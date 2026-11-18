@@ -1,6 +1,8 @@
 # E201 决赛提交包自测
 
-方案：E200 冻结方案 `subwin6_pca96_k1 @ a=0.90`，tau = 19.263826。参数从 `research/E200_final_freeze/bundle/frozen_bundle.pt` 原样复制，未重新拟合。提交包为 `final/team_hymn.zip`（371,069 B，sha256 `bb2b8e57bd33547cc93e9485f2b1fa2b15ca305794aea1ed032ec326f5034060`），zip 内仅 model.py / weights.pt / team.json / requirements.txt / README.md，顶层即 `team_hymn/`。
+方案：E200 冻结方案 `subwin6_pca96_k1 @ a=0.90`，tau = 19.263826。参数从 `research/E200_final_freeze/bundle/frozen_bundle.pt` 原样复制，未重新拟合。提交包为 `final/team_hymn.zip`（371,060 B，sha256 `a0155efa154e5f4098154368428c2ca5fb89a2cd669cfe37da69569a76a7a1dd`），zip 内仅 model.py / weights.pt / team.json / requirements.txt / README.md，顶层即 `team_hymn/`。
+
+2026-11-18 合规复核仅修正 README 中两处“已注册接受率”的指标名称，`model.py` 与 `weights.pt` 哈希均未改变。已用 `package.py` 重跑隔离 ZIP 的 CPU/CUDA、60 条注册、N=1/128、24 列、有限值和输入不变检查，全部通过；未重跑 Test 或 Train 模拟。
 
 **当前 AUC / F1**：决赛测试集不公开，所以 N/A。初赛对应值见 E200：S1 0.7135，S2 0.7069，身份头 OOF macro-F1 0.9882。
 
