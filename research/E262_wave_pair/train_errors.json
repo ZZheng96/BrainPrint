@@ -1,0 +1,72 @@
+{
+  "n_train": 11304,
+  "open_set_auc": null,
+  "auc_reason": "Train has no unregistered negatives.",
+  "closed_set": {
+    "correct": 11300,
+    "accuracy": 0.9996461429582448,
+    "macro_f1": 0.9996230945137696
+  },
+  "frozen_gate": {
+    "beta": 0.5,
+    "tau": 0.40755866169929506,
+    "rejected": 200,
+    "accepted_wrong": 0,
+    "correct": 11104,
+    "end_to_end_accuracy": 0.9823071479122435
+  },
+  "closed_set_errors": [
+    {
+      "sample": "Train/Subject_01/Task3/trial_154.mat",
+      "task": "Imagery",
+      "true_id": 1,
+      "closed_pred_id": 5,
+      "s1": 0.1980324536561966,
+      "s2": 0.16002580523490906,
+      "top1_minus_top2": 0.03800664842128754,
+      "top1_minus_true": 0.03800664842128754,
+      "gate_score": 0.21703577041625977,
+      "rejected": true,
+      "end_to_end_id": 0
+    },
+    {
+      "sample": "Train/Subject_10/Task3/trial_017.mat",
+      "task": "Imagery",
+      "true_id": 10,
+      "closed_pred_id": 11,
+      "s1": 0.22335587441921234,
+      "s2": 0.18304680287837982,
+      "top1_minus_top2": 0.04030907154083252,
+      "top1_minus_true": 0.04030907154083252,
+      "gate_score": 0.2435104101896286,
+      "rejected": true,
+      "end_to_end_id": 0
+    },
+    {
+      "sample": "Train/Subject_18/Task3/trial_021.mat",
+      "task": "Imagery",
+      "true_id": 18,
+      "closed_pred_id": 8,
+      "s1": 0.1782917082309723,
+      "s2": 0.160055011510849,
+      "top1_minus_top2": 0.01823669672012329,
+      "top1_minus_true": 0.060716018080711365,
+      "gate_score": 0.18741005659103394,
+      "rejected": true,
+      "end_to_end_id": 0
+    },
+    {
+      "sample": "Train/Subject_18/Task3/trial_075.mat",
+      "task": "Imagery",
+      "true_id": 18,
+      "closed_pred_id": 15,
+      "s1": 0.25956010818481445,
+      "s2": 0.2479606717824936,
+      "top1_minus_top2": 0.011599436402320862,
+      "top1_minus_true": 0.011599436402320862,
+      "gate_score": 0.2653598189353943,
+      "rejected": true,
+      "end_to_end_id": 0
+    }
+  ]
+}
