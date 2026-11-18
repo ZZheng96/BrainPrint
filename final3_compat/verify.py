@@ -74,9 +74,18 @@ def verify(t):
                     post = mod.predict_batch(b,q[:n],None)
                     assert post.shape == (n,24) and np.isfinite(post).all() and np.isneginf(pre[:,21:]).all()
                     assert np.array_equal(pre[:,1:21],post[:,1:21]) and np.array_equal(post.argmax(1)[:min(3,n)],np.arange(21,21+min(3,n)))
-                    ids = pre[:,1:21].argmax(1)+1
-                    best, second = np.sort(pre[:,1:21],axis=1)[:,-2:].T[::-1]
-                    assert np.array_equal(pre.argmax(1),np.where(best+.5*(best-second)<a['tau'],0,ids))
+                    ids = post[:,1:].argmax(1)+1
+                    top = np.sort(post[:,1:],axis=1)[:,-2:]
+                    gate = top[:,1]+.5*(top[:,1]-top[:,0])
+                    threshold_new = np.where(ids > 20, a['tau']-.06, a['tau'])
+                    threshold_old = np.where(ids > 20, a['tau']-.03, a['tau'])
+                    expected_new = np.where(gate < threshold_new, 0, ids)
+                    expected_old = np.where(gate < threshold_old, 0, ids)
+                    assert np.array_equal(post.argmax(1), expected_new)
+                    changed = expected_new != expected_old
+                    assert np.all(ids[changed] >= 21)
+                    assert np.all((gate[changed] >= a['tau']-.06) & (gate[changed] < a['tau']-.03))
+                    assert np.array_equal(post.argmax(1)[~changed], expected_old[~changed])
                 fallback = mod.predict_batch(b,q[:1],[{'task':'p/SSVEP','task_folder':'EC','label':1}])
                 assert np.array_equal(fallback,mod.predict_batch(b,q[:1],None))
         if BASE:

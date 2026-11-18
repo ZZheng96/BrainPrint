@@ -177,7 +177,7 @@ def predict_batch(artifact, x, meta):
     # open-set gate: absolute match plus the margin over the runner-up identity
     gate = best + artifact["beta"] * (best - second)
     # The enrollment offset was calibrated on training data.
-    threshold = torch.where(sim.argmax(1) >= N_BASE, torch.full_like(gate, artifact["tau"] - 0.03),
+    threshold = torch.where(sim.argmax(1) >= N_BASE, torch.full_like(gate, artifact["tau"] - 0.06),
                             torch.full_like(gate, artifact["tau"]))
     reject = (~finite) | (gate < threshold)
     scores = torch.empty((n, N_COLS), dtype=torch.float32, device=dev)

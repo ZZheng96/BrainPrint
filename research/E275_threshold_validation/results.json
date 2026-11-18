@@ -1,0 +1,611 @@
+{
+  "protocol": {
+    "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "data": "Train only",
+    "folds": 3,
+    "roles": "14 old / 3 new / 3 unknown",
+    "selection": "seeded non-cyclic permutations",
+    "fit_fraction": "<=0.6",
+    "query_fraction": ">0.8",
+    "registration": "E272 fit_rank selects five early Train rows per new identity per task and calls final3 compatibility package enroll",
+    "final3_offset": 0.03,
+    "candidate_offset": 0.06,
+    "tau_score": 0.40755866169929506,
+    "beta": 0.5,
+    "scenario_weight": "four scenarios equal-weight proxy, not real cross-device evaluation"
+  },
+  "summary": {
+    "final3": {
+      "clean_complete": {
+        "old_accuracy": 0.9265005650268446,
+        "new_accuracy": 0.5560077724882194,
+        "unknown_rejection": 0.974515520098298,
+        "AUC": 0.9721210869299878,
+        "F1": 0.8902312075840014
+      },
+      "stress_complete": {
+        "old_accuracy": 0.9016331116962707,
+        "new_accuracy": 0.5383694517772729,
+        "unknown_rejection": 0.9696077752894597,
+        "AUC": 0.9652296760097666,
+        "F1": 0.8725139389214941
+      },
+      "clean_missing_EC": {
+        "old_accuracy": 0.9393465988916443,
+        "new_accuracy": 0.5005732685362373,
+        "unknown_rejection": 0.9830008615885283,
+        "AUC": 0.9706519740632977,
+        "F1": 0.8856987761926014
+      },
+      "stress_missing_Imagery": {
+        "old_accuracy": 0.9023645562451664,
+        "new_accuracy": 0.5857150863807553,
+        "unknown_rejection": 0.9406185962991772,
+        "AUC": 0.9613603941739433,
+        "F1": 0.8747569037897036
+      }
+    },
+    "candidate": {
+      "clean_complete": {
+        "old_accuracy": 0.9265005650268446,
+        "new_accuracy": 0.6284423211797513,
+        "unknown_rejection": 0.9529583080388272,
+        "AUC": 0.9682053125589826,
+        "F1": 0.9007175714383928
+      },
+      "stress_complete": {
+        "old_accuracy": 0.9016331116962707,
+        "new_accuracy": 0.6120308927571497,
+        "unknown_rejection": 0.9549075751893504,
+        "AUC": 0.9598138358265004,
+        "F1": 0.8833598299326256
+      },
+      "clean_missing_EC": {
+        "old_accuracy": 0.9393465988916443,
+        "new_accuracy": 0.5500588969216822,
+        "unknown_rejection": 0.9702515077799244,
+        "AUC": 0.9681433706535262,
+        "F1": 0.894612987844516
+      },
+      "stress_missing_Imagery": {
+        "old_accuracy": 0.9023645562451664,
+        "new_accuracy": 0.6547487134536775,
+        "unknown_rejection": 0.9214161841385072,
+        "AUC": 0.953730779824412,
+        "F1": 0.8832894288845603
+      }
+    }
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "seed": 286,
+      "old_ids": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        19,
+        20
+      ],
+      "new_ids": [
+        5,
+        10,
+        15
+      ],
+      "unknown_ids": [
+        16,
+        17,
+        18
+      ],
+      "fit_count": 4805,
+      "registration_count": 60,
+      "registration_task_counts": {
+        "5": {
+          "0": 5,
+          "1": 5,
+          "2": 5,
+          "3": 5
+        },
+        "10": {
+          "0": 5,
+          "1": 5,
+          "2": 5,
+          "3": 5
+        },
+        "15": {
+          "0": 5,
+          "1": 5,
+          "2": 5,
+          "3": 5
+        }
+      },
+      "late_query_count": 2308,
+      "scenarios": {
+        "clean_complete": {
+          "final3": {
+            "n": 2308,
+            "old_accuracy": 0.9133052378085491,
+            "new_accuracy": 0.5162337662337663,
+            "unknown_rejection": 0.9941002949852508,
+            "AUC": 0.9709254506802338,
+            "F1": 0.8749957235509417,
+            "accepted_unknown": 2,
+            "truth_counts": {
+              "old": 1661,
+              "new": 308,
+              "unknown": 339
+            }
+          },
+          "candidate": {
+            "n": 2308,
+            "old_accuracy": 0.9133052378085491,
+            "new_accuracy": 0.5616883116883117,
+            "unknown_rejection": 0.9793510324483776,
+            "AUC": 0.9679800926154809,
+            "F1": 0.8811387690363928,
+            "accepted_unknown": 7,
+            "truth_counts": {
+              "old": 1661,
+              "new": 308,
+              "unknown": 339
+            }
+          }
+        },
+        "stress_complete": {
+          "final3": {
+            "n": 2308,
+            "old_accuracy": 0.8922335942203492,
+            "new_accuracy": 0.5357142857142857,
+            "unknown_rejection": 0.9882005899705014,
+            "AUC": 0.9628474391415015,
+            "F1": 0.8636985772181764,
+            "accepted_unknown": 4,
+            "truth_counts": {
+              "old": 1661,
+              "new": 308,
+              "unknown": 339
+            }
+          },
+          "candidate": {
+            "n": 2308,
+            "old_accuracy": 0.8922335942203492,
+            "new_accuracy": 0.5681818181818182,
+            "unknown_rejection": 0.976401179941003,
+            "AUC": 0.9581342669788806,
+            "F1": 0.8665689517571166,
+            "accepted_unknown": 8,
+            "truth_counts": {
+              "old": 1661,
+              "new": 308,
+              "unknown": 339
+            }
+          }
+        },
+        "clean_missing_EC": {
+          "final3": {
+            "n": 2089,
+            "old_accuracy": 0.9372077488309953,
+            "new_accuracy": 0.5270758122743683,
+            "unknown_rejection": 0.9746031746031746,
+            "AUC": 0.9654014781410497,
+            "F1": 0.8879525526728947,
+            "accepted_unknown": 8,
+            "truth_counts": {
+              "old": 1497,
+              "new": 277,
+              "unknown": 315
+            }
+          },
+          "candidate": {
+            "n": 2089,
+            "old_accuracy": 0.9372077488309953,
+            "new_accuracy": 0.5703971119133574,
+            "unknown_rejection": 0.9555555555555556,
+            "AUC": 0.9607666290868094,
+            "F1": 0.8942426163223571,
+            "accepted_unknown": 14,
+            "truth_counts": {
+              "old": 1497,
+              "new": 277,
+              "unknown": 315
+            }
+          }
+        },
+        "stress_missing_Imagery": {
+          "final3": {
+            "n": 1207,
+            "old_accuracy": 0.9057471264367816,
+            "new_accuracy": 0.5542168674698795,
+            "unknown_rejection": 0.9590643274853801,
+            "AUC": 0.9628293707241076,
+            "F1": 0.8702523623180727,
+            "accepted_unknown": 7,
+            "truth_counts": {
+              "old": 870,
+              "new": 166,
+              "unknown": 171
+            }
+          },
+          "candidate": {
+            "n": 1207,
+            "old_accuracy": 0.9057471264367816,
+            "new_accuracy": 0.5903614457831325,
+            "unknown_rejection": 0.9473684210526315,
+            "AUC": 0.9557452189031136,
+            "F1": 0.8730004587345701,
+            "accepted_unknown": 9,
+            "truth_counts": {
+              "old": 870,
+              "new": 166,
+              "unknown": 171
+            }
+          }
+        }
+      }
+    },
+    {
+      "fold": 1,
+      "seed": 312,
+      "old_ids": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "new_ids": [
+        3,
+        10,
+        20
+      ],
+      "unknown_ids": [
+        4,
+        18,
+        19
+      ],
+      "fit_count": 4709,
+      "registration_count": 60,
+      "registration_task_counts": {
+        "3": {
+          "0": 5,
+          "1": 5,
+          "2": 5,
+          "3": 5
+        },
+        "10": {
+          "0": 5,
+          "1": 5,
+          "2": 5,
+          "3": 5
+        },
+        "20": {
+          "0": 5,
+          "1": 5,
+          "2": 5,
+          "3": 5
+        }
+      },
+      "late_query_count": 2308,
+      "scenarios": {
+        "clean_complete": {
+          "final3": {
+            "n": 2308,
+            "old_accuracy": 0.9241765071472965,
+            "new_accuracy": 0.5418994413407822,
+            "unknown_rejection": 0.9882697947214076,
+            "AUC": 0.9696696369868222,
+            "F1": 0.8872139309698411,
+            "accepted_unknown": 4,
+            "truth_counts": {
+              "old": 1609,
+              "new": 358,
+              "unknown": 341
+            }
+          },
+          "candidate": {
+            "n": 2308,
+            "old_accuracy": 0.9241765071472965,
+            "new_accuracy": 0.6340782122905028,
+            "unknown_rejection": 0.9618768328445748,
+            "AUC": 0.9644888460179472,
+            "F1": 0.9004814071141846,
+            "accepted_unknown": 13,
+            "truth_counts": {
+              "old": 1609,
+              "new": 358,
+              "unknown": 341
+            }
+          }
+        },
+        "stress_complete": {
+          "final3": {
+            "n": 2308,
+            "old_accuracy": 0.8968303293971411,
+            "new_accuracy": 0.48324022346368717,
+            "unknown_rejection": 0.9882697947214076,
+            "AUC": 0.9625298361379179,
+            "F1": 0.861887350222436,
+            "accepted_unknown": 4,
+            "truth_counts": {
+              "old": 1609,
+              "new": 358,
+              "unknown": 341
+            }
+          },
+          "candidate": {
+            "n": 2308,
+            "old_accuracy": 0.8968303293971411,
+            "new_accuracy": 0.5865921787709497,
+            "unknown_rejection": 0.9706744868035191,
+            "AUC": 0.9562994690993772,
+            "F1": 0.8778506311284785,
+            "accepted_unknown": 10,
+            "truth_counts": {
+              "old": 1609,
+              "new": 358,
+              "unknown": 341
+            }
+          }
+        },
+        "clean_missing_EC": {
+          "final3": {
+            "n": 2089,
+            "old_accuracy": 0.9311768754301445,
+            "new_accuracy": 0.4472049689440994,
+            "unknown_rejection": 0.9872611464968153,
+            "AUC": 0.9718004844352741,
+            "F1": 0.8725219570642377,
+            "accepted_unknown": 4,
+            "truth_counts": {
+              "old": 1453,
+              "new": 322,
+              "unknown": 314
+            }
+          },
+          "candidate": {
+            "n": 2089,
+            "old_accuracy": 0.9311768754301445,
+            "new_accuracy": 0.5279503105590062,
+            "unknown_rejection": 0.9777070063694268,
+            "AUC": 0.9687449537992285,
+            "F1": 0.8878350695621525,
+            "accepted_unknown": 7,
+            "truth_counts": {
+              "old": 1453,
+              "new": 322,
+              "unknown": 314
+            }
+          }
+        },
+        "stress_missing_Imagery": {
+          "final3": {
+            "n": 1207,
+            "old_accuracy": 0.8878394332939787,
+            "new_accuracy": 0.5752688172043011,
+            "unknown_rejection": 0.9885057471264368,
+            "AUC": 0.9639594529937354,
+            "F1": 0.8649225607785965,
+            "accepted_unknown": 2,
+            "truth_counts": {
+              "old": 847,
+              "new": 186,
+              "unknown": 174
+            }
+          },
+          "candidate": {
+            "n": 1207,
+            "old_accuracy": 0.8878394332939787,
+            "new_accuracy": 0.6451612903225806,
+            "unknown_rejection": 0.9540229885057471,
+            "AUC": 0.9577505535712298,
+            "F1": 0.8719996214625518,
+            "accepted_unknown": 8,
+            "truth_counts": {
+              "old": 847,
+              "new": 186,
+              "unknown": 174
+            }
+          }
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "seed": 346,
+      "old_ids": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        14,
+        15,
+        18,
+        20
+      ],
+      "new_ids": [
+        4,
+        12,
+        13
+      ],
+      "unknown_ids": [
+        16,
+        17,
+        19
+      ],
+      "fit_count": 4643,
+      "registration_count": 60,
+      "registration_task_counts": {
+        "4": {
+          "0": 5,
+          "1": 5,
+          "2": 5,
+          "3": 5
+        },
+        "12": {
+          "0": 5,
+          "1": 5,
+          "2": 5,
+          "3": 5
+        },
+        "13": {
+          "0": 5,
+          "1": 5,
+          "2": 5,
+          "3": 5
+        }
+      },
+      "late_query_count": 2308,
+      "scenarios": {
+        "clean_complete": {
+          "final3": {
+            "n": 2308,
+            "old_accuracy": 0.9420199501246883,
+            "new_accuracy": 0.6098901098901099,
+            "unknown_rejection": 0.9411764705882353,
+            "AUC": 0.9757681731229076,
+            "F1": 0.9084839682312214,
+            "accepted_unknown": 20,
+            "truth_counts": {
+              "old": 1604,
+              "new": 364,
+              "unknown": 340
+            }
+          },
+          "candidate": {
+            "n": 2308,
+            "old_accuracy": 0.9420199501246883,
+            "new_accuracy": 0.6895604395604396,
+            "unknown_rejection": 0.9176470588235294,
+            "AUC": 0.9721469990435199,
+            "F1": 0.9205325381646011,
+            "accepted_unknown": 28,
+            "truth_counts": {
+              "old": 1604,
+              "new": 364,
+              "unknown": 340
+            }
+          }
+        },
+        "stress_complete": {
+          "final3": {
+            "n": 2308,
+            "old_accuracy": 0.9158354114713217,
+            "new_accuracy": 0.5961538461538461,
+            "unknown_rejection": 0.9323529411764706,
+            "AUC": 0.9703117527498805,
+            "F1": 0.8919558893238698,
+            "accepted_unknown": 23,
+            "truth_counts": {
+              "old": 1604,
+              "new": 364,
+              "unknown": 340
+            }
+          },
+          "candidate": {
+            "n": 2308,
+            "old_accuracy": 0.9158354114713217,
+            "new_accuracy": 0.6813186813186813,
+            "unknown_rejection": 0.9176470588235294,
+            "AUC": 0.9650077714012434,
+            "F1": 0.9056599069122817,
+            "accepted_unknown": 28,
+            "truth_counts": {
+              "old": 1604,
+              "new": 364,
+              "unknown": 340
+            }
+          }
+        },
+        "clean_missing_EC": {
+          "final3": {
+            "n": 2089,
+            "old_accuracy": 0.9496551724137932,
+            "new_accuracy": 0.5274390243902439,
+            "unknown_rejection": 0.9871382636655949,
+            "AUC": 0.9747539596135693,
+            "F1": 0.8966218188406718,
+            "accepted_unknown": 4,
+            "truth_counts": {
+              "old": 1450,
+              "new": 328,
+              "unknown": 311
+            }
+          },
+          "candidate": {
+            "n": 2089,
+            "old_accuracy": 0.9496551724137932,
+            "new_accuracy": 0.551829268292683,
+            "unknown_rejection": 0.977491961414791,
+            "AUC": 0.9749185290745409,
+            "F1": 0.9017612776490385,
+            "accepted_unknown": 7,
+            "truth_counts": {
+              "old": 1450,
+              "new": 328,
+              "unknown": 311
+            }
+          }
+        },
+        "stress_missing_Imagery": {
+          "final3": {
+            "n": 1207,
+            "old_accuracy": 0.9135071090047393,
+            "new_accuracy": 0.6276595744680851,
+            "unknown_rejection": 0.8742857142857143,
+            "AUC": 0.9572923588039867,
+            "F1": 0.8890957882724417,
+            "accepted_unknown": 22,
+            "truth_counts": {
+              "old": 844,
+              "new": 188,
+              "unknown": 175
+            }
+          },
+          "candidate": {
+            "n": 1207,
+            "old_accuracy": 0.9135071090047393,
+            "new_accuracy": 0.7287234042553191,
+            "unknown_rejection": 0.8628571428571429,
+            "AUC": 0.9476965669988926,
+            "F1": 0.9048682064565592,
+            "accepted_unknown": 24,
+            "truth_counts": {
+              "old": 844,
+              "new": 188,
+              "unknown": 175
+            }
+          }
+        }
+      }
+    }
+  ],
+  "hashes": {
+    "metadata": "f3be516e93082b78a9f483f9edb92f6330b1be39d32dff999a0a60b9bb92b545",
+    "clean": "37c0fea072e643711eb355b5b10beee3d277e9362e29c24835c75e53543f80d5",
+    "stress": "634a0e9c648dfab6cee73f1c306f1bb883d552b480e7ee8af04dd146ee33a1bf"
+  }
+}
