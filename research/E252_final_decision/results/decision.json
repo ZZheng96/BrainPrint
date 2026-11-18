@@ -1,0 +1,19 @@
+{
+  "recommended_candidate": "final/team_hymn",
+  "configuration": "subwin6_pca96_k1 @ a=0.90",
+  "decision": "retain_formal_freeze",
+  "reason": [
+    "唯一完成决赛提交接口、enroll、新用户21-23标签和提交包自测的候选",
+    "冻结后 Test 工程审计 S1 rejection=0.713485、S2 acceptance=0.706889，均达到0.70审计门槛",
+    "E249/E250/E251虽改善Train代理或严格LOSO，但真实Test S2仅0.429-0.442，未形成替代证据",
+    "不把不同实验的指标拼接成虚假的完整11项成绩"
+  ],
+  "candidate_layers": {
+    "formal_submittable": ["final/team_hymn"],
+    "train_only_research": ["E249_C2_WCCN_drift", "E250_C2_score_calibration", "E251_lambda_0"],
+    "not_adopted": ["E249_C2_WCCN_drift", "E250_C2_score_calibration", "E251_lambda_0"]
+  },
+  "test_truth": "official Test AUC/F1/C/RA/ASafeR/U/Score are N/A because Test identity truth is unavailable",
+  "replacement_policy": "do_not_modify_final_without_complete_same-protocol 11-gate evidence and a frozen-package regression pass",
+  "evidence_file": "research/E252_final_decision/REPORT.md"
+}

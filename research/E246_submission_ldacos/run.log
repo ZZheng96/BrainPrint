@@ -1,0 +1,37 @@
+﻿rep 0 3s
+rep 1 6s
+rep 2 9s
+rep 3 12s
+rep 4 15s
+rep 5 18s
+rep 6 21s
+rep 7 24s
+rep 8 27s
+rep 9 30s
+rep 10 33s
+rep 11 36s
+rep 12 39s
+rep 13 42s
+rep 14 45s
+rep 15 48s
+rep 16 51s
+rep 17 54s
+rep 18 57s
+rep 19 60s
+regime     scorer   center  thr   AUC  acc_known  acc_new  rej_unknown  F1_reject  closed_acc  acc_new_min  rej_unknown_min
+frozen     euclid batch128 loso 0.822      0.611    0.520        0.885      0.760       0.885        0.271            0.736
+frozen     euclid batch128  tau 0.822      0.808    0.743        0.483      0.585       0.885        0.572            0.329
+frozen     euclid     none loso 0.878      0.680    0.626        0.895      0.800       0.879        0.469            0.731
+frozen     euclid     none  tau 0.878      0.801    0.764        0.663      0.728       0.879        0.560            0.510
+frozen ldacos0.01 batch128 loso 0.989      0.970    0.910        0.871      0.917       0.973        0.697            0.785
+frozen ldacos0.01     none loso 0.992      0.967    0.943        0.903      0.934       0.978        0.816            0.839
+frozen  ldacos0.1 batch128 loso 0.988      0.967    0.908        0.871      0.916       0.972        0.697            0.783
+frozen  ldacos0.1     none loso 0.991      0.964    0.939        0.905      0.934       0.977        0.802            0.829
+honest     euclid batch128 loso 0.726      0.494    0.471        0.859      0.707       0.872        0.224            0.749
+honest     euclid batch128  tau 0.726      0.802    0.765        0.231      0.330       0.872        0.570            0.112
+honest     euclid     none loso 0.777      0.553    0.569        0.859      0.732       0.863        0.373            0.700
+honest     euclid     none  tau 0.777      0.785    0.780        0.339      0.447       0.863        0.578            0.151
+honest ldacos0.01 batch128 loso 0.959      0.919    0.718        0.910      0.894       0.963        0.419            0.852
+honest ldacos0.01     none loso 0.961      0.929    0.811        0.870      0.884       0.970        0.521            0.776
+honest  ldacos0.1 batch128 loso 0.958      0.915    0.726        0.910      0.893       0.962        0.425            0.851
+honest  ldacos0.1     none loso 0.960      0.924    0.813        0.869      0.882       0.967        0.518            0.779

@@ -1,0 +1,45 @@
+candidate,metric_id,metric,target,reported_value,data_side,protocol,source,comparable,status,test_selection_contamination,notes
+final_team_hymn,1,Train in-sample accuracy,1.00,1.0000,Train,formal E191/E200 freeze audit,E191 report / E200 report,limited,pass,no,正式提交方案；与 E251 的 #1 口径不同
+final_team_hymn,2,5-block OOF closed-set accuracy,>=0.95,0.9884,Train,formal E191 gate protocol,E191 report,limited,pass,no,闭集门禁
+final_team_hymn,3,identity macro-F1,>=0.92,0.9882,Train,5-block OOF identity head,E191 report / selftest_report,limited,pass,no,Train 身份头 F1，不是 Test 官方 F1
+final_team_hymn,4,forward block-out accuracy,>=0.90,0.9900,Train,formal E191 block-out,E191 report,limited,pass,no,与 E251 前向块外定义不同
+final_team_hymn,5,strict LOSO pseudo-unknown AUROC,>=0.98,N/A,Train,not measured at same strict E251 protocol,E191/E200 evidence boundary,no_comparable,not_proven,no,不从其他实验借数
+final_team_hymn,6,U@95%,>=0.95,N/A,Train,not measured at same strict E251 protocol,E191/E200 evidence boundary,no_comparable,not_proven,no,旧资料中的 U 口径不能与 E251 直接合并
+final_team_hymn,7,attack RA,>=0.95,0.8818,Train,formal E191 attack working point,E191 report,limited,fail,no,需注明与 E251 的攻击模型/协议不同
+final_team_hymn,8,attack ASafeR,>=0.98,1.0000,Train,formal E191 attack working point,E191 report,limited,pass,no,需注明攻击协议和工作点
+final_team_hymn,9,Test S1 rejection,>=0.70,0.713485,Test audit,冻结后一次性工程审计,E200 report / submission audit,no_official_comparison,pass_audit,no,无身份真值；非官方指标
+final_team_hymn,10,Test S2 acceptance,>=0.70,0.706889,Test audit,冻结后一次性工程审计,E200 report / submission audit,no_official_comparison,pass_audit,no,无身份真值；非官方指标
+final_team_hymn,11,strict LOSO unknown rejection @ a=0.90,>0.90,N/A,Train,not measured at same strict E251 protocol,E191/E200 evidence boundary,no_comparable,not_proven,no,不从 E249/E251 借数
+E249_C2_WCCN_drift,1,Train in-sample accuracy,1.00,0.9985,Train,E249 gate backfill,E249 REPORT,limited,fail,no,研究候选；非正式提交包
+E249_C2_WCCN_drift,2,5-block OOF closed-set accuracy,>=0.95,0.9263,Train,E249 legacy #2 definition,E249 REPORT,no,fail,no,E249 #2 实为 known identification accuracy，不能与 E251 #2 混比
+E249_C2_WCCN_drift,3,identity macro-F1,>=0.92,0.9864,Train,E249 Late macro-F1,E249 REPORT,limited,pass,no,Train 代理
+E249_C2_WCCN_drift,4,forward block-out accuracy,>=0.90,0.9873,Train,E249 Late closed-set accuracy,E249 REPORT,no,pass,no,与 E251 #4 定义不同
+E249_C2_WCCN_drift,5,strict LOSO pseudo-unknown AUROC,>=0.98,0.9779,Train,strict nested LOSO Late,E249 results summary / REPORT,limited,fail,no,低于目标
+E249_C2_WCCN_drift,6,U@95%,>=0.95,1.0000,Train,Train pseudo-unknown proxy,E249 REPORT,limited,pass_proxy,no,仅 Train 代理
+E249_C2_WCCN_drift,7,attack RA,>=0.95,0.3325,Train,E249 attack protocol,E249 REPORT,no,fail,no,与 E251 攻击实现不完全相同
+E249_C2_WCCN_drift,8,attack ASafeR,>=0.98,0.3570,Train,E249 attack protocol,E249 REPORT,no,fail,no,与 E251 攻击实现不完全相同
+E249_C2_WCCN_drift,9,Test S1 rejection,>=0.70,0.554,Test audit,一次性描述性审计,E249 REPORT,no_official_comparison,fail_audit,no,无身份真值
+E249_C2_WCCN_drift,10,Test S2 acceptance,>=0.70,0.429,Test audit,一次性描述性审计,E249 REPORT,no_official_comparison,fail_audit,no,无身份真值
+E249_C2_WCCN_drift,11,strict LOSO unknown rejection @ a=0.90,>0.90,0.9224,Train,strict LOSO rejection gate,E249 REPORT,limited,pass,no,但不能补齐其他候选缺失项
+E250_C2_score_calibration,1,Train in-sample accuracy,1.00,N/A,Train,not measured at full E191 gate definition,E250 REPORT,no_comparable,not_proven,no,未按同一门禁脚本重算
+E250_C2_score_calibration,2,5-block OOF closed-set accuracy,>=0.95,N/A,Train,not measured at full E191 gate definition,E250 REPORT,no_comparable,not_proven,no,未按同一门禁脚本重算
+E250_C2_score_calibration,3,identity macro-F1,>=0.92,N/A,Train,not measured at full E191 gate definition,E250 REPORT,no_comparable,not_proven,no,未按同一门禁脚本重算
+E250_C2_score_calibration,4,forward block-out accuracy,>=0.90,N/A,Train,not measured at full E191 gate definition,E250 REPORT,no_comparable,not_proven,no,未按同一门禁脚本重算
+E250_C2_score_calibration,5,strict LOSO pseudo-unknown AUROC,>=0.98,0.971098,Train,strict nested score calibration,E250 REPORT,limited,fail,no,Train 代理
+E250_C2_score_calibration,6,U@95%,>=0.95,N/A,Train,not measured at full E191 gate definition,E250 REPORT,no_comparable,not_proven,no,未完成同口径聚合
+E250_C2_score_calibration,7,attack RA,>=0.95,N/A,Train,no attack remeasurement,E250 REPORT,no_comparable,not_proven,no,不能复制 E249 数值
+E250_C2_score_calibration,8,attack ASafeR,>=0.98,N/A,Train,no attack remeasurement,E250 REPORT,no_comparable,not_proven,no,不能复制 E249 数值
+E250_C2_score_calibration,9,Test S1 rejection,>=0.70,0.548961,Test audit,一次性描述性审计,E250 REPORT,no_official_comparison,fail_audit,no,无身份真值
+E250_C2_score_calibration,10,Test S2 acceptance,>=0.70,0.442190,Test audit,一次性描述性审计,E250 REPORT,no_official_comparison,fail_audit,no,无身份真值
+E250_C2_score_calibration,11,strict LOSO unknown rejection @ a=0.90,N/A,N/A,Train,not separately generated,E250 REPORT,no_comparable,not_proven,no,未生成同口径 gate 聚合
+E251_lambda_0,1,Train in-sample accuracy,1.00,0.998816,Train,gates_train.py,E251 REPORT,limited,fail,no,严格 E195 口径
+E251_lambda_0,2,5-block OOF closed-set accuracy,>=0.95,0.996461,Train,gates_train.py,E251 REPORT,limited,pass,no,严格 E195 口径
+E251_lambda_0,3,identity macro-F1,>=0.92,0.996408,Train,gates_train.py,E251 REPORT,limited,pass,no,严格 E195 口径
+E251_lambda_0,4,forward block-out accuracy,>=0.90,0.986365,Train,gates_train.py,E251 REPORT,limited,pass,no,严格 E195 口径
+E251_lambda_0,5,strict LOSO pseudo-unknown AUROC,>=0.98,0.970837,Train,strict nested identity LOSO,E251 REPORT,limited,fail,no,低于目标
+E251_lambda_0,6,U@95%,>=0.95,1.000000,Train,gates_train.py,E251 REPORT,limited,pass_proxy,no,仅 Train 代理
+E251_lambda_0,7,attack RA,>=0.95,0.035045,Train,E251 corrected attack protocol,E251 REPORT,limited,fail,no,SNR30 主判定
+E251_lambda_0,8,attack ASafeR,>=0.98,0.041565,Train,E251 corrected attack protocol,E251 REPORT,limited,fail,no,SNR30 主判定
+E251_lambda_0,9,Test S1 rejection,>=0.70,0.547972,Test audit,一次性描述性审计,E251 REPORT,no_official_comparison,fail_audit,no,无身份真值
+E251_lambda_0,10,Test S2 acceptance,>=0.70,0.441045,Test audit,一次性描述性审计,E251 REPORT,no_official_comparison,fail_audit,no,无身份真值
+E251_lambda_0,11,strict LOSO unknown rejection @ a=0.90,>0.90,0.917569,Train,strict nested identity LOSO,E251 REPORT,limited,pass,no,严格口径

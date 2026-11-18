@@ -1,0 +1,79 @@
+﻿{
+  "rows": 11304,
+  "feature_shape": [
+    11304,
+    855
+  ],
+  "subjects": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "session": "session1",
+  "blocks": {
+    "early": 6757,
+    "late": 2287,
+    "middle": 2260
+  },
+  "duplicate_rows": 0,
+  "device": "cuda:0",
+  "feature_source": "D:\\WORK\\BCIC2026\\BrainPrint\\BrainPrint_cache\\e201_final_selftest\\train_raw_scores_inputs.npy"
+}
+chunk 1/10 elapsed 8s
+chunk 2/10 elapsed 15s
+chunk 3/10 elapsed 23s
+chunk 4/10 elapsed 30s
+chunk 5/10 elapsed 38s
+chunk 6/10 elapsed 46s
+chunk 7/10 elapsed 53s
+chunk 8/10 elapsed 61s
+chunk 9/10 elapsed 68s
+chunk 10/10 elapsed 74s
+{
+  "n_trials": 1227,
+  "clean": {
+    "RA": 0.9633251833740831,
+    "ASafeR": 0.9991850040749797,
+    "accept_rate": 0.9641401792991035,
+    "closed_set_accuracy": 0.9894050529747351,
+    "wrong_identity_rate": 0.0008149959250203749
+  },
+  "RA": 0.33251833740831294,
+  "ASafeR": 0.3569682151589242,
+  "worst_RA": {
+    "RA": 0.33251833740831294,
+    "ASafeR": 0.3569682151589242,
+    "accept_rate": 0.9755501222493888,
+    "closed_set_accuracy": 0.3406682966585167,
+    "wrong_identity_rate": 0.6430317848410758,
+    "snr": 20,
+    "goal": "A"
+  },
+  "worst_ASafeR": {
+    "RA": 0.33251833740831294,
+    "ASafeR": 0.3569682151589242,
+    "accept_rate": 0.9755501222493888,
+    "closed_set_accuracy": 0.3406682966585167,
+    "wrong_identity_rate": 0.6430317848410758,
+    "snr": 20,
+    "goal": "A"
+  },
+  "seconds": 74.18487644195557
+}
