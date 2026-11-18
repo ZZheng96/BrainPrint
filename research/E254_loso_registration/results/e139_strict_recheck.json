@@ -1,0 +1,8 @@
+{
+  "protocol": "E254l strict nested identity-LOSO, E139 rule (PCA96, kmeans k=12, euclid)",
+  "auroc": 0.9032225535477211,
+  "u95": 0.3907466383581033,
+  "rej90": 0.6287154989384289,
+  "per_fold_rej90_min": 0.22366288492706646,
+  "per_fold_rej90_mean": 0.639921554483163
+}
