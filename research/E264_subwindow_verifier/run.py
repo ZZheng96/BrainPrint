@@ -207,8 +207,24 @@ def report(results):
     for arm, values in summary.items():
         lines.append('|' + arm + '|' + '|'.join(
             f"{values[k]['mean']:.5f} / {values[k]['worst']:.5f}" for k in CORE) + '|')
-    lines += ['', '候选减同折现包（百分点；accepted_misrank 越低越好）：', '',
-              '|视图|' + '|'.join(CORE) + '|', '|---|' + '---:|' * len(CORE)]
+    lines += [
+        '', '## 11 项指标总表', '',
+        '#1–4 是现包历史全 Train/OOF 审计，E264 未训练全 Train 候选，故不重算、不冒充候选结果；#9/10 同样仅列现包历史实测。', '',
+        '|序号|指标|现包历史或同折对照|E264|口径|',
+        '|---:|---|---:|---:|---|',
+        '|1|Train 样本内闭集 acc|0.999646|未重算|现包历史全 Train|',
+        '|2|5 折 OOF 闭集 acc|0.998850|未重算|现包历史|',
+        '|3|5 折 OOF macro-F1|0.998825|未重算|现包历史|',
+        '|4|前向块外 acc|0.998251|未重算|现包历史|',
+        f"|5|严格 LOSO AUROC|{summary['clean_package']['AUROC']['mean']:.6f}|{summary['clean_verifier']['AUROC']['mean']:.6f}|20 折均值|",
+        f"|6|严格 LOSO U@95|{summary['clean_package']['U95']['mean']:.6f}|{summary['clean_verifier']['U95']['mean']:.6f}|20 折均值|",
+        '|7|RA|N/A|N/A|本轮无对抗样本|',
+        '|8|ASafeR|N/A|N/A|本轮无对抗样本|',
+        '|9|Test S2 已注册接受率|0.224165|未审计|现包历史实测，非 E264 结果|',
+        '|10|Test S1 未注册拒识率|0.591823|未审计|现包历史实测，非 E264 结果|',
+        f"|11|严格 LOSO 未知拒识@90|{summary['clean_package']['R90']['mean']:.6f}|{summary['clean_verifier']['R90']['mean']:.6f}|20 折均值|",
+        '', '候选减同折现包（百分点；accepted_misrank 越低越好）：', '',
+        '|视图|' + '|'.join(CORE) + '|', '|---|' + '---:|' * len(CORE)]
     for view in ('clean', 'stress'):
         lines.append('|' + view + '|' + '|'.join(
             f"{100 * (summary[view + '_verifier'][k]['mean'] - summary[view + '_package'][k]['mean']):+.4f}"
