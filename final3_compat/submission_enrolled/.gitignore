@@ -1,0 +1,4 @@
+# Pre-enrolled biometric weights and archives stay local.
+*.pt
+*.zip
+__pycache__/
