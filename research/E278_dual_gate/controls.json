@@ -1,0 +1,542 @@
+[
+  {
+    "seed": 286,
+    "method": "current",
+    "scenes": {
+      "clean_complete": {
+        "AUC": 0.9679800926154809,
+        "F1": 0.8811387690363928,
+        "unknown_rejection": 0.9793510324483776,
+        "diagnostics": {
+          "old": {
+            "n": 1661,
+            "rank": 1657,
+            "rank_reject": 140,
+            "reject": 143
+          },
+          "new": {
+            "n": 308,
+            "rank": 246,
+            "rank_reject": 73,
+            "reject": 134
+          }
+        },
+        "old_accuracy": 0.9133052378085491,
+        "new_accuracy": 0.5616883116883117
+      },
+      "stress_complete": {
+        "AUC": 0.9581342669788806,
+        "F1": 0.8665689517571166,
+        "unknown_rejection": 0.976401179941003,
+        "diagnostics": {
+          "old": {
+            "n": 1661,
+            "rank": 1654,
+            "rank_reject": 172,
+            "reject": 178
+          },
+          "new": {
+            "n": 308,
+            "rank": 239,
+            "rank_reject": 64,
+            "reject": 132
+          }
+        },
+        "old_accuracy": 0.8922335942203492,
+        "new_accuracy": 0.5681818181818182
+      },
+      "clean_missing_EC": {
+        "AUC": 0.9607666290868094,
+        "F1": 0.8942426163223571,
+        "unknown_rejection": 0.9555555555555556,
+        "diagnostics": {
+          "old": {
+            "n": 1497,
+            "rank": 1494,
+            "rank_reject": 91,
+            "reject": 94
+          },
+          "new": {
+            "n": 277,
+            "rank": 208,
+            "rank_reject": 50,
+            "reject": 118
+          }
+        },
+        "old_accuracy": 0.9372077488309953,
+        "new_accuracy": 0.5703971119133574
+      },
+      "stress_missing_Imagery": {
+        "AUC": 0.9557452189031136,
+        "F1": 0.8730004587345701,
+        "unknown_rejection": 0.9473684210526315,
+        "diagnostics": {
+          "old": {
+            "n": 870,
+            "rank": 862,
+            "rank_reject": 74,
+            "reject": 82
+          },
+          "new": {
+            "n": 166,
+            "rank": 137,
+            "rank_reject": 39,
+            "reject": 67
+          }
+        },
+        "old_accuracy": 0.9057471264367816,
+        "new_accuracy": 0.5903614457831325
+      }
+    }
+  },
+  {
+    "seed": 286,
+    "method": "single",
+    "scenes": {
+      "clean_complete": {
+        "AUC": 0.9647860420589941,
+        "F1": 0.8804426076148444,
+        "unknown_rejection": 0.9823008849557522,
+        "diagnostics": {
+          "old": {
+            "n": 1661,
+            "rank": 1654,
+            "rank_reject": 131,
+            "reject": 137
+          },
+          "new": {
+            "n": 308,
+            "rank": 238,
+            "rank_reject": 69,
+            "reject": 138
+          }
+        },
+        "old_accuracy": 0.9169175195665262,
+        "new_accuracy": 0.5487012987012987
+      },
+      "stress_complete": {
+        "AUC": 0.9569012915529947,
+        "F1": 0.8677693567625968,
+        "unknown_rejection": 0.9823008849557522,
+        "diagnostics": {
+          "old": {
+            "n": 1661,
+            "rank": 1649,
+            "rank_reject": 158,
+            "reject": 169
+          },
+          "new": {
+            "n": 308,
+            "rank": 237,
+            "rank_reject": 65,
+            "reject": 136
+          }
+        },
+        "old_accuracy": 0.8976520168573149,
+        "new_accuracy": 0.5584415584415584
+      },
+      "clean_missing_EC": {
+        "AUC": 0.9659580179309605,
+        "F1": 0.897164237471751,
+        "unknown_rejection": 0.9555555555555556,
+        "diagnostics": {
+          "old": {
+            "n": 1497,
+            "rank": 1494,
+            "rank_reject": 77,
+            "reject": 80
+          },
+          "new": {
+            "n": 277,
+            "rank": 204,
+            "rank_reject": 48,
+            "reject": 118
+          }
+        },
+        "old_accuracy": 0.9465597862391449,
+        "new_accuracy": 0.5631768953068592
+      },
+      "stress_missing_Imagery": {
+        "AUC": 0.9609722504459347,
+        "F1": 0.8843625785229757,
+        "unknown_rejection": 0.9532163742690059,
+        "diagnostics": {
+          "old": {
+            "n": 870,
+            "rank": 863,
+            "rank_reject": 58,
+            "reject": 65
+          },
+          "new": {
+            "n": 166,
+            "rank": 133,
+            "rank_reject": 36,
+            "reject": 69
+          }
+        },
+        "old_accuracy": 0.9252873563218391,
+        "new_accuracy": 0.5843373493975904
+      }
+    }
+  },
+  {
+    "seed": 312,
+    "method": "current",
+    "scenes": {
+      "clean_complete": {
+        "AUC": 0.9681370173850945,
+        "F1": 0.8718690291181471,
+        "unknown_rejection": 0.9824046920821115,
+        "diagnostics": {
+          "old": {
+            "n": 1609,
+            "rank": 1599,
+            "rank_reject": 125,
+            "reject": 135
+          },
+          "new": {
+            "n": 358,
+            "rank": 303,
+            "rank_reject": 131,
+            "reject": 185
+          }
+        },
+        "old_accuracy": 0.9160969546302051,
+        "new_accuracy": 0.48044692737430167
+      },
+      "stress_complete": {
+        "AUC": 0.9613833531868201,
+        "F1": 0.845273010343235,
+        "unknown_rejection": 0.9882697947214076,
+        "diagnostics": {
+          "old": {
+            "n": 1609,
+            "rank": 1597,
+            "rank_reject": 175,
+            "reject": 187
+          },
+          "new": {
+            "n": 358,
+            "rank": 302,
+            "rank_reject": 148,
+            "reject": 204
+          }
+        },
+        "old_accuracy": 0.8837787445618397,
+        "new_accuracy": 0.4301675977653631
+      },
+      "clean_missing_EC": {
+        "AUC": 0.9687449537992285,
+        "F1": 0.8878350695621525,
+        "unknown_rejection": 0.9777070063694268,
+        "diagnostics": {
+          "old": {
+            "n": 1453,
+            "rank": 1444,
+            "rank_reject": 91,
+            "reject": 99
+          },
+          "new": {
+            "n": 322,
+            "rank": 271,
+            "rank_reject": 101,
+            "reject": 152
+          }
+        },
+        "old_accuracy": 0.9311768754301445,
+        "new_accuracy": 0.5279503105590062
+      },
+      "stress_missing_Imagery": {
+        "AUC": 0.9577505535712298,
+        "F1": 0.8719996214625518,
+        "unknown_rejection": 0.9540229885057471,
+        "diagnostics": {
+          "old": {
+            "n": 847,
+            "rank": 838,
+            "rank_reject": 86,
+            "reject": 95
+          },
+          "new": {
+            "n": 186,
+            "rank": 163,
+            "rank_reject": 43,
+            "reject": 66
+          }
+        },
+        "old_accuracy": 0.8878394332939787,
+        "new_accuracy": 0.6451612903225806
+      }
+    }
+  },
+  {
+    "seed": 312,
+    "method": "single",
+    "scenes": {
+      "clean_complete": {
+        "AUC": 0.9711336763339977,
+        "F1": 0.8795995993556383,
+        "unknown_rejection": 0.9882697947214076,
+        "diagnostics": {
+          "old": {
+            "n": 1609,
+            "rank": 1601,
+            "rank_reject": 96,
+            "reject": 104
+          },
+          "new": {
+            "n": 358,
+            "rank": 294,
+            "rank_reject": 126,
+            "reject": 189
+          }
+        },
+        "old_accuracy": 0.9353635798632691,
+        "new_accuracy": 0.4692737430167598
+      },
+      "stress_complete": {
+        "AUC": 0.9653371539492536,
+        "F1": 0.857767659096138,
+        "unknown_rejection": 0.9941348973607038,
+        "diagnostics": {
+          "old": {
+            "n": 1609,
+            "rank": 1600,
+            "rank_reject": 137,
+            "reject": 146
+          },
+          "new": {
+            "n": 358,
+            "rank": 296,
+            "rank_reject": 144,
+            "reject": 205
+          }
+        },
+        "old_accuracy": 0.9092604101926662,
+        "new_accuracy": 0.4245810055865922
+      },
+      "clean_missing_EC": {
+        "AUC": 0.9713734637122096,
+        "F1": 0.8925682465860039,
+        "unknown_rejection": 0.9840764331210191,
+        "diagnostics": {
+          "old": {
+            "n": 1453,
+            "rank": 1446,
+            "rank_reject": 64,
+            "reject": 70
+          },
+          "new": {
+            "n": 322,
+            "rank": 254,
+            "rank_reject": 91,
+            "reject": 158
+          }
+        },
+        "old_accuracy": 0.9511355815554026,
+        "new_accuracy": 0.5062111801242236
+      },
+      "stress_missing_Imagery": {
+        "AUC": 0.9653948437204437,
+        "F1": 0.8877455182942828,
+        "unknown_rejection": 0.9655172413793104,
+        "diagnostics": {
+          "old": {
+            "n": 847,
+            "rank": 842,
+            "rank_reject": 64,
+            "reject": 69
+          },
+          "new": {
+            "n": 186,
+            "rank": 160,
+            "rank_reject": 42,
+            "reject": 68
+          }
+        },
+        "old_accuracy": 0.9185360094451004,
+        "new_accuracy": 0.6344086021505376
+      }
+    }
+  },
+  {
+    "seed": 346,
+    "method": "current",
+    "scenes": {
+      "clean_complete": {
+        "AUC": 0.9793564681970349,
+        "F1": 0.887537443222004,
+        "unknown_rejection": 0.9882352941176471,
+        "diagnostics": {
+          "old": {
+            "n": 1604,
+            "rank": 1603,
+            "rank_reject": 126,
+            "reject": 127
+          },
+          "new": {
+            "n": 364,
+            "rank": 325,
+            "rank_reject": 124,
+            "reject": 162
+          }
+        },
+        "old_accuracy": 0.9208229426433915,
+        "new_accuracy": 0.5521978021978022
+      },
+      "stress_complete": {
+        "AUC": 0.9756605691056911,
+        "F1": 0.8726730715071387,
+        "unknown_rejection": 0.9941176470588236,
+        "diagnostics": {
+          "old": {
+            "n": 1604,
+            "rank": 1601,
+            "rank_reject": 170,
+            "reject": 173
+          },
+          "new": {
+            "n": 364,
+            "rank": 326,
+            "rank_reject": 127,
+            "reject": 164
+          }
+        },
+        "old_accuracy": 0.89214463840399,
+        "new_accuracy": 0.5467032967032966
+      },
+      "clean_missing_EC": {
+        "AUC": 0.9749185290745409,
+        "F1": 0.9017612776490385,
+        "unknown_rejection": 0.977491961414791,
+        "diagnostics": {
+          "old": {
+            "n": 1450,
+            "rank": 1450,
+            "rank_reject": 73,
+            "reject": 73
+          },
+          "new": {
+            "n": 328,
+            "rank": 280,
+            "rank_reject": 99,
+            "reject": 146
+          }
+        },
+        "old_accuracy": 0.9496551724137932,
+        "new_accuracy": 0.551829268292683
+      },
+      "stress_missing_Imagery": {
+        "AUC": 0.9476965669988926,
+        "F1": 0.9048682064565592,
+        "unknown_rejection": 0.8628571428571429,
+        "diagnostics": {
+          "old": {
+            "n": 844,
+            "rank": 844,
+            "rank_reject": 73,
+            "reject": 73
+          },
+          "new": {
+            "n": 188,
+            "rank": 182,
+            "rank_reject": 45,
+            "reject": 51
+          }
+        },
+        "old_accuracy": 0.9135071090047393,
+        "new_accuracy": 0.7287234042553191
+      }
+    }
+  },
+  {
+    "seed": 346,
+    "method": "single",
+    "scenes": {
+      "clean_complete": {
+        "AUC": 0.9784209110473457,
+        "F1": 0.8991670847566139,
+        "unknown_rejection": 0.9882352941176471,
+        "diagnostics": {
+          "old": {
+            "n": 1604,
+            "rank": 1602,
+            "rank_reject": 90,
+            "reject": 92
+          },
+          "new": {
+            "n": 364,
+            "rank": 323,
+            "rank_reject": 122,
+            "reject": 162
+          }
+        },
+        "old_accuracy": 0.942643391521197,
+        "new_accuracy": 0.5521978021978022
+      },
+      "stress_complete": {
+        "AUC": 0.9754543280726925,
+        "F1": 0.8862739895415715,
+        "unknown_rejection": 0.9911764705882353,
+        "diagnostics": {
+          "old": {
+            "n": 1604,
+            "rank": 1601,
+            "rank_reject": 125,
+            "reject": 128
+          },
+          "new": {
+            "n": 364,
+            "rank": 326,
+            "rank_reject": 130,
+            "reject": 167
+          }
+        },
+        "old_accuracy": 0.9201995012468828,
+        "new_accuracy": 0.5384615384615384
+      },
+      "clean_missing_EC": {
+        "AUC": 0.97354952817393,
+        "F1": 0.9073176074304938,
+        "unknown_rejection": 0.977491961414791,
+        "diagnostics": {
+          "old": {
+            "n": 1450,
+            "rank": 1449,
+            "rank_reject": 56,
+            "reject": 57
+          },
+          "new": {
+            "n": 328,
+            "rank": 276,
+            "rank_reject": 95,
+            "reject": 146
+          }
+        },
+        "old_accuracy": 0.9606896551724138,
+        "new_accuracy": 0.551829268292683
+      },
+      "stress_missing_Imagery": {
+        "AUC": 0.9599169435215947,
+        "F1": 0.9202942936061942,
+        "unknown_rejection": 0.8628571428571429,
+        "diagnostics": {
+          "old": {
+            "n": 844,
+            "rank": 843,
+            "rank_reject": 46,
+            "reject": 47
+          },
+          "new": {
+            "n": 188,
+            "rank": 183,
+            "rank_reject": 48,
+            "reject": 53
+          }
+        },
+        "old_accuracy": 0.9443127962085308,
+        "new_accuracy": 0.7180851063829787
+      }
+    }
+  }
+]
